@@ -1,6 +1,61 @@
 \section{Design}
 
-Present the policies here 
+Scientific simulation applications consume a large amount of computational resources, and are often used in the context of \emph{exploratory} research, where a large amount of jobs are run with  different simulation parameters.
+This can be either a \emph{parameter sweep}, where a large number of parameters need to be evaluated, or a \emph{search} over a large parameter space for the ``right'' set of parameters that yield the desired model behavior.
+
+In this paper, we look at the problem of running scientific simulations on \emph{transient} computing resources in public clouds. 
+
+
+Past work has largely been focused on running parallel jobs (such as MPI) in the cloud. 
+However, considering entire \emph{job-groups} or ensembles of jobs presents new challenges and opportunities in timely, low-cost computation.
+
+Our system, \sysname, is a unified framework for running large job-groups that result from parameter exploration. 
+
+Input and some assumptions:
+We assume that the job-group consists of $J_1\ldots J_N$, with each job evaluating a model on some parameter.
+The list of parameters to explore can either be generated apriori (as in the case of parameter sweeps), or be dynamically generated as in the case of a search.
+
+In this section, we will look at how we address these challenges:
+\begin{enumerate}
+\item How to select the right type of cloud server for an application?
+\item 
+\end{enumerate}
+
+
+
+\subsection{Trade-offs in Server Selection}
+
+This presents us with many challenges in the cloud-deployment of these jobs.
+
+Cloud providers offer multiple types of instances (VMs), with different hardware configuration (such as number of CPUs and memory size).
+The price of cloud servers is related to their hardware configuration, but it may not be strictly proportional to the hardware performance.
+For example, a VM with 32 CPUs may not be 32 times the cost of a single CPU VM.
+
+
+For parallel and distributed applications, the type of servers selected has large implications on their performance.
+Consider the case of deploying an application on 8 8-core VMs vs. 16 4-core VMs.
+In both cases, the total number of CPU cores is the same.
+However, the larger number of VMs requires more communication between the application tasks, and thus may result in performance degradation.
+The performance of applications at different cluster configurations depends on their communication patterns and scaling properties. 
+
+
+
+Thus, when deploying applications on the cloud, one has to mindful of the cost and performance tradeoff.
+However, in the case of transient servers, the story does not stop here. 
+
+
+In addition to pricing differences, the transient availability of instances \emph{also} differs by type.
+Because the availability of a transient VM is broadly determined by the overall supply and demand of the instances of that \emph{particular} type, the ``preemption rate'' of VMs often depends on the type of the instance.
+
+
+
+Thus, selecting a transient cloud server involves a complex tradeoff between the cost of servers, their performance, and the preemption-rate.
+
+
+
+
+
+
 
 %%% Local Variables:
 %%% mode: latex

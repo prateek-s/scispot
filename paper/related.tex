@@ -14,8 +14,17 @@ Price optimizations for Scientific workflows in the cloud~\cite{gari_learning_20
 \subsection{Transiency mitigation}
 
 ~\cite{marathe2014exploiting} classic work on MPI and Spot.
+Uses checkpointing.
+Redundancy, but for what?
+User specified number of VMs. Does not do instance selection. 
+BCLR for checkpointing.
 
-MOre spot and MPI:~\cite{gong_monetary_2015} ~\cite{xiang_spotmpi:_2011}
+
+
+MOre spot and MPI:~\cite{gong_monetary_2015}. FOcussed on bidding and checkpoint interval. But bidding doesnt matter. 
+
+
+\cite{xiang_spotmpi:_2011} is early work for spot and MPI and 
 
 ~\cite{spoton} a batch computing service
 
@@ -37,6 +46,14 @@ Our failure model is more general, and applies to both cases.
 ~\cite{dongarra_fault_nodate} has a discussion of checkpointing frequency which is comprehensive.
 
 Replication is another way~\cite{walters_replication-based_2009}
+
+
+\subsubsection{Huge amount of work on bidding in HPC}
+
+~\cite{wolski_probabilistic_2017}
+
+~\cite{guo_bidding_2015}
+
 
 
 %%% Local Variables:
