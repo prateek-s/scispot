@@ -1,0 +1,24 @@
+Running the molecular dynamics (MD) simulations on transient resources. 
+
+The first "big" idea is that simulations are often bag of parallel tasks. 
+
+While there has been some past work that looks at running MPI applications on spot instances, our scope is much broader and considers how complete simulation pipelines can be run at low cost. 
+
+Spiel on transient instances. Increasingly popular resource allocation model that is being offered by all cloud providers. 
+Very low cost compared to conventional cloud resources, often by up to 10x. 
+However, can be frequently revoked. 
+Thus failure is a common occurrence, and not a rare-event. 
+This is especially challenging for MPI jobs because of its inability to tolerate failures. 
+
+However, our insight is that while protecting a *single* job against revocations can require elaborate checkpointing based approaches, we dont necessarily have to do that if we consider that most simulations are composed of a series of jobs that search over a parameter space, and that what is important is the total running time and cost of this entire series of jobs. 
+
+Thus, no single job is "special". 
+
+Another aspect of novelty is that past work on transient resources used EC2 pricing information to get failure probabilities. However, this is no longer an accurate method. We perform the first empirical study of google preemptible VMs and their performance and availability for HPC workloads. 
+
+Another fundamental question is what is a suitable metric in such cases. Conventionally, it is speedup. In the cloud, it is some combination of cost and running time. 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End:
