@@ -18,8 +18,10 @@ The list of parameters to explore can either be generated apriori (as in the cas
 In this section, we will look at how we address these challenges:
 \begin{enumerate}
 \item How to select the right type of cloud server for an application?
-\item 
+\item How to effectively run job-groups?
 \end{enumerate}
+
+\sysname's key insight is considering an entire job-group can allow better and simpler optimizations that can be easily deployed. 
 
 
 
@@ -52,8 +54,110 @@ Because the availability of a transient VM is broadly determined by the overall 
 Thus, selecting a transient cloud server involves a complex tradeoff between the cost of servers, their performance, and the preemption-rate.
 
 
+\subsection{Server Selection Policy}
+
+\sysname's server selection policy seeks to identify the best server type for a given job-group.
+
+As stated in the previous subsection, the transient server selection problem is challenging because it involves balancing multiple optimization criteria: applications want low cost, low preemptions, and high performance.
+
+Server selection based on application characteristics is a subject of a growing amount of recent work.
+These approaches often use micro benchmarks to gather performance data of cloud servers, and then use application performance models to determine suitable VMs for a specific application.
+Another class of approaches uses ``black box'' performance modeling, where the application's performance is modeled using a function of the resources, for example, by using linear regression.
+
+In contrast to prior work, our server selection employs a ``cold start'' policy, and we do not run profiling or pilot jobs that can increase the overall running time and cost.
+Instead, we search for the ``best'' cluster configuration for jobs in a job-group, by exploring the cluster configuration space for the ``optimum'' server type that optimizes all the desired parameters: cost, running time, and revocation rate.
 
 
+Thus, the first $e$ jobs in the job group $J_1\ldots J_e$ are the exploration jobs, run on different cluster configurations.
+We limit the total number of combinations to explore, by allowing users to submit an estimate of the total number of CPU cores that they desire for each job.
+This allows us to meet the user expectations in terms of performance and cost---whether the user expects us to spend a large amount of resources or not.
+
+Thus, assuming that there are $s$ different types of VM instances, the first $s$ jobs are run on the $s$ different types.
+Note that we use homogeneous clusters, since the performance of BSP programs in Heterogeneous environments can be degraded, and importantly, as we show, there are no performance or cost benefits to Heterogenity. 
+
+
+For each server type $i$, we calcuate the expected cost $E[C_i]$.
+
+$E[C_i] = n_i*c_i * E[T_i]$, where $c_i$ is the price (per second) of the server, $n_i$ is the number of servers of that type required to meet the core-count requirement.
+The expected running time of the job depends on two factors: the actual running time $T$, and the increase in running time due to preemptions.
+Each preemption is akin to a fail-stop failure, which requires an application to restart.
+Our system makes no assumptions about the fault-tolerance policies supported by the application. For example, some applications may be able to \emph{checkpoint} their state periodically.
+In either case (checkpointing or not), there is some work lost due to revocations.
+For ease of exposition, we assume no checkpointing. We discuss checkpointing in the next section (or never?)
+
+
+\mhead{Expected running time:}
+Let the running time without failure be T:
+
+\begin{equation}
+  \label{eq:et1}
+E[T_i] = T + P(\text{at least one failure})*T/2   
+\end{equation}
+
+For calcuating the probability of failure, we assume that the failure rate of an individual server of the type is $p_i$. 
+
+\begin{align}
+  \label{eq:pfail1}
+  P(\text{at least one failure}) &= 1-P(\text{no failure}) \\
+                                 &= 1-(1-p_i)^{n_i} 
+\end{align}
+
+Thus, we can see that if we select smaller VMs, we will require more of them (higher $n_i$), and this cluster configuration will have a larger probability of failure and thus higher running times and costs.
+
+The probability of failure $p_i$ depends on the type of server, and we use historically determined failure distributions.
+Roughly, if we assume exponentially distributed failures, then:
+\begin{equation}
+  \label{eq:pi}
+  p_i = \dfrac{T}{\text{MTTF}_i}
+\end{equation}
+
+Where MTTF is the mean time to failure of the server type, and T is the empirically determined job running time without failures (the best case).
+
+
+
+
+
+
+In addition to searching over the servers, the effective number of servers is also dynamic in the case of transient environments due to preemptions.
+Thus, once we have found the appropriate server, we then explore the application's performance at smaller cluster sizes, which helps in the job-group policies that we discuss next. 
+
+
+\subsection{Preemption-handling Policies}
+
+We run the remaining jobs on the right configuration that is determined through the server selection policy.
+
+Our goal is to minimize costs given a deadline.
+
+This determines two things: how many jobs should be run in parallel, and what to do upon a revocation.
+
+The number of jobs in parallel determines the overall size of our cluster.
+
+$\text{number of parallel jobs} = \dfrac{N\cdot T}{\text{Deadline Duration}}$
+
+If a server is preempted, then the job running on it will cease to run.
+Our preemption handling policies then decide what to do:
+\begin{enumerate}
+\item Restart the job on a smaller number of servers 
+\item Replenish lost servers and restart job
+\item Discard job. This may be useful in case of parameter sweeps. 
+\end{enumerate}
+
+In addition, the user is also allowed to provide the fraction of jobs that are allowed to fail ($\eta$).
+
+
+\subsection{Checkpointing}
+
+Checkpointing requires the same number of servers, which may be tricky, whereas restarts can be on smaller number of nodes no problem.
+
+
+\subsection{Early Stopping}
+
+Based on the energy function, we can stop some simulations early.
+The early stopping criteria helps in minimizing the number of jobs run to completion.
+
+We use this to proactively monitor jobs, as well as to decide whether to restart a job if it is preempted.
+
+*This can be a fairly substantial section*
 
 
 

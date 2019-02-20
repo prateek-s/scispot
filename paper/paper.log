@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  20 FEB 2019 14:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  20 FEB 2019 16:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1143,9 +1143,6 @@ Package hyperref Warning: Option `pdfdisplaydoctitle' has already been used,
 (./intro.tex) (./background.tex) (./design.tex
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 3.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 15.
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1161,26 +1158,45 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-Overfull \hbox (18.4925pt too wide) in paragraph at lines 18--19
-[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) This presents us with many chal-lenges i
-n the cloud-deployment
+Overfull \hbox (8.19249pt too wide) in paragraph at lines 30--31
+\T1/LinuxLibertineT-TLF/m/n/10 (-20) This presents us with many chal-lenges in 
+the cloud-deployment
  []
 
 
-Overfull \hbox (1.07603pt too wide) in paragraph at lines 25--29
+Overfull \hbox (1.07603pt too wide) in paragraph at lines 37--42
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) For par-al-lel and dis-tributed ap-pli-c
 a-tions, the type of servers
  []
 
 
+Underfull \vbox (badness 1152) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 42.
+ [1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 35.
- [1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(Font)              scaled to size 7.3pt on input line 94.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 5.5pt on input line 94.
 
-]) (./impl.tex) (./eval.tex)
-(./related.tex
+Overfull \hbox (13.79497pt too wide) in paragraph at lines 107--109
+\T1/LinuxLibertineT-TLF/m/n/10 (-20) and we use his-tor-i-cally de-ter-mined fa
+il-ure dis-tri-bu-tions. Roughly,
+ []
+
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 129.
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 129.
+[2.2]) (./impl.tex) (./eval.tex) (./related.tex
+Underfull \vbox (badness 6461) has occurred while \output is active []
+
+
 Overfull \hbox (1.72954pt too wide) in paragraph at lines 10--11
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Price op-ti-miza-tions for Sci-en-tific 
 work-flows in the cloud [[]] 
@@ -1202,8 +1218,6 @@ l.46 ~
 Sorry...I usually can't take things from the current page.
 Try `I\vskip-\lastskip' instead.
 
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 46.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 46.
 ./related.tex:53: You can't use `\unskip' in vertical mode.
@@ -1215,23 +1229,21 @@ Sorry...I usually can't take things from the current page.
 Try `I\vskip-\lastskip' instead.
 
 
-Package natbib Warning: Citation `wolski_probabilistic_2017' on page 2 undefine
+Package natbib Warning: Citation `wolski_probabilistic_2017' on page 3 undefine
 d on input line 53.
 
 
-Package natbib Warning: Citation `guo_bidding_2015' on page 2 undefined on inpu
+Package natbib Warning: Citation `guo_bidding_2015' on page 3 undefined on inpu
 t line 55.
 
 ) (./paper.bbl
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 8.0pt on input line 4.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 90.
- [2.2])
+ [3.3])
 
 Package natbib Warning: There were undefined citations.
 
-[3.3
+[4.4
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 82.
@@ -1246,40 +1258,40 @@ Package rerunfilecheck Warning: File `paper.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `paper.out':
-(rerunfilecheck)             Before: 68158594CED137F85F4EBD8680CB9F4A;2574
-(rerunfilecheck)             After:  03F41897149E0B27F4BC22F9BE06D989;2814.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+(rerunfilecheck)             Before: 2EA537E9A15563FC457897EC9D969BFB;3386
+(rerunfilecheck)             After:  3D1A3873033EF8450643A74A38579E61;3782.
  ) 
 Here is how much of TeX's memory you used:
- 22330 strings out of 494805
- 350453 string characters out of 6178000
- 503592 words of memory out of 5000000
- 24848 multiletter control sequences out of 15000+600000
- 132134 words of font info for 233 fonts, out of 8000000 for 9000
+ 22416 strings out of 494805
+ 351898 string characters out of 6178000
+ 501592 words of memory out of 5000000
+ 24864 multiletter control sequences out of 15000+600000
+ 151280 words of font info for 277 fonts, out of 8000000 for 9000
  242 hyphenation exceptions out of 8191
- 60i,16n,94p,825b,675s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,825b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
 r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/shar
-e/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/share/texl
-ive/texmf-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive/texmf
--dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/
-fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/
-enc/dvips/libertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/
-public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/libertine/LinBiolinumTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/libertine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/newtx/fxlri-7letters.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
-fonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.p
-fb>
-Output written on paper.pdf (3 pages, 486059 bytes).
+e/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist
+/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvip
+s/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libe
+rtine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/
+lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertine/Lin
+BiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBi
+olinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBio
+linumTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibe
+rtineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLiber
+tineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLiber
+tineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/fxlri-5lette
+rs.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/fxlri-7letters.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/newtx/zxlri.pfb>
+Output written on paper.pdf (4 pages, 591450 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
- 158 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
- 38021 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 240 PDF objects out of 1000 (max. 8388607)
+ 201 compressed objects within 3 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 41125 words of extra memory for PDF output out of 42996 (max. 10000000)
 
