@@ -1,0 +1,10 @@
+
+prateeks service account created (Role:owner)
+
+quota increase per zone 
+
+=gcloud compute operations list= for viewing all creation and preemption events. 
+
+
+Getting instance metadata 
+

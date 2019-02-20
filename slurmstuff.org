@@ -1,0 +1,53 @@
+
+The schedmd yaml works. 
+
+Some warning about disk size (100GB vs 10)
+
+run slurm commands as root, for whatever reason 
+(=sacctmgr list accounts/users=)
+
+=srun -N 2 hostname=
+
+=sinfo -a=
+idle~ means in power-save mode 
+
+stopping moves the node to idle* state, which means unreachable. 
+
+srun -N 2 hostname with only one worker hangs? 
+
+* On Ubuntu 
+Installing packages is straightforward. 
+Very simple config file from ubuntu forums 
+
+BUT, the node starts off in a draining state, because of low number of CPUs or something. 
+
+prateeks@ubslurm1:~$ scontrol show node ubslurm1
+NodeName=ubslurm1 Arch=x86_64 CoresPerSocket=1
+   CPUAlloc=0 CPUErr=0 CPUTot=1 CPULoad=0.00
+   AvailableFeatures=(null)
+   ActiveFeatures=(null)
+   Gres=(null)
+   NodeAddr=ubslurm1 NodeHostName=ubslurm1 Version=17.11
+   OS=Linux 4.15.0-1026-gcp #27-Ubuntu SMP Thu Dec 6 18:27:01 UTC 2018
+   RealMemory=1 AllocMem=0 FreeMem=5727 Sockets=1 Boards=1
+   State=IDLE+DRAIN ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A
+   Partitions=long
+   BootTime=2019-02-19T14:32:18 SlurmdStartTime=2019-02-19T15:20:27
+   CfgTRES=cpu=1,mem=1M,billing=1
+   AllocTRES=
+   CapWatts=n/a
+   CurrentWatts=0 LowestJoules=0 ConsumedJoules=0
+   ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
+   Reason=Low socket*core*thread count, Low CPUs [slurm@2019-02-19T15:11:41]
+
+
+Image: ubs1 
+
+munge fails  ugh who knows why 
+
+Step1 : set auth/none instead of auth/munge in slurm.conf 
+
+Now, srun hostname fails with invalid job credential . Needs munge running in some strange order ? Magically works now. 
+
+** MPI
+

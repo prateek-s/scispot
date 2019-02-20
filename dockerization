@@ -1,0 +1,33 @@
+apt install build-essential libgsl-dev ruby-gsl mpi-default-dev libboost-mpi-dev libboost-program-options-dev libboost-system-dev libboost-filesystem-dev vim ssh 
+
+We dont need boost_libdir, so remove -L{ } from src/Makefile
+
+ssh is required for mpi!
+
+
+On GCP, use docker load, not docker import
+
+mpirun -np 2 --host v-020,v-021 docker run -d mdconfin:1 /home/nanoconfinement-md-master/bin/md_simulation_confined_ions
+
+OMPI rank communicated via environment variables. How to pass this to docker? Ugh
+
+https://stackoverflow.com/questions/40229182/simplest-way-of-passing-all-host-environment-variables-to-docker-container
+
+mpirun -np 2 --host v-020,v-021 -x OMP_NUM_THREADS=16 /home/prateeks/nanoconfinement-md-master/bin/md_simulation_confined_ions
+
+1. gcloud compute disks create "disk-1" --zone "us-central1-f" --source-snapshot "snapshot-1" --type "pd-standard"
+2. gcloud compute instances create "instance-1" --zone "us-central1-f" --disk name=disk-1,device-name=instance-1,mode=rw,boot=yes
+
+VMNAME=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/hostname | cut -d. -f1)
+
+https://slurm.schedmd.com/elastic_computing.html
+
+https://bitsanddragons.wordpress.com/2016/09/02/adding-nodes-to-slurm/
+
+
+env | grep MPI | grep -v
+'MPI_INCLUDE\|MPI_PYTHON\|MPI_LIB\|MPI_BIN\|MPI_COMPILER\|MPI_SYSCONFIG\|MPI_SUFFIX\|MPI_MAN\|MPI_HOME\|MPI_FORTRAN_MOD_DIR'
+/root/env.txt
+docker run --privileged --env-file /root/env.txt -p 7950-8000:7950-8000
+mrmagooey/mpi-mm
+

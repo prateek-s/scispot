@@ -1,0 +1,131 @@
+
+#+TITLE: SciSpot: Low-cost Scientific Simulations On The Cloud 
+
+* High-level 
+
+Running the molecular dynamics (MD) simulations on transient resources. 
+
+The first "big" idea is that simulations are often bag of parallel tasks. 
+
+While there has been some past work that looks at running MPI applications on spot instances, our scope is much broader and considers how complete simulation pipelines can be run at low cost. 
+
+Spiel on transient instances. Increasingly popular resource allocation model that is being offered by all cloud providers. 
+Very low cost compared to conventional cloud resources, often by up to 10x. 
+However, can be frequently revoked. 
+Thus failure is a common occurrence, and not a rare-event. 
+This is especially challenging for MPI jobs because of its inability to tolerate failures. 
+
+However, our insight is that while protecting a *single* job against revocations can require elaborate checkpointing based approaches, we dont necessarily have to do that if we consider that most simulations are composed of a series of jobs that search over a parameter space, and that what is important is the total running time and cost of this entire series of jobs. 
+
+Thus, no single job is "special". 
+
+Another aspect of novelty is that past work on transient resources used EC2 pricing information to get failure probabilities. However, this is no longer an accurate method. We perform the first empirical study of google preemptible VMs and their performance and availability for HPC workloads. 
+
+Another fundamental question is what is a suitable metric in such cases. Conventionally, it is speedup. In the cloud, it is some combination of cost and running time. 
+
+Job lifetime is usually 4--24 hours. 
+
+* Policies 
+
+** How many jobs to spawn
+
+One obvious thing is that because we assume that some fraction of the jobs are going to be lost to revocations (assuming we dont checkpoint, we dont because no job is special), then we need to run a larger number of jobs. 
+Roughly, if conventionally you ran N jobs (representing N points in the parameter space), then we can N(1+p) jobs where p is the failure probability of any given job. p ofcourse depends on the instance type and also the number of parallel workers (instances). 
+Thus there is this nice tradeoff between running time, cost, speedup for individual jobs as well as the overall bag of tasks. 
+
+** Job importance 
+A kind of an advanced policy we discussed was that as we narrow down on the simulation parameters, the job importance increases. In some sense, the job importance is inversely proportional to the area of the parameter-space still under consideration. 
+Thus either checkpoint important jobs, or use a finer 'step-size' for simulation parameters. Replication is also an option. 
+Reminds me a lot of SpotOn, lols. 
+
+
+** Heterogeneity 
+Since these are MPI jobs, we don't really care about Heterogeneity, so that's a bonus. We could still try that across jobs, but all nodes executing a job will be of the same type. This simplifies a lot of things. 
+
+
+
+* Planning 
+
+Next steps
+1. ::DONE:: Dockerize the workloads. 
+2. ::DONE:: Create VM image on google cloud. 
+3. ::DONE:: Setup experiment controller to get the revocation probability curves. 
+4. ::DONE:: For MPI, investigate running SLURM on GCP. 
+5. Writing 
+6. Maybe integrate checkpointing as a point of comparison? Would make it much stronger. 
+
+
+* Significance
+NSF grant and GCP credits 
+
+
+* Paper Outline 
+
+** Introduction 
+Transient blah blah
+
+** Background 
+
+*** Why transient instances are important but problematic 
+Maybe we will have to start with "why cloud for HPC" if we submit to SC? 
+
+*** Why simulation tasks are important
+#2 supercomputing workload 
+
+** Design 
+
+Bag of tasks and how simulation parameters are picked. 
+This is an time-consuming process. 
+Often 100s of points must be tried. 
+
+Our system: SciSpot makes it easy 
+/Why are we calling it scispot if we are not primarily using spot instances? May confuse a lot of peeps/ 
+
+** B-o-T policies 
+
+Goal is to minimize cost for an entire bag of tasks. 
+But no single policy will work. 
+
+Qs is: should the param sweep happen in parallel, or sequential? Vikram said parallel is fine since there are not dependencies. But I am not still sure? 
+
+If in parallel, the qs is what should be the number of parallel jobs. Does it matter at all? I dont think it matters. So it can be a configurable parameter. 
+
+Geo-distribution? Do we need it? 
+
+*** Cost model 
+
+
+|-------------------+---|
+| Number of workers | n |
+|                   |   |
+|                   |   |
+
+
+High n can be bad because of many reasons:
+1. Poor speedup. Inherent program property. Thus decrease in running time may not be large, or even in the right direction. 
+2. Increases cloud cost (doh)
+3. Larger n means that probability of failure of one job is higher. So the entire job can stall and will have to be restarted. 
+4. *Use sigmoid curve for lifetime modeling* Flint showed similarish results. 
+
+
+
+
+** Implementation 
+
+Run on the cloud. 
+We should use SLURM, mainly for keeping SC crowd interested. Doesnt offer that much value to us TBH. 
+
+** Evaluation 
+
+1. Failure CDF's for a few server types. 
+2. Decompsoe by time of day or other factors? Some statistical analysis of the data can be done. 
+3. Basically benchmark the different instance types. 
+
+
+GCP costs.
+Credit: $5000 available right now. 
+~1000 instances can be launched, no problem. Should be enough data points. 
+
+
+
+
