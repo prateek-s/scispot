@@ -2,8 +2,41 @@
 
 \subsection{Scientific applications on cloud}
 
+A classic survey is ~\cite{iosup_performance_2011}
+~\cite{zhai_cloud_2011}
+
+Parameter sweep:~\cite{casanova_heuristics_2000}
+
+Price optimizations for Scientific workflows in the cloud~\cite{gari_learning_2019}
+
+
+
 \subsection{Transiency mitigation}
 
+~\cite{marathe2014exploiting} classic work on MPI and Spot.
+
+MOre spot and MPI:~\cite{gong_monetary_2015} ~\cite{xiang_spotmpi:_2011}
+
+~\cite{spoton} a batch computing service
+
+Heterogenity often used, but not useful in the context of MPI jobs. 
+~\cite{exosphere}
+
+Selecting the best instance type, often for data analysis computations~\cite{alipourfard_cherrypick}, and ~\cite{yadwadkar_selecting_2017}, and others like Ernest and Hemingway.
+
+
+All the past work was on EC2 spot market with gang failures and independent markets~\cite{marathe2014exploiting, gong_monetary_2015}.
+However this assumption has now changed, and failures can happen anytime.
+Our failure model is more general, and applies to both cases.
+
+
+
+
+\subsubsection{Fault-tolerance for MPI}
+
+~\cite{dongarra_fault_nodate} has a discussion of checkpointing frequency which is comprehensive.
+
+Replication is another way~\cite{walters_replication-based_2009}
 
 
 %%% Local Variables:
