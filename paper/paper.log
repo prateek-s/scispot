@@ -1,10 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  20 FEB 2019 16:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  21 FEB 2019 09:04
 entering extended mode
- restricted \write18 enabled.
- file:line:error style messages enabled.
+ \write18 enabled.
  %&-line parsing enabled.
-**\input paper.tex
-(./paper.tex (/usr/share/texlive/texmf-dist/tex/latex/acmart/acmart.cls
+**paper
+(./paper.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 9 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/acmart/acmart.cls
 Document Class: acmart 2018/02/07 v1.50 Typesetting articles for the Associatio
 n for Computing Machinery
 (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
@@ -1163,21 +1165,18 @@ Overfull \hbox (8.19249pt too wide) in paragraph at lines 30--31
 the cloud-deployment
  []
 
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 37.
+[1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
+]
 Overfull \hbox (1.07603pt too wide) in paragraph at lines 37--42
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) For par-al-lel and dis-tributed ap-pli-c
 a-tions, the type of servers
  []
 
 
-Underfull \vbox (badness 1152) has occurred while \output is active []
-
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 42.
- [1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3701) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 7.3pt on input line 94.
@@ -1202,7 +1201,7 @@ Overfull \hbox (1.72954pt too wide) in paragraph at lines 10--11
 work-flows in the cloud [[]] 
  []
 
-./related.tex:16: You can't use `\unskip' in vertical mode.
+! You can't use `\unskip' in vertical mode.
 \nonbreakingspace ->\unskip 
                             \nobreak \ \ignorespaces 
 l.16 ~
@@ -1210,7 +1209,7 @@ l.16 ~
 Sorry...I usually can't take things from the current page.
 Try `I\vskip-\lastskip' instead.
 
-./related.tex:46: You can't use `\unskip' in vertical mode.
+! You can't use `\unskip' in vertical mode.
 \nonbreakingspace ->\unskip 
                             \nobreak \ \ignorespaces 
 l.46 ~
@@ -1220,7 +1219,7 @@ Try `I\vskip-\lastskip' instead.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 46.
-./related.tex:53: You can't use `\unskip' in vertical mode.
+! You can't use `\unskip' in vertical mode.
 \nonbreakingspace ->\unskip 
                             \nobreak \ \ignorespaces 
 l.53 ~
@@ -1228,22 +1227,10 @@ l.53 ~
 Sorry...I usually can't take things from the current page.
 Try `I\vskip-\lastskip' instead.
 
-
-Package natbib Warning: Citation `wolski_probabilistic_2017' on page 3 undefine
-d on input line 53.
-
-
-Package natbib Warning: Citation `guo_bidding_2015' on page 3 undefined on inpu
-t line 55.
-
 ) (./paper.bbl
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 8.0pt on input line 4.
- [3.3])
-
-Package natbib Warning: There were undefined citations.
-
-[4.4
+ [3.3]) [4.4
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 82.
@@ -1251,24 +1238,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 82.
  (./paper.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 82.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 82.
-
-
-Package rerunfilecheck Warning: File `paper.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `paper.out':
-(rerunfilecheck)             Before: 2EA537E9A15563FC457897EC9D969BFB;3386
-(rerunfilecheck)             After:  3D1A3873033EF8450643A74A38579E61;3782.
+Package rerunfilecheck Info: File `paper.out' has not changed.
+(rerunfilecheck)             Checksum: 3D1A3873033EF8450643A74A38579E61;3782.
  ) 
 Here is how much of TeX's memory you used:
- 22416 strings out of 494805
- 351898 string characters out of 6178000
+ 22436 strings out of 494805
+ 352410 string characters out of 6178000
  501592 words of memory out of 5000000
- 24864 multiletter control sequences out of 15000+600000
- 151280 words of font info for 277 fonts, out of 8000000 for 9000
+ 24870 multiletter control sequences out of 15000+600000
+ 152549 words of font info for 285 fonts, out of 8000000 for 9000
  242 hyphenation exceptions out of 8191
- 60i,17n,94p,825b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,814b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
 r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/shar
 e/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist
@@ -1288,10 +1268,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/newtx/zxlri.pfb>
-Output written on paper.pdf (4 pages, 591450 bytes).
+Output written on paper.pdf (4 pages, 592396 bytes).
 PDF statistics:
- 240 PDF objects out of 1000 (max. 8388607)
- 201 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
- 41125 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 251 PDF objects out of 1000 (max. 8388607)
+ 212 compressed objects within 3 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 41141 words of extra memory for PDF output out of 42996 (max. 10000000)
 
