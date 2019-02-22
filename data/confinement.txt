@@ -1,6 +1,8 @@
-| Machine-type | Nodes | Run-1 | Run-2 |
-|--------------+-------+-------+-------|
-| n1-highcpu-8 |     2 |    35 |       |
-| n1-highcpu-8 |     4 |    21 |    22 |
-| n1-highcpu-8 |     6 |    17 |    17 |
-|              |       |       |       |
+| Machine-type |   Nodes | Run-1 | Run-2 |
+|--------------+---------+-------+-------|
+| n1-highcpu-8 |       2 |    35 |       |
+| n1-highcpu-8 |       3 |    25 |       |
+| n1-highcpu-8 |       4 |    21 |    22 |
+| n1-highcpu-8 |       6 |    17 |    17 |
+|              | 4,4and2 |       |       |
+|              | 2,4and2 |       |       |
