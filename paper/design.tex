@@ -144,6 +144,14 @@ Our preemption handling policies then decide what to do:
 
 In addition, the user is also allowed to provide the fraction of jobs that are allowed to fail ($\eta$).
 
+We exploit the naturally occuring intra-job redundancy. 
+
+\mhead{New jobs.}
+For new jobs, the questions are similar to the preemption policy ones, because they also must take into account the failures.
+
+That is, assume that a job has finished and it is time to run a new job. So now, we have a set of servers that successfully ran a job. If we run on same set, then we may hit the 24 hour wall. But, if we discard these and launch new ones, then we face the infant mortality problem. So the question is, at what age should servers be retired? If they are too close to EOL (24 hours), then what's the point? Better start something fresh.
+
+
 
 \subsection{Checkpointing}
 

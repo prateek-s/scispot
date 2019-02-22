@@ -15,6 +15,16 @@ stopping moves the node to idle* state, which means unreachable.
 
 srun -N 2 hostname with only one worker hangs? 
 
+** Sbatch
+
+sbatch --parsable 
+
+strigger scripts on node failure, job completion 
+
+Still need some kind of listener thread for the "signals". Simplest is just the basic twisted http listener. On job completion etc, machine failure, or other callbacks. 
+
+also need sacct argh. 
+
 * On Ubuntu 
 Installing packages is straightforward. 
 Very simple config file from ubuntu forums 
@@ -50,4 +60,5 @@ Step1 : set auth/none instead of auth/munge in slurm.conf
 Now, srun hostname fails with invalid job credential . Needs munge running in some strange order ? Magically works now. 
 
 ** MPI
+
 
