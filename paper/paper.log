@@ -1,12 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  21 FEB 2019 09:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  21 FEB 2019 11:45
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**paper
-(./paper.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 9 language(s) loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/acmart/acmart.cls
+**\input paper.tex
+(./paper.tex (/usr/share/texlive/texmf-dist/tex/latex/acmart/acmart.cls
 Document Class: acmart 2018/02/07 v1.50 Typesetting articles for the Associatio
 n for Computing Machinery
 (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
@@ -1201,7 +1199,7 @@ Overfull \hbox (1.72954pt too wide) in paragraph at lines 10--11
 work-flows in the cloud [[]] 
  []
 
-! You can't use `\unskip' in vertical mode.
+./related.tex:16: You can't use `\unskip' in vertical mode.
 \nonbreakingspace ->\unskip 
                             \nobreak \ \ignorespaces 
 l.16 ~
@@ -1209,7 +1207,7 @@ l.16 ~
 Sorry...I usually can't take things from the current page.
 Try `I\vskip-\lastskip' instead.
 
-! You can't use `\unskip' in vertical mode.
+./related.tex:46: You can't use `\unskip' in vertical mode.
 \nonbreakingspace ->\unskip 
                             \nobreak \ \ignorespaces 
 l.46 ~
@@ -1219,7 +1217,7 @@ Try `I\vskip-\lastskip' instead.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 46.
-! You can't use `\unskip' in vertical mode.
+./related.tex:53: You can't use `\unskip' in vertical mode.
 \nonbreakingspace ->\unskip 
                             \nobreak \ \ignorespaces 
 l.53 ~
@@ -1248,7 +1246,7 @@ Here is how much of TeX's memory you used:
  24870 multiletter control sequences out of 15000+600000
  152549 words of font info for 285 fonts, out of 8000000 for 9000
  242 hyphenation exceptions out of 8191
- 60i,17n,94p,814b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,823b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
 r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/shar
 e/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist
