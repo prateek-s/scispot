@@ -32,4 +32,22 @@ Another fundamental question is what is a suitable metric in such cases. Convent
 Our work is the first to make a principled study of transient instances \emph{other} than Amazon spot instances.
 Furthermore, our techniques make the first stab at addressing the new problems in the new EC2 spot pricing scheme.
 
+Our work is in the context of reliability and cloud execution of scientific applications, and is novel because of multiple reasons:
+1. Reliability and failure analysis of parallel scientific applications usually studied in the context of hardware with MTTFs of centuries, which is several orders of magnitudes higher than MTTFs faced in transient cloud servers (few hours).
 
+2. While there have been studies of scientific applications been deployed in the context of cloud platforms, to the best of our knowledge, there has been no effort that integrates server selection and running jobgroups in a convenient automatic manner that makes it feasible to actually deploy applications on the cloud for scientists who may not have the requisite cloud experience.
+
+
+\begin{comment}
+Notes:
+  
+For scientific applications, public clouds offer many advantages such as no waiting/queuing time and instant access to a wide range of resources, and pay as you go pricing.
+However, judicious use of cloud resources is necessary to achieve high performance and to avoid cost overruns.
+
+Increasingly, cloud providers are offering transient VMs that are sold at steeply discounted rates of 90\%.
+However, they can be unilaterally revoked by the cloud provider, resulting in preemptions which are akin to fail-stop failures.
+This is 
+
+
+
+\end{comment}
