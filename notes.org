@@ -129,3 +129,18 @@ Credit: $5000 available right now.
 
 
 
+
+* 2/22 discussion 
+
+Identify major themes and contributions. 
+
+** Transient Cloud Computing
+- Bag of Jobs 
+- Google Cloud. Not pricing based and not EC2 based 
+- Material/Nano simulation HPC jobs 
+- Dynamic programming based checkpointing for sigmoid CDFs 
+- Server selection for MPI jobs 
+- Redundancy for ignoring failures 
+
+** Application-side 
+- Practical system for running BoJ easily 

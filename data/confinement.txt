@@ -1,3 +1,6 @@
+sbatch -N 4 -c 4 -n 4 sb_confinement.sh
+One giant process per node. Number of threads == number of cpu threads 
+
 | Machine-type |   Nodes | Run-1 | Run-2 |
 |--------------+---------+-------+-------|
 | n1-highcpu-8 |       2 |    35 |       |
@@ -6,3 +9,18 @@
 | n1-highcpu-8 |       6 |    17 |    17 |
 |              | 4,4and2 |       |       |
 |              | 2,4and2 |       |       |
+
+
+sbatch -N 4 -c 8 -n 4 sb_confinement.sh
+
+| Machine-type  |   Nodes | Run-1 | Run-2   |
+|---------------+---------+-------+---------|
+| n1-highcpu-16 |       1 |    29 |         |
+| n1-highcpu-16 |       2 |    22 | running |
+| n1-highcpu-16 |       3 |       |         |
+| n1-highcpu-16 |       4 |    14 |         |
+| n1-highcpu-16 |       6 |       |         |
+|               | 4,4and2 |       |         |
+|               | 2,4and2 |       |         |
+
+
