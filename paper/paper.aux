@@ -22,7 +22,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Transient Computing}{1}{subsection.2.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Parallel Scientific Applications in the Cloud}{1}{subsection.2.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Molecular Dynamics Applications}{1}{subsection.2.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Modeling Transient Server Failures}{1}{section.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Understanding Transient Server Failures}{1}{section.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}EC2 spot instances}{1}{subsection.3.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Google Preemptible VMs}{1}{subsection.3.2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces CDF of lifetimes of Google Preemptible Instances \relax }}{2}{figure.caption.3}}
@@ -41,8 +41,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Preemption-handling Policies}{3}{subsection.4.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Checkpointing}{3}{subsection.4.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Early Stopping}{3}{subsection.4.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Implementation}{3}{section.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Evaluation}{3}{section.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Checkpointing Policies}{3}{section.5}}
+\citation{bougeret_checkpointing_2011}
 \citation{iosup_performance_2011}
 \citation{zhai_cloud_2011}
 \citation{casanova_heuristics_2000}
@@ -62,33 +62,36 @@
 \bibstyle{acm}
 \bibdata{scicloud}
 \bibcite{alipourfard_cherrypick}{{1}{}{{}}{{}}}
-\bibcite{casanova_heuristics_2000}{{2}{}{{}}{{}}}
-\bibcite{dongarra_fault_nodate}{{3}{}{{}}{{}}}
-\bibcite{gari_learning_2019}{{4}{}{{}}{{}}}
-\bibcite{gong_monetary_2015}{{5}{}{{}}{{}}}
-\bibcite{guo_bidding_2015}{{6}{}{{}}{{}}}
-\bibcite{iosup_performance_2011}{{7}{}{{}}{{}}}
-\bibcite{marathe2014exploiting}{{8}{}{{}}{{}}}
-\bibcite{exosphere}{{9}{}{{}}{{}}}
-\bibcite{spoton}{{10}{}{{}}{{}}}
-\bibcite{xiang_spotmpi:_2011}{{11}{}{{}}{{}}}
-\bibcite{walters_replication-based_2009}{{12}{}{{}}{{}}}
-\bibcite{wolski_probabilistic_2017}{{13}{}{{}}{{}}}
-\bibcite{yadwadkar_selecting_2017}{{14}{}{{}}{{}}}
-\bibcite{zhai_cloud_2011}{{15}{}{{}}{{}}}
+\bibcite{bougeret_checkpointing_2011}{{2}{}{{}}{{}}}
+\bibcite{casanova_heuristics_2000}{{3}{}{{}}{{}}}
+\bibcite{dongarra_fault_nodate}{{4}{}{{}}{{}}}
+\bibcite{gari_learning_2019}{{5}{}{{}}{{}}}
+\bibcite{gong_monetary_2015}{{6}{}{{}}{{}}}
+\bibcite{guo_bidding_2015}{{7}{}{{}}{{}}}
+\bibcite{iosup_performance_2011}{{8}{}{{}}{{}}}
+\bibcite{marathe2014exploiting}{{9}{}{{}}{{}}}
+\bibcite{exosphere}{{10}{}{{}}{{}}}
+\bibcite{spoton}{{11}{}{{}}{{}}}
+\bibcite{xiang_spotmpi:_2011}{{12}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation}{4}{section.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Evaluation}{4}{section.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Preemption likelihood curves}{4}{subsection.7.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Searching for the best cloud configuration}{4}{subsection.7.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Total cost vs. running time graphs}{4}{subsection.7.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Related Work}{4}{section.8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Scientific applications on cloud}{4}{subsection.8.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Transiency mitigation}{4}{subsection.8.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.1}Fault-tolerance for MPI}{4}{subsubsection.8.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.2}Huge amount of work on bidding in HPC}{4}{subsubsection.8.2.2}}
+\@writefile{toc}{\contentsline {section}{References}{4}{section*.5}}
+\bibcite{walters_replication-based_2009}{{13}{}{{}}{{}}}
+\bibcite{wolski_probabilistic_2017}{{14}{}{{}}{{}}}
+\bibcite{yadwadkar_selecting_2017}{{15}{}{{}}{{}}}
+\bibcite{zhai_cloud_2011}{{16}{}{{}}{{}}}
 \newlabel{tocindent-1}{0pt}
 \newlabel{tocindent0}{0pt}
 \newlabel{tocindent1}{4.65pt}
 \newlabel{tocindent2}{11.49998pt}
 \newlabel{tocindent3}{20.22pt}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Preemption likelihood curves}{4}{subsection.6.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Searching for the best cloud configuration}{4}{subsection.6.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Total cost vs. running time graphs}{4}{subsection.6.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Related Work}{4}{section.7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Scientific applications on cloud}{4}{subsection.7.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Transiency mitigation}{4}{subsection.7.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Fault-tolerance for MPI}{4}{subsubsection.7.2.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Huge amount of work on bidding in HPC}{4}{subsubsection.7.2.2}}
-\@writefile{toc}{\contentsline {section}{References}{4}{section*.5}}
-\newlabel{TotPages}{{4}{4}{}{page.4}{}}
+\newlabel{TotPages}{{5}{5}{}{page.5}{}}

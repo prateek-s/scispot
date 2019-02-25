@@ -1,12 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.17)  21 FEB 2019 18:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  22 FEB 2019 16:37
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**paper
-(./paper.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
-(./acmart.cls
+**\input paper.tex
+(./paper.tex (./acmart.cls
 Document Class: acmart 2018/12/16 v1.57 Typesetting articles for the Associatio
 n for Computing Machinery
 (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
@@ -1132,7 +1130,7 @@ surrounding objects on input line 34.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 34.
 
-<../data/f20.png, id=103, 376.40625pt x 252.945pt>
+<../data/f20.png, id=107, 376.40625pt x 252.945pt>
 File: ../data/f20.png Graphic file (type png)
 <use ../data/f20.png>
 Package pdftex.def Info: ../data/f20.png  used on input line 35.
@@ -1148,7 +1146,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
  [1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-! Undefined control sequence.
+./design.tex:12: Undefined control sequence.
 \sysname ->SciSpot\xspace 
                           
 l.12 Our system, \sysname
@@ -1173,7 +1171,7 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-! Undefined control sequence.
+./design.tex:24: Undefined control sequence.
 \sysname ->SciSpot\xspace 
                           
 l.24 \sysname
@@ -1196,7 +1194,7 @@ Overfull \hbox (1.07603pt too wide) in paragraph at lines 37--42
 a-tions, the type of servers
  []
 
-! Undefined control sequence.
+./design.tex:59: Undefined control sequence.
 \sysname ->SciSpot\xspace 
                           
 l.59 \sysname
@@ -1225,13 +1223,19 @@ Overfull \hbox (13.79497pt too wide) in paragraph at lines 107--109
 il-ure dis-tri-bu-tions. Roughly,
  []
 
-) (./impl.tex) (./eval.tex [3.3]) (./related.tex
+) (./ckpting.tex [3.3]
+Overfull \hbox (4.4709pt too wide) in paragraph at lines 12--14
+[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) Conventionally, pe-ri-odic check-point-i
+ng ac-cord-ing to Young-
+ []
+
+) (./impl.tex) (./eval.tex) (./related.tex
 Overfull \hbox (1.72954pt too wide) in paragraph at lines 10--11
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Price op-ti-miza-tions for Sci-en-tific 
 work-flows in the cloud [[]] 
  []
 
-! You can't use `\unskip' in vertical mode.
+./related.tex:16: You can't use `\unskip' in vertical mode.
 \nonbreakingspace ->\unskip 
                             \nobreak \ \ignorespaces 
 l.16 ~
@@ -1239,7 +1243,7 @@ l.16 ~
 Sorry...I usually can't take things from the current page.
 Try `I\vskip-\lastskip' instead.
 
-! You can't use `\unskip' in vertical mode.
+./related.tex:46: You can't use `\unskip' in vertical mode.
 \nonbreakingspace ->\unskip 
                             \nobreak \ \ignorespaces 
 l.46 ~
@@ -1249,7 +1253,7 @@ Try `I\vskip-\lastskip' instead.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 46.
-! You can't use `\unskip' in vertical mode.
+./related.tex:53: You can't use `\unskip' in vertical mode.
 \nonbreakingspace ->\unskip 
                             \nobreak \ \ignorespaces 
 l.53 ~
@@ -1260,31 +1264,41 @@ Try `I\vskip-\lastskip' instead.
 ) (./paper.bbl
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 8.0pt on input line 4.
-)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4.4])
 
 Class acmart Warning: Some images may lack descriptions.
 
 
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
+Overfull \vbox (1.888pt too high) has occurred while \output is active []
 
-[4.4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
- (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 84.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 84.
-Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 8C674120DA51C9A6C349C00B990675E6;4392.
+ [5.5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
+
+(./paper.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 86.
+
+
+Package rerunfilecheck Warning: File `paper.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `paper.out':
+(rerunfilecheck)             Before: 1AE0791DD527438955FE18AB39A40273;4562
+(rerunfilecheck)             After:  957ECD4669F1057C78441A16167FE90B;4587.
  ) 
 Here is how much of TeX's memory you used:
- 21599 strings out of 494923
- 338601 string characters out of 6180742
- 478824 words of memory out of 5000000
- 24010 multiletter control sequences out of 15000+600000
- 153368 words of font info for 291 fonts, out of 8000000 for 9000
- 175 hyphenation exceptions out of 8191
- 60i,16n,94p,812b,547s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 21612 strings out of 494805
+ 338873 string characters out of 6178000
+ 480219 words of memory out of 5000000
+ 24030 multiletter control sequences out of 15000+600000
+ 153739 words of font info for 293 fonts, out of 8000000 for 9000
+ 242 hyphenation exceptions out of 8191
+ 60i,17n,94p,823b,647s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
 r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/shar
 e/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist
@@ -1304,10 +1318,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/newtx/zxlri.pfb>
-Output written on paper.pdf (4 pages, 601428 bytes).
+Output written on paper.pdf (5 pages, 605222 bytes).
 PDF statistics:
- 270 PDF objects out of 1000 (max. 8388607)
- 229 compressed objects within 3 object streams
- 62 named destinations out of 1000 (max. 500000)
- 41170 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 280 PDF objects out of 1000 (max. 8388607)
+ 238 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 41178 words of extra memory for PDF output out of 42996 (max. 10000000)
 
