@@ -144,3 +144,30 @@ Identify major themes and contributions.
 
 ** Application-side 
 - Practical system for running BoJ easily 
+
+* 2/26 Discussion
+
+With Kadupitiya and Vikram
+
+** Bag of jobs 
+Bag of jobs useful in other contexts too such as repeating same expt multiple times to get confidence intervals. 
+
+Two kinds of main fault tolerance techniques: checkpointing and replication. 
+In a loose sense, our bag of jobs policy uses "approximate replication", sine different jobs are approximately the same. 
+
+
+** Workloads: 
+nanoconfinement now runs on LAMMPS. Set that up 
+Discussed about other class of applications like biology/astronomy that may have different computational and communication characteristics compared to MD applications. 
+
+** Checkpointing
+Explained dynamic programming briefly. Off the critical path. Can look at CDF smoothing. 
+
+** Native vs. Cloud 
+Need anecdotes and data about waiting times for jobs in supercomputing clusters. 
+Its likely that the wait times are public information. 
+
+A discussion of the workarounds that scientists and users have to employ to make effective use of high-contention supercomputing resources should also go in the paper. 
+
+
+Latin Hypercube sampling from metis 

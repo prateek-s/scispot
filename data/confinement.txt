@@ -13,14 +13,33 @@ One giant process per node. Number of threads == number of cpu threads
 
 sbatch -N 4 -c 8 -n 4 sb_confinement.sh
 
-| Machine-type  |   Nodes | Run-1 | Run-2   |
-|---------------+---------+-------+---------|
-| n1-highcpu-16 |       1 |    29 |         |
-| n1-highcpu-16 |       2 |    22 | running |
-| n1-highcpu-16 |       3 |       |         |
-| n1-highcpu-16 |       4 |    14 |         |
-| n1-highcpu-16 |       6 |       |         |
-|               | 4,4and2 |       |         |
-|               | 2,4and2 |       |         |
+| Machine-type  |   Nodes | Run-1 | Run-2 | Run-3 |
+|---------------+---------+-------+-------+-------|
+| n1-highcpu-16 |       1 |    29 |    30 |       |
+| n1-highcpu-16 |       2 |    22 |    21 |    21 |
+| n1-highcpu-16 |       3 |    17 |    16 |       |
+| n1-highcpu-16 |       4 |    14 |       |       |
+| n1-highcpu-16 |       6 |       |       |       |
+|               | 4,4and2 |       |       |       |
+|               | 2,4and2 |       |       |       |
 
 
+
+
+BigRed2
+
+| config | Minutes |
+|--------+---------|
+| 1,1    |     419 |
+| 1,16   |    39.5 |
+| 2,16   |    27.6 |
+| 3,16   |    21.8 |
+| 4,16   |      19 |
+| 5,16   |    17.5 |
+| 6,16   |   16.45 |
+| 7,16   |   15.66 |
+| 8,16   |   15.33 |
+| 16,16  |   13.25 |
+| 24,16  |    14.2 |
+| 32,16  |   14.34 |
+| 40,16  |  15.875 |
