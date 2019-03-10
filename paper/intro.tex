@@ -1,5 +1,49 @@
 \section{Introduction}
 
+% Look, scientific applications are important, OK? And HPC. 
+
+Scientific computing applications are a crucial component in the advancement of science and engineering, and play an important role in the analysis and processing of data, and understanding and modeling natural processes. 
+These applications are typically implemented as large-scale parallel programs that use parallel-computing communication and coordination frameworks such as MPI.
+To take advantage of their parallel nature, conventionally, these applications have mostly been deployed on large, dedicated high performance computing infrastructure such as super computers. 
+%Logical flow here is not obvious and missing something. 
+
+
+% But now we have the cloud!!1
+
+Increasingly, cloud computing platforms have begun to supplement and complement conventional HPC infrastructure in order to meet the large computing and storage requirements of scientific applications. 
+Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaenous elastic scaling.
+Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of \emph{Virtual Machines (VMs)}, on which a wide range of  applications such as web-services, distributed data processing, distributed machine learning, etc., are deployed. 
+% a wide range of applications.
+
+% Clouds are complex, and also have transience
+
+In order to meet the diverse resource demands of different applications, public clouds offer resources (i.e., VM's) with multiple different resource configurations (such as number of CPU cores and memory capacity), and pricing and availability contracts. 
+Conventionally, cloud VMs have been offered with ``on-demand'' availability, such that the lifetime of the VM was solely determined by the owner of the VM (i.e., the cloud customer). 
+Increasingly however, cloud providers have begun offering VMs with \emph{transient}, rather than continuous on-demand availability. 
+Transient VMs can be unilaterally revoked and preempted by the cloud provider, and applications running inside them face fail-stop failures. 
+Due to their volatile nature, transient VMs are offered at steeply discounted rates. Amazon EC2 spot instances, Google Cloud Preemptible VMs, and Azure Batch VMs, are all examples of transient VMs, and are offered at discounts ranging from 50 to 90\%.  
+
+% Very different from HPC and many challenges
+
+However, deploying applications on cloud platforms presents multiple challenges due to the  \emph{fundamental} differences with conventional HPC clusters---which most applications still assume as their default execution environment.
+%
+While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, for effective resource utilization, the deployment of applications must be cognizant of the heterogeneity in VM sizes, pricing, and availability.
+%
+Although using transient resources can drastically reduce computing costs, 
+
+
+% 
+
+%Heterogeneity of the types of VMs and pricing models. Cost becomes important. 
+
+
+%Public clouds can supplement and complement the supercomputing infrastructure. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 Running parallel scientific applications, such as molecular dynamics (MD) simulations, on low-cost cloud transient resources. 
 
 The first "big" idea is that simulations are often bag of parallel tasks. 
