@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  22 FEB 2019 17:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.17)  8 MAR 2019 11:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1115,10 +1115,10 @@ Class acmart Warning: \vspace should only be used to provide space above/below
 surrounding objects on input line 59.
 
 (./intro.tex
-./intro.tex:29: Undefined control sequence.
+./intro.tex:24: Undefined control sequence.
 \sysname ->SciSpot\xspace 
                           
-l.29 \sysname
+l.24 \sysname
               is a framework and a tool that combines the use of failure mod...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1127,8 +1127,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 32.
-) (./background.tex) (./failmodel.tex
+(Font)              scaled to size 10.0pt on input line 27.
+Excluding 'comment' comment.) (./background.tex) (./failmodel.tex
 Overfull \hbox (2.13284pt too wide) in paragraph at lines 6--11
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Since pre-emp-tions can im-pact the avai
 l-abil-ity, per-for-mance,
@@ -1147,7 +1147,7 @@ surrounding objects on input line 34.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 34.
 
-<../data/f20.png, id=117, 376.40625pt x 252.945pt>
+<../data/f20.png, id=121, 376.40625pt x 252.945pt>
 File: ../data/f20.png Graphic file (type png)
 <use ../data/f20.png>
 Package pdftex.def Info: ../data/f20.png  used on input line 35.
@@ -1155,10 +1155,19 @@ Package pdftex.def Info: ../data/f20.png  used on input line 35.
 
 Class acmart Warning: A possible image without description on input line 38.
 
+
+Overfull \hbox (8.19249pt too wide) in paragraph at lines 46--47
+\T1/LinuxLibertineT-TLF/m/n/10 (-20) This presents us with many chal-lenges in 
+the cloud-deployment
+ []
+
+
+Overfull \hbox (1.07603pt too wide) in paragraph at lines 53--58
+[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) For par-al-lel and dis-tributed ap-pli-c
+a-tions, the type of servers
+ []
+
 ) (./design.tex
-Underfull \vbox (badness 2253) has occurred while \output is active []
-
-
 ./design.tex:12: Undefined control sequence.
 \sysname ->SciSpot\xspace 
                           
@@ -1195,27 +1204,15 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-
-Overfull \hbox (8.19249pt too wide) in paragraph at lines 30--31
-\T1/LinuxLibertineT-TLF/m/n/10 (-20) This presents us with many chal-lenges in 
-the cloud-deployment
- []
-
-
-Overfull \hbox (1.07603pt too wide) in paragraph at lines 37--42
-[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) For par-al-lel and dis-tributed ap-pli-c
-a-tions, the type of servers
- []
-
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 57.
+(Font)              scaled to size 10.0pt on input line 26.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 57.
+(Font)              scaled to size 7.0pt on input line 26.
 [2.2 <../data/f20.png>]
-./design.tex:59: Undefined control sequence.
+./design.tex:35: Undefined control sequence.
 \sysname ->SciSpot\xspace 
                           
-l.59 \sysname
+l.35 \sysname
              's server selection policy seeks to identify the best server ty...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1227,11 +1224,11 @@ and I'll forget about whatever was undefined.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 94.
+(Font)              scaled to size 7.3pt on input line 70.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 94.
+(Font)              scaled to size 5.5pt on input line 70.
 
-Overfull \hbox (13.79497pt too wide) in paragraph at lines 107--109
+Overfull \hbox (13.79497pt too wide) in paragraph at lines 83--85
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) and we use his-tor-i-cally de-ter-mined fa
 il-ure dis-tri-bu-tions. Roughly,
  []
@@ -1274,41 +1271,52 @@ l.53 ~
 Sorry...I usually can't take things from the current page.
 Try `I\vskip-\lastskip' instead.
 
-) (./paper.bbl
+
+Package natbib Warning: Citation `cherrypick' on page 4 undefined on input line
+ 59.
+
+
+Package natbib Warning: Citation `Metis-atc18' on page 4 undefined on input lin
+e 59.
+
+
+Underfull \vbox (badness 1097) has occurred while \output is active []
+
+ [4.4])
+(./paper.bbl
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 8.0pt on input line 4.
 
-Underfull \vbox (badness 4454) has occurred while \output is active []
+Underfull \vbox (badness 1558) has occurred while \output is active []
 
- [4.4])
+)
+
+Package natbib Warning: There were undefined citations.
+
 
 Class acmart Warning: Some images may lack descriptions.
 
 
-Overfull \vbox (1.616pt too high) has occurred while \output is active []
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
- [5.5]
+[5.5]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
-
-(./paper.aux)
+ (./paper.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 86.
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 957ECD4669F1057C78441A16167FE90B;4587.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+(rerunfilecheck)             Checksum: 7AE2CD0AB727ED62B2967DC46366F870;4837.
  ) 
 Here is how much of TeX's memory you used:
- 21615 strings out of 494805
- 338948 string characters out of 6178000
- 481219 words of memory out of 5000000
- 24030 multiletter control sequences out of 15000+600000
+ 21620 strings out of 494923
+ 339013 string characters out of 6180742
+ 476824 words of memory out of 5000000
+ 24018 multiletter control sequences out of 15000+600000
  154012 words of font info for 295 fonts, out of 8000000 for 9000
- 242 hyphenation exceptions out of 8191
- 60i,17n,94p,823b,607s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 175 hyphenation exceptions out of 8191
+ 60i,17n,94p,823b,549s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
 r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/shar
 e/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist
@@ -1328,10 +1336,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/newtx/zxlri.pfb>
-Output written on paper.pdf (5 pages, 607111 bytes).
+Output written on paper.pdf (5 pages, 607724 bytes).
 PDF statistics:
- 280 PDF objects out of 1000 (max. 8388607)
- 238 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
- 41178 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 284 PDF objects out of 1000 (max. 8388607)
+ 242 compressed objects within 3 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 41186 words of extra memory for PDF output out of 42996 (max. 10000000)
 
