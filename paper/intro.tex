@@ -25,14 +25,70 @@ Due to their volatile nature, transient VMs are offered at steeply discounted ra
 
 % Very different from HPC and many challenges
 
-However, deploying applications on cloud platforms presents multiple challenges due to the  \emph{fundamental} differences with conventional HPC clusters---which most applications still assume as their default execution environment.
+However, deploying applications on cloud platforms presents multiple challenges due to the  \emph{fundamental} differences with conventional HPC clusters---which most applications still assume as their default execution environment. 
 %
 While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, for effective resource utilization, the deployment of applications must be cognizant of the heterogeneity in VM sizes, pricing, and availability.
 %
-Although using transient resources can drastically reduce computing costs, 
+Crucially, optimizing for \emph{cost}, and not just makespan, becomes an important objective in cloud deployments.
+%
+Furthermore, although using transient resources can drastically reduce computing costs, mitigating their frequent preemptions requires additional fault-tolerance mechanisms and policies~\cite{flint, marathe2014exploiting}, which impose a complex tradeoff between cost and performance. 
 
 
-% 
+% Finally getting to the point 
+
+In this paper, we develop principled approaches for deploying parallel scientific applications on the cloud at low cost, and present \sysname, a system for deploying and orchestrating scientific applications on cloud transient servers. 
+
+% What it is, vs. what problems we are actually solving. What's new?
+
+Our policies for tackling the resource heterogeneity and transient availability of cloud VMs build on a key insight: most scientific applications are deployed as a collection or ``bag'' of jobs. 
+%
+These bags of jobs represent multiple instantiations of the same computation with different parameters.
+%
+For instance, each job may be running a (parallel) simulation with a set of simulation parameters, and different jobs in the collection run the simulation on a different set of parameters. 
+Collectively, these bags of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to discover feasible and viable parameters.
+
+
+Prior approaches and systems for mitigating transiency and cloud heterogeneity have largely targeted individual instantiations of jobs~\cite{spoton, exosphere, flint, marathe2014exploiting}. 
+We show that optimizing across an entire bag of jobs and being cognizant of the relation between different jobs in a bag, can enable simple and powerful policies for optimizing cost, makespan, and ease of deployment.
+%What we actually do is missing! Availability modeling in GCP, optimizing across all jobs, exploiting the partial redundancy among jobs to avoid checkpointing overheads, parameter sweeping techniques, early-stopping, checkpoint scheduling for non memoryless distributions. 
+%
+We implement these policies as part of the \sysname~framework, and make the following contributions:
+
+\begin{enumerate}
+\item In order to select the ``right'' VM from the plethora of choices offered by cloud providers, we develop a search-based server selection policy that minimizes the cost of running applications. Our search based policy selects a transient server type based on it's cost, parallel speedup, and probability of preemption. 
+
+% Yeah the "not spot" point below may need clarification before contribs
+  
+\item Since transient server preemptions can disrupt the execution of jobs, we present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical and out-dated bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running and costs of jobs of different types and durations. 
+
+% WTF is even partial redundancy? 
+  
+\item We develop preemption-mitigation policies to minimize the overall makespan of bags of jobs, by taking into consideration the partial redundancy and relative ``importance'' of different jobs within a bag. Combined, our policies yield a cost saving of XXX\% and a makespan reduction of XXX\% compared to conventional cloud deployments, and a makespan reduction of XXX\% compared to a conventional HPC supercomputer. 
+
+\item Finally, ease of use and extensibility are one of the ``first principles'' in the design of \sysname, and we present the design and implementation of the system components and present case studies of how  scientific applications such as molecular dynamics simulations can be easily deployed on transient cloud VMs. 
+\end{enumerate}
+
+
+
+
+Each job may be a parallel 
+
+
+% We need to explain the bag of jobs metaphor very clearly here!
+
+Our policies for  mitigating transiency build on one k
+
+
+\sysname~runs unmodified parallel scientific applications, and is a cost and transience aware cluster manager. 
+
+
+
+
+% What about the bag of jobs!?!?!
+
+% And where is SciSpot!?!
+
+% There are no references to related work, this is just a nice long story so far! 
 
 %Heterogeneity of the types of VMs and pricing models. Cost becomes important. 
 
