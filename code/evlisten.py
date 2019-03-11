@@ -156,6 +156,7 @@ JobAcctGatherType=jobacct_gather/none
 SlurmctldLogFile=/var/log/slurm-llnl/slurmctld.log
 #SlurmdDebug=3
 SlurmdLogFile=/var/log/slurm-llnl/slurmd.log
+SuspendTime=86400
 #
 #
 # COMPUTE NODES \n""".\
@@ -166,7 +167,8 @@ SlurmdLogFile=/var/log/slurm-llnl/slurmd.log
                               "CoresPerSocket=" + str(machine['cores']),
                               "ThreadsPerCore=" + str(machine['threads']),
                               "State=UNKNOWN"))
-
+        #state=CLOUD otherwise, but doesnt work? 
+        
         slurmconfstr += '\n'
         #slurmconfstr += 'NodeName={slurm_master} \n'.format(slurm_master=slurm_master)
         slurmconfstr += 'NodeName={compute_nodes} \n'.format(compute_nodes=compute_nodes)
@@ -287,10 +289,15 @@ exit 0
         o.close()
         sshclient.close() 
 
-        #TODO strigger 
-        #strigger --set --fini --program /home/prateek3_14/scispot/code/jobfin.sh --jobid 75
-        #strigger --jobid=1234 --down --program=/home/prateek3_14/scispot/code/jobfail.sh 
+        #TODO strigger
+        strigger_fin_cmd = "strigger --set --fini --program /scispot/handle_fin.sh --jobid {}".format(jobid)
+        strigger_fail_cmd = "strigger --set --jobid={} --down --program=/scispot/handle_fail.sh".format(jobid)
 
+        # sshclient = self.gcp_ssh(master)
+        # i,o,e = sshclient.exec_command(strigger_fin_cmd)
+        # i,o,e = sshclient.exec_command(strigger_fail_cmd)
+        # sshclient.close()
+        
         #TODO: Update state of the job and add to job dict with the time we launched 
         #Metadata for a job: jobid, launchtime, sbatch config, simparams, codepath,.. 
         #starttime = time.get()
@@ -321,43 +328,61 @@ exit 0
                 print("No matching job")
                 jobdb.insert({'jobid':job, 't_finish':fin_time})
             else:
-                jobdb.update({'t_finish':fin_time}, q.jobname == job)
+                jobdb.update({'t_finish':fin_time, 'state':'finished'}, q.jobname == job)
                 
         jobdb.close() #For mutual exclusion
 
-        self.get_next_job(jobids) 
-        return 
-
-    def get_next_job(self, jobids):
-        pass
-
-    
+        self.get_next_job(jobids[0], "finished") 
+        return
     
     ##################################################
     
+    def get_next_job(self, jobid, state="finished"):
+        """ Given a job id that has finished/failed, decide what to do """
+        if state is "finished":
+            #Generate the next job parameters
+            pass
+        elif state is "failed":
+            #Need to decide whether to restart or ignore
+            pass 
+
+
+    ##################################################
+    
     def handle_preempted(self, vmnames):
-        if vmnames is None or len(vmnames) is 0:
-            print("empty vnames list, nothing to do")
+        """ We only get the jobid. Find vmids later by scanning compute instances list """ 
+        if jobids is None or len(jobids) is 0:
+            print("empty job string, nothing to do")
             return
-        
         fin_time = datetime.datetime.now().isoformat()
-        vmdb = self.get_vmdb()
-
-        for vm in vmnames:
+        jobdb = self.get_jobdb()
+        
+        for job in jobids:
+            #Will be a string, but that is OK if the keys are strings?
             q = tinydb.Query()
-            res = vmdb.search(q.vmname == vm)
+            res = jobdb.search(q.jobname == job)
             if len(res) is 0:
-                print("VM not found?")
-                vmdb.insert({'vmname':vm, 't_finish':fin_time})
+                print("No matching job")
+                jobdb.insert({'jobid':job, 't_finish':fin_time})
             else:
-                vmdb.update({'t_finish':fin_time, 'status':'preempted'}, q.vmname == vm)
+                jobdb.update({'t_finish':fin_time, 'state':'failed'}, q.jobname == job)
+                
+        jobdb.close() #For mutual exclusion
 
-        vmdb.close()
-        return
+        #TODO: We must spawn extra VMs first!!! Find out how many VMs are required?
+        self.preemption_reaction(jobids[0])
+        
+        return 
+    
 
-    def preemption_decision(self, vmnames):
+    def preemption_reaction(self, jobid):
         #Replenish, restart, ignore, etc.
-        pass 
+        self.replenish()
+        
+        #Decide if we want to rerun or not, or whatever 
+        self.get_next_job(jobid, "failed") 
+
+
     
     ##################################################
     
