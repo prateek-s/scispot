@@ -29,28 +29,38 @@ However, deploying applications on cloud platforms presents multiple challenges 
 %
 While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, for effective resource utilization, the deployment of applications must be cognizant of the heterogeneity in VM sizes, pricing, and availability.
 %
-Crucially, optimizing for \emph{cost}, and not just makespan, becomes an important objective in cloud deployments.
+Crucially, optimizing for \emph{cost}, and not just makespan, becomes an important objective in cloud deployments. 
+% 
+Furthermore, although using transient resources can drastically reduce computing costs, their preemptible nature results in frequent job failures.
 %
-Furthermore, although using transient resources can drastically reduce computing costs, mitigating their frequent preemptions requires additional fault-tolerance mechanisms and policies~\cite{flint, marathe2014exploiting}, which impose a complex tradeoff between cost and performance. 
+Preemptions can be mitigated with additional fault-tolerance mechanisms and policies~\cite{flint, marathe2014exploiting}, although they impose additional performance and deployment overheads. 
 
 
 % Finally getting to the point 
 
 In this paper, we develop principled approaches for deploying parallel scientific applications on the cloud at low cost, and present \sysname, a system for deploying and orchestrating scientific applications on cloud transient servers. 
-
+%
 % What it is, vs. what problems we are actually solving. What's new?
-
+%
 Our policies for tackling the resource heterogeneity and transient availability of cloud VMs build on a key insight: most scientific applications are deployed as a collection or ``bag'' of jobs. 
 %
-These bags of jobs represent multiple instantiations of the same computation with different parameters.
+These bags of jobs represent multiple instantiations of the same computation with different parameters. 
 %
 For instance, each job may be running a (parallel) simulation with a set of simulation parameters, and different jobs in the collection run the simulation on a different set of parameters. 
-Collectively, these bags of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to discover feasible and viable parameters.
+Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to discover feasible and viable parameters.
+
 
 
 Prior approaches and systems for mitigating transiency and cloud heterogeneity have largely targeted individual instantiations of jobs~\cite{spoton, exosphere, flint, marathe2014exploiting}. 
-We show that optimizing across an entire bag of jobs and being cognizant of the relation between different jobs in a bag, can enable simple and powerful policies for optimizing cost, makespan, and ease of deployment.
+%
+For a bag of jobs, it is not necessary, or sufficient, to execute an individual job in timely manner---instead, we could selectively restart failed jobs in order to complete a \emph{fraction} of jobs in a bag. 
+%
+Furthermore, treating the bag of jobs as a fundamental unit of computation allows us to select the ``best'' server configuration for a given application, by exploring different servers for initial jobs and running the reminder of the jobs on the optimal server configuration. 
+
+
 %What we actually do is missing! Availability modeling in GCP, optimizing across all jobs, exploiting the partial redundancy among jobs to avoid checkpointing overheads, parameter sweeping techniques, early-stopping, checkpoint scheduling for non memoryless distributions. 
+%
+We show that optimizing across an entire bag of jobs and being cognizant of the relation between different jobs in a bag, can enable simple and powerful policies for optimizing cost, makespan, and ease of deployment.
 %
 We implement these policies as part of the \sysname~framework, and make the following contributions:
 
@@ -68,14 +78,12 @@ We implement these policies as part of the \sysname~framework, and make the foll
 \item Finally, ease of use and extensibility are one of the ``first principles'' in the design of \sysname, and we present the design and implementation of the system components and present case studies of how  scientific applications such as molecular dynamics simulations can be easily deployed on transient cloud VMs. 
 \end{enumerate}
 
-
-
-
-Each job may be a parallel 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % We need to explain the bag of jobs metaphor very clearly here!
 
+\begin{comment}
 Our policies for  mitigating transiency build on one k
 
 
@@ -131,7 +139,7 @@ Our work is in the context of reliability and cloud execution of scientific appl
 1. Reliability and failure analysis of parallel scientific applications usually studied in the context of hardware with MTTFs of centuries, which is several orders of magnitudes higher than MTTFs faced in transient cloud servers (few hours).
 
 2. While there have been studies of scientific applications been deployed in the context of cloud platforms, to the best of our knowledge, there has been no effort that integrates server selection and running jobgroups in a convenient automatic manner that makes it feasible to actually deploy applications on the cloud for scientists who may not have the requisite cloud experience.
-
+\end{comment}
 
 \begin{comment}
 Notes:
