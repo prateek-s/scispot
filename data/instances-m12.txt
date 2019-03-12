@@ -1,0 +1,83 @@
+NAME          ZONE             MACHINE_TYPE    PREEMPTIBLE  INTERNAL_IP    EXTERNAL_IP    STATUS
+aardvark27    europe-north1-a  n1-standard-1   true         10.166.0.2                    TERMINATED
+aardvark28    europe-north1-a  n1-standard-16  true         10.166.0.3                    TERMINATED
+aardvark29    europe-north1-a  n1-standard-2   true         10.166.0.4                    TERMINATED
+aardvark21    europe-west4-a   n1-standard-1   true         10.164.0.2                    TERMINATED
+aardvark22    europe-west4-a   n1-standard-16  true         10.164.0.3                    TERMINATED
+aardvark23    europe-west4-a   n1-standard-2   true         10.164.0.4                    TERMINATED
+aardvark24    europe-west4-a   n1-standard-32  true         10.164.0.5                    TERMINATED
+aardvark25    europe-west4-a   n1-standard-4   true         10.164.0.6                    TERMINATED
+aardvark10    us-central1-f    n1-standard-16  true         10.128.0.5                    TERMINATED
+aardvark11    us-central1-f    n1-standard-2   true         10.128.0.6                    TERMINATED
+aardvark12    us-central1-f    n1-standard-32  true         10.128.0.7                    TERMINATED
+aardvark13    us-central1-f    n1-standard-4   true         10.128.0.8                    TERMINATED
+aardvark8     us-central1-f    n1-standard-1   true         10.128.0.3                    TERMINATED
+aardvark9     us-central1-f    n1-standard-1   true         10.128.0.4                    TERMINATED
+api-i1        us-central1-f    n1-standard-2   true         10.128.0.2                    TERMINATED
+arrow2        us-central1-f    n1-standard-16  true         10.128.0.10                   TERMINATED
+arrow3        us-central1-f    n1-standard-16  true         10.128.0.11                   TERMINATED
+arrow4        us-central1-f    n1-standard-16  true         10.128.0.12                   TERMINATED
+arrow5        us-central1-f    n1-standard-16  true         10.128.0.13                   TERMINATED
+arrow6        us-central1-f    n1-standard-16  true         10.128.0.14                   TERMINATED
+arrow7        us-central1-f    n1-standard-16  true         10.128.0.15                   TERMINATED
+arrow8        us-central1-f    n1-standard-16  true         10.128.0.16                   TERMINATED
+arrow9        us-central1-f    n1-standard-16  true         10.128.0.17                   TERMINATED
+sl1-compute2  us-central1-f    n1-standard-2                10.10.0.3                     TERMINATED
+aardvark15    us-east1-b       n1-standard-1   true         10.142.0.7                    TERMINATED
+aardvark16    us-east1-b       n1-standard-16  true         10.142.0.8                    TERMINATED
+aardvark17    us-east1-b       n1-standard-2   true         10.142.0.9                    TERMINATED
+aardvark18    us-east1-b       n1-standard-32  true         10.142.0.10                   TERMINATED
+aardvark19    us-east1-b       n1-standard-4   true         10.142.0.11                   TERMINATED
+abacus1       us-east1-b       n1-highcpu-16   true         10.142.0.35                   TERMINATED
+abacus2       us-east1-b       n1-highcpu-16   true         10.142.0.36                   TERMINATED
+abacus3       us-east1-b       n1-highcpu-16   true         10.142.0.37                   TERMINATED
+abacus4       us-east1-b       n1-highcpu-16   true         10.142.0.38                   TERMINATED
+abbey1        us-east1-b       n1-highcpu-8    true         10.142.0.27                   TERMINATED
+abbey2        us-east1-b       n1-highcpu-8    true         10.142.0.28                   TERMINATED
+abbey3        us-east1-b       n1-highcpu-8    true         10.142.0.29                   TERMINATED
+abbey4        us-east1-b       n1-highcpu-8    true         10.142.0.30                   TERMINATED
+abbey5        us-east1-b       n1-highcpu-8    true         10.142.0.31                   TERMINATED
+abbey6        us-east1-b       n1-highcpu-8    true         10.142.0.32                   TERMINATED
+abbey7        us-east1-b       n1-highcpu-8    true         10.142.0.33                   TERMINATED
+abbey8        us-east1-b       n1-highcpu-8    true         10.142.0.34                   TERMINATED
+abra1         us-east1-b       n1-highcpu-16   true         10.142.0.45                   TERMINATED
+abra2         us-east1-b       n1-highcpu-16   true         10.142.0.46                   TERMINATED
+abra3         us-east1-b       n1-highcpu-16   true         10.142.0.47                   TERMINATED
+abra4         us-east1-b       n1-highcpu-16   true         10.142.0.48                   TERMINATED
+absynth1      us-east1-b       n1-highcpu-16   true         10.142.0.39                   TERMINATED
+absynth2      us-east1-b       n1-highcpu-16   true         10.142.0.40                   TERMINATED
+absynth3      us-east1-b       n1-highcpu-16   true         10.142.0.41                   TERMINATED
+absynth4      us-east1-b       n1-highcpu-16   true         10.142.0.42                   TERMINATED
+absynth5      us-east1-b       n1-highcpu-16   true         10.142.0.43                   TERMINATED
+absynth6      us-east1-b       n1-highcpu-16   true         10.142.0.44                   TERMINATED
+abyss1        us-east1-b       n1-highcpu-16   true         10.142.0.49                   TERMINATED
+abyss2        us-east1-b       n1-highcpu-16   true         10.142.0.50                   TERMINATED
+abyss3        us-east1-b       n1-highcpu-16   true         10.142.0.51                   TERMINATED
+abyss4        us-east1-b       n1-highcpu-16   true         10.142.0.52                   TERMINATED
+acacia1       us-east1-b       n1-highcpu-8    true         10.142.15.193  35.196.16.249  RUNNING
+acacia2       us-east1-b       n1-highcpu-8    true         10.142.15.194  35.185.78.202  RUNNING
+acacia3       us-east1-b       n1-highcpu-8    true         10.142.15.195  35.196.72.79   RUNNING
+acacia4       us-east1-b       n1-highcpu-8    true         10.142.15.196                 TERMINATED
+acer1         us-east1-b       n1-highcpu-8    true         10.142.15.197                 TERMINATED
+acer2         us-east1-b       n1-highcpu-8    true         10.142.15.198  34.73.253.45   RUNNING
+acer3         us-east1-b       n1-highcpu-8    true         10.142.15.199  35.185.28.196  RUNNING
+acer4         us-east1-b       n1-highcpu-8    true         10.142.15.200  34.73.183.34   RUNNING
+acid1         us-east1-b       n1-highcpu-8    true         10.142.0.61                   TERMINATED
+acid2         us-east1-b       n1-highcpu-8    true         10.142.0.62                   TERMINATED
+acid3         us-east1-b       n1-highcpu-8    true         10.142.0.63    34.73.20.243   RUNNING
+acid4         us-east1-b       n1-highcpu-8    true         10.142.15.192  35.190.185.87  RUNNING
+amber1        us-east1-b       n1-highcpu-16   true         10.142.0.53                   TERMINATED
+amber2        us-east1-b       n1-highcpu-16   true         10.142.0.54                   TERMINATED
+amber3        us-east1-b       n1-highcpu-16   true         10.142.0.55                   TERMINATED
+amber4        us-east1-b       n1-highcpu-16   true         10.142.0.56                   TERMINATED
+ambrose1      us-east1-b       n1-highcpu-8    true         10.142.0.57                   TERMINATED
+ambrose3      us-east1-b       n1-highcpu-8    true         10.142.0.59                   TERMINATED
+bravo3        us-east1-b       n1-standard-2   true         10.142.0.16                   TERMINATED
+bravo4        us-east1-b       n1-standard-2   true         10.142.0.17                   TERMINATED
+bravo5        us-east1-b       n1-standard-2   true         10.142.0.18                   TERMINATED
+instance-1    us-east1-b       n1-standard-2   true         10.142.0.2                    TERMINATED
+instance-2    us-east1-b       n1-standard-2   true         10.142.0.4                    TERMINATED
+instance-3    us-east1-b       n1-highcpu-64   true         10.142.0.5                    TERMINATED
+instance-5    us-east1-b       n1-standard-2   true         10.142.0.6                    TERMINATED
+ubslurm1      us-east1-b       n1-standard-2                10.142.0.12    34.73.2.158    RUNNING
+ubslurm2      us-east1-b       n1-standard-2                10.142.0.13                   TERMINATED
