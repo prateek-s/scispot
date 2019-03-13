@@ -1,4 +1,4 @@
-\section{Design}
+\section{\sysname Design}
 
 Scientific simulation applications consume a large amount of computational resources, and are often used in the context of \emph{exploratory} research, where a large amount of jobs are run with  different simulation parameters.
 This can be either a \emph{parameter sweep}, where a large number of parameters need to be evaluated, or a \emph{search} over a large parameter space for the ``right'' set of parameters that yield the desired model behavior.
@@ -26,11 +26,34 @@ In this section, we will look at how we address these challenges:
 Job-groups are executed in two phases.
 In the first phase, we search for the right type of server for the jobs in the job-group, and then in the second phase, we execute the remaining jobs on the chosen servers.
 
+\subsection{High-level flow}
+
+\sysname is as a cost aware cloud resource manager for running large collections of parallel jobs.
+The collection forms a ``bag'' of jobs, which each job running the same executable but with different input parameters.
+As explained earlier, this is a common use case.
+
+Running a large collection of computationally similar jobs permits many cost and performance optimizations.
+Given that cloud platforms offer a large number of resource configurations for their VMs, selecting the ``right'' VM for jobs can be especially beneficial in reducing the cost and running times.
+Running a large number of jobs with similar computation, communication, and runtime characteristics allows us to ``explore'' the right server configuration.
+
+
+The execution of a bag of job kicks off with the user providing the executable, the expected resources requirements for a single job, and the fraction of jobs that must be completed.
+
+\textbf{Generating Jobs For a Bag:} Optionally, \sysname can also take as input a description of the (multi-dimensional) parameter space, and then generate the jobs.
+We do this with the users specifying the values that different job parameters can take, and then producing a list with all the permutations.
+Because job-failures can cause some parameter combinations to remain unexplored, we strive for uniformity of sampling by randomizing the order in which jobs in a bag are scheduled, so that we don't end up in a situation with a large fraction of any parameter remaining unexplored if the completion threshold has been met.
+
+
+More details are provided in the Interface and Implementation section.
+
+
+Therefore, \sysname's execution of a bag of jobs is composed of two serial phases.
+In the first phase, we explore different cluster configurations to find the lowest cost server type.
+In the second phase, we run the reminder of the jobs in the bag on the servers of the selected type (the ``exploitation'' phase).
 
 
 
-
-\subsection{Server Selection Policy}
+\subsection{Exploration-based Server Selection}
 
 \sysname's server selection policy seeks to identify the best server type for a given job-group.
 
@@ -132,6 +155,9 @@ That is, assume that a job has finished and it is time to run a new job. So now,
 \subsection{Checkpointing}
 
 Checkpointing requires the same number of servers, which may be tricky, whereas restarts can be on smaller number of nodes no problem.
+
+Maybe talk about the dynamic programming based checkpointing here?
+
 
 
 \subsection{Early Stopping}
