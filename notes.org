@@ -177,6 +177,12 @@ Latin Hypercube sampling from metis
 
 - Waiting/Queueing time graphs for super computers 
 - Monte Carlo simulation of expectation of the failure distribution \integrate x*sinh(x)
+<<<<<<< HEAD
+=======
+- PMF (Cosh) of the corresponding CDFs 
+- Write simulator for expected cost and running times 
+- Simulation parameter generation script for nanoconfinement and shapes (Integrate as a generator function into current code)
+>>>>>>> 00d177b3358960569517cb1397f4fb20116f10f6
 - Principled distribution fitting. How are parameters found? 
 - Fit distribution for a few instance types (highcpu-16, standard-8, ... )
 - Simulation parameter generation script for nanoconfinement and shapes (Integrate as a generator function into current code)

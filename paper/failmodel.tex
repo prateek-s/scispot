@@ -40,6 +40,18 @@ Given the inability to use EC2 prices, we believe that our approach is more gene
 There are some distinguishing characteristics of GCP preemptible VMs that makes their failure modeling challenging.
 First is their flat pricing and no other signalling information about their preemption rates (MTBFs) that makes server selection difficult.
 
+\textbf{Modeling Failure Behavior of Preemptible VMs}
+CDF is ``sigmoid'' shaped.
+$P=R*np.sinh((t-t0)/tau) + C$ with a very low $R=10^{-6}, t_0=12, \tau=0.9, C=0.36$
+
+Basically, this is a mixture of two distributions, the standard exponential distribution, which we call the stabilization rate and an exponentially increasing reclamation rate.
+
+Preemptible VMs have three availability phases.
+
+There are many early deaths, then a period of low failure rates, and then the failure rate is exponential with a positive exponent to enable the cloud provider to reclaim the VMs within the deadline (24 hours in the case of Google's Preemptible VMs).
+
+
+
 \subsection{Trade-offs in Server Selection}
 % Maybe this can come in the earlier section?
 
