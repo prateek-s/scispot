@@ -13,7 +13,7 @@ import tinydb
 import urllib2, os, sys, subprocess
 import googleapiclient.discovery
 import paramiko
-
+from SciSpot import SciSpot
 
 """ 
 Usage: http://localhost:7878/?preempted=abacus
@@ -25,41 +25,39 @@ http://localhost:7878/?launch_cluster=True&namegrp=abra&num_nodes=4&mtype=n1-hig
 
 ##################################################    ##################################################
 
-class evlisten(resource.Resource):
+class evlisten(resource.Resource, SciSpot):
+    """ Main HTTP Server that listens for job launch requests and completion/failure events """
+    
     isLeaf = True  # Required by twisted?
-    project='first-220321'
-    zone='us-east1-b'
-    namegrp="abra"
 
-    mtypes_highcpu=['n1-highcpu-16','n1-highcpu-2','n1-highcpu-32','n1-highcpu-4','n1-highcpu-64','n1-highcpu-8']
-    mtypes_stan=['n1-standard-1','n1-standard-16','n1-standard-2','n1-standard-32','n1-standard-4','n1-standard-64','n1-standard-8']
-    zones=['us-central1-f','us-east1-b','us-east4-c','europe-west4-a','europe-north1-a','asia-southeast1-b']
+    phases = ['adhoc','explore','exploit']
+
+    phase = 'adhoc' #Always start out this way
+
+    gen_cc = None #Generator for cluster configs
+
+    cleanup_unused = False #Whether we want to terminate unused VMs or not
+
+    runtimedict = dict() #Store Server type and running time 
+        
+    current_cluster = []
     
     ##################################################
 
     def __init__(self):
         #Open the job and vmdb json databases?
-        self.compute = googleapiclient.discovery.build('compute', 'v1')
+        pass 
+        #self.compute = googleapiclient.discovery.build('compute', 'v1')
     
     ##################################################
-    
-    def get_jobdb(self):
-        return tinydb.TinyDB('jobdb.json')
 
-    def get_vmdb(self):
-        return tinydb.TinyDB('vmdb.json')
+    def start_master(self, zone, name):
+        """ Non-preemptible, with source image, no startup script? """
+        mtype = 'n1-standard-2'
+        
+        pass 
 
-    ##################################################
-
-
-    def machine_type(self, m):
-        #Cat proc/cpuinfo, and some memory ? 
-        #cpus = num_cpus()
-        cpus = int(m.split('-')[-1])
-        machine = {'sockets': 1, 'cores': cpus/2, 'threads': 2, 'memory': 1000}
-        return machine 
-
-    def start_instance(self, mtype, zone, name, startupscriptstr):
+    def start_worker(self, mtype, zone, name, startupscriptstr):
         """ Hidden inputs: VM-image """
 
         machine_type = "zones/{}/machineTypes/{}".format(zone, mtype)
@@ -76,7 +74,7 @@ class evlisten(resource.Resource):
                 'boot': True,
                 'autoDelete': True,
                 'initializeParams': {
-                    'sourceImage': "global/images/ubs2"
+                    'sourceImage': self.imageName 
                     }
             }],
             'metadata' : {
@@ -94,7 +92,7 @@ class evlisten(resource.Resource):
             ]
         }],
         }
-        print(str(instance_body))
+        #print(str(instance_body))
 
         response = self.compute.instances().insert(project=self.project,zone=self.zone,body=instance_body).execute()
         return response 
@@ -208,22 +206,6 @@ exit 0
 
     ##################################################
 
-    def get_instance_ip(self, instance):
-        #Let project and zone be global!
-        return self.compute.instances().get(project=self.project, zone=self.zone, instance=instance).execute().get('networkInterfaces')[0].get('accessConfigs')[0].get('natIP')
-
-
-    def gcp_ssh(self, instance):
-        instance_ip = self.get_instance_ip(instance)
-        #
-        client=paramiko.SSHClient()
-        client.load_system_host_keys()
-        client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        #Copy the new slurm config file 
-        client.connect(instance_ip, username='prateek3_14',key_filename='/home/prateeks/.ssh/gce')
-        return client
-
-    ##################################################
 
     def reconfig_master(self, master, slurmconf_str):
     
@@ -254,6 +236,7 @@ exit 0
         configstr = self.generate_slurm_config(slurm_master, machine, compute_nodes)
         cnodes_launched = []
         if slurm_master is None:
+            #TODO: Start the master, non-preemptible, and wait 
             print("Master must be running, not supported yet, exiting")
             return
 
@@ -261,26 +244,26 @@ exit 0
 
         for i in range(start_id, num_nodes+start_id): 
             name = namegrp+str(i)
-
-            self.start_instance(mtype, self.zone, name, self.get_startup_script(configstr))
+            self.start_worker(mtype, self.zone, name, self.get_startup_script(configstr))
             cnodes_launched.append(name)
+            self.current_cluster.append(name) 
             #Add to the vmdb 
             vmdb = self.get_vmdb()
             t_start = datetime.datetime.now().isoformat()
             vmdb.insert({'vmname':name, 't_start':t_start, 'type':mtype, 'status':'running'})
             vmdb.close()
-
             time.sleep(5)
-        print("Cluster Launched")
+
+        self.current_mtype = mtype        
+        print("Cluster Launched: {}, {}, {}".format(namegrp, mtype, num_nodes))
         return (slurm_master, cnodes_launched)
 
     ##################################################
     
     def run_job(self, master, num_nodes, cores):
-        runfile = "/home/prateek3_14/sb_confinement.sh"
         simparams = ""
         sbatcmd = "sbatch --parsable -N {num_nodes} -c {cores} -n {num_nodes} {runfile} {simparams}".format(\
-            num_nodes=num_nodes, cores=cores, runfile=runfile, simparams=simparams)
+            num_nodes=num_nodes, cores=cores, runfile=self.runfile, simparams=simparams)
         #Just returns the job-id 
 
         sshclient = self.gcp_ssh(master)
@@ -289,24 +272,61 @@ exit 0
         o.close()
         sshclient.close() 
 
-        #TODO strigger
         strigger_fin_cmd = "strigger --set --fini --program /scispot/handle_fin.sh --jobid {}".format(jobid)
         strigger_fail_cmd = "strigger --set --jobid={} --down --program=/scispot/handle_fail.sh".format(jobid)
 
-        # sshclient = self.gcp_ssh(master)
-        # i,o,e = sshclient.exec_command(strigger_fin_cmd)
-        # i,o,e = sshclient.exec_command(strigger_fail_cmd)
-        # sshclient.close()
+        sshclient = self.gcp_ssh(master)
+        i,o,e = sshclient.exec_command(strigger_fin_cmd)
+        i,o,e = sshclient.exec_command(strigger_fail_cmd)
+        sshclient.close()
         
-        #TODO: Update state of the job and add to job dict with the time we launched 
-        #Metadata for a job: jobid, launchtime, sbatch config, simparams, codepath,.. 
-        #starttime = time.get()
         jobdb = self.get_jobdb() 
         t_start = datetime.datetime.now().isoformat()
         jobdb.insert({'jobname':jobid, 't_start':t_start, 'resources':(num_nodes, cores), 'state':'running'})
         jobdb.close()
         return jobid
 
+    ##################################################
+
+    def cluster_config(self, target_cores):
+        for m in self.mtypes_highcpu:
+            machine = self.machine_type(m)
+            cpus = machine['cpus']
+            num_servers = math.ceil(target_cores/cpus)
+            #TODO: Need some more checks here?
+            if num_servers > 0:
+                yield (m, num_servers) 
+
+              
+    def start_exploration(self, target_cores):
+        self.target_cores = target_cores 
+        if self.gen_cc is None:
+            self.gen_cc = self.cluster_config(self.target_cores)
+
+              
+    def do_exploration(self):              
+        try:
+            (mtype, num_servers) = gen_cc.next()
+            if self.cleanup_unused:
+                self.destroy_current_cluster()
+                self.launch_cluster()
+                self.run_job()
+                #TODO: NOW WE WAIT, BUT HOW?!?!
+        except:
+            print("Done exploring all?")
+
+            self.phase = 'exploit'  #Well thats optimistic!!
+            #TODO: Need to either exit cleanly OR continue to exploitation phase somehow
+            #TODO: Return the best value that we have seen!
+
+        return 
+
+
+    ##################################################
+
+    def run_next_job(self):
+        """ Generate a new set of parameters, and start the job """
+        pass 
     
     ##################################################
     ################## Event Listeners ###############
@@ -314,6 +334,9 @@ exit 0
     
     
     def handle_finished(self, jobids):
+        """ Does a lot more than just handling the event. 
+        Updates the DB, and decides what to do next depending on the phase """
+        
         if jobids is None or len(jobids) is 0:
             print("empty job string, nothing to do")
             return
@@ -321,6 +344,7 @@ exit 0
         jobdb = self.get_jobdb()
         
         for job in jobids:
+            #We expect only one job id to finish per strigger, so can remove this loop 
             #Will be a string, but that is OK if the keys are strings?
             q = tinydb.Query()
             res = jobdb.search(q.jobname == job)
@@ -332,20 +356,18 @@ exit 0
                 
         jobdb.close() #For mutual exclusion
 
-        self.get_next_job(jobids[0], "finished") 
+        if self.phase is 'explore':
+            #Record the time in our local database somehow!!
+            #TODO : self.runtimedict[mtype] = datetime.delta(fin_time, start_time)              
+            self.do_exploration() #Try next server configuration
+            
+        elif self.phase is 'exploit':
+            self.run_next_job() 
+            
         return
     
     ##################################################
     
-    def get_next_job(self, jobid, state="finished"):
-        """ Given a job id that has finished/failed, decide what to do """
-        if state is "finished":
-            #Generate the next job parameters
-            pass
-        elif state is "failed":
-            #Need to decide whether to restart or ignore
-            pass 
-
 
     ##################################################
     
@@ -369,6 +391,8 @@ exit 0
                 
         jobdb.close() #For mutual exclusion
 
+        #TODO: Scan the list of running VMs we have, see which ones are running, find preempted one(s), and find out how many more we need to launch!
+        
         #TODO: We must spawn extra VMs first!!! Find out how many VMs are required?
         self.preemption_reaction(jobids[0])
         
@@ -376,13 +400,13 @@ exit 0
     
 
     def preemption_reaction(self, jobid):
-        #Replenish, restart, ignore, etc.
-        self.replenish()
-        
-        #Decide if we want to rerun or not, or whatever 
+        """Decide if we want to rerun or not, or whatever. Split off because a complex policy can be implemented here """
+        self.replenish()        
         self.get_next_job(jobid, "failed") 
+        #TODO: If explore phase, always replenish and restart!!
 
-
+        
+        
     
     ##################################################
     
@@ -404,9 +428,13 @@ exit 0
             self.launch_cluster(req_args['namegrp'][0], int(req_args['num_nodes'][0]), \
                                 req_args['mtype'][0], int(req_args['start_id'][0]), \
                                 req_args['slurm_master'][0])
+            
         elif 'run_job' in req_args.keys():
             self.run_job(req_args['master'][0], req_args['num_nodes'][0],\
                          req_args['cores'][0])
+            
+        elif 'explore' in req_args.keys():
+            self.do_exploration(req_args['job'][0],['target_cores'][0])
             
         else:
             print("not understood")
