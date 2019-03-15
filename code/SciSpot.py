@@ -4,6 +4,8 @@ import os,sys
 import urllib2, os, sys, subprocess
 import googleapiclient.discovery
 import paramiko
+import random
+import string 
 
 class SciSpot:
     """ Common fields and methods for various SciSpot components """
@@ -21,10 +23,10 @@ class SciSpot:
     username = 'prateek3_14'
     key_filename = '/home/prateeks/.ssh/gce'
 
-    current_mtype = None
-
     runfile = '/home/prateek3_14/sb_confinement.sh'  
 
+    max_params_to_explore = 100
+    min_params_to_explore = 80 
     
     ##################################################
     
@@ -69,3 +71,34 @@ class SciSpot:
         return client
 
     ##################################################
+
+    def gen_cluster_name(self):
+        """ Generate a random name """
+        random_name = ''.join([random.choice(string.ascii_letters) for n in xrange(6)])
+        return random_name
+
+    ##################################################
+    
+    def select_best_server(self, self.runtimedict):
+        """ Use the running time that we have """
+        #TODO: Expected cost based optimization
+        #TODO: Insert a cost dictionary and estimated MTTF dict atleast 
+        for m in self.runtimedict.keys():
+            r = int(self.runtimedict[m])
+        return 'n1-highcpu-16'
+
+
+    def get_VM_age(self, vmname):
+        """ Use api's , current time, etc to return the VM's age in seconds. Use this for calculating probabilities of failure etc """
+        pass
+
+    def get_fail_prob(self, mtype, vmnames, T=1):
+        """ For a job of length T, what is our fail prob. We use this for...? """ 
+        pass
+
+    
+
+    ##################################################
+    ##################################################
+
+    
