@@ -1,44 +1,101 @@
 import os,sys
 import json
 import numpy as np
+import itertools
+import random
 
-class JobGen(class):
+##################################################
 
-    param_sweep_list = []
+class JobGen:
+
+    """ ParamDict = list of param
+
+param={'type':<types>, 'values':<values>}
     
-    def __init__(self, param_dict, N):
-        self.d = param_dict
-        self.N = N
+<types> = 'range' | 'set'
+
+<values> = [min, max] | [v1, v2, ... vn]
+"""
+    param_sweep_list = []
+    param_list = []
+    ed = dict()
+    d = dict()
+    
+    def __init__(self, param_dict, max_jobs):
+        self.d = param_dict #TODO: JSON read 
+        self.max_jobs = max_jobs
         self.output = []
-        self.expanded = dict() #Expand ranges to NP arrays
-        self.num_params = dict() #Number to sample from each 
-        self.n = self.min_params()  #Min value
+        #self.expanded = dict() #Expand ranges to NP arrays
+        #self.num_params = dict() #Number to sample from each 
+        #self.n = self.min_params()  #Min value
 
-    def min_params(self):
+    def num_fixed_params(self):
+        """ Total combinations with fixed params only """ 
         fixed_params = 1 
-        for param in d.keys():
-            v = d.get(param)
-            if isinstance(v, list):
-                #For explicit values
-                self.num_params[param] = len(v)
-                fixed_params = fixed_params*len(v)
+        for p in self.d:
+            v = self.d.get(p) #"p":{"type":"set", "values":[1,2,3,4]}
+            if v["type"] == "set":
+                num_values = len(v["values"])
+                fixed_params *= num_values 
         return fixed_params
-        
-    def get_joblist(self, N):
-        """ Return a list of jobs of at most N size """
-        #Can we assert : N > product(len(v)) for all v
-        fixed_params = 1 
-        for param in d.keys():
-            v = d.get(param)
-            if isinstance(v, list):
-                #For explicit values
-                self.num_params[param] = len(v)
-                fixed_params = fixed_params*len(v)
+
+    def expand_dict(self):
+        """ Based on the min number of parameters, create an expanded dictionary with np arrays """
+        n = self.num_fixed_params()
+        N = self.max_jobs
+        #Each array gets N/n points
+        ed = dict()
+        for p in self.d:
+            v = self.d.get(p) #"p":{"type":"set", "values":[1,2,3,4]}
+            if v["type"] == "set":
+                ed[p] = v['values']
+            elif v["type"] == "range":
+                val_range = v["values"]
+                assert(len(val_range) >= 2)
+                new_vals = np.linspace(val_range[0], val_range[-1], N/n)
+                #newv = {'type':'range', 'values':new_vals}
+                ed[p] = new_vals
+
+        self.ed = ed
+        return ed 
+
+    def gen_combinations(self):
+        """ Use the expanded dictionary to generate unique combinations """
+        params = self.ed.keys()
+        ip = itertools.product(*(jg.ed[n] for n in params))
+        self.param_list = params
+        self.generated_combos = list(ip)
+        random.shuffle(self.generated_combos)
+        return self.generated_combos 
+
+    def gen_string_for_combo(self, param_tuple):
+        """ For a given combination, generate an output string """
+        s = ""
+        for i,p in enumerate(self.param_list):
+            val = param_tuple[i]
+            s += '--{}={} '.format(p, val)
+
+        return s
+
+    def gen_job_param(self):
+        self.num_fixed_params()
+        self.expand_dict()
+        self.gen_combinations()
+
+        for c in self.generated_combos:
+            yield self.gen_string_for_combo(c)
 
 
-                
-            
-            elif isinstance(v, tuple):
-                #For range
-                np.linspace(v[0], v[1], n)
-            
+##################################################
+
+testd = {'b':{'type':'set', 'values':[1,2,3]}, 'c':{'type':'range', 'values':[1,10]}}
+jg = JobGen(testd, 100)
+
+print(jg.gen_job_param().next())
+
+# print(jg.num_fixed_params())
+# print(jg.expand_dict())
+# print(jg.gen_combinations())
+# print(jg.gen_string(jg.generated_combos[0]))
+      
+#combinations = it.product(*(my_dict[Name] for Name in allNames))
