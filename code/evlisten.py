@@ -45,9 +45,9 @@ class evlisten(resource.Resource, SciSpot):
 
     current_namegrp = None
 
-    current_cluster = []
+    current_cluster = ['acmay1', 'acmay2', 'acmay3', 'acmay4']
 
-    current_mtype = None
+    current_mtype = 'n1-highcpu-4'
 
     target_nodes = 0 #
 
@@ -319,7 +319,7 @@ exit 0
     def run_job(self, jobparams='', master=current_master):
         """ Run a job on a running with the given jobparams """
 
-        cores = self.machine(self.current_mtype)['cores']
+        cores = self.machine_type(self.current_mtype)['cores']
         num_nodes = len(self.current_cluster)
 
         sbatcmd = "sbatch --parsable -N {num_nodes} -c {cores} -n {num_nodes} {runfile} {jobparams}".format(\
@@ -332,21 +332,28 @@ exit 0
         o.close()
         sshclient.close()
 
-        strigger_fin_cmd = "strigger --set --fini --program /scispot/handle_fin.sh --jobid {}".format(jobid)
-        strigger_fail_cmd = "strigger --set --jobid={} --down --program=/scispot/handle_fail.sh".format(jobid)
-
+        strigger_fail_cmd = "strigger --set --down --program=/scispot/handle_fail.sh --jobid={}".format(jobid)
         sshclient = self.gcp_ssh(master)
-        i, o, e = sshclient.exec_command(strigger_fin_cmd)
         i, o, e = sshclient.exec_command(strigger_fail_cmd)
+        o.close()        
         sshclient.close()
 
+        strigger_fin_cmd = "strigger --set --fini --program /scispot/handle_fin.sh --jobid {}".format(jobid)
+        sshclient = self.gcp_ssh(master)
+        i, o, e = sshclient.exec_command(strigger_fin_cmd)
+        o.close()
+        sshclient.close()
+        
+        
         jobdb = self.get_jobdb()
         t_start = datetime.datetime.now().isoformat()
         jobmetadata = {'jobname':jobid, 't_start':t_start, 'runfile':self.runfile, 'resources':(num_nodes, cores), 'state':'running', 'jobparams':jobparams}
         self.current_jobs.append(jobmetadata)
         jobdb.insert(jobmetadata)
         jobdb.close()
-
+        
+        print("Job started {}  {}".format(jobid, sbatcmd))
+        
         return jobid
 
     ##################################################

@@ -79,12 +79,12 @@ class SciSpot:
 
     ##################################################
     
-    def select_best_server(self, self.runtimedict):
+    def select_best_server(self, runtimedict):
         """ Use the running time that we have """
         #TODO: Expected cost based optimization
         #TODO: Insert a cost dictionary and estimated MTTF dict atleast 
-        for m in self.runtimedict.keys():
-            r = int(self.runtimedict[m])
+        for m in runtimedict.keys():
+            r = int(runtimedict[m])
         return 'n1-highcpu-16'
 
 
