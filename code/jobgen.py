@@ -78,6 +78,7 @@ param={'type':<types>, 'values':<values>}
         return s
 
     def gen_job_param(self):
+        """ This is the primary entry point """ 
         self.num_fixed_params()
         self.expand_dict()
         self.gen_combinations()
