@@ -62,8 +62,8 @@ param={'type':<types>, 'values':<values>}
     def gen_combinations(self):
         """ Use the expanded dictionary to generate unique combinations """
         params = self.ed.keys()
-        ip = itertools.product(*(jg.ed[n] for n in params))
         self.param_list = params
+        ip = itertools.product(*(jg.ed[n] for n in params))
         self.generated_combos = list(ip)
         random.shuffle(self.generated_combos)
         return self.generated_combos 
@@ -73,7 +73,7 @@ param={'type':<types>, 'values':<values>}
         s = ""
         for i,p in enumerate(self.param_list):
             val = param_tuple[i]
-            s += '--{}={} '.format(p, val)
+            s += '-{} {} '.format(p, val)
 
         return s
 
@@ -85,9 +85,6 @@ param={'type':<types>, 'values':<values>}
 
         for c in self.generated_combos:
             yield self.gen_string_for_combo(c)
-
-
-    
 
 
 ##################################################

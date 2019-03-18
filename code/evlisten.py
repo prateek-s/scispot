@@ -14,6 +14,7 @@ import urllib2, os, sys, subprocess
 import googleapiclient.discovery
 import paramiko
 import dateutil
+import dateutil.parser
 import random
 from SciSpot import SciSpot
 #from jobgen import JobGen
@@ -45,9 +46,9 @@ class evlisten(resource.Resource, SciSpot):
 
     current_namegrp = None
 
-    current_cluster = ['acmay1', 'acmay2', 'acmay3', 'acmay4']
+    current_cluster = []
 
-    current_mtype = 'n1-highcpu-4'
+    current_mtype = 'n1-highcpu-4' #Sane default if nothing specified. 
 
     target_nodes = 0 #
 
@@ -246,13 +247,16 @@ exit 0
     ##################################################
     ################## Cluster Managment #############
 
-    def launch_cluster(self, namegrp, num_nodes, mtype, start_id=current_start_id, slurm_master=None, replenish=False):
-        """ Launches worker VMs and reconfigs master """
+    def launch_cluster(self, namegrp, num_nodes, mtype, start_id=current_start_id, slurm_master=current_master, replenish=False):
+        """ Launches worker VMs and reconfigs master if not replenishing """
 
         machine = self.machine_type(mtype)
         self.current_namegrp = namegrp
         compute_nodes = namegrp + "[1-" + str(num_nodes*3) + "]"
         #*3 is just a margin for safety in case we fail and have to rerun the job without reconfiguring master
+
+        #TODO: Check if requested VMs are available and free, and use them instead of launching? Can get tricky 
+        
         configstr = self.generate_slurm_config(slurm_master, machine, compute_nodes)
         cnodes_launched = []
         if slurm_master is None:
@@ -295,7 +299,10 @@ exit 0
         #TODO: Must be part of this name group (use name), AND must be
         return target - curr
 
+    ##################################################
+    
     def replenish_cluster(self):
+        """ Launch New VMs to replace the lost ones """ 
         #First, figure out if we need to?
         #return number of nodes launched
         deficit = self.server_deficit()
@@ -316,7 +323,7 @@ exit 0
     ##################################################
     #################### Jobs ########################
 
-    def run_job(self, jobparams='', master=current_master):
+    def run_job(self, mtype=current_mtype, num_nodes=len(current_cluster), jobparams='', master=current_master):
         """ Run a job on a running with the given jobparams """
 
         cores = self.machine_type(self.current_mtype)['cores']
@@ -329,6 +336,7 @@ exit 0
         sshclient = self.gcp_ssh(master)
         i, o, e = sshclient.exec_command(sbatcmd)
         jobid = o.read()
+        jobid = jobid.strip()
         o.close()
         sshclient.close()
 
@@ -347,7 +355,7 @@ exit 0
         
         jobdb = self.get_jobdb()
         t_start = datetime.datetime.now().isoformat()
-        jobmetadata = {'jobname':jobid, 't_start':t_start, 'runfile':self.runfile, 'resources':(num_nodes, cores), 'state':'running', 'jobparams':jobparams}
+        jobmetadata = {'jobname':jobid, 't_start':t_start, 'runfile':self.runfile, 'resources':(num_nodes, cores), 'state':'running', 'jobparams':jobparams, 'mtype':mtype, 'num_nodes':num_nodes}
         self.current_jobs.append(jobmetadata)
         jobdb.insert(jobmetadata)
         jobdb.close()
@@ -376,6 +384,9 @@ exit 0
 
         jobdb.close()
         jobparams = jobmetadata['jobparams']
+        mtype = jobmetadata['mtype']
+        num_nodes = jobmetadata['num_nodes']
+        
         return self.run_job(jobparams)
 
 
@@ -383,46 +394,64 @@ exit 0
     #################### Exploration #################
     ##################################################
 
-    def cluster_config(self, target_cores):
+    def cluster_config(self, target_cpus):
+        """ Generator for cluster configurations which sum to target_cpus """
+        target_cpus = int(target_cpus) 
         for m in self.mtypes_highcpu:
             machine = self.machine_type(m)
-            cpus = machine['cpus']
-            num_servers = math.ceil(target_cores/cpus)
+            cpus = int(machine['cpus'])
+            num_servers = int(math.ceil(target_cpus/cpus))
             #TODO: Need some more checks here?
             if num_servers > 0:
+                print((m, num_servers))
                 yield (m, num_servers)
 
 
-    def start_exploration(self, target_cores):
+    ##################################################
+                
+    def start_exploration(self, target_cpus):
         """ TODO: Ask for program name! Assumes confinement for now """
-        self.target_cores = target_cores
+        self.target_cpus = target_cpus
         if self.gen_cc is None:
-            self.gen_cc = self.cluster_config(self.target_cores)
+            self.gen_cc = self.cluster_config(self.target_cpus)
+        print("Starting the exploration")
+        self.phase = 'explore' 
+        self.do_exploration()
 
+
+    ##################################################
 
     def do_exploration(self):
+        """ Called at the start of exploration phase, and after a job finishes """ 
         try:
             (mtype, num_servers) = self.gen_cc.next()
             if self.cleanup_unused:
                 self.destroy_current_cluster()
 
-            namegrp = self.gen_cluster_name()
+            namegrp = self.gen_cluster_name() #Random string
+            self.current_cluster = [] #Reset otherwise run_job tries launching with larger params 
             self.launch_cluster(namegrp, num_servers, mtype)
             jobid = self.run_job()
-                #TODO: NOW WE WAIT, BUT HOW?!?!
-        except:
+            #We don't wait, but just return here. Serial exploration. 
+        except Exception as e:
+            print(e)
             print("Done exploring all?")
-            self.selected_mtype = self.select_best_server(self.runtimedict)
+            self.selected_mtype = self.select_best_server(self.runtimedict) #Based on E[C] TODO 
             self.current_mtype = self.selected_mtype
-            self.phase = 'exploit'  #Well thats optimistic!!
             #TODO: Need to either exit cleanly OR continue to exploitation phase somehow
             #TODO: Return the best value that we have seen!
-
+            self.start_exploitation() 
         return
 
 
     ##################################################
+    #################### Exploitation ################
 
+    def start_exploitation(self):
+        self.phase = 'exploit'  #Well thats optimistic!!
+        pass
+    
+    
     def run_next_job(self):
         """ Exploitation phase only. Generate a new set of parameters, and start the job """
         #TODO: Find the next set of parameters, and then call run job
@@ -452,7 +481,7 @@ exit 0
             res = jobdb.search(q.jobname == job)
             if len(res) is 0:
                 print("No matching job")
-                jobdb.insert({'jobid':job, 't_finish':fin_time})
+                jobdb.insert({'jobname':job, 't_finish':fin_time})
             else:
                 t_start = res[0]['t_start']
                 tdiff = (dateutil.parser.parse(fin_time) - dateutil.parser.parse(t_start)).total_seconds()
@@ -490,8 +519,8 @@ exit 0
             q = tinydb.Query()
             res = jobdb.search(q.jobname == job)
             if len(res) is 0:
-                print("No matching job")
-                jobdb.insert({'jobid':job, 't_finish':fin_time})
+                print("No matching job for {}".format(job))
+                jobdb.insert({'jobname':job, 't_finish':fin_time})
             else:
                 jobdb.update({'t_finish':fin_time, 'state':'failed'}, q.jobname == job)
 
@@ -508,6 +537,10 @@ exit 0
     def preemption_reaction(self, jobid):
         """Jobid has failed. What do we do? """
 
+        if self.phase is "adhoc":
+            print("Adhoc mode, nothing to do on preemption!")
+            return 
+        
         if self.jobs_completed > self.min_params_to_explore :
             print("Job quota met, nothing remaining!")
             return
@@ -516,7 +549,7 @@ exit 0
         #Not important right now because we randomize the generated jobs
         should_rerun = True
         target_success_rate = float(self.min_params_to_explore)/self.max_params_to_explore
-        current_success_rate = float(self.jobs_completed)/float(self.jobs_completed + self.jobs_abandoned)
+        current_success_rate = float(self.jobs_completed)/max(1.0, float(self.jobs_completed + self.jobs_abandoned))
 
         # if current_success_rate < target_success_rate:
         #     should_rerun = True
@@ -557,7 +590,7 @@ exit 0
             #req_args['master'][0], req_args['num_nodes'][0], req_args['cores'][0])
 
         elif 'explore' in req_args.keys():
-            self.start_exploration(req_args['target_cores'][0])
+            self.start_exploration(req_args['target_cpus'][0])
 
         else:
             print("not understood")

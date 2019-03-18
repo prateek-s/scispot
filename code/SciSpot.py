@@ -74,7 +74,7 @@ class SciSpot:
 
     def gen_cluster_name(self):
         """ Generate a random name """
-        random_name = ''.join([random.choice(string.ascii_letters) for n in xrange(6)])
+        random_name = ''.join([random.choice(string.ascii_lowercase) for n in xrange(6)])
         return random_name
 
     ##################################################

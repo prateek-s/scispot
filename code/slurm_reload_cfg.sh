@@ -15,7 +15,9 @@ cp $1 $spath/slurm.conf
 
 sleep 5
 
-systemctl start slurmctld
+#systemctl start slurmctld
+#Basically, we need to pass -i ugh
+/usr/sbin/slurmctld -i 
 
 sleep 5
 

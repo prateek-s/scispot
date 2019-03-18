@@ -1,10 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  13 MAR 2019 15:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  18 MAR 2019 09:11
 entering extended mode
- restricted \write18 enabled.
- file:line:error style messages enabled.
+ \write18 enabled.
  %&-line parsing enabled.
-**\input paper.tex
-(./paper.tex (./acmart.cls
+**paper
+(./paper.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 9 language(s) loaded.
+(./acmart.cls
 Document Class: acmart 2018/12/16 v1.57 Typesetting articles for the Associatio
 n for Computing Machinery
 (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
@@ -1236,33 +1238,7 @@ Overfull \hbox (4.4709pt too wide) in paragraph at lines 12--14
 ng ac-cord-ing to Young-
  []
 
-) (./impl.tex [5.5]) (./eval.tex
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 17.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 17.
-
-
-./eval.tex:19: LaTeX Error: File `' not found.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.19   \includegraphics{}
-                         
-I could not locate the file with any of these extensions:
-.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Class acmart Warning: A possible image without description on input line 22.
-
-) (./related.tex
+) (./impl.tex [5.5]) (./eval.tex) (./related.tex
 Overfull \hbox (1.72954pt too wide) in paragraph at lines 10--11
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Price op-ti-miza-tions for Sci-en-tific 
 work-flows in the cloud [[]] 
@@ -1297,27 +1273,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
  (./paper.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
-
-
-Package rerunfilecheck Warning: File `paper.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `paper.out':
-(rerunfilecheck)             Before: C5B46AD63A0A849479D00D0976D8EAB6;5375
-(rerunfilecheck)             After:  4E35BD9C861E6790A4BAB7C95AC9381C;5375.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `paper.out' has not changed.
+(rerunfilecheck)             Checksum: C5B46AD63A0A849479D00D0976D8EAB6;5375.
  ) 
 Here is how much of TeX's memory you used:
- 21714 strings out of 494805
- 340812 string characters out of 6178000
+ 21699 strings out of 494805
+ 340709 string characters out of 6178000
  480582 words of memory out of 5000000
- 24060 multiletter control sequences out of 15000+600000
+ 24058 multiletter control sequences out of 15000+600000
  159150 words of font info for 324 fonts, out of 8000000 for 9000
  242 hyphenation exceptions out of 8191
- 60i,17n,94p,819b,655s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,808b,655s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
 r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/shar
 e/texlive/texmf-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive
@@ -1337,10 +1303,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/newtx/zxlri.pfb>
-Output written on paper.pdf (7 pages, 629991 bytes).
+Output written on paper.pdf (7 pages, 629485 bytes).
 PDF statistics:
- 309 PDF objects out of 1000 (max. 8388607)
- 265 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
+ 308 PDF objects out of 1000 (max. 8388607)
+ 264 compressed objects within 3 object streams
+ 73 named destinations out of 1000 (max. 500000)
  41194 words of extra memory for PDF output out of 42996 (max. 10000000)
 
