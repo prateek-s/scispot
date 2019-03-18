@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     32474,        701]
-NotebookOptionsPosition[     30831,        664]
-NotebookOutlinePosition[     31182,        679]
-CellTagsIndexPosition[     31139,        676]
+NotebookDataLength[     52089,       1214]
+NotebookOptionsPosition[     49016,       1154]
+NotebookOutlinePosition[     49367,       1169]
+CellTagsIndexPosition[     49324,       1166]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -660,6 +660,496 @@ mPSrPg==
    3.760361104694155*^9, {3.760361282885789*^9, 
    3.7603612915787477`*^9}},ExpressionUUID->"f7729e27-8cfe-4d7e-9b9d-\
 50dd41ec6649"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"f", "[", "t", "]"}], "=", " ", 
+   RowBox[{
+    RowBox[{"R", "*", 
+     RowBox[{"Sinh", "[", 
+      FractionBox[
+       RowBox[{"(", 
+        RowBox[{"t", "-", "t0"}], ")"}], "\[Tau]0"], "]"}]}], "+", 
+    "C"}]}]}]], "Input",
+ CellChangeTimes->{{3.7619264222517366`*^9, 3.7619264584096985`*^9}, {
+  3.7619265396241493`*^9, 
+  3.7619265503542094`*^9}},ExpressionUUID->"0ea8da8b-febe-4085-98a8-\
+b22e6a9f8878"],
+
+Cell[BoxData[
+ RowBox[{"C", "+", 
+  RowBox[{"R", " ", 
+   RowBox[{"Sinh", "[", 
+    FractionBox[
+     RowBox[{"t", "-", "t0"}], "\[Tau]0"], "]"}]}]}]], "Output",
+ CellChangeTimes->{
+  3.761926603956578*^9},ExpressionUUID->"7c9b45ef-c2cf-4874-8133-\
+b80d9382d873"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"D", "[", 
+   RowBox[{
+    RowBox[{"f", "[", "t", "]"}], ",", "t"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7619265715229893`*^9, 
+  3.761926594785236*^9}},ExpressionUUID->"efedc45a-b305-43a3-96ab-\
+eabb244eb05a"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"R", " ", 
+   RowBox[{"Cosh", "[", 
+    FractionBox[
+     RowBox[{"t", "-", "t0"}], "\[Tau]0"], "]"}]}], "\[Tau]0"]], "Output",
+ CellChangeTimes->{{3.7619265960022397`*^9, 
+  3.7619266126803474`*^9}},ExpressionUUID->"60befd64-ce0c-46c2-81e4-\
+7616b817632b"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+  "WolframAlpha", "[", 
+   "\"\<derivative of R*Sinh[\!\(\*FractionBox[\((t - t0)\), \
+\(\[Tau]0\)]\)]+C with respect to t\>\"", "]"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.7619272434204698`*^9, 3.7619272747914424`*^9}},
+ NumberMarks->False,ExpressionUUID->"e2aa0274-dd6f-44e3-a4fd-74552a37997d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+     RowBox[{"f", "[", "t", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "24"}], "}"}]}], "]"}], "24"], "//", 
+  "N"}]], "Input",
+ CellChangeTimes->{{3.7619268070881653`*^9, 3.7619268684685707`*^9}, {
+  3.761926939629055*^9, 3.761926947234106*^9}, {3.7619271234629335`*^9, 
+  3.761927130971888*^9}, {3.7619271840899243`*^9, 3.761927189268937*^9}, {
+  3.761927230936943*^9, 3.761927236433481*^9}, {3.761927340174491*^9, 
+  3.7619273658244934`*^9}},ExpressionUUID->"e907ed96-00a4-4bfc-9bc2-\
+651e5e580a52"],
+
+Cell[BoxData[
+ RowBox[{"0.041666666666666664`", " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"24.`", " ", "C"}], "+", 
+    RowBox[{"R", " ", "\[Tau]0", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Cosh", "[", 
+        FractionBox[
+         RowBox[{"24.`", "\[VeryThinSpace]", "-", 
+          RowBox[{"1.`", " ", "t0"}]}], "\[Tau]0"], "]"}], "-", 
+       RowBox[{"1.`", " ", 
+        RowBox[{"Cosh", "[", 
+         FractionBox["t0", "\[Tau]0"], "]"}]}]}], ")"}]}]}], 
+   ")"}]}]], "Output",
+ CellChangeTimes->{
+  3.7619273673834524`*^9},ExpressionUUID->"ccfbfe05-fd36-47af-9b5a-\
+102ab84ac320"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Set","write",
+   "\"Tag \\!\\(\\*RowBox[{\\\"Times\\\"}]\\) in \\!\\(\\*RowBox[{\\\"f\\\", \
+\\\" \\\", \\\"t\\\"}]\\) is Protected.\"",2,1,1,29146594342822900244,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.761926461750665*^9, {3.761926567623343*^9, 
+   3.7619265690170555`*^9}},ExpressionUUID->"fa312cc3-2d58-4c5e-8805-\
+da632d02ad98"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Integrate", "[", 
+   RowBox[{
+    RowBox[{"f", "[", "t", "]"}], ",", "t"}], "]"}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.761927468815101*^9, 
+  3.761927499813343*^9}},ExpressionUUID->"3551b254-480d-4c04-9d71-\
+e3bdb533a48e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"C", " ", "t"}], "+", 
+  RowBox[{"R", " ", "\[Tau]0", " ", 
+   RowBox[{"Cosh", "[", 
+    FractionBox[
+     RowBox[{"t", "-", 
+      RowBox[{"1.`", " ", "t0"}]}], "\[Tau]0"], "]"}]}]}]], "Output",
+ CellChangeTimes->{{3.7619274729821496`*^9, 
+  3.7619275025443926`*^9}},ExpressionUUID->"6fad2492-70cd-4429-847e-\
+cceac8c87fb4"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.761926787458047*^9, 
+  3.761926787512044*^9}},ExpressionUUID->"e9b6b9a9-b4a0-43a6-8126-\
+8447b1a3e75e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ NamespaceBox["WolframAlphaQueryParseResults",
+  DynamicModuleBox[{Typeset`q$$ = "derivative of f[t] with respect to t", 
+   Typeset`newq$$ = "derivative of f[t] with respect to t", Typeset`chosen$$ =
+    "D[f[t], t]", Typeset`open$$ = False}, 
+   PaneSelectorBox[{False->
+    DynamicModuleBox[{WolframAlphaClient`Private`show$$ = False, 
+     WolframAlphaClient`Private`assumptionsQ$$ = False}, 
+     TagBox[
+      FrameBox[
+       TagBox[GridBox[{
+          {
+           InputFieldBox[Dynamic[Typeset`newq$$], String,
+            Appearance->None,
+            BaseStyle->{"CalculateInput"},
+            ContinuousAction->True,
+            Enabled->True,
+            FieldSize->{{1, 40}, {1, 
+               DirectedInfinity[1]}},
+            TrapSelection->False], 
+           ItemBox[
+            ButtonBox[
+             PaneSelectorBox[{True->
+              TagBox[
+               TooltipBox[
+                
+                DynamicBox[FEPrivate`FrontEndResource[
+                 "WABitmaps", "OrangeSquarePlus"],
+                 ImageSizeCache->{10., {3., 8.}}],
+                DynamicBox[
+                 ToBoxes[
+                  FEPrivate`FrontEndResource["WAStrings", "ShowAllResults"], 
+                  StandardForm]]],
+               Annotation[#, 
+                Dynamic[
+                 FEPrivate`FrontEndResource["WAStrings", "ShowAllResults"]], 
+                "Tooltip"]& ], False->
+              TagBox[
+               TooltipBox[
+                
+                DynamicBox[FEPrivate`FrontEndResource[
+                 "WABitmaps", "GraySquarePlus"],
+                 ImageSizeCache->{10., {3., 8.}}],
+                DynamicBox[
+                 ToBoxes[
+                  FEPrivate`FrontEndResource["WAStrings", "ShowAllResults"], 
+                  StandardForm]]],
+               Annotation[#, 
+                Dynamic[
+                 FEPrivate`FrontEndResource["WAStrings", "ShowAllResults"]], 
+                "Tooltip"]& ]}, Dynamic[WolframAlphaClient`Private`show$$],
+              ImageSize->All],
+             Appearance->None,
+             ButtonFunction:>(Quiet[
+                WolframAlpha[]]; If[
+                Or[
+                 CurrentValue["OptionKey"], 
+                 CurrentValue["AltKey"]], SelectionMove[
+                  ButtonNotebook[], All, ButtonCell, AutoScroll -> False]; 
+                NotebookWrite[
+                  ButtonNotebook[], 
+                  Cell[
+                  Typeset`newq$$, "WolframAlphaShort", FormatType -> 
+                   "TextForm"], All], Typeset`open$$ = True; 
+                WolframAlphaClient`Private`extrudeFromFastParse[
+                 "derivative of f[t] with respect to t", 
+                  Defer[
+                   D[
+                    Global`f[Global`t], Global`t]], "Fast parse"]; 
+                Typeset`open$$ = False]),
+             Evaluator->Automatic,
+             Method->"Queued"],
+            Alignment->{Right, Top},
+            StripOnInput->False]},
+          {
+           PaneBox[
+            TagBox[
+             TooltipBox[
+              ButtonBox[
+               PaneSelectorBox[{False->
+                StyleBox[
+                 RowBox[{"D", "[", 
+                  RowBox[{
+                   RowBox[{"f", "[", "t", "]"}], ",", " ", "t"}], "]"}],
+                 StripOnInput->False,
+                 NumberMarks->False], True->
+                StyleBox[
+                 RowBox[{"D", "[", 
+                  RowBox[{
+                   RowBox[{"f", "[", "t", "]"}], ",", " ", "t"}], "]"}],
+                 StripOnInput->False,
+                 ShowSyntaxStyles->False,
+                 NumberMarks->False,
+                 FontColor->RGBColor[1, 0.5, 0]]}, Dynamic[
+                 CurrentValue["MouseOver"]],
+                BaseStyle->{ShowStringCharacters -> True},
+                FrameMargins->0,
+                ImageSize->Automatic],
+               Alignment->Left,
+               Appearance->None,
+               BaseStyle->{},
+               ButtonFunction:>(SelectionMove[
+                  ButtonNotebook[], All, ButtonCell]; NotebookWrite[
+                  ButtonNotebook[], 
+                  Cell[
+                   BoxData[
+                    RowBox[{"D", "[", 
+                    RowBox[{
+                    RowBox[{"f", "[", "t", "]"}], ",", " ", "t"}], "]"}]], 
+                   "Input"], All]; SelectionMove[
+                  ButtonNotebook[], After, CellContents]),
+               Evaluator->Automatic,
+               ImageSize->Automatic,
+               Method->"Preemptive"],
+              DynamicBox[
+               ToBoxes[
+                FEPrivate`FrontEndResource["WAStrings", "RemoveResults"], 
+                StandardForm]]],
+             Annotation[#, 
+              Dynamic[
+               FEPrivate`FrontEndResource["WAStrings", "RemoveResults"]], 
+              "Tooltip"]& ],
+            AppearanceElements->{},
+            BaseStyle->{ShowStringCharacters -> True, ScriptLevel -> 0},
+            ImageSize->{Automatic, {1, 100}},
+            Scrollbars->{False, Automatic}], "\[SpanFromLeft]"}
+         },
+         AutoDelete->False,
+         BaselinePosition->{1, 1},
+         FrameStyle->GrayLevel[0.85],
+         GridBoxAlignment->{"Columns" -> {{Left}}},
+         GridBoxDividers->{
+          "Columns" -> {{False}}, "Rows" -> {False, {True}, False}},
+         GridBoxItemSize->{
+          "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+        "Grid"],
+       Alignment->Top,
+       Background->Dynamic[
+         FEPrivate`If[
+          FEPrivate`And[
+           FEPrivate`SameQ[
+            FEPrivate`Head[Typeset`newq$$], String], 
+           FEPrivate`UnsameQ[Typeset`q$$, Typeset`newq$$]], 
+          RGBColor[1., 0.975, 0.95], 
+          GrayLevel[1]]],
+       BaselinePosition->Baseline,
+       FrameStyle->GrayLevel[0.85],
+       ImageSize->Automatic,
+       RoundingRadius->5,
+       StripOnInput->False],
+      EventHandlerTag[{
+       "MouseEntered" :> 
+        FEPrivate`Set[WolframAlphaClient`Private`show$$, True], "MouseExited" :> 
+        FEPrivate`Set[WolframAlphaClient`Private`show$$, False], Method -> 
+        "Preemptive", PassEventsDown -> Automatic, PassEventsUp -> True}]],
+     DynamicModuleValues:>{}], True->
+    TagBox[GridBox[{
+       {
+        DynamicModuleBox[{WolframAlphaClient`Private`show$$ = False, 
+         WolframAlphaClient`Private`assumptionsQ$$ = False}, 
+         TagBox[
+          FrameBox[
+           TagBox[GridBox[{
+              {
+               InputFieldBox[Dynamic[Typeset`newq$$], String,
+                Appearance->None,
+                BaseStyle->{"CalculateInput"},
+                ContinuousAction->True,
+                Enabled->True,
+                FieldSize->{{1, 40}, {1, 
+                   DirectedInfinity[1]}},
+                TrapSelection->False], 
+               ItemBox[
+                ButtonBox[
+                 PaneSelectorBox[{True->
+                  TagBox[
+                   TooltipBox[
+                    
+                    DynamicBox[FEPrivate`FrontEndResource[
+                    "WABitmaps", "OrangeSquarePlus"]],
+                    DynamicBox[
+                    ToBoxes[
+                    FEPrivate`FrontEndResource["WAStrings", "ShowAllResults"],
+                     StandardForm]]],
+                   Annotation[#, 
+                    Dynamic[
+                    FEPrivate`FrontEndResource[
+                    "WAStrings", "ShowAllResults"]], "Tooltip"]& ], False->
+                  TagBox[
+                   TooltipBox[
+                    
+                    DynamicBox[FEPrivate`FrontEndResource[
+                    "WABitmaps", "GraySquarePlus"]],
+                    DynamicBox[
+                    ToBoxes[
+                    FEPrivate`FrontEndResource["WAStrings", "ShowAllResults"],
+                     StandardForm]]],
+                   Annotation[#, 
+                    Dynamic[
+                    FEPrivate`FrontEndResource[
+                    "WAStrings", "ShowAllResults"]], "Tooltip"]& ]}, Dynamic[
+                  WolframAlphaClient`Private`show$$],
+                  ImageSize->All],
+                 Appearance->None,
+                 ButtonFunction:>(Quiet[
+                    WolframAlpha[]]; If[
+                    Or[
+                    CurrentValue["OptionKey"], 
+                    CurrentValue["AltKey"]], SelectionMove[
+                    ButtonNotebook[], All, ButtonCell, AutoScroll -> False]; 
+                    NotebookWrite[
+                    ButtonNotebook[], 
+                    Cell[
+                    Typeset`newq$$, "WolframAlphaShort", FormatType -> 
+                    "TextForm"], All], Typeset`open$$ = True; 
+                    WolframAlphaClient`Private`extrudeFromFastParse[
+                    "derivative of f[t] with respect to t", 
+                    Defer[
+                    D[
+                    Global`f[Global`t], Global`t]], "Fast parse"]; 
+                    Typeset`open$$ = False]),
+                 Evaluator->Automatic,
+                 Method->"Queued"],
+                Alignment->{Right, Top},
+                StripOnInput->False]},
+              {
+               PaneBox[
+                TagBox[
+                 TooltipBox[
+                  ButtonBox[
+                   PaneSelectorBox[{False->
+                    StyleBox[
+                    RowBox[{"D", "[", 
+                    RowBox[{
+                    RowBox[{"f", "[", "t", "]"}], ",", " ", "t"}], "]"}],
+                    StripOnInput->False,
+                    NumberMarks->False], True->
+                    StyleBox[
+                    RowBox[{"D", "[", 
+                    RowBox[{
+                    RowBox[{"f", "[", "t", "]"}], ",", " ", "t"}], "]"}],
+                    StripOnInput->False,
+                    ShowSyntaxStyles->False,
+                    NumberMarks->False,
+                    FontColor->RGBColor[1, 0.5, 0]]}, Dynamic[
+                    CurrentValue["MouseOver"]],
+                    BaseStyle->{ShowStringCharacters -> True},
+                    FrameMargins->0,
+                    ImageSize->Automatic],
+                   Alignment->Left,
+                   Appearance->None,
+                   BaseStyle->{},
+                   ButtonFunction:>(SelectionMove[
+                    ButtonNotebook[], All, ButtonCell]; NotebookWrite[
+                    ButtonNotebook[], 
+                    Cell[
+                    BoxData[
+                    RowBox[{"D", "[", 
+                    RowBox[{
+                    RowBox[{"f", "[", "t", "]"}], ",", " ", "t"}], "]"}]], 
+                    "Input"], All]; SelectionMove[
+                    ButtonNotebook[], After, CellContents]),
+                   Evaluator->Automatic,
+                   ImageSize->Automatic,
+                   Method->"Preemptive"],
+                  DynamicBox[
+                   ToBoxes[
+                    FEPrivate`FrontEndResource["WAStrings", "RemoveResults"], 
+                    StandardForm]]],
+                 Annotation[#, 
+                  Dynamic[
+                   FEPrivate`FrontEndResource["WAStrings", "RemoveResults"]], 
+                  "Tooltip"]& ],
+                AppearanceElements->{},
+                BaseStyle->{ShowStringCharacters -> True, ScriptLevel -> 0},
+                ImageSize->{Automatic, {1, 100}},
+                Scrollbars->{False, Automatic}], "\[SpanFromLeft]"}
+             },
+             AutoDelete->False,
+             BaselinePosition->{1, 1},
+             FrameStyle->GrayLevel[0.85],
+             GridBoxAlignment->{"Columns" -> {{Left}}},
+             
+             GridBoxDividers->{
+              "Columns" -> {{False}}, "Rows" -> {False, {True}, False}},
+             
+             GridBoxItemSize->{
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Grid"],
+           Alignment->Top,
+           Background->Dynamic[
+             FEPrivate`If[
+              FEPrivate`And[
+               FEPrivate`SameQ[
+                FEPrivate`Head[Typeset`newq$$], String], 
+               FEPrivate`UnsameQ[Typeset`q$$, Typeset`newq$$]], 
+              RGBColor[1., 0.975, 0.95], 
+              GrayLevel[1]]],
+           BaselinePosition->Baseline,
+           FrameStyle->GrayLevel[0.85],
+           ImageSize->Automatic,
+           RoundingRadius->5,
+           StripOnInput->False],
+          
+          EventHandlerTag[{
+           "MouseEntered" :> 
+            FEPrivate`Set[WolframAlphaClient`Private`show$$, True], 
+            "MouseExited" :> 
+            FEPrivate`Set[WolframAlphaClient`Private`show$$, False], Method -> 
+            "Preemptive", PassEventsDown -> Automatic, PassEventsUp -> True}]],
+         DynamicModuleValues:>{}]},
+       {
+        InterpretationBox[
+         StyleBox[
+          
+          DynamicBox[FEPrivate`FrontEndResource[
+           "FEExpressions", "NecklaceAnimator"][20]],
+          AnimatorBoxOptions->{ImageSize->20}],
+         Animator[Appearance -> "Necklace", ImageSize -> 20],
+         BaseStyle->{"Deploy"}]}
+      },
+      BaselinePosition->{1, 1},
+      DefaultBaseStyle->"Column",
+      GridBoxAlignment->{"Columns" -> {{Left}}},
+      GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+     "Column"]}, Dynamic[
+     TrueQ[Typeset`open$$]],
+    BaseStyle->{Deployed -> True},
+    ImageSize->Automatic],
+   DynamicModuleValues:>{}],
+  BaseStyle->{Deployed -> True},
+  DeleteWithContents->True,
+  Editable->False,
+  SelectWithContents->True]], "WolframAlphaShortInput",ExpressionUUID->\
+"66f5785e-5790-4325-8565-d44cb9a5d461"],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"R", " ", 
+   RowBox[{"Cosh", "[", 
+    FractionBox[
+     RowBox[{"t", "-", "t0"}], "\[Tau]0"], "]"}]}], "\[Tau]0"]], "Output",
+ CellChangeTimes->{3.7619270269476347`*^9, 
+  3.761927145481935*^9},ExpressionUUID->"3160da64-6005-4102-883b-\
+ba45eb6cd74d"]
 }, Open  ]]
 },
 WindowSize->{1920, 997},
@@ -685,7 +1175,7 @@ Cell[1545, 52, 3414, 78, 53, "Output",ExpressionUUID->"eb06f89c-0a9c-4382-8822-f
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[4996, 135, 299, 6, 28, "Input",ExpressionUUID->"33840b6d-e52c-4426-a349-4ff5c7bcdf31"],
-Cell[5298, 143, 973, 28, 155, "Output",ExpressionUUID->"ec180e19-fc54-4e14-9067-3c9aa1b817d0"]
+Cell[5298, 143, 973, 28, 84, "Output",ExpressionUUID->"ec180e19-fc54-4e14-9067-3c9aa1b817d0"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[6308, 176, 183, 4, 28, "Input",ExpressionUUID->"b20bbcab-a549-46c6-a8a9-dd92b974ee1a"],
@@ -693,7 +1183,7 @@ Cell[6494, 182, 1362, 28, 52, "Output",ExpressionUUID->"29bb7992-bfba-41c9-ab62-
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[7893, 215, 186, 4, 28, "Input",ExpressionUUID->"1a968d73-ea2f-4e08-9769-cb2594b569d1"],
-Cell[8082, 221, 2843, 62, 419, "Output",ExpressionUUID->"1b4be41b-9c40-4893-9844-abe5dc34c0ba"]
+Cell[8082, 221, 2843, 62, 405, "Output",ExpressionUUID->"1b4be41b-9c40-4893-9844-abe5dc34c0ba"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[10962, 288, 192, 4, 28, "Input",ExpressionUUID->"0909c479-8ca6-47ba-8b5c-d164436ee7d3"],
@@ -702,6 +1192,29 @@ Cell[11157, 294, 1746, 44, 248, "Output",ExpressionUUID->"ae50c3b0-45ca-4b2c-b98
 Cell[CellGroupData[{
 Cell[12940, 343, 552, 13, 28, "Input",ExpressionUUID->"53245ba6-7769-4aa1-9083-0692cd16f7fa"],
 Cell[13495, 358, 17320, 303, 236, "Output",ExpressionUUID->"f7729e27-8cfe-4d7e-9b9d-50dd41ec6649"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30852, 666, 502, 14, 93, "Input",ExpressionUUID->"0ea8da8b-febe-4085-98a8-b22e6a9f8878"],
+Cell[31357, 682, 263, 8, 55, "Output",ExpressionUUID->"7c9b45ef-c2cf-4874-8133-b80d9382d873"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31657, 695, 272, 7, 48, "Input",ExpressionUUID->"efedc45a-b305-43a3-96ab-eabb244eb05a"],
+Cell[31932, 704, 295, 8, 68, "Output",ExpressionUUID->"60befd64-ce0c-46c2-81e4-7616b817632b"]
+}, Open  ]],
+Cell[32242, 715, 340, 7, 39, "Input",ExpressionUUID->"e2aa0274-dd6f-44e3-a4fd-74552a37997d"],
+Cell[CellGroupData[{
+Cell[32607, 726, 607, 14, 52, "Input",ExpressionUUID->"e907ed96-00a4-4bfc-9bc2-651e5e580a52"],
+Cell[33217, 742, 605, 18, 57, "Output",ExpressionUUID->"ccfbfe05-fd36-47af-9b5a-102ab84ac320"],
+Cell[33825, 762, 449, 11, 21, "Message",ExpressionUUID->"fa312cc3-2d58-4c5e-8805-da632d02ad98"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34311, 778, 266, 7, 28, "Input",ExpressionUUID->"3551b254-480d-4c04-9d71-e3bdb533a48e"],
+Cell[34580, 787, 359, 10, 55, "Output",ExpressionUUID->"6fad2492-70cd-4429-847e-cceac8c87fb4"]
+}, Open  ]],
+Cell[34954, 800, 152, 3, 28, InheritFromParent,ExpressionUUID->"e9b6b9a9-b4a0-43a6-8126-8447b1a3e75e"],
+Cell[CellGroupData[{
+Cell[35131, 807, 13575, 334, 66, "WolframAlphaShortInput",ExpressionUUID->"66f5785e-5790-4325-8565-d44cb9a5d461"],
+Cell[48709, 1143, 291, 8, 68, "Output",ExpressionUUID->"3160da64-6005-4102-883b-ba45eb6cd74d"]
 }, Open  ]]
 }
 ]
