@@ -87,6 +87,9 @@ param={'type':<types>, 'values':<values>}
             yield self.gen_string_for_combo(c)
 
 
+    
+
+
 ##################################################
 
 testd = {'b':{'type':'set', 'values':[1,2,3]}, 'c':{'type':'range', 'values':[1,10]}}
