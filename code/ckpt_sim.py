@@ -10,7 +10,7 @@ from statsmodels.distributions.empirical_distribution import ECDF
 
 C = 1 #Time it takes to write a checkpoint. 1 Minute
 R = 1 #Recovery time
-MTTF = 14*60
+MTTF = 12*60
 Num_servers = 1
 job_start_time = 0*60
 
@@ -21,10 +21,16 @@ fails_full=np.array([86460.7, 2363.482, 86439.649, 88954.991, 88949.557, 1245.76
 
 gcp_cdf=ECDF(fails_full)
 
+job_len = None #In Minutes 
 
 soldict=dict()
 
 ######################################################################
+
+def Young_Daly_Estimate():
+    tau = math.sqrt(2.0*C*MTTF)
+    exp_t = job_len*(1.0 + ((0.5*tau)/MTTF) + (C/tau))
+    return (tau, exp_t)
 
 def find_nearest(array, value):
     """ Maybe numpy has a built in for this? I always forget """
@@ -178,16 +184,19 @@ def makespan(W, nofail, Wdone, start_time):
 ######################################################################
 
 def dp_driver(W=100):
+    global job_len 
+    job_len = W 
     makespan(W, 1, 0, 1*60)
-
     pprint.pprint(soldict)
 
 ######################################################################
 
 if __name__ == "__main__":
     #sys.setrecursionlimit(100000000)
-
     dp_driver()
+    print("-----------------------------------------")
+    print(Young_Daly_Estimate())
+    #dp_driver()
     #print(P_success_CDF(60,60))
 
 ######################################################################

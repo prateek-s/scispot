@@ -295,8 +295,9 @@ exit 0
         curr = 0
         instances = self.compute.instances()
         running_vms = [vm.name for vm in instances.list(project=self.project, zone=self.zone, filter="status = RUNNING").execute()['items'] if vm.status is 'RUNNING']
+        namegrp_vms = []
         curr = len(running_vms)
-        #TODO: Must be part of this name group (use name), AND must be
+        #TODO: Must be part of this name group (use name), AND cannot be the master 
         return target - curr
 
     ##################################################
