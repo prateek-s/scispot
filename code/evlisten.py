@@ -492,6 +492,7 @@ exit 0
 
         if self.phase is 'explore':
             self.runtimedict[self.current_mtype] = tdiff
+            #TODO: Persist this runtime dict as another json db, pickle, or log 
             self.jobs_completed += 1
             self.do_exploration() #Try next server configuration, exploration is serial for now!
 
@@ -516,7 +517,7 @@ exit 0
         jobdb = self.get_jobdb()
 
         for job in jobids:
-            #Will be a string, but that is OK if the keys are strings?
+            #Will be a hopefully santized string
             q = tinydb.Query()
             res = jobdb.search(q.jobname == job)
             if len(res) is 0:

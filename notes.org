@@ -166,6 +166,14 @@ In a loose sense, our bag of jobs policy uses "approximate replication", sine di
 nanoconfinement now runs on LAMMPS. Set that up 
 Discussed about other class of applications like biology/astronomy that may have different computational and communication characteristics compared to MD applications. 
 
+MORPHEUS
+
+FLASH 
+
+CASSANDRA monte carlo 
+
+GPU based 
+
 ** Checkpointing
 Explained dynamic programming briefly. Off the critical path. Can look at CDF smoothing. 
 
