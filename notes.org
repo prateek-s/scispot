@@ -25,6 +25,12 @@ Another fundamental question is what is a suitable metric in such cases. Convent
 
 Job lifetime is usually 4--24 hours. 
 
+** Background on HPC clusters 
+
+- Limited number of nodes for jobs https://www.msi.umn.edu/queues
+- Account restrictions that require workarounds 
+- Resource limits are bad 
+
 * Policies 
 
 ** How many jobs to spawn
@@ -173,17 +179,28 @@ A discussion of the workarounds that scientists and users have to employ to make
 Latin Hypercube sampling from metis 
 
 
-* TODOs 
+* Task List 
 
-- Waiting/Queueing time graphs for super computers 
-- Monte Carlo simulation of expectation of the failure distribution \integrate x*sinh(x)
-<<<<<<< HEAD
-=======
-- PMF (Cosh) of the corresponding CDFs 
-- Write simulator for expected cost and running times 
-- Simulation parameter generation script for nanoconfinement and shapes (Integrate as a generator function into current code)
->>>>>>> 00d177b3358960569517cb1397f4fb20116f10f6
-- Principled distribution fitting. How are parameters found? 
-- Fit distribution for a few instance types (highcpu-16, standard-8, ... )
-- Simulation parameter generation script for nanoconfinement and shapes (Integrate as a generator function into current code)
+** TODO Waiting/Queueing time graphs for super computers 
 
+** TODO Write simulator for expected cost and running times 
+ - Use expected probabilities initially 
+ - Then use actual CDF 
+
+
+** TODO Principled distribution fitting. How are parameters found? 
+ - Needs more details for writing this up? 
+
+** TODO Workload selection 
+
+FLASH From the dubey paper. Astro workloads? Large scale simulation? 
+ALEA job scheduling simulator 
+LAMMPS, LUA? EP
+
+** DONE Monte Carlo simulation of expectation of the failure distribution \integrate x*sinh(x)
+
+** DONE PMF (Cosh) of the corresponding CDFs 
+
+** DONE Simulation parameter generation script for nanoconfinement and shapes (Integrate as a generator function into current code)
+
+** DONE Fit distribution for a few instance types (highcpu-16, standard-8, ... )
