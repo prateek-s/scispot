@@ -13,13 +13,12 @@ Goal should be start using scispot code
 * 2 Exploration for shapes 
 Depends on 10 
 
-* 3 Exploraiton of X 
+* 3 Exploration of X 
 Depends on 10 
 
 * 4 Exploitation for confinement 
 Depends on 9 
 ** CPU = 64 
-
 
 * 5 Code cost simulation 
 
@@ -28,29 +27,36 @@ Depends on 9
 * 7 BigRed 2?
 *OPTIONAL?*
 
-* Different finish thresholds
+* 8 Different finish thresholds
+Exploit confinement and one other? 
 ** 90%
 ** 80%
 
+* 11 Exploitation for shapes and X 
 
+* 12 Waiting time graphs 
+
+* 13 Checkpointing analysis 
+
+* 14 BigRed 2 performance 
 
 * Plan
 
-| Day | Task                         | Who        | Status |
-|-----+------------------------------+------------+--------|
-| Mon | 1 Explore confinement        | Prateek    |        |
-| Mon | 9 SystemD                    | Kadupitiya |        |
-| Mon | 10 Image                     | Prateek    |        |
-| Tue | 2 Explore shapes             | Kadupitiya |        |
-| Tue | 3 Explore X                  | Kadupitiya |        |
-| Tue | 5 Runtime Simulator          | Prateek    |        |
-| Wed | 6 Code cost simulation       | Prateek    |        |
-| Wed | Exploitation for confinement | Kadupitiya |        |
-| Wed | Exploitation for shapes      | Kadupitiya |        |
-| Thu | Exploitation for X           | Kadupitiya |        |
-| Thu | Waiting time analysis graphs | Prateek    |        |
-| Fri | BigRed2                      | Kadupitiya |        |
-| Fri | Checkpointing analysis       | Prateek    |        |
+| Day | Task                            | Who        | Status |
+|-----+---------------------------------+------------+--------|
+| Mon | 1 Explore confinement           | Kadupitiya |        |
+| Mon | 9 SystemD                       | Prateek    |        |
+| Mon | 10 Image                        | Prateek    |        |
+| Tue | 2 Explore shapes                | Kadupitiya |        |
+| Tue | 3 Explore X                     | Kadupitiya |        |
+| Tue | 5 Runtime Simulator             | Prateek    |        |
+| Wed | 6 Code cost simulation          | Prateek    |        |
+| Wed | 4 Exploitation for confinement  | Kadupitiya |        |
+| Wed | 11 Exploitation for shapes      | Kadupitiya |        |
+| Thu | 11 Exploitation for X           | Kadupitiya |        |
+| Thu | 12 Waiting time analysis graphs | Prateek    |        |
+| Fri | 14 BigRed2                      | Kadupitiya |        |
+| Fri | 13 Checkpointing analysis       | Prateek    |        |
 
 
 
