@@ -1,0 +1,56 @@
+* 10 Create image with tested Nanoconfinement, shapes, and X 
+
+* 9 Systemd restart on failure and pass -i 
+** https://singlebrook.com/2017/10/23/auto-restart-crashed-service-systemd/
+
+* 1 Exploration for confinement
+Create a new master and use a different zone (central maybe)
+Goal should be start using scispot code 
+** CPU = 64 
+*** On-demand and preemptible just to show equivalence 
+** CPU = 128 
+
+* 2 Exploration for shapes 
+Depends on 10 
+
+* 3 Exploraiton of X 
+Depends on 10 
+
+* 4 Exploitation for confinement 
+Depends on 9 
+** CPU = 64 
+
+
+* 5 Code cost simulation 
+
+* 6 Code runtime estimation 
+
+* 7 BigRed 2?
+*OPTIONAL?*
+
+* Different finish thresholds
+** 90%
+** 80%
+
+
+
+* Plan
+
+| Day | Task                         | Who        | Status |
+|-----+------------------------------+------------+--------|
+| Mon | 1 Explore confinement        | Prateek    |        |
+| Mon | 9 SystemD                    | Kadupitiya |        |
+| Mon | 10 Image                     | Prateek    |        |
+| Tue | 2 Explore shapes             | Kadupitiya |        |
+| Tue | 3 Explore X                  | Kadupitiya |        |
+| Tue | 5 Runtime Simulator          | Prateek    |        |
+| Wed | 6 Code cost simulation       | Prateek    |        |
+| Wed | Exploitation for confinement | Kadupitiya |        |
+| Wed | Exploitation for shapes      | Kadupitiya |        |
+| Thu | Exploitation for X           | Kadupitiya |        |
+| Thu | Waiting time analysis graphs | Prateek    |        |
+| Fri | BigRed2                      | Kadupitiya |        |
+| Fri | Checkpointing analysis       | Prateek    |        |
+
+
+
