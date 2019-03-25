@@ -1,3 +1,4 @@
+* Confinement
 apt install build-essential libgsl-dev ruby-gsl mpi-default-dev libboost-mpi-dev libboost-program-options-dev libboost-system-dev libboost-filesystem-dev vim ssh 
 
 We dont need boost_libdir, so remove -L{ } from src/Makefile
@@ -31,3 +32,20 @@ env | grep MPI | grep -v
 docker run --privileged --env-file /root/env.txt -p 7950-8000:7950-8000
 mrmagooey/mpi-mm
 
+* Lulesh 
+https://github.com/LLNL/LULESH
+edit makefile to use mpic++ and not mpig++ 
+
+ -q              : quiet mode - suppress all stdout
+ -i <iterations> : number of cycles to run
+ -s <size>       : length of cube mesh along side
+ -r <numregions> : Number of distinct regions (def: 11)
+ -b <balance>    : Load balance between regions of a domain (def: 1)
+ -c <cost>       : Extra cost of more expensive regions (def: 1)
+ -f <numfiles>   : Number of files to split viz dump into (def: (np+10)/9)
+ -p              : Print out progress
+ -v              : Output viz file (requires compiling with -DVIZ_MESH
+ -h              : This message
+
+More benchmarks here:
+https://asc.llnl.gov/CORAL-benchmarks/#hacc 

@@ -20,6 +20,7 @@ from SciSpot import SciSpot
 #from jobgen import JobGen
 
 """
+http://localhost:7878/?explore=True&target_cpus=16
 Usage: http://localhost:7878/?preempted=abacus
 http://localhost:7878/?finished=jobid
 http://localhost:7878/?launch_cluster=True&namegrp=abra&num_nodes=4&mtype=n1-highcpu-16&start_id=1&slurm_master=ubslurm1
@@ -54,10 +55,10 @@ class evlisten(resource.Resource, SciSpot):
 
     current_jobs = [] #Useful for respawning?
 
-    current_master = 'ubslurm1'
+    current_master = 'instance-7'
 
     current_start_id = 1
-
+    
     ##################################################
 
     def __init__(self):
@@ -70,6 +71,7 @@ class evlisten(resource.Resource, SciSpot):
 
     def start_master(self, zone, name):
         """ Non-preemptible, with source image, no startup script? """
+        #Usually we start the master manually since it is very long running 
         mtype = 'n1-standard-2'
         pass
 
@@ -144,7 +146,7 @@ SlurmdUser=root
 StateSaveLocation=/var/lib/slurm-llnl/slurmctld
 SwitchType=switch/none
 TaskPlugin=task/none
-JobCredentialPrivateKey=/home/prateek3_14/slurmkey
+JobCredentialPrivateKey=/scispot/slurmkey
 #
 JobCompType=jobcomp/filetxt
 JobCompLoc=/var/log/slurmjobs
@@ -165,7 +167,7 @@ SelectType=select/linear
 #
 # LOGGING AND ACCOUNTING
 AccountingStorageType=accounting_storage/none
-ClusterName=ubslurm1
+ClusterName={cluster_name}
 #JobAcctGatherFrequency=30
 JobAcctGatherType=jobacct_gather/none
 #SlurmctldDebug=3
@@ -176,7 +178,7 @@ SuspendTime=86400
 #
 #
 # COMPUTE NODES \n""".\
-        format(slurm_master=slurm_master)
+        format(slurm_master=slurm_master, cluster_name=slurm_master)
 
         slurmconfstr += ' '.join(("NodeName=DEFAULT",
                                   "Sockets="        + str(machine['sockets']),
@@ -197,7 +199,7 @@ SuspendTime=86400
 
     def get_startup_script(self, slurmconfstr):
         """ Copy slurm config, and start slurmd. TODO: if master, then slurmctld"""
-
+        master = self.current_master
         startupscriptstr = """
 #!/bin/bash
 
@@ -206,6 +208,8 @@ logger "Running as `whoami`"
 
 systemctl stop slurmd
 systemctl stop slurmctld
+
+sed -i 's/@ubslurm1/{master}/' /scispot/slurmkey.pub 
 
 echo > /etc/slurm-llnl/slurm.conf
 
@@ -219,7 +223,7 @@ logger "Slurm conf applied, startup script ending"
 
 exit 0
 
-    """.format(slurmconfstr=slurmconfstr)
+    """.format(master=master, slurmconfstr=slurmconfstr)
         return startupscriptstr
 
     ##################################################
@@ -432,6 +436,11 @@ exit 0
             namegrp = self.gen_cluster_name() #Random string
             self.current_cluster = [] #Reset otherwise run_job tries launching with larger params 
             self.launch_cluster(namegrp, num_servers, mtype)
+
+            #We want to give slurm some time to reconfigure...
+
+            time.sleep(90)
+            
             jobid = self.run_job()
             #We don't wait, but just return here. Serial exploration. 
         except Exception as e:
