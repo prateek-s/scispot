@@ -44,9 +44,10 @@ Exploit confinement and one other?
 
 | Day | Task                            | Who        | Status |
 |-----+---------------------------------+------------+--------|
+| Mon | 0 Setup and run scispot         | Kadupitiya | Doing  |
 | Mon | 1 Explore confinement           | Kadupitiya |        |
-| Mon | 9 SystemD                       | Prateek    |        |
-| Mon | 10 Image                        | Prateek    |        |
+| Mon | 9 SystemD                       | Prateek    | Done   |
+| Mon | 10 Image                        | Prateek    | Done   |
 | Tue | 2 Explore shapes                | Kadupitiya |        |
 | Tue | 3 Explore X                     | Kadupitiya |        |
 | Tue | 5 Runtime Simulator             | Prateek    |        |

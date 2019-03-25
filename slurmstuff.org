@@ -65,6 +65,6 @@ Now, srun hostname fails with invalid job credential . Needs munge running in so
 * New master 
 munge key must have the slurm master host name. Replace @ubslurm1
 
-remove /var/lib/slurm-llnl/.../clustername first time starting a master 
+remove /var/lib/slurm-llnl/slurmctld/clustername first time starting a master 
 
 TODO: IP address in the callback sripts handle_fin/fail.sh 
