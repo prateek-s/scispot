@@ -42,5 +42,5 @@
  * sinfo 
  * squeue
  * sbatch -N 1 -c 8 -n 1 /scispot/sb_confinement.sh
-
+ * scancel jobid
 
