@@ -12,7 +12,7 @@ class SciSpot:
     
     project='first-220321'
     zone='us-east1-b'
-    imageName = 'global/images/ubs2' 
+    imageName = 'global/images/ubs5' 
     
     mtypes_highcpu=['n1-highcpu-16','n1-highcpu-2','n1-highcpu-32','n1-highcpu-4','n1-highcpu-64','n1-highcpu-8']
     mtypes_stan=['n1-standard-1','n1-standard-16','n1-standard-2','n1-standard-32','n1-standard-4','n1-standard-64','n1-standard-8']
@@ -23,7 +23,7 @@ class SciSpot:
     username = 'prateek3_14'
     key_filename = '/home/prateeks/.ssh/gce'
 
-    runfile = '/home/prateek3_14/sb_confinement.sh'  
+    runfile = '/scispot/sb_confinement.sh'  
 
     max_params_to_explore = 100
     min_params_to_explore = 80 

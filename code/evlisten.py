@@ -54,7 +54,7 @@ class evlisten(resource.Resource, SciSpot):
 
     current_jobs = [] #Useful for respawning?
 
-    current_master = 'ubslurm1'
+    current_master = 'instance-7'
 
     current_start_id = 1
 
@@ -70,6 +70,7 @@ class evlisten(resource.Resource, SciSpot):
 
     def start_master(self, zone, name):
         """ Non-preemptible, with source image, no startup script? """
+        #Usually we start the master manually since it is very long running 
         mtype = 'n1-standard-2'
         pass
 
@@ -144,7 +145,7 @@ SlurmdUser=root
 StateSaveLocation=/var/lib/slurm-llnl/slurmctld
 SwitchType=switch/none
 TaskPlugin=task/none
-JobCredentialPrivateKey=/home/prateek3_14/slurmkey
+JobCredentialPrivateKey=/scispot/slurmkey
 #
 JobCompType=jobcomp/filetxt
 JobCompLoc=/var/log/slurmjobs
@@ -165,7 +166,7 @@ SelectType=select/linear
 #
 # LOGGING AND ACCOUNTING
 AccountingStorageType=accounting_storage/none
-ClusterName=ubslurm1
+ClusterName={cluster_name}
 #JobAcctGatherFrequency=30
 JobAcctGatherType=jobacct_gather/none
 #SlurmctldDebug=3
@@ -176,7 +177,7 @@ SuspendTime=86400
 #
 #
 # COMPUTE NODES \n""".\
-        format(slurm_master=slurm_master)
+        format(slurm_master=slurm_master, cluster_name=slurm_master)
 
         slurmconfstr += ' '.join(("NodeName=DEFAULT",
                                   "Sockets="        + str(machine['sockets']),
@@ -197,7 +198,7 @@ SuspendTime=86400
 
     def get_startup_script(self, slurmconfstr):
         """ Copy slurm config, and start slurmd. TODO: if master, then slurmctld"""
-
+        master = self.current_master
         startupscriptstr = """
 #!/bin/bash
 
@@ -206,6 +207,8 @@ logger "Running as `whoami`"
 
 systemctl stop slurmd
 systemctl stop slurmctld
+
+sed -i 's/@ubslurm1/{master}/' /scispot/slurmkey.pub 
 
 echo > /etc/slurm-llnl/slurm.conf
 
@@ -219,7 +222,7 @@ logger "Slurm conf applied, startup script ending"
 
 exit 0
 
-    """.format(slurmconfstr=slurmconfstr)
+    """.format(master=master, slurmconfstr=slurmconfstr)
         return startupscriptstr
 
     ##################################################
