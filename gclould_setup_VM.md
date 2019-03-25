@@ -36,4 +36,9 @@
  * http://localhost:7878/?preempted=abacus
  * http://localhost:7878/?finished=jobid
  * http://localhost:7878/?launch_cluster=True&namegrp=abra&num_nodes=4&mtype=n1-highcpu-16&start_id=1&slurm_master=ubslurm1
+ 
+ ## slurm commands
+ * sinfo 
+ * squeue
+
 
