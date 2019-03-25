@@ -20,6 +20,7 @@ from SciSpot import SciSpot
 #from jobgen import JobGen
 
 """
+http://localhost:7878/?explore=True&target_cpus=16
 Usage: http://localhost:7878/?preempted=abacus
 http://localhost:7878/?finished=jobid
 http://localhost:7878/?launch_cluster=True&namegrp=abra&num_nodes=4&mtype=n1-highcpu-16&start_id=1&slurm_master=ubslurm1
@@ -57,7 +58,7 @@ class evlisten(resource.Resource, SciSpot):
     current_master = 'instance-7'
 
     current_start_id = 1
-
+    
     ##################################################
 
     def __init__(self):
@@ -435,6 +436,11 @@ exit 0
             namegrp = self.gen_cluster_name() #Random string
             self.current_cluster = [] #Reset otherwise run_job tries launching with larger params 
             self.launch_cluster(namegrp, num_servers, mtype)
+
+            #We want to give slurm some time to reconfigure...
+
+            time.sleep(90)
+            
             jobid = self.run_job()
             #We don't wait, but just return here. Serial exploration. 
         except Exception as e:
