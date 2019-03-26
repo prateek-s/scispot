@@ -25,6 +25,7 @@
   * username = 'kadupitiya'
   * key_filename = '/home/kadupitiya/.ssh/google_key'
   * zone = 'us-central1-c'
+  * current_master = 'n-master-1'
   * batcmd = "sbatch --no-requeue  --parsable -N {num_nodes} -c {cores} -n {num_nodes} {runfile} {jobparams}"......
  
  ## change the handle_fin.sh and handle_fail.sh file endpointsin the VM(/scispot/) not in clone project
