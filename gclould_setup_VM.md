@@ -45,7 +45,9 @@
  * squeue
  * sbatch -N 1 -c 8 -n 1 /scispot/sb_confinement.sh
  * scancel jobid
+ * scontrol show job
  * Logfile: /var/log/slurm-llnl/slurmctld.log
+ * Job log:/var/log/slurmjobs
  
  
  ## Path issues
