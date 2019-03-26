@@ -325,7 +325,7 @@ exit 0
             print("No replenishment required!")
             return (self.current_namegrp, 0)
 
-        return self.launch_cluster(self.current_namegrp, deficit+1, self.current_mtype, replenish=True)
+        return self.launch_cluster(self.current_namegrp, deficit, self.current_mtype, deficit+1, replenish=True)
 
     ##################################################
 
