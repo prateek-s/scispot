@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  18 MAR 2019 09:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  26 MAR 2019 17:49
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
-**paper
+**paper.tex
 (./paper.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 9 language(s) loaded.
@@ -1277,13 +1277,13 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: C5B46AD63A0A849479D00D0976D8EAB6;5375.
  ) 
 Here is how much of TeX's memory you used:
- 21699 strings out of 494805
- 340709 string characters out of 6178000
+ 21700 strings out of 494805
+ 340714 string characters out of 6178000
  480582 words of memory out of 5000000
  24058 multiletter control sequences out of 15000+600000
  159150 words of font info for 324 fonts, out of 8000000 for 9000
  242 hyphenation exceptions out of 8191
- 60i,17n,94p,808b,655s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,812b,655s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
 r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/shar
 e/texlive/texmf-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive

@@ -325,7 +325,7 @@ exit 0
             print("No replenishment required!")
             return (self.current_namegrp, 0)
 
-        return self.launch_cluster(self.current_namegrp, deficit+1, self.current_mtype, replenish=True)
+        return self.launch_cluster(self.current_namegrp, deficit, self.current_mtype, replenish=True)
 
     ##################################################
 
@@ -450,7 +450,8 @@ exit 0
                 self.destroy_current_cluster()
 
             namegrp = self.gen_cluster_name() #Random string
-            self.current_cluster = [] #Reset otherwise run_job tries launching with larger params 
+            self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
+            self.current_start_id = 1
             self.launch_cluster(namegrp, num_servers, mtype)
 
             #We want to give slurm some time to reconfigure...
