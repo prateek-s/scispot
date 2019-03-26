@@ -56,7 +56,7 @@ class evlisten(resource.Resource, SciSpot):
 
     current_jobs = [] #Useful for respawning?
 
-    current_master = 'instance-7'
+    current_master = 'ubslurm1'
 
     current_start_id = 1
     
@@ -299,9 +299,15 @@ exit 0
         target = self.target_nodes
         curr = 0
         instances = self.compute.instances()
-        running_vms = [vm.name for vm in instances.list(project=self.project, zone=self.zone, filter="status = RUNNING").execute()['items'] if vm.status is 'RUNNING']
-        namegrp_vms = []
-        curr = len(running_vms)
+        try:
+            running_vms = [vm['name'] for vm in instances.list(project=self.project, zone=self.zone, filter="status = RUNNING").execute()['items'] if vm['status'] is 'RUNNING']
+        except:
+            print("Error getting running VMs!")
+            print("Launching Nothing")
+            return 0
+        
+        namegrp_vms = [vmname for vmname in running_vms if self.current_namegrp in vmname]
+        curr = len(namegrp_vms)
         #TODO: Must be part of this name group (use name), AND cannot be the master 
         return target - curr
 
@@ -488,13 +494,13 @@ exit 0
         #SSH and Copy the file tail -n 1 /var/log/slurmjobs
         #What if we rerun something and the job 
     
-        client = self.gcp_ssh(master)
+        client = self.gcp_ssh(self.current_master)
 
         i, o, e=client.exec_command("tail -n 1 /var/log/slurmjobs")
         s = o.read()
         o.close()
         client.close()
-
+        
         #Check if
         #s="JobId=151 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-03-26T17:42:01 EndTime=2019-03-26T18:19:55 NodeList=acoiis[1-8] NodeCnt=0 ProcCnt=16 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-03-26T17:42:01 EligibleTime=2019-03-26T17:42:01 DerivedExitCode=0:0 ExitCode=0:0
         try:
@@ -521,7 +527,7 @@ exit 0
         if not self.verify_job_completion(jobids[0]):
             #There is a race condition if both preemption and finished call backs are called.
             #We fix this by checking the slurmjobs log to see if it /really/ completed
-            print("False alarm on the job completion, treating as a failure")
+            print("False alarm on the job completion, ignoring!")
             return
         
         fin_time = datetime.datetime.now().isoformat()        
@@ -612,6 +618,7 @@ exit 0
         if should_rerun is True:
             #Also mark job for re-running?
             self.replenish_cluster()
+            time.sleep(90)
             self.rerun_job(jobid)
         else:
             self.jobs_abandoned += 1
