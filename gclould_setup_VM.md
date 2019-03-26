@@ -25,8 +25,9 @@
   * username = 'kadupitiya'
   * key_filename = '/home/kadupitiya/.ssh/google_key'
   * zone = 'us-central1-c'
+  * batcmd = "sbatch --no-requeue  --parsable -N {num_nodes} -c {cores} -n {num_nodes} {runfile} {jobparams}"......
  
- ## change the handle_fin.sh and handle_fail.sh file endpoints
+ ## change the handle_fin.sh and handle_fail.sh file endpointsin the VM(/scispot/) not in clone project
  * curl "http://156.56.159.51:7878/?preempted=$jobid" to curl "http://localhost:7878/?preempted=$jobid"
  * curl "http://156.56.159.51:7878/?finished=$jobid" to curl "http://localhost:7878/?finished=$jobid"
  
