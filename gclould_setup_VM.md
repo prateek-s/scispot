@@ -47,7 +47,7 @@
  * scancel jobid
  * scontrol show job
  * Logfile: /var/log/slurm-llnl/slurmctld.log
- * Job log:/var/log/slurmjobs
+ * Job log: /var/log/slurmjobs
  
  
  ## Path issues
