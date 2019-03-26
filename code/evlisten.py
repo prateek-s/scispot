@@ -16,6 +16,7 @@ import paramiko
 import dateutil
 import dateutil.parser
 import random
+import shlex 
 from SciSpot import SciSpot
 #from jobgen import JobGen
 
@@ -334,7 +335,7 @@ exit 0
         cores = self.machine_type(self.current_mtype)['cores']
         num_nodes = len(self.current_cluster)
 
-        sbatcmd = "sbatch --parsable -N {num_nodes} -c {cores} -n {num_nodes} {runfile} {jobparams}".format(\
+        sbatcmd = "sbatch --no-requeue --parsable -N {num_nodes} -c {cores} -n {num_nodes} {runfile} {jobparams}".format(\
             num_nodes=num_nodes, cores=cores, runfile=self.runfile, jobparams=jobparams)
         #Just returns the job-id
 
@@ -384,10 +385,16 @@ exit 0
                 print("Trying to rerun job that doesn't exist!")
                 jobdb.close()
                 return
-
+            
             jobmetadata = res[-1]
+            if jobmetadata['state'] == 'rerun':
+                print("Job already marked as rerun")
+                return
+            
+            jobdb.update({'state':'rerun'}, q.jobname == jobid)
 
         jobdb.close()
+        
         jobparams = jobmetadata['jobparams']
         mtype = jobmetadata['mtype']
         num_nodes = jobmetadata['num_nodes']
@@ -474,6 +481,35 @@ exit 0
     ##################################################
 
 
+    def verify_job_completion(self, jobid):
+        """ Check if the job actually succeeded or not """
+        completed = False
+
+        #SSH and Copy the file tail -n 1 /var/log/slurmjobs
+        #What if we rerun something and the job 
+    
+        client = self.gcp_ssh(master)
+
+        i, o, e=client.exec_command("tail -n 1 /var/log/slurmjobs")
+        s = o.read()
+        o.close()
+        client.close()
+
+        #Check if
+        #s="JobId=151 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-03-26T17:42:01 EndTime=2019-03-26T18:19:55 NodeList=acoiis[1-8] NodeCnt=0 ProcCnt=16 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-03-26T17:42:01 EligibleTime=2019-03-26T17:42:01 DerivedExitCode=0:0 ExitCode=0:0
+        try:
+            d = dict(token.split('=') for token in shlex.split(s))
+            if d['JobId'] == jobid and d['JobState'] != 'COMPLETED' :
+                completed = True
+                return completed 
+        except:
+            return completed 
+        
+        return completed 
+
+
+    ##################################################
+    
     def handle_finished(self, jobids):
         """ Does a lot more than just handling the event.
         Updates the DB, and decides what to do next depending on the phase """
@@ -481,9 +517,16 @@ exit 0
         if jobids is None or len(jobids) is 0:
             print("empty job string, nothing to do")
             return
-        fin_time = datetime.datetime.now().isoformat()
-        jobdb = self.get_jobdb()
 
+        if not self.verify_job_completion(jobids[0]):
+            #There is a race condition if both preemption and finished call backs are called.
+            #We fix this by checking the slurmjobs log to see if it /really/ completed
+            print("False alarm on the job completion, treating as a failure")
+            return
+        
+        fin_time = datetime.datetime.now().isoformat()        
+        jobdb = self.get_jobdb()
+        
         for job in jobids:
             #We expect only one job id to finish per strigger, so can remove this loop
             #Will be a string, but that is OK if the keys are strings?
@@ -544,6 +587,7 @@ exit 0
 
         return
 
+    ##################################################
 
     def preemption_reaction(self, jobid):
         """Jobid has failed. What do we do? """
@@ -552,23 +596,22 @@ exit 0
             print("Adhoc mode, nothing to do on preemption!")
             return 
         
-        if self.jobs_completed > self.min_params_to_explore :
+        if self.phase is "exploit" and self.jobs_completed > self.min_params_to_explore :
             print("Job quota met, nothing remaining!")
             return
 
         #TODO: Maybe just probabilistically decide based on current success ratio?
         #Not important right now because we randomize the generated jobs
-        should_rerun = True
-        target_success_rate = float(self.min_params_to_explore)/self.max_params_to_explore
-        current_success_rate = float(self.jobs_completed)/max(1.0, float(self.jobs_completed + self.jobs_abandoned))
-
+        #target_success_rate = float(self.min_params_to_explore)/self.max_params_to_explore
+        #current_success_rate = float(self.jobs_completed)/max(1.0, float(self.jobs_completed + self.jobs_abandoned))
         # if current_success_rate < target_success_rate:
         #     should_rerun = True
         # r = random.random()
 
-        self.replenish_cluster()
-
+        should_rerun = True
         if should_rerun is True:
+            #Also mark job for re-running?
+            self.replenish_cluster()
             self.rerun_job(jobid)
         else:
             self.jobs_abandoned += 1
