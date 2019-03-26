@@ -307,6 +307,8 @@ exit 0
             return 0
         
         namegrp_vms = [vmname for vmname in running_vms if self.current_namegrp in vmname]
+        print("VM's currently running {}".format(namegrp_vms))
+        
         curr = len(namegrp_vms)
         #TODO: Must be part of this name group (use name), AND cannot be the master 
         return target - curr
@@ -318,11 +320,12 @@ exit 0
         #First, figure out if we need to?
         #return number of nodes launched
         deficit = self.server_deficit()
+        print("Server deficit: {}".format(deficit))
         if deficit <= 0 :
             print("No replenishment required!")
             return (self.current_namegrp, 0)
 
-        return self.launch_cluster(self.current_namegrp, deficit, self.current_mtype, replenish=True)
+        return self.launch_cluster(self.current_namegrp, deficit+1, self.current_mtype, replenish=True)
 
     ##################################################
 
@@ -488,7 +491,7 @@ exit 0
 
 
     def verify_job_completion(self, jobid):
-        """ Check if the job actually succeeded or not """
+        """ Return true IFF job actually finished successfully """
         completed = False
 
         #SSH and Copy the file tail -n 1 /var/log/slurmjobs
@@ -500,14 +503,18 @@ exit 0
         s = o.read()
         o.close()
         client.close()
-        
+        print(s)
         #Check if
         #s="JobId=151 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-03-26T17:42:01 EndTime=2019-03-26T18:19:55 NodeList=acoiis[1-8] NodeCnt=0 ProcCnt=16 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-03-26T17:42:01 EligibleTime=2019-03-26T17:42:01 DerivedExitCode=0:0 ExitCode=0:0
         try:
             d = dict(token.split('=') for token in shlex.split(s))
-            if d['JobId'] == jobid and d['JobState'] != 'COMPLETED' :
-                completed = True
-                return completed 
+            print("Found job id " + d['JobId'])
+            print("Job id search target " + jobid) 
+            if d['JobId'].strip() == jobid.strip():
+                print(d['JobState'])
+                if d['JobState'].strip() == 'COMPLETED' :
+                    completed = True
+                    return completed 
         except:
             return completed 
         
