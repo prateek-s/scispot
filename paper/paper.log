@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  27 MAR 2019 11:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  27 MAR 2019 13:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -861,20 +861,14 @@ Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 34.
 \c@theorem=\count155
 
 Excluding comment 'screenonly' Include comment 'printonly'
-Include comment 'anonsuppress' (./paper.aux
-
-LaTeX Warning: Label `fig:hpc-wait-cdf' multiply defined.
-
-
-LaTeX Warning: Label `fig:hpc-wait-cdf@cref' multiply defined.
-
-)
+Include comment 'anonsuppress' (./paper.aux)
 \openout1 = `paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 34.
 LaTeX Font Info:    Try loading font information for OML+nxlmi on input line 34
 .
- (/usr/share/texlive/texmf-dist/tex/latex/newtx/omlnxlmi.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/newtx/omlnxlmi.fd
 File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
 )
 LaTeX Font Info:    ... okay on input line 34.
@@ -1280,36 +1274,74 @@ Class acmart Warning: A possible image without description on input line 33.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 41.
+surrounding objects on input line 35.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 41.
+surrounding objects on input line 35.
 
-<../data/waiting_all.pdf, id=234, 541.74582pt x 283.24193pt>
+<../graphs/confin_64_time.pdf, id=234, 544.75706pt x 291.24277pt>
+File: ../graphs/confin_64_time.pdf Graphic file (type pdf)
+<use ../graphs/confin_64_time.pdf>
+Package pdftex.def Info: ../graphs/confin_64_time.pdf  used on input line 37.
+(pdftex.def)             Requested size: 202.51491pt x 108.2692pt.
+
+Class acmart Warning: A possible image without description on input line 40.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 43.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 43.
+
+<../graphs/confin_64_cost.pdf, id=235, 535.72331pt x 291.24277pt>
+File: ../graphs/confin_64_cost.pdf Graphic file (type pdf)
+<use ../graphs/confin_64_cost.pdf>
+Package pdftex.def Info: ../graphs/confin_64_cost.pdf  used on input line 45.
+(pdftex.def)             Requested size: 202.51491pt x 110.09567pt.
+
+Class acmart Warning: A possible image without description on input line 48.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 57.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 57.
+
+<../data/waiting_all.pdf, id=236, 541.74582pt x 283.24193pt>
 File: ../data/waiting_all.pdf Graphic file (type pdf)
 <use ../data/waiting_all.pdf>
-Package pdftex.def Info: ../data/waiting_all.pdf  used on input line 41.
+Package pdftex.def Info: ../data/waiting_all.pdf  used on input line 57.
 (pdftex.def)             Requested size: 202.51491pt x 105.88266pt.
 
-Class acmart Warning: A possible image without description on input line 44.
+Class acmart Warning: A possible image without description on input line 60.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 54.
+surrounding objects on input line 70.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 54.
+surrounding objects on input line 70.
 
-<../graphs/waiting_time_buckets.pdf, id=235, 507.61832pt x 392.36964pt>
+<../graphs/waiting_time_buckets.pdf, id=237, 507.61832pt x 392.36964pt>
 File: ../graphs/waiting_time_buckets.pdf Graphic file (type pdf)
 <use ../graphs/waiting_time_buckets.pdf>
 Package pdftex.def Info: ../graphs/waiting_time_buckets.pdf  used on input line
- 54.
+ 70.
 (pdftex.def)             Requested size: 202.51491pt x 156.53795pt.
 
-Class acmart Warning: A possible image without description on input line 57.
+Class acmart Warning: A possible image without description on input line 73.
 
 ) (./related.tex
 Overfull \hbox (1.72954pt too wide) in paragraph at lines 10--11
@@ -1321,14 +1353,18 @@ work-flows in the cloud [[]]
 
 pdfTeX warning: pdflatex (file ../graphs/confin_16_cost.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
+> <../graphs/confin_64_time.pdf
+
+pdfTeX warning: pdflatex (file ../graphs/confin_64_time.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+> <../graphs/confin_64_cost.pdf
+
+pdfTeX warning: pdflatex (file ../graphs/confin_64_cost.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
 > <../data/waiting_all.pdf
 
 pdfTeX warning: pdflatex (file ../data/waiting_all.pdf): PDF inclusion: multipl
 e pdfs with page group included in a single page
-> <../graphs/waiting_time_buckets.pdf
-
-pdfTeX warning: pdflatex (file ../graphs/waiting_time_buckets.pdf): PDF inclusi
-on: multiple pdfs with page group included in a single page
 >]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 45.
@@ -1344,9 +1380,6 @@ e 58.
 ) (./paper.bbl
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 8.0pt on input line 4.
-
-Underfull \vbox (badness 4279) has occurred while \output is active []
-
 )
 
 Package natbib Warning: There were undefined citations.
@@ -1358,50 +1391,59 @@ Class acmart Warning: Some images may lack descriptions.
 Package balance Warning: You have called \balance in second column
 (balance)                Columns might not be balanced.
 
-[7.7]
+[7.7 <../graphs/waiting_time_buckets.pdf>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
  (./paper.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
-Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 025054CE9B9EC15071CF96721BBF5255;5471.
 
 
-LaTeX Warning: There were multiply-defined labels.
+Package rerunfilecheck Warning: File `paper.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `paper.out':
+(rerunfilecheck)             Before: 025054CE9B9EC15071CF96721BBF5255;5471
+(rerunfilecheck)             After:  D614D27155E6E042F0BE610A9E6761AF;5472.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 21733 strings out of 494805
- 341734 string characters out of 6178000
- 477582 words of memory out of 5000000
- 24083 multiletter control sequences out of 15000+600000
+ 21750 strings out of 494805
+ 342216 string characters out of 6178000
+ 478582 words of memory out of 5000000
+ 24095 multiletter control sequences out of 15000+600000
  159150 words of font info for 324 fonts, out of 8000000 for 9000
  242 hyphenation exceptions out of 8191
  60i,17n,94p,819b,509s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
-r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/shar
-e/texlive/texmf-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive
-/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/share/texlive/texmf
--dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvip
-s/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libe
-rtine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/
-lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertine/Lin
-BiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBi
-olinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBio
-linumTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibe
-rtineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLiber
-tineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLiber
-tineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/fxlri-5lette
-rs.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/fxlri-7letters.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/newtx/zxlri.pfb>
-Output written on paper.pdf (7 pages, 2174411 bytes).
+pdfTeX warning (dest): name{section*.9} has been referenced but does not exis
+t, replaced by a fixed one
+
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/usr/
+share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/
+texlive/texmf-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive/t
+exmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/share/texlive/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/
+libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libert
+ine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lb
+tn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBi
+olinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiol
+inumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBioli
+numTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibert
+ineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLiberti
+neTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLiberti
+neTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/fxlri-5letters
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/fxlri-7letters.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/newtx/zxlri.pfb>
+Output written on paper.pdf (7 pages, 2941436 bytes).
 PDF statistics:
- 419 PDF objects out of 1000 (max. 8388607)
- 310 compressed objects within 4 object streams
- 78 named destinations out of 1000 (max. 500000)
- 41222 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 450 PDF objects out of 1000 (max. 8388607)
+ 329 compressed objects within 4 object streams
+ 81 named destinations out of 1000 (max. 500000)
+ 41232 words of extra memory for PDF output out of 42996 (max. 10000000)
 

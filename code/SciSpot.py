@@ -13,7 +13,7 @@ class SciSpot:
     project='first-220321'
     imageName = 'global/images/ubs5' 
     
-    mtypes_highcpu=['n1-highcpu-4','n1-highcpu-16','n1-highcpu-2','n1-highcpu-32','n1-highcpu-64','n1-highcpu-8']
+    mtypes_highcpu=['n1-highcpu-64','n1-highcpu-32','n1-highcpu-16','n1-highcpu-8','n1-highcpu-4','n1-highcpu-2']
     mtypes_stan=['n1-standard-1','n1-standard-16','n1-standard-2','n1-standard-32','n1-standard-4','n1-standard-64','n1-standard-8']
     zones=['us-central1-f','us-east1-b','us-east4-c','europe-west4-a','europe-north1-a','asia-southeast1-b']
 
