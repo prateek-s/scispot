@@ -252,7 +252,7 @@ exit 0
     ##################################################
     ################## Cluster Managment #############
 
-    def launch_cluster(self, namegrp, num_nodes, mtype, start_id=current_start_id, slurm_master=None, replenish=False):
+    def launch_cluster(self, namegrp, num_nodes, mtype, start_id=current_start_id, slurm_master=current_master, replenish=False):
         """ Launches worker VMs and reconfigs master if not replenishing """
         
         if slurm_master is None:
