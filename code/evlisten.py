@@ -255,24 +255,31 @@ exit 0
     def launch_cluster(self, namegrp, num_nodes, mtype, start_id=current_start_id, slurm_master=current_master, replenish=False):
         """ Launches worker VMs and reconfigs master if not replenishing """
 
-        machine = self.machine_type(mtype)
-        self.current_namegrp = namegrp
-        compute_nodes = namegrp + "[1-" + str(num_nodes*3) + "]"
-        #*3 is just a margin for safety in case we fail and have to rerun the job without reconfiguring master
-
-        #TODO: Check if requested VMs are available and free, and use them instead of launching? Can get tricky 
-        
-        configstr = self.generate_slurm_config(slurm_master, machine, compute_nodes)
-        cnodes_launched = []
         if slurm_master is None:
             #TODO: Start the master, non-preemptible, and wait
             print("Master must be running, not supported yet, exiting")
             return
 
+        machine = self.machine_type(mtype)
+        self.current_namegrp = namegrp
+
         if not replenish :
+            compute_nodes = namegrp + "[1-" + str(num_nodes*3) + "]"
+            configstr = self.generate_slurm_config(slurm_master, machine, compute_nodes)
+            self.current_configstr = configstr
             #No need to reconfigure the master if we are replacing lost servers
             #TODO: Check this!! Slurmctld may need restarting urghhh
             self.reconfig_master(slurm_master, configstr)
+
+        else:
+            configstr = self.current_configstr 
+
+        #*3 is just a margin for safety in case we fail and have to rerun the job without reconfiguring master
+
+        #TODO: Check if requested VMs are available and free, and use them instead of launching? Can get tricky 
+        
+
+        cnodes_launched = []
 
         for i in range(self.current_start_id, num_nodes+self.current_start_id):
             name = namegrp+str(i)
@@ -291,6 +298,8 @@ exit 0
         self.target_nodes = num_nodes
 
         print("Cluster Launched: {}, {}, {}".format(namegrp, mtype, num_nodes))
+        print("Current start id is {}".format(self.current_start_id))
+        
         return (slurm_master, cnodes_launched)
 
     ##################################################
@@ -329,7 +338,8 @@ exit 0
             print("No replenishment required!")
             return (self.current_namegrp, 0)
 
-
+        print("Replenishing {} VMs with IDs starting from {}".format(deficit, self.current_start_id))
+        
         return self.launch_cluster(self.current_namegrp, deficit, self.current_mtype, replenish=True)
 
     ##################################################
@@ -543,7 +553,8 @@ exit 0
             print("False alarm on the job completion, ignoring!")
             return
         
-        fin_time = datetime.datetime.now().isoformat()        
+        fin_time = datetime.datetime.now().isoformat()
+        print("Job {} finished at {}".format(jobids[0], fin_time))
         jobdb = self.get_jobdb()
         
         for job in jobids:
@@ -557,6 +568,8 @@ exit 0
             else:
                 t_start = res[0]['t_start']
                 tdiff = (dateutil.parser.parse(fin_time) - dateutil.parser.parse(t_start)).total_seconds()
+                print("Job running time (seconds) : {}".format(tdiff))
+                
                 jobdb.update({'t_finish':fin_time, 'state':'finished', 'tdiff':tdiff}, q.jobname == job)
 
         jobdb.close() #For mutual exclusion
