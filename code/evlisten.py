@@ -279,9 +279,10 @@ exit 0
             compute_nodes = namegrp + "[1-" + str(num_nodes*3) + "]"
             configstr = self.generate_slurm_config(slurm_master, machine, compute_nodes)
             self.current_configstr = configstr
+            self.target_nodes = num_nodes
             #No need to reconfigure the master if we are replacing lost servers
             #TODO: Check this!! Slurmctld may need restarting urghhh
-            self.reconfig_master(slurm_master, configstr)
+            self.reconfig_master(slurm_master, configstr)            
 
         else:
             configstr = self.current_configstr 
@@ -307,7 +308,7 @@ exit 0
             time.sleep(5)
 
         self.current_mtype = mtype
-        self.target_nodes = num_nodes
+
 
         print("Cluster Launched: {}, {}, {}".format(namegrp, mtype, num_nodes))
         print("Current start id is {}".format(self.current_start_id))
