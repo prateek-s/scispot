@@ -23,6 +23,7 @@ from jobgen import JobGen
 
 """
 http://localhost:7878/?explore=True&target_cpus=16
+http://localhost:7878/?exploit=True&num_jobs=10
 Usage: http://localhost:7878/?preempted=abacus
 http://localhost:7878/?finished=jobid
 http://localhost:7878/?launch_cluster=True&namegrp=abra&num_nodes=4&mtype=n1-highcpu-16&start_id=1&slurm_master=ubslurm1

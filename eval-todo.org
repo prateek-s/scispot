@@ -42,22 +42,23 @@ Exploit confinement and one other?
 
 * Plan
 
-| Day | Task                            | Who        | Status |
-|-----+---------------------------------+------------+--------|
-| Mon | 0 Setup and run scispot         | Kadupitiya | Doing  |
-| Mon | 1 Explore confinement           | Kadupitiya |        |
-| Mon | 9 SystemD                       | Prateek    | Done   |
-| Mon | 10 Image                        | Prateek    | Done   |
-| Tue | 2 Explore shapes                | Kadupitiya |        |
-| Tue | 3 Explore X                     | Kadupitiya |        |
-| Tue | 5 Runtime Simulator             | Prateek    |        |
-| Wed | 6 Code cost simulation          | Prateek    |        |
-| Wed | 4 Exploitation for confinement  | Kadupitiya |        |
-| Wed | 11 Exploitation for shapes      | Kadupitiya |        |
-| Thu | 11 Exploitation for X           | Kadupitiya |        |
-| Thu | 12 Waiting time analysis graphs | Prateek    |        |
-| Fri | 14 BigRed2                      | Kadupitiya |        |
-| Fri | 13 Checkpointing analysis       | Prateek    |        |
+| Day | Task                            | Who        | Status          |
+|-----+---------------------------------+------------+-----------------|
+| Mon | 0 Setup and run scispot         | Kadupitiya | Doing           |
+| Mon | 1 Explore confinement           | Kadupitiya | Done            |
+| Mon | 9 SystemD                       | Prateek    | Done            |
+| Mon | 10 Image                        | Prateek    | Done            |
+| Tue | 2 Explore shapes                | Kadupitiya | Doing           |
+| Tue | 3 Explore Lulesh                | Kadupitiya | Partial         |
+| Tue | 5 Runtime Simulator             | Prateek    | Done            |
+| Wed | 6 Code cost simulation          | Prateek    | Done            |
+| Wed | 4 Exploitation for confinement  | Kadupitiya | Doing           |
+| Wed | 11 Exploitation for shapes      | Kadupitiya | Next            |
+| Thu | 11 Exploitation for X           | Kadupitiya | Low-priority    |
+| Thu | 12 Waiting time analysis graphs | Prateek    | Done            |
+| Fri | 14 BigRed2                      | Kadupitiya | Post-processing |
+| Fri | 13 Checkpointing analysis       | Prateek    | May remove      |
+
 
 
 
