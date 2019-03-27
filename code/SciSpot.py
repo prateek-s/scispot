@@ -11,7 +11,6 @@ class SciSpot:
     """ Common fields and methods for various SciSpot components """
     
     project='first-220321'
-    zone='us-east1-b'
     imageName = 'global/images/ubs5' 
     
     mtypes_highcpu=['n1-highcpu-4','n1-highcpu-16','n1-highcpu-2','n1-highcpu-32','n1-highcpu-64','n1-highcpu-8']
@@ -20,9 +19,11 @@ class SciSpot:
 
     compute = googleapiclient.discovery.build('compute', 'v1')
 
+    #User configurable settings 
+    zone='us-east1-b'
     username = 'prateek3_14'
     key_filename = '/home/prateeks/.ssh/gce'
-
+    current_master = 'ubslurm1'
     runfile = '/scispot/sb_confinement.sh'  
 
     max_params_to_explore = 100

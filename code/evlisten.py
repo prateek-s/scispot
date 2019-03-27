@@ -56,8 +56,6 @@ class evlisten(resource.Resource, SciSpot):
 
     current_jobs = [] #Useful for respawning?
 
-    current_master = 'ubslurm1'
-
     current_start_id = 1
     
     ##################################################
