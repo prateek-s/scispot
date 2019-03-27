@@ -250,14 +250,17 @@ exit 0
     ##################################################
     ################## Cluster Managment #############
 
-    def launch_cluster(self, namegrp, num_nodes, mtype, start_id=current_start_id, slurm_master=current_master, replenish=False):
+    def launch_cluster(self, namegrp, num_nodes, mtype, start_id=current_start_id, slurm_master=None, replenish=False):
         """ Launches worker VMs and reconfigs master if not replenishing """
-
+        
         if slurm_master is None:
-            #TODO: Start the master, non-preemptible, and wait
-            print("Master must be running, not supported yet, exiting")
-            return
-
+            if self.current_master is not None:
+                slurm_master = self.current_master
+            else:
+                #TODO: Start the master, non-preemptible, and wait
+                print("Master must be running, not supported yet, exiting")
+                return
+            
         machine = self.machine_type(mtype)
         self.current_namegrp = namegrp
 
