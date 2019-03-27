@@ -52,6 +52,7 @@
  
  
  ## Path issues
- * mpirun --wdir /scispot/np-shape-lab-master/bin/ np_shape_lab
+ * mpirun --wdir /scispot/np-shape-lab-master/bin/ sudo ./np_shape_lab
+ * mpirun --wdir /scispot/nanoconfinement-md-master/bin/ sudo ./md_simulation_confined_ions
  
 
