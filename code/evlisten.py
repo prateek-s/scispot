@@ -50,6 +50,8 @@ class evlisten(resource.Resource, SciSpot):
 
     current_cluster = []
 
+    current_master = SciSpot.current_master 
+    
     current_mtype = 'n1-highcpu-4' #Sane default if nothing specified. 
 
     target_nodes = 0 #
