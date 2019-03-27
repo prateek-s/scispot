@@ -300,7 +300,7 @@ exit 0
         curr = 0
         instances = self.compute.instances()
         try:
-            running_vms = [vm['name'] for vm in instances.list(project=self.project, zone=self.zone, filter="status = RUNNING").execute()['items'] if vm['status'] is 'RUNNING']
+            running_vms = [vm['name'].encode("ascii") for vm in instances.list(project=self.project, zone=self.zone, filter="status = RUNNING").execute()['items']]
         except:
             print("Error getting running VMs!")
             print("Launching Nothing")
