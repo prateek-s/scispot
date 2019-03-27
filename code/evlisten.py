@@ -274,7 +274,7 @@ exit 0
             #TODO: Check this!! Slurmctld may need restarting urghhh
             self.reconfig_master(slurm_master, configstr)
 
-        for i in range(start_id, num_nodes+start_id):
+        for i in range(self.current_start_id, num_nodes+self.current_start_id):
             name = namegrp+str(i)
             self.start_worker(mtype, self.zone, name, self.get_startup_script(configstr))
             cnodes_launched.append(name)
@@ -310,6 +310,10 @@ exit 0
         print("VM's currently running {}".format(namegrp_vms))
         
         curr = len(namegrp_vms)
+        
+        #set current cluster to the running VM names
+        self.current_cluster = namegrp_vms
+        
         #TODO: Must be part of this name group (use name), AND cannot be the master 
         return target - curr
 
