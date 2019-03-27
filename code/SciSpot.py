@@ -6,6 +6,7 @@ import googleapiclient.discovery
 import paramiko
 import random
 import string 
+from jobgen import JobGen
 
 class SciSpot:
     """ Common fields and methods for various SciSpot components """
@@ -87,8 +88,7 @@ class SciSpot:
         for m in runtimedict.keys():
             r = int(runtimedict[m])
         return 'n1-highcpu-16'
-
-
+           
     def get_VM_age(self, vmname):
         """ Use api's , current time, etc to return the VM's age in seconds. Use this for calculating probabilities of failure etc """
         pass

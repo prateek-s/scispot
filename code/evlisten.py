@@ -18,7 +18,8 @@ import dateutil.parser
 import random
 import shlex 
 from SciSpot import SciSpot
-#from jobgen import JobGen
+from jobgen import JobGen
+
 
 """
 http://localhost:7878/?explore=True&target_cpus=16
@@ -60,14 +61,21 @@ class evlisten(resource.Resource, SciSpot):
 
     current_start_id = 1
     
+    current_job_params = ''
+    
+    jobs_to_run = 0 #Number of jobs in the bag
+    jobs_completed = 0
+    jobs_abandoned = 0
+    completion_rate = 0.9 #What fraction of jobs we want finished 
+    
+    
     ##################################################
 
     def __init__(self):
         #Open the job and vmdb json databases?
-        self.jobs_completed = 0
-        self.jobs_abandoned = 0
         #self.compute = googleapiclient.discovery.build('compute', 'v1')
-
+        pass
+    
     ##################################################
 
     def start_master(self, zone, name):
@@ -426,7 +434,7 @@ exit 0
         mtype = jobmetadata['mtype']
         num_nodes = jobmetadata['num_nodes']
         
-        return self.run_job(jobparams)
+        return self.run_job(jobparams=jobparams)
 
 
     ##################################################
@@ -483,26 +491,74 @@ exit 0
             print("Done exploring all?")
             self.selected_mtype = self.select_best_server(self.runtimedict) #Based on E[C] TODO 
             self.current_mtype = self.selected_mtype
+            
             #TODO: Need to either exit cleanly OR continue to exploitation phase somehow
             #TODO: Return the best value that we have seen!
-            self.start_exploitation() 
+            #self.start_exploitation(1)
+            #Too optimiistic
         return
 
 
     ##################################################
     #################### Exploitation ################
 
-    def start_exploitation(self):
+    def start_exploitation(self, num_jobs, mtype=current_mtype, num_servers=4, completion_rate=0.9):
         self.phase = 'exploit'  #Well thats optimistic!!
-        pass
-    
+        self.completion_rate = completion_rate
+        pd = { 
+            'Z' : {'type':'range', 'values':[3.0, 4.0]},
+            'p' : {'type':'set', 'values': [1, 2, 3]},
+            'n' : {'type':'set', 'values':[-1]},
+            'd' : {'type':'set', 'values': [0.714]},
+            'c' : {'type':'range', 'values':[0.3, 0.9]},
+        }
+        num_jobs = int(num_jobs)
+        jg = JobGen(pd, num_jobs)
+        self.jg = jg
+        
+        min_jobs = self.jg.num_fixed_params()
+        jobs_to_run = max(min_jobs, num_jobs)
+        self.jobs_to_run = jobs_to_run
+
+        print("Kickstarting bag of jobs of size {}".format(jobs_to_run))
+        
+        jobparams = self.jg.gen_job_param().next()
+        
+        namegrp = self.gen_cluster_name() #Random string
+        self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
+        self.current_start_id = 1
+
+        self.launch_cluster(namegrp, num_servers, mtype)
+        
+        #We want to give slurm some time to reconfigure...
+        
+        time.sleep(90)
+
+        jobid = self.run_job(jobparams=jobparams)
+
+    ##################################################
+    ##################################################
+
+    def continue_exploitation(self):
+        """ Returns true if we need to, else false"""
+        if self.jobs_completed > self.completion_rate*self.jobs_to_run :
+            return False 
+        return True
+
+    ##################################################
     
     def run_next_job(self):
         """ Exploitation phase only. Generate a new set of parameters, and start the job """
         #TODO: Find the next set of parameters, and then call run job
-        jobparams = '' 
-        #jobparams = jobgen.next()
-        self.run_job(jobparams)
+        jobparams = ''
+        if self.phase is 'exploit':
+            if not self.continue_exploitation():
+                print("No more jobs to run!")
+                return 
+            jobparams = self.jg.gen_job_param().next()
+            print("Running next job {}".format(jobparams))
+
+        return self.run_job(jobparams=jobparams)
 
     ##################################################
     ################## Event Listeners ###############
@@ -533,7 +589,7 @@ exit 0
                 print(d['JobState'])
                 if d['JobState'].strip() == 'COMPLETED' :
                     completed = True
-                    return completed 
+                    return completed
         except:
             return completed 
         
@@ -644,6 +700,10 @@ exit 0
         # r = random.random()
 
         should_rerun = True
+        if not self.continue_exploitation():
+            should_rerun = False
+            print("We have met our job target! {} {}".format(self.jobs_completed, self.jobs_to_run))
+            return 
         if should_rerun is True:
             #Also mark job for re-running?
             self.replenish_cluster()
@@ -682,6 +742,10 @@ exit 0
         elif 'explore' in req_args.keys():
             self.start_exploration(req_args['target_cpus'][0])
 
+        elif 'exploit' in req_args.keys():
+            self.start_exploitation(req_args['num_jobs'][0])
+
+            
         else:
             print("not understood")
 

@@ -89,12 +89,23 @@ param={'type':<types>, 'values':<values>}
 
 ##################################################
 
-testd = {'b':{'type':'set', 'values':[1,2,3]}, 'c':{'type':'range', 'values':[1,10]}}
-jg = JobGen(testd, 100)
+# testd = {'b':{'type':'set', 'values':[1,2,3]}, 'c':{'type':'range', 'values':[1,10]}}
+pd = { 
+    'Z' : {'type':'range', 'values':[3.0, 4.0]},
+    'p' : {'type':'set', 'values': [1, 2, 3]},
+    'n' : {'type':'set', 'values':[-1]},
+    'd' : {'type':'set', 'values': [0.714]},
+    'c' : {'type':'range', 'values':[0.3, 0.9]},
+}
+
+jg = JobGen(pd, 100)
+
 
 print(jg.gen_job_param().next())
+print(jg.gen_job_param().next())
+print(jg.gen_job_param().next())
 
-# print(jg.num_fixed_params())
+print(jg.num_fixed_params())
 # print(jg.expand_dict())
 # print(jg.gen_combinations())
 # print(jg.gen_string(jg.generated_combos[0]))
