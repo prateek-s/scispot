@@ -1,1 +1,1 @@
-{"c": {"type": "range", "values": [3.0, 4.0]}, "q": {"type": "set", "values": [1, 2, 3]}, "t": {"type": "set", "values": [-1]}, "b": {"type": "set", "values": [0.714]}, "s": {"type": "range", "values": [0.3, 0.9]}}
+{"c": {"type": "range", "values": [0.01, 0.1]}, "q": {"type": "set", "values": [400, 500, 600]}, "t": {"type": "set", "values": [5]}, "b": {"type": "set", "values": [10, 20]}, "s": {"type": "set", "values": [40, 60]}}
