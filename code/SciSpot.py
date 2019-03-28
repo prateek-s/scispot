@@ -32,7 +32,7 @@ class SciSpot:
 
     # load the settings from a config file
     config = {}
-    with open('config.json') as json_file:  
+    with open('config/config.json') as json_file:  
         config = json.load(json_file)
         
         zone = config['zone']
