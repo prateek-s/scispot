@@ -28,7 +28,7 @@ class SciSpot:
     current_master = 'ubslurm1'
     runfile = '/scispot/sb_confinement.sh' 
     param_exporation_file = 'config/nanoconfinement_parameter.json' 
-    current_mtype = 'n1-highcpu-4' #Sane default if nothing specified. 
+    current_mtype = 'n1-highcpu-16' #Sane default if nothing specified. 
 
     # load the settings from a config file
     config = {}
