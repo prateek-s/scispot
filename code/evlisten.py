@@ -71,6 +71,9 @@ class evlisten(resource.Resource, SciSpot):
 
     #global job start time
     jobs_start_time =0
+
+    #job generator
+    jg = None
     
     
     ##################################################
