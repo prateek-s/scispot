@@ -672,11 +672,13 @@ exit 0
 
         jobdb.close() #For mutual exclusion
 
+        self.jobs_completed += 1
+
         #Time since the start of this job runs
         tdiff_total = (dateutil.parser.parse(fin_time) - dateutil.parser.parse(jobs_start_time)).total_seconds()
         print("Total time spend running these jobs since begining (seconds) : {}".format(tdiff_total))
-
-        self.jobs_completed += 1
+        print("Total jobs completed : {}".format(jobs_completed))
+        print("Total jobs abandoned : {}".format(jobs_abandoned))
 
         if self.phase is 'explore':
             self.runtimedict[self.current_mtype] = tdiff
