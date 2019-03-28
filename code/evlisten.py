@@ -542,7 +542,9 @@ exit 0
     ##################################################
 
     def continue_exploitation(self):
-        """ Returns true if we need to, else false"""
+        """ Returns true if we need to keep running jobs in the bag, else false """
+        if self.phase != 'exploit':
+            return True 
         if self.jobs_completed > self.completion_rate*self.jobs_to_run :
             return False 
         return True
@@ -689,8 +691,9 @@ exit 0
             print("Adhoc mode, nothing to do on preemption!")
             return 
         
-        if self.phase is "exploit" and self.jobs_completed > self.min_params_to_explore :
+        if self.phase is "exploit" and not self.continue_exploitation():
             print("Job quota met, nothing remaining!")
+            print("We have met our job target! {} {}".format(self.jobs_completed, self.jobs_to_run))
             return
 
         #TODO: Maybe just probabilistically decide based on current success ratio?
@@ -700,12 +703,9 @@ exit 0
         # if current_success_rate < target_success_rate:
         #     should_rerun = True
         # r = random.random()
-
+        
         should_rerun = True
-        if not self.continue_exploitation():
-            should_rerun = False
-            print("We have met our job target! {} {}".format(self.jobs_completed, self.jobs_to_run))
-            return 
+            
         if should_rerun is True:
             #Also mark job for re-running?
             self.replenish_cluster()
