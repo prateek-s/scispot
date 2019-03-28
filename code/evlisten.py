@@ -369,6 +369,8 @@ exit 0
     def run_job(self, mtype=current_mtype, num_nodes=len(current_cluster), jobparams='', master=current_master):
         """ Run a job on a running with the given jobparams """
 
+        mtype=self.current_mtype
+
         cores = self.machine_type(self.current_mtype)['cores']
         num_nodes = len(self.current_cluster)
 
