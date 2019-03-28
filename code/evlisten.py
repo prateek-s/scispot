@@ -485,6 +485,13 @@ exit 0
             #We want to give slurm some time to reconfigure...
 
             time.sleep(90)
+
+            #SSH into the master
+            #Issue sinfo -h, and then get number of nodes
+            #replenish_cluster()
+            #If not, then wait 90 seconds more.
+            #
+            
             
             jobid = self.run_job()
             #We don't wait, but just return here. Serial exploration. 
