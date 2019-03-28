@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.27)  28 MAR 2019 12:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.27)  28 MAR 2019 14:17
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1038,75 +1038,75 @@ ist/tex/generic/ulem/ulem.sty
 Package: ulem 2012/05/18
 \ULdepth=\dimen172
 ))
-Class acmart Info: Suppressing bibformat on input line 22.
-Class acmart Info: Printing folios on input line 29.
-Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 33.
+Class acmart Info: Suppressing bibformat on input line 23.
+Class acmart Info: Printing folios on input line 30.
+Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 34.
 
 \c@theorem=\count166
  Excluding comment 'screenonly'
 Include comment 'printonly' Include comment 'anonsuppress' (./paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 33.
-LaTeX Font Info:    Try loading font information for OML+nxlmi on input line 33
+LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 34.
+LaTeX Font Info:    Try loading font information for OML+nxlmi on input line 34
 .
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/newtx/omlnxlmi.fd
 File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
 )
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 33.
-LaTeX Font Info:    Try loading font information for U+ntxexa on input line 33.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 34.
+LaTeX Font Info:    Try loading font information for U+ntxexa on input line 34.
 
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 33.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 34.
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 33.
-LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 33
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 34.
+LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 34
 .
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 34.
 LaTeX Font Info:    Try loading font information for LMX+ntxexx on input line 3
-3.
+4.
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    ... okay on input line 34.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 33.
+(Font)              scaled to size 8.0pt on input line 34.
 LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineT-TLF on
- input line 33.
+ input line 34.
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/libertine/OT1LinuxLibertineT-TLF.fd
@@ -1114,47 +1114,47 @@ File: OT1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/
 LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 33.
+(Font)              scaled to size 8.0pt on input line 34.
 <<ot1.cmap>>
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 33.
+(Font)              scaled to size 6.2pt on input line 34.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 33.
+(Font)              scaled to size 5.5pt on input line 34.
 <<oml.cmap>>
-LaTeX Font Info:    Try loading font information for U+msa on input line 33.
+LaTeX Font Info:    Try loading font information for U+msa on input line 34.
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 33.
+LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+ntxmia on input line 33.
+LaTeX Font Info:    Try loading font information for U+ntxmia on input line 34.
 
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 33.
+LaTeX Font Info:    Try loading font information for U+ntxsym on input line 34.
 
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 33.
+LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 34.
 
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Info: Redefining \microtypecontext on input line 33.
+LaTeX Info: Redefining \microtypecontext on input line 34.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1170,7 +1170,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
  ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box42
-Package hyperref Info: Link coloring OFF on input line 33.
+Package hyperref Info: Link coloring OFF on input line 34.
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/hyperref/nameref.sty
@@ -1182,9 +1182,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count167
 )
-LaTeX Info: Redefining \ref on input line 33.
-LaTeX Info: Redefining \pageref on input line 33.
-LaTeX Info: Redefining \nameref on input line 33.
+LaTeX Info: Redefining \ref on input line 34.
+LaTeX Info: Redefining \pageref on input line 34.
+LaTeX Info: Redefining \nameref on input line 34.
  (./paper.out) (./paper.out)
 \@outlinefile=\write4
 \openout4 = `paper.out'.
@@ -1274,9 +1274,9 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count176
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 41.
+(Font)              scaled to size 20.74pt on input line 42.
 LaTeX Font Info:    Try loading font information for T1+LinuxBiolinumT-TLF on i
-nput line 41.
+nput line 42.
 
 (/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
 ist/tex/latex/libertine/T1LinuxBiolinumT-TLF.fd
@@ -1284,36 +1284,36 @@ File: T1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Lin
 uxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 41.
+(Font)              scaled to size 20.74pt on input line 42.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxBiolinumT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 41.
+(Font)              scaled to size 20.74pt on input line 42.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 41.
+surrounding objects on input line 42.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 41.
+surrounding objects on input line 42.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 41.
+(Font)              scaled to size 14.4pt on input line 42.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 41.
+(Font)              scaled to size 10.95pt on input line 42.
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 41.
+surrounding objects on input line 42.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 41.
+(Font)              scaled to size 8.0pt on input line 42.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 41.
+(Font)              scaled to size 10.0pt on input line 42.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 41.
+(Font)              scaled to size 12.0pt on input line 42.
 (./abstract.tex
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
@@ -1322,7 +1322,7 @@ surrounding objects on input line 2.
 )
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 41.
+surrounding objects on input line 42.
 
 (./intro.tex
 
@@ -1339,49 +1339,42 @@ Package natbib Warning: Citation `etc.' on page 1 undefined on input line 13.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 19.
 
-Package natbib Warning: Citation `flint' on page 1 undefined on input line 41.
-
-
-Overfull \hbox (9.03604pt too wide) in paragraph at lines 33--42
-[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) However, de-ploy-ing ap-pli-ca-tions on 
-cloud plat-forms presents
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 42.
+(Font)              scaled to size 7.0pt on input line 35.
  [1.1{/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/te
 xmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
 
-Package natbib Warning: Citation `flint' on page 2 undefined on input line 59.
+Package natbib Warning: Citation `flint' on page 2 undefined on input line 46.
+
+
+Overfull \hbox (9.03604pt too wide) in paragraph at lines 38--47
+[]\T1/LinuxLibertineT-TLF/m/n/10 (-20) However, de-ploy-ing ap-pli-ca-tions on 
+cloud plat-forms presents
+ []
+
+
+Package natbib Warning: Citation `flint' on page 2 undefined on input line 64.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 71.
+surrounding objects on input line 76.
 
+Excluding 'comment' comment. Excluding 'comment' comment.) (./background.tex
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 16.
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 16.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Excluding 'comment' comment. Excluding 'comment' comment.) (./background.tex)
-(./failmodel.tex
+[2.2]) (./failmodel.tex
 Overfull \hbox (2.13284pt too wide) in paragraph at lines 6--11
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Since pre-emp-tions can im-pact the avai
 l-abil-ity, per-for-mance,
  []
 
-
-Underfull \vbox (badness 2073) has occurred while \output is active []
-
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 11.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 11.
- [2.2]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 34.
@@ -1421,6 +1414,9 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (8.19249pt too wide) in paragraph at lines 58--59
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) This presents us with many chal-lenges in 
 the cloud-deployment
@@ -1432,11 +1428,11 @@ Overfull \hbox (1.07603pt too wide) in paragraph at lines 65--70
 a-tions, the type of servers
  []
 
-) (./design.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3.3 <../data/cdf_all.pdf>]
-Underfull \vbox (badness 2359) has occurred while \output is active []
+Underfull \vbox (badness 3049) has occurred while \output is active []
+
+ [3.3 <../data/cdf_all.pdf>]) (./design.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1452,13 +1448,13 @@ Overfull \hbox (13.79497pt too wide) in paragraph at lines 106--108
 il-ure dis-tri-bu-tions. Roughly,
  []
 
-) (./ckpting.tex
+[5.5]) (./ckpting.tex
 Overfull \hbox (4.4709pt too wide) in paragraph at lines 12--14
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Conventionally, pe-ri-odic check-point-i
 ng ac-cord-ing to Young-
  []
 
-[5.5]) (./impl.tex) (./eval.tex
+) (./impl.tex) (./eval.tex
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 20.
@@ -1492,9 +1488,6 @@ Package pdftex.def Info: ../graphs/confin_16_cost.pdf  used on input line 30.
 Class acmart Warning: A possible image without description on input line 33.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 35.
 
@@ -1509,9 +1502,6 @@ Package pdftex.def Info: ../graphs/confin_64_time.pdf  used on input line 37.
 (pdftex.def)             Requested size: 202.51491pt x 108.04366pt.
 
 Class acmart Warning: A possible image without description on input line 40.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
@@ -1574,14 +1564,6 @@ ltiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ../graphs/confin_64_time.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
-> <../graphs/confin_64_cost.pdf
-
-pdfTeX warning: pdflatex (file ../graphs/confin_64_cost.pdf): PDF inclusion: mu
-ltiple pdfs with page group included in a single page
-> <../data/waiting_all.pdf
-
-pdfTeX warning: pdflatex (file ../data/waiting_all.pdf): PDF inclusion: multipl
-e pdfs with page group included in a single page
 >]
 Overfull \hbox (1.72954pt too wide) in paragraph at lines 10--11
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) Price op-ti-miza-tions for Sci-en-tific 
@@ -1601,10 +1583,15 @@ e 58.
 ) (./paper.bbl
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
 (Font)              scaled to size 8.0pt on input line 4.
+ [7.7 <../graphs/confin_64_cost.pdf> <../data/waiting_all.pdf
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+pdfTeX warning: pdflatex (file ../data/waiting_all.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+> <../graphs/waiting_time_buckets.pdf
 
- [7.7 <../graphs/waiting_time_buckets.pdf>])
+pdfTeX warning: pdflatex (file ../graphs/waiting_time_buckets.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+>])
 
 Package natbib Warning: There were undefined citations.
 
@@ -1612,29 +1599,26 @@ Package natbib Warning: There were undefined citations.
 Class acmart Warning: Some images may lack descriptions.
 
 
-Overfull \vbox (6.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (7.888pt too high) has occurred while \output is active []
+Overfull \vbox (1.872pt too high) has occurred while \output is active []
 
  [8.8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
 
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
 Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D614D27155E6E042F0BE610A9E6761AF;5472.
  ) 
 Here is how much of TeX's memory you used:
- 21982 strings out of 492616
- 357545 string characters out of 6106610
- 494629 words of memory out of 5000000
- 24907 multiletter control sequences out of 15000+600000
- 158854 words of font info for 321 fonts, out of 8000000 for 9000
+ 21974 strings out of 492616
+ 357322 string characters out of 6106610
+ 492629 words of memory out of 5000000
+ 24908 multiletter control sequences out of 15000+600000
+ 157839 words of font info for 315 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,17n,94p,877b,656s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,17n,94p,1080b,636s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf
 -dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/nfs/nfs5-insecure/home/insecu
 re-ro/software/rhel7_x86_64/texlive-2018/texmf-dist/fonts/enc/dvips/libertine/l
@@ -1667,7 +1651,7 @@ texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></nfs/nfs5-insecure/home/insecur
 e-ro/software/rhel7_x86_64/texlive-2018/texmf-dist/fonts/type1/public/newtx/txs
 ys.pfb></nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/
 texmf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on paper.pdf (8 pages, 2942414 bytes).
+Output written on paper.pdf (8 pages, 2944274 bytes).
 PDF statistics:
  453 PDF objects out of 1000 (max. 8388607)
  331 compressed objects within 4 object streams
