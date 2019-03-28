@@ -548,15 +548,15 @@ exit 0
 
         num_jobs = int(num_jobs)
         jg = JobGen(pd, num_jobs)
-        self.job_gen = jg
+        self.job_gen = jg.gen_job_param()
         
-        min_jobs = self.job_gen.num_fixed_params()
+        min_jobs = jg.num_fixed_params()
         jobs_to_run = max(min_jobs, num_jobs)
         self.jobs_to_run = jobs_to_run
 
         print("Kickstarting bag of jobs of size {}".format(jobs_to_run))
         
-        jobparams = self.job_gen.gen_job_param().next()
+        jobparams = self.job_gen.next()
         
         namegrp = self.gen_cluster_name() #Random string
         self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
@@ -593,7 +593,7 @@ exit 0
             if not self.continue_exploitation():
                 print("No more jobs to run!")
                 return 
-            jobparams = self.job_gen.gen_job_param().next()
+            jobparams = self.job_gen.next()
             print("Running next job {}".format(jobparams))
 
         return self.run_job(jobparams=jobparams)
