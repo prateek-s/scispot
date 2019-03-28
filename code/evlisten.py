@@ -72,6 +72,7 @@ class evlisten(resource.Resource, SciSpot):
     #global job start time
     jobs_start_time =0
     
+    
     ##################################################
 
     def __init__(self):
@@ -548,9 +549,10 @@ exit 0
 
         num_jobs = int(num_jobs)
         jg = JobGen(pd, num_jobs)
-        self.job_gen = jg.gen_job_param()
-        
+
         min_jobs = jg.num_fixed_params()
+        self.job_gen = jg.gen_job_param()
+
         jobs_to_run = max(min_jobs, num_jobs)
         self.jobs_to_run = jobs_to_run
 
