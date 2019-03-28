@@ -467,7 +467,7 @@ exit 0
         if self.gen_cc is None:
             self.gen_cc = self.cluster_config(self.target_cpus)
         print("Starting the exploration")
-        jobs_start_time = datetime.datetime.now().isoformat()
+        self.jobs_start_time = datetime.datetime.now().isoformat()
         self.phase = 'explore' 
         self.do_exploration()
 
@@ -569,7 +569,7 @@ exit 0
         #make sure cluster is ready
         self.check_if_cluster_ready()
 
-        jobs_start_time = datetime.datetime.now().isoformat()
+        self.jobs_start_time = datetime.datetime.now().isoformat()
 
         jobid = self.run_job(jobparams=jobparams)
 
@@ -675,7 +675,7 @@ exit 0
         self.jobs_completed += 1
 
         #Time since the start of this job runs
-        tdiff_total = (dateutil.parser.parse(fin_time) - dateutil.parser.parse(jobs_start_time)).total_seconds()
+        tdiff_total = (dateutil.parser.parse(fin_time) - dateutil.parser.parse(self.jobs_start_time)).total_seconds()
         print("Total time spend running these jobs since begining (seconds) : {}".format(tdiff_total))
         print("Total jobs completed : {}".format(jobs_completed))
         print("Total jobs abandoned : {}".format(jobs_abandoned))
