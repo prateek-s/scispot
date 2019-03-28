@@ -538,13 +538,11 @@ exit 0
     def start_exploitation(self, num_jobs, mtype=current_mtype, num_servers=4, completion_rate=0.9):
         self.phase = 'exploit'  #Well thats optimistic!!
         self.completion_rate = completion_rate
-        pd = { 
-            'Z' : {'type':'range', 'values':[3.0, 4.0]},
-            'p' : {'type':'set', 'values': [1, 2, 3]},
-            'n' : {'type':'set', 'values':[-1]},
-            'd' : {'type':'set', 'values': [0.714]},
-            'c' : {'type':'range', 'values':[0.3, 0.9]},
-        }
+        pd = {}
+
+        with open(self.param_exporation_file) as json_file:  
+            pd = json.load(json_file)
+
         num_jobs = int(num_jobs)
         jg = JobGen(pd, num_jobs)
         self.jg = jg
@@ -564,8 +562,8 @@ exit 0
         self.launch_cluster(namegrp, num_servers, mtype)
         
         #We want to give slurm some time to reconfigure...
-        
-        time.sleep(90)
+        #make sure cluster is ready
+        self.check_if_cluster_ready()
 
         jobid = self.run_job(jobparams=jobparams)
 

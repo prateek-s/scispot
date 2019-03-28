@@ -26,7 +26,8 @@ class SciSpot:
     username = 'prateek3_14'
     key_filename = '/home/prateeks/.ssh/gce'
     current_master = 'ubslurm1'
-    runfile = '/scispot/sb_confinement.sh'  
+    runfile = '/scispot/sb_confinement.sh' 
+    param_exporation_file = 'config/nanoconfinement_parameter.json'  
 
     max_params_to_explore = 100
     min_params_to_explore = 80 
