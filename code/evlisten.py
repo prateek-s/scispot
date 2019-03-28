@@ -303,7 +303,7 @@ exit 0
             #Add to the vmdb
             vmdb = self.get_vmdb()
             t_start = datetime.datetime.now().isoformat()
-            vmdb.insert({'vmname':name, 't_start':t_start, 'type':mtype, 'status':'running'})
+            vmdb.insert({'vmname':name, 't_start':t_start, 'type':self.current_mtype, 'status':'running'})
             vmdb.close()
             time.sleep(5)
 
@@ -369,8 +369,6 @@ exit 0
     def run_job(self, mtype=current_mtype, num_nodes=len(current_cluster), jobparams='', master=current_master):
         """ Run a job on a running with the given jobparams """
 
-        mtype=self.current_mtype
-
         cores = self.machine_type(self.current_mtype)['cores']
         num_nodes = len(self.current_cluster)
 
@@ -400,7 +398,7 @@ exit 0
         
         jobdb = self.get_jobdb()
         t_start = datetime.datetime.now().isoformat()
-        jobmetadata = {'jobname':jobid, 't_start':t_start, 'runfile':self.runfile, 'resources':(num_nodes, cores), 'state':'running', 'jobparams':jobparams, 'mtype':mtype, 'num_nodes':num_nodes}
+        jobmetadata = {'jobname':jobid, 't_start':t_start, 'runfile':self.runfile, 'resources':(num_nodes, cores), 'state':'running', 'jobparams':jobparams, 'mtype':self.current_mtype, 'num_nodes':num_nodes}
         self.current_jobs.append(jobmetadata)
         jobdb.insert(jobmetadata)
         jobdb.close()
@@ -668,10 +666,11 @@ exit 0
 
         jobdb.close() #For mutual exclusion
 
+        self.jobs_completed += 1
+
         if self.phase is 'explore':
             self.runtimedict[self.current_mtype] = tdiff
             #TODO: Persist this runtime dict as another json db, pickle, or log 
-            self.jobs_completed += 1
             self.do_exploration() #Try next server configuration, exploration is serial for now!
 
         elif self.phase is 'exploit':
