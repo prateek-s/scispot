@@ -67,7 +67,10 @@ class evlisten(resource.Resource, SciSpot):
     jobs_to_run = 0 #Number of jobs in the bag
     jobs_completed = 0
     jobs_abandoned = 0
-    completion_rate = 0.9 #What fraction of jobs we want finished 
+    completion_rate = 0.9 #What fraction of jobs we want finished
+
+    #global job start time
+    jobs_start_time =0
     
     
     ##################################################
@@ -464,6 +467,7 @@ exit 0
         if self.gen_cc is None:
             self.gen_cc = self.cluster_config(self.target_cpus)
         print("Starting the exploration")
+        jobs_start_time = datetime.datetime.now().isoformat()
         self.phase = 'explore' 
         self.do_exploration()
 
@@ -565,6 +569,8 @@ exit 0
         #make sure cluster is ready
         self.check_if_cluster_ready()
 
+        jobs_start_time = datetime.datetime.now().isoformat()
+
         jobid = self.run_job(jobparams=jobparams)
 
     ##################################################
@@ -665,6 +671,10 @@ exit 0
                 jobdb.update({'t_finish':fin_time, 'state':'finished', 'tdiff':tdiff}, q.jobname == job)
 
         jobdb.close() #For mutual exclusion
+
+        #Time since the start of this job runs
+        tdiff_total = (dateutil.parser.parse(fin_time) - dateutil.parser.parse(jobs_start_time)).total_seconds()
+        print("Total time spend running these jobs since begining (seconds) : {}".format(tdiff_total))
 
         self.jobs_completed += 1
 
