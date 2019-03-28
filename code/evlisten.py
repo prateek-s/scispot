@@ -470,6 +470,37 @@ exit 0
 
     ##################################################
 
+    def check_if_cluster_ready(self):
+        is_cluster_not_ready=True
+        #SSH into the master
+        #Issue sinfo -h, and then get number of nodes
+        #replenish_cluster()
+        #If not, then wait 90 seconds more.
+        while is_cluster_not_ready :
+            #We want to give slurm some time to reconfigure...
+            time.sleep(90)
+            #This gets how many nodes are up
+            #sinfo -h | awk '{if (($5=="alloc") || ($5=="idle")) sum += $4} END {print sum}'
+            nodes_cmd = "sinfo -h | awk '{if (($5==\"alloc\") || ($5==\"idle\")) sum += $4} END {print sum}'"
+            #Just returns the number of nodes available
+            sshclient = self.gcp_ssh(self.current_master)
+            i, o, e = sshclient.exec_command(nodes_cmd)
+            nodes_num = o.read()
+            nodes_num = nodes_num.strip()
+            o.close()
+            sshclient.close()
+
+            if nodes_num == None or nodes_num is '':
+                nodes_num = '0'
+
+            print("Number of nodes required = "+str(self.target_nodes)+" ,nodes running = "+ nodes_num)
+
+            if self.target_nodes <= int(nodes_num):
+                is_cluster_not_ready=False
+            else:
+                self.replenish_cluster()
+
+
     def do_exploration(self):
         """ Called at the start of exploration phase, and after a job finishes """ 
         try:
@@ -482,18 +513,11 @@ exit 0
             self.current_start_id = 1
             self.launch_cluster(namegrp, num_servers, mtype)
 
-            #We want to give slurm some time to reconfigure...
+            #make sure cluster is ready
+            self.check_if_cluster_ready()
 
-            time.sleep(90)
-
-            #SSH into the master
-            #Issue sinfo -h, and then get number of nodes
-            #replenish_cluster()
-            #If not, then wait 90 seconds more.
-            #
-            
-            
-            jobid = self.run_job()
+            #if cluster is ready run the job
+            jobid = self.run_job() 
             #We don't wait, but just return here. Serial exploration. 
         except Exception as e:
             print(e)
@@ -716,7 +740,9 @@ exit 0
         if should_rerun is True:
             #Also mark job for re-running?
             self.replenish_cluster()
-            time.sleep(90)
+            #make sure cluster is ready
+            self.check_if_cluster_ready()
+
             self.rerun_job(jobid)
         else:
             self.jobs_abandoned += 1
