@@ -18,6 +18,9 @@
 * sudo pip install --upgrade google-api-python-client
 * sudo pip install paramiko
 * sudo pip install python-dateutil
+* sudo pip install numpy
+
+* sudo pip install Twisted requests tinydb --upgrade google-api-python-client paramiko python-dateutil numpy
 
 ## copy the evlisten_copy.p and edit
 * cp ~/scispot/code/evlisten.p ~/scispot/code/evlisten_copy.p
@@ -55,5 +58,47 @@
  ## Path issues
  * mpirun --wdir /scispot/np-shape-lab-master/bin/ sudo ./np_shape_lab $@ -S 40000
  * mpirun --wdir /scispot/nanoconfinement-md-master/bin/ sudo ./md_simulation_confined_ions $@
+ 
+ ## tmux cheat codes
+ ### Sessions
+ * CTRL B is the tmux shortcut mode
+ * tmux new -s kadda
+ * tmux new -s kadda
+ * tmux attach -t kadda 
+ * tmux switch -t kadda
+ * tmux list-sessions  or tmux ls
+ * tmux detach (prefix + d)
+ * tmux kill-session -t kadda
+ ### Windows (tabs)
+ * tmux split-window or tmux split-window -v
+ * tmux split-window -h
+ * tmux swap-pane -[UDLR] (prefix + { or })
+ * tmux select-pane -[UDLR]
+ * up
+ * CTRL B and then %  for horizontal
+ * CTRL B and then " for vertical
+
+###In tmux, hit the prefix ctrl+b and then:
+
+* c           new window
+* ,           name window
+* w           list windows
+* f           find window
+* &           kill window
+* .           move window - prompted for a new number
+* :movew<CR>  move window to the next unused number
+
+### Panes (splits)
+* %  horizontal split
+* "  vertical split
+
+* o  swap panes
+* q  show pane numbers
+* x  kill pane
+* ⍽  space - toggle between layouts
+* Window/pane surgery
+* :joinp -s :2<CR>  move window 2 into a new pane in the current window
+* :joinp -t :1<CR>  move the current pane into a new pane in window 1
+ 
  
 
