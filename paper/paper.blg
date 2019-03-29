@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: paper.aux
+The style file: acm.bst
+Database file #1: scicloud.bib
+Warning--I didn't find a database entry for "bigred2"
+Warning--I didn't find a database entry for "amherst"
+Warning--I didn't find a database entry for "etc."
+Warning--I didn't find a database entry for "flint"
+Warning--I didn't find a database entry for "cherrypick"
+Warning--I didn't find a database entry for "Metis-atc18"
+Warning--empty journal in alipourfard_cherrypick
+Warning--empty journal in dongarra_fault_nodate
+Warning--can't use both volume and number fields in exosphere
+You've used 16 entries,
+            2253 wiz_defined-function locations,
+            629 strings with 7981 characters,
+and the built_in function-call counts, 6561 in all, are:
+= -- 603
+> -- 366
+< -- 0
++ -- 148
+- -- 132
+* -- 528
+:= -- 1044
+add.period$ -- 49
+call.type$ -- 16
+change.case$ -- 112
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 265
+empty$ -- 502
+format.name$ -- 132
+if$ -- 1381
+int.to.chr$ -- 0
+int.to.str$ -- 16
+missing$ -- 16
+newline$ -- 83
+num.names$ -- 34
+pop$ -- 144
+preamble$ -- 1
+purify$ -- 96
+quote$ -- 0
+skip$ -- 162
+stack$ -- 0
+substring$ -- 319
+swap$ -- 79
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 64
+warning$ -- 3
+while$ -- 60
+width$ -- 18
+write$ -- 169
+(There were 9 warnings)

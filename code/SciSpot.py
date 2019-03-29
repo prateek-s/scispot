@@ -26,10 +26,28 @@ class SciSpot:
     username = 'prateek3_14'
     key_filename = '/home/prateeks/.ssh/gce'
     current_master = 'ubslurm1'
-    runfile = '/scispot/sb_confinement.sh'  
+    runfile = '/scispot/sb_confinement.sh' 
+    param_exporation_file = 'config/nanoconfinement_parameter.json' 
+    current_mtype = 'n1-highcpu-16' #Sane default if nothing specified. 
+
+    # load the settings from a config file
+    config = {}
+    with open('config/config.json') as json_file:  
+        config = json.load(json_file)
+        
+        zone = config['zone']
+        username = config['username']
+        key_filename = config['key_filename']
+        current_master = config['current_master']
+        runfile = config['runfile'] 
+        param_exporation_file = config['param_exporation_file']
+        current_mtype = config['current_mtype']
 
     max_params_to_explore = 100
-    min_params_to_explore = 80 
+    min_params_to_explore = 80
+
+    #job generator
+    job_gen = None
     
     ##################################################
     

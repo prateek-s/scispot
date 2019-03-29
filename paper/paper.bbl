@@ -1,0 +1,113 @@
+\begin{thebibliography}{10}
+
+\bibitem{alipourfard_cherrypick}
+{\sc Alipourfard, O., and Yu, M.}
+\newblock {CherryPick}: {Adaptively} {Unearthing} the {Best} {Cloud}
+  {Configurations} for {Big} {Data} {Analytics}.
+\newblock 15.
+
+\bibitem{bougeret_checkpointing_2011}
+{\sc Bougeret, M., Casanova, H., Rabie, M., Robert, Y., and Vivien, F.}
+\newblock Checkpointing strategies for parallel jobs.
+\newblock In {\em Proceedings of 2011 {International} {Conference} for {High}
+  {Performance} {Computing}, {Networking}, {Storage} and {Analysis} on - {SC}
+  '11\/} (Seattle, Washington, 2011), ACM Press, p.~1.
+
+\bibitem{casanova_heuristics_2000}
+{\sc Casanova, H., Legrand, A., Zagorodnov, D., and Berman, F.}
+\newblock Heuristics for scheduling parameter sweep applications in grid
+  environments.
+\newblock In {\em Proceedings 9th {Heterogeneous} {Computing} {Workshop} ({HCW}
+  2000) ({Cat}. {No}.{PR}00556)\/} (May 2000), pp.~349--363.
+
+\bibitem{dongarra_fault_nodate}
+{\sc Dongarra, J., Herault, T., and Robert, Y.}
+\newblock Fault tolerance techniques for high-performance computing.
+\newblock 66.
+
+\bibitem{gari_learning_2019}
+{\sc Garí, Y., Monge, D.~A., Mateos, C., and García~Garino, C.}
+\newblock Learning budget assignment policies for autoscaling scientific
+  workflows in the cloud.
+\newblock {\em Cluster Computing\/} (Feb. 2019).
+
+\bibitem{gong_monetary_2015}
+{\sc Gong, Y., He, B., and Zhou, A.~C.}
+\newblock Monetary cost optimizations for {MPI}-based {HPC} applications on
+  {Amazon} clouds: checkpoints and replicated execution.
+\newblock In {\em Proceedings of the {International} {Conference} for {High}
+  {Performance} {Computing}, {Networking}, {Storage} and {Analysis} on - {SC}
+  '15\/} (Austin, Texas, 2015), ACM Press, pp.~1--12.
+
+\bibitem{guo_bidding_2015}
+{\sc Guo, W., Chen, K., Wu, Y., and Zheng, W.}
+\newblock Bidding for {Highly} {Available} {Services} with {Low} {Price} in
+  {Spot} {Instance} {Market}.
+\newblock In {\em Proceedings of the 24th {International} {Symposium} on
+  {High}-{Performance} {Parallel} and {Distributed} {Computing} - {HPDC} '15\/}
+  (Portland, Oregon, USA, 2015), ACM Press, pp.~191--202.
+
+\bibitem{iosup_performance_2011}
+{\sc Iosup, A., Ostermann, S., Yigitbasi, M.~N., Prodan, R., Fahringer, T., and
+  Epema, D. H.~J.}
+\newblock Performance {Analysis} of {Cloud} {Computing} {Services} for
+  {Many}-{Tasks} {Scientific} {Computing}.
+\newblock {\em IEEE Transactions on Parallel and Distributed Systems 22}, 6
+  (June 2011), 931--945.
+
+\bibitem{marathe2014exploiting}
+{\sc Marathe, A., Harris, R., Lowenthal, D., De~Supinski, B.~R., Rountree, B.,
+  and Schulz, M.}
+\newblock Exploiting redundancy for cost-effective, time-constrained execution
+  of hpc applications on amazon ec2.
+\newblock In {\em HPDC\/} (2014), ACM.
+
+\bibitem{exosphere}
+{\sc Sharma, P., Irwin, D., and Shenoy, P.}
+\newblock Portfolio-driven resource management for transient cloud servers.
+\newblock In {\em Proceedings of ACM Measurement and Analysis of Computer
+  Systems\/} (June 2017), vol.~1, p.~23.
+
+\bibitem{spoton}
+{\sc Subramanya, S., Guo, T., Sharma, P., Irwin, D., and Shenoy, P.}
+\newblock Spot{O}n: A {B}atch {C}omputing {S}ervice for the {S}pot {M}arket.
+\newblock In {\em SOCC\/} (August 2015).
+
+\bibitem{xiang_spotmpi:_2011}
+{\sc Taifi, M., Shi, J.~Y., and Khreishah, A.}
+\newblock {SpotMPI}: {A} {Framework} for {Auction}-{Based} {HPC} {Computing}
+  {Using} {Amazon} {Spot} {Instances}.
+\newblock In {\em Algorithms and {Architectures} for {Parallel} {Processing}},
+  Y.~Xiang, A.~Cuzzocrea, M.~Hobbs, and W.~Zhou, Eds., vol.~7017. Springer
+  Berlin Heidelberg, Berlin, Heidelberg, 2011, pp.~109--120.
+
+\bibitem{walters_replication-based_2009}
+{\sc Walters, J.~P., and Chaudhary, V.}
+\newblock Replication-{Based} {Fault} {Tolerance} for {MPI} {Applications}.
+\newblock {\em IEEE Transactions on Parallel and Distributed Systems 20}, 7
+  (July 2009), 997--1010.
+
+\bibitem{wolski_probabilistic_2017}
+{\sc Wolski, R., Brevik, J., Chard, R., and Chard, K.}
+\newblock Probabilistic guarantees of execution duration for {Amazon} spot
+  instances.
+\newblock In {\em Proceedings of the {International} {Conference} for {High}
+  {Performance} {Computing}, {Networking}, {Storage} and {Analysis} on - {SC}
+  '17\/} (Denver, Colorado, 2017), ACM Press, pp.~1--11.
+
+\bibitem{yadwadkar_selecting_2017}
+{\sc Yadwadkar, N.~J., Hariharan, B., Gonzalez, J.~E., Smith, B., and Katz,
+  R.~H.}
+\newblock Selecting the \textit{best} {VM} across multiple public clouds: a
+  data-driven performance modeling approach.
+\newblock In {\em Proceedings of the 2017 {Symposium} on {Cloud} {Computing} -
+  {SoCC} '17\/} (Santa Clara, California, 2017), ACM Press, pp.~452--465.
+
+\bibitem{zhai_cloud_2011}
+{\sc Zhai, Y., Liu, M., Zhai, J., Ma, X., and Chen, W.}
+\newblock Cloud versus in-house cluster: evaluating {Amazon} cluster compute
+  instances for running {MPI} applications.
+\newblock In {\em State of the {Practice} {Reports} on - {SC} '11\/} (Seattle,
+  Washington, 2011), ACM Press, p.~1.
+
+\end{thebibliography}
