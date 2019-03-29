@@ -540,7 +540,7 @@ exit 0
     ##################################################
     #################### Exploitation ################
 
-    def start_exploitation(self, num_jobs, mtype=current_mtype, num_servers=4, completion_rate=0.9):
+    def start_exploitation(self, num_jobs, mtype=current_mtype, num_servers=4, parallel_runs=4 ,completion_rate=0.9):
         self.phase = 'exploit'  #Well thats optimistic!!
         self.completion_rate = completion_rate
         pd = {}
@@ -559,13 +559,12 @@ exit 0
 
         print("Kickstarting bag of jobs of size {}".format(jobs_to_run))
         
-        jobparams = self.job_gen.next()
-        
+
         namegrp = self.gen_cluster_name() #Random string
         self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
         self.current_start_id = 1
 
-        self.launch_cluster(namegrp, num_servers, mtype)
+        self.launch_cluster(namegrp, num_servers*parallel_runs, mtype)
         
         #We want to give slurm some time to reconfigure...
         #make sure cluster is ready
@@ -573,7 +572,11 @@ exit 0
 
         self.jobs_start_time = datetime.datetime.now().isoformat()
 
-        jobid = self.run_job(jobparams=jobparams)
+        #Parellel job runs
+        for x in range(parallel_runs):
+            jobparams = self.job_gen.next()
+            jobid = self.run_job(jobparams=jobparams)
+            time.sleep(5)
 
     ##################################################
     ##################################################
