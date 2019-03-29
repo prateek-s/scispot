@@ -22,7 +22,7 @@ Therefore, in this section, we present empirical and analytical models to help u
 
 
 
-\subsection{Price based preemption dynamics}
+\subsection{Price based preemption models}
 
 Amazon's EC2 spot instances were the original cloud transient servers.
 The preemptions of EC2 spot instances is based on their \emph{price}, which is dynamically adjusted based on the supply and demand of cloud resources.
@@ -54,6 +54,15 @@ We launched more than 1000 Google Preemptible VMs of different types over a two 
 
 \footnotetext{We will release the complete preemption dataset and hope that other researchers can benefit.} %Weaksauce 
 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{../data/cdf_all.pdf}
+  \caption{CDF of lifetimes of Google Preemptible Instances. Our blended exponential distribution fits much better than the conventional exponential failure distributions. }
+  \label{fig:gcp1}
+\end{figure}
+
+
 A sample of 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution of the VM lifetimes. 
 Note that the cloud operator (Google) caps the \emph{maximum} lifetime of the VM to 24 hours, and all the VMs are preempted before that hard limit.
 Furthermore, the lifetimes of VM's are \emph{not} uniformly distributed, but have three distinct phases. 
@@ -67,7 +76,7 @@ However, Figure~\ref{fig:gcp1} also shows the CDF ($=1-e^{-\lambda t}$) of the e
 From Figure~\ref{fig:gcp1}, we can see that the classic exponential distribution is unable to model the observed preemption characteristics.
 The primary reason is that the exponential distribution assumes that the preemptions are \emph{memoryless}, which does not hold true when there is a fixed upper bound on the lifetime, as is the case for Google Preemptible VMs.
 
-\subsection{Analytical Modeling of preemptions in Google Cloud}
+\subsection{Analytical modeling of preemptions in Google cloud}
 
 In order to better understand and characterize preemptions, we now develop a general analytical model for preemption dynamics that is faithful to the empirically observed data and that provides a basis for developing running-time and cost minimizing optimizations that we present in Section~\ref{sec:design}.
 
@@ -79,85 +88,75 @@ We write the general form of our blended preemption CDF as follows:
 
 \begin{equation}
   \label{eq:blend1}
-  F_{\text{Blended}} = A(1-e^{-t/\tau_1} + e^{\frac{t-b}{\tau_2}}
+  F_{\text{Blended}}(t) = A(1-e^{-t/\tau_1} + e^{\frac{t-b}{\tau_2}})
 \end{equation}
 
 For most of it's life, a VM sees failures according to the convential exponential distribution with a rate of failure equal to $1/\tau_1$, which is the first term in~\ref{eq:blend1}. 
 However, this does not capture the finite lifetime of the VM imposed by the cloud operator.
-As VMs get closer to their maximum lifetime (24 hours), they are reclaimed at a high, exponential rate, which is captured in the second term of the CDF ($e^{\frac{t-b}{\tau_2}$). 
-However, this exponential reclamation is only applicable towards the end of the VM's maximum lifetime, and thus the $(t-b)$ term helps to ensure that it does not dominate over the entire temporal range. 
+As VMs get closer to their maximum lifetime (24 hours), they are reclaimed (i.e., preempted) at a high, exponential rate, which is captured in the second term of the CDF ($e^{\frac{t-b}{\tau_2}}$). 
+However, this exponential reclamation is only applicable towards the end of the VM's maximum lifetime, and thus the $(t-b)$ term helps to ensure that it does not dominate over the entire temporal range.
+As before, $1/\tau_2$ is the rate of the reclamation.
+
+This ``blended exponential'' distribution thus captures the different phases of the preemption CDF through parameters $\tau_1, \tau_2, b$, and the parameter $A$ is used to ensure we meet the boundary conditions ($F(0)=0, F(24)=1$)
+These parameters can be obtained for a given empirical CDF by minimizing least-squared function fitting methods. \footnotemark 
+
+\footnotetext{More details about the distribution fitting are presented in the implementation section(~\ref{sec:impl}}
+
+
+In the next section, we use the blended exponential analytical model for optimizing cloud resource selection such that we can run scientific applications at low cost and running times.
+
+
+%%%%%%%%%%%%%%%%%%%% OPTIONAL
+
+
+\textbf{Optional text. Spoils flow currently}
+Preemption dynamics can also be analyzed through the \emph{survival rates} of VMs.
+Let $S(t)$ denote the number of VMs that survive till time $t$.
+Then, without loss of generality: $F(t) = A(1-S(t))$
+% Well actually, not really. A spoils that, but whatevs.
+
+In the case of the blended exponential distribution, $S(t)$ depends on $S(t)$ itself, as well as the failure rates of different phases and the current lifetime ($t$), as follows:
+\begin{equation}
+  \label{eq:ramanujan}
+  \dfrac{dS(t)}{dt} = \{\dfrac{1}{\tau_2} - \dfrac{1}{\bar{\tau}}(\dfrac{1}{1-e^{-b/\tau_2} \cdot e^{t/\bar{\tau}}}) \}S(t)
+\end{equation}
 
 
 
-\subsection{EC2 spot instances}
+% \subsection{EC2 spot instances}
 
-The earliest form of transient cloud instances.
-In addition to having dynamic availability, also have dynamic pricing.
-``Classic'' spot instances had price determining the availability, and thus a large amount of work was devoted to bidding and analyzing the prices.
+% The earliest form of transient cloud instances.
+% In addition to having dynamic availability, also have dynamic pricing.
+% ``Classic'' spot instances had price determining the availability, and thus a large amount of work was devoted to bidding and analyzing the prices.
 
-However a recent change to the spot prices no longer allows these assumptions, rendering it impossible to obtain the \emph{exact} availability information from the prices alone.
+% However a recent change to the spot prices no longer allows these assumptions, rendering it impossible to obtain the \emph{exact} availability information from the prices alone.
 
 
-\subsection{Google Preemptible VMs}
+% \subsection{Google Preemptible VMs}
 
-Launched in 2015.
-Flat-rate discount of 80\% compared to on-demand servers.
-Interesting availability SLA: the maximum lifetime is 24 hours, and can be preempted earlier as well.
+% Launched in 2015.
+% Flat-rate discount of 80\% compared to on-demand servers.
+% Interesting availability SLA: the maximum lifetime is 24 hours, and can be preempted earlier as well.
 
-In this paper we will look at these preemptible VMs and show how to model their availability.
-Given the inability to use EC2 prices, we believe that our approach is more generalizable and robust.
+% In this paper we will look at these preemptible VMs and show how to model their availability.
+% Given the inability to use EC2 prices, we believe that our approach is more generalizable and robust.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\textwidth]{../data/cdf_all.pdf}
-  \caption{CDF of lifetimes of Google Preemptible Instances. Our blended exponential distribution fits much better than the conventional exponential failure distributions. }
-  \label{fig:gcp1}
-\end{figure}
 
-There are some distinguishing characteristics of GCP preemptible VMs that makes their failure modeling challenging.
-First is their flat pricing and no other signalling information about their preemption rates (MTBFs) that makes server selection difficult.
+% There are some distinguishing characteristics of GCP preemptible VMs that makes their failure modeling challenging.
+% First is their flat pricing and no other signalling information about their preemption rates (MTBFs) that makes server selection difficult.
 
-\textbf{Modeling Failure Behavior of Preemptible VMs}
-CDF is ``sigmoid'' shaped.
-$P=R*np.sinh((t-t0)/tau) + C$ with a very low $R=10^{-6}, t_0=12, \tau=0.9, C=0.36$
+% \textbf{Modeling Failure Behavior of Preemptible VMs}
+% CDF is ``sigmoid'' shaped.
+% $P=R*np.sinh((t-t0)/tau) + C$ with a very low $R=10^{-6}, t_0=12, \tau=0.9, C=0.36$
 
-Basically, this is a mixture of two distributions, the standard exponential distribution, which we call the stabilization rate and an exponentially increasing reclamation rate.
+% Basically, this is a mixture of two distributions, the standard exponential distribution, which we call the stabilization rate and an exponentially increasing reclamation rate.
 
-Preemptible VMs have three availability phases.
+% Preemptible VMs have three availability phases.
 
-There are many early deaths, then a period of low failure rates, and then the failure rate is exponential with a positive exponent to enable the cloud provider to reclaim the VMs within the deadline (24 hours in the case of Google's Preemptible VMs).
+% There are many early deaths, then a period of low failure rates, and then the failure rate is exponential with a positive exponent to enable the cloud provider to reclaim the VMs within the deadline (24 hours in the case of Google's Preemptible VMs).
 
 
 
-\subsection{Trade-offs in Server Selection}
-% Maybe this can come in the earlier section?
-
-This presents us with many challenges in the cloud-deployment of these jobs.
-
-Cloud providers offer multiple types of instances (VMs), with different hardware configuration (such as number of CPUs and memory size).
-The price of cloud servers is related to their hardware configuration, but it may not be strictly proportional to the hardware performance.
-For example, a VM with 32 CPUs may not be 32 times the cost of a single CPU VM.
-
-
-For parallel and distributed applications, the type of servers selected has large implications on their performance.
-Consider the case of deploying an application on 8 8-core VMs vs. 16 4-core VMs.
-In both cases, the total number of CPU cores is the same.
-However, the larger number of VMs requires more communication between the application tasks, and thus may result in performance degradation.
-The performance of applications at different cluster configurations depends on their communication patterns and scaling properties. 
-
-
-
-Thus, when deploying applications on the cloud, one has to mindful of the cost and performance tradeoff.
-However, in the case of transient servers, the story does not stop here. 
-
-
-In addition to pricing differences, the transient availability of instances \emph{also} differs by type.
-Because the availability of a transient VM is broadly determined by the overall supply and demand of the instances of that \emph{particular} type, the ``preemption rate'' of VMs often depends on the type of the instance.
-
-
-
-Thus, selecting a transient cloud server involves a complex tradeoff between the cost of servers, their performance, and the preemption-rate.
-We develop server selection policies in the next section.
 
 
 

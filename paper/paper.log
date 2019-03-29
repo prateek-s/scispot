@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  29 MAR 2019 18:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  29 MAR 2019 19:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1213,58 +1213,61 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 Package natbib Warning: Citation `Buyya-prices' on page 3 undefined on input li
 ne 36.
 
-[3.3]
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 65.
 
-
-LaTeX Warning: Reference `sec:design' on page 4 undefined on input line 72.
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 59.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 107.
+surrounding objects on input line 59.
 
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 107.
-
-<../data/cdf_all.pdf, id=163, 531.28487pt x 345.57074pt>
+<../data/cdf_all.pdf, id=147, 531.28487pt x 345.57074pt>
 File: ../data/cdf_all.pdf Graphic file (type pdf)
 <use ../data/cdf_all.pdf>
-Package pdftex.def Info: ../data/cdf_all.pdf  used on input line 108.
+Package pdftex.def Info: ../data/cdf_all.pdf  used on input line 60.
 (pdftex.def)             Requested size: 202.51491pt x 131.72426pt.
 
-Underfull \hbox (badness 1348) in paragraph at lines 109--109
+Underfull \hbox (badness 1348) in paragraph at lines 61--61
 []\T1/LinuxLibertineT-TLF/b/n/10 Figure 1: |CDF of life-times of Google Pre-emp
 tible
  []
 
 
-Class acmart Warning: A possible image without description on input line 111.
+Class acmart Warning: A possible image without description on input line 63.
+
+[3.3]
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 5.5pt on input line 74.
 
 
-Overfull \hbox (8.19249pt too wide) in paragraph at lines 131--132
+LaTeX Warning: Reference `sec:design' on page 4 undefined on input line 81.
+
+
+LaTeX Warning: Reference `sec:impl' on page 4 undefined on input line 103.
+
+) (./design.tex [4.4 <../data/cdf_all.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (8.19249pt too wide) in paragraph at lines 57--58
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) This presents us with many chal-lenges in 
 the cloud-deployment
  []
 
 
-Underfull \vbox (badness 3049) has occurred while \output is active []
-
- [4.4 <../data/cdf_all.pdf>]
-Overfull \hbox (1.07603pt too wide) in paragraph at lines 138--143
+Overfull \hbox (1.07603pt too wide) in paragraph at lines 64--69
 []\T1/LinuxLibertineT-TLF/m/n/10 (-20) For par-al-lel and dis-tributed ap-pli-c
 a-tions, the type of servers
  []
 
-) (./design.tex
-Underfull \vbox (badness 4279) has occurred while \output is active []
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5.5]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \hbox (13.79497pt too wide) in paragraph at lines 106--108
+Overfull \hbox (13.79497pt too wide) in paragraph at lines 137--139
 \T1/LinuxLibertineT-TLF/m/n/10 (-20) and we use his-tor-i-cally de-ter-mined fa
 il-ure dis-tri-bu-tions. Roughly,
  []
@@ -1284,7 +1287,7 @@ surrounding objects on input line 20.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 20.
 
-<../graphs/confin_16_time.pdf, id=255, 526.7523pt x 286.38086pt>
+<../graphs/confin_16_time.pdf, id=254, 526.7523pt x 286.38086pt>
 File: ../graphs/confin_16_time.pdf Graphic file (type pdf)
 <use ../graphs/confin_16_time.pdf>
 Package pdftex.def Info: ../graphs/confin_16_time.pdf  used on input line 22.
@@ -1300,7 +1303,7 @@ surrounding objects on input line 28.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 28.
 
-<../graphs/confin_16_cost.pdf, id=256, 518.7223pt x 286.38086pt>
+<../graphs/confin_16_cost.pdf, id=255, 518.7223pt x 286.38086pt>
 File: ../graphs/confin_16_cost.pdf Graphic file (type pdf)
 <use ../graphs/confin_16_cost.pdf>
 Package pdftex.def Info: ../graphs/confin_16_cost.pdf  used on input line 30.
@@ -1316,7 +1319,7 @@ surrounding objects on input line 35.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 35.
 
-<../graphs/confin_64_time.pdf, id=257, 536.78981pt x 286.38086pt>
+<../graphs/confin_64_time.pdf, id=256, 536.78981pt x 286.38086pt>
 File: ../graphs/confin_64_time.pdf Graphic file (type pdf)
 <use ../graphs/confin_64_time.pdf>
 Package pdftex.def Info: ../graphs/confin_64_time.pdf  used on input line 37.
@@ -1335,7 +1338,7 @@ surrounding objects on input line 43.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 43.
 
-<../graphs/confin_64_cost.pdf, id=258, 528.75981pt x 286.38086pt>
+<../graphs/confin_64_cost.pdf, id=257, 528.75981pt x 286.38086pt>
 File: ../graphs/confin_64_cost.pdf Graphic file (type pdf)
 <use ../graphs/confin_64_cost.pdf>
 Package pdftex.def Info: ../graphs/confin_64_cost.pdf  used on input line 45.
@@ -1354,7 +1357,7 @@ surrounding objects on input line 57.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 57.
 
-<../data/waiting_all.pdf, id=259, 541.74582pt x 283.24193pt>
+<../data/waiting_all.pdf, id=258, 541.74582pt x 283.24193pt>
 File: ../data/waiting_all.pdf Graphic file (type pdf)
 <use ../data/waiting_all.pdf>
 Package pdftex.def Info: ../data/waiting_all.pdf  used on input line 57.
@@ -1370,7 +1373,7 @@ surrounding objects on input line 70.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 70.
 
-<../graphs/waiting_time_buckets.pdf, id=260, 504.6698pt x 312.09071pt>
+<../graphs/waiting_time_buckets.pdf, id=259, 504.6698pt x 312.09071pt>
 File: ../graphs/waiting_time_buckets.pdf Graphic file (type pdf)
 <use ../graphs/waiting_time_buckets.pdf>
 Package pdftex.def Info: ../graphs/waiting_time_buckets.pdf  used on input line
@@ -1432,28 +1435,19 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
  (./paper.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
+Package rerunfilecheck Info: File `paper.out' has not changed.
+(rerunfilecheck)             Checksum: 521F65EAF260D09C3BB3116A2C0B3F3F;5859.
 
-
-Package rerunfilecheck Warning: File `paper.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `paper.out':
-(rerunfilecheck)             Before: A96095E9F445E80F44AF471CBCCD5E3F;5894
-(rerunfilecheck)             After:  B85A63B0238C9F0F4C571FC02FA39363;6243.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 21819 strings out of 494805
- 343667 string characters out of 6178000
+ 21828 strings out of 494805
+ 343866 string characters out of 6178000
  479582 words of memory out of 5000000
- 24133 multiletter control sequences out of 15000+600000
- 172594 words of font info for 342 fonts, out of 8000000 for 9000
+ 24135 multiletter control sequences out of 15000+600000
+ 173254 words of font info for 347 fonts, out of 8000000 for 9000
  242 hyphenation exceptions out of 8191
  60i,17n,94p,1092b,617s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
@@ -1475,10 +1469,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/newtx/zxlri.pfb>
-Output written on paper.pdf (9 pages, 2957599 bytes).
+Output written on paper.pdf (9 pages, 2958466 bytes).
 PDF statistics:
- 482 PDF objects out of 1000 (max. 8388607)
- 357 compressed objects within 4 object streams
+ 481 PDF objects out of 1000 (max. 8388607)
+ 356 compressed objects within 4 object streams
  88 named destinations out of 1000 (max. 500000)
- 44832 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 44824 words of extra memory for PDF output out of 51595 (max. 10000000)
 
