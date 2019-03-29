@@ -618,7 +618,9 @@ exit 0
     
         client = self.gcp_ssh(self.current_master)
 
-        i, o, e=client.exec_command("tail -n 1 /var/log/slurmjobs")
+        varifyCMD =  "cat /var/log/slurmjobs | awk '/JobId="+str(jobid).strip()+"/ && /JobState=COMPLETED/ {print}'"
+
+        i, o, e=client.exec_command(varifyCMD)
         s = o.read()
         o.close()
         client.close()
