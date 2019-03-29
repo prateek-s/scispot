@@ -71,6 +71,10 @@ class evlisten(resource.Resource, SciSpot):
 
     #global job start time
     jobs_start_time =0
+
+    #global parellel run
+    parallel_runs=4
+    servers_per_parallel_run=4
     
     
     ##################################################
@@ -373,7 +377,10 @@ exit 0
         """ Run a job on a running with the given jobparams """
 
         cores = self.machine_type(self.current_mtype)['cores']
-        num_nodes = len(self.current_cluster)
+
+        if num_nodes is len(current_cluster):
+            num_nodes = len(self.current_cluster)
+
 
         sbatcmd = "sbatch --no-requeue --parsable -N {num_nodes} -c {cores} -n {num_nodes} {runfile} {jobparams}".format(\
             num_nodes=num_nodes, cores=cores, runfile=self.runfile, jobparams=jobparams)
@@ -438,8 +445,13 @@ exit 0
         jobparams = jobmetadata['jobparams']
         mtype = jobmetadata['mtype']
         num_nodes = jobmetadata['num_nodes']
-        
-        return self.run_job(jobparams=jobparams)
+
+        if self.phase is "exploit":
+            self.run_job(num_nodes=self.servers_per_parallel_run, jobparams=jobparams)
+        else:
+            self.run_job(jobparams=jobparams)
+
+        return 
 
 
     ##################################################
@@ -540,7 +552,7 @@ exit 0
     ##################################################
     #################### Exploitation ################
 
-    def start_exploitation(self, num_jobs, mtype=current_mtype, num_servers=4, parallel_runs=4 ,completion_rate=0.9):
+    def start_exploitation(self, num_jobs, mtype=current_mtype, num_servers=servers_per_parallel_run, parallel_runs=parallel_runs ,completion_rate=0.9):
         self.phase = 'exploit'  #Well thats optimistic!!
         self.completion_rate = completion_rate
         pd = {}
@@ -559,7 +571,6 @@ exit 0
 
         print("Kickstarting bag of jobs of size {}".format(jobs_to_run))
         
-
         namegrp = self.gen_cluster_name() #Random string
         self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
         self.current_start_id = 1
@@ -575,7 +586,7 @@ exit 0
         #Parellel job runs
         for x in range(parallel_runs):
             jobparams = self.job_gen.next()
-            jobid = self.run_job(jobparams=jobparams)
+            jobid = self.run_job(num_nodes=num_servers, jobparams=jobparams)
             time.sleep(5)
 
     ##################################################
@@ -605,7 +616,7 @@ exit 0
         #make sure cluster is ready
         self.check_if_cluster_ready()
 
-        return self.run_job(jobparams=jobparams)
+        return self.run_job(num_nodes=self.servers_per_parallel_run, jobparams=jobparams)
 
     ##################################################
     ################## Event Listeners ###############
