@@ -35,6 +35,7 @@
  ## Run the program
  * One CMD: python ~/scispot/code/evlisten_copy.py
  * Second CMD: curl "http://localhost:7878/?explore=True&target_cpus=16"
+ * Second CMD: curl http://localhost:7878/?exploit=True&num_jobs=10
  * http://localhost:7878/?preempted=abacus
  * http://localhost:7878/?finished=jobid
  * http://localhost:7878/?launch_cluster=True&namegrp=abra&num_nodes=4&mtype=n1-highcpu-16&start_id=1&slurm_master=ubslurm1
@@ -52,7 +53,7 @@
  
  
  ## Path issues
- * mpirun --wdir /scispot/np-shape-lab-master/bin/ sudo ./np_shape_lab
- * mpirun --wdir /scispot/nanoconfinement-md-master/bin/ sudo ./md_simulation_confined_ions
+ * mpirun --wdir /scispot/np-shape-lab-master/bin/ sudo ./np_shape_lab $@ -S 40000
+ * mpirun --wdir /scispot/nanoconfinement-md-master/bin/ sudo ./md_simulation_confined_ions $@
  
 

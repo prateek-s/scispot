@@ -54,7 +54,7 @@ class evlisten(resource.Resource, SciSpot):
 
     current_master = SciSpot.current_master 
     
-    current_mtype = 'n1-highcpu-4' #Sane default if nothing specified. 
+    current_mtype = SciSpot.current_mtype
 
     target_nodes = 0 #
 
@@ -67,7 +67,10 @@ class evlisten(resource.Resource, SciSpot):
     jobs_to_run = 0 #Number of jobs in the bag
     jobs_completed = 0
     jobs_abandoned = 0
-    completion_rate = 0.9 #What fraction of jobs we want finished 
+    completion_rate = 0.9 #What fraction of jobs we want finished
+
+    #global job start time
+    jobs_start_time =0
     
     
     ##################################################
@@ -303,7 +306,7 @@ exit 0
             #Add to the vmdb
             vmdb = self.get_vmdb()
             t_start = datetime.datetime.now().isoformat()
-            vmdb.insert({'vmname':name, 't_start':t_start, 'type':mtype, 'status':'running'})
+            vmdb.insert({'vmname':name, 't_start':t_start, 'type':self.current_mtype, 'status':'running'})
             vmdb.close()
             time.sleep(5)
 
@@ -398,7 +401,7 @@ exit 0
         
         jobdb = self.get_jobdb()
         t_start = datetime.datetime.now().isoformat()
-        jobmetadata = {'jobname':jobid, 't_start':t_start, 'runfile':self.runfile, 'resources':(num_nodes, cores), 'state':'running', 'jobparams':jobparams, 'mtype':mtype, 'num_nodes':num_nodes}
+        jobmetadata = {'jobname':jobid, 't_start':t_start, 'runfile':self.runfile, 'resources':(num_nodes, cores), 'state':'running', 'jobparams':jobparams, 'mtype':self.current_mtype, 'num_nodes':num_nodes}
         self.current_jobs.append(jobmetadata)
         jobdb.insert(jobmetadata)
         jobdb.close()
@@ -464,6 +467,7 @@ exit 0
         if self.gen_cc is None:
             self.gen_cc = self.cluster_config(self.target_cpus)
         print("Starting the exploration")
+        jobs_start_time = datetime.datetime.now().isoformat()
         self.phase = 'explore' 
         self.do_exploration()
 
@@ -538,24 +542,23 @@ exit 0
     def start_exploitation(self, num_jobs, mtype=current_mtype, num_servers=4, completion_rate=0.9):
         self.phase = 'exploit'  #Well thats optimistic!!
         self.completion_rate = completion_rate
-        pd = { 
-            'Z' : {'type':'range', 'values':[3.0, 4.0]},
-            'p' : {'type':'set', 'values': [1, 2, 3]},
-            'n' : {'type':'set', 'values':[-1]},
-            'd' : {'type':'set', 'values': [0.714]},
-            'c' : {'type':'range', 'values':[0.3, 0.9]},
-        }
+        pd = {}
+
+        with open(self.param_exporation_file) as json_file:  
+            pd = json.load(json_file)
+
         num_jobs = int(num_jobs)
         jg = JobGen(pd, num_jobs)
-        self.jg = jg
-        
-        min_jobs = self.jg.num_fixed_params()
+
+        min_jobs = jg.num_fixed_params()
+        self.job_gen = jg.gen_job_param()
+
         jobs_to_run = max(min_jobs, num_jobs)
         self.jobs_to_run = jobs_to_run
 
         print("Kickstarting bag of jobs of size {}".format(jobs_to_run))
         
-        jobparams = self.jg.gen_job_param().next()
+        jobparams = self.job_gen.next()
         
         namegrp = self.gen_cluster_name() #Random string
         self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
@@ -564,8 +567,10 @@ exit 0
         self.launch_cluster(namegrp, num_servers, mtype)
         
         #We want to give slurm some time to reconfigure...
-        
-        time.sleep(90)
+        #make sure cluster is ready
+        self.check_if_cluster_ready()
+
+        jobs_start_time = datetime.datetime.now().isoformat()
 
         jobid = self.run_job(jobparams=jobparams)
 
@@ -590,7 +595,7 @@ exit 0
             if not self.continue_exploitation():
                 print("No more jobs to run!")
                 return 
-            jobparams = self.jg.gen_job_param().next()
+            jobparams = self.job_gen.next()
             print("Running next job {}".format(jobparams))
 
         return self.run_job(jobparams=jobparams)
@@ -668,10 +673,17 @@ exit 0
 
         jobdb.close() #For mutual exclusion
 
+        self.jobs_completed += 1
+
+        #Time since the start of this job runs
+        tdiff_total = (dateutil.parser.parse(fin_time) - dateutil.parser.parse(jobs_start_time)).total_seconds()
+        print("Total time spend running these jobs since begining (seconds) : {}".format(tdiff_total))
+        print("Total jobs completed : {}".format(jobs_completed))
+        print("Total jobs abandoned : {}".format(jobs_abandoned))
+
         if self.phase is 'explore':
             self.runtimedict[self.current_mtype] = tdiff
             #TODO: Persist this runtime dict as another json db, pickle, or log 
-            self.jobs_completed += 1
             self.do_exploration() #Try next server configuration, exploration is serial for now!
 
         elif self.phase is 'exploit':
