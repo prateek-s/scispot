@@ -56,4 +56,23 @@
  * mpirun --wdir /scispot/np-shape-lab-master/bin/ sudo ./np_shape_lab $@ -S 40000
  * mpirun --wdir /scispot/nanoconfinement-md-master/bin/ sudo ./md_simulation_confined_ions $@
  
+ ## tmux cheat codes
+ * CTRL B is the tmux shortcut mode
+ * tmux new -s kadda
+ * tmux new -s kadda
+ * tmux attach -t kadda 
+ * tmux switch -t kadda
+ * tmux list-sessions  or tmux ls
+ * tmux detach (prefix + d)
+ * tmux kill-session -t kadda
+ 
+ * tmux split-window or tmux split-window -v
+ * tmux split-window -h
+ * tmux swap-pane -[UDLR] (prefix + { or })
+ * tmux select-pane -[UDLR]
+ * up
+ * CTRL B and then %  for horizontal
+ * CTRL B and then " for vertical
+ 
+ 
 
