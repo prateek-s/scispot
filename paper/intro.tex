@@ -37,7 +37,7 @@ Due to their volatile nature, transient VMs are offered at steeply discounted ra
 
 However, deploying applications on cloud platforms presents multiple challenges due to the  \emph{fundamental} differences with conventional HPC clusters---which most applications still assume as their default execution environment.
 %
-While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, \vj{\sout{for effective resource utilization,}} the deployment of applications \vj{on cloud platforms} must be cognizant of the heterogeneity in VM sizes, pricing, and availability for effective resource utilization.
+While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, \vj{\sout{for effective resource utilization,}} the deployment of applications \vj{on cloud platforms} must be cognizant of the heterogeneity in VM sizes, pricing, and availability \vj{for effective resource utilization}.
 %
 Crucially, optimizing for \emph{cost} \vj{in addition to\sout{, and not just}} makespan\vj{\sout{,}} becomes an important objective in cloud deployments. 
 % 
@@ -48,35 +48,32 @@ Preemptions can be mitigated with additional fault-tolerance mechanisms and poli
 \vikram
 {
 While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, the deployment of applications on cloud platforms must be cognizant of the heterogeneity in VM sizes, pricing, and availability for effective resource utilization. Crucially, optimizing for \emph{cost} in addition to makespan, becomes an important objective in cloud deployments. Furthermore, although using transient resources can drastically reduce computing costs, their preemptible nature results in frequent job failures. Preemptions can be mitigated with additional fault-tolerance mechanisms and policies~\cite{flint, marathe2014exploiting}, although they impose additional performance and deployment overheads. \vj{\it add one more sentence}. 
-These considerations of cost, server configuration heterogeneity, and frequent job failures intrinsic to the system present multiple challenges in deploying applications on cloud platforms which are fundamentally different from those that appear in using HPC clusters as the execution environment for the scientific computing applications.
-}
+These considerations of cost, server configuration heterogeneity, and frequent job failures intrinsic to the system present multiple challenges in deploying applications on cloud platforms which are fundamentally different from those that appear in using HPC clusters as the execution environment for the scientific computing applications.}
 % Finally getting to the point 
 
-In this paper, we develop principled approaches for deploying \vj{\sout{parallel}} scientific \vj{computing} applications on the cloud at low cost, and present \sysname, a \vj{\sout{system}framework} for deploying and orchestrating scientific applications on cloud transient servers. 
+In this paper, we develop principled approaches for deploying \vj{and orchestrating} \vj{\sout{parallel}} scientific \vj{computing} applications on the cloud \vj{\sout{at low cost}}, and present \sysname, a \vj{\sout{system}framework} for \vj{low-cost scientific computing on} \vj{\sout{cloud}} transient \vj{cloud} servers. 
 %
 % What it is, vs. what problems we are actually solving. What's new?
 %
-Our policies for tackling the resource heterogeneity and transient availability of cloud VMs build on a key insight: most scientific applications are deployed as a collection or ``bag'' of jobs. 
+Our policies for tackling the resource heterogeneity and transient availability of cloud VMs build on a key insight: most scientific \vj{computing} applications are deployed as a collection or ``bag'' of jobs. 
 %
 These bags of jobs represent multiple instantiations of the same computation with different parameters. 
 %
-For instance, each job may be running a (parallel) simulation with a set of simulation parameters, and different jobs in the collection run the simulation on a different set of parameters. 
-Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to discover feasible and viable parameters.
-
-
+For instance, each job may be running a (parallel) simulation with a set of \vj{\sout{simulation}}\vj{input} parameters, and different jobs in the collection run the \vj{(same)} simulation \vj{\sout{on}employing} a different set of \vj{input} parameters. 
+Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to discover \vj{or narrow down the set of \sout{feasible and viable} viable and/or interesting} parameters \vj{associated with the modeled natural or synthetic processes}. \vj{A similar approach is adopted in the use of machine learning (ML) to enhance scientific computational methods, a rapidly emerging area of research, when a collection of jobs with independent parameter sets are launched to train ML models to predict simulation results and/or accelerate the simulation technique}.
 
 Prior approaches and systems for mitigating transiency and cloud heterogeneity have largely targeted individual instantiations of jobs~\cite{spoton, exosphere, flint, marathe2014exploiting}. 
 %
-For a bag of jobs, it is not necessary, or sufficient, to execute an individual job in timely manner---instead, we could selectively restart failed jobs in order to complete a \emph{fraction} of jobs in a bag. 
+For a bag of jobs, it is not necessary, or sufficient, to execute an individual job in timely manner---instead, we could selectively restart failed jobs in order to complete \vj{the necessary, desired subset \sout{a \emph{fraction}}} of jobs in a bag. 
 %
-Furthermore, treating the bag of jobs as a fundamental unit of computation allows us to select the ``best'' server configuration for a given application, by exploring different servers for initial jobs and running the reminder of the jobs on the optimal server configuration. 
+Furthermore, treating the bag of jobs as a fundamental unit of computation allows us to select the ``best'' server configuration for a given application, by exploring different servers for initial jobs and running the rem\vj{a}inder of the jobs on the optimal server configuration \vj{\it is this optimal server found on the fly after the initial set of explorations, or this can be found separately?}. 
 
 
 %What we actually do is missing! Availability modeling in GCP, optimizing across all jobs, exploiting the partial redundancy among jobs to avoid checkpointing overheads, parameter sweeping techniques, early-stopping, checkpoint scheduling for non memoryless distributions. 
 %
-We show that optimizing across an entire bag of jobs and being cognizant of the relation between different jobs in a bag, can enable simple and powerful policies for optimizing cost, makespan, and ease of deployment.
+We show that optimizing across an entire bag of jobs and being cognizant of the relation between different jobs in a bag, can enable simple and powerful policies for optimizing cost, makespan, and ease of deployment. 
 %
-We implement these policies as part of the \sysname~framework, and make the following contributions:
+We implement these policies as part of the \sysname~framework, and make the following contributions: \vj{\it skipping the following contributions, will look at it after they are reordered and further refined}
 \vspace*{-6pt}
 \begin{enumerate}[leftmargin=12pt]
 \item In order to select the ``right'' VM from the plethora of choices offered by cloud providers, we develop a search-based server selection policy that minimizes the cost of running applications. Our search based policy selects a transient server type based on it's cost, parallel speedup, and probability of preemption. 
