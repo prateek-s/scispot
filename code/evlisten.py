@@ -373,12 +373,12 @@ exit 0
     ##################################################
     #################### Jobs ########################
 
-    def run_job(self, mtype=current_mtype, num_nodes=len(current_cluster), jobparams='', master=current_master):
+    def run_job(self, mtype=current_mtype, num_nodes=None, jobparams='', master=current_master):
         """ Run a job on a running with the given jobparams """
 
         cores = self.machine_type(self.current_mtype)['cores']
 
-        if num_nodes is len(current_cluster):
+        if num_nodes is None:
             num_nodes = len(self.current_cluster)
 
 
