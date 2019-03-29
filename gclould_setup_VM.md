@@ -37,7 +37,7 @@
  * curl "http://156.56.159.51:7878/?finished=$jobid" to curl "http://localhost:7878/?finished=$jobid"
  
  ## Run the program
- * One CMD: python ~/scispot/code/evlisten.py | tee shapes_explore_16.dat
+ * One CMD: python ~/scispot/code/evlisten.py | tee shapes_c_parellel_32_2_4.dat
  * Second CMD: curl "http://localhost:7878/?explore=True&target_cpus=16"
  * Second CMD: curl "http://localhost:7878/?exploit=True&num_jobs=10"
  * "http://localhost:7878/?preempted=abacus"
