@@ -67,6 +67,7 @@ class evlisten(resource.Resource, SciSpot):
     jobs_to_run = 0 #Number of jobs in the bag
     jobs_completed = 0
     jobs_abandoned = 0
+    jobs_preempted = 0
     completion_rate = 0.9 #What fraction of jobs we want finished
 
     #global job start time
@@ -319,6 +320,9 @@ exit 0
 
         print("Cluster Launched: {}, {}, {}".format(namegrp, mtype, num_nodes))
         print("Current start id is {}".format(self.current_start_id))
+
+        # waiting 90 seconds to let VM launch and ready
+        time.sleep(90)
         
         return (slurm_master, cnodes_launched)
 
@@ -493,8 +497,6 @@ exit 0
         #replenish_cluster()
         #If not, then wait 90 seconds more.
         while is_cluster_not_ready :
-            #We want to give slurm some time to reconfigure...
-            time.sleep(90)
             #This gets how many nodes are up
             #sinfo -h | awk '{if (($5=="alloc") || ($5=="idle")) sum += $4} END {print sum}'
             nodes_cmd = "sinfo -h | awk '{if (($5==\"alloc\") || ($5==\"idle\")) sum += $4} END {print sum}'"
@@ -514,7 +516,11 @@ exit 0
             if self.target_nodes <= int(nodes_num):
                 is_cluster_not_ready=False
             else:
+                #We want to give slurm some time to reconfigure...
                 self.replenish_cluster()
+                # waiting time moved to launch cluster.
+                #time.sleep(90)
+
         return
 
 
@@ -699,6 +705,7 @@ exit 0
         tdiff_total = (dateutil.parser.parse(fin_time) - dateutil.parser.parse(self.jobs_start_time)).total_seconds()
         print("Total time spend running these jobs since begining (seconds) : {}".format(tdiff_total))
         print("Total jobs completed : {}".format(self.jobs_completed))
+        print("Total jobs preempted : {}".format(self.jobs_preempted))
         print("Total jobs abandoned : {}".format(self.jobs_abandoned))
 
         if self.phase is 'explore':
@@ -776,6 +783,7 @@ exit 0
             self.check_if_cluster_ready()
 
             self.rerun_job(jobid)
+            self.jobs_preempted += 1
         else:
             self.jobs_abandoned += 1
             self.run_next_job()
