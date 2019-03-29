@@ -44,7 +44,10 @@ class SciSpot:
         current_mtype = config['current_mtype']
 
     max_params_to_explore = 100
-    min_params_to_explore = 80 
+    min_params_to_explore = 80
+
+    #job generator
+    job_gen = None
     
     ##################################################
     
