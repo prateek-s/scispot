@@ -37,12 +37,12 @@
  * curl "http://156.56.159.51:7878/?finished=$jobid" to curl "http://localhost:7878/?finished=$jobid"
  
  ## Run the program
- * One CMD: python ~/scispot/code/evlisten_copy.py 2>&1 | tee shapes_explore_16.dat
+ * One CMD: python ~/scispot/code/evlisten.py 2>&1 | tee shapes_explore_16.dat
  * Second CMD: curl "http://localhost:7878/?explore=True&target_cpus=16"
- * Second CMD: curl http://localhost:7878/?exploit=True&num_jobs=10
- * http://localhost:7878/?preempted=abacus
- * http://localhost:7878/?finished=jobid
- * http://localhost:7878/?launch_cluster=True&namegrp=abra&num_nodes=4&mtype=n1-highcpu-16&start_id=1&slurm_master=ubslurm1
+ * Second CMD: curl "http://localhost:7878/?exploit=True&num_jobs=10"
+ * "http://localhost:7878/?preempted=abacus"
+ * "http://localhost:7878/?finished=jobid"
+ * "http://localhost:7878/?launch_cluster=True&namegrp=abra&num_nodes=4&mtype=n1-highcpu-16&start_id=1&slurm_master=ubslurm1"
  
  ## slurm commands
  * systemctl start slurmctld
