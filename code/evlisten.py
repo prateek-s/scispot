@@ -503,6 +503,7 @@ exit 0
                 is_cluster_not_ready=False
             else:
                 self.replenish_cluster()
+        return
 
 
     def do_exploration(self):
@@ -597,6 +598,9 @@ exit 0
                 return 
             jobparams = self.job_gen.next()
             print("Running next job {}".format(jobparams))
+        
+        #make sure cluster is ready
+        self.check_if_cluster_ready()
 
         return self.run_job(jobparams=jobparams)
 
