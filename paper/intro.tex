@@ -16,39 +16,43 @@ Application of computer simulation plays a critical role in understanding natura
 
 % But now we have the cloud!!1
 
-Increasingly, cloud computing platforms have begun to supplement \vj{\it cite} and complement \vj{\it cite; how true is this?} conventional HPC infrastructure \vj{\sout{in order}} to meet the large computing and storage requirements of scientific applications. Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaenous elastic scaling.
+Increasingly, cloud computing platforms have begun to supplement \vj{\it cite} and complement \vj{\it cite; how true is this?} conventional HPC infrastructure \vj{\sout{in order}} to meet the large computing and storage requirements of scientific applications. Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling.
 Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of \emph{Virtual Machines (VMs)}, on which a wide range of  applications such as web-services, distributed data processing, distributed machine learning, etc., are deployed. 
 % a wide range of applications.
 
 \vikram
 {
-The extensive use of cloud platforms to host and run a wide range of applications such as web-serives and distributed data processing have inspired early investigations in the direction of using these resources for scientific computing applications to meet the large computing and storage requirements of the latter. Early work in this area has shown the potential of using these cloud platforms to both supplement and complement conventional HPC infrastructure. Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits: \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaenous elastic scaling, to name a few. Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of Virtual Machines (VMs) that are application-agnostic and can serve as deployment sites for a wide range of applications such as web-services, distributed machine learning, and scientific simulations. 
+The extensive use of cloud platforms to host and run a wide range of applications such as web-services and distributed data processing have inspired early investigations in the direction of using these resources for scientific computing applications to meet the large computing and storage requirements of the latter. Early work in this area has shown the potential of using these cloud platforms to both supplement and complement conventional HPC infrastructure. Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits: \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling, to name a few. Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of Virtual Machines (VMs) that are application-agnostic and can serve as deployment sites for a wide range of applications such as web-services, distributed machine learning, and scientific simulations. 
 }
 
 % Clouds are complex, and also have transience
 
 \vj{\sout{In order to} To} meet the diverse resource demands of different applications, public clouds offer resources (i.e., VM's) with multiple different resource configurations (\vj{\sout{such as}e.g.,} number of CPU cores\vj{,\sout{ and}} memory capacity), and pricing and availability contracts. 
-Conventionally, cloud VMs have been offered with ``on-demand'' availability, such that the lifetime of the VM was solely determined by the owner of the VM (i.e., the cloud customer). 
+Conventionally, cloud VMs have been offered with ``on-demand'' availability, such that the lifetime of the VM \vj{\sout{was}is} solely determined by the owner of the VM (i.e., the cloud customer). 
 Increasingly however, cloud providers have begun offering VMs with \emph{transient}, rather than continuous on-demand availability. 
 Transient VMs can be unilaterally revoked and preempted by the cloud provider, and applications running inside them face fail-stop failures. 
 Due to their volatile nature, transient VMs are offered at steeply discounted rates. Amazon EC2 spot instances, Google Cloud Preemptible VMs, and Azure Batch VMs, are all examples of transient VMs, and are offered at discounts ranging from 50 to 90\%.  
 
 % Very different from HPC and many challenges
 
-However, deploying applications on cloud platforms presents multiple challenges due to the  \emph{fundamental} differences with conventional HPC clusters---which most applications still assume as their default execution environment. 
+However, deploying applications on cloud platforms presents multiple challenges due to the  \emph{fundamental} differences with conventional HPC clusters---which most applications still assume as their default execution environment.
 %
-While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, for effective resource utilization, the deployment of applications must be cognizant of the heterogeneity in VM sizes, pricing, and availability.
+While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, \vj{\sout{for effective resource utilization,}} the deployment of applications \vj{on cloud platforms} must be cognizant of the heterogeneity in VM sizes, pricing, and availability for effective resource utilization.
 %
-Crucially, optimizing for \emph{cost}, and not just makespan, becomes an important objective in cloud deployments. 
+Crucially, optimizing for \emph{cost} \vj{in addition to\sout{, and not just}} makespan\vj{\sout{,}} becomes an important objective in cloud deployments. 
 % 
 Furthermore, although using transient resources can drastically reduce computing costs, their preemptible nature results in frequent job failures.
 %
-Preemptions can be mitigated with additional fault-tolerance mechanisms and policies~\cite{flint, marathe2014exploiting}, although they impose additional performance and deployment overheads. 
+Preemptions can be mitigated with additional fault-tolerance mechanisms and policies~\cite{flint, marathe2014exploiting}, although they impose additional performance and deployment overheads \vj{\it such as? needs one more sentence to clearly explain why these existing approaches are not addressing the need that we address in this paper below...}. 
 
-
+\vikram
+{
+While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, the deployment of applications on cloud platforms must be cognizant of the heterogeneity in VM sizes, pricing, and availability for effective resource utilization. Crucially, optimizing for \emph{cost} in addition to makespan, becomes an important objective in cloud deployments. Furthermore, although using transient resources can drastically reduce computing costs, their preemptible nature results in frequent job failures. Preemptions can be mitigated with additional fault-tolerance mechanisms and policies~\cite{flint, marathe2014exploiting}, although they impose additional performance and deployment overheads. \vj{\it add one more sentence}. 
+These considerations of cost, server configuration heterogeneity, and frequent job failures intrinsic to the system present multiple challenges in deploying applications on cloud platforms which are fundamentally different from those that appear in using HPC clusters as the execution environment for the scientific computing applications.
+}
 % Finally getting to the point 
 
-In this paper, we develop principled approaches for deploying parallel scientific applications on the cloud at low cost, and present \sysname, a system for deploying and orchestrating scientific applications on cloud transient servers. 
+In this paper, we develop principled approaches for deploying \vj{\sout{parallel}} scientific \vj{computing} applications on the cloud at low cost, and present \sysname, a \vj{\sout{system}framework} for deploying and orchestrating scientific applications on cloud transient servers. 
 %
 % What it is, vs. what problems we are actually solving. What's new?
 %
