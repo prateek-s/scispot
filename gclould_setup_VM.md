@@ -60,6 +60,7 @@
  * mpirun --wdir /scispot/nanoconfinement-md-master/bin/ sudo ./md_simulation_confined_ions $@
  
  ## tmux cheat codes
+ ### Sessions
  * CTRL B is the tmux shortcut mode
  * tmux new -s kadda
  * tmux new -s kadda
@@ -68,7 +69,7 @@
  * tmux list-sessions  or tmux ls
  * tmux detach (prefix + d)
  * tmux kill-session -t kadda
- 
+ ### Windows (tabs)
  * tmux split-window or tmux split-window -v
  * tmux split-window -h
  * tmux swap-pane -[UDLR] (prefix + { or })
@@ -76,15 +77,9 @@
  * up
  * CTRL B and then %  for horizontal
  * CTRL B and then " for vertical
- 
-In tmux, hit the prefix ctrl+b and then:
 
-## Sessions
-* :new<CR>  new session
-* s  list sessions
-* $  name session
+###In tmux, hit the prefix ctrl+b and then:
 
-## Windows (tabs)
 * c           new window
 * ,           name window
 * w           list windows
@@ -93,7 +88,7 @@ In tmux, hit the prefix ctrl+b and then:
 * .           move window - prompted for a new number
 * :movew<CR>  move window to the next unused number
 
-## Panes (splits)
+### Panes (splits)
 * %  horizontal split
 * "  vertical split
 
