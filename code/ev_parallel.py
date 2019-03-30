@@ -67,16 +67,13 @@ class evlisten(resource.Resource, SciSpot):
     jobs_to_run = 0 #Number of jobs in the bag
     jobs_completed = 0
     jobs_abandoned = 0
-    jobs_preempted = 0
     completion_rate = 0.9 #What fraction of jobs we want finished
 
     #global job start time
     jobs_start_time =0
 
-    #global parellel run
-    parallel_runs=4
-    servers_per_parallel_run=4
-    
+    num_parallel_jobs = 2
+    nodes_per_job = 1 #Filled by start_exploitation and 
     
     ##################################################
 
@@ -320,9 +317,6 @@ exit 0
 
         print("Cluster Launched: {}, {}, {}".format(namegrp, mtype, num_nodes))
         print("Current start id is {}".format(self.current_start_id))
-
-        # waiting 90 seconds to let VM launch and ready
-        time.sleep(90)
         
         return (slurm_master, cnodes_launched)
 
@@ -377,14 +371,10 @@ exit 0
     ##################################################
     #################### Jobs ########################
 
-    def run_job(self, mtype=current_mtype, num_nodes=None, jobparams='', master=current_master):
+    def run_job(self, mtype=current_mtype, num_nodes=nodes_per_job, jobparams='', master=current_master):
         """ Run a job on a running with the given jobparams """
 
         cores = self.machine_type(self.current_mtype)['cores']
-
-        if num_nodes is None:
-            num_nodes = len(self.current_cluster)
-
 
         sbatcmd = "sbatch --no-requeue --parsable -N {num_nodes} -c {cores} -n {num_nodes} {runfile} {jobparams}".format(\
             num_nodes=num_nodes, cores=cores, runfile=self.runfile, jobparams=jobparams)
@@ -449,13 +439,8 @@ exit 0
         jobparams = jobmetadata['jobparams']
         mtype = jobmetadata['mtype']
         num_nodes = jobmetadata['num_nodes']
-
-        if self.phase is "exploit":
-            self.run_job(num_nodes=self.servers_per_parallel_run, jobparams=jobparams)
-        else:
-            self.run_job(jobparams=jobparams)
-
-        return 
+        
+        return self.run_job(jobparams=jobparams)
 
 
     ##################################################
@@ -497,6 +482,8 @@ exit 0
         #replenish_cluster()
         #If not, then wait 90 seconds more.
         while is_cluster_not_ready :
+            #We want to give slurm some time to reconfigure...
+            time.sleep(90)
             #This gets how many nodes are up
             #sinfo -h | awk '{if (($5=="alloc") || ($5=="idle")) sum += $4} END {print sum}'
             nodes_cmd = "sinfo -h | awk '{if (($5==\"alloc\") || ($5==\"idle\")) sum += $4} END {print sum}'"
@@ -516,12 +503,7 @@ exit 0
             if self.target_nodes <= int(nodes_num):
                 is_cluster_not_ready=False
             else:
-                #We want to give slurm some time to reconfigure...
                 self.replenish_cluster()
-                # waiting time moved to launch cluster.
-                #time.sleep(90)
-
-        return
 
 
     def do_exploration(self):
@@ -535,7 +517,8 @@ exit 0
             self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
             self.current_start_id = 1
             self.launch_cluster(namegrp, num_servers, mtype)
-
+            
+            self.nodes_per_job = num_servers 
             #make sure cluster is ready
             self.check_if_cluster_ready()
 
@@ -558,7 +541,8 @@ exit 0
     ##################################################
     #################### Exploitation ################
 
-    def start_exploitation(self, num_jobs, mtype=current_mtype, num_servers=servers_per_parallel_run, parallel_runs=parallel_runs ,completion_rate=0.9):
+    def start_exploitation(self, num_jobs, mtype=current_mtype, num_servers=8, completion_rate=0.9):
+        """ Run num_jobs, with num_servers per job. Parallelilsm factor set as class member """ 
         self.phase = 'exploit'  #Well thats optimistic!!
         self.completion_rate = completion_rate
         pd = {}
@@ -568,20 +552,21 @@ exit 0
 
         num_jobs = int(num_jobs)
         jg = JobGen(pd, num_jobs)
-
-        min_jobs = jg.num_fixed_params()
-        self.job_gen = jg.gen_job_param()
-
+        self.jg = jg
+        
+        min_jobs = self.jg.num_fixed_params()
         jobs_to_run = max(min_jobs, num_jobs)
         self.jobs_to_run = jobs_to_run
 
         print("Kickstarting bag of jobs of size {}".format(jobs_to_run))
         
+        self.nodes_per_job = num_servers
+        
         namegrp = self.gen_cluster_name() #Random string
         self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
         self.current_start_id = 1
 
-        self.launch_cluster(namegrp, num_servers*parallel_runs, mtype)
+        self.launch_cluster(namegrp, num_servers*self.num_parallel_jobs, mtype)
         
         #We want to give slurm some time to reconfigure...
         #make sure cluster is ready
@@ -589,11 +574,9 @@ exit 0
 
         self.jobs_start_time = datetime.datetime.now().isoformat()
 
-        #Parellel job runs
-        for x in range(parallel_runs):
-            jobparams = self.job_gen.next()
-            jobid = self.run_job(num_nodes=num_servers, jobparams=jobparams)
-            time.sleep(5)
+        for i in xrange(self.num_parallel_jobs):
+            jobparams = self.jg.gen_job_param().next()                    
+            jobid = self.run_job(jobparams=jobparams)
 
     ##################################################
     ##################################################
@@ -616,13 +599,10 @@ exit 0
             if not self.continue_exploitation():
                 print("No more jobs to run!")
                 return 
-            jobparams = self.job_gen.next()
+            jobparams = self.jg.gen_job_param().next()
             print("Running next job {}".format(jobparams))
-        
-        #make sure cluster is ready
-        self.check_if_cluster_ready()
 
-        return self.run_job(num_nodes=self.servers_per_parallel_run, jobparams=jobparams)
+        return self.run_job(jobparams=jobparams)
 
     ##################################################
     ################## Event Listeners ###############
@@ -638,9 +618,7 @@ exit 0
     
         client = self.gcp_ssh(self.current_master)
 
-        varifyCMD =  "cat /var/log/slurmjobs | awk '/JobId="+str(jobid).strip()+"/ && /JobState=COMPLETED/ {print}'"
-
-        i, o, e=client.exec_command(varifyCMD)
+        i, o, e=client.exec_command("tail -n 1 /var/log/slurmjobs")
         s = o.read()
         o.close()
         client.close()
@@ -705,7 +683,6 @@ exit 0
         tdiff_total = (dateutil.parser.parse(fin_time) - dateutil.parser.parse(self.jobs_start_time)).total_seconds()
         print("Total time spend running these jobs since begining (seconds) : {}".format(tdiff_total))
         print("Total jobs completed : {}".format(self.jobs_completed))
-        print("Total jobs preempted : {}".format(self.jobs_preempted))
         print("Total jobs abandoned : {}".format(self.jobs_abandoned))
 
         if self.phase is 'explore':
@@ -783,7 +760,6 @@ exit 0
             self.check_if_cluster_ready()
 
             self.rerun_job(jobid)
-            self.jobs_preempted += 1
         else:
             self.jobs_abandoned += 1
             self.run_next_job()
