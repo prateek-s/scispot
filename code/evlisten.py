@@ -74,8 +74,8 @@ class evlisten(resource.Resource, SciSpot):
     jobs_start_time =0
 
     #global parellel run
-    parallel_runs=4
-    servers_per_parallel_run=4
+    parallel_runs=8
+    servers_per_parallel_run=1
     
     
     ##################################################
@@ -302,6 +302,8 @@ exit 0
 
         cnodes_launched = []
 
+        num_nodes = self.target_nodes - len(self.current_cluster)
+
         for i in range(self.current_start_id, num_nodes+self.current_start_id):
             name = namegrp+str(i)
             self.start_worker(mtype, self.zone, name, self.get_startup_script(configstr))
@@ -328,14 +330,37 @@ exit 0
 
     ##################################################
 
+    def get_all_VMS_by_NGroup(self, name_group):
+        try:
+            nameGroupREX = name_group + '*'
+            instances = self.compute.instances()
+            # added an extra filter to get current instances which are in same machine type
+            lauched_vms = [vm['name'].encode("ascii") for vm in instances.list(project=self.project, zone=self.zone, filter="(name = " + nameGroupREX + ")").execute()['items'] if vm['machineType'].encode("ascii").split("/")[-1] == self.current_mtype]
+            #running_vms = [vm['name'].encode("ascii") for vm in instances.list(project=self.project, zone=self.zone, filter="status = RUNNING").execute()['items']]
+            return lauched_vms
+        except Exception as e:
+            print("Error getting Launched VMs!")
+            print(e)
+            return []
+
+    def get_running_VMS(self):
+        try:
+            instances = self.compute.instances()
+            # added an extra filter to get current instances which are in same machine type
+            running_vms = [vm['name'].encode("ascii") for vm in instances.list(project=self.project, zone=self.zone, filter="(status = RUNNING)").execute()['items'] if vm['machineType'].encode("ascii").split("/")[-1] == self.current_mtype]
+            #running_vms = [vm['name'].encode("ascii") for vm in instances.list(project=self.project, zone=self.zone, filter="status = RUNNING").execute()['items']]
+            return running_vms
+        except Exception as e:
+            print("Error getting running VMs!")
+            print(e)
+            return []
+        
     def server_deficit(self):
         target = self.target_nodes
         curr = 0
-        instances = self.compute.instances()
         try:
-            running_vms = [vm['name'].encode("ascii") for vm in instances.list(project=self.project, zone=self.zone, filter="status = RUNNING").execute()['items']]
+            running_vms = self.get_running_VMS()
         except:
-            print("Error getting running VMs!")
             print("Launching Nothing")
             return 0
         
@@ -523,18 +548,48 @@ exit 0
 
         return
 
+    def manage_VM_group(self):
+        # This function makesure the reutilization of the currenly running VMs
+        namegrp = None
+        running_vms = self.get_running_VMS()
+ 
+        print("VM's currently running {}, which are the type of {}".format(running_vms, self.current_mtype))
+            
+        if running_vms :
+            namegrp = running_vms[-1][0:6]
+            self.current_namegrp = namegrp
+            namegrp_vms = [vmname for vmname in running_vms if self.current_namegrp in vmname]
+            #This is to get the next available index for a VM group
+            all_vms = self.get_all_VMS_by_NGroup(namegrp)
+            # sort the VM names by the last few digits
+            all_vms.sort(key = lambda x: int(x[6:]))
+            print("All the VM's previously launched {}, for the namegroup = {}".format(all_vms, self.current_namegrp))
+            self.current_start_id = int(all_vms[-1][6:])+1
+            self.current_cluster = namegrp_vms 
+
+        else:
+            print("There is no running VMS for machine_type = "+ self.current_mtype)
+            print("Selecting a new cluster name group")
+            namegrp = self.gen_cluster_name() #Random string
+            self.current_namegrp = namegrp
+            self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
+            self.current_start_id = 1
+
+        return
+
 
     def do_exploration(self):
         """ Called at the start of exploration phase, and after a job finishes """ 
         try:
             (mtype, num_servers) = self.gen_cc.next()
+            self.current_mtype = mtype
             if self.cleanup_unused:
                 self.destroy_current_cluster()
 
-            namegrp = self.gen_cluster_name() #Random string
-            self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
-            self.current_start_id = 1
-            self.launch_cluster(namegrp, num_servers, mtype)
+            #Check whether same type VMS are up and running; if so use them combine this with self.cleanup_unused later
+            self.manage_VM_group()
+
+            self.launch_cluster(self.current_namegrp, num_servers, self.current_mtype)
 
             #make sure cluster is ready
             self.check_if_cluster_ready()
@@ -561,6 +616,7 @@ exit 0
     def start_exploitation(self, num_jobs, mtype=current_mtype, num_servers=servers_per_parallel_run, parallel_runs=parallel_runs ,completion_rate=0.9):
         self.phase = 'exploit'  #Well thats optimistic!!
         self.completion_rate = completion_rate
+        self.current_mtype = mtype
         pd = {}
 
         with open(self.param_exporation_file) as json_file:  
@@ -577,11 +633,10 @@ exit 0
 
         print("Kickstarting bag of jobs of size {}".format(jobs_to_run))
         
-        namegrp = self.gen_cluster_name() #Random string
-        self.current_cluster = [] #Reset otherwise run_job tries launching with larger params
-        self.current_start_id = 1
+        #Check whether same type VMS are up and running; if so use them
+        self.manage_VM_group()
 
-        self.launch_cluster(namegrp, num_servers*parallel_runs, mtype)
+        self.launch_cluster(self.current_namegrp, num_servers*parallel_runs, self.current_mtype)
         
         #We want to give slurm some time to reconfigure...
         #make sure cluster is ready
