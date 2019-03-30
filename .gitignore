@@ -5,3 +5,4 @@
 /paper/paper.bbl
 /paper/paper.blg
 /paper/paper-bloated.pdf
+.ipynb_checkpoints/*
