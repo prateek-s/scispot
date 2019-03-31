@@ -49,6 +49,9 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4}SciSpot\xspace  Design}{5}{section.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}High-level flow}{5}{subsection.4.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Trade-offs in Server Selection}{6}{subsection.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The preemption characteristics of different VM types\relax }}{6}{figure.caption.4}}
+\newlabel{fig:cdf-comparison}{{2}{6}{The preemption characteristics of different VM types\relax }{figure.caption.4}{}}
+\newlabel{fig:cdf-comparison@cref}{{[figure][2][]2}{[1][6][]6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Exploration-based Server Selection}{6}{subsection.4.3}}
 \newlabel{eq:et1}{{3}{7}{Exploration-based Server Selection}{equation.4.3}{}}
 \newlabel{eq:et1@cref}{{[equation][3][]3}{[1][7][]7}}
@@ -56,32 +59,11 @@
 \newlabel{eq:pfail1@cref}{{[equation][4][]4}{[1][7][]7}}
 \newlabel{eq:pi}{{6}{7}{Exploration-based Server Selection}{equation.4.6}{}}
 \newlabel{eq:pi@cref}{{[equation][6][]6}{[1][7][]7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Preemption-handling Policies}{7}{subsection.4.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Checkpointing}{7}{subsection.4.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Early Stopping}{7}{subsection.4.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Checkpointing Policies}{7}{section.5}}
-\citation{bougeret_checkpointing_2011}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Scheduling a Bag of Jobs}{7}{subsection.4.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}SciSpot Interface And Implementation}{7}{section.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Evaluation}{7}{section.6}}
 \citation{iosup_performance_2011}
 \citation{zhai_cloud_2011}
-\@writefile{toc}{\contentsline {section}{\numberline {6}SciSpot Interface And Implementation}{8}{section.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Evaluation}{8}{section.7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Preemption likelihood curves}{8}{subsection.7.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Searching for the best cloud configuration}{8}{subsection.7.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces confinement running times\relax }}{8}{figure.caption.5}}
-\newlabel{fig:confin-16-times}{{2}{8}{confinement running times\relax }{figure.caption.5}{}}
-\newlabel{fig:confin-16-times@cref}{{[figure][2][]2}{[1][8][]8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces confinement cost\relax }}{8}{figure.caption.6}}
-\newlabel{fig:confin-16-cost}{{3}{8}{confinement cost\relax }{figure.caption.6}{}}
-\newlabel{fig:confin-16-cost@cref}{{[figure][3][]3}{[1][8][]8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces confinement running times\relax }}{8}{figure.caption.7}}
-\newlabel{fig:confin-64-times}{{4}{8}{confinement running times\relax }{figure.caption.7}{}}
-\newlabel{fig:confin-64-times@cref}{{[figure][4][]4}{[1][8][]8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces confinement cost\relax }}{8}{figure.caption.8}}
-\newlabel{fig:confin-64-cost}{{5}{8}{confinement cost\relax }{figure.caption.8}{}}
-\newlabel{fig:confin-64-cost@cref}{{[figure][5][]5}{[1][8][]8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Ratio of waiting time to job running time on an HPC cluster. Average is 0.2\relax }}{8}{figure.caption.9}}
-\newlabel{fig:hpc-wait-cdf}{{6}{8}{Ratio of waiting time to job running time on an HPC cluster. Average is 0.2\relax }{figure.caption.9}{}}
-\newlabel{fig:hpc-wait-cdf@cref}{{[figure][6][]6}{[1][8][]8}}
 \citation{casanova_heuristics_2000}
 \citation{gari_learning_2019}
 \citation{marathe2014exploiting}
@@ -91,6 +73,31 @@
 \citation{exosphere}
 \citation{alipourfard_cherrypick}
 \citation{yadwadkar_selecting_2017}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Preemption likelihood curves}{8}{subsection.6.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Searching for the best cloud configuration}{8}{subsection.6.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces confinement running times\relax }}{8}{figure.caption.5}}
+\newlabel{fig:confin-16-times}{{3}{8}{confinement running times\relax }{figure.caption.5}{}}
+\newlabel{fig:confin-16-times@cref}{{[figure][3][]3}{[1][7][]8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces confinement cost\relax }}{8}{figure.caption.6}}
+\newlabel{fig:confin-16-cost}{{4}{8}{confinement cost\relax }{figure.caption.6}{}}
+\newlabel{fig:confin-16-cost@cref}{{[figure][4][]4}{[1][8][]8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces confinement running times\relax }}{8}{figure.caption.7}}
+\newlabel{fig:confin-64-times}{{5}{8}{confinement running times\relax }{figure.caption.7}{}}
+\newlabel{fig:confin-64-times@cref}{{[figure][5][]5}{[1][8][]8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Total cost vs. running time graphs}{8}{subsection.6.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}HPC}{8}{subsection.6.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Related Work}{8}{section.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Scientific applications on cloud}{8}{subsection.7.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces confinement cost\relax }}{8}{figure.caption.8}}
+\newlabel{fig:confin-64-cost}{{6}{8}{confinement cost\relax }{figure.caption.8}{}}
+\newlabel{fig:confin-64-cost@cref}{{[figure][6][]6}{[1][8][]8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Ratio of waiting time to job running time on an HPC cluster. Average is 0.2\relax }}{8}{figure.caption.9}}
+\newlabel{fig:hpc-wait-cdf}{{7}{8}{Ratio of waiting time to job running time on an HPC cluster. Average is 0.2\relax }{figure.caption.9}{}}
+\newlabel{fig:hpc-wait-cdf@cref}{{[figure][7][]7}{[1][8][]8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Waiting time fraction of jobs of different lengths varies.\relax }}{8}{figure.caption.10}}
+\newlabel{fig:hpc-wait-buckets}{{8}{8}{Waiting time fraction of jobs of different lengths varies.\relax }{figure.caption.10}{}}
+\newlabel{fig:hpc-wait-buckets@cref}{{[figure][8][]8}{[1][8][]8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Transiency mitigation}{8}{subsection.7.2}}
 \citation{marathe2014exploiting,gong_monetary_2015}
 \citation{dongarra_fault_nodate}
 \citation{walters_replication-based_2009}
@@ -117,18 +124,6 @@
 \bibcite{kadupitiya2017}{{15}{}{{}}{{}}}
 \bibcite{IPDPS13:LULESH}{{16}{}{{}}{{}}}
 \bibcite{LULESH2:changes}{{17}{}{{}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Waiting time fraction of jobs of different lengths varies.\relax }}{9}{figure.caption.10}}
-\newlabel{fig:hpc-wait-buckets}{{7}{9}{Waiting time fraction of jobs of different lengths varies.\relax }{figure.caption.10}{}}
-\newlabel{fig:hpc-wait-buckets@cref}{{[figure][7][]7}{[1][8][]9}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Total cost vs. running time graphs}{9}{subsection.7.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}HPC}{9}{subsection.7.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Related Work}{9}{section.8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Scientific applications on cloud}{9}{subsection.8.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Transiency mitigation}{9}{subsection.8.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.1}Fault-tolerance for MPI}{9}{subsubsection.8.2.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.2}Huge amount of work on bidding in HPC}{9}{subsubsection.8.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Server Selection}{9}{subsection.8.3}}
-\@writefile{toc}{\contentsline {section}{References}{9}{section*.12}}
 \bibcite{marathe2014exploiting}{{18}{}{{}}{{}}}
 \bibcite{exosphere}{{19}{}{{}}{{}}}
 \bibcite{solis2013generating}{{20}{}{{}}{{}}}
@@ -144,4 +139,8 @@
 \newlabel{tocindent2}{11.49998pt}
 \newlabel{tocindent3}{20.22pt}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\newlabel{TotPages}{{10}{10}{}{page.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Fault-tolerance for MPI}{9}{subsubsection.7.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Huge amount of work on bidding in HPC}{9}{subsubsection.7.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Server Selection}{9}{subsection.7.3}}
+\@writefile{toc}{\contentsline {section}{References}{9}{section*.12}}
+\newlabel{TotPages}{{9}{9}{}{page.9}{}}
