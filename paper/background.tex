@@ -10,6 +10,8 @@
 
 %
 \subsection{Case Study: Molecular Dynamics Applications}
+
+\begin{comment}
 Describe the kind of computation.
 
 Scaling properties. Almost perfectly scalable with O(n) communication? 
@@ -19,6 +21,14 @@ Will help relate to parameters etc with more concrete examples.
 
 Bag of jobs.
 Why multiple runs: parameter sweeps, search, or just multiple times to get confidence intervals and stable results in case of randomness. 
+\end{comment}
+
+For testing and evaluating the SciSpot framework, we consider three representative examples (case studies) from molecular dynamics (MD) and hydrodynamics simulations: 1) MD simulations of ions in nanoscale confinement created by material surfaces \cite{jjzo1,kadupitiya2017}, MD-based optimization dynamics of shape-changing deformable nanoparticles (NPs) \cite{jto1,jyto}, and hydrodynamics modeling of continuum material properties using the Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH) code \cite{IPDPS13:LULESH,LULESH2:changes}. These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering; the first two applications (1 and 2) are based on codes and associated theoretical formulations developed by us outlined in the referenced papers \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto}, and example 3 is based on an open-source code developed at Lawrence Livermore National Laboratories \cite{IPDPS13:LULESH,LULESH:spec}. 
+
+The typical workflow associated with the aforementioned case studies, and with most other scientific computing applications, involves the implementation of the ``bags of jobs'' approach at many critical stages including application initiation and completion. We discuss this aspect here using the examples identified above. In the initial stage, the construction and calibration of the appropriate model often involves testing for the needed attributes (e.g., characteristic sizes, interactions potentials) of the building blocks (model components) by sweeping over different combinations of physical as well as computing parameters (e.g., simulation timestep, thermostat variables) and eliminating the sets that lead to unphysical, unstable, or computationally unfeasible scenarios. During the model examination stage for the investigation of the accuracy and generalization of the model to describe the associated natural or synthetic processes, the (dynamics of) model system needs to be simulated over a wide range of model parameters. Accordingly, multiple sets of simulations (bags of jobs) are run to sweep over a broad region of the multidimensional parameter space and to isolate the domains where the model works best and where it yields a poorer representation of the real system. 
+
+Often, the objective of the scientific computing application is to isolate the model system parameters where interesting changes in the material structure or assembly behaviors (e.g., phase transitions) are observed. A similar bags of jobs approach is also  adopted in such applications with the search for these model parameters generally inspired by experimentally-informed observations and/or predictions yielding from approximate analytical theoretical formulations. For example, in the simulation of deformable nanoparticles implemented in the NP shape code, one is interested in locating the parameter sets that lead to asymmetric shapes (e.g., discs, rods), in the ions in nanoconfinement application, a quantity of interest is the combination of parameters that yields the expected contact density or effective pressure between the confining surfaces measured experimentally. Finally, the bags of jobs during the completion process in the workflow where simulations are often launched in parallel to fill any gaps in the extracted trends or to obtain error bars on the predictions (e.g., ionic density profiles, energy distributions) are often obtained by launching several simulations in parallel.
+
 
 \begin{comment}
 
