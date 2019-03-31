@@ -284,13 +284,14 @@ exit 0
         self.current_namegrp = namegrp
 
         if not replenish :
-            compute_nodes = namegrp + "[1-" + str(num_nodes*3) + "]"
+            compute_nodes = namegrp + "[1-" + str((self.current_start_id+num_nodes)*3) + "]"
             configstr = self.generate_slurm_config(slurm_master, machine, compute_nodes)
             self.current_configstr = configstr
             self.target_nodes = num_nodes
             #No need to reconfigure the master if we are replacing lost servers
             #TODO: Check this!! Slurmctld may need restarting urghhh
-            self.reconfig_master(slurm_master, configstr)            
+            self.reconfig_master(slurm_master, configstr)
+            time.sleep(5)         
 
         else:
             configstr = self.current_configstr 
@@ -302,9 +303,9 @@ exit 0
 
         cnodes_launched = []
 
-        num_nodes = self.target_nodes - len(self.current_cluster)
-
-        for i in range(self.current_start_id, num_nodes+self.current_start_id):
+        num_nodes_to_lanch = self.target_nodes - len(self.current_cluster)
+        #when new nodes are less than the current running nodes this loop will not run
+        for i in range(self.current_start_id, num_nodes_to_lanch+self.current_start_id):
             name = namegrp+str(i)
             self.start_worker(mtype, self.zone, name, self.get_startup_script(configstr))
             cnodes_launched.append(name)
@@ -317,15 +318,15 @@ exit 0
             vmdb.close()
             time.sleep(5)
 
-        self.current_mtype = mtype
+        if(num_nodes_to_lanch>0):
+            print("Cluster Launched: {}, {}, {}, waiting...".format(namegrp, mtype, num_nodes_to_lanch))
+            # waiting 90 seconds to let VM launch and ready
+            time.sleep(90)
+        else:
+            print("New insances did not launch, jobs will run using existing VMs")
 
-
-        print("Cluster Launched: {}, {}, {}".format(namegrp, mtype, num_nodes))
         print("Current start id is {}".format(self.current_start_id))
 
-        # waiting 90 seconds to let VM launch and ready
-        time.sleep(90)
-        
         return (slurm_master, cnodes_launched)
 
     ##################################################
