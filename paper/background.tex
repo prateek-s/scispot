@@ -3,44 +3,34 @@
 
 \subsection{Transient Computing}
 
-\subsection{Heterogeneity and Parallel Scientific Applications in the Cloud}
+%\subsection{Heterogeneity and Parallel Scientific Applications in the Cloud}
 
 %No extra parallelism required
 %RM heterogen
 
 %
-\subsection{Case Study: Molecular Dynamics Applications}
+\subsection{Case Studies: Bags of Jobs in Scientific Computing Applications}
 
 \begin{comment}
-Describe the kind of computation.
+Describe the kind of computation. DONE
 
-Scaling properties. Almost perfectly scalable with O(n) communication? 
+Scaling properties. Almost perfectly scalable with O(n) communication? UNCLEAR WHAT IS MEANT TO BE DONE HERE
 
 This can be a like a case study of parallel scientific simulations.
-Will help relate to parameters etc with more concrete examples.
+Will help relate to parameters etc with more concrete examples. DONE
 
 Bag of jobs.
 Why multiple runs: parameter sweeps, search, or just multiple times to get confidence intervals and stable results in case of randomness. 
+DONE I THINK
 \end{comment}
 
-For testing and evaluating the SciSpot framework, we consider three representative examples (case studies) from molecular dynamics (MD) and hydrodynamics simulations: 1) MD simulations of ions in nanoscale confinement created by material surfaces \cite{jjzo1,kadupitiya2017}, MD-based optimization dynamics of shape-changing deformable nanoparticles (NPs) \cite{jto1,jyto}, and hydrodynamics modeling of continuum material properties using the Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH) code \cite{IPDPS13:LULESH,LULESH2:changes}. These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering; the first two applications (1 and 2) are based on codes and associated theoretical formulations developed by us outlined in the referenced papers \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto}, and example 3 is based on an open-source code developed at Lawrence Livermore National Laboratories \cite{IPDPS13:LULESH,LULESH:spec}. 
+For testing and evaluating the SciSpot framework, we consider three representative examples (case studies) from molecular dynamics (MD) and hydrodynamics simulations: 1) MD simulations of ions in nanoscale confinement created by material surfaces \cite{jjzo1,kadupitiya2017}, MD-based optimization dynamics of shape-changing deformable nanoparticles (NPs) \cite{jto1,jyto}, and hydrodynamics simulations of continuum material models using the Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH) code \cite{IPDPS13:LULESH,LULESH2:changes}. These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering; the first two applications (1 and 2) are based on codes and associated theoretical formulations developed by us \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto}, and case study 3 is based on an open-source code developed at Lawrence Livermore National Laboratories \cite{IPDPS13:LULESH,LULESH:spec}. 
 
-The typical workflow associated with the aforementioned case studies, and with most other scientific computing applications, involves the implementation of the ``bags of jobs'' approach at many critical stages including application initiation and completion. We discuss this aspect here using the examples identified above. In the initial stage, the construction and calibration of the appropriate model often involves testing for the needed attributes (e.g., characteristic sizes, interactions potentials) of the building blocks (model components) by sweeping over different combinations of physical as well as computing parameters (e.g., simulation timestep, thermostat variables) and eliminating the sets that lead to unphysical, unstable, or computationally unfeasible scenarios. During the model examination stage for the investigation of the accuracy and generalization of the model to describe the associated natural or synthetic processes, the (dynamics of) model system needs to be simulated over a wide range of model parameters. Accordingly, multiple sets of simulations (bags of jobs) are run to sweep over a broad region of the multidimensional parameter space and to isolate the domains where the model works best and where it yields a poorer representation of the real system. 
+The typical workflow associated with most scientific computing applications, including the aforementioned case studies, involves the implementation of the ``bags of jobs'' approach at many critical stages. In the initial stage, the construction and calibration of the appropriate model often involves testing for the needed attributes (e.g., characteristic sizes, interactions potentials) of the building blocks (model components) by sweeping over different combinations of physical as well as computing parameters (e.g., simulation timestep, thermostat variables) and eliminating the sets that lead to unphysical, unstable, or computationally intractable scenarios. During the model examination stage for the investigation of the accuracy and generalization of the model to describe the associated natural or synthetic processes, the dynamics of the model system is simulated over a wide range of model parameters. Accordingly, multiple sets of simulations (bags of jobs) are run to sweep over a broad region of the multidimensional parameter space and to isolate the domains where the model works best and where it yields a poorer representation of the real system. 
 
-Often, the objective of the scientific computing application is to isolate the model system parameters where interesting changes in the material structure or assembly behaviors (e.g., phase transitions) are observed. A similar bags of jobs approach is also  adopted in such applications with the search for these model parameters generally inspired by experimentally-informed observations and/or predictions yielding from approximate analytical theoretical formulations. For example, in the simulation of deformable nanoparticles implemented in the NP shape code, one is interested in locating the parameter sets that lead to asymmetric shapes (e.g., discs, rods), in the ions in nanoconfinement application, a quantity of interest is the combination of parameters that yields the expected contact density or effective pressure between the confining surfaces measured experimentally. Finally, the bags of jobs approach is adopted during the completion process in the workflow where simulations are often launched in parallel to fill any gaps in the extracted trends or to obtain error bars on the predictions (e.g., ionic density profiles, energy distributions).
+Often, the key objective of the scientific computing application is to isolate the model system parameters where interesting changes in the material structure or assembly behaviors (e.g., phase transitions) are observed. A similar bags of jobs approach is also  adopted in such applications with the search for these model parameters generally inspired by experimentally-informed observations and/or predictions yielding from approximate analytical theoretical formulations. For example, in the simulation of deformable nanoparticles implemented in the NP shape code, one is interested in isolating the set of NP and environmental parameters: NP bending modulus, NP stretching constant, NP charge, and salt concentration, that yields complex NP deformations/shapes (e.g., discs, rods, bowls). Similarly, in the ions in nanoconfinement application, a quantity of interest is the set of electrolyte system attributes (parameters): confinement length $h$, positive ion valency ($z_p$), negative ion valency ($z_n$), electrolyte concentration $c$, and ion diameter $d$, that yields the expected contact density or the experimentally-measured effective pressure between the confining nanomaterial surfaces. Finally, the bags of jobs approach is adopted during the completion process in the workflow where simulations are often launched in parallel to fill any gaps in the extracted trends or to obtain error bars on the predictions (e.g., ionic density profiles, energy distributions, NP shape transitions).
 
-
-\begin{comment}
-
-- sweep, to get parameter set suitable
-- important part of workflow
-- exploring 
-- ML ICCS application, training the ML model, new trend
-- critical to develop ML wrappers for simulations on HPC
-- ML IJHPCA
-
-\end{comment}
-
+In addition to the conventional scientific computing (HPC) applications, an emerging area of research in a broad range of fields including materials science, biology, neuroscience, and physics where the bags of jobs approach is critical to the workflow is the integration of machine learning (ML) tools with these HPC applications  \citep{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer,jcs1,jcs2,fox2019learning}. ML methods have been developed and implemented to identify model attributes/parameters that yield desirable material configurations \citep{glotzer2017}, update configurations in simulations \citep{botu2015adaptive,fu2017}, predict and auto-tune optimal simulation control parameters \cite{jcs1}, predict critical features associated with simulation output \cite{jcs2}, infer assembly landscapes \citep{long2015machine,ferguson2017machine}, and classify phases of matter \citep{melko2017}. In many of these examples, ML models (e.g., artificial neural network, support vector machines) are trained on large data sets generated via simulations run over a broad range of parameter values. The bags of jobs process is invoked multiple times during the experimentation with many ML techniques using training and testing datasets to isolate the ML method(s) that yield the most accurate results for a given scientific computing application. For example, in Ref.~\cite{jcs2}, an ANN was trained to predict contact, peak, and mid-point ionic density using training and testing datasets comprising of $\approx4800$ and $\approx2000$ simulation runs respectively. Datasets were generated using HPC resources (Bigred2 computing cluster) based on the sweep of parameters $h \in (3.0, 4.0)$ nm,  $z_p \in 1,2,3$ (in units of electronic charge $|e|$); $z_n \in -1,-2$ $|e|$; $c \in (0.3,0.9)$ M, and $d \in (0.5,0.75)$ nm. We envision the SciSpot framework described here to complement and supplement conventional HPC supercomputer systems in enabling the construction of such ML layers (wrappers) \cite{jcs2,fox2019learning} around scientific computing applications. 
 
 %%% Local Variables:
 %%% mode: latex
