@@ -25,47 +25,49 @@ Warning--empty institution in LULESH:spec
 Warning--empty year in LULESH:spec
 Warning--empty journal in alipourfard_cherrypick
 Warning--empty journal in dongarra_fault_nodate
+Warning--empty title in jcs1
+Warning--empty journal in jcs2
 Warning--empty institution in LULESH2:changes
 Warning--can't use both volume and number fields in exosphere
-You've used 26 entries,
+You've used 38 entries,
             2253 wiz_defined-function locations,
-            703 strings with 10105 characters,
-and the built_in function-call counts, 10045 in all, are:
-= -- 912
-> -- 585
+            776 strings with 12386 characters,
+and the built_in function-call counts, 14401 in all, are:
+= -- 1310
+> -- 874
 < -- 2
-+ -- 239
-- -- 212
-* -- 854
-:= -- 1631
-add.period$ -- 78
-call.type$ -- 26
-change.case$ -- 182
++ -- 357
+- -- 318
+* -- 1261
+:= -- 2383
+add.period$ -- 113
+call.type$ -- 38
+change.case$ -- 268
 chr.to.int$ -- 0
-cite$ -- 34
-duplicate$ -- 362
-empty$ -- 747
-format.name$ -- 212
-if$ -- 2064
+cite$ -- 48
+duplicate$ -- 469
+empty$ -- 1033
+format.name$ -- 318
+if$ -- 2911
 int.to.chr$ -- 0
-int.to.str$ -- 26
-missing$ -- 23
-newline$ -- 132
-num.names$ -- 52
-pop$ -- 215
+int.to.str$ -- 38
+missing$ -- 35
+newline$ -- 191
+num.names$ -- 76
+pop$ -- 284
 preamble$ -- 1
-purify$ -- 156
+purify$ -- 231
 quote$ -- 0
-skip$ -- 213
+skip$ -- 276
 stack$ -- 0
-substring$ -- 497
-swap$ -- 98
+substring$ -- 741
+swap$ -- 121
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 104
-warning$ -- 8
-while$ -- 85
-width$ -- 28
-write$ -- 265
+type$ -- 152
+warning$ -- 10
+while$ -- 121
+width$ -- 40
+write$ -- 379
 (There was 1 error message)
