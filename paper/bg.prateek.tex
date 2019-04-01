@@ -1,23 +1,30 @@
 \section{Background and Overview}
 
-In this section, we give on overview of the characteristics and challenges of transient cloud computing, and highlight the need
+In this section, we give on overview of the characteristics and challenges of transient cloud computing; motivate the need for the bag of jobs abstraction in scientific computing workflows; and give an overview of our \sysname system. 
 
-developing techniques and policies for running large collections on scientific simulations.
-We also present an overview of our system, \sysname, that is a software framework for running low-cost 
 
 \subsection{Transient Cloud Computing}
-Most traditional cloud servers are distributed in nature 
+% The "Environment"
 
-Traditional cloud servers are leased on an on-demand basis---cloud customers mayrequest them when needed and the cloud platform provisions these servers until the customer relinquishes them.Since customer demand for cloud resources can be highly dynamic, the cloud platform needs to over-provisionthe aggregate server capacity to handle peak demand. Consequently, a significant portion of the cloud servercapacity tends to be idle during non-peak periods. Cloud providers have begun to lease this surplus capacity athighly discounted prices to cost-sensitive customers. Doing so enables providers to earn revenue from otherwiseidle resources. Such surplus servers are referred to as transient servers since the cloud provider can reclaim themfrom the customer at any time, e.g., when demand for standard on-demand servers begins to rise. Cloud providerstypically provide a brief advance warning prior to preempting a transient server to enable the customer to gracefullyshutdown the machine. The warning time currently ranges from two minutes in Amazon EC2 cloud to 30 secondson Google’s cloud platform
+Infrastructure as a service (IaaS) cloud offerings such as Amazon EC2, Google Public Cloud, Microsoft Azure, etc., typically provide computational resources in the form of virtual machines (VMs), on which users can deploy their applications.
+% too long an opening sentence, not to the point 
+Conventionally, these VMs are leased to users on an ``on-demand'' basis: cloud customers can start up a VM when needed, and the cloud platform provisions and runs these VMs until they are relinquished by the customer. 
+Due to the temporal dynamics of cloud workloads, the overall utilization of cloud platforms is also highly dynamic. 
+To satisfy user demand, cloud capacity is typically provisioned for the peak load, and thus the average utilization tends to be low, of the order of 25\%~\cite{borg,resource-central-sosp17}. 
 
-Most data centers today are virtualized where applications run in either VMs or containers multiplexed on to physical machines. 
-% Such a virtualized architecture is now commonplace in both enterprise and cloud data centers. 
-Since data center capacity is provisioned for peak demand, the average utilization tends to be low~\cite{borg,resource-central-sosp17}. 
-Data center operators can increase the overall system utilization or maximize revenue, in case of the cloud, by offering unused server capacity transiently to low-priority
-applications or at a discounted cost.
 
-Cloud offerings such as Amazon Spot instances~\cite{spot-web}, Google Preemptible VMs~\cite{preemptible}, and Azure batch VMs~\cite{azure-batch} are examples of such 
-low-cost but preemptible VMs. 
+To increase their overall utilization, large cloud operators have begun to offer their surplus resources as low-cost servers with \emph{transient} availability, which can be preempted by the cloud operator at any time (after a small advance warning). 
+These preemptible servers have become popular in recent years due to their discounted prices, which can be 7-10x lower than conventional non-preemptible servers. 
+Cloud offerings such as Amazon Spot instances~\cite{spot-web}, Google Preemptible VMs~\cite{preemptible}, and Azure batch VMs~\cite{azure-batch} are examples of such low-cost transient servers. 
+
+
+However, effective use of transient servers is challenging for applications because of their uncertain availability~\cite{spotcheck, prateek-thesis}. 
+Preemptions are akin to fail-stop failures, and result in loss of the application's memory and disk state, leading to downtimes for interactive applications such as web services, and poor throughput for long-running batch-computing applications. 
+Consequently, researchers have explored fault-tolerance techniques such as checkpointing~\cite{flint, marathe2014exploiting, spoton} and resource management techniques~\cite{exosphere} to ameliorate the effects of preemptions for a wide range of applications. 
+However, since the effect of preemptions is dependent on a complex combination of application resource and fault model, mitigating preemptions for different applications remains an active research area~\cite{eurosys19-graph}. 
+
+
+
 
 
 
