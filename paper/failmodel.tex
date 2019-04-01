@@ -99,7 +99,7 @@ We propose the following general form for the CDF based on this model:
   \label{eq:blend1}
   \mathscr{F}\left(t\right) = A\left(1-e^{-\frac{t}{\tau_1}} + e^{\frac{t-b}{\tau_2}}\right),
 \end{equation}
-where $1/\tau_1$ is the rate of preemptions in the initial phase, $1/\tau_2$ is the rate preemptions in the final phase (generally, $1/\tau_2 > 1/\tau_1$), $b$ denotes the time when the preemptions occur at a high rate (generally, around 24 hours) \vj{which we term the activation time for the second process}, and $A$ is a constant used to scale the CDF to ensure that the initial conditions ($F(0)=0$) are met.
+where $1/\tau_1$ is the rate of preemptions in the initial phase, $1/\tau_2$ is the rate of preemptions in the final phase (generally, $1/\tau_2 > 1/\tau_1$), $b$ denotes the time when the preemptions occur at a high rate (generally, around 24 hours) \vj{which we term the activation time for the second process}, and $A$ is a constant used to scale the CDF to ensure that the initial conditions ($F(0)=0$) are met.
 
 For most of its life, a VM sees failures according to the classic exponential distribution with a rate of failure equal to $1/\tau_1$ -- this behavior is captured by $1-e^{-t/\tau_1}$ term in Eq.~\ref{eq:blend1}. 
 %However, this does not capture the finite lifetime of the VM imposed by the cloud operator.
