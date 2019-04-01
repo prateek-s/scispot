@@ -7,5 +7,5 @@
 /paper/paper.log
 /paper/paper-bloated.pdf
 .ipynb_checkpoints/*
-paper.pdf
-paper.out
+/paper/paper.pdf
+/paper/paper.out
