@@ -1,0 +1,61 @@
+{'explore': ['True'], 'target_cpus': ['16']}
+Starting the exploration
+('n1-highcpu-16', 1)
+Master reconfigured
+Cluster Launched: vxqwig, n1-highcpu-16, 1
+Current start id is 2
+Number of nodes required = 1 ,nodes running = 1
+Job started 112  sbatch --no-requeue --parsable -N 1 -c 8 -n 1 /scispot/sb_lulesh.sh 
+{'finished': ['112']}
+finished
+JobId=112 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-03-29T23:28:38 EndTime=2019-03-29T23:28:48 NodeList=vxqwig1 NodeCnt=1 ProcCnt=16 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-03-29T23:28:37 EligibleTime=2019-03-29T23:28:37 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 112
+Job id search target 112
+COMPLETED
+Job 112 finished at 2019-03-29T23:28:58.024166
+Job running time (seconds) : 18.269896
+Total time spend running these jobs since begining (seconds) : 120.840101
+Total jobs completed : 1
+Total jobs preempted : 0
+Total jobs abandoned : 0
+('n1-highcpu-8', 2)
+Master reconfigured
+Cluster Launched: rbqdow, n1-highcpu-8, 2
+Current start id is 3
+Number of nodes required = 2 ,nodes running = 2
+Job started 113  sbatch --no-requeue --parsable -N 2 -c 4 -n 2 /scispot/sb_lulesh.sh 
+{'finished': ['113']}
+finished
+JobId=113 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-03-29T23:30:46 EndTime=2019-03-29T23:30:58 NodeList=rbqdow[1-2] NodeCnt=2 ProcCnt=16 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-03-29T23:30:45 EligibleTime=2019-03-29T23:30:45 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 113
+Job id search target 113
+COMPLETED
+Job 113 finished at 2019-03-29T23:31:08.316383
+Job running time (seconds) : 20.141416
+Total time spend running these jobs since begining (seconds) : 251.132318
+Total jobs completed : 2
+Total jobs preempted : 0
+Total jobs abandoned : 0
+('n1-highcpu-4', 4)
+Master reconfigured
+Cluster Launched: agqafa, n1-highcpu-4, 4
+Current start id is 5
+Number of nodes required = 4 ,nodes running = 4
+Job started 114  sbatch --no-requeue --parsable -N 4 -c 2 -n 4 /scispot/sb_lulesh.sh 
+{'finished': ['114']}
+finished
+JobId=114 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-03-29T23:33:08 EndTime=2019-03-29T23:33:27 NodeList=agqafa[1-4] NodeCnt=4 ProcCnt=16 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-03-29T23:33:07 EligibleTime=2019-03-29T23:33:07 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 114
+Job id search target 114
+COMPLETED
+Job 114 finished at 2019-03-29T23:33:34.702013
+Job running time (seconds) : 25.140302
+Total time spend running these jobs since begining (seconds) : 397.517948
+Total jobs completed : 3
+Total jobs preempted : 0
+Total jobs abandoned : 0
+
+Done exploring all?

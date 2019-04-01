@@ -74,8 +74,8 @@ class evlisten(resource.Resource, SciSpot):
     jobs_start_time =0
 
     #global parellel run
-    parallel_runs=8
-    servers_per_parallel_run=1
+    parallel_runs=4
+    servers_per_parallel_run=2
     
     
     ##################################################
@@ -124,13 +124,13 @@ class evlisten(resource.Resource, SciSpot):
                 ]
             },
             # Removed the accessConfigs so that public IP will not be assigned.
-            'networkInterfaces': [{
-                'network': 'global/networks/default',
-                'accessConfigs': [
-                    {'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}
-                ]
             #'networkInterfaces': [{
-            #    'network': 'global/networks/default'
+            #    'network': 'global/networks/default',
+            #    'accessConfigs': [
+            #        {'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}
+            #    ]
+            'networkInterfaces': [{
+                'network': 'global/networks/default'
             }],
         }
         #print(str(instance_body))

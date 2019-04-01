@@ -59,8 +59,10 @@
  
  
  ## Path issues
- * mpirun --wdir /scispot/np-shape-lab-master/bin/ sudo ./np_shape_lab $@ -S 40000
- * mpirun --wdir /scispot/nanoconfinement-md-master/bin/ sudo ./md_simulation_confined_ions $@
+ * sudo chmod +x /scispot/nanoconfinement-md-master/bin/
+ * sudo chmod +x /scispot/np-shape-lab-master/bin/outfiles
+ * mpirun --wdir /scispot/np-shape-lab-master/bin/ ./np_shape_lab $@ -S 40000
+ * mpirun --wdir /scispot/nanoconfinement-md-master/bin/ ./md_simulation_confined_ions $@
  
  ## tmux cheat codes
  ### Sessions
