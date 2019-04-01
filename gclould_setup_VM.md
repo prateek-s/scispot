@@ -59,7 +59,7 @@
  
  
  ## Path issues
- * sudo chmod -R 777 /scispot/*
+ * sudo chmod -R 777 /scispot or sudo chmod -R a+rwx /scispot
  * sudo chmod +x /scispot/nanoconfinement-md-master/bin/
  * sudo chmod +x /scispot/np-shape-lab-master/bin/outfiles
  * mpirun --wdir /scispot/np-shape-lab-master/bin/ ./np_shape_lab $@ -S 40000
