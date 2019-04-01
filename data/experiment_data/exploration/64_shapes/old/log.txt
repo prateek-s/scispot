@@ -1,0 +1,105 @@
+kadupitiya@n-master-1:~/scispot/code$ python evlisten.py
+-p 3 -c 0.4125 -Z 3.9375 -d 0.714 -n -1 
+-p 2 -c 0.80625 -Z 3.90625 -d 0.714 -n -1 
+-p 1 -c 0.9 -Z 3.34375 -d 0.714 -n -1 
+3
+/usr/local/lib/python2.7/dist-packages/google/auth/_default.py:66: UserWarning: Your app
+lication has authenticated using end user credentials from Google Cloud SDK. We recommen
+d that most server applications use service accounts instead. If your application contin
+ues to use end user credentials from Cloud SDK, you might receive a "quota exceeded" or 
+"API not enabled" error. For more information about service accounts, see https://cloud.google.com/docs/authentication/
+  warnings.warn(_CLOUD_SDK_CREDENTIALS_WARNING)
+{'explore': ['True'], 'target_cpus': ['64']}
+Starting the exploration
+('n1-highcpu-64', 1)
+Master reconfigured
+Cluster Launched: fvsyuh, n1-highcpu-64, 1
+Current start id is 2
+Number of nodes required = 1 ,nodes running = 0
+VM's currently running []
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 2
+Cluster Launched: fvsyuh, n1-highcpu-64, 1
+Current start id is 3
+Number of nodes required = 1 ,nodes running = 1
+Job started 218  sbatch --no-requeue --parsable -N 1 -c 32 -n 1 /scispot/sb_shapes.sh 
+{'finished': ['218']}
+finished
+JobId=218 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-03-28T18:13:29 EndTime=2019-03-28T18:24:38 NodeList=fvsyuh2 NodeCnt=1 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-03-28T18:13:28 EligibleTime=2019-03-28T18:13:28 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 218
+Job id search target 218
+COMPLETED
+Job 218 finished at 2019-03-28T18:24:42.122592
+Job running time (seconds) : 670.066318
+('n1-highcpu-32', 2)
+Master reconfigured
+Cluster Launched: ntfivt, n1-highcpu-32, 2
+Current start id is 3
+Number of nodes required = 2 ,nodes running = 2
+Job started 219  sbatch --no-requeue --parsable -N 2 -c 16 -n 2 /scispot/sb_shapes.sh 
+{'finished': ['219']}
+finished
+JobId=219 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-03-28T18:26:33 EndTime=2019-03-28T18:39:33 NodeList=ntfivt[1-2] NodeCnt=2 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-03-28T18:26:33 EligibleTime=2019-03-28T18:26:33 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 219
+Job id search target 219
+COMPLETED
+Job 219 finished at 2019-03-28T18:39:43.776249
+Job running time (seconds) : 787.272866
+('n1-highcpu-16', 4)
+Master reconfigured
+Cluster Launched: tozamh, n1-highcpu-16, 4
+Current start id is 5
+Number of nodes required = 4 ,nodes running = 4
+Job started 220  sbatch --no-requeue --parsable -N 4 -c 8 -n 4 /scispot/sb_shapes.sh 
+{'finished': ['220']}
+finished
+JobId=220 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-03-28T18:41:45 EndTime=2019-03-28T18:59:43 NodeList=tozamh[1-4] NodeCnt=4 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-03-28T18:41:45 EligibleTime=2019-03-28T18:41:45 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 220
+Job id search target 220
+COMPLETED
+Job 220 finished at 2019-03-28T18:59:48.543049
+Job running time (seconds) : 1079.632533
+('n1-highcpu-8', 8)
+Master reconfigured
+Cluster Launched: tozsjy, n1-highcpu-8, 8
+Current start id is 9
+Number of nodes required = 8 ,nodes running = 7
+VM's currently running ['tozsjy1', 'tozsjy2', 'tozsjy3', 'tozsjy4', 'tozsjy6', 'tozsjy7', 'to
+zsjy8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 9
+Cluster Launched: tozsjy, n1-highcpu-8, 1
+Current start id is 10
+Number of nodes required = 8 ,nodes running = 8
+Job started 221  sbatch --no-requeue --parsable -N 8 -c 4 -n 8 /scispot/sb_shapes.sh 
+{'finished': ['221']}
+finished
+JobId=221 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partitio
+n=long TimeLimit=UNLIMITED StartTime=2019-03-28T19:03:50 EndTime=2019-03-28T19:35:10 NodeList=tozsjy[1-4
+,6-9] NodeCnt=8 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=
+unknown SubmitTime=2019-03-28T19:03:50 EligibleTime=2019-03-28T19:03:50 DerivedExitCode=0:0 ExitCode=0:0
+ 
+Found job id 221
+Job id search target 221
+COMPLETED
+Job 221 finished at 2019-03-28T19:35:21.400505
+Job running time (seconds) : 1888.789248
+('n1-highcpu-4', 16)
+Master reconfigured
+Cluster Launched: lrgamk, n1-highcpu-4, 16
+Current start id is 17
+Number of nodes required = 16 ,nodes running = 16
+Job started 222  sbatch --no-requeue --parsable -N 16 -c 2 -n 16 /scispot/sb_shapes.sh 
+{'preempted': ['222']}
+preempted
+VM's currently running ['lrgamk1', 'lrgamk10', 'lrgamk11', 'lrgamk12', 'lrgamk13', 'lrgamk14', 'lrgamk16
+', 'lrgamk2', 'lrgamk3', 'lrgamk4', 'lrgamk5', 'lrgamk6', 'lrgamk7', 'lrgamk8', 'lrgamk9']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 17
+Cluster Launched: lrgamk, n1-highcpu-4, 1
+Current start id is 18
+Number of nodes required = 16 ,nodes running = 16
+Job started 223  sbatch --no-requeue --parsable -N 16 -c 2 -n 16 /scispot/sb_shapes.sh 
