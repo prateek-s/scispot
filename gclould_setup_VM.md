@@ -21,7 +21,7 @@
 * sudo pip install python-dateutil
 * sudo pip install numpy
 
-* sudo pip install Twisted requests tinydb --upgrade google-api-python-client paramiko python-dateutil numpy
+* sudo pip install Twisted requests tinydb --upgrade google-api-python-client paramiko python-dateutil numpy cryptography
 
 ## copy the evlisten_copy.p and edit
 * cp ~/scispot/code/evlisten.p ~/scispot/code/evlisten_copy.p

@@ -1,0 +1,33 @@
+\section{Background and Overview}
+
+In this section, we give on overview of the characteristics and challenges of transient cloud computing, and highlight the need
+
+developing techniques and policies for running large collections on scientific simulations.
+We also present an overview of our system, \sysname, that is a software framework for running low-cost 
+
+\subsection{Transient Cloud Computing}
+Most traditional cloud servers are distributed in nature 
+
+Traditional cloud servers are leased on an on-demand basis---cloud customers mayrequest them when needed and the cloud platform provisions these servers until the customer relinquishes them.Since customer demand for cloud resources can be highly dynamic, the cloud platform needs to over-provisionthe aggregate server capacity to handle peak demand. Consequently, a significant portion of the cloud servercapacity tends to be idle during non-peak periods. Cloud providers have begun to lease this surplus capacity athighly discounted prices to cost-sensitive customers. Doing so enables providers to earn revenue from otherwiseidle resources. Such surplus servers are referred to as transient servers since the cloud provider can reclaim themfrom the customer at any time, e.g., when demand for standard on-demand servers begins to rise. Cloud providerstypically provide a brief advance warning prior to preempting a transient server to enable the customer to gracefullyshutdown the machine. The warning time currently ranges from two minutes in Amazon EC2 cloud to 30 secondson Google’s cloud platform
+
+Most data centers today are virtualized where applications run in either VMs or containers multiplexed on to physical machines. 
+% Such a virtualized architecture is now commonplace in both enterprise and cloud data centers. 
+Since data center capacity is provisioned for peak demand, the average utilization tends to be low~\cite{borg,resource-central-sosp17}. 
+Data center operators can increase the overall system utilization or maximize revenue, in case of the cloud, by offering unused server capacity transiently to low-priority
+applications or at a discounted cost.
+
+Cloud offerings such as Amazon Spot instances~\cite{spot-web}, Google Preemptible VMs~\cite{preemptible}, and Azure batch VMs~\cite{azure-batch} are examples of such 
+low-cost but preemptible VMs. 
+
+
+
+\subsection{Bag of Jobs in Scientific Computing}
+
+
+\subsection{SciSpot Overview}
+Our system, \sysname, is a unified framework for running large job-groups that result from parameter exploration. 
+
+
+
+% We will modify our text to safeguard against R2's misunderstanding.
+% statistical pattern recognition/machine guessing 

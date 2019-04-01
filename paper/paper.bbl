@@ -1,10 +1,28 @@
 \begin{thebibliography}{10}
 
+\bibitem{LULESH:spec}
+{H}ydrodynamics {C}hallenge {P}roblem, {L}awrence {L}ivermore {N}ational
+  {L}aboratory.
+\newblock Tech. Rep. LLNL-TR-490254.
+
 \bibitem{alipourfard_cherrypick}
 {\sc Alipourfard, O., and Yu, M.}
 \newblock {CherryPick}: {Adaptively} {Unearthing} the {Best} {Cloud}
   {Configurations} for {Big} {Data} {Analytics}.
 \newblock 15.
+
+\bibitem{ml.atomic2017}
+{\sc Bart{\'o}k, A.~P., De, S., Poelking, C., Bernstein, N., Kermode, J.~R.,
+  Cs{\'a}nyi, G., and Ceriotti, M.}
+\newblock Machine learning unifies the modeling of materials and molecules.
+\newblock {\em Science Advances 3}, 12 (2017).
+
+\bibitem{botu2015adaptive}
+{\sc Botu, V., and Ramprasad, R.}
+\newblock Adaptive machine learning framework to accelerate ab initio molecular
+  dynamics.
+\newblock {\em International Journal of Quantum Chemistry 115}, 16 (2015),
+  1074--1083.
 
 \bibitem{bougeret_checkpointing_2011}
 {\sc Bougeret, M., Casanova, H., Rabie, M., Robert, Y., and Vivien, F.}
@@ -20,10 +38,27 @@
 \newblock In {\em Proceedings 9th {Heterogeneous} {Computing} {Workshop} ({HCW}
   2000) ({Cat}. {No}.{PR}00556)\/} (May 2000), pp.~349--363.
 
+\bibitem{melko2017}
+{\sc Ch'ng, K., Carrasquilla, J., Melko, R.~G., and Khatami, E.}
+\newblock Machine learning phases of strongly correlated fermions.
+\newblock {\em Phys. Rev. X 7\/} (Aug 2017), 031038.
+
 \bibitem{dongarra_fault_nodate}
 {\sc Dongarra, J., Herault, T., and Robert, Y.}
 \newblock Fault tolerance techniques for high-performance computing.
 \newblock 66.
+
+\bibitem{ferguson2017machine}
+{\sc Ferguson, A.~L.}
+\newblock Machine learning and data science in soft materials engineering.
+\newblock {\em Journal of Physics: Condensed Matter 30}, 4 (2017), 043002.
+
+\bibitem{fox2019learning}
+{\sc Fox, G., Glazier, J.~A., Kadupitiya, J., Jadhao, V., Kim, M., Qiu, J.,
+  Sluka, J.~P., Somogyi, E., Marathe, M., Adiga, A., et~al.}
+\newblock Learning everywhere: Pervasive machine learning for effective
+  high-performance computation.
+\newblock {\em arXiv preprint arXiv:1902.10810\/} (2019).
 
 \bibitem{gari_learning_2019}
 {\sc Garí, Y., Monge, D.~A., Mateos, C., and García~Garino, C.}
@@ -55,6 +90,74 @@
 \newblock {\em IEEE Transactions on Parallel and Distributed Systems 22}, 6
   (June 2011), 931--945.
 
+\bibitem{jso1}
+{\sc Jadhao, V., Solis, F.~J., and Olvera de~la Cruz, M.}
+\newblock Simulation of charged systems in heterogeneous dielectric media via a
+  true energy functional.
+\newblock {\em Phys. Rev. Lett. 109\/} (Nov 2012), 223905.
+
+\bibitem{jso2}
+{\sc Jadhao, V., Solis, F.~J., and Olvera de~la Cruz, M.}
+\newblock A variational formulation of electrostatics in a medium with
+  spatially varying dielectric permittivity.
+\newblock {\em The Journal of Chemical Physics 138}, 5 (2013), 054119.
+
+\bibitem{jto1}
+{\sc Jadhao, V., Thomas, C.~K., and Olvera de~la Cruz, M.}
+\newblock Electrostatics-driven shape transitions in soft shells.
+\newblock {\em Proceedings of the National Academy of Sciences 111}, 35 (2014),
+  12673--12678.
+
+\bibitem{jyto}
+{\sc Jadhao, V., Yao, Z., Thomas, C.~K., and De~La~Cruz, M.~O.}
+\newblock Coulomb energy of uniformly charged spheroidal shell systems.
+\newblock {\em Physical Review E 91}, 3 (2015), 032305.
+
+\bibitem{jjzo1}
+{\sc Jing, Y., Jadhao, V., Zwanikken, J.~W., and Olvera de~la Cruz, M.}
+\newblock Ionic structure in liquids confined by dielectric interfaces.
+\newblock {\em The Journal of chemical physics 143}, 19 (2015), 194508.
+
+\bibitem{jcs1}
+{\sc Kadupitiya, J., Fox, G., and Jadhao, V.}
+\newblock {\em Submitted\/} (2018).
+
+\bibitem{jcs2}
+{\sc Kadupitiya, J., Fox, G., and Jadhao, V.}
+\newblock Machine learning for performance enhancement of molecular dynamics
+  simulations.
+\newblock Accepted.
+
+\bibitem{kadupitiya2017}
+{\sc Kadupitiya, J., Marru, S., Fox, G.~C., and Jadhao, V.}
+\newblock Ions in nanoconfinement, Dec 2017.
+\newblock Online on nanoHUB; source code on GitHub at
+  github.com/softmaterialslab/nanoconfinement-md.
+
+\bibitem{IPDPS13:LULESH}
+{\sc Karlin, I., Bhatele, A., Keasler, J., Chamberlain, B.~L., Cohen, J.,
+  DeVito, Z., Haque, R., Laney, D., Luke, E., Wang, F., Richards, D., Schulz,
+  M., and Still, C.}
+\newblock Exploring traditional and emerging parallel programming models using
+  a proxy application.
+\newblock In {\em 27th IEEE International Parallel \& Distributed Processing
+  Symposium (IEEE IPDPS 2013)\/} (Boston, USA, May 2013).
+
+\bibitem{LULESH2:changes}
+{\sc Karlin, I., Keasler, J., and Neely, R.}
+\newblock Lulesh 2.0 updates and changes.
+\newblock Tech. Rep. LLNL-TR-641973, August 2013.
+
+\bibitem{fu2017}
+{\sc Liu, J., Qi, Y., Meng, Z.~Y., and Fu, L.}
+\newblock Self-learning monte carlo method.
+\newblock {\em Phys. Rev. B 95\/} (Jan 2017), 041101.
+
+\bibitem{long2015machine}
+{\sc Long, A.~W., Zhang, J., Granick, S., and Ferguson, A.~L.}
+\newblock Machine learning assembly landscapes from particle tracking data.
+\newblock {\em Soft Matter 11}, 41 (2015), 8141--8153.
+
 \bibitem{marathe2014exploiting}
 {\sc Marathe, A., Harris, R., Lowenthal, D., De~Supinski, B.~R., Rountree, B.,
   and Schulz, M.}
@@ -62,11 +165,27 @@
   of hpc applications on amazon ec2.
 \newblock In {\em HPDC\/} (2014), ACM.
 
+\bibitem{sam2017}
+{\sc Schoenholz, S.~S.}
+\newblock Combining machine learning and physics to understand glassy systems.
+\newblock {\em Journal of Physics: Conference Series 1036}, 1 (2018), 012021.
+
 \bibitem{exosphere}
 {\sc Sharma, P., Irwin, D., and Shenoy, P.}
 \newblock Portfolio-driven resource management for transient cloud servers.
 \newblock In {\em Proceedings of ACM Measurement and Analysis of Computer
   Systems\/} (June 2017), vol.~1, p.~23.
+
+\bibitem{solis2013generating}
+{\sc Solis, F.~J., Jadhao, V., and De~La~Cruz, M.~O.}
+\newblock Generating true minima in constrained variational formulations via
+  modified lagrange multipliers.
+\newblock {\em Physical Review E 88}, 5 (2013), 053306.
+
+\bibitem{glotzer2017}
+{\sc Spellings, M., and Glotzer, S.~C.}
+\newblock Machine learning for crystal identification and discovery.
+\newblock {\em AIChE Journal 64}, 6 (2018), 2198--2206.
 
 \bibitem{spoton}
 {\sc Subramanya, S., Guo, T., Sharma, P., Irwin, D., and Shenoy, P.}
@@ -86,6 +205,12 @@
 \newblock Replication-{Based} {Fault} {Tolerance} for {MPI} {Applications}.
 \newblock {\em IEEE Transactions on Parallel and Distributed Systems 20}, 7
   (July 2009), 997--1010.
+
+\bibitem{ward2018matminer}
+{\sc Ward, L., Dunn, A., Faghaninia, A., Zimmermann, N.~E., Bajaj, S., Wang,
+  Q., Montoya, J., Chen, J., Bystrom, K., Dylla, M., et~al.}
+\newblock Matminer: An open source toolkit for materials data mining.
+\newblock {\em Computational Materials Science 152\/} (2018), 60--69.
 
 \bibitem{wolski_probabilistic_2017}
 {\sc Wolski, R., Brevik, J., Chard, R., and Chard, K.}

@@ -65,7 +65,7 @@ class SciSpot:
 
     ##################################################
 
-
+    # Is this correct? some exploration CPU selection were wrong ex: 64 : I got 32*1?
     def machine_type(self, m):
         #Cat proc/cpuinfo, and some memory ? 
         #cpus = num_cpus()

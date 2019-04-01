@@ -4,6 +4,7 @@
 %end of changed lines
 %\usepackage{microtype}
 %\usepackage[hyphens]{url} %Option clash
+\usepackage{amsmath, amssymb, amsfonts, mathrsfs}
 \input{packages}
 
 \crefformat{section}{\S#2#1#3} % see manual of cleveref, section 8.2.1
@@ -49,7 +50,7 @@
 
 \input{design}
 
-\input{ckpting}
+%\input{ckpting}
 
 \input{impl}
 
@@ -62,7 +63,8 @@
 {
 \bibliographystyle{acm}
 \interlinepenalty=10000 %%%%For fixing url-related errors only 
-\bibliography{scicloud}
+\bibliography{scicloud,bagsjobs}
+%\bibliography{bagsjobs}
 }
 
 
