@@ -12,7 +12,7 @@ class SciSpot:
     """ Common fields and methods for various SciSpot components """
     
     project='first-220321'
-    imageName = 'global/images/ubs5' 
+    imageName = 'global/images/ubs6' 
     
     #mtypes_highcpu=['n1-highcpu-64','n1-highcpu-32','n1-highcpu-16','n1-highcpu-8','n1-highcpu-4','n1-highcpu-2']
     mtypes_highcpu=['n1-highcpu-64','n1-highcpu-32','n1-highcpu-16','n1-highcpu-8','n1-highcpu-4']
