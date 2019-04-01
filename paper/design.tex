@@ -1,30 +1,18 @@
-\section{\sysname Design}
+\section{SciSpot Design}
 
-Scientific simulation applications consume a large amount of computational resources, and are often used in the context of \emph{exploratory} research, where a large amount of jobs are run with  different simulation parameters.
-This can be either a \emph{parameter sweep}, where a large number of parameters need to be evaluated, or a \emph{search} over a large parameter space for the ``right'' set of parameters that yield the desired model behavior.
+\sysname is designed to be a cost-ware cloud resource manager for running large bags of jobs, and addresses these specific  challenges:
+\begin{itemize}
+\item How to 
+\end{itemize}
 
-In this paper, we look at the problem of running scientific simulations on \emph{transient} computing resources in public clouds. 
+\sysname handles all the cloud resource procurement and job scheduling associated with the bag of jobs.
+Therefore, the user is only required to 
 
 
-Past work has largely been focused on running parallel jobs (such as MPI) in the cloud. 
-However, considering entire \emph{job-groups} or ensembles of jobs presents new challenges and opportunities in timely, low-cost computation.
 
-Our system, \sysname, is a unified framework for running large job-groups that result from parameter exploration. 
 
-Input and some assumptions:
-We assume that the job-group consists of $J_1\ldots J_N$, with each job evaluating a model on some parameter.
-The list of parameters to explore can either be generated apriori (as in the case of parameter sweeps), or be dynamically generated as in the case of a search.
 
-In this section, we will look at how we address these challenges:
-\begin{enumerate}
-\item How to select the right type of cloud server for an application?
-\item How to effectively run job-groups?
-\end{enumerate}
 
-\sysname's key insight is considering an entire job-group can allow better and simpler optimizations that can be easily deployed. 
-
-Job-groups are executed in two phases.
-In the first phase, we search for the right type of server for the jobs in the job-group, and then in the second phase, we execute the remaining jobs on the chosen servers.
 
 \subsection{High-level flow}
 
@@ -39,19 +27,15 @@ Running a large number of jobs with similar computation, communication, and runt
 
 The execution of a bag of job kicks off with the user providing the executable, the expected resources requirements for a single job, and the fraction of jobs that must be completed.
 
-\textbf{Generating Jobs For a Bag:} Optionally, \sysname can also take as input a description of the (multi-dimensional) parameter space, and then generate the jobs.
-We do this with the users specifying the values that different job parameters can take, and then producing a list with all the permutations.
-Because job-failures can cause some parameter combinations to remain unexplored, we strive for uniformity of sampling by randomizing the order in which jobs in a bag are scheduled, so that we don't end up in a situation with a large fraction of any parameter remaining unexplored if the completion threshold has been met.
-
-
-More details are provided in the Interface and Implementation section.
 
 
 Therefore, \sysname's execution of a bag of jobs is composed of two serial phases.
 In the first phase, we explore different cluster configurations to find the lowest cost server type.
 In the second phase, we run the reminder of the jobs in the bag on the servers of the selected type (the ``exploitation'' phase).
 
-\subsection{Trade-offs in Server Selection}
+\subsection{Server Selection for Parallel Applications}
+
+
 % Maybe this can come in the earlier section?
 
 This presents us with many challenges in the cloud-deployment of these jobs.
@@ -85,12 +69,9 @@ We develop server selection policies in the next section.
 \begin{figure}
   \centering 
   \includegraphics[width=0.4\textwidth]{../graphs/cdf_comparison_3.pdf}
-  \caption{The preemption characteristics of different VM types}
+  \caption{The preemption characteristics of different VM types. Larger VMs are more likely to be preempted}
   \label{fig:cdf-comparison}
 \end{figure}
-
-
-\subsection{Exploration-based Server Selection}
 
 \sysname's server selection policy seeks to identify the best server type for a given job-group.
 
@@ -158,7 +139,15 @@ Thus, once we have found the appropriate server, we then explore the application
 
 \subsection{Scheduling a Bag of Jobs}
 
-How jobs are generated 
+How jobs are generated
+
+\textbf{Generating Jobs For a Bag:} Optionally, \sysname can also take as input a description of the (multi-dimensional) parameter space, and then generate the jobs.
+We do this with the users specifying the values that different job parameters can take, and then producing a list with all the permutations.
+Because job-failures can cause some parameter combinations to remain unexplored, we strive for uniformity of sampling by randomizing the order in which jobs in a bag are scheduled, so that we don't end up in a situation with a large fraction of any parameter remaining unexplored if the completion threshold has been met.
+
+
+More details are provided in the Interface and Implementation section.
+
 
 How jobs are scheduled.
 
@@ -214,6 +203,36 @@ That is, assume that a job has finished and it is time to run a new job. So now,
 % We use this to proactively monitor jobs, as well as to decide whether to restart a job if it is preempted.
 
 % *This can be a fairly substantial section*
+
+
+
+\begin{comment}
+Scientific simulation applications consume a large amount of computational resources, and are often used in the context of \emph{exploratory} research, where a large amount of jobs are run with  different simulation parameters.
+This can be either a \emph{parameter sweep}, where a large number of parameters need to be evaluated, or a \emph{search} over a large parameter space for the ``right'' set of parameters that yield the desired model behavior.
+
+In this paper, we look at the problem of running scientific simulations on \emph{transient} computing resources in public clouds. 
+
+
+Past work has largely been focused on running parallel jobs (such as MPI) in the cloud. 
+However, considering entire \emph{job-groups} or ensembles of jobs presents new challenges and opportunities in timely, low-cost computation.
+
+Our system, \sysname, is a unified framework for running large job-groups that result from parameter exploration. 
+
+Input and some assumptions:
+We assume that the job-group consists of $J_1\ldots J_N$, with each job evaluating a model on some parameter.
+The list of parameters to explore can either be generated apriori (as in the case of parameter sweeps), or be dynamically generated as in the case of a search.
+
+In this section, we will look at how we address these challenges:
+\begin{enumerate}
+\item How to select the right type of cloud server for an application?
+\item How to effectively run job-groups?
+\end{enumerate}
+
+
+
+Job-groups are executed in two phases.
+In the first phase, we search for the right type of server for the jobs in the job-group, and then in the second phase, we execute the remaining jobs on the chosen servers.
+\end{comment}
 
 
 

@@ -21,7 +21,7 @@ These preemptible servers, such as Amazon Spot instances~\cite{spot-web}, Google
 However, effective use of transient servers is challenging for applications because of their uncertain availability~\cite{spotcheck, prateek-thesis}. 
 Preemptions are akin to fail-stop failures, and result in loss of the application's memory and disk state, leading to downtimes for interactive applications such as web services, and poor throughput for long-running batch-computing applications. 
 Consequently, researchers have explored fault-tolerance techniques such as checkpointing~\cite{flint, marathe2014exploiting, spoton} and resource management techniques~\cite{exosphere} to ameliorate the effects of preemptions for a wide range of applications. 
-However, the effect of preemptions is dependent on a combination of application resource and fault model, and mitigating preemptions for different applications remains an active research area~\cite{eurosys19-graph}. 
+However, the effect of preemptions is dependent on a combination of application resource and fault model, and mitigating preemptions for different applications remains an active research area~\cite{hourglass-eurosys19}. 
 
 
 
@@ -29,7 +29,7 @@ However, the effect of preemptions is dependent on a combination of application 
 \subsection{Bag of Jobs in Scientific Computing}
 
 The typical workflow associated with most scientific computing applications, often involves evaluating a computational model across a wide range of physical and computational parameters. 
-For instance, constructing and calibrating a molecular dynamics application (such as~\cite{}), usually involves running a simulation with different physical parameters such as characteristic sizes and interaction potentials, as well as computational parameters such as simulation timesteps. 
+For instance, constructing and calibrating a molecular dynamics application (such as~\cite{jcs1}), usually involves running a simulation with different physical parameters such as characteristic sizes and interaction potentials, as well as computational parameters such as simulation timesteps. 
 Each of these parameters can take a wide range of values, resulting in a large number of combinations which must be evaluated by invoking the application mulitple times (also known as a parameter sweep). 
 Since each computational job explores a single combination of parameters, this results in executing a ``bag of jobs'', with each job in the bag running the same application, but with possibly different parameters. 
 
@@ -50,9 +50,12 @@ And last, treating entire bags of jobs as an execution unit, instead of individu
 \subsection{SciSpot Overview}
 
 Our system, \sysname, is a general-purpose software framework for running scientific computing applications on low-cost cloud transient servers.
-It incorporates policies and mechanisms for deploying, orchestrating, and monitoring bags of jobs on cloud servers.
-Specifically, we seek to minimize the cost and running time of bags of jobs of scientific computing applications, and incorporates preemption-mitigation techniques.
-Additionally, ease-of-use is one of \sysname's primary design goals, and it is suitable for running a large variety of applications.
+It incorporates policies and mechanisms for generating, deploying, orchestrating, and monitoring bags of jobs on cloud servers. 
+Specifically, \sysname seeks to minimize the cost and running time of bags of jobs of scientific computing applications.
+
+%Additionally, ease-of-use is one of \sysname's primary design goals, and we specifically incorporate
+
+%it is suitable for running a large variety of applications.
 
 \sysname's cost and time minimizing policies for running bags of jobs are based on empirical and analytical models of the cost and preemption dynamics of cloud transient servers, which we present in the next section. 
 

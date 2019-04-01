@@ -64,7 +64,7 @@ We launched more than 1000 Google Preemptible VMs of different types over a two 
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.4\textwidth]{../data/cdf_all.pdf}
+  \includegraphics[width=0.4\textwidth]{../graphs/cdf_4_all.pdf}
   \caption{CDF of lifetimes of Google Preemptible Instances. Our blended exponential distribution fits much better than the conventional exponential failure distributions. }
   \label{fig:gcp1}
 \end{figure}
@@ -112,20 +112,23 @@ The analytical model and the associated 4 parameter distribution function $\math
 %
 In the next section, we use this analytical model for optimizing cloud resource selection such that we can run scientific applications at low cost and running times. We note that our motivation here is to provide a minimal model, i.e. a model based on data-driven observations and reasonable assumptions that provides a sufficiently accurate description of constrained preemption dynamics with the minimal number of necessary parameters. As is evident from Figure.~\ref{fig:gcp1}, the analytical $\mathscr{F}$ shows deviations from the data near the halfway point within the 24 hour lifetime. One can envision generalizing this model by including more failure processes characterized by failure rates and activation times (like $b$) to capture the data with higher accuracy. Of course, this introduces a higher number of parameters and reduces the predictive power and simplicity of the model. 
 
+
+\subsection{Preemption dynamics of VMs of different types}
+
 %%%%%%%%%%%%%%%%%%%% OPTIONAL
+Since cloud platforms support a wide range of applications, they also offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.). 
+For example, a cloud provider may offer VMs with (4 CPUs, 4 GB memory), (8 CPUs, 8 GB memory), etc.
+Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}. 
 
+\begin{figure}
+  \centering 
+  \includegraphics[width=0.4\textwidth]{../graphs/cdf_comparison_3.pdf}
+  \caption{The preemption characteristics of different VM types. Larger VMs are more likely to be preempted}
+  \label{fig:cdf-comparison}
+\end{figure}
 
-\textbf{Optional text. Spoils flow currently}
-Preemption dynamics can also be analyzed through the \emph{survival rates} of VMs.
-Let $S(t)$ denote the number of VMs that survive till time $t$.
-Then, without loss of generality: $F(t) = A(1-S(t))$
-% Well actually, not really. A spoils that, but whatevs.
-
-In the case of the blended exponential distribution, $S(t)$ depends on $S(t)$ itself, as well as the failure rates of different phases and the current lifetime ($t$), as follows:
-\begin{equation}
-  \label{eq:ramanujan}
-  \dfrac{dS(t)}{dt} = \{\dfrac{1}{\tau_2} - \dfrac{1}{\bar{\tau}}(\dfrac{1}{1-e^{-b/\tau_2} \cdot e^{t/\bar{\tau}}}) \}S(t)
-\end{equation}
+Larger VM's have a higher preemption probability and lower expected lifetimes.
+Because of ~\cite{gcp-preempt-faq}
 
 
 
