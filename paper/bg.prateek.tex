@@ -41,15 +41,7 @@ For instance, large bags of jobs are run to provide the necessary training and t
 
 %The bag of jobs resulting from exploratory parameter sweeps are an integral component in the model discovery and validation process, and ar
 
-More formally, a bag of jobs is defined as a collection of : \{Application, $N$: Number of jobs, $m$: Minimum number of jobs to finish, $\pi$: Generator function for job parameters, $\mathcal{R}$: Computing resources per job\}
-
-\begin{lstlisting}[basicstyle=\footnotesize\sffamily, frame=single, columns=fullflexible, escapeinside={(*}{*)}]
-  Bag of job = {Application,
-  (*$N$*): Number of jobs,
-  $m$: Minimum number of jobs to finish,
-  (*$\pi$*): Generator function for job parameters,
-  $\mathcal{R}$: Computing resources per job}
-\end{lstlisting}
+%More formally, a bag of jobs is defined as a collection of : \{Application, $N$: Number of jobs, $m$: Minimum number of jobs to finish, $\pi$: Generator function for job parameters, $\mathcal{R}$: Computing resources per job\}
 
 The bag of jobs execution model has multiple characteristics, that give rise to unique challenges and opportunities when deploying them on cloud transient servers. 
 First, since bags of jobs require a large amount of computing resources, deploying them on the cloud can result in high overall costs, thus requiring policies for minimizing the cost and overall running time. 
@@ -60,13 +52,21 @@ And last, treating entire bags of jobs as an execution unit, instead of individu
 \subsection{SciSpot Overview}
 
 Our system, \sysname, is a general-purpose software framework for running scientific computing applications on low-cost cloud transient servers.
-It incorporates policies and mechanisms for generating, deploying, orchestrating, and monitoring bags of jobs on cloud servers. 
-Specifically, \sysname seeks to minimize the cost and running time of bags of jobs of scientific computing applications.
+It incorporates policies and mechanisms for generating, deploying, orchestrating, and monitoring bags of jobs on cloud servers.
+Specifically, it runs a bag of jobs defined by these parameters:
+\begin{lstlisting}[basicstyle=\footnotesize\sffamily, frame=single, columns=fullflexible, escapeinside={(*}{*)}]
+  Bag of job = {(*$\mathcal{A}$*): Application to execute,
+  (*$N$*): Number of jobs,
+  (*$m$*): Minimum number of jobs to finish,
+  (*$\pi$*): Generator function for job parameters,
+  (*$\mathcal{R}$*): Computing resources per job}
+\end{lstlisting}
+
 
 %Additionally, ease-of-use is one of \sysname's primary design goals, and we specifically incorporate
 
 %it is suitable for running a large variety of applications.
-
+\sysname seeks to minimize the cost and running time of bags of jobs of scientific computing applications.
 \sysname's cost and time minimizing policies for running bags of jobs are based on empirical and analytical models of the cost and preemption dynamics of cloud transient servers, which we present in the next section. 
 
 

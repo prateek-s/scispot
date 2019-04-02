@@ -127,6 +127,13 @@ Most clouds offer a large number of different hardware configurations---Amazon E
   \label{fig:cdf-comparison}
 \end{figure}
 
+
+The expected lifetime of a preemptible VM is:
+\begin{equation}
+  \label{eq:expected-lifetime}
+E[L] =  \int_{0}^{24} t \mathscr{F'}(t)  dt 
+\end{equation}
+
 Larger VM's have a higher preemption probability and lower expected lifetimes.
 Because of ~\cite{gcp-preempt-faq}
 
