@@ -1,0 +1,652 @@
+{'exploit': ['True'], 'num_jobs': ['36']}
+Kickstarting bag of jobs of size 36
+VM's currently running ['rrqrzn1', 'rrqrzn10', 'rrqrzn2', 'rrqrzn4', 'rrqrzn5', 'rrqrzn6', 'rrqrzn7', 'rrqrzn8'], which are the type of n1-highcpu-32
+All the VM's previously launched ['rrqrzn1', 'rrqrzn2', 'rrqrzn3', 'rrqrzn4', 'rrqrzn5', 'rrqrzn6', 'rrqrzn7', 'rrqrzn8', 'rrqrzn9', 'rrqrzn10'], for the namegroup = rrqrzn
+Master reconfigured
+New insances did not launch, jobs will run using existing VMs
+Current start id is 11
+Number of nodes required = 8 ,nodes running = 0
+VM's currently running ['rrqrzn1', 'rrqrzn10', 'rrqrzn2', 'rrqrzn4', 'rrqrzn5', 'rrqrzn6', 'rrqrzn7', 'rrqrzn8']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 8 ,nodes running = 0
+VM's currently running ['rrqrzn1', 'rrqrzn10', 'rrqrzn2', 'rrqrzn4', 'rrqrzn5', 'rrqrzn6', 'rrqrzn7', 'rrqrzn8']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 8 ,nodes running = 0
+VM's currently running ['rrqrzn1', 'rrqrzn10', 'rrqrzn2', 'rrqrzn4', 'rrqrzn5', 'rrqrzn6', 'rrqrzn7', 'rrqrzn8']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 8 ,nodes running = 8
+Job started 422  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.9 -Z 3.27272727273 -d 0.714 -n -1 
+Job started 423  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.736363636364 -Z 3.45454545455 -d 0.714 -n -1 
+Job started 424  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 3 -c 0.627272727273 -Z 3.63636363636 -d 0.714 -n -1 
+Job started 425  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 3 -c 0.3 -Z 3.09090909091 -d 0.714 -n -1 
+Job started 426  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 3 -c 0.9 -Z 3.63636363636 -d 0.714 -n -1 
+Job started 427  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 3 -c 0.3 -Z 3.72727272727 -d 0.714 -n -1 
+Job started 428  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.463636363636 -Z 3.36363636364 -d 0.714 -n -1 
+Job started 429  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.518181818182 -Z 3.90909090909 -d 0.714 -n -1 
+{'finished': ['423']}
+finished
+JobId=423 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:18:32 EndTime=2019-04-02T06:33:42 NodeList=rrqrzn10 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:18:32 EligibleTime=2019-04-02T06:18:32 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 423
+Job id search target 423
+COMPLETED
+Job 423 finished at 2019-04-02T06:33:48.126130
+Job running time (seconds) : 913.903649
+Total time spend running these jobs since begining (seconds) : 924.70235
+Total jobs completed : 1
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.681818181818 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 430  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.681818181818 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['422']}
+finished
+JobId=422 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:18:26 EndTime=2019-04-02T06:34:46 NodeList=rrqrzn8 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:18:24 EligibleTime=2019-04-02T06:18:24 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 422
+Job id search target 422
+COMPLETED
+Job 422 finished at 2019-04-02T06:34:52.293175
+Job running time (seconds) : 985.956544
+Total time spend running these jobs since begining (seconds) : 988.869395
+Total jobs completed : 2
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.627272727273 -Z 3.72727272727 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 431  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.627272727273 -Z 3.72727272727 -d 0.714 -n -1 
+{'finished': ['424']}
+finished
+JobId=424 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:20:13 EndTime=2019-04-02T06:36:02 NodeList=rrqrzn4 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:18:40 EligibleTime=2019-04-02T06:18:40 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 424
+Job id search target 424
+COMPLETED
+Job 424 finished at 2019-04-02T06:36:12.466646
+Job running time (seconds) : 1050.309515
+Total time spend running these jobs since begining (seconds) : 1069.042866
+Total jobs completed : 3
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.463636363636 -Z 3.0 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 432  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.463636363636 -Z 3.0 -d 0.714 -n -1 
+{'finished': ['425']}
+finished
+JobId=425 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:20:13 EndTime=2019-04-02T06:36:40 NodeList=rrqrzn5 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:18:48 EligibleTime=2019-04-02T06:18:48 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 425
+Job id search target 425
+COMPLETED
+Job 425 finished at 2019-04-02T06:36:44.619694
+Job running time (seconds) : 1074.511997
+Total time spend running these jobs since begining (seconds) : 1101.195914
+Total jobs completed : 4
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.409090909091 -Z 3.63636363636 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 433  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 3 -c 0.409090909091 -Z 3.63636363636 -d 0.714 -n -1 
+{'finished': ['427']}
+finished
+JobId=427 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:23:30 EndTime=2019-04-02T06:40:00 NodeList=rrqrzn2 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:19:04 EligibleTime=2019-04-02T06:19:04 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 427
+Job id search target 427
+COMPLETED
+Job 427 finished at 2019-04-02T06:40:12.894613
+Job running time (seconds) : 1266.648174
+Total time spend running these jobs since begining (seconds) : 1309.470833
+Total jobs completed : 5
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.3 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 434  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.3 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['426']}
+finished
+JobId=426 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:23:30 EndTime=2019-04-02T06:39:58 NodeList=rrqrzn1 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:18:56 EligibleTime=2019-04-02T06:18:56 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 426
+Job id search target 426
+COMPLETED
+Job 426 finished at 2019-04-02T06:40:17.943204
+Job running time (seconds) : 1279.632445
+Total time spend running these jobs since begining (seconds) : 1314.519424
+Total jobs completed : 6
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.845454545455 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 435  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.845454545455 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['429']}
+finished
+JobId=429 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:23:58 EndTime=2019-04-02T06:40:17 NodeList=rrqrzn7 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:19:20 EligibleTime=2019-04-02T06:19:20 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 429
+Job id search target 429
+COMPLETED
+Job 429 finished at 2019-04-02T06:40:29.075036
+Job running time (seconds) : 1267.123099
+Total time spend running these jobs since begining (seconds) : 1325.651256
+Total jobs completed : 7
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.9 -Z 3.72727272727 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 436  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.9 -Z 3.72727272727 -d 0.714 -n -1 
+{'finished': ['428']}
+finished
+JobId=428 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:23:58 EndTime=2019-04-02T06:40:11 NodeList=rrqrzn6 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:19:12 EligibleTime=2019-04-02T06:19:12 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 428
+Job id search target 428
+COMPLETED
+Job 428 finished at 2019-04-02T06:40:34.070545
+Job running time (seconds) : 1279.975966
+Total time spend running these jobs since begining (seconds) : 1330.646765
+Total jobs completed : 8
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.790909090909 -Z 3.09090909091 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 437  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.790909090909 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['430']}
+finished
+JobId=430 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:33:50 EndTime=2019-04-02T06:48:14 NodeList=rrqrzn10 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:33:50 EligibleTime=2019-04-02T06:33:50 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 430
+Job id search target 430
+COMPLETED
+Job 430 finished at 2019-04-02T06:48:28.893994
+Job running time (seconds) : 876.887381
+Total time spend running these jobs since begining (seconds) : 1805.470214
+Total jobs completed : 9
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.681818181818 -Z 3.27272727273 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 438  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.681818181818 -Z 3.27272727273 -d 0.714 -n -1 
+{'finished': ['431']}
+finished
+JobId=431 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:34:55 EndTime=2019-04-02T06:50:34 NodeList=rrqrzn8 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:34:54 EligibleTime=2019-04-02T06:34:54 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 431
+Job id search target 431
+COMPLETED
+Job 431 finished at 2019-04-02T06:50:36.068321
+Job running time (seconds) : 939.805622
+Total time spend running these jobs since begining (seconds) : 1932.644541
+Total jobs completed : 10
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.790909090909 -Z 4.0 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 439  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.790909090909 -Z 4.0 -d 0.714 -n -1 
+{'finished': ['432']}
+finished
+JobId=432 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:36:14 EndTime=2019-04-02T06:51:38 NodeList=rrqrzn4 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:36:14 EligibleTime=2019-04-02T06:36:14 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 432
+Job id search target 432
+COMPLETED
+Job 432 finished at 2019-04-02T06:51:40.114319
+Job running time (seconds) : 923.784702
+Total time spend running these jobs since begining (seconds) : 1996.690539
+Total jobs completed : 11
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.3 -Z 3.09090909091 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 440  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.3 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['433']}
+finished
+JobId=433 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:36:46 EndTime=2019-04-02T06:52:32 NodeList=rrqrzn5 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:36:46 EligibleTime=2019-04-02T06:36:46 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 433
+Job id search target 433
+COMPLETED
+Job 433 finished at 2019-04-02T06:52:44.285246
+Job running time (seconds) : 955.787649
+Total time spend running these jobs since begining (seconds) : 2060.861466
+Total jobs completed : 12
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.572727272727 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 441  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.572727272727 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['434']}
+finished
+JobId=434 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:40:14 EndTime=2019-04-02T06:55:34 NodeList=rrqrzn6 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:40:14 EligibleTime=2019-04-02T06:40:14 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 434
+Job id search target 434
+COMPLETED
+Job 434 finished at 2019-04-02T06:55:40.500207
+Job running time (seconds) : 923.631463
+Total time spend running these jobs since begining (seconds) : 2237.076427
+Total jobs completed : 13
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.845454545455 -Z 3.81818181818 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 442  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.845454545455 -Z 3.81818181818 -d 0.714 -n -1 
+{'finished': ['435']}
+finished
+JobId=435 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:40:22 EndTime=2019-04-02T06:56:13 NodeList=rrqrzn7 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:40:19 EligibleTime=2019-04-02T06:40:19 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 435
+Job id search target 435
+COMPLETED
+Job 435 finished at 2019-04-02T06:56:28.769135
+Job running time (seconds) : 966.782862
+Total time spend running these jobs since begining (seconds) : 2285.345355
+Total jobs completed : 14
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.736363636364 -Z 3.63636363636 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 443  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 3 -c 0.736363636364 -Z 3.63636363636 -d 0.714 -n -1 
+{'finished': ['437']}
+finished
+JobId=437 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:40:36 EndTime=2019-04-02T06:56:17 NodeList=rrqrzn2 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:40:36 EligibleTime=2019-04-02T06:40:36 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 437
+Job id search target 437
+COMPLETED
+Job 437 finished at 2019-04-02T06:56:33.547330
+Job running time (seconds) : 955.537893
+Total time spend running these jobs since begining (seconds) : 2290.12355
+Total jobs completed : 15
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.627272727273 -Z 3.63636363636 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 444  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.627272727273 -Z 3.63636363636 -d 0.714 -n -1 
+{'finished': ['436']}
+finished
+JobId=436 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:40:31 EndTime=2019-04-02T06:56:24 NodeList=rrqrzn1 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:40:31 EligibleTime=2019-04-02T06:40:31 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 436
+Job id search target 436
+COMPLETED
+Job 436 finished at 2019-04-02T06:56:38.481066
+Job running time (seconds) : 965.386661
+Total time spend running these jobs since begining (seconds) : 2295.057286
+Total jobs completed : 16
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.354545454545 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 445  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 3 -c 0.354545454545 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['438']}
+finished
+JobId=438 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:48:30 EndTime=2019-04-02T07:02:57 NodeList=rrqrzn10 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:48:30 EligibleTime=2019-04-02T06:48:30 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 438
+Job id search target 438
+COMPLETED
+Job 438 finished at 2019-04-02T07:03:08.519560
+Job running time (seconds) : 875.868153
+Total time spend running these jobs since begining (seconds) : 2685.09578
+Total jobs completed : 17
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.518181818182 -Z 3.81818181818 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 446  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.518181818182 -Z 3.81818181818 -d 0.714 -n -1 
+{'finished': ['439']}
+finished
+JobId=439 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:50:38 EndTime=2019-04-02T07:06:24 NodeList=rrqrzn8 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:50:38 EligibleTime=2019-04-02T06:50:38 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 439
+Job id search target 439
+COMPLETED
+Job 439 finished at 2019-04-02T07:06:36.861564
+Job running time (seconds) : 956.859896
+Total time spend running these jobs since begining (seconds) : 2893.437784
+Total jobs completed : 18
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.736363636364 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 447  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.736363636364 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['440']}
+finished
+JobId=440 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:51:42 EndTime=2019-04-02T07:07:16 NodeList=rrqrzn4 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:51:41 EligibleTime=2019-04-02T06:51:41 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 440
+Job id search target 440
+COMPLETED
+Job 440 finished at 2019-04-02T07:07:24.959676
+Job running time (seconds) : 940.984858
+Total time spend running these jobs since begining (seconds) : 2941.535896
+Total jobs completed : 19
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.681818181818 -Z 3.0 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 448  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.681818181818 -Z 3.0 -d 0.714 -n -1 
+{'finished': ['441']}
+finished
+JobId=441 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:52:46 EndTime=2019-04-02T07:08:22 NodeList=rrqrzn5 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:52:46 EligibleTime=2019-04-02T06:52:46 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 441
+Job id search target 441
+COMPLETED
+Job 441 finished at 2019-04-02T07:08:28.131615
+Job running time (seconds) : 939.96774
+Total time spend running these jobs since begining (seconds) : 3004.707835
+Total jobs completed : 20
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.627272727273 -Z 3.63636363636 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 449  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.627272727273 -Z 3.63636363636 -d 0.714 -n -1 
+{'finished': ['442']}
+finished
+JobId=442 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:55:42 EndTime=2019-04-02T07:11:02 NodeList=rrqrzn6 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:55:42 EligibleTime=2019-04-02T06:55:42 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 442
+Job id search target 442
+COMPLETED
+Job 442 finished at 2019-04-02T07:11:08.347884
+Job running time (seconds) : 924.088614
+Total time spend running these jobs since begining (seconds) : 3164.924104
+Total jobs completed : 21
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.736363636364 -Z 3.36363636364 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 450  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 3 -c 0.736363636364 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['444']}
+finished
+JobId=444 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:56:35 EndTime=2019-04-02T07:12:23 NodeList=rrqrzn1 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:56:35 EligibleTime=2019-04-02T06:56:35 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 444
+Job id search target 444
+COMPLETED
+Job 444 finished at 2019-04-02T07:12:28.555701
+Job running time (seconds) : 951.055194
+Total time spend running these jobs since begining (seconds) : 3245.131921
+Total jobs completed : 22
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.463636363636 -Z 3.81818181818 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 451  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.463636363636 -Z 3.81818181818 -d 0.714 -n -1 
+{'finished': ['443']}
+finished
+JobId=443 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:56:31 EndTime=2019-04-02T07:12:17 NodeList=rrqrzn7 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:56:30 EligibleTime=2019-04-02T06:56:30 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 443
+Job id search target 443
+COMPLETED
+Job 443 finished at 2019-04-02T07:12:33.825306
+Job running time (seconds) : 961.249696
+Total time spend running these jobs since begining (seconds) : 3250.401526
+Total jobs completed : 23
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.409090909091 -Z 3.90909090909 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 452  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.409090909091 -Z 3.90909090909 -d 0.714 -n -1 
+{'finished': ['445']}
+finished
+JobId=445 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:56:40 EndTime=2019-04-02T07:12:20 NodeList=rrqrzn2 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:56:40 EligibleTime=2019-04-02T06:56:40 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 445
+Job id search target 445
+COMPLETED
+Job 445 finished at 2019-04-02T07:12:38.979021
+Job running time (seconds) : 956.555725
+Total time spend running these jobs since begining (seconds) : 3255.555241
+Total jobs completed : 24
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.409090909091 -Z 3.27272727273 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 453  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.409090909091 -Z 3.27272727273 -d 0.714 -n -1 
+{'finished': ['446']}
+finished
+JobId=446 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:03:10 EndTime=2019-04-02T07:17:32 NodeList=rrqrzn10 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:03:10 EligibleTime=2019-04-02T07:03:10 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 446
+Job id search target 446
+COMPLETED
+Job 446 finished at 2019-04-02T07:17:48.425605
+Job running time (seconds) : 875.971767
+Total time spend running these jobs since begining (seconds) : 3565.001825
+Total jobs completed : 25
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.572727272727 -Z 3.54545454545 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 454  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.572727272727 -Z 3.54545454545 -d 0.714 -n -1 
+{'finished': ['447']}
+finished
+JobId=447 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:06:39 EndTime=2019-04-02T07:22:34 NodeList=rrqrzn8 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:06:38 EligibleTime=2019-04-02T07:06:38 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 447
+Job id search target 447
+COMPLETED
+Job 447 finished at 2019-04-02T07:22:36.645019
+Job running time (seconds) : 955.842861
+Total time spend running these jobs since begining (seconds) : 3853.221239
+Total jobs completed : 26
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.354545454545 -Z 3.27272727273 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 455  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.354545454545 -Z 3.27272727273 -d 0.714 -n -1 
+{'finished': ['448']}
+finished
+JobId=448 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:07:27 EndTime=2019-04-02T07:23:04 NodeList=rrqrzn4 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:07:26 EligibleTime=2019-04-02T07:07:26 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 448
+Job id search target 448
+COMPLETED
+Job 448 finished at 2019-04-02T07:23:08.678637
+Job running time (seconds) : 939.723574
+Total time spend running these jobs since begining (seconds) : 3885.254857
+Total jobs completed : 27
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.3 -Z 3.63636363636 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 456  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.3 -Z 3.63636363636 -d 0.714 -n -1 
+{'finished': ['449']}
+finished
+JobId=449 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:08:31 EndTime=2019-04-02T07:24:16 NodeList=rrqrzn5 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:08:30 EligibleTime=2019-04-02T07:08:30 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 449
+Job id search target 449
+COMPLETED
+Job 449 finished at 2019-04-02T07:24:28.917448
+Job running time (seconds) : 956.786604
+Total time spend running these jobs since begining (seconds) : 3965.493668
+Total jobs completed : 28
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.627272727273 -Z 4.0 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 457  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.627272727273 -Z 4.0 -d 0.714 -n -1 
+{'finished': ['450']}
+finished
+JobId=450 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:11:10 EndTime=2019-04-02T07:26:12 NodeList=rrqrzn6 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:11:10 EligibleTime=2019-04-02T07:11:10 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 450
+Job id search target 450
+COMPLETED
+Job 450 finished at 2019-04-02T07:26:20.124794
+Job running time (seconds) : 907.928085
+Total time spend running these jobs since begining (seconds) : 4076.701014
+Total jobs completed : 29
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.572727272727 -Z 3.45454545455 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 458  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 3 -c 0.572727272727 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['453']}
+finished
+JobId=453 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:12:41 EndTime=2019-04-02T07:28:22 NodeList=rrqrzn2 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:12:41 EligibleTime=2019-04-02T07:12:41 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 453
+Job id search target 453
+COMPLETED
+Job 453 finished at 2019-04-02T07:28:28.309555
+Job running time (seconds) : 945.134151
+Total time spend running these jobs since begining (seconds) : 4204.885775
+Total jobs completed : 30
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.3 -Z 3.81818181818 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 459  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 2 -c 0.3 -Z 3.81818181818 -d 0.714 -n -1 
+{'finished': ['451']}
+finished
+JobId=451 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:12:31 EndTime=2019-04-02T07:28:18 NodeList=rrqrzn7 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:12:30 EligibleTime=2019-04-02T07:12:30 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 451
+Job id search target 451
+COMPLETED
+Job 451 finished at 2019-04-02T07:28:33.313016
+Job running time (seconds) : 960.515246
+Total time spend running these jobs since begining (seconds) : 4209.889236
+Total jobs completed : 31
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.518181818182 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 460  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 1 -c 0.518181818182 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['452']}
+finished
+JobId=452 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:12:36 EndTime=2019-04-02T07:28:14 NodeList=rrqrzn1 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:12:35 EligibleTime=2019-04-02T07:12:35 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 452
+Job id search target 452
+COMPLETED
+Job 452 finished at 2019-04-02T07:28:38.285611
+Job running time (seconds) : 960.376773
+Total time spend running these jobs since begining (seconds) : 4214.861831
+Total jobs completed : 32
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.9 -Z 3.45454545455 -d 0.714 -n -1 
+Number of nodes required = 8 ,nodes running = 8
+Job started 461  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_confinement.sh -p 3 -c 0.9 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['454']}
+finished
+JobId=454 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:17:51 EndTime=2019-04-02T07:32:14 NodeList=rrqrzn10 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:17:50 EligibleTime=2019-04-02T07:17:50 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 454
+Job id search target 454
+COMPLETED
+Job 454 finished at 2019-04-02T07:32:28.855646
+Job running time (seconds) : 876.328871
+Total time spend running these jobs since begining (seconds) : 4445.431866
+Total jobs completed : 33
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['455']}
+finished
+JobId=455 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:22:38 EndTime=2019-04-02T07:38:34 NodeList=rrqrzn8 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:22:38 EligibleTime=2019-04-02T07:22:38 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 455
+Job id search target 455
+COMPLETED
+Job 455 finished at 2019-04-02T07:38:36.404341
+Job running time (seconds) : 955.885798
+Total time spend running these jobs since begining (seconds) : 4812.980561
+Total jobs completed : 34
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['456']}
+finished
+JobId=456 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:23:10 EndTime=2019-04-02T07:38:44 NodeList=rrqrzn4 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:23:10 EligibleTime=2019-04-02T07:23:10 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 456
+Job id search target 456
+COMPLETED
+Job 456 finished at 2019-04-02T07:38:52.389566
+Job running time (seconds) : 939.872041
+Total time spend running these jobs since begining (seconds) : 4828.965786
+Total jobs completed : 35
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['457']}
+finished
+JobId=457 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:24:31 EndTime=2019-04-02T07:40:04 NodeList=rrqrzn5 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:24:30 EligibleTime=2019-04-02T07:24:30 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 457
+Job id search target 457
+COMPLETED
+Job 457 finished at 2019-04-02T07:40:12.587730
+Job running time (seconds) : 939.71095
+Total time spend running these jobs since begining (seconds) : 4909.16395
+Total jobs completed : 36
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['458']}
+finished
+JobId=458 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:26:22 EndTime=2019-04-02T07:41:37 NodeList=rrqrzn6 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:26:22 EligibleTime=2019-04-02T07:26:22 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 458
+Job id search target 458
+COMPLETED
+Job 458 finished at 2019-04-02T07:41:48.706818
+Job running time (seconds) : 924.580454
+Total time spend running these jobs since begining (seconds) : 5005.283038
+Total jobs completed : 37
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['461']}
+finished
+JobId=461 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:28:40 EndTime=2019-04-02T07:44:22 NodeList=rrqrzn2 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:28:40 EligibleTime=2019-04-02T07:28:40 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 461
+Job id search target 461
+COMPLETED
+Job 461 finished at 2019-04-02T07:44:28.032926
+Job running time (seconds) : 945.667916
+Total time spend running these jobs since begining (seconds) : 5164.609146
+Total jobs completed : 38
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['460']}
+finished
+JobId=460 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:28:35 EndTime=2019-04-02T07:44:21 NodeList=rrqrzn1 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:28:35 EligibleTime=2019-04-02T07:28:35 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 460
+Job id search target 460
+COMPLETED
+Job 460 finished at 2019-04-02T07:44:29.051669
+Job running time (seconds) : 951.762279
+Total time spend running these jobs since begining (seconds) : 5165.627889
+Total jobs completed : 39
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['459']}
+finished
+JobId=459 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:28:30 EndTime=2019-04-02T07:44:20 NodeList=rrqrzn7 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:28:30 EligibleTime=2019-04-02T07:28:30 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 459
+Job id search target 459
+COMPLETED
+Job 459 finished at 2019-04-02T07:44:30.246831
+Job running time (seconds) : 957.953738
+Total time spend running these jobs since begining (seconds) : 5166.823051
+Total jobs completed : 40
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!

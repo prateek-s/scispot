@@ -1,0 +1,652 @@
+{'exploit': ['True'], 'num_jobs': ['36']}
+Kickstarting bag of jobs of size 36
+VM's currently running ['pxckbp1', 'pxckbp10', 'pxckbp14', 'pxckbp15', 'pxckbp16', 'pxckbp4', 'pxckbp6', 'pxckbp9'], which are the type of n1-highcpu-32
+All the VM's previously launched ['pxckbp1', 'pxckbp2', 'pxckbp3', 'pxckbp4', 'pxckbp5', 'pxckbp6', 'pxckbp7', 'pxckbp8', 'pxckbp9', 'pxckbp10', 'pxckbp11', 'pxckbp12', 'pxckbp13', 'pxckbp14', 'pxckbp15', 'pxckbp16'], for the namegroup = pxckbp
+Master reconfigured
+New insances did not launch, jobs will run using existing VMs
+Current start id is 17
+Number of nodes required = 8 ,nodes running = 0
+VM's currently running ['pxckbp1', 'pxckbp10', 'pxckbp14', 'pxckbp15', 'pxckbp16', 'pxckbp4', 'pxckbp6', 'pxckbp9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 8 ,nodes running = 0
+VM's currently running ['pxckbp1', 'pxckbp10', 'pxckbp14', 'pxckbp15', 'pxckbp16', 'pxckbp4', 'pxckbp6', 'pxckbp9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 8 ,nodes running = 0
+VM's currently running ['pxckbp1', 'pxckbp10', 'pxckbp14', 'pxckbp15', 'pxckbp16', 'pxckbp4', 'pxckbp6', 'pxckbp9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 8 ,nodes running = 8
+Job started 788  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 56.3636363636 -b 20 -c 0.1 -t 5 
+Job started 789  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 600 -s 45.4545454545 -b 20 -c 0.0836363636364 -t 5 
+Job started 790  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 40.0 -b 20 -c 0.0345454545455 -t 5 
+Job started 791  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 600 -s 41.8181818182 -b 20 -c 0.1 -t 5 
+Job started 792  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 47.2727272727 -b 20 -c 0.0263636363636 -t 5 
+Job started 793  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 60.0 -b 20 -c 0.0263636363636 -t 5 
+Job started 794  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 60.0 -b 20 -c 0.0836363636364 -t 5 
+Job started 795  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 600 -s 45.4545454545 -b 20 -c 0.0427272727273 -t 5 
+{'finished': ['788']}
+finished
+JobId=788 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:05:16 EndTime=2019-04-02T06:18:42 NodeList=pxckbp1 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:05:15 EligibleTime=2019-04-02T06:05:15 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 788
+Job id search target 788
+COMPLETED
+Job 788 finished at 2019-04-02T06:18:48.001443
+Job running time (seconds) : 810.291092
+Total time spend running these jobs since begining (seconds) : 813.309718
+Total jobs completed : 1
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 600 -s 41.8181818182 -b 20 -c 0.0181818181818 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 796  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 600 -s 41.8181818182 -b 20 -c 0.0181818181818 -t 5 
+{'finished': ['790']}
+finished
+JobId=790 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:05:32 EndTime=2019-04-02T06:18:43 NodeList=pxckbp6 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:05:31 EligibleTime=2019-04-02T06:05:31 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 790
+Job id search target 790
+COMPLETED
+Job 790 finished at 2019-04-02T06:18:53.331796
+Job running time (seconds) : 799.569885
+Total time spend running these jobs since begining (seconds) : 818.640071
+Total jobs completed : 2
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 400 -s 50.9090909091 -b 20 -c 0.0427272727273 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 797  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 50.9090909091 -b 20 -c 0.0427272727273 -t 5 
+{'finished': ['791']}
+finished
+JobId=791 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:05:40 EndTime=2019-04-02T06:18:44 NodeList=pxckbp9 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:05:39 EligibleTime=2019-04-02T06:05:39 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 791
+Job id search target 791
+COMPLETED
+Job 791 finished at 2019-04-02T06:18:58.416417
+Job running time (seconds) : 796.423824
+Total time spend running these jobs since begining (seconds) : 823.724692
+Total jobs completed : 3
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 600 -s 58.1818181818 -b 20 -c 0.1 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 798  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 600 -s 58.1818181818 -b 20 -c 0.1 -t 5 
+{'finished': ['793']}
+finished
+JobId=793 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:05:56 EndTime=2019-04-02T06:19:01 NodeList=pxckbp14 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:05:55 EligibleTime=2019-04-02T06:05:55 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 793
+Job id search target 793
+COMPLETED
+Job 793 finished at 2019-04-02T06:19:03.917964
+Job running time (seconds) : 786.040919
+Total time spend running these jobs since begining (seconds) : 829.226239
+Total jobs completed : 4
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 41.8181818182 -b 20 -c 0.0345454545455 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 799  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 41.8181818182 -b 20 -c 0.0345454545455 -t 5 
+{'finished': ['792']}
+finished
+JobId=792 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:05:48 EndTime=2019-04-02T06:18:59 NodeList=pxckbp10 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:05:47 EligibleTime=2019-04-02T06:05:47 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 792
+Job id search target 792
+COMPLETED
+Job 792 finished at 2019-04-02T06:19:09.193841
+Job running time (seconds) : 799.277585
+Total time spend running these jobs since begining (seconds) : 834.502116
+Total jobs completed : 5
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 40.0 -b 20 -c 0.0509090909091 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 800  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 40.0 -b 20 -c 0.0509090909091 -t 5 
+{'finished': ['795']}
+finished
+JobId=795 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:06:13 EndTime=2019-04-02T06:19:17 NodeList=pxckbp16 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:06:12 EligibleTime=2019-04-02T06:06:12 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 795
+Job id search target 795
+COMPLETED
+Job 795 finished at 2019-04-02T06:19:19.934804
+Job running time (seconds) : 785.843703
+Total time spend running these jobs since begining (seconds) : 845.243079
+Total jobs completed : 6
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 400 -s 56.3636363636 -b 20 -c 0.0427272727273 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 801  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 56.3636363636 -b 20 -c 0.0427272727273 -t 5 
+{'finished': ['794']}
+finished
+JobId=794 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:06:04 EndTime=2019-04-02T06:19:22 NodeList=pxckbp15 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:06:03 EligibleTime=2019-04-02T06:06:03 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 794
+Job id search target 794
+COMPLETED
+Job 794 finished at 2019-04-02T06:19:35.948528
+Job running time (seconds) : 809.905528
+Total time spend running these jobs since begining (seconds) : 861.256803
+Total jobs completed : 7
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 45.4545454545 -b 20 -c 0.0345454545455 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 802  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 45.4545454545 -b 20 -c 0.0345454545455 -t 5 
+{'finished': ['789']}
+finished
+JobId=789 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:05:24 EndTime=2019-04-02T06:20:05 NodeList=pxckbp4 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:05:23 EligibleTime=2019-04-02T06:05:23 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 789
+Job id search target 789
+COMPLETED
+Job 789 finished at 2019-04-02T06:20:08.116680
+Job running time (seconds) : 882.300161
+Total time spend running these jobs since begining (seconds) : 893.424955
+Total jobs completed : 8
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 600 -s 47.2727272727 -b 20 -c 0.0345454545455 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 803  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 600 -s 47.2727272727 -b 20 -c 0.0345454545455 -t 5 
+{'finished': ['797']}
+finished
+JobId=797 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:18:55 EndTime=2019-04-02T06:32:05 NodeList=pxckbp6 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:18:55 EligibleTime=2019-04-02T06:18:55 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 797
+Job id search target 797
+COMPLETED
+Job 797 finished at 2019-04-02T06:32:08.492541
+Job running time (seconds) : 791.141829
+Total time spend running these jobs since begining (seconds) : 1613.800816
+Total jobs completed : 9
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 52.7272727273 -b 20 -c 0.0672727272727 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 804  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 52.7272727273 -b 20 -c 0.0672727272727 -t 5 
+{'finished': ['800']}
+finished
+JobId=800 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:19:13 EndTime=2019-04-02T06:32:23 NodeList=pxckbp14 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:19:11 EligibleTime=2019-04-02T06:19:11 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 800
+Job id search target 800
+COMPLETED
+Job 800 finished at 2019-04-02T06:32:24.395546
+Job running time (seconds) : 791.078513
+Total time spend running these jobs since begining (seconds) : 1629.703821
+Total jobs completed : 10
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 45.4545454545 -b 20 -c 0.0590909090909 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 805  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 45.4545454545 -b 20 -c 0.0590909090909 -t 5 
+{'finished': ['796']}
+finished
+JobId=796 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:18:50 EndTime=2019-04-02T06:32:13 NodeList=pxckbp1 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:18:50 EligibleTime=2019-04-02T06:18:50 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 796
+Job id search target 796
+COMPLETED
+Job 796 finished at 2019-04-02T06:32:29.763362
+Job running time (seconds) : 817.451266
+Total time spend running these jobs since begining (seconds) : 1635.071637
+Total jobs completed : 11
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 600 -s 56.3636363636 -b 20 -c 0.0345454545455 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 806  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 600 -s 56.3636363636 -b 20 -c 0.0345454545455 -t 5 
+{'finished': ['798']}
+finished
+JobId=798 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:19:00 EndTime=2019-04-02T06:32:08 NodeList=pxckbp9 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:19:00 EligibleTime=2019-04-02T06:19:00 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 798
+Job id search target 798
+COMPLETED
+Job 798 finished at 2019-04-02T06:32:35.099461
+Job running time (seconds) : 812.508874
+Total time spend running these jobs since begining (seconds) : 1640.407736
+Total jobs completed : 12
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 40.0 -b 20 -c 0.0181818181818 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 807  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 40.0 -b 20 -c 0.0181818181818 -t 5 
+{'finished': ['799']}
+finished
+JobId=799 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:19:06 EndTime=2019-04-02T06:32:12 NodeList=pxckbp10 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:19:05 EligibleTime=2019-04-02T06:19:05 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 799
+Job id search target 799
+COMPLETED
+Job 799 finished at 2019-04-02T06:32:40.196950
+Job running time (seconds) : 812.116912
+Total time spend running these jobs since begining (seconds) : 1645.505225
+Total jobs completed : 13
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 43.6363636364 -b 20 -c 0.0672727272727 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 808  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 43.6363636364 -b 20 -c 0.0672727272727 -t 5 
+{'finished': ['801']}
+finished
+JobId=801 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:19:22 EndTime=2019-04-02T06:32:37 NodeList=pxckbp15 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:19:21 EligibleTime=2019-04-02T06:19:21 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 801
+Job id search target 801
+COMPLETED
+Job 801 finished at 2019-04-02T06:32:45.196162
+Job running time (seconds) : 801.33362
+Total time spend running these jobs since begining (seconds) : 1650.504437
+Total jobs completed : 14
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 400 -s 40.0 -b 20 -c 0.0672727272727 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 809  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 40.0 -b 20 -c 0.0672727272727 -t 5 
+{'finished': ['802']}
+finished
+JobId=802 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:19:38 EndTime=2019-04-02T06:32:40 NodeList=pxckbp16 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:19:37 EligibleTime=2019-04-02T06:19:37 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 802
+Job id search target 802
+COMPLETED
+Job 802 finished at 2019-04-02T06:32:56.451345
+Job running time (seconds) : 796.51755
+Total time spend running these jobs since begining (seconds) : 1661.75962
+Total jobs completed : 15
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 400 -s 56.3636363636 -b 20 -c 0.0836363636364 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 810  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 56.3636363636 -b 20 -c 0.0836363636364 -t 5 
+{'finished': ['803']}
+finished
+JobId=803 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:20:10 EndTime=2019-04-02T06:35:00 NodeList=pxckbp4 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:20:10 EligibleTime=2019-04-02T06:20:10 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 803
+Job id search target 803
+COMPLETED
+Job 803 finished at 2019-04-02T06:35:04.729713
+Job running time (seconds) : 892.554353
+Total time spend running these jobs since begining (seconds) : 1790.037988
+Total jobs completed : 16
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 56.3636363636 -b 20 -c 0.0918181818182 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 811  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 56.3636363636 -b 20 -c 0.0918181818182 -t 5 
+{'finished': ['804']}
+finished
+JobId=804 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:32:12 EndTime=2019-04-02T06:45:21 NodeList=pxckbp6 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:32:10 EligibleTime=2019-04-02T06:32:10 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 804
+Job id search target 804
+COMPLETED
+Job 804 finished at 2019-04-02T06:45:29.016136
+Job running time (seconds) : 796.395715
+Total time spend running these jobs since begining (seconds) : 2414.324411
+Total jobs completed : 17
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 600 -s 45.4545454545 -b 20 -c 0.01 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 812  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 600 -s 45.4545454545 -b 20 -c 0.01 -t 5 
+{'finished': ['806']}
+finished
+JobId=806 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:32:32 EndTime=2019-04-02T06:45:32 NodeList=pxckbp14 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:32:31 EligibleTime=2019-04-02T06:32:31 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 806
+Job id search target 806
+COMPLETED
+Job 806 finished at 2019-04-02T06:45:44.903218
+Job running time (seconds) : 790.877947
+Total time spend running these jobs since begining (seconds) : 2430.211493
+Total jobs completed : 18
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 50.9090909091 -b 20 -c 0.0672727272727 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 813  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 50.9090909091 -b 20 -c 0.0672727272727 -t 5 
+{'finished': ['808']}
+finished
+JobId=808 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:32:42 EndTime=2019-04-02T06:45:42 NodeList=pxckbp16 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:32:42 EligibleTime=2019-04-02T06:32:42 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 808
+Job id search target 808
+COMPLETED
+Job 808 finished at 2019-04-02T06:45:49.804309
+Job running time (seconds) : 785.62818
+Total time spend running these jobs since begining (seconds) : 2435.112584
+Total jobs completed : 19
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 600 -s 41.8181818182 -b 20 -c 0.0918181818182 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 814  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 600 -s 41.8181818182 -b 20 -c 0.0918181818182 -t 5 
+{'finished': ['805']}
+finished
+JobId=805 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:32:27 EndTime=2019-04-02T06:45:41 NodeList=pxckbp1 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:32:26 EligibleTime=2019-04-02T06:32:26 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 805
+Job id search target 805
+COMPLETED
+Job 805 finished at 2019-04-02T06:45:54.863720
+Job running time (seconds) : 806.234395
+Total time spend running these jobs since begining (seconds) : 2440.171995
+Total jobs completed : 20
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 56.3636363636 -b 20 -c 0.0181818181818 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 815  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 56.3636363636 -b 20 -c 0.0181818181818 -t 5 
+{'finished': ['807']}
+finished
+JobId=807 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:32:37 EndTime=2019-04-02T06:45:58 NodeList=pxckbp15 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:32:37 EligibleTime=2019-04-02T06:32:37 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 807
+Job id search target 807
+COMPLETED
+Job 807 finished at 2019-04-02T06:46:00.990981
+Job running time (seconds) : 801.90736
+Total time spend running these jobs since begining (seconds) : 2446.299256
+Total jobs completed : 21
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 50.9090909091 -b 20 -c 0.1 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 816  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 50.9090909091 -b 20 -c 0.1 -t 5 
+{'finished': ['809']}
+finished
+JobId=809 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:32:47 EndTime=2019-04-02T06:45:56 NodeList=pxckbp9 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:32:47 EligibleTime=2019-04-02T06:32:47 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 809
+Job id search target 809
+COMPLETED
+Job 809 finished at 2019-04-02T06:46:06.061549
+Job running time (seconds) : 796.986528
+Total time spend running these jobs since begining (seconds) : 2451.369824
+Total jobs completed : 22
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 56.3636363636 -b 20 -c 0.01 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 817  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 56.3636363636 -b 20 -c 0.01 -t 5 
+{'finished': ['810']}
+finished
+JobId=810 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:32:59 EndTime=2019-04-02T06:46:06 NodeList=pxckbp10 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:32:58 EligibleTime=2019-04-02T06:32:58 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 810
+Job id search target 810
+COMPLETED
+Job 810 finished at 2019-04-02T06:46:17.020948
+Job running time (seconds) : 796.468216
+Total time spend running these jobs since begining (seconds) : 2462.329223
+Total jobs completed : 23
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 400 -s 56.3636363636 -b 20 -c 0.0754545454545 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 818  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 56.3636363636 -b 20 -c 0.0754545454545 -t 5 
+{'finished': ['811']}
+finished
+JobId=811 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:35:07 EndTime=2019-04-02T06:49:56 NodeList=pxckbp4 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:35:06 EligibleTime=2019-04-02T06:35:06 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 811
+Job id search target 811
+COMPLETED
+Job 811 finished at 2019-04-02T06:50:00.431680
+Job running time (seconds) : 891.539566
+Total time spend running these jobs since begining (seconds) : 2685.739955
+Total jobs completed : 24
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 400 -s 54.5454545455 -b 20 -c 0.0181818181818 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 819  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 54.5454545455 -b 20 -c 0.0181818181818 -t 5 
+{'finished': ['812']}
+finished
+JobId=812 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:45:31 EndTime=2019-04-02T06:58:41 NodeList=pxckbp6 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:45:31 EligibleTime=2019-04-02T06:45:31 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 812
+Job id search target 812
+COMPLETED
+Job 812 finished at 2019-04-02T06:58:48.344720
+Job running time (seconds) : 795.064282
+Total time spend running these jobs since begining (seconds) : 3213.652995
+Total jobs completed : 25
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 52.7272727273 -b 20 -c 0.0836363636364 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 820  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 52.7272727273 -b 20 -c 0.0836363636364 -t 5 
+{'finished': ['814']}
+finished
+JobId=814 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:45:51 EndTime=2019-04-02T06:58:54 NodeList=pxckbp14 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:45:51 EligibleTime=2019-04-02T06:45:51 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 814
+Job id search target 814
+COMPLETED
+Job 814 finished at 2019-04-02T06:59:04.379828
+Job running time (seconds) : 790.651556
+Total time spend running these jobs since begining (seconds) : 3229.688103
+Total jobs completed : 26
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 54.5454545455 -b 20 -c 0.0836363636364 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 821  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 54.5454545455 -b 20 -c 0.0836363636364 -t 5 
+{'finished': ['813']}
+finished
+JobId=813 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:45:47 EndTime=2019-04-02T06:59:01 NodeList=pxckbp1 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:45:46 EligibleTime=2019-04-02T06:45:46 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 813
+Job id search target 813
+COMPLETED
+Job 813 finished at 2019-04-02T06:59:09.408722
+Job running time (seconds) : 800.616262
+Total time spend running these jobs since begining (seconds) : 3234.716997
+Total jobs completed : 27
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 47.2727272727 -b 20 -c 0.01 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 822  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 47.2727272727 -b 20 -c 0.01 -t 5 
+{'finished': ['815']}
+finished
+JobId=815 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:45:57 EndTime=2019-04-02T06:59:01 NodeList=pxckbp9 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:45:56 EligibleTime=2019-04-02T06:45:56 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 815
+Job id search target 815
+COMPLETED
+Job 815 finished at 2019-04-02T06:59:14.768356
+Job running time (seconds) : 795.816323
+Total time spend running these jobs since begining (seconds) : 3240.076631
+Total jobs completed : 28
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 600 -s 40.0 -b 20 -c 0.1 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 823  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 600 -s 40.0 -b 20 -c 0.1 -t 5 
+{'finished': ['818']}
+finished
+JobId=818 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:46:19 EndTime=2019-04-02T06:59:18 NodeList=pxckbp16 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:46:18 EligibleTime=2019-04-02T06:46:18 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 818
+Job id search target 818
+COMPLETED
+Job 818 finished at 2019-04-02T06:59:20.579815
+Job running time (seconds) : 779.731392
+Total time spend running these jobs since begining (seconds) : 3245.88809
+Total jobs completed : 29
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 400 -s 50.9090909091 -b 20 -c 0.0181818181818 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 824  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 50.9090909091 -b 20 -c 0.0181818181818 -t 5 
+{'finished': ['817']}
+finished
+JobId=817 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:46:08 EndTime=2019-04-02T06:59:14 NodeList=pxckbp10 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:46:08 EligibleTime=2019-04-02T06:46:08 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 817
+Job id search target 817
+COMPLETED
+Job 817 finished at 2019-04-02T06:59:25.871666
+Job running time (seconds) : 795.882829
+Total time spend running these jobs since begining (seconds) : 3251.179941
+Total jobs completed : 30
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 43.6363636364 -b 20 -c 0.0345454545455 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 825  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 43.6363636364 -b 20 -c 0.0345454545455 -t 5 
+{'finished': ['816']}
+finished
+JobId=816 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:46:03 EndTime=2019-04-02T06:59:16 NodeList=pxckbp15 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:46:02 EligibleTime=2019-04-02T06:46:03 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 816
+Job id search target 816
+COMPLETED
+Job 816 finished at 2019-04-02T06:59:31.124637
+Job running time (seconds) : 806.116694
+Total time spend running these jobs since begining (seconds) : 3256.432912
+Total jobs completed : 31
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 500 -s 43.6363636364 -b 20 -c 0.0509090909091 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 826  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 500 -s 43.6363636364 -b 20 -c 0.0509090909091 -t 5 
+{'finished': ['819']}
+finished
+JobId=819 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:50:03 EndTime=2019-04-02T07:05:02 NodeList=pxckbp4 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:50:02 EligibleTime=2019-04-02T06:50:02 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 819
+Job id search target 819
+COMPLETED
+Job 819 finished at 2019-04-02T07:05:12.255270
+Job running time (seconds) : 907.800229
+Total time spend running these jobs since begining (seconds) : 3597.563545
+Total jobs completed : 32
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -q 400 -s 49.0909090909 -b 20 -c 0.0509090909091 -t 5 
+Number of nodes required = 8 ,nodes running = 8
+Job started 827  sbatch --no-requeue --parsable -N 1 -c 16 -n 1 /scispot/sb_shapes.sh -q 400 -s 49.0909090909 -b 20 -c 0.0509090909091 -t 5 
+{'finished': ['820']}
+finished
+JobId=820 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:58:51 EndTime=2019-04-02T07:11:59 NodeList=pxckbp6 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:58:50 EligibleTime=2019-04-02T06:58:50 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 820
+Job id search target 820
+COMPLETED
+Job 820 finished at 2019-04-02T07:12:08.900429
+Job running time (seconds) : 796.543911
+Total time spend running these jobs since begining (seconds) : 4014.208704
+Total jobs completed : 33
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['821']}
+finished
+JobId=821 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:59:07 EndTime=2019-04-02T07:12:20 NodeList=pxckbp1 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:59:06 EligibleTime=2019-04-02T06:59:06 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 821
+Job id search target 821
+COMPLETED
+Job 821 finished at 2019-04-02T07:12:24.956416
+Job running time (seconds) : 796.635365
+Total time spend running these jobs since begining (seconds) : 4030.264691
+Total jobs completed : 34
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['822']}
+finished
+JobId=822 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:59:13 EndTime=2019-04-02T07:12:18 NodeList=pxckbp9 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:59:11 EligibleTime=2019-04-02T06:59:11 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 822
+Job id search target 822
+COMPLETED
+Job 822 finished at 2019-04-02T07:12:26.105924
+Job running time (seconds) : 792.491042
+Total time spend running these jobs since begining (seconds) : 4031.414199
+Total jobs completed : 35
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['826']}
+finished
+JobId=826 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:59:33 EndTime=2019-04-02T07:12:30 NodeList=pxckbp16 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:59:33 EligibleTime=2019-04-02T06:59:33 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 826
+Job id search target 826
+COMPLETED
+Job 826 finished at 2019-04-02T07:12:41.021522
+Job running time (seconds) : 785.772949
+Total time spend running these jobs since begining (seconds) : 4046.329797
+Total jobs completed : 36
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['823']}
+finished
+JobId=823 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:59:17 EndTime=2019-04-02T07:12:28 NodeList=pxckbp10 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:59:16 EligibleTime=2019-04-02T06:59:16 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 823
+Job id search target 823
+COMPLETED
+Job 823 finished at 2019-04-02T07:12:42.092149
+Job running time (seconds) : 803.014195
+Total time spend running these jobs since begining (seconds) : 4047.400424
+Total jobs completed : 37
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['824']}
+finished
+JobId=824 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:59:23 EndTime=2019-04-02T07:12:26 NodeList=pxckbp14 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:59:22 EligibleTime=2019-04-02T06:59:22 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 824
+Job id search target 824
+COMPLETED
+Job 824 finished at 2019-04-02T07:12:43.181041
+Job running time (seconds) : 798.495871
+Total time spend running these jobs since begining (seconds) : 4048.489316
+Total jobs completed : 38
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['825']}
+finished
+JobId=825 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T06:59:28 EndTime=2019-04-02T07:12:40 NodeList=pxckbp15 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T06:59:27 EligibleTime=2019-04-02T06:59:27 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 825
+Job id search target 825
+COMPLETED
+Job 825 finished at 2019-04-02T07:12:56.920647
+Job running time (seconds) : 806.967228
+Total time spend running these jobs since begining (seconds) : 4062.228922
+Total jobs completed : 39
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['827']}
+finished
+JobId=827 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-02T07:05:15 EndTime=2019-04-02T07:18:32 NodeList=pxckbp4 NodeCnt=1 ProcCnt=32 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-02T07:05:14 EligibleTime=2019-04-02T07:05:14 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 827
+Job id search target 827
+COMPLETED
+Job 827 finished at 2019-04-02T07:18:48.561340
+Job running time (seconds) : 812.106402
+Total time spend running these jobs since begining (seconds) : 4413.869615
+Total jobs completed : 40
+Total jobs preempted : 0
+Total jobs abandoned : 0
+No more jobs to run!
