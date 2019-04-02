@@ -1,1 +1,0 @@
-{"_default": {"1": {"status": "running", "vmname": "uaduws21", "type": "n1-highcpu-32", "t_start": "2019-03-31T04:32:43.480840"}, "2": {"status": "running", "vmname": "uaduws22", "type": "n1-highcpu-32", "t_start": "2019-03-31T05:01:36.038521"}, "3": {"status": "running", "vmname": "uaduws23", "type": "n1-highcpu-32", "t_start": "2019-03-31T06:22:20.958526"}}}

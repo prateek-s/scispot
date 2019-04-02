@@ -1,0 +1,221 @@
+{'explore': ['True'], 'target_cpus': ['64']}
+Starting the exploration
+('n1-highcpu-64', 1)
+VM's currently running [], which are the type of n1-highcpu-64
+There is no running VMS for machine_type = n1-highcpu-64
+Selecting a new cluster name group
+Master reconfigured
+Cluster Launched: oturqg, n1-highcpu-64, 1, waiting...
+Current start id is 2
+Number of nodes required = 1 ,nodes running = 1
+Job started 696  sbatch --no-requeue --parsable -N 1 -c 32 -n 1 /scispot/sb_shapes.sh 
+{'finished': ['696']}
+finished
+JobId=696 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-01T19:38:58 EndTime=2019-04-01T19:50:06 NodeList=oturqg1 NodeCnt=1 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-01T19:38:58 EligibleTime=2019-04-01T19:38:58 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 696
+Job id search target 696
+COMPLETED
+Job 696 finished at 2019-04-01T19:50:08.257689
+Job running time (seconds) : 668.08273
+Total time spend running these jobs since begining (seconds) : 776.388788
+Total jobs completed : 1
+Total jobs preempted : 0
+Total jobs abandoned : 0
+('n1-highcpu-32', 2)
+VM's currently running ['lcxiva1', 'lcxiva3'], which are the type of n1-highcpu-32
+All the VM's previously launched ['lcxiva1', 'lcxiva3'], for the namegroup = lcxiva
+Master reconfigured
+New insances did not launch, jobs will run using existing VMs
+Current start id is 4
+Number of nodes required = 2 ,nodes running = 0
+VM's currently running ['lcxiva1', 'lcxiva3']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 2 ,nodes running = 0
+VM's currently running ['lcxiva1', 'lcxiva3']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 2 ,nodes running = 0
+VM's currently running ['lcxiva1', 'lcxiva3']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 2 ,nodes running = 0
+VM's currently running ['lcxiva1', 'lcxiva3']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 2 ,nodes running = 0
+VM's currently running ['lcxiva1', 'lcxiva3']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 2 ,nodes running = 0
+VM's currently running ['lcxiva1', 'lcxiva3']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 2 ,nodes running = 0
+VM's currently running ['lcxiva1', 'lcxiva3']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 2 ,nodes running = 0
+VM's currently running ['lcxiva1', 'lcxiva3']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 2 ,nodes running = 0
+VM's currently running ['lcxiva1', 'lcxiva3']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 2 ,nodes running = 0
+VM's currently running ['lcxiva1', 'lcxiva3']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 2 ,nodes running = 2
+Job started 697  sbatch --no-requeue --parsable -N 2 -c 16 -n 2 /scispot/sb_shapes.sh 
+{'finished': ['697']}
+finished
+JobId=697 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-01T19:51:51 EndTime=2019-04-01T20:01:24 NodeList=lcxiva[1,3] NodeCnt=2 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-01T19:51:50 EligibleTime=2019-04-01T19:51:50 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 697
+Job id search target 697
+COMPLETED
+Job 697 finished at 2019-04-01T20:01:39.559378
+Job running time (seconds) : 587.062585
+Total time spend running these jobs since begining (seconds) : 1467.690477
+Total jobs completed : 2
+Total jobs preempted : 0
+Total jobs abandoned : 0
+('n1-highcpu-16', 4)
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5'], which are the type of n1-highcpu-16
+All the VM's previously launched ['gxjujy1', 'gxjujy2', 'gxjujy3', 'gxjujy4', 'gxjujy5'], for the namegroup = gxjujy
+Master reconfigured
+New insances did not launch, jobs will run using existing VMs
+Current start id is 6
+Number of nodes required = 4 ,nodes running = 0
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 4 ,nodes running = 0
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 4 ,nodes running = 0
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 4 ,nodes running = 0
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 4 ,nodes running = 0
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 4 ,nodes running = 0
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 4 ,nodes running = 0
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 4 ,nodes running = 0
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 4 ,nodes running = 0
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 4 ,nodes running = 0
+VM's currently running ['gxjujy1', 'gxjujy3', 'gxjujy4', 'gxjujy5']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 4 ,nodes running = 4
+Job started 698  sbatch --no-requeue --parsable -N 4 -c 8 -n 4 /scispot/sb_shapes.sh 
+{'finished': ['698']}
+finished
+JobId=698 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-01T20:03:22 EndTime=2019-04-01T20:12:42 NodeList=gxjujy[1,3-5] NodeCnt=4 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-01T20:03:22 EligibleTime=2019-04-01T20:03:22 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 698
+Job id search target 698
+COMPLETED
+Job 698 finished at 2019-04-01T20:12:54.923400
+Job running time (seconds) : 570.386696
+Total time spend running these jobs since begining (seconds) : 2143.054499
+Total jobs completed : 3
+Total jobs preempted : 0
+Total jobs abandoned : 0
+('n1-highcpu-8', 8)
+VM's currently running ['tjgnse10', 'tjgnse3', 'tjgnse4', 'tjgnse5', 'tjgnse6', 'tjgnse7', 'tjgnse9'], which are the type of n1-highcpu-8
+All the VM's previously launched ['tjgnse1', 'tjgnse2', 'tjgnse3', 'tjgnse4', 'tjgnse5', 'tjgnse6', 'tjgnse7', 'tjgnse8', 'tjgnse9', 'tjgnse10'], for the namegroup = tjgnse
+Master reconfigured
+Cluster Launched: tjgnse, n1-highcpu-8, 1, waiting...
+Current start id is 12
+Number of nodes required = 8 ,nodes running = 8
+Job started 699  sbatch --no-requeue --parsable -N 8 -c 4 -n 8 /scispot/sb_shapes.sh 
+{'finished': ['699']}
+finished
+JobId=699 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-01T20:14:41 EndTime=2019-04-01T20:15:13 NodeList=tjgnse[3-7,9-11] NodeCnt=8 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-01T20:14:41 EligibleTime=2019-04-01T20:14:41 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 699
+Job id search target 699
+COMPLETED
+Job 699 finished at 2019-04-01T20:15:22.705344
+Job running time (seconds) : 39.540858
+Total time spend running these jobs since begining (seconds) : 2290.836443
+Total jobs completed : 4
+Total jobs preempted : 0
+Total jobs abandoned : 0
+
+---------------------------------------------
+
+VM's currently running [], which are the type of n1-highcpu-4
+There is no running VMS for machine_type = n1-highcpu-4
+Selecting a new cluster name group
+Master reconfigured
+Cluster Launched: hhllon, n1-highcpu-4, 16, waiting...
+Current start id is 17
+Number of nodes required = 16 ,nodes running = 16
+Job started 701  sbatch --no-requeue --parsable -N 16 -c 2 -n 16 /scispot/sb_shapes.sh 
+{'preempted': ['701']}
+preempted
+VM's currently running ['hhllon1', 'hhllon10', 'hhllon12', 'hhllon13', 'hhllon14', 'hhllon15', 'hhllon16', 'hhllon3', 'hhllon4', 'hhllon5', 'hhllon6', 'hhllon7', 'hhllon8', 'hhllon9']
+Server deficit: 2
+Replenishing 2 VMs with IDs starting from 17
+Cluster Launched: hhllon, n1-highcpu-4, 2, waiting...
+Current start id is 19
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['hhllon1', 'hhllon10', 'hhllon12', 'hhllon13', 'hhllon15', 'hhllon16', 'hhllon17', 'hhllon18', 'hhllon3', 'hhllon4', 'hhllon5', 'hhllon6', 'hhllon7', 'hhllon8', 'hhllon9']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 19
+Cluster Launched: hhllon, n1-highcpu-4, 1, waiting...
+Current start id is 20
+Number of nodes required = 16 ,nodes running = 16
+Job started 702  sbatch --no-requeue --parsable -N 16 -c 2 -n 16 /scispot/sb_shapes.sh 
+{'preempted': ['702']}
+preempted
+VM's currently running ['hhllon1', 'hhllon10', 'hhllon12', 'hhllon13', 'hhllon15', 'hhllon16', 'hhllon17', 'hhllon19', 'hhllon3', 'hhllon4', 'hhllon5', 'hhllon6', 'hhllon7', 'hhllon8', 'hhllon9']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 20
+Cluster Launched: hhllon, n1-highcpu-4, 1, waiting...
+Current start id is 21
+Number of nodes required = 16 ,nodes running = 16
+Job started 703  sbatch --no-requeue --parsable -N 16 -c 2 -n 16 /scispot/sb_shapes.sh 
+{'finished': ['702']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['703']}
+finished
+JobId=703 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_shapes.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-01T21:02:25 EndTime=2019-04-01T21:11:19 NodeList=hhllon[1,3-10,12-13,15-17,19-20] NodeCnt=16 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-01T21:02:24 EligibleTime=2019-04-01T21:02:24 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 703
+Job id search target 703
+COMPLETED
+Job 703 finished at 2019-04-01T21:11:26.820499
+Job running time (seconds) : 539.849632
+Total time spend running these jobs since begining (seconds) : 4444.166859
+Total jobs completed : 5
+Total jobs preempted : 2
+Total jobs abandoned : 0
+
+Done exploring all?
