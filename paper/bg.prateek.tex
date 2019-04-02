@@ -41,6 +41,16 @@ For instance, large bags of jobs are run to provide the necessary training and t
 
 %The bag of jobs resulting from exploratory parameter sweeps are an integral component in the model discovery and validation process, and ar
 
+More formally, a bag of jobs is defined as a collection of : \{Application, $N$: Number of jobs, $m$: Minimum number of jobs to finish, $\pi$: Generator function for job parameters, $\mathcal{R}$: Computing resources per job\}
+
+\begin{lstlisting}[basicstyle=\footnotesize\sffamily, frame=single, columns=fullflexible, escapeinside={(*}{*)}]
+  Bag of job = {Application,
+  (*$N$*): Number of jobs,
+  $m$: Minimum number of jobs to finish,
+  (*$\pi$*): Generator function for job parameters,
+  $\mathcal{R}$: Computing resources per job}
+\end{lstlisting}
+
 The bag of jobs execution model has multiple characteristics, that give rise to unique challenges and opportunities when deploying them on cloud transient servers. 
 First, since bags of jobs require a large amount of computing resources, deploying them on the cloud can result in high overall costs, thus requiring policies for minimizing the cost and overall running time. 
 Second, we observe that usually, there is no depedency between individual jobs in a bag, thus allowing increased flexibility in job scheduling.

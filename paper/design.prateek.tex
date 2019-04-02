@@ -54,6 +54,11 @@ Each configuration will yield different application performance, preemption over
 Our server selection policy runs the application on on each configuration to determine its running time (in the absence of preemptions), which is denoted by $T_{\langle i,n_i \rangle}$. 
 \sysname thus does an exhaustive search over all valid cluster configurations to find the lowest-cost configuration $\langle i, n_i \rangle$. 
 
+We note that this search is different from conventional speedup plots in which the objective is to determine the how well an application scales with increasing amount of resources and parallelism. 
+In contrast, we \emph{fix} the total amount of resources allocated to the application's job ($=\mathcal{R}$), and only vary \emph{how} these resources are distributed, which affects communication overhead and hence the performance.
+%Weak
+We assume that the total resource requirement for a job, $\mathcal{R}$ can be easily provided by the user based on prior speedup data and the user's cloud budget and the deadline for job completion. 
+
 %Limiting the exploration search space 
 To limit the search space, we observe that since most scientific applications are CPU bound, and we only need to consider VMs meant for CPU-bound workloads, such as \texttt{highcpu} VMs in Google Cloud and the \texttt{cc} family in Amazon EC2.
 For example, the Google cloud offers a total of 7 \texttt{highcpu} server types, yielding a small upper bound on the number of configurations to search.
@@ -72,7 +77,7 @@ Then, the number of servers of type $i$ required, $n_i = \mathcal{R}/r_i$.
 The overall expected cost of running a job can then be expressed as follows:
 \begin{equation}
   \label{eq:e-cost}
-  E[C] = n_i*c_i * E[T_{\langle i,n_i \rangle}]
+  E[C_{\langle i,n_i \rangle}] = n_i*c_i * E[T_{\langle i,n_i \rangle}]
 \end{equation}
 Here, $E[T_{\langle i,n_i \rangle}]$ denotes the expected running time of the job on $n_i$ servers of type $i$.
 This running time, in turn depends on the preemption probability of the server type:
@@ -96,20 +101,25 @@ Thus, we can see that if we select smaller VMs, we will require more of them (hi
 Here, $P(i, t)$ denotes the probability of a preemption of a VM of type $i$ when a job of duration $t$ runs on it. 
 
 It depends on the type of server, and we use historically determined failure distributions.
-Because we only care about expectation: 
+In the expectation, it is given by:
 \begin{equation}
   \label{eq:pi}
   P(i, t) = \dfrac{t}{E[L_i]}
 \end{equation}
 Where $E[L_i]$ is the expected lifetime of the VM of type $i$ as computed with through the analytical model in earlier section.
-As a first order approximation, the running time of the job, $t=T_{\langle i,n_i \rangle}$, which is empirically obtained. 
+As a first order approximation, the running time of the job, $t=T_{\langle i,n_i \rangle}$, which is empirically obtained for a given application. 
 
 
 
 
 \subsection{Scheduling a Bag of Jobs}
 
-Once the right server is selected, we then 
+In \sysname's 
+
+Once the right cluster configuration for a job has been determined, \sysname then proceeds to run the remaining jobs in the bag.
+A bag of jobs is determined by the total number of jobs in the bag, associated parameters for each job, and the minimum number of jobs that must be successfully executed.  
+
+Given these parameters as input, \sysname then 
 
 We note that the jobs in the bags are for the same application, so their computational and communication complexity can be assumed to the same across the bag. 
 
