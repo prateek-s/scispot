@@ -114,11 +114,11 @@ In the next section, we use this analytical model for optimizing cloud resource 
 
 
 \subsection{Preemption dynamics of VMs of different types}
-
+\label{subsec:types-dynamics}
 %%%%%%%%%%%%%%%%%%%% OPTIONAL
 Since cloud platforms support a wide range of applications, they also offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.). 
 For example, a cloud provider may offer VMs with (4 CPUs, 4 GB memory), (8 CPUs, 8 GB memory), etc.
-Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}. 
+Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}.
 
 \begin{figure}
   \centering 
@@ -127,17 +127,26 @@ Most clouds offer a large number of different hardware configurations---Amazon E
   \label{fig:cdf-comparison}
 \end{figure}
 
+In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that \emph{particular} type.
+Thus, the preemption characteristics of VMs of different sizes and running in different geographical zones are different.
+Figure~\ref{fig:cdf-comparison} shows the preemption CDF's of three such VM types in the Google Cloud, along with the parameters of our four parameter distribution.
+We show the data from three different types of VMs \texttt{n1-highcpu-\{2,8,32\}}, where the number indicates the number of CPU's. 
 
-The expected lifetime of a preemptible VM is:
+From Figure~\ref{fig:cdf-comparison}, we see that our distribution is able to capture the preemption dynamics of different VM types.
+Interestingly, we can also observe that larger VMs have a higher rate of failure.
+This is because larger VMs require more computational resources (such as CPU and memory), and when the supply of resources is low, the cloud operator can reclaim a large amount of resources by preempting larger VMs.
+This observed behavior aligns with the guidelines for using preemptible VMs that suggests the use of smaller VMs when possible~\cite{gcp-preempt-faq}. 
+
+
+Our analytical model also helps use crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
+More formally, we define the expected lifetime of a VM of type $i$, as 
 \begin{equation}
   \label{eq:expected-lifetime}
-E[L] =  \int_{0}^{24} t \mathscr{F'}(t)  dt 
+E[L_i] =  \int_{0}^{24} t {f_i}(t)  dt 
 \end{equation}
+Where ${f(t) = \dfrac{d \mathscr{F}(t)}{dt} = $ 
 
-Larger VM's have a higher preemption probability and lower expected lifetimes.
-Because of ~\cite{gcp-preempt-faq}
-
-
+Since preemptions require restarting a job and increase the job completion time, it may be more prudent to select transient VMs with higher expected lifetimes. We use the analytically derived expected lifetimes of VMs of different types in \sysname when selecting the the ``best'' VM type for a given bag of jobs. This server selection is a key part of \sysname design, which we describe next. 
 
 % \subsection{EC2 spot instances}
 
