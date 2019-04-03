@@ -5,20 +5,20 @@ VM's currently running [], which are the type of n1-highcpu-64
 There is no running VMS for machine_type = n1-highcpu-64
 Selecting a new cluster name group
 Master reconfigured
-Cluster Launched: ralwot, n1-highcpu-64, 1, waiting...
+Cluster Launched: oxgrha, n1-highcpu-64, 1, waiting...
 Current start id is 2
 Number of nodes required = 1 ,nodes running = 1
-Job started 282  sbatch --no-requeue --parsable -N 1 -c 32 -n 1 /scispot/sb_confinement.sh 
-{'finished': ['282']}
+Job started 640  sbatch --no-requeue --parsable -N 1 -c 32 -n 1 /scispot/sb_confinement.sh 
+{'finished': ['640']}
 finished
-JobId=282 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-01T17:00:31 EndTime=2019-04-01T17:10:36 NodeList=ralwot1 NodeCnt=1 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-01T17:00:31 EligibleTime=2019-04-01T17:00:31 DerivedExitCode=0:0 ExitCode=0:0 
+JobId=640 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T02:11:13 EndTime=2019-04-03T02:21:01 NodeList=oxgrha1 NodeCnt=1 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T02:11:12 EligibleTime=2019-04-03T02:11:12 DerivedExitCode=0:0 ExitCode=0:0 
 
-Found job id 282
-Job id search target 282
+Found job id 640
+Job id search target 640
 COMPLETED
-Job 282 finished at 2019-04-01T17:10:38.112565
-Job running time (seconds) : 604.209253
-Total time spend running these jobs since begining (seconds) : 711.909309
+Job 640 finished at 2019-04-03T02:21:04.498285
+Job running time (seconds) : 589.756972
+Total time spend running these jobs since begining (seconds) : 698.019973
 Total jobs completed : 1
 Total jobs preempted : 0
 Total jobs abandoned : 0
@@ -27,20 +27,20 @@ VM's currently running [], which are the type of n1-highcpu-32
 There is no running VMS for machine_type = n1-highcpu-32
 Selecting a new cluster name group
 Master reconfigured
-Cluster Launched: cfagtb, n1-highcpu-32, 2, waiting...
+Cluster Launched: ozlwfo, n1-highcpu-32, 2, waiting...
 Current start id is 3
 Number of nodes required = 2 ,nodes running = 2
-Job started 283  sbatch --no-requeue --parsable -N 2 -c 16 -n 2 /scispot/sb_confinement.sh 
-{'finished': ['283']}
+Job started 641  sbatch --no-requeue --parsable -N 2 -c 16 -n 2 /scispot/sb_confinement.sh 
+{'finished': ['641']}
 finished
-JobId=283 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-01T17:12:30 EndTime=2019-04-01T17:26:12 NodeList=cfagtb[1-2] NodeCnt=2 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-01T17:12:30 EligibleTime=2019-04-01T17:12:30 DerivedExitCode=0:0 ExitCode=0:0 
+JobId=641 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T02:22:57 EndTime=2019-04-03T02:37:19 NodeList=ozlwfo[1-2] NodeCnt=2 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T02:22:57 EligibleTime=2019-04-03T02:22:57 DerivedExitCode=0:0 ExitCode=0:0 
 
-Found job id 283
-Job id search target 283
+Found job id 641
+Job id search target 641
 COMPLETED
-Job 283 finished at 2019-04-01T17:26:24.356507
-Job running time (seconds) : 832.062284
-Total time spend running these jobs since begining (seconds) : 1658.153251
+Job 641 finished at 2019-04-03T02:37:23.818150
+Job running time (seconds) : 864.927012
+Total time spend running these jobs since begining (seconds) : 1677.339838
 Total jobs completed : 2
 Total jobs preempted : 0
 Total jobs abandoned : 0
@@ -49,20 +49,20 @@ VM's currently running [], which are the type of n1-highcpu-16
 There is no running VMS for machine_type = n1-highcpu-16
 Selecting a new cluster name group
 Master reconfigured
-Cluster Launched: stuhuo, n1-highcpu-16, 4, waiting...
+Cluster Launched: edxbrd, n1-highcpu-16, 4, waiting...
 Current start id is 5
 Number of nodes required = 4 ,nodes running = 4
-Job started 284  sbatch --no-requeue --parsable -N 4 -c 8 -n 4 /scispot/sb_confinement.sh 
-{'finished': ['284']}
+Job started 642  sbatch --no-requeue --parsable -N 4 -c 8 -n 4 /scispot/sb_confinement.sh 
+{'finished': ['642']}
 finished
-JobId=284 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-01T17:28:30 EndTime=2019-04-01T17:42:10 NodeList=stuhuo[1-4] NodeCnt=4 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-01T17:28:29 EligibleTime=2019-04-01T17:28:29 DerivedExitCode=0:0 ExitCode=0:0 
+JobId=642 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T02:39:29 EndTime=2019-04-03T02:53:25 NodeList=edxbrd[1-4] NodeCnt=4 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T02:39:29 EligibleTime=2019-04-03T02:39:29 DerivedExitCode=0:0 ExitCode=0:0 
 
-Found job id 284
-Job id search target 284
+Found job id 642
+Job id search target 642
 COMPLETED
-Job 284 finished at 2019-04-01T17:42:11.883210
-Job running time (seconds) : 820.089977
-Total time spend running these jobs since begining (seconds) : 2605.679954
+Job 642 finished at 2019-04-03T02:53:42.355999
+Job running time (seconds) : 851.325272
+Total time spend running these jobs since begining (seconds) : 2655.877687
 Total jobs completed : 3
 Total jobs preempted : 0
 Total jobs abandoned : 0
@@ -71,20 +71,20 @@ VM's currently running [], which are the type of n1-highcpu-8
 There is no running VMS for machine_type = n1-highcpu-8
 Selecting a new cluster name group
 Master reconfigured
-Cluster Launched: efljna, n1-highcpu-8, 8, waiting...
+Cluster Launched: zcxerb, n1-highcpu-8, 8, waiting...
 Current start id is 9
 Number of nodes required = 8 ,nodes running = 8
-Job started 285  sbatch --no-requeue --parsable -N 8 -c 4 -n 8 /scispot/sb_confinement.sh 
-{'finished': ['285']}
+Job started 643  sbatch --no-requeue --parsable -N 8 -c 4 -n 8 /scispot/sb_confinement.sh 
+{'finished': ['643']}
 finished
-JobId=285 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-01T17:44:42 EndTime=2019-04-01T17:58:12 NodeList=efljna[1-8] NodeCnt=8 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-01T17:44:42 EligibleTime=2019-04-01T17:44:42 DerivedExitCode=0:0 ExitCode=0:0 
+JobId=643 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T02:56:12 EndTime=2019-04-03T03:12:18 NodeList=zcxerb[1-8] NodeCnt=8 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T02:56:12 EligibleTime=2019-04-03T02:56:12 DerivedExitCode=0:0 ExitCode=0:0 
 
-Found job id 285
-Job id search target 285
+Found job id 643
+Job id search target 643
 COMPLETED
-Job 285 finished at 2019-04-01T17:58:14.309514
-Job running time (seconds) : 809.817522
-Total time spend running these jobs since begining (seconds) : 3568.106258
+Job 643 finished at 2019-04-03T03:12:25.602158
+Job running time (seconds) : 971.586296
+Total time spend running these jobs since begining (seconds) : 3779.123846
 Total jobs completed : 4
 Total jobs preempted : 0
 Total jobs abandoned : 0
@@ -93,20 +93,20 @@ VM's currently running [], which are the type of n1-highcpu-4
 There is no running VMS for machine_type = n1-highcpu-4
 Selecting a new cluster name group
 Master reconfigured
-Cluster Launched: ljxvco, n1-highcpu-4, 16, waiting...
+Cluster Launched: wespju, n1-highcpu-4, 16, waiting...
 Current start id is 17
 Number of nodes required = 16 ,nodes running = 16
-Job started 286  sbatch --no-requeue --parsable -N 16 -c 2 -n 16 /scispot/sb_confinement.sh 
-{'finished': ['286']}
+Job started 644  sbatch --no-requeue --parsable -N 16 -c 2 -n 16 /scispot/sb_confinement.sh 
+{'finished': ['644']}
 finished
-JobId=286 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-01T18:01:40 EndTime=2019-04-01T18:17:22 NodeList=ljxvco[1-16] NodeCnt=16 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-01T18:01:40 EligibleTime=2019-04-01T18:01:40 DerivedExitCode=0:0 ExitCode=0:0 
+JobId=644 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T03:15:47 EndTime=2019-04-03T03:35:26 NodeList=wespju[1-16] NodeCnt=16 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T03:15:47 EligibleTime=2019-04-03T03:15:47 DerivedExitCode=0:0 ExitCode=0:0 
 
-Found job id 286
-Job id search target 286
+Found job id 644
+Job id search target 644
 COMPLETED
-Job 286 finished at 2019-04-01T18:17:29.331490
-Job running time (seconds) : 946.81154
-Total time spend running these jobs since begining (seconds) : 4723.128234
+Job 644 finished at 2019-04-03T03:35:40.130170
+Job running time (seconds) : 1191.29707
+Total time spend running these jobs since begining (seconds) : 5173.651858
 Total jobs completed : 5
 Total jobs preempted : 0
 Total jobs abandoned : 0
