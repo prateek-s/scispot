@@ -412,7 +412,7 @@ exit 0
         cores = self.machine_type(self.current_mtype)['cores']
 
         if num_nodes is None:
-            num_nodes = len(self.current_cluster)
+            num_nodes = self.target_nodes
 
 
         sbatcmd = "sbatch --no-requeue --parsable -N {num_nodes} -c {cores} -n {num_nodes} {runfile} {jobparams}".format(\
@@ -587,6 +587,7 @@ exit 0
         try:
             (mtype, num_servers) = self.gen_cc.next()
             self.current_mtype = mtype
+            self.target_nodes = num_servers
             if self.cleanup_unused:
                 self.destroy_current_cluster()
 
