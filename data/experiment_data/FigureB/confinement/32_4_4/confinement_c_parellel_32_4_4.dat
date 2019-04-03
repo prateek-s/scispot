@@ -1,0 +1,792 @@
+{'exploit': ['True'], 'num_jobs': ['36']}
+Kickstarting bag of jobs of size 36
+VM's currently running [], which are the type of n1-highcpu-32
+There is no running VMS for machine_type = n1-highcpu-32
+Selecting a new cluster name group
+Master reconfigured
+Cluster Launched: ftyspg, n1-highcpu-32, 16, waiting...
+Current start id is 17
+Number of nodes required = 16 ,nodes running = 16
+Job started 1105  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.518181818182 -Z 3.18181818182 -d 0.714 -n -1 
+Job started 1106  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.572727272727 -Z 4.0 -d 0.714 -n -1 
+Job started 1107  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.681818181818 -Z 3.81818181818 -d 0.714 -n -1 
+Job started 1108  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.463636363636 -Z 4.0 -d 0.714 -n -1 
+{'preempted': ['1108']}
+preempted
+VM's currently running ['ftyspg1', 'ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg13', 'ftyspg14', 'ftyspg15', 'ftyspg2', 'ftyspg3', 'ftyspg4', 'ftyspg5', 'ftyspg6', 'ftyspg7', 'ftyspg8', 'ftyspg9']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 17
+Cluster Launched: ftyspg, n1-highcpu-32, 1, waiting...
+Current start id is 18
+Number of nodes required = 16 ,nodes running = 16
+Job started 1109  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.463636363636 -Z 4.0 -d 0.714 -n -1 
+{'finished': ['1108']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['1105']}
+finished
+JobId=1105 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T13:38:34 EndTime=2019-04-03T13:49:36 NodeList=ftyspg[1-4] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T13:38:34 EligibleTime=2019-04-03T13:38:34 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1105
+Job id search target 1105
+COMPLETED
+Job 1105 finished at 2019-04-03T13:49:46.818962
+Job running time (seconds) : 670.369663
+Total time spend running these jobs since begining (seconds) : 673.503867
+Total jobs completed : 1
+Total jobs preempted : 1
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.463636363636 -Z 3.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1110  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.463636363636 -Z 3.0 -d 0.714 -n -1 
+{'finished': ['1107']}
+finished
+JobId=1107 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T13:38:51 EndTime=2019-04-03T13:50:16 NodeList=ftyspg[9-12] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T13:38:50 EligibleTime=2019-04-03T13:38:50 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1107
+Job id search target 1107
+COMPLETED
+Job 1107 finished at 2019-04-03T13:50:18.804825
+Job running time (seconds) : 686.059932
+Total time spend running these jobs since begining (seconds) : 705.48973
+Total jobs completed : 2
+Total jobs preempted : 1
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.572727272727 -Z 3.09090909091 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1111  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.572727272727 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['1106']}
+finished
+JobId=1106 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T13:38:43 EndTime=2019-04-03T13:51:03 NodeList=ftyspg[5-8] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T13:38:42 EligibleTime=2019-04-03T13:38:42 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1106
+Job id search target 1106
+COMPLETED
+Job 1106 finished at 2019-04-03T13:51:06.909926
+Job running time (seconds) : 742.290416
+Total time spend running these jobs since begining (seconds) : 753.594831
+Total jobs completed : 3
+Total jobs preempted : 1
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.736363636364 -Z 4.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1112  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.736363636364 -Z 4.0 -d 0.714 -n -1 
+{'preempted': ['1110']}
+preempted
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg13', 'ftyspg14', 'ftyspg15', 'ftyspg17', 'ftyspg2', 'ftyspg3', 'ftyspg5', 'ftyspg7', 'ftyspg8', 'ftyspg9']
+Server deficit: 3
+Replenishing 3 VMs with IDs starting from 18
+Cluster Launched: ftyspg, n1-highcpu-32, 3, waiting...
+Current start id is 21
+Number of nodes required = 16 ,nodes running = 16
+Job started 1113  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.463636363636 -Z 3.0 -d 0.714 -n -1 
+{'finished': ['1112']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1112']}
+preempted
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg13', 'ftyspg14', 'ftyspg15', 'ftyspg17', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg3', 'ftyspg5', 'ftyspg7', 'ftyspg8', 'ftyspg9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 1114  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.736363636364 -Z 4.0 -d 0.714 -n -1 
+{'finished': ['1109']}
+finished
+JobId=1109 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T13:47:08 EndTime=2019-04-03T13:59:40 NodeList=ftyspg[13-15,17] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T13:47:08 EligibleTime=2019-04-03T13:47:08 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1109
+Job id search target 1109
+COMPLETED
+Job 1109 finished at 2019-04-03T13:59:54.852693
+Job running time (seconds) : 764.575535
+Total time spend running these jobs since begining (seconds) : 1281.537598
+Total jobs completed : 4
+Total jobs preempted : 3
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.845454545455 -Z 4.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1115  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.845454545455 -Z 4.0 -d 0.714 -n -1 
+{'finished': ['1110']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['1111']}
+finished
+JobId=1111 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T13:50:21 EndTime=2019-04-03T14:02:08 NodeList=ftyspg[9-12] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T13:50:20 EligibleTime=2019-04-03T13:50:20 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1111
+Job id search target 1111
+COMPLETED
+Job 1111 finished at 2019-04-03T14:02:26.898452
+Job running time (seconds) : 723.877979
+Total time spend running these jobs since begining (seconds) : 1433.583357
+Total jobs completed : 5
+Total jobs preempted : 3
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.572727272727 -Z 3.45454545455 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1116  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.572727272727 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['1114']}
+finished
+JobId=1114 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T13:59:10 EndTime=2019-04-03T14:10:24 NodeList=ftyspg[2-3,7-8] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T13:59:10 EligibleTime=2019-04-03T13:59:10 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1114
+Job id search target 1114
+COMPLETED
+Job 1114 finished at 2019-04-03T14:10:35.107735
+Job running time (seconds) : 682.543762
+Total time spend running these jobs since begining (seconds) : 1921.79264
+Total jobs completed : 6
+Total jobs preempted : 3
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.409090909091 -Z 3.54545454545 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1117  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.409090909091 -Z 3.54545454545 -d 0.714 -n -1 
+{'finished': ['1113']}
+finished
+JobId=1113 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T13:59:04 EndTime=2019-04-03T14:11:09 NodeList=ftyspg[5,18-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T13:59:04 EligibleTime=2019-04-03T13:59:04 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1113
+Job id search target 1113
+COMPLETED
+Job 1113 finished at 2019-04-03T14:11:23.120104
+Job running time (seconds) : 736.362769
+Total time spend running these jobs since begining (seconds) : 1969.805009
+Total jobs completed : 7
+Total jobs preempted : 3
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.790909090909 -Z 3.36363636364 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1118  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.790909090909 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['1115']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1116']}
+preempted
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg17', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg3', 'ftyspg7', 'ftyspg8']
+Server deficit: 4
+Replenishing 4 VMs with IDs starting from 21
+Cluster Launched: ftyspg, n1-highcpu-32, 4, waiting...
+Current start id is 25
+Number of nodes required = 16 ,nodes running = 16
+Job started 1119  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.572727272727 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['1118']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1118']}
+preempted
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg17', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg21', 'ftyspg22', 'ftyspg23', 'ftyspg24', 'ftyspg3', 'ftyspg7', 'ftyspg8']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 1120  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.790909090909 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['1117']}
+finished
+JobId=1117 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T14:10:37 EndTime=2019-04-03T14:22:04 NodeList=ftyspg[2-3,7-8] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T14:10:37 EligibleTime=2019-04-03T14:10:37 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1117
+Job id search target 1117
+COMPLETED
+Job 1117 finished at 2019-04-03T14:22:18.383662
+Job running time (seconds) : 699.068268
+Total time spend running these jobs since begining (seconds) : 2625.068567
+Total jobs completed : 8
+Total jobs preempted : 5
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.572727272727 -Z 3.63636363636 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 13
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg17', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg3', 'ftyspg7', 'ftyspg8']
+Server deficit: 3
+Replenishing 3 VMs with IDs starting from 25
+Cluster Launched: ftyspg, n1-highcpu-32, 3, waiting...
+Current start id is 28
+Number of nodes required = 16 ,nodes running = 16
+Job started 1121  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.572727272727 -Z 3.63636363636 -d 0.714 -n -1 
+{'preempted': ['1120']}
+preempted
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg17', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg3', 'ftyspg7', 'ftyspg8']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 1122  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.790909090909 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['1119']}
+finished
+JobId=1119 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T14:19:12 EndTime=2019-04-03T14:30:33 NodeList=ftyspg[17-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T14:19:12 EligibleTime=2019-04-03T14:19:12 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1119
+Job id search target 1119
+COMPLETED
+Job 1119 finished at 2019-04-03T14:30:50.343097
+Job running time (seconds) : 695.440575
+Total time spend running these jobs since begining (seconds) : 3137.028002
+Total jobs completed : 9
+Total jobs preempted : 6
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.736363636364 -Z 3.54545454545 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1123  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.736363636364 -Z 3.54545454545 -d 0.714 -n -1 
+{'preempted': ['1122']}
+preempted
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg17', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg7', 'ftyspg8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 28
+Cluster Launched: ftyspg, n1-highcpu-32, 1, waiting...
+Current start id is 29
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg28', 'ftyspg7', 'ftyspg8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 29
+Cluster Launched: ftyspg, n1-highcpu-32, 1, waiting...
+Current start id is 30
+Number of nodes required = 16 ,nodes running = 16
+Job started 1124  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.790909090909 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['1122']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['1120']}
+finished
+JobId=1120 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T14:25:32 EndTime=2019-04-03T14:36:39 NodeList=ftyspg[10-12,15] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T14:19:18 EligibleTime=2019-04-03T14:19:18 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1120
+Job id search target 1120
+COMPLETED
+Job 1120 finished at 2019-04-03T14:38:59.931255
+Job running time (seconds) : 1179.386467
+Total time spend running these jobs since begining (seconds) : 3626.61616
+Total jobs completed : 10
+Total jobs preempted : 7
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.9 -Z 3.27272727273 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1125  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.9 -Z 3.27272727273 -d 0.714 -n -1 
+{'finished': ['1121']}
+finished
+JobId=1121 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T14:24:11 EndTime=2019-04-03T14:37:01 NodeList=ftyspg[24-27] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T14:24:11 EligibleTime=2019-04-03T14:24:11 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1121
+Job id search target 1121
+COMPLETED
+Job 1121 finished at 2019-04-03T14:39:05.059271
+Job running time (seconds) : 891.258597
+Total time spend running these jobs since begining (seconds) : 3631.744176
+Total jobs completed : 11
+Total jobs preempted : 7
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.845454545455 -Z 3.09090909091 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1126  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.845454545455 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['1123']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1123']}
+preempted
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg28', 'ftyspg29', 'ftyspg7', 'ftyspg8']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 1127  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.736363636364 -Z 3.54545454545 -d 0.714 -n -1 
+{'finished': ['1125']}
+finished
+JobId=1125 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T14:39:02 EndTime=2019-04-03T14:49:43 NodeList=ftyspg[2,10-12] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T14:39:01 EligibleTime=2019-04-03T14:39:01 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1125
+Job id search target 1125
+COMPLETED
+Job 1125 finished at 2019-04-03T14:49:46.205070
+Job running time (seconds) : 642.176456
+Total time spend running these jobs since begining (seconds) : 4272.889975
+Total jobs completed : 12
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.572727272727 -Z 3.36363636364 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1128  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.572727272727 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['1124']}
+finished
+JobId=1124 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T14:38:55 EndTime=2019-04-03T14:51:30 NodeList=ftyspg[24-27] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T14:38:55 EligibleTime=2019-04-03T14:38:55 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1124
+Job id search target 1124
+COMPLETED
+Job 1124 finished at 2019-04-03T14:51:38.527592
+Job running time (seconds) : 760.765984
+Total time spend running these jobs since begining (seconds) : 4385.212497
+Total jobs completed : 13
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.463636363636 -Z 3.36363636364 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg28', 'ftyspg7', 'ftyspg8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 30
+Cluster Launched: ftyspg, n1-highcpu-32, 1, waiting...
+Current start id is 31
+Number of nodes required = 16 ,nodes running = 16
+Job started 1129  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.463636363636 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['1127']}
+finished
+JobId=1127 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T14:42:21 EndTime=2019-04-03T14:53:40 NodeList=ftyspg[15,18-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T14:42:21 EligibleTime=2019-04-03T14:42:21 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1127
+Job id search target 1127
+COMPLETED
+Job 1127 finished at 2019-04-03T14:53:46.892116
+Job running time (seconds) : 683.251617
+Total time spend running these jobs since begining (seconds) : 4513.577021
+Total jobs completed : 14
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.736363636364 -Z 3.36363636364 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1130  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.736363636364 -Z 3.36363636364 -d 0.714 -n -1 
+{'preempted': ['1126']}
+preempted
+VM's currently running ['ftyspg10', 'ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg28', 'ftyspg7', 'ftyspg8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 31
+Cluster Launched: ftyspg, n1-highcpu-32, 1, waiting...
+Current start id is 32
+Number of nodes required = 16 ,nodes running = 16
+Job started 1131  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.845454545455 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['1126']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['1130']}
+finished
+JobId=1130 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T14:53:49 EndTime=2019-04-03T15:05:07 NodeList=ftyspg[15,18-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T14:53:49 EligibleTime=2019-04-03T14:53:49 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1130
+Job id search target 1130
+COMPLETED
+Job 1130 finished at 2019-04-03T15:05:15.940460
+Job running time (seconds) : 684.583126
+Total time spend running these jobs since begining (seconds) : 5202.625365
+Total jobs completed : 15
+Total jobs preempted : 9
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.463636363636 -Z 3.81818181818 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg28', 'ftyspg31', 'ftyspg7', 'ftyspg8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 32
+Cluster Launched: ftyspg, n1-highcpu-32, 1, waiting...
+Current start id is 33
+Number of nodes required = 16 ,nodes running = 16
+Job started 1132  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.463636363636 -Z 3.81818181818 -d 0.714 -n -1 
+{'finished': ['1128']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1128']}
+preempted
+VM's currently running ['ftyspg11', 'ftyspg12', 'ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg28', 'ftyspg31', 'ftyspg32', 'ftyspg7', 'ftyspg8']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 1133  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.572727272727 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['1129']}
+finished
+JobId=1129 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T14:53:18 EndTime=2019-04-03T15:05:39 NodeList=ftyspg[24-27] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T14:53:18 EligibleTime=2019-04-03T14:53:18 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1129
+Job id search target 1129
+COMPLETED
+Job 1129 finished at 2019-04-03T15:07:05.411929
+Job running time (seconds) : 825.065131
+Total time spend running these jobs since begining (seconds) : 5312.096834
+Total jobs completed : 16
+Total jobs preempted : 10
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.627272727273 -Z 3.72727272727 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1134  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.627272727273 -Z 3.72727272727 -d 0.714 -n -1 
+{'finished': ['1131']}
+finished
+JobId=1131 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T14:55:30 EndTime=2019-04-03T15:07:11 NodeList=ftyspg[7-8,28,31] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T14:55:30 EligibleTime=2019-04-03T14:55:30 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1131
+Job id search target 1131
+COMPLETED
+Job 1131 finished at 2019-04-03T15:07:23.221106
+Job running time (seconds) : 711.173284
+Total time spend running these jobs since begining (seconds) : 5329.906011
+Total jobs completed : 17
+Total jobs preempted : 10
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.790909090909 -Z 3.45454545455 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1135  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.790909090909 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['1134']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1134']}
+preempted
+VM's currently running ['ftyspg11', 'ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg28', 'ftyspg31', 'ftyspg32', 'ftyspg7', 'ftyspg8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 33
+Cluster Launched: ftyspg, n1-highcpu-32, 1, waiting...
+Current start id is 34
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['ftyspg11', 'ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg31', 'ftyspg32', 'ftyspg33', 'ftyspg7', 'ftyspg8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 34
+Cluster Launched: ftyspg, n1-highcpu-32, 1, waiting...
+Current start id is 35
+Number of nodes required = 16 ,nodes running = 16
+Job started 1136  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.627272727273 -Z 3.72727272727 -d 0.714 -n -1 
+{'finished': ['1133']}
+finished
+JobId=1133 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:07:03 EndTime=2019-04-03T15:18:15 NodeList=ftyspg[2,18-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:07:02 EligibleTime=2019-04-03T15:07:02 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1133
+Job id search target 1133
+COMPLETED
+Job 1133 finished at 2019-04-03T15:19:00.368453
+Job running time (seconds) : 716.116062
+Total time spend running these jobs since begining (seconds) : 6027.053358
+Total jobs completed : 18
+Total jobs preempted : 11
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.518181818182 -Z 3.54545454545 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1137  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.518181818182 -Z 3.54545454545 -d 0.714 -n -1 
+{'finished': ['1132']}
+finished
+JobId=1132 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:06:56 EndTime=2019-04-03T15:19:11 NodeList=ftyspg[24-27] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:06:56 EligibleTime=2019-04-03T15:06:56 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1132
+Job id search target 1132
+COMPLETED
+Job 1132 finished at 2019-04-03T15:19:23.720918
+Job running time (seconds) : 745.323295
+Total time spend running these jobs since begining (seconds) : 6050.405823
+Total jobs completed : 19
+Total jobs preempted : 11
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.790909090909 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1138  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.790909090909 -Z 3.18181818182 -d 0.714 -n -1 
+{'preempted': ['1135']}
+preempted
+VM's currently running ['ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg31', 'ftyspg32', 'ftyspg33', 'ftyspg34', 'ftyspg7', 'ftyspg8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 35
+Cluster Launched: ftyspg, n1-highcpu-32, 1, waiting...
+Current start id is 36
+Number of nodes required = 16 ,nodes running = 16
+Job started 1139  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.790909090909 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['1135']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1137']}
+preempted
+VM's currently running ['ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg31', 'ftyspg32', 'ftyspg33', 'ftyspg34', 'ftyspg35', 'ftyspg7', 'ftyspg8']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 1140  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.518181818182 -Z 3.54545454545 -d 0.714 -n -1 
+{'finished': ['1137']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['1136']}
+finished
+JobId=1136 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:18:57 EndTime=2019-04-03T15:30:01 NodeList=ftyspg[2,18-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:18:57 EligibleTime=2019-04-03T15:18:57 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1136
+Job id search target 1136
+COMPLETED
+Job 1136 finished at 2019-04-03T15:30:03.655719
+Job running time (seconds) : 664.452834
+Total time spend running these jobs since begining (seconds) : 6690.340624
+Total jobs completed : 20
+Total jobs preempted : 13
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.572727272727 -Z 3.09090909091 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1141  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.572727272727 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['1138']}
+finished
+JobId=1138 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:19:26 EndTime=2019-04-03T15:31:51 NodeList=ftyspg[24-27] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:19:25 EligibleTime=2019-04-03T15:19:25 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1138
+Job id search target 1138
+COMPLETED
+Job 1138 finished at 2019-04-03T15:31:55.889431
+Job running time (seconds) : 747.979214
+Total time spend running these jobs since begining (seconds) : 6802.574336
+Total jobs completed : 21
+Total jobs preempted : 13
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.627272727273 -Z 3.27272727273 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1142  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.627272727273 -Z 3.27272727273 -d 0.714 -n -1 
+{'finished': ['1139']}
+finished
+JobId=1139 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:23:57 EndTime=2019-04-03T15:36:20 NodeList=ftyspg[7-8,15,31] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:23:57 EligibleTime=2019-04-03T15:23:57 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1139
+Job id search target 1139
+COMPLETED
+Job 1139 finished at 2019-04-03T15:36:27.389558
+Job running time (seconds) : 747.564761
+Total time spend running these jobs since begining (seconds) : 7074.074463
+Total jobs completed : 22
+Total jobs preempted : 13
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.354545454545 -Z 4.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1143  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.354545454545 -Z 4.0 -d 0.714 -n -1 
+{'finished': ['1141']}
+finished
+JobId=1141 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:30:06 EndTime=2019-04-03T15:41:24 NodeList=ftyspg[2,18-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:30:05 EligibleTime=2019-04-03T15:30:05 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1141
+Job id search target 1141
+COMPLETED
+Job 1141 finished at 2019-04-03T15:41:31.849765
+Job running time (seconds) : 683.930732
+Total time spend running these jobs since begining (seconds) : 7378.53467
+Total jobs completed : 23
+Total jobs preempted : 13
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.3 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg32', 'ftyspg34', 'ftyspg35', 'ftyspg7', 'ftyspg8']
+Server deficit: 2
+Replenishing 2 VMs with IDs starting from 36
+Cluster Launched: ftyspg, n1-highcpu-32, 2, waiting...
+Current start id is 38
+Number of nodes required = 16 ,nodes running = 16
+Job started 1144  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.3 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['1140']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1140']}
+preempted
+VM's currently running ['ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg32', 'ftyspg34', 'ftyspg35', 'ftyspg36', 'ftyspg37', 'ftyspg7', 'ftyspg8']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 1145  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.518181818182 -Z 3.54545454545 -d 0.714 -n -1 
+{'finished': ['1142']}
+finished
+JobId=1142 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:31:58 EndTime=2019-04-03T15:44:27 NodeList=ftyspg[24-27] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:31:57 EligibleTime=2019-04-03T15:31:57 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1142
+Job id search target 1142
+COMPLETED
+Job 1142 finished at 2019-04-03T15:44:43.259675
+Job running time (seconds) : 763.235251
+Total time spend running these jobs since begining (seconds) : 7569.94458
+Total jobs completed : 24
+Total jobs preempted : 14
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.627272727273 -Z 3.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1146  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.627272727273 -Z 3.0 -d 0.714 -n -1 
+{'finished': ['1143']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1143']}
+preempted
+VM's currently running ['ftyspg15', 'ftyspg18', 'ftyspg19', 'ftyspg2', 'ftyspg20', 'ftyspg24', 'ftyspg25', 'ftyspg26', 'ftyspg27', 'ftyspg32', 'ftyspg34', 'ftyspg35', 'ftyspg36', 'ftyspg37', 'ftyspg7', 'ftyspg8']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 1147  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.354545454545 -Z 4.0 -d 0.714 -n -1 
+{'finished': ['1144']}
+finished
+JobId=1144 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:43:18 EndTime=2019-04-03T15:54:31 NodeList=ftyspg[2,18-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:43:18 EligibleTime=2019-04-03T15:43:18 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1144
+Job id search target 1144
+COMPLETED
+Job 1144 finished at 2019-04-03T15:54:35.332743
+Job running time (seconds) : 675.039858
+Total time spend running these jobs since begining (seconds) : 8162.017648
+Total jobs completed : 25
+Total jobs preempted : 15
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.3 -Z 3.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1148  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.3 -Z 3.0 -d 0.714 -n -1 
+{'finished': ['1145']}
+finished
+JobId=1145 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:43:58 EndTime=2019-04-03T15:55:10 NodeList=ftyspg[34-37] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:43:57 EligibleTime=2019-04-03T15:43:57 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1145
+Job id search target 1145
+COMPLETED
+Job 1145 finished at 2019-04-03T15:55:23.465003
+Job running time (seconds) : 683.449679
+Total time spend running these jobs since begining (seconds) : 8210.149908
+Total jobs completed : 26
+Total jobs preempted : 15
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.354545454545 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1149  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.354545454545 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['1146']}
+finished
+JobId=1146 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:44:46 EndTime=2019-04-03T15:57:05 NodeList=ftyspg[24-27] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:44:45 EligibleTime=2019-04-03T15:44:45 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1146
+Job id search target 1146
+COMPLETED
+Job 1146 finished at 2019-04-03T15:57:15.651300
+Job running time (seconds) : 748.185446
+Total time spend running these jobs since begining (seconds) : 8322.336205
+Total jobs completed : 27
+Total jobs preempted : 15
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.409090909091 -Z 3.81818181818 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1150  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.409090909091 -Z 3.81818181818 -d 0.714 -n -1 
+{'finished': ['1147']}
+finished
+JobId=1147 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:45:34 EndTime=2019-04-03T15:57:36 NodeList=ftyspg[7-8,15,32] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:45:33 EligibleTime=2019-04-03T15:45:33 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1147
+Job id search target 1147
+COMPLETED
+Job 1147 finished at 2019-04-03T15:57:47.808720
+Job running time (seconds) : 731.856155
+Total time spend running these jobs since begining (seconds) : 8354.493625
+Total jobs completed : 28
+Total jobs preempted : 15
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.572727272727 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1151  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.572727272727 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['1148']}
+finished
+JobId=1148 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:54:38 EndTime=2019-04-03T16:06:00 NodeList=ftyspg[2,18-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:54:37 EligibleTime=2019-04-03T15:54:37 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1148
+Job id search target 1148
+COMPLETED
+Job 1148 finished at 2019-04-03T16:06:03.575403
+Job running time (seconds) : 683.954485
+Total time spend running these jobs since begining (seconds) : 8850.260308
+Total jobs completed : 29
+Total jobs preempted : 15
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.736363636364 -Z 3.90909090909 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1152  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.736363636364 -Z 3.90909090909 -d 0.714 -n -1 
+{'finished': ['1149']}
+finished
+JobId=1149 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:55:26 EndTime=2019-04-03T16:06:36 NodeList=ftyspg[34-37] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:55:25 EligibleTime=2019-04-03T15:55:25 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1149
+Job id search target 1149
+COMPLETED
+Job 1149 finished at 2019-04-03T16:06:51.603707
+Job running time (seconds) : 683.876494
+Total time spend running these jobs since begining (seconds) : 8898.288612
+Total jobs completed : 30
+Total jobs preempted : 15
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.736363636364 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1153  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.736363636364 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['1150']}
+finished
+JobId=1150 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:57:18 EndTime=2019-04-03T16:09:41 NodeList=ftyspg[24-27] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:57:17 EligibleTime=2019-04-03T15:57:17 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1150
+Job id search target 1150
+COMPLETED
+Job 1150 finished at 2019-04-03T16:09:47.983702
+Job running time (seconds) : 748.05083
+Total time spend running these jobs since begining (seconds) : 9074.668607
+Total jobs completed : 31
+Total jobs preempted : 15
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.845454545455 -Z 3.72727272727 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1154  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.845454545455 -Z 3.72727272727 -d 0.714 -n -1 
+{'finished': ['1151']}
+finished
+JobId=1151 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T15:57:50 EndTime=2019-04-03T16:10:01 NodeList=ftyspg[7-8,15,32] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T15:57:49 EligibleTime=2019-04-03T15:57:49 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1151
+Job id search target 1151
+COMPLETED
+Job 1151 finished at 2019-04-03T16:10:04.056832
+Job running time (seconds) : 732.030922
+Total time spend running these jobs since begining (seconds) : 9090.741737
+Total jobs completed : 32
+Total jobs preempted : 15
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.409090909091 -Z 3.63636363636 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 1155  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.409090909091 -Z 3.63636363636 -d 0.714 -n -1 
+{'finished': ['1152']}
+finished
+JobId=1152 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T16:06:06 EndTime=2019-04-03T16:17:30 NodeList=ftyspg[2,18-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T16:06:05 EligibleTime=2019-04-03T16:06:05 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1152
+Job id search target 1152
+COMPLETED
+Job 1152 finished at 2019-04-03T16:17:47.953385
+Job running time (seconds) : 700.128198
+Total time spend running these jobs since begining (seconds) : 9554.63829
+Total jobs completed : 33
+Total jobs preempted : 15
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['1153']}
+finished
+JobId=1153 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T16:06:54 EndTime=2019-04-03T16:18:04 NodeList=ftyspg[34-37] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T16:06:53 EligibleTime=2019-04-03T16:06:53 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1153
+Job id search target 1153
+COMPLETED
+Job 1153 finished at 2019-04-03T16:18:20.005902
+Job running time (seconds) : 683.964724
+Total time spend running these jobs since begining (seconds) : 9586.690807
+Total jobs completed : 34
+Total jobs preempted : 15
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['1155']}
+finished
+JobId=1155 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T16:10:06 EndTime=2019-04-03T16:22:17 NodeList=ftyspg[7-8,15,32] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T16:10:06 EligibleTime=2019-04-03T16:10:06 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1155
+Job id search target 1155
+COMPLETED
+Job 1155 finished at 2019-04-03T16:22:19.603555
+Job running time (seconds) : 731.211659
+Total time spend running these jobs since begining (seconds) : 9826.28846
+Total jobs completed : 35
+Total jobs preempted : 15
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['1154']}
+finished
+JobId=1154 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-03T16:09:50 EndTime=2019-04-03T16:22:20 NodeList=ftyspg[24-27] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-03T16:09:50 EligibleTime=2019-04-03T16:09:50 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1154
+Job id search target 1154
+COMPLETED
+Job 1154 finished at 2019-04-03T16:22:35.568789
+Job running time (seconds) : 763.29487
+Total time spend running these jobs since begining (seconds) : 9842.253694
+Total jobs completed : 36
+Total jobs preempted : 15
+Total jobs abandoned : 0
+No more jobs to run!
