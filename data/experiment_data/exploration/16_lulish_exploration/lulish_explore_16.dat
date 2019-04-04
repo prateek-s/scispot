@@ -1,0 +1,55 @@
+{'explore': ['True'], 'target_cpus': ['16']}
+Starting the exploration
+('n1-highcpu-16', 1)
+VM's currently running ['ftriex1'], which are the type of n1-highcpu-16
+All the VM's previously launched ['ftriex1'], for the namegroup = ftriex
+Master reconfigured
+New insances did not launch, jobs will run using existing VMs
+Current start id is 2
+Number of nodes required = 1 ,nodes running = 0
+VM's currently running ['ftriex1']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 1 ,nodes running = 0
+VM's currently running ['ftriex1']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 1 ,nodes running = 1
+Job started 665  sbatch --no-requeue --parsable -N 1 -c 8 -n 1 /scispot/sb_lulesh.sh 
+{'finished': ['665']}
+finished
+JobId=665 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-04T15:22:53 EndTime=2019-04-04T15:23:00 NodeList=ftriex1 NodeCnt=1 ProcCnt=16 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-04T15:22:53 EligibleTime=2019-04-04T15:22:53 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 665
+Job id search target 665
+COMPLETED
+Job 665 finished at 2019-04-04T15:23:06.447245
+Job running time (seconds) : 11.501893
+Total time spend running these jobs since begining (seconds) : 25.160497
+Total jobs completed : 1
+Total jobs preempted : 0
+Total jobs abandoned : 0
+('n1-highcpu-2', 8)
+VM's currently running [], which are the type of n1-highcpu-2
+There is no running VMS for machine_type = n1-highcpu-2
+Selecting a new cluster name group
+Master reconfigured
+Cluster Launched: tfgogy, n1-highcpu-2, 8, waiting...
+Current start id is 9
+Number of nodes required = 8 ,nodes running = 8
+Job started 666  sbatch --no-requeue --parsable -N 8 -c 1 -n 8 /scispot/sb_lulesh.sh 
+{'finished': ['666']}
+finished
+JobId=666 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-04T15:25:35 EndTime=2019-04-04T15:26:49 NodeList=tfgogy[1-8] NodeCnt=8 ProcCnt=16 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-04T15:25:35 EligibleTime=2019-04-04T15:25:35 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 666
+Job id search target 666
+COMPLETED
+Job 666 finished at 2019-04-04T15:26:53.317446
+Job running time (seconds) : 76.446997
+Total time spend running these jobs since begining (seconds) : 252.030698
+Total jobs completed : 2
+Total jobs preempted : 0
+Total jobs abandoned : 0
+
+Done exploring all?

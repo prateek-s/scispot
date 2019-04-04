@@ -1,0 +1,58 @@
+{'explore': ['True'], 'target_cpus': ['64']}
+Starting the exploration
+('n1-highcpu-64', 1)
+VM's currently running ['fmfwcz1'], which are the type of n1-highcpu-64
+All the VM's previously launched ['fmfwcz1'], for the namegroup = fmfwcz
+Master reconfigured
+New insances did not launch, jobs will run using existing VMs
+Current start id is 2
+Number of nodes required = 1 ,nodes running = 0
+VM's currently running ['fmfwcz1']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 1 ,nodes running = 0
+VM's currently running ['fmfwcz1']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 1 ,nodes running = 0
+VM's currently running ['fmfwcz1']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 1 ,nodes running = 1
+Job started 663  sbatch --no-requeue --parsable -N 1 -c 32 -n 1 /scispot/sb_lulesh.sh 
+{'finished': ['663']}
+finished
+JobId=663 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-04T15:12:40 EndTime=2019-04-04T15:12:58 NodeList=fmfwcz1 NodeCnt=1 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-04T15:12:40 EligibleTime=2019-04-04T15:12:40 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 663
+Job id search target 663
+COMPLETED
+Job 663 finished at 2019-04-04T15:13:08.007222
+Job running time (seconds) : 25.503967
+Total time spend running these jobs since begining (seconds) : 41.356725
+Total jobs completed : 1
+Total jobs preempted : 0
+Total jobs abandoned : 0
+('n1-highcpu-8', 8)
+VM's currently running ['irjcfm1', 'irjcfm2'], which are the type of n1-highcpu-8
+All the VM's previously launched ['irjcfm1', 'irjcfm2'], for the namegroup = irjcfm
+Master reconfigured
+Cluster Launched: irjcfm, n1-highcpu-8, 6, waiting...
+Current start id is 9
+Number of nodes required = 8 ,nodes running = 8
+Job started 664  sbatch --no-requeue --parsable -N 8 -c 4 -n 8 /scispot/sb_lulesh.sh 
+{'finished': ['664']}
+finished
+JobId=664 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-04T15:15:25 EndTime=2019-04-04T15:15:50 NodeList=irjcfm[1-8] NodeCnt=8 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-04T15:15:24 EligibleTime=2019-04-04T15:15:24 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 664
+Job id search target 664
+COMPLETED
+Job 664 finished at 2019-04-04T15:16:06.158853
+Job running time (seconds) : 39.608304
+Total time spend running these jobs since begining (seconds) : 219.508356
+Total jobs completed : 2
+Total jobs preempted : 0
+Total jobs abandoned : 0
+
+Done exploring all?
