@@ -12,25 +12,7 @@ Performance of 3 benchmarks on different types of instance types and bigred2.
 
 
 
-\subsection{Preemption likelihood curves}
-
-
 \subsection{Searching for the best cloud configuration}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.4\textwidth]{../graphs/confin_16_time.pdf}
-  \caption{confinement running times}
-  \label{fig:confin-16-times}
-\end{figure}
-
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.4\textwidth]{../graphs/confin_16_cost.pdf}
-  \caption{confinement cost}
-  \label{fig:confin-16-cost}
-\end{figure}
 
 \begin{figure}[h]
   \centering
@@ -51,13 +33,28 @@ Performance of 3 benchmarks on different types of instance types and bigred2.
 
 \subsection{Total cost vs. running time graphs}
 
-\subsection{HPC}
+\begin{figure}
+  \includegraphics[width=0.2\textwidth]{../graphs/vm-per-job-scaling.pdf}
+  \caption{SciSpot scaling as the VMs per jobs increases}
+  \label{fig:vm-per-job-scaling}
+\end{figure}
+
+Figure~\ref{fig:vm-per-job-scaling} shows the total bag of job execution times for 32 jobs with 4 jobs running in parallel.
+32 CPU VM's were used, and thus the total number of CPUs = 32*jobs-per-VM. Max CPU's used was 512 
+
 
 \begin{figure}
-  \includegraphics[width=0.4\textwidth]{../data/waiting_all.pdf}
-  \caption{Ratio of waiting time to job running time on an HPC cluster. Average is 0.2}
-  \label{fig:hpc-wait-cdf}
+  \includegraphics[width=0.2\textwidth]{../graphs/par-scaling.pdf}
+  \caption{Job running times as the CPU's per job increases}
+  \label{fig:par-scaling}
 \end{figure}
+
+Figure~\ref{fig:par-scaling} shows the running time when the total cluster size is fixed, but the number of parallel jobs and hence the number of CPUs per job changes. 
+
+
+
+\subsection{Comparison with HPC Clusters}
+
 
 % \begin{figure}
 %   \includegraphics[width=0.4\textwidth]{../data/waiting_cumul.pdf}
