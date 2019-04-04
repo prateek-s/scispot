@@ -56,8 +56,7 @@
  * strigger --get
  * Logfile: /var/log/slurm-llnl/slurmctld.log
  * Job log: /var/log/slurmjobs
- * Status: Job state, compact form: PD (pending), R (running), CA (cancelled), CF(configuring), CG (completing), CD (completed), F (failed), TO (timeout), NF (node failure), RV (revoked) and SE (special exit state). See the JOB STATE CODES section below for more information. (Valid for jobs only)
- 
+ * Status: Job state, compact form: PD (pending), R (running), CA (cancelled), CF(configuring), CG (completing), CD (completed), F (failed), TO (timeout), NF (node failure), RV (revoked) and SE (special exit state).
  
  ## Path issues
  * sudo chmod -R 777 /scispot or sudo chmod -R a+rwx /scispot
