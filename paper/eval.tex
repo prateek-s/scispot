@@ -1,25 +1,21 @@
 \section{Evaluation}
 
-The contenders:
-\begin{enumerate}
-\item Run every job on un-tuned on-demand instance (cost and running time)
-\item Run every job on nanohub/big-red-2 (running and waiting time)
-\item Run on transient, restart every time (cost)
-\item SciSpot with early stopping and job sacrificing 
-\end{enumerate}
-
-Performance of 3 benchmarks on different types of instance types and bigred2.
+\textbf{Environment and Workloads:}
 
 
 
-\subsection{Searching for the best cloud configuration}
+
+\subsection{SciSpot Performance and Cost}
 
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/cost-bars.pdf}
   \caption{Running times of applications on different servers}
-  \label{fig:cost-bar}
+  \label{fig:runtimes-bar}
 \end{figure}
+
+\emph{Result: Running time is cluster configuration dependent, and increase in running time due to recomputation is small and less thna 5\%.}
+
 
 
 \begin{figure}
@@ -27,6 +23,14 @@ Performance of 3 benchmarks on different types of instance types and bigred2.
   \includegraphics[width=0.4\textwidth]{../graphs/cost-only-bar.pdf}
   \caption{Cost of different configurations}
   \label{fig:cost-only-bar}
+\end{figure}
+
+\emph{Result: SciSpot reduces computing costs by up to 5x and 7x compared to on-demand cloud servers.}
+
+\begin{figure}
+  \includegraphics[width=0.4\textwidth]{../graphs/waiting_time_buckets.pdf}
+  \caption{Waiting time fraction of jobs of different lengths varies.}
+  \label{fig:hpc-wait-buckets}  
 \end{figure}
 
 
@@ -63,11 +67,6 @@ Figure~\ref{fig:par-scaling} shows the running time when the total cluster size 
 % \end{figure}
 
 
-\begin{figure}
-  \includegraphics[width=0.4\textwidth]{../graphs/waiting_time_buckets.pdf}
-  \caption{Waiting time fraction of jobs of different lengths varies.}
-  \label{fig:hpc-wait-buckets}  
-\end{figure}
 
 %%% Local Variables:
 %%% mode: latex
