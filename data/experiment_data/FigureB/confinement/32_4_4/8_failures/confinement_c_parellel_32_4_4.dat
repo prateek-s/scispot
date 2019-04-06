@@ -1,0 +1,763 @@
+{'exploit': ['True'], 'num_jobs': ['36']}
+Kickstarting bag of jobs of size 36
+VM's currently running [], which are the type of n1-highcpu-32
+There is no running VMS for machine_type = n1-highcpu-32
+Selecting a new cluster name group
+Master reconfigured
+Cluster Launched: qlpkis, n1-highcpu-32, 16, waiting...
+Current start id is 17
+Number of nodes required = 16 ,nodes running = 16
+Job started 880  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.790909090909 -Z 3.81818181818 -d 0.714 -n -1 
+Job started 881  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.790909090909 -Z 4.0 -d 0.714 -n -1 
+Job started 882  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.681818181818 -Z 3.72727272727 -d 0.714 -n -1 
+Job started 883  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.736363636364 -Z 3.81818181818 -d 0.714 -n -1 
+{'finished': ['883']}
+finished
+JobId=883 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:22:07 EndTime=2019-04-05T18:33:40 NodeList=qlpkis[13-16] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:22:06 EligibleTime=2019-04-05T18:22:06 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 883
+Job id search target 883
+COMPLETED
+Job 883 finished at 2019-04-05T18:33:42.736247
+Job running time (seconds) : 694.421275
+Total time spend running these jobs since begining (seconds) : 721.572983
+Total jobs completed : 1
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.518181818182 -Z 3.72727272727 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 884  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.518181818182 -Z 3.72727272727 -d 0.714 -n -1 
+{'finished': ['881']}
+finished
+JobId=881 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:21:51 EndTime=2019-04-05T18:33:41 NodeList=qlpkis[5-8] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:21:50 EligibleTime=2019-04-05T18:21:50 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 881
+Job id search target 881
+COMPLETED
+Job 881 finished at 2019-04-05T18:33:47.904426
+Job running time (seconds) : 715.610689
+Total time spend running these jobs since begining (seconds) : 726.741162
+Total jobs completed : 2
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.845454545455 -Z 3.09090909091 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 885  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.845454545455 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['880']}
+finished
+JobId=880 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:21:43 EndTime=2019-04-05T18:34:30 NodeList=qlpkis[1-4] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:21:42 EligibleTime=2019-04-05T18:21:42 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 880
+Job id search target 880
+COMPLETED
+Job 880 finished at 2019-04-05T18:34:46.846901
+Job running time (seconds) : 782.584314
+Total time spend running these jobs since begining (seconds) : 785.683637
+Total jobs completed : 3
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.9 -Z 3.09090909091 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 886  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.9 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['882']}
+finished
+JobId=882 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:21:59 EndTime=2019-04-05T18:34:40 NodeList=qlpkis[9-12] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:21:58 EligibleTime=2019-04-05T18:21:58 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 882
+Job id search target 882
+COMPLETED
+Job 882 finished at 2019-04-05T18:34:51.898773
+Job running time (seconds) : 771.613047
+Total time spend running these jobs since begining (seconds) : 790.735509
+Total jobs completed : 4
+Total jobs preempted : 0
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.463636363636 -Z 3.36363636364 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 887  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.463636363636 -Z 3.36363636364 -d 0.714 -n -1 
+{'preempted': ['886']}
+preempted
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 3
+Replenishing 3 VMs with IDs starting from 17
+Cluster Launched: qlpkis, n1-highcpu-32, 3, waiting...
+Current start id is 20
+Number of nodes required = 16 ,nodes running = 16
+Job started 888  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.9 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['885']}
+finished
+JobId=885 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:33:50 EndTime=2019-04-05T18:45:32 NodeList=qlpkis[13-16] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:33:50 EligibleTime=2019-04-05T18:33:50 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 885
+Job id search target 885
+COMPLETED
+Job 885 finished at 2019-04-05T18:45:42.050915
+Job running time (seconds) : 709.718584
+Total time spend running these jobs since begining (seconds) : 1440.887651
+Total jobs completed : 5
+Total jobs preempted : 1
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.790909090909 -Z 3.63636363636 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 889  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.790909090909 -Z 3.63636363636 -d 0.714 -n -1 
+{'finished': ['884']}
+finished
+JobId=884 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:33:45 EndTime=2019-04-05T18:45:41 NodeList=qlpkis[5-8] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:33:44 EligibleTime=2019-04-05T18:33:44 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 884
+Job id search target 884
+COMPLETED
+Job 884 finished at 2019-04-05T18:45:58.115392
+Job running time (seconds) : 731.250644
+Total time spend running these jobs since begining (seconds) : 1456.952128
+Total jobs completed : 6
+Total jobs preempted : 1
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.845454545455 -Z 3.81818181818 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 890  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.845454545455 -Z 3.81818181818 -d 0.714 -n -1 
+{'finished': ['886']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['887']}
+preempted
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 891  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.463636363636 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['887']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['889']}
+finished
+JobId=889 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:45:45 EndTime=2019-04-05T18:57:22 NodeList=qlpkis[13-16] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:45:44 EligibleTime=2019-04-05T18:45:44 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 889
+Job id search target 889
+COMPLETED
+Job 889 finished at 2019-04-05T18:57:26.447864
+Job running time (seconds) : 700.317028
+Total time spend running these jobs since begining (seconds) : 2145.2846
+Total jobs completed : 7
+Total jobs preempted : 2
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.518181818182 -Z 4.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis1', 'qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 20
+Cluster Launched: qlpkis, n1-highcpu-32, 1, waiting...
+Current start id is 21
+Number of nodes required = 16 ,nodes running = 16
+Job started 892  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.518181818182 -Z 4.0 -d 0.714 -n -1 
+{'finished': ['890']}
+finished
+JobId=890 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:46:01 EndTime=2019-04-05T18:57:29 NodeList=qlpkis[4-7] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:46:00 EligibleTime=2019-04-05T18:46:00 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 890
+Job id search target 890
+COMPLETED
+Job 890 finished at 2019-04-05T18:59:30.023908
+Job running time (seconds) : 807.879235
+Total time spend running these jobs since begining (seconds) : 2268.860644
+Total jobs completed : 8
+Total jobs preempted : 2
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.790909090909 -Z 4.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 893  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.790909090909 -Z 4.0 -d 0.714 -n -1 
+{'preempted': ['888']}
+preempted
+VM's currently running ['qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis4', 'qlpkis5', 'qlpkis6', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 894  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.9 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['888']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['891']}
+finished
+JobId=891 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:48:41 EndTime=2019-04-05T19:01:22 NodeList=qlpkis[8-10,12] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:48:40 EligibleTime=2019-04-05T18:48:40 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 891
+Job id search target 891
+COMPLETED
+Job 891 finished at 2019-04-05T19:01:26.993578
+Job running time (seconds) : 764.259387
+Total time spend running these jobs since begining (seconds) : 2385.830314
+Total jobs completed : 9
+Total jobs preempted : 3
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.409090909091 -Z 3.36363636364 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 895  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.409090909091 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['893']}
+finished
+JobId=893 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:59:32 EndTime=2019-04-05T19:11:01 NodeList=qlpkis[13-16] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:59:32 EligibleTime=2019-04-05T18:59:32 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 893
+Job id search target 893
+COMPLETED
+Job 893 finished at 2019-04-05T19:11:03.001151
+Job running time (seconds) : 689.125256
+Total time spend running these jobs since begining (seconds) : 2961.837887
+Total jobs completed : 10
+Total jobs preempted : 3
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.354545454545 -Z 3.45454545455 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 896  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.354545454545 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['892']}
+finished
+JobId=892 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T18:59:27 EndTime=2019-04-05T19:10:51 NodeList=qlpkis[4-7] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T18:59:27 EligibleTime=2019-04-05T18:59:27 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 892
+Job id search target 892
+COMPLETED
+Job 892 finished at 2019-04-05T19:11:08.428698
+Job running time (seconds) : 699.276551
+Total time spend running these jobs since begining (seconds) : 2967.265434
+Total jobs completed : 11
+Total jobs preempted : 3
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.3 -Z 3.81818181818 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 897  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.3 -Z 3.81818181818 -d 0.714 -n -1 
+{'finished': ['894']}
+finished
+JobId=894 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:00:24 EndTime=2019-04-05T19:12:23 NodeList=qlpkis[17-20] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:00:24 EligibleTime=2019-04-05T19:00:24 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 894
+Job id search target 894
+COMPLETED
+Job 894 finished at 2019-04-05T19:12:38.057341
+Job running time (seconds) : 731.84723
+Total time spend running these jobs since begining (seconds) : 3056.894077
+Total jobs completed : 12
+Total jobs preempted : 3
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.354545454545 -Z 3.45454545455 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 898  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.354545454545 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['895']}
+finished
+JobId=895 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:01:29 EndTime=2019-04-05T19:14:07 NodeList=qlpkis[8-10,12] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:01:29 EligibleTime=2019-04-05T19:01:29 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 895
+Job id search target 895
+COMPLETED
+Job 895 finished at 2019-04-05T19:14:14.546800
+Job running time (seconds) : 763.512831
+Total time spend running these jobs since begining (seconds) : 3153.383536
+Total jobs completed : 13
+Total jobs preempted : 3
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.736363636364 -Z 4.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 899  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.736363636364 -Z 4.0 -d 0.714 -n -1 
+{'finished': ['897']}
+finished
+JobId=897 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:11:11 EndTime=2019-04-05T19:22:48 NodeList=qlpkis[13-16] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:11:10 EligibleTime=2019-04-05T19:11:10 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 897
+Job id search target 897
+COMPLETED
+Job 897 finished at 2019-04-05T19:23:02.373887
+Job running time (seconds) : 710.000763
+Total time spend running these jobs since begining (seconds) : 3681.210623
+Total jobs completed : 14
+Total jobs preempted : 3
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.572727272727 -Z 3.36363636364 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 14
+VM's currently running ['qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis17', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis5', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 2
+Replenishing 2 VMs with IDs starting from 21
+Cluster Launched: qlpkis, n1-highcpu-32, 2, waiting...
+Current start id is 23
+Number of nodes required = 16 ,nodes running = 13
+VM's currently running ['qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis5', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 3
+Replenishing 3 VMs with IDs starting from 23
+Cluster Launched: qlpkis, n1-highcpu-32, 3, waiting...
+Current start id is 26
+Number of nodes required = 16 ,nodes running = 14
+VM's currently running ['qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis23', 'qlpkis5', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 2
+Replenishing 2 VMs with IDs starting from 26
+Cluster Launched: qlpkis, n1-highcpu-32, 2, waiting...
+Current start id is 28
+Number of nodes required = 16 ,nodes running = 16
+Job started 900  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.572727272727 -Z 3.36363636364 -d 0.714 -n -1 
+{'preempted': ['896']}
+preempted
+VM's currently running ['qlpkis10', 'qlpkis12', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis23', 'qlpkis26', 'qlpkis27', 'qlpkis5', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 901  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.354545454545 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['896']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['899']}
+finished
+JobId=899 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:14:17 EndTime=2019-04-05T19:26:54 NodeList=qlpkis[8-10,12] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:14:16 EligibleTime=2019-04-05T19:14:16 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 899
+Job id search target 899
+COMPLETED
+Job 899 finished at 2019-04-05T19:28:32.316809
+Job running time (seconds) : 853.697294
+Total time spend running these jobs since begining (seconds) : 4011.153545
+Total jobs completed : 15
+Total jobs preempted : 4
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.790909090909 -Z 3.54545454545 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 902  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.790909090909 -Z 3.54545454545 -d 0.714 -n -1 
+{'preempted': ['898']}
+preempted
+VM's currently running ['qlpkis10', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis23', 'qlpkis26', 'qlpkis27', 'qlpkis5', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 28
+Cluster Launched: qlpkis, n1-highcpu-32, 1, waiting...
+Current start id is 29
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis10', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis23', 'qlpkis26', 'qlpkis28', 'qlpkis5', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 29
+Cluster Launched: qlpkis, n1-highcpu-32, 1, waiting...
+Current start id is 30
+Number of nodes required = 16 ,nodes running = 16
+Job started 903  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.354545454545 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['898']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['901']}
+preempted
+VM's currently running ['qlpkis10', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis23', 'qlpkis26', 'qlpkis28', 'qlpkis29', 'qlpkis5', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 904  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.354545454545 -Z 3.45454545455 -d 0.714 -n -1 
+{'finished': ['901']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['902']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['902']}
+preempted
+VM's currently running ['qlpkis10', 'qlpkis13', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis23', 'qlpkis26', 'qlpkis28', 'qlpkis29', 'qlpkis5', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 905  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.790909090909 -Z 3.54545454545 -d 0.714 -n -1 
+{'finished': ['900']}
+finished
+JobId=900 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:28:24 EndTime=2019-04-05T19:40:36 NodeList=qlpkis[7-10] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:28:23 EligibleTime=2019-04-05T19:28:23 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 900
+Job id search target 900
+COMPLETED
+Job 900 finished at 2019-04-05T19:40:38.549768
+Job running time (seconds) : 732.74685
+Total time spend running these jobs since begining (seconds) : 4737.386504
+Total jobs completed : 16
+Total jobs preempted : 7
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.3 -Z 3.54545454545 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 906  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.3 -Z 3.54545454545 -d 0.714 -n -1 
+{'finished': ['903']}
+finished
+JobId=903 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:33:32 EndTime=2019-04-05T19:45:52 NodeList=qlpkis[18-20,23] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:33:30 EligibleTime=2019-04-05T19:33:30 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 903
+Job id search target 903
+COMPLETED
+Job 903 finished at 2019-04-05T19:45:58.186521
+Job running time (seconds) : 746.06579
+Total time spend running these jobs since begining (seconds) : 5057.023257
+Total jobs completed : 17
+Total jobs preempted : 7
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.736363636364 -Z 3.54545454545 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 907  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.736363636364 -Z 3.54545454545 -d 0.714 -n -1 
+{'finished': ['904']}
+finished
+JobId=904 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:35:20 EndTime=2019-04-05T19:46:57 NodeList=qlpkis[13-16] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:35:20 EligibleTime=2019-04-05T19:35:20 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 904
+Job id search target 904
+COMPLETED
+Job 904 finished at 2019-04-05T19:47:02.418334
+Job running time (seconds) : 700.073582
+Total time spend running these jobs since begining (seconds) : 5121.25507
+Total jobs completed : 18
+Total jobs preempted : 7
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.736363636364 -Z 3.09090909091 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 908  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.736363636364 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['905']}
+finished
+JobId=905 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:35:26 EndTime=2019-04-05T19:47:48 NodeList=qlpkis[5,26,28-29] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:35:26 EligibleTime=2019-04-05T19:35:26 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 905
+Job id search target 905
+COMPLETED
+Job 905 finished at 2019-04-05T19:47:50.318802
+Job running time (seconds) : 741.383819
+Total time spend running these jobs since begining (seconds) : 5169.155538
+Total jobs completed : 19
+Total jobs preempted : 7
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.790909090909 -Z 3.63636363636 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 909  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.790909090909 -Z 3.63636363636 -d 0.714 -n -1 
+{'finished': ['906']}
+finished
+JobId=906 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:40:40 EndTime=2019-04-05T19:52:55 NodeList=qlpkis[7-10] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:40:40 EligibleTime=2019-04-05T19:40:40 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 906
+Job id search target 906
+COMPLETED
+Job 906 finished at 2019-04-05T19:53:10.183201
+Job running time (seconds) : 747.833468
+Total time spend running these jobs since begining (seconds) : 5489.019937
+Total jobs completed : 20
+Total jobs preempted : 7
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.463636363636 -Z 3.09090909091 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 15
+VM's currently running ['qlpkis10', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis23', 'qlpkis26', 'qlpkis28', 'qlpkis29', 'qlpkis5', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 30
+Cluster Launched: qlpkis, n1-highcpu-32, 1, waiting...
+Current start id is 31
+Number of nodes required = 16 ,nodes running = 16
+Job started 910  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.463636363636 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['908']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['908']}
+preempted
+VM's currently running ['qlpkis10', 'qlpkis14', 'qlpkis15', 'qlpkis16', 'qlpkis18', 'qlpkis19', 'qlpkis20', 'qlpkis23', 'qlpkis26', 'qlpkis28', 'qlpkis29', 'qlpkis30', 'qlpkis5', 'qlpkis7', 'qlpkis8', 'qlpkis9']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 16 ,nodes running = 16
+Job started 911  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.736363636364 -Z 3.09090909091 -d 0.714 -n -1 
+{'finished': ['907']}
+finished
+JobId=907 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:46:01 EndTime=2019-04-05T19:58:06 NodeList=qlpkis[18-20,23] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:46:00 EligibleTime=2019-04-05T19:46:00 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 907
+Job id search target 907
+COMPLETED
+Job 907 finished at 2019-04-05T19:58:14.569273
+Job running time (seconds) : 732.234917
+Total time spend running these jobs since begining (seconds) : 5793.406009
+Total jobs completed : 21
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.463636363636 -Z 3.72727272727 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 912  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.463636363636 -Z 3.72727272727 -d 0.714 -n -1 
+{'finished': ['909']}
+finished
+JobId=909 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:47:52 EndTime=2019-04-05T20:00:11 NodeList=qlpkis[5,26,28-29] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:47:52 EligibleTime=2019-04-05T19:47:52 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 909
+Job id search target 909
+COMPLETED
+Job 909 finished at 2019-04-05T20:00:22.974322
+Job running time (seconds) : 748.765105
+Total time spend running these jobs since begining (seconds) : 5921.811058
+Total jobs completed : 22
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.354545454545 -Z 3.81818181818 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 913  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.354545454545 -Z 3.81818181818 -d 0.714 -n -1 
+{'finished': ['911']}
+finished
+JobId=911 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:55:21 EndTime=2019-04-05T20:06:37 NodeList=qlpkis[14-16,30] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:55:20 EligibleTime=2019-04-05T19:55:20 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 911
+Job id search target 911
+COMPLETED
+Job 911 finished at 2019-04-05T20:06:46.735254
+Job running time (seconds) : 683.856998
+Total time spend running these jobs since begining (seconds) : 6305.57199
+Total jobs completed : 23
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.627272727273 -Z 3.54545454545 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 914  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.627272727273 -Z 3.54545454545 -d 0.714 -n -1 
+{'finished': ['910']}
+finished
+JobId=910 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:54:50 EndTime=2019-04-05T20:07:00 NodeList=qlpkis[7-10] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:54:49 EligibleTime=2019-04-05T19:54:49 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 910
+Job id search target 910
+COMPLETED
+Job 910 finished at 2019-04-05T20:07:02.903897
+Job running time (seconds) : 730.96889
+Total time spend running these jobs since begining (seconds) : 6321.740633
+Total jobs completed : 24
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.354545454545 -Z 3.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 915  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.354545454545 -Z 3.0 -d 0.714 -n -1 
+{'finished': ['912']}
+finished
+JobId=912 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T19:58:17 EndTime=2019-04-05T20:10:25 NodeList=qlpkis[18-20,23] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T19:58:16 EligibleTime=2019-04-05T19:58:16 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 912
+Job id search target 912
+COMPLETED
+Job 912 finished at 2019-04-05T20:10:30.204367
+Job running time (seconds) : 731.221369
+Total time spend running these jobs since begining (seconds) : 6529.041103
+Total jobs completed : 25
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.736363636364 -Z 3.72727272727 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 916  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.736363636364 -Z 3.72727272727 -d 0.714 -n -1 
+{'finished': ['913']}
+finished
+JobId=913 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T20:00:25 EndTime=2019-04-05T20:12:40 NodeList=qlpkis[5,26,28-29] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T20:00:24 EligibleTime=2019-04-05T20:00:24 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 913
+Job id search target 913
+COMPLETED
+Job 913 finished at 2019-04-05T20:12:54.417207
+Job running time (seconds) : 747.275924
+Total time spend running these jobs since begining (seconds) : 6673.253943
+Total jobs completed : 26
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.9 -Z 3.18181818182 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 917  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.9 -Z 3.18181818182 -d 0.714 -n -1 
+{'finished': ['914']}
+finished
+JobId=914 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T20:06:49 EndTime=2019-04-05T20:18:01 NodeList=qlpkis[14-16,30] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T20:06:48 EligibleTime=2019-04-05T20:06:48 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 914
+Job id search target 914
+COMPLETED
+Job 914 finished at 2019-04-05T20:18:14.965741
+Job running time (seconds) : 684.07462
+Total time spend running these jobs since begining (seconds) : 6993.802477
+Total jobs completed : 27
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 1 -c 0.627272727273 -Z 3.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 918  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 1 -c 0.627272727273 -Z 3.0 -d 0.714 -n -1 
+{'finished': ['915']}
+finished
+JobId=915 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T20:07:05 EndTime=2019-04-05T20:19:17 NodeList=qlpkis[7-10] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T20:07:05 EligibleTime=2019-04-05T20:07:05 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 915
+Job id search target 915
+COMPLETED
+Job 915 finished at 2019-04-05T20:19:34.242689
+Job running time (seconds) : 747.250301
+Total time spend running these jobs since begining (seconds) : 7073.079425
+Total jobs completed : 28
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.790909090909 -Z 4.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 919  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.790909090909 -Z 4.0 -d 0.714 -n -1 
+{'finished': ['916']}
+finished
+JobId=916 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T20:10:33 EndTime=2019-04-05T20:22:23 NodeList=qlpkis[18-20,23] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T20:10:32 EligibleTime=2019-04-05T20:10:32 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 916
+Job id search target 916
+COMPLETED
+Job 916 finished at 2019-04-05T20:22:30.543742
+Job running time (seconds) : 716.246116
+Total time spend running these jobs since begining (seconds) : 7249.380478
+Total jobs completed : 29
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.463636363636 -Z 3.36363636364 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 920  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.463636363636 -Z 3.36363636364 -d 0.714 -n -1 
+{'finished': ['917']}
+finished
+JobId=917 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T20:12:57 EndTime=2019-04-05T20:25:28 NodeList=qlpkis[5,26,28-29] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T20:12:56 EligibleTime=2019-04-05T20:12:56 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 917
+Job id search target 917
+COMPLETED
+Job 917 finished at 2019-04-05T20:25:42.919997
+Job running time (seconds) : 764.479013
+Total time spend running these jobs since begining (seconds) : 7441.756733
+Total jobs completed : 30
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.409090909091 -Z 3.0 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 921  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.409090909091 -Z 3.0 -d 0.714 -n -1 
+{'finished': ['918']}
+finished
+JobId=918 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T20:18:17 EndTime=2019-04-05T20:29:32 NodeList=qlpkis[14-16,30] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T20:18:16 EligibleTime=2019-04-05T20:18:16 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 918
+Job id search target 918
+COMPLETED
+Job 918 finished at 2019-04-05T20:29:42.462160
+Job running time (seconds) : 683.532796
+Total time spend running these jobs since begining (seconds) : 7681.298896
+Total jobs completed : 31
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 3 -c 0.9 -Z 3.72727272727 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 922  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 3 -c 0.9 -Z 3.72727272727 -d 0.714 -n -1 
+{'finished': ['919']}
+finished
+JobId=919 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T20:19:37 EndTime=2019-04-05T20:31:50 NodeList=qlpkis[7-10] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T20:19:36 EligibleTime=2019-04-05T20:19:36 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 919
+Job id search target 919
+COMPLETED
+Job 919 finished at 2019-04-05T20:32:06.697336
+Job running time (seconds) : 748.507111
+Total time spend running these jobs since begining (seconds) : 7825.534072
+Total jobs completed : 32
+Total jobs preempted : 8
+Total jobs abandoned : 0
+Running next job -p 2 -c 0.518181818182 -Z 3.90909090909 -d 0.714 -n -1 
+Number of nodes required = 16 ,nodes running = 16
+Job started 923  sbatch --no-requeue --parsable -N 4 -c 16 -n 4 /scispot/sb_confinement.sh -p 2 -c 0.518181818182 -Z 3.90909090909 -d 0.714 -n -1 
+{'finished': ['920']}
+finished
+JobId=920 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T20:22:33 EndTime=2019-04-05T20:34:40 NodeList=qlpkis[18-20,23] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T20:22:32 EligibleTime=2019-04-05T20:22:32 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 920
+Job id search target 920
+COMPLETED
+Job 920 finished at 2019-04-05T20:34:46.968631
+Job running time (seconds) : 732.349552
+Total time spend running these jobs since begining (seconds) : 7985.805367
+Total jobs completed : 33
+Total jobs preempted : 8
+Total jobs abandoned : 0
+No more jobs to run!
+{'finished': ['921']}
+finished
+JobId=921 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T20:25:45 EndTime=2019-04-05T20:38:24 NodeList=qlpkis[5,26,28-29] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T20:25:45 EligibleTime=2019-04-05T20:25:45 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 921
+Job id search target 921
+COMPLETED
+Job 921 finished at 2019-04-05T20:38:30.442927
+Job running time (seconds) : 763.381014
+Total time spend running these jobs since begining (seconds) : 8209.279663
+Total jobs completed : 34
+Total jobs preempted : 8
+Total jobs abandoned : 0
+No more jobs to run!
+{'preempted': ['922']}
+preempted
+Job quota met, nothing remaining!
+We have met our job target! 34 36
+{'finished': ['922']}
+finished
+
+False alarm on the job completion, ignoring!
+{'finished': ['923']}
+finished
+JobId=923 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_confinement.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-05T20:32:09 EndTime=2019-04-05T20:44:17 NodeList=qlpkis[7-10] NodeCnt=4 ProcCnt=128 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-05T20:32:08 EligibleTime=2019-04-05T20:32:08 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 923
+Job id search target 923
+COMPLETED
+Job 923 finished at 2019-04-05T20:44:22.001444
+Job running time (seconds) : 731.269215
+Total time spend running these jobs since begining (seconds) : 8560.83818
+Total jobs completed : 35
+Total jobs preempted : 8
+Total jobs abandoned : 0
+No more jobs to run!
