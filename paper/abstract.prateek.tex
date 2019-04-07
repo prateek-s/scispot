@@ -1,0 +1,14 @@
+Transient cloud servers can yield significantly lower costs compared to traditional on-demand cloud servers. 
+However, due to their preemptible nature and heterogeneity, their effective use remains challenging.
+%
+In this paper, we present SciSpot, a software framework for running scientific applications on transient cloud servers.
+% 
+We perform a large-scale, first-of-its-kind empirical measurement and analytical modeling involving over a thousand Google preemptible VMs. 
+Our policies for tackling the resource heterogeneity and transient availability of cloud VMs build on a key insight: most scientific computing applications are deployed as ``bag'' of jobs, which represent multiple instantiations of the same computation with different parameters.
+We show that optimizing across an entire bag of jobs and being cognizant of the relation between different jobs in a bag, can enable simple and powerful policies for optimizing cost, makespan, and ease of deployment. 
+SciSpot yields a cost saving of 70\% compared to traditional cloud deployments, and a makespan reduction of 20\% compared to a conventional HPC clusters. 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End:
