@@ -1,20 +1,26 @@
 \section{Experimental Evaluation}
+\label{sec:eval}
 
+%Opening is deliberately short because we gonna be running out of space 
 In this section, we present empirical and analytical evaluation of the performance and cost of \sysname under different workloads and scales. 
+Our evaluation consists of empirical analysis of the different scientific computing applications, as well as model-driven simulations for analyzing and comparing \sysname behavior under different preemption and application dynamics. 
+
 % \begin{itemize}
 % \item What is performance and cost of 
 % \end{itemize}
 
-\noindent \textbf{Environment and Workloads:} All our empirical evaluation is conducted with the \sysname prototype on the Google Public Cloud, and with these open-source scientific applications:
+\noindent \textbf{Environment and Workloads:} All our empirical evaluation is conducted on the Google Public Cloud, and with these representative scientific applications: 
+% open-source
+\vspace*{\tightext}
 \begin{description}
-\item[NC.] Ions in Nanoconfiment~\cite{} configured with OpenMP and MPI. 
-\item[Shapes.] 
-\item[Lulesh.] Popular hydrodynamics application with default parameters. 
+  %TODO: Need MAX two sentence descriptions
+\item[NC.] The ions in nanoconfiment~\cite{} application computes dynamics of nanoparticles. Uses OpenMP and MPI parallelization. 
+\item[Shapes.]  Application to compute shapes of nanoparticles. Uses OpenMP and MPI parallelization and is embarrassingly parallel. 
+\item[Lulesh.] Popular hydrodynamics application with the default parameters. 
 \end{description}
-
-All applications use OpenMPI and 64-bit Ubuntu 18.04 as the base OS.
-All the Google Cloud VMs are x86-64 Intel Broadwell, with different number of cores and memory sizes depending on the VM size selected. 
-
+\vspace*{\tightext}
+All applications use OpenMPI, are deployed on Slurm vXXX and 64-bit Ubuntu 18.04, and run on Google Cloud VMs with x86-64 Intel Broadwell CPUs. 
+%Networking? 
 
 
 \subsection{SciSpot Performance and Cost}
