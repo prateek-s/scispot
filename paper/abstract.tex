@@ -1,4 +1,12 @@
-In this paper, we...
+%In this paper, we...
+
+Given the dramatic rise of cloud computing resources and their utilization in web services and distributed data processing, it is not the question of if, but when, cloud computing becomes a credible and powerful alternative to high-performance computing for scientific computing applications. To accelerate this transition and enable the implementation of scientific computing tasks over the cloud, a comprehensive understanding of the dynamics of preemptions of cloud servers, particulary in the case of transient cloud resources, and a reliable set of associated preemption-mitigation policies that optimize for cost, makespan, and deployment ease are required. 
+In this paper, we develop principled approaches for deploying and orchestrating scientific computing applications on the cloud, and present \sysname, a framework for low-cost scientific computing on  transient cloud servers. 
+We perform a large-scale, first-of-its-kind empirical measurement study involving over a thousand Google preemptible VMs of different types and present the \emph{first} empirical model of transient server availability. This empirical data informts the formulation of a novel analytical model to describe preemption dynamics that enables the prediction of expected running costs of jobs of different types and duration.
+Our policies for tackling the resource heterogeneity and transient availability of cloud VMs build on a key insight: most scientific computing applications are deployed as ``bag'' of jobs, which represent multiple instantiations of the same computation with different parameters.
+We show that optimizing across an entire bag of jobs and being cognizant of the relation between different jobs in a bag, can enable simple and powerful policies for optimizing cost, makespan, and ease of deployment, and implement these policies as part of the \sysname~framework. 
+The preemption-mitigation policies developed to minimize the overall makespan of bags of jobs, by taking into consideration the partial redundancy between different jobs within a bag, yield a cost saving of 70\%, and a makespan reduction of 20\% compared to a conventional HPC clusters.
+
 \vspace*{10cm}
 
 %%% Local Variables:
