@@ -99,9 +99,28 @@ This shows that \sysname is robust and can provide acceptable performance even u
 \begin{figure}[t]
   \centering 
   \includegraphics[width=0.4\textwidth]{../graphs/confin-fails-vs-time.pdf}
-  \caption{Job running times as the CPU's per job increases}
+  \caption{The running time of a bag of 32 jobs increases by less than 40\%, even when the number of preemptions is high.}
   \label{fig:fails-time}
 \end{figure}
+
+\noindent \textbf{Large Bags:} Essentially time scalability. 4 Jobs in Parallel, each with 2 VMs each.  
+
+%32_2_4 
+\begin{table}
+  \begin{tabular}{|c|r|r|}
+    \hline
+    Workload & Jobs & Time (Hours) \\
+    \hline
+    NC & 32  & 112 \\
+    NC & 100  & 365 \\
+    \hline
+    Shapes & 32 & 88 \\
+    Shapes & 100 & 269 \\  
+    \hline
+  \end{tabular}
+  \caption{Running time for large, long-running bags of jobs.}
+  \label{tab:100-jobs}
+\end{table}
 
 
 
