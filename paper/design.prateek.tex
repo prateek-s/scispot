@@ -84,17 +84,18 @@ The overall expected cost of running a job can then be expressed as follows:
 \end{equation}
 Here, $E[T_{\langle i,n_i \rangle}]$ denotes the expected running time of the job on $n_i$ servers of type $i$.
 This running time, in turn depends on the preemption probability of the server type:
-\begin{equation}
+\begin{align}
   \label{eq:et1}
-E[T_{\langle i,n_i \rangle}] = T_{\langle i,n_i \rangle} + P(\text{at least one failure})*T_{\langle i,n_i \rangle}/2   
-\end{equation}
+  E[T_{\langle i,n_i \rangle}] &= T_{\langle i,n_i \rangle} + E[\text{Recomputation Time}] \\
+  &= T_{\langle i,n_i \rangle} + P(\text{at least one preemption})*T_{\langle i,n_i \rangle}/2   
+\end{align}
 Here, $T_{\langle i,n_i \rangle}$ is the running time of the job without failures, which we obtain empirically as explained in the previous subsection.
 
 The probability that at least one VM out of $n_i$ will be preempted during the job execution can be expressed as:
 
 \begin{align}
   \label{eq:pfail1}
-  P(\text{at least one failure}) &= 1-P(\text{no failure}) \\
+  P(\text{at least one preemption}) &= 1-P(\text{no preemptions}) \\
                                  &= 1-(1-P(i, t))^{n_i} \\
                                  &= 1-\left(1-\dfrac{T_{\langle i,n_i \rangle}}{E[L_i]}\right)^{n_i}      
 \end{align}
