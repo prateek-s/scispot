@@ -61,7 +61,7 @@ Thus, on preemptible servers, there is a tradeoff between the base running time 
 By considering \emph{both} these factors, \sysname's server selection policy can select the best VM for an application. 
 
 
-\noindent \emph{ \textbf{Result:} SciSpot's server selection, by considering both the base running time and recomputation time, can improve performance by up to 40\% , and can keep the increase in running time due to recomputation to less than 5\%.}
+\noindent \emph{\textbf{Result:} SciSpot's server selection, by considering both the base running time and recomputation time, can improve performance by up to 40\% , and can keep the increase in running time due to recomputation to less than 5\%.}
 
 
 \subsubsection{Cost}
@@ -69,7 +69,7 @@ By considering \emph{both} these factors, \sysname's server selection policy can
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/cost-only-bar.pdf}
-  \caption{Cost of different configurations}
+  \caption{SciSpot's use of preemptible VMs can reduce costs by up to $5\times$ compared to conventional cloud deployments.}
   \label{fig:cost-only-bar}
 \end{figure}
 
@@ -81,23 +81,43 @@ Even with \sysname's server selection, using on-demand VMs result in a $5\times$
 In the absence of server selection, we assume that the user will pick a ``median'' VM in terms of number of CPUs (in this case, 8 CPU VMs), which we also show in Figure~\ref{fig:cost-only-bar}. 
 
 
-\noindent \emph{ \textbf{Result:} SciSpot reduces computing costs by up to 5x compared to conventional on-demand cloud deployments.}
+\noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5x compared to conventional on-demand cloud deployments.}
 
 
 
 
 \subsubsection{Comparison with HPC Clusters}
 
+Scientific applications are typically run on large-scale HPC clusters, where different performance and cost dynamics apply.
+While there are hardware differences between cloud VMs and HPC clusters that can contribute to performance differences, we are interested in the performance ``overheads''.
+In the case of \sysname, the job failures and recomputations increase the total job running time, and are thus the main source of overhead.
+
+On HPC clusters, jobs enjoy significantly lower recomputation probability, since the hardware on these clusters has MTTFs in the range of years to centuries~\cite{dongarra-ckpting}.
+However, we emphasize that there exist \emph{other} sources of performance overheads in HPC clusters.
+In particular, since HPC clusters have high resource utilization, they also have significant \emph{waiting} times. 
+On the other hand, cloud resource utilization is low~\cite{borg} and there is usually no need to wait for resources, which is why transient servers exist in the first place! 
 
 
+Thus, we compare the performance overhead due to preemptions for \sysname, and job waiting times in conventional HPC deployments.
+To obtain the job waiting times in HPC clusters, we use the LANL Mustang traces published as part of the Atlas trace repository~\cite{cmu-atlas}.
+We analyze the waiting time of over two million jobs submitted over a 5 year period, and compute the increase in running time of the job due to the job waiting or queuing time. 
 
 \begin{figure}[t]
   \centering 
   \includegraphics[width=0.4\textwidth]{../graphs/hpc-vs-scispot.pdf}
-  \caption{HPC vs SciSpot overhead}
+  \caption{Increase in running time due to waiting/queuing on HPC clusters is significantly higher than the recomputation time for \sysname, especially for shorter jobs. }
   \label{fig:hpc-vs-scispot}
 
 \end{figure}
+
+
+Figure~\ref{fig:hpc-vs-scispot} shows the increase in running time with \sysname, and due to waiting for resources in HPC clusters, for jobs of different lengths. We see that the average performance overhead due to waiting can be significant in the case of HPC clusters, and the job submission latency and queuing time dominate for smaller jobs, increasing their total running time by more $2.5\times$.
+This waiting is amortized in the case of longer running jobs, and the increase in running time as a percentage drops off for longer jobs, to around 30\%.
+
+On the other hand, \sysname's performance overhead is significantly smaller for jobs of up to 8 hours in length.
+For longer jobs, the limited lifetime of Google Preemptible VMs (24 hours) begins to significantly increase the preemption probability and expected recomputation time.
+We emphasize that these are \emph{individual} job lengths, and not the running time of entire bags of jobs.
+We note that these large single jobs are rare, and for smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller.
 
 \noindent \emph{ \textbf{Result:} While preemptions can increase running times due to recomputation, this increase is small, and is between 20 to 400\% lower compared to conventional HPC clusters. }
 
