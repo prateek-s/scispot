@@ -25,23 +25,53 @@ All applications use OpenMPI, are deployed on Slurm vXXX and 64-bit Ubuntu 18.04
 
 \subsection{SciSpot Performance and Cost}
 
-\noindent \textbf{Impact of server exploration.}
-As described in Section~\ref{sec:design}, applications can be deployed on multiple types of VMs in the cloud, with each VM type having a different number of CPUs. 
-Figure~\ref{fig:runtimes-bar} shows the running times of the different applications 
+\subsubsection{Impact of server exploration}
 
+As described in Section~\ref{sec:design}, applications can be deployed on multiple types of VMs in the cloud, with each VM type having a different ``size''.
+In our evaluation of parallel scientific applications that are CPU intensive, we are primarily interested in the number of CPUs in a VM.
+
+When an application requests a total number of CPUs to run each of its jobs, \sysname first runs its exploration phase to find the ``right'' VM for the application.
+\sysname searches for the VM that minimizes the total expected cost of running the application, and this depends on  several factors such as the parallel structure of the application, the preemption probability and the associated job recomputation time, and the price of the VM.
+
+
+Thus, even if the \emph{total} amount of resources (i.e., number of CPUs) per job is held constant, the total running time of an application depends on the choice of the VM, and the associated number of VMs required to meet the allocation constraint (Section~\ref{subsec:cost-model}).
+%
+With preemptible instances, the total running time of a job is composed of two factors: the ``base'' running time of the job without any preemptions, and the expected recomputation time which depends on the probability of job failure (Equation~\ref{eq:t1}). 
 
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/runtime-bars.pdf}
-  \caption{Running times of applications on different servers}
+  \caption{Running times of applications on different VMs. The total number of CPUs is 64, yielding different number of VMs in each case. We see different tradeoffs in the base running times and recomputation costs for the different applications.}
   \label{fig:runtimes-bar}
 \end{figure}
 
 
-\noindent \emph{ \textbf{Result:} Selecting the right server type can have big impact on application performance. The increase in running time due to recomputation is small and less than 5\%.}
+Figure~\ref{fig:runtimes-bar} shows the running times of the NC and Shapes application, when they are deployed on different VM sizes.
+In all cases, the total number of CPUs per job is set to 64, and thus the different VM sizes yield different cluster sizes (e.g., 16 VMs with 4 CPUs each are required).
 
 
-\noindent \textbf{Cost.} Using preemptible VMs results in significant lower costs, even considering the increase in running time and cost due to the preemptions.
+For the NC application, we observe that the the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
+The running time on the ``best'' VM (i.e., with 32 CPUs) is nearly 40\% lower as compared to the worst case. 
+On the other hand, the Shapes application can scale to a larger number of VMs without any significant communication overheads, and does not see any significant change in its running time.
+
+Figure~\ref{fig:runtimes-bar} also shows the total expected running time, that is obtained by adding the the expected recomputation time, which depends on the expected lifetimes of the VM and the number of VMs, and is computed using the cost model introduced in Section~\ref{subsec:cost-model}. 
+While selecting larger VMs may reduce communication overheads and thus improve performance, it is not an adequate policy in the case of preemptible VMs, since the preemptions can significantly increase the total running time.
+We can observe this in the case of NC application when deployed on a 64 CPU VM---even though the base running time is lower compared to deploying the application on 2x32-CPU VMs, the recomputation time on the 64 CPU VM is almost $4\times$ higher due to the much lower expected lifetime of the larger VMs. 
+Thus, on preemptible servers, there is a tradeoff between the base running time which only considers parallelization overheads, and the recomputation time.
+By considering \emph{both} these factors, \sysname's server selection policy can select the best VM for an application. 
+
+
+\noindent \emph{ \textbf{Result:} SciSpot's server selection, by considering both the base running time and recomputation time, can improve performance by up to 40\% , and can keep the increase in running time due to recomputation to less than 5\%.}
+
+
+
+\subsubsection{Cost}
+
+The primary motivation for using preemptible VMs is their significantly lower cost, which \sysname is able to exploit.
+
+Figure~\ref{cost-only-bar} shows the cost of running t
+
+\sysname's use of preemptible VMs results in significant lower costs, even considering the increase in running time and cost due to the preemptions.
 The cost per job is 5x lower compared to on-demand instances even when selecting the best server with scispot's server selection policies.
 
 
