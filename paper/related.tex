@@ -1,17 +1,18 @@
 \section{Related Work}
+\label{sec:related}
+Our work builds upon a large body of prior work on running scientific applications on the cloud, the various facets of transient cloud computing, and failure modeling. 
 
-\subsection{Scientific applications on cloud}
+\subsection{Scientific Applications In The Cloud}
 
-A classic survey is ~\cite{iosup_performance_2011}
-~\cite{zhai_cloud_2011}
-
-Parameter sweep:~\cite{casanova_heuristics_2000}
-
-Price optimizations for Scientific workflows in the cloud~\cite{gari_learning_2019}
-
+Running scientific applications on the cloud introduces many tradeoffs compared to conventional HPC clusters, along the dimensions of performance, cost, scalability, convenience, and reproducability.
+These tradeoffs are explored in~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}.
+In general, clouds can provide increased elasticity, lower waiting times, and more choices in resource allocation that can be tailored to the application.
+The cloud resource model is also present in platforms like nanohub~\cite{nanohub}, that provide easy execution and dissemination of nanotechnology simulation applications.
+Outside of the bags of jobs execution model, price optimizations for scientific workflows in the cloud is discussed in~\cite{gari_learning_2019}. 
 
 
-\subsection{Transiency mitigation}
+
+\subsection{Transient Cloud Computing} 
 
 \cite{marathe2014exploiting} classic work on MPI and Spot.
 Uses checkpointing.
@@ -26,12 +27,25 @@ MOre spot and MPI:~\cite{gong_monetary_2015}. FOcussed on bidding and checkpoint
 
 \cite{xiang_spotmpi:_2011} is early work for spot and MPI and 
 
-\cite{spoton} a batch computing service
+\subsubsection{Server Selection}
+Similar to \sysname, SpotOn~\cite{spoton} is also a batch computing service that selects server based on job characteristics and failure rates of different EC2 spot VMs. However, restricted to individual, single-VM batch jobs. 
 
 Heterogenity often used, but not useful in the context of MPI jobs~\cite{exosphere}
 
 Selecting the best instance type, often for data analysis computations~\cite{alipourfard_cherrypick}, and ~\cite{yadwadkar_selecting_2017}, and others like Ernest and Hemingway.
 
+
+Since servers in the spot market are significantly cheaper than the
+equivalent on-demand servers, they are attractive for running
+delay-tolerant batch jobs~\cite{spoton, jain14demand, 
+  yi2010reducing, conductor, liu-spot, spot-run, dubois2016optispot}. 
+
+Parameter sweep aka bags of jobs ~\cite{casanova_heuristics_2000}
+
+But nothing for bags of jobs themselves.. 
+
+
+\subsubsection{Fault-tolerance}
 
 All the past work was on EC2 spot market with gang failures and independent markets~\cite{marathe2014exploiting, gong_monetary_2015}.
 However this assumption has now changed, and failures can happen anytime.
@@ -39,25 +53,29 @@ Our failure model is more general, and applies to both cases.
 
 
 
+\cite{dongarra_fault_nodate} has a discussion of checkpointing frequency which is comprehensive. Replication is another way~\cite{walters_replication-based_2009}
 
-\subsubsection{Fault-tolerance for MPI}
-
-\cite{dongarra_fault_nodate} has a discussion of checkpointing frequency which is comprehensive.
-
-Replication is another way~\cite{walters_replication-based_2009}
+Non periodic checkpointing~\cite{bougeret_checkpointing_2011}
 
 
-\subsubsection{Huge amount of work on bidding in HPC}
+\subsubsection{Failure Modeling}
 
-\cite{wolski_probabilistic_2017}
-
-\cite{guo_bidding_2015}
+A number of related papers also analyze spot price data to better understand its statistical  characteristics~\cite{bidding4,mihailescu2012impact,bidding7,bidding1,bidding8,bidding3,bidding6,bid-cloud,bidding5}.  
 
 
-\subsection{Server Selection}
-Exploring a large configuration space using bayesian optimization methods in CherryPick~\cite{cherrypick} and Metis~\cite{Metis-atc18}.
+\cite{wolski_probabilistic_2017} \cite{guo_bidding_2015}
+
+
+
+Crevecour etc. 
+
+
+
+\subsubsection{Server Selection}
+Exploring a large configuration space using bayesian optimization methods in CherryPick~\cite{alipourfard_cherrypick} and Metis~\cite{li2018metis}.
 
 Can also use Latin Hypercube sampling for parameter exploration?
+
 
 
 
