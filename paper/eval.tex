@@ -136,7 +136,7 @@ In the rest of this section, we evaluate \sysname when the size of the cluster, 
 
 \begin{figure}
   \includegraphics[width=0.4\textwidth]{../graphs/vm-per-job-scaling.pdf}
-  \caption{SciSpot scaling as the VMs per jobs increases}
+  \caption{Bag of jobs running times exhibits classic parallel scaling behavior---performance improves until reaching a saturation point.}
   \label{fig:vm-per-job-scaling}
 \end{figure}
 
@@ -148,7 +148,7 @@ We see classic scaling behavior: both applications can scale to a higher number 
 
 \begin{figure}
   \includegraphics[width=0.3\textwidth]{../graphs/par-scaling.pdf}
-  \caption{Job running times as the CPU's per job increases}
+  \caption{\sysname can alleviate poor scaling by running more jobs in parallel and thus decreasing the intra-job parallelism (and hence number of CPUs per job, as shown in the figure).}
   \label{fig:par-scaling}
 \end{figure}
 
@@ -159,6 +159,34 @@ of an individual job.
 The effect of changing the number of parallel jobs is shown in Figure~\ref{fig:par-scaling}, which shows the running time of an entire bag of jobs when the total cluster size is fixed (256 CPUs), but the number of parallel jobs and hence the number of CPUs per job changes.
 We see that a \emph{smaller} number of CPUs per job limits the communication overhead, and thus reduces the total running time of the bag.
 For both the NC and Shapes application, we see up to $6\times$ reduction in the total bag running time when more number of jobs are launched in parallel and a smaller number of CPUs per job are used. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Increasing Bag Size}
+
+We now evaluate \sysname's behavior when running larger bags of jobs.
+Table~\ref{tab:100-jobs} shows the total running time of bags of 32 and 100 jobs.
+Since \sysname reuses VMs when running jobs from a bag, it is able to take advantage of the relatively low preemption rates of VMs once they pass the first phase of early failures (Figure~\ref{fig:cdf}), and thus minimizes the number of preemptions and thus job failures. 
+This makes \sysname particularly suitable for running the large bags of jobs that are required when using machine learning techniques for HPC workloads~\cite{}, since the training and testing data needed for statistical machine learning can be generated through \sysname's bag of jobs execution model. 
+
+
+%32_2_4 
+\begin{table}
+  \begin{tabular}{|c|r|r|r|}
+    \hline
+    Workload & Jobs & Time (Hours) & \# Preemptions \\
+    \hline
+    NC & 32  & 1.87 & 0 \\
+    NC & 100  & 6.08 & 1 \\
+    \hline
+    Shapes & 32 & 1.47 & 0 \\
+    Shapes & 100 & 4.49 & 5  \\  
+    \hline
+  \end{tabular}
+  \caption{Running times and number of preemptions for bags of different sizes. }
+  \label{tab:100-jobs}
+\end{table}
+
 
 
 
@@ -180,30 +208,9 @@ This shows that \sysname is robust and can provide acceptable performance even u
   \label{fig:fails-time}
 \end{figure}
 
+%Summary of results? 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Increasing Bag Size}
-
-Finally, we also evaluate how \sysname's behavior when running larger bags of jobs. Table~\ref{tab:100-jobs}
-
-Essentially time . 4 Jobs in Parallel, each with 2 VMs each.  
-
-%32_2_4 
-\begin{table}
-  \begin{tabular}{|c|r|r|}
-    \hline
-    Workload & Jobs & Time (Hours) \\
-    \hline
-    NC & 32  & 1.87 \\
-    NC & 100  & 6.08 \\
-    \hline
-    Shapes & 32 & 1.47 \\
-    Shapes & 100 & 4.49 \\  
-    \hline
-  \end{tabular}
-  \caption{Running time for large, long-running bags of jobs.}
-  \label{tab:100-jobs}
-\end{table}
-
 
 
 % \begin{figure}
