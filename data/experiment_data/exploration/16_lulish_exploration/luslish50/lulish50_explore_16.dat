@@ -1,0 +1,76 @@
+{'explore': ['True'], 'target_cpus': ['16']}
+Starting the exploration
+('n1-highcpu-16', 1)
+VM's currently running [], which are the type of n1-highcpu-16
+There is no running VMS for machine_type = n1-highcpu-16
+Selecting a new cluster name group
+Master reconfigured
+Cluster Launched: uweoqw, n1-highcpu-16, 1, waiting...
+Current start id is 2
+Number of nodes required = 1 ,nodes running = 1
+Job started 1241  sbatch --no-requeue --parsable -N 1 -c 8 -n 1 /scispot/sb_lulesh.sh 
+{'finished': ['1241']}
+finished
+JobId=1241 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-08T16:15:31 EndTime=2019-04-08T16:21:44 NodeList=uweoqw1 NodeCnt=1 ProcCnt=16 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-08T16:15:31 EligibleTime=2019-04-08T16:15:31 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1241
+Job id search target 1241
+COMPLETED
+Job 1241 finished at 2019-04-08T16:21:53.760458
+Job running time (seconds) : 380.676062
+Total time spend running these jobs since begining (seconds) : 489.052989
+Total jobs completed : 1
+Total jobs preempted : 0
+Total jobs abandoned : 0
+('n1-highcpu-2', 8)
+VM's currently running [], which are the type of n1-highcpu-2
+There is no running VMS for machine_type = n1-highcpu-2
+Selecting a new cluster name group
+Master reconfigured
+Cluster Launched: rprwjv, n1-highcpu-2, 8, waiting...
+Current start id is 9
+Number of nodes required = 8 ,nodes running = 7
+VM's currently running ['rprwjv1', 'rprwjv2', 'rprwjv3', 'rprwjv4', 'rprwjv6', 'rprwjv7', 'rprwjv8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 9
+Cluster Launched: rprwjv, n1-highcpu-2, 1, waiting...
+Current start id is 10
+Number of nodes required = 8 ,nodes running = 8
+Job started 1242  sbatch --no-requeue --parsable -N 8 -c 1 -n 8 /scispot/sb_lulesh.sh 
+{'preempted': ['1242']}
+preempted
+VM's currently running ['rprwjv1', 'rprwjv2', 'rprwjv3', 'rprwjv4', 'rprwjv6', 'rprwjv8', 'rprwjv9']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 10
+Cluster Launched: rprwjv, n1-highcpu-2, 1, waiting...
+Current start id is 11
+Number of nodes required = 8 ,nodes running = 8
+Job started 1243  sbatch --no-requeue --parsable -N 8 -c 1 -n 8 /scispot/sb_lulesh.sh 
+{'finished': ['1242']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1243']}
+preempted
+VM's currently running ['rprwjv1', 'rprwjv10', 'rprwjv2', 'rprwjv3', 'rprwjv4', 'rprwjv6', 'rprwjv8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 11
+Cluster Launched: rprwjv, n1-highcpu-2, 1, waiting...
+Current start id is 12
+Number of nodes required = 8 ,nodes running = 8
+Job started 1244  sbatch --no-requeue --parsable -N 8 -c 1 -n 8 /scispot/sb_lulesh.sh 
+{'finished': ['1244']}
+finished
+JobId=1244 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-08T17:05:26 EndTime=2019-04-08T18:09:37 NodeList=rprwjv[1-4,6,8,10-11] NodeCnt=8 ProcCnt=16 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-08T17:05:26 EligibleTime=2019-04-08T17:05:26 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1244
+Job id search target 1244
+COMPLETED
+Job 1244 finished at 2019-04-08T18:09:42.183964
+Job running time (seconds) : 3853.684138
+Total time spend running these jobs since begining (seconds) : 6957.476495
+Total jobs completed : 2
+Total jobs preempted : 2
+Total jobs abandoned : 0
+
+Done exploring all?
