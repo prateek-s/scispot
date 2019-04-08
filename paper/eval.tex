@@ -64,17 +64,7 @@ By considering \emph{both} these factors, \sysname's server selection policy can
 \noindent \emph{ \textbf{Result:} SciSpot's server selection, by considering both the base running time and recomputation time, can improve performance by up to 40\% , and can keep the increase in running time due to recomputation to less than 5\%.}
 
 
-
 \subsubsection{Cost}
-
-The primary motivation for using preemptible VMs is their significantly lower cost, which \sysname is able to exploit.
-
-Figure~\ref{cost-only-bar} shows the cost of running t
-
-\sysname's use of preemptible VMs results in significant lower costs, even considering the increase in running time and cost due to the preemptions.
-The cost per job is 5x lower compared to on-demand instances even when selecting the best server with scispot's server selection policies.
-
-
 
 \begin{figure}
   \centering
@@ -83,10 +73,23 @@ The cost per job is 5x lower compared to on-demand instances even when selecting
   \label{fig:cost-only-bar}
 \end{figure}
 
-\noindent \emph{ \textbf{Result:} SciSpot reduces computing costs by up to 5x and 7x compared to on-demand cloud servers.}
+
+The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible. 
+Figure~\ref{fig:cost-only-bar} compares the cost of running different applications with different cloud VM deployments.
+\sysname, which uses both cost-minimizing server selection, and preemptible VMs, results in significantly lower costs across the board, even when accounting for preemptions and recomputations. 
+Even with \sysname's server selection, using on-demand VMs result in a $5\times$ cost increase.
+In the absence of server selection, we assume that the user will pick a ``median'' VM in terms of number of CPUs (in this case, 8 CPU VMs), which we also show in Figure~\ref{fig:cost-only-bar}. 
 
 
-\noindent \textbf{Comparison with HPC Clusters:}
+\noindent \emph{ \textbf{Result:} SciSpot reduces computing costs by up to 5x compared to conventional on-demand cloud deployments.}
+
+
+
+
+\subsubsection{Comparison with HPC Clusters}
+
+
+
 
 \begin{figure}[t]
   \centering 
