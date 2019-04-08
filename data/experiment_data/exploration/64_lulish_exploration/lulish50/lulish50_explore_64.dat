@@ -1,0 +1,68 @@
+{'explore': ['True'], 'target_cpus': ['64']}
+Starting the exploration
+('n1-highcpu-64', 1)
+VM's currently running ['hyefae1'], which are the type of n1-highcpu-64
+All the VM's previously launched ['hyefae1'], for the namegroup = hyefae
+Master reconfigured
+New insances did not launch, jobs will run using existing VMs
+Current start id is 2
+Number of nodes required = 1 ,nodes running = 0
+VM's currently running ['hyefae1']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 1 ,nodes running = 0
+VM's currently running ['hyefae1']
+Server deficit: 0
+No replenishment required!
+Number of nodes required = 1 ,nodes running = 1
+Job started 1238  sbatch --no-requeue --parsable -N 1 -c 32 -n 1 /scispot/sb_lulesh.sh 
+{'finished': ['1238']}
+finished
+JobId=1238 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-08T14:56:17 EndTime=2019-04-08T15:08:55 NodeList=hyefae1 NodeCnt=1 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-08T14:56:17 EligibleTime=2019-04-08T14:56:17 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1238
+Job id search target 1238
+COMPLETED
+Job 1238 finished at 2019-04-08T15:09:01.178732
+Job running time (seconds) : 762.225138
+Total time spend running these jobs since begining (seconds) : 776.644865
+Total jobs completed : 1
+Total jobs preempted : 0
+Total jobs abandoned : 0
+('n1-highcpu-8', 8)
+VM's currently running [], which are the type of n1-highcpu-8
+There is no running VMS for machine_type = n1-highcpu-8
+Selecting a new cluster name group
+Master reconfigured
+Cluster Launched: qbleie, n1-highcpu-8, 8, waiting...
+Current start id is 9
+Number of nodes required = 8 ,nodes running = 8
+Job started 1239  sbatch --no-requeue --parsable -N 8 -c 4 -n 8 /scispot/sb_lulesh.sh 
+{'finished': ['1239']}
+finished
+
+False alarm on the job completion, ignoring!
+{'preempted': ['1239']}
+preempted
+VM's currently running ['qbleie1', 'qbleie2', 'qbleie3', 'qbleie5', 'qbleie6', 'qbleie7', 'qbleie8']
+Server deficit: 1
+Replenishing 1 VMs with IDs starting from 9
+Cluster Launched: qbleie, n1-highcpu-8, 1, waiting...
+Current start id is 10
+Number of nodes required = 8 ,nodes running = 8
+Job started 1240  sbatch --no-requeue --parsable -N 8 -c 4 -n 8 /scispot/sb_lulesh.sh 
+{'finished': ['1240']}
+finished
+JobId=1240 UserId=kadupitiya(1003) GroupId=kadupitiya(1004) Name=sb_lulesh.sh JobState=COMPLETED Partition=long TimeLimit=UNLIMITED StartTime=2019-04-08T15:25:56 EndTime=2019-04-08T15:48:45 NodeList=qbleie[1-3,5-9] NodeCnt=8 ProcCnt=64 WorkDir=/home/kadupitiya ReservationName= Gres= Account= QOS= WcKey= Cluster=unknown SubmitTime=2019-04-08T15:25:55 EligibleTime=2019-04-08T15:25:55 DerivedExitCode=0:0 ExitCode=0:0 
+
+Found job id 1240
+Job id search target 1240
+COMPLETED
+Job 1240 finished at 2019-04-08T15:48:48.658433
+Job running time (seconds) : 1370.634194
+Total time spend running these jobs since begining (seconds) : 3164.124566
+Total jobs completed : 2
+Total jobs preempted : 1
+Total jobs abandoned : 0
+
+Done exploring all?
