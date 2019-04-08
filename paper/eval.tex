@@ -44,6 +44,7 @@ With preemptible instances, the total running time of a job is composed of two f
   \includegraphics[width=0.4\textwidth]{../graphs/runtime-bars.pdf}
   \caption{Running times of applications on different VMs. The total number of CPUs is 64, yielding different number of VMs in each case. We see different tradeoffs in the base running times and recomputation costs for the different applications.}
   \label{fig:runtimes-bar}
+    \vspace*{\myfigspace}
 \end{figure}
 
 
@@ -72,6 +73,7 @@ By considering \emph{both} these factors, \sysname's server selection policy can
   \includegraphics[width=0.4\textwidth]{../graphs/cost-only-bar.pdf}
   \caption{SciSpot's use of preemptible VMs can reduce costs by up to $5\times$ compared to conventional cloud deployments.}
   \label{fig:cost-only-bar}
+    \vspace*{\myfigspace}
 \end{figure}
 
 
@@ -108,7 +110,7 @@ We analyze the waiting time of over two million jobs submitted over a 5 year per
   \includegraphics[width=0.4\textwidth]{../graphs/hpc-vs-scispot.pdf}
   \caption{Increase in running time due to waiting/queuing on HPC clusters is significantly higher than the recomputation time for \sysname, especially for shorter jobs. }
   \label{fig:hpc-vs-scispot}
-
+  \vspace*{\myfigspace}
 \end{figure}
 
 
@@ -138,6 +140,7 @@ In the rest of this section, we evaluate \sysname when the size of the cluster, 
   \includegraphics[width=0.4\textwidth]{../graphs/vm-per-job-scaling.pdf}
   \caption{Bag of jobs running times exhibits classic parallel scaling behavior---performance improves until reaching a saturation point.}
   \label{fig:vm-per-job-scaling}
+    \vspace*{\myfigspace}
 \end{figure}
 
 It is common to deploy scientific applications on large clusters, and we evaluate \sysname on different cluster sizes in Figure~\ref{fig:vm-per-job-scaling}.
@@ -150,6 +153,7 @@ We see classic scaling behavior: both applications can scale to a higher number 
   \includegraphics[width=0.3\textwidth]{../graphs/par-scaling.pdf}
   \caption{\sysname can alleviate poor scaling by running more jobs in parallel and thus decreasing the intra-job parallelism (and hence number of CPUs per job, as shown in the figure).}
   \label{fig:par-scaling}
+    \vspace*{\myfigspace}
 \end{figure}
 
 
@@ -185,6 +189,7 @@ This makes \sysname particularly suitable for running the large bags of jobs tha
   \end{tabular}
   \caption{Running times and number of preemptions for bags of different sizes. }
   \label{tab:100-jobs}
+  \vspace*{\myfigspace}
 \end{table}
 
 
