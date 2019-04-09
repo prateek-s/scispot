@@ -178,7 +178,7 @@ We see classic scaling behavior: both applications can scale to a higher number 
 
 
 \begin{figure}
-  \includegraphics[width=0.2\textwidth]{../graphs/par-scaling.pdf}
+  \includegraphics[width=0.4\textwidth]{../graphs/par-scaling.pdf}
       \vspace*{\myfigspace}
   \caption{\sysname can alleviate poor scaling by running more jobs in parallel and thus decreasing the intra-job parallelism (and hence number of CPUs per job, as shown in the figure).}
   \label{fig:par-scaling}
@@ -209,8 +209,8 @@ This makes \sysname particularly suitable for running the large bags of jobs tha
     \hline
     Workload & Jobs & Time (Hours) & \# Preemptions \\
     \hline
-    NC & 32  & 1.87 & 0 \\
-    NC & 100  & 6.08 & 1 \\
+    Nanoconfinement & 32  & 1.87 & 0 \\
+    Nanoconfinement & 100  & 6.08 & 1 \\
     \hline
     Shapes & 32 & 1.47 & 0 \\
     Shapes & 100 & 4.49 & 5  \\  
