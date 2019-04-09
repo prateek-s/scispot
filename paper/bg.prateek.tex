@@ -15,7 +15,7 @@ To satisfy user demand, cloud capacity is typically provisioned for the \emph{pe
 
 
 To increase their overall utilization, large cloud operators have begun to offer their surplus resources as low-cost servers with \emph{transient} availability, which can be preempted by the cloud operator at any time (after a small advance warning). 
-These preemptible servers, such as Amazon Spot instances~\cite{spot-web}, Google Preemptible VMs~\cite{preemptible}, and Azure batch VMs~\cite{azure-batch}, have become popular in recent years due to their discounted prices, which can be 7-10x lower than conventional non-preemptible servers. 
+These preemptible servers, such as Amazon Spot instances~\cite{ec2-spot}, Google Preemptible VMs~\cite{preemptible-documentation}, and Azure batch VMs~\cite{azure-batch}, have become popular in recent years due to their discounted prices, which can be 7-10x lower than conventional non-preemptible servers. 
 Due to their popularity among users, smaller cloud providers such as Packet~\cite{packet-spot} and Alibaba~\cite{alibaba-spot} have also started offering transient cloud servers. 
 
 However, effective use of transient servers is challenging for applications because of their uncertain availability~\cite{spotcheck, prateek-thesis}. 

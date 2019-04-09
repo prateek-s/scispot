@@ -25,7 +25,7 @@ To meet the diverse resource demands of different applications, public clouds of
 Conventionally, cloud VMs have been offered with ``on-demand'' availability, such that the lifetime of the VM is solely determined by the owner of the VM (i.e., the cloud customer). 
 Increasingly however, cloud providers have begun offering VMs with \emph{transient}, rather than continuous on-demand availability. 
 Transient VMs can be unilaterally revoked and preempted by the cloud provider, and applications running inside them face fail-stop failures. 
-Due to their volatile nature, transient VMs such as Amazon EC2 Spot instances~\cite{spot}, Google Preemptible VMs~\cite{gcp-preempt}, and Azure Batch VMs~\cite{azure-batch}, are offered at steeply discounted rates ranging from 50 to 90\%.
+Due to their volatile nature, transient VMs such as Amazon EC2 Spot instances~\cite{spot-documentation}, Google Preemptible VMs~\cite{preemptible-documentation}, and Azure Batch VMs~\cite{azure-batch}, are offered at steeply discounted rates ranging from 50 to 90\%.
 %Amazon EC2 spot instances, Google Cloud Preemptible VMs, and Azure Batch VMs, are all examples of transient VMs, and are offered at discounts ranging from 50 to 90\%.  
 
 % Very different from HPC and many challenges
@@ -56,7 +56,7 @@ These bags of jobs represent multiple instantiations of the same application lau
 
 Bags of jobs are ubiquitous in scientific computing: for example, each job may be running a (parallel) simulation with a set of simulation input parameters, and different jobs in the collection (i.e., bag) run the same simulation with a different set of  parameters. 
 Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to discover or narrow down the set of feasible and viable parameters associated with the modeled natural or synthetic processes.
-A similar approach is adopted in the use of machine learning (ML) to enhance scientific computational methods, a rapidly emerging area of research~\cite{}, when a collection of jobs with independent parameter sets are launched to train ML models to predict simulation results and/or accelerate the simulation technique. 
+A similar approach is adopted in the use of machine learning (ML) to enhance scientific computational methods, a rapidly emerging area of research~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer}, when a collection of jobs with independent parameter sets are launched to train ML models to predict simulation results and/or accelerate the simulation technique. 
 
 
 
