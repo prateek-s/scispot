@@ -158,7 +158,7 @@ However, there is a tradeoff: selecting larger VMs results in smaller $n_i$, but
 %\sysname thus explores the cluster configuration space to find empirical job running times, which depend on the application and it's parallel structure.
 %We then use the analytically derived preemption probability to compute the expected running time, and finally the total expected cost.
 
-To limit the search space, we observe that since most scientific applications are CPU bound, we only need to consider VMs meant for CPU-bound workloads, such as \texttt{highcpu} VMs in Google Cloud and the \texttt{cc} family in Amazon EC2.
+To limit the search space, we observe that since most scientific computing applications are CPU bound, we only need to consider VMs meant for CPU-bound workloads, such as \texttt{highcpu} VMs in Google Cloud and the \texttt{cc} family in Amazon EC2.
 For example, the Google cloud offers a total of 7 \texttt{highcpu} server types with 1, 2, 4, 8, 16, 32, and 64 CPU's---yielding a small upper bound on the number of configurations to search. 
 Furthermore, a large cluster of small servers is suboptimal for most applications (except those that are completely embarassingly parallel and have no communication).
 \sysname thus explores VM's in descending order of their size and ignores exploring the small VMs (with 2 CPUs or fewer)---reducing the search space even further. 

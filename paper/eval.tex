@@ -91,8 +91,9 @@ Figure~\ref{fig:cost-only-bar} compares the cost of running different applicatio
 \sysname, which uses both cost-minimizing server selection, and preemptible VMs, results in significantly lower costs across the board, even when accounting for preemptions and recomputations. 
 Even with \sysname's server selection, using on-demand VMs result in a $5\times$ cost increase compared to \sysname.
 In the absence of server selection, we assume that the user will pick a ``median'' VM in terms of number of CPUs (in this case, 8 CPU VMs), which we also show in Figure~\ref{fig:cost-only-bar}.
-\vj{Note that \sysname's server selection considers both the base running times and recomputation time, which may not necessarily yield the best on-demand server configuration (which only needs to be cognizant of the base running times), and thus we see that the cost for the Shapes application on the median on-demand server is slightly lower than one with \sysname's server selection.
-However, it is still lower than \sysname's cost. rephrase}
+Note that since \sysname's server selection considers the total turnaround time (which includes recomputation time), it may not always pick the optimal on-demand server. 
+
+%\vj{Note that \sysname's server selection considers both the base running times and recomputation time, which may not necessarily yield the best on-demand server configuration (which only needs to be cognizant of the base running times), and thus we see that the cost for the Shapes application on the median on-demand server is slightly lower than one with \sysname's server selection. However, it is still lower than \sysname's cost. rephrase}
 
 
 \noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}

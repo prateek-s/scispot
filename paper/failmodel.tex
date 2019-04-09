@@ -114,7 +114,11 @@ The analytical model and the associated 4 parameter distribution function $\math
 %
 \footnotetext{More details about the distribution fitting are presented in the implementation section(~\ref{sec:impl}}
 %
-In the next section, we use this analytical model for optimizing cloud resource selection such that we can run scientific applications at low cost and running times. We note that our motivation here is to provide a minimal model, i.e. a model based on data-driven observations and reasonable assumptions that provides a sufficiently accurate description of constrained preemption dynamics with the minimal number of necessary parameters. As is evident from Figure.~\ref{fig:gcp1}, the analytical $\mathscr{F}$ shows deviations from the data near the halfway point within the 24 hour lifetime. One can envision generalizing this model by including more failure processes characterized by failure rates and activation times (like $b$) to capture the data with higher accuracy. Of course, this introduces a higher number of parameters and reduces the predictive power and simplicity of the model. 
+In the next section, we use this analytical model for optimizing cloud resource selection such that we can run scientific computing applications at low cost and running times.
+We note that our motivation here is to provide a minimal model, i.e. a model based on data-driven observations and reasonable assumptions that provides a sufficiently accurate description of constrained preemption dynamics with the minimal number of necessary parameters.
+As is evident from Figure.~\ref{fig:gcp1}, the analytical $\mathscr{F}$ shows deviations from the data near the halfway point within the 24 hour lifetime.
+One can envision generalizing this model by including more failure processes characterized by failure rates and activation times (like $b$) to capture the data with higher accuracy.
+Of course, this introduces a higher number of parameters and reduces the predictive power and simplicity of the model. 
 
 
 \subsection{Preemption dynamics of VMs of different types}
