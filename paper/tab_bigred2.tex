@@ -1,28 +1,19 @@
-% This is confinement results
+% This is confinement/shapes comparison against Big Red II
 \begin{table}[]
   \begin{tabular}{|l|l|r|r|}
     \hline
-    \# Nodes & Application & Big Red II & \sysname \\
+    \# Application & Nodes & Big Red II & \sysname \\
     \hline
-  1         & Nanoconfinement        & 2370   & 1546                                                                \\
-    4         & Nanoconfinement        & 1140    & 851 \\
+  	Nanoconfinement	&	1	&	2370	& 1546	\\
+    Nanoconfinement	&	4	&	1140	&	851	\\
     \hline
-\end{tabular}
-\end{table}
-
-
-% This is shapes results
-\begin{table}[]
-\begin{tabular}{llll}
-MPI tasks & VMs(CPUs) & \begin{tabular}[c]{@{}l@{}}BigRED2\\ Runtime (s)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Google Cloud VMs\\ Runtime (s)\end{tabular} \\
-1         & 16        & 2649                                                        & 1194                                                                \\
-4         & 16        & 1209                                                       & 548                                                                
+  	Shapes	&	1	&	2649	& 1194	\\
+    Shapes	&	4	&	1209	&	548	\\
+    \hline
 \end{tabular}
 \caption{Running times (in seconds) of different applications on the Big Red II HPC cluster vs \sysname.}
 \label{tab:bigred2}
   \vspace*{\myfigspace}
 \end{table}
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "paper"
-%%% End:
+
+
