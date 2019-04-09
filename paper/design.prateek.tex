@@ -57,7 +57,7 @@ Since preemptions are essentially fail-stop failures, synchronous parallel appli
 are forced to  abort, and completing the job requires restarting it. 
 Thus, frequent preemptions can increase the overall turnaround time of a job. 
 
-
+\vspace*{\subsecspace}
 \subsubsection{Server Selection Policy}
 
 Having provided the motivation and tradeoffs in server selection, we now describe the \sysname's server selection policy. 
@@ -85,7 +85,7 @@ In contrast, we \emph{fix} the total amount of resources allocated to the applic
 We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.  
 \end{comment}
 
-
+\vspace*{\subsecspace}
 \subsubsection{Server Cost Model}
 \label{subsec:cost-model}
 
@@ -132,12 +132,14 @@ Here, $P(i, t)$ denotes the probability of a preemption of a VM of type $i$ when
 It depends on the type of server, and its associated expected lifetime, and is defined as:
 \begin{equation}
   \label{eq:pi}
-  P(i, t) = min\left(\dfrac{t}{E[L_i]}, 1\right)
+  P(i, t) = \text{min}\left(\dfrac{t}{E[L_i]}, 1\right)
 \end{equation}
-Where $E[L_i]$ is the expected lifetime of the VM of type $i$ extracted using the the analytical model introduced in Section~\ref{subsec:analytical-model}.
-As a first order approximation, the running time $t$ of the job can be chosen as $t=T_{( i,n_i )}$, where the latter is empirically obtained for a given application.
-We also thus assume that the running time of \emph{individual} jobs in a bag $T$, will be smaller than the expected lifetime of the VMs, otherwise we will see no forward progress since the jobs will always be preempted before completion.
-We again emphasize that $T$ is the running time of an \emph{individual} job, and that \sysname is designed for running large bags of small jobs, and that most HPC jobs are much smaller than the expected lifetimes, as we show in Section~\ref{sec:eval}. 
+Where $E[L_i]$ is the expected lifetime of the VM of type $i$ extracted using the preemption model (Equation~\ref{eq:expected-lifetime}).
+%As a first order approximation, the running time $t$ of the job can be chosen as $t=T_{( i,n_i )}$, where the latter is empirically obtained for a given application.
+We also assume that the running time of \emph{individual} jobs in a bag ($T$), will be smaller than the expected lifetime of the VMs, otherwise we will see no forward progress since the jobs will always be preempted before completion.
+This is a safe assumption, since more than 90\% HPC jobs are less than 2 hours long (Figure~\ref{fig:job-run-cdf}), and the average expected lifetime of transient VMs is ten hours or more.
+Note that this restriction only applies to individual jobs---\sysname can smoothly run large bags of jobs even if their total running time exceeds the VM lifetime. 
+%We again emphasize that $T$ is the running time of an \emph{individual} job, and that \sysname is designed for running large bags of small jobs, and that most HPC jobs are much smaller than the expected lifetimes, as we show in Section~\ref{sec:eval}. 
 
 
 
@@ -172,10 +174,12 @@ Furthermore, a large cluster of small servers is suboptimal for most application
 Once the right cluster configuration for a job has been determined, \sysname then proceeds to run the remaining jobs in the bag.
 A bag of jobs is determined by the total number of jobs in the bag, associated parameters for each job, and the minimum number of jobs that must be successfully executed.  
 Given these parameters as input, \sysname then creates a cluster by launching preemptible VMs and starts scheduling the different jobs in a bag.
+Upon job completion, we launch the next job in the bag and run it on the existing cluster of preemptible VMs.
+This policy is based on our preemption dynamics model which shows that preemptible rates have a ``bath-tub'' shape.
+Thus, jobs launched on ``stable'' VMs that have been running for a few hours, face low likelihood of failures---thereby reducing the number of job failures for the entire bag. 
 
 \sysname also allows users to specify a deadline for bag completion, which we use to compute the number of jobs to execute in parallel.
-If the deadline specified is $D$, then the number of parallel jobs is $k=(D/m)\times E[\mathcal{T}]$.
-\vj{what is m?}
+If the deadline specified is $D$, then the number of parallel jobs is $k=D/E[\mathcal{T}]$.
 Thus if the exploration phase recommends $n_i$ VMs, then we launch a cluster of $k\times n_i$ VMs, with each job executing on $n_i$ VMs. 
 For this calculation, we assume that the running time of different jobs in a bag will largely be similar, but this is not a correctness requirement.
 Thus because of the stochasticity in job running times and VM lifetimes, \sysname only meets the deadline in a ``best effort'' manner, and does not guarantee strict makespan constraints. 
@@ -188,9 +192,10 @@ Due to high demand, preemptible VM's of the chosen type may not be available.
 In such cases, \sysname runs in a ``degraded'' mode---jobs are either run on a smaller number of VMs, or are run on VMs of a different size that are available but may have suboptimal cost.  
 
 
-\noindent \textbf{Checkpointing Policy.} Our analytical model for preemptions also permits advanced, non-periodic policies for the checkpointing interval.
-The classic Young-Daly periodic checkpointing interval~\cite{daly2006higher} is only applicable when failures follow an exponential distribution, which we have shown not to be true in the case of Google Preemptible VMs (Figure~\ref{fig:gcp1}).
-We thus develop a dynamic programming based checkpoint scheduling technique that is based on~\cite{bougeret_checkpointing_2011}.  
+\noindent \textbf{Checkpointing Policy.} When applicable, \sysname resumes jobs from the latest checkpoint performed using tools such as DMTCP~\cite{dmtcp}.
+Since checkpointing also increases the running time of the job, the checkpoint interval must be carefully computed. 
+The classic Young-Daly periodic checkpointing interval~\cite{daly2006higher} is only applicable when failures follow an exponential distribution, which we have shown not to be true in the case of Google Preemptible VMs (Figure~\ref{fig:gcp1}). 
+Our analytical model for preemptions permits advanced, non-periodic checkpointing intervals that can be computed using a dynamic programming approach similar to~\cite{bougeret_checkpointing_2011}. 
 
 
 %Jobs in bag can either be explicitly supplied with parameters, or 
