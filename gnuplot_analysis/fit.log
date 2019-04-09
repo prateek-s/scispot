@@ -3483,3 +3483,6139 @@ correlation matrix of the fit parameters:
                pf2lam pf2k   
 pf2lambda       1.000 
 pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:44:22 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:44:22 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:44:22 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:44:22 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:46:15 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:46:15 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:46:15 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.684603         +/- 0.1715       (25.05%)
+set4tau2        = 0.67967          +/- 0.05197      (7.646%)
+set4A           = 0.285557         +/- 0.02367      (8.289%)
+set4b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.419  1.000 
+set4A           0.664 -0.632  1.000 
+set4b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:46:15 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:46:15 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:46:32 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:46:32 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:46:32 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.684603         +/- 0.1715       (25.05%)
+set4tau2        = 0.67967          +/- 0.05197      (7.646%)
+set4A           = 0.285557         +/- 0.02367      (8.289%)
+set4b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.419  1.000 
+set4A           0.664 -0.632  1.000 
+set4b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:46:32 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:46:32 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:47:44 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:47:44 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:47:44 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [2.00000 : *]
+        #datapoints = 105
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 198.503           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.04476
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 11 iterations the fit converged.
+final sum of squares of residuals : 1.06796
+rel. change during last iteration : -6.8783e-06
+
+degrees of freedom    (FIT_NDF)                        : 101
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.102829
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0105739
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.656962         +/- 2.007        (305.5%)
+set4tau2        = 0.678493         +/- 0.06878      (10.14%)
+set4A           = 0.286588         +/- 0.03629      (12.66%)
+set4b           = 24.0515          +/- 0.1722       (0.716%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.496  1.000 
+set4A           0.678 -0.732  1.000 
+set4b           0.667 -0.818  0.985  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:47:44 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:47:45 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:47:57 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:47:57 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:47:57 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [3.00000 : *]
+        #datapoints = 101
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 196.77            delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.06105
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 1.06723
+rel. change during last iteration : -6.24623e-06
+
+degrees of freedom    (FIT_NDF)                        : 97
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.104892
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0110023
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.464867         +/- 14.92        (3211%)
+set4tau2        = 0.675954         +/- 0.07133      (10.55%)
+set4A           = 0.288747         +/- 0.03824      (13.24%)
+set4b           = 24.0611          +/- 0.1797       (0.7467%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.420  1.000 
+set4A           0.564 -0.744  1.000 
+set4b           0.556 -0.824  0.986  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:47:57 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:47:57 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:50:44 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:50:44 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:50:44 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [3.00000 : *]
+        #datapoints = 101
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 196.77            delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.06105
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 1.06723
+rel. change during last iteration : -6.24623e-06
+
+degrees of freedom    (FIT_NDF)                        : 97
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.104892
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0110023
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.464867         +/- 14.92        (3211%)
+set4tau2        = 0.675954         +/- 0.07133      (10.55%)
+set4A           = 0.288747         +/- 0.03824      (13.24%)
+set4b           = 24.0611          +/- 0.1797       (0.7467%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.420  1.000 
+set4A           0.564 -0.744  1.000 
+set4b           0.556 -0.824  0.986  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:50:44 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:50:44 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:11 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:11 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:11 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [4.00000 : *]
+        #datapoints = 97
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 195.02            delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.07821
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 15 iterations the fit converged.
+final sum of squares of residuals : 1.06602
+rel. change during last iteration : -7.58594e-06
+
+degrees of freedom    (FIT_NDF)                        : 93
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.107064
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0114626
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.663305         +/- 36.63        (5522%)
+set4tau2        = 0.68333          +/- 0.08227      (12.04%)
+set4A           = 0.282572         +/- 0.04764      (16.86%)
+set4b           = 24.0333          +/- 0.2286       (0.9513%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.426  1.000 
+set4A           0.531 -0.803  1.000 
+set4b           0.525 -0.864  0.990  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:11 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:11 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:30 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:30 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:30 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [5.00000 : *]
+        #datapoints = 95
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 194.126           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.08712
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 1.0617
+rel. change during last iteration : -7.61986e-06
+
+degrees of freedom    (FIT_NDF)                        : 91
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.108014
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.011667
+
+BREAK:          Singular matrix in Invert_RtR
+
+
+
+*******************************************************************************
+Mon Apr  8 21:51:33 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:33 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:33 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [5.00000 : *]
+        #datapoints = 95
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 194.126           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.08712
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 1.0617
+rel. change during last iteration : -7.61986e-06
+
+degrees of freedom    (FIT_NDF)                        : 91
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.108014
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.011667
+
+BREAK:          Singular matrix in Invert_RtR
+
+
+
+*******************************************************************************
+Mon Apr  8 21:51:52 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:52 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:52 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [5.00000 : *]
+        #datapoints = 95
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 2663.79           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 3.83328
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 21
+
+After 201 iterations the fit converged.
+final sum of squares of residuals : 1.0617
+rel. change during last iteration : -8.46084e-07
+
+degrees of freedom    (FIT_NDF)                        : 91
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.108014
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.011667
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.933434         +/- 9.582e+04    (1.027e+07%)
+set4tau2        = 0.698442         +/- 0.1002       (14.35%)
+set4A           = 0.269789         +/- 0.0627       (23.24%)
+set4b           = 23.9735          +/- 0.3162       (1.319%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.552  1.000 
+set4A           0.638 -0.864  1.000 
+set4b           0.634 -0.908  0.994  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:52 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:51:52 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:07 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:07 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:07 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [3.00000 : *]
+        #datapoints = 101
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 2666.44           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 3.71958
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 21
+
+After 75 iterations the fit converged.
+final sum of squares of residuals : 1.06721
+rel. change during last iteration : -3.17405e-06
+
+degrees of freedom    (FIT_NDF)                        : 97
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.104891
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0110021
+
+BREAK:          Singular matrix in Invert_RtR
+
+
+
+*******************************************************************************
+Mon Apr  8 21:52:14 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:14 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:14 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [3.00000 : *]
+        #datapoints = 101
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 196.77            delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.06105
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 1.06723
+rel. change during last iteration : -6.24623e-06
+
+degrees of freedom    (FIT_NDF)                        : 97
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.104892
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0110023
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.464867         +/- 14.92        (3211%)
+set4tau2        = 0.675954         +/- 0.07133      (10.55%)
+set4A           = 0.288747         +/- 0.03824      (13.24%)
+set4b           = 24.0611          +/- 0.1797       (0.7467%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.420  1.000 
+set4A           0.564 -0.744  1.000 
+set4b           0.556 -0.824  0.986  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:14 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:14 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:41 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:41 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:41 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [2.00000 : 24.0000]
+        #datapoints = 15
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 7.0388            delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.503112
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 0.0003954
+rel. change during last iteration : -3.30629e-07
+
+degrees of freedom    (FIT_NDF)                        : 11
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00599545
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.59454e-05
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 1.58358          +/- 0.1137       (7.181%)
+set4tau2        = 4.02603          +/- 3.804        (94.48%)
+set4A           = 0.338825         +/- 0.00863      (2.547%)
+set4b           = 32.1065          +/- 9.085        (28.3%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.824  1.000 
+set4A           0.953 -0.898  1.000 
+set4b          -0.760  0.988 -0.836  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:41 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:42 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:53 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:53 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:53 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [2.00000 : 25.0000]
+        #datapoints = 105
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 198.503           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.04476
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 11 iterations the fit converged.
+final sum of squares of residuals : 1.06796
+rel. change during last iteration : -6.8783e-06
+
+degrees of freedom    (FIT_NDF)                        : 101
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.102829
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0105739
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.656962         +/- 2.007        (305.5%)
+set4tau2        = 0.678493         +/- 0.06878      (10.14%)
+set4A           = 0.286588         +/- 0.03629      (12.66%)
+set4b           = 24.0515          +/- 0.1722       (0.716%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.496  1.000 
+set4A           0.678 -0.732  1.000 
+set4b           0.667 -0.818  0.985  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:53 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:52:53 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:54:08 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:54:08 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:54:08 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [2.00000 : 25.0000]
+        #datapoints = 105
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 198.503           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.04476
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 11 iterations the fit converged.
+final sum of squares of residuals : 1.06796
+rel. change during last iteration : -6.8783e-06
+
+degrees of freedom    (FIT_NDF)                        : 101
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.102829
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0105739
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.656962         +/- 2.007        (305.5%)
+set4tau2        = 0.678493         +/- 0.06878      (10.14%)
+set4A           = 0.286588         +/- 0.03629      (12.66%)
+set4b           = 24.0515          +/- 0.1722       (0.716%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.496  1.000 
+set4A           0.678 -0.732  1.000 
+set4b           0.667 -0.818  0.985  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:54:08 2019
+
+
+FIT:    data read from 'n1-highcpu-16.txt' u 1:2
+        format = x:z
+	y range restricted to [2.00000 : 25.0000]
+        #datapoints = 94
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set16f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 129.202           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.950895
+
+initial set of free parameter values
+
+set16tau1       = 1
+set16tau2       = 2
+set16A          = 1
+set16b          = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 0.351265
+rel. change during last iteration : -9.50405e-07
+
+degrees of freedom    (FIT_NDF)                        : 90
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0624736
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00390295
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set16tau1       = 2.36995          +/- 0.3331       (14.06%)
+set16tau2       = 0.68783          +/- 0.062        (9.014%)
+set16A          = 0.47711          +/- 0.02051      (4.3%)
+set16b          = 24.6384          +/- 0.06517      (0.2645%)
+
+
+correlation matrix of the fit parameters:
+
+               set16t set16t set16A set16b 
+set16tau1       1.000 
+set16tau2      -0.513  1.000 
+set16A          0.777 -0.660  1.000 
+set16b          0.729 -0.458  0.938  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:54:08 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:54:08 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:55:25 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:55:25 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:55:25 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+	y range restricted to [2.00000 : 25.0000]
+        #datapoints = 105
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 198.503           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 1.04476
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 11 iterations the fit converged.
+final sum of squares of residuals : 1.06796
+rel. change during last iteration : -6.8783e-06
+
+degrees of freedom    (FIT_NDF)                        : 101
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.102829
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0105739
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.656962         +/- 2.007        (305.5%)
+set4tau2        = 0.678493         +/- 0.06878      (10.14%)
+set4A           = 0.286588         +/- 0.03629      (12.66%)
+set4b           = 24.0515          +/- 0.1722       (0.716%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.496  1.000 
+set4A           0.678 -0.732  1.000 
+set4b           0.667 -0.818  0.985  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:55:25 2019
+
+
+FIT:    data read from 'n1-highcpu-16.txt' u 1:2
+        format = x:z
+	y range restricted to [2.00000 : 25.0000]
+        #datapoints = 94
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set16f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 129.202           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.950895
+
+initial set of free parameter values
+
+set16tau1       = 1
+set16tau2       = 2
+set16A          = 1
+set16b          = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 0.351265
+rel. change during last iteration : -9.50405e-07
+
+degrees of freedom    (FIT_NDF)                        : 90
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0624736
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00390295
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set16tau1       = 2.36995          +/- 0.3331       (14.06%)
+set16tau2       = 0.68783          +/- 0.062        (9.014%)
+set16A          = 0.47711          +/- 0.02051      (4.3%)
+set16b          = 24.6384          +/- 0.06517      (0.2645%)
+
+
+correlation matrix of the fit parameters:
+
+               set16t set16t set16A set16b 
+set16tau1       1.000 
+set16tau2      -0.513  1.000 
+set16A          0.777 -0.660  1.000 
+set16b          0.729 -0.458  0.938  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:55:25 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:55:25 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:57:57 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:57:57 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:57:58 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.684603         +/- 0.1715       (25.05%)
+set4tau2        = 0.67967          +/- 0.05197      (7.646%)
+set4A           = 0.285557         +/- 0.02367      (8.289%)
+set4b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.419  1.000 
+set4A           0.664 -0.632  1.000 
+set4b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:57:58 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set8f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set8tau1        = 1
+set8tau2        = 2
+set8A           = 1
+set8b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set8tau1        = 0.684603         +/- 0.1715       (25.05%)
+set8tau2        = 0.67967          +/- 0.05197      (7.646%)
+set8A           = 0.285557         +/- 0.02367      (8.289%)
+set8b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set8ta set8ta set8A  set8b  
+set8tau1        1.000 
+set8tau2       -0.419  1.000 
+set8A           0.664 -0.632  1.000 
+set8b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:58:13 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:58:13 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:58:13 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.684603         +/- 0.1715       (25.05%)
+set4tau2        = 0.67967          +/- 0.05197      (7.646%)
+set4A           = 0.285557         +/- 0.02367      (8.289%)
+set4b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.419  1.000 
+set4A           0.664 -0.632  1.000 
+set4b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:58:13 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set8f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set8tau1        = 1
+set8tau2        = 2
+set8A           = 1
+set8b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set8tau1        = 0.684603         +/- 0.1715       (25.05%)
+set8tau2        = 0.67967          +/- 0.05197      (7.646%)
+set8A           = 0.285557         +/- 0.02367      (8.289%)
+set8b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set8ta set8ta set8A  set8b  
+set8tau1        1.000 
+set8tau2       -0.419  1.000 
+set8A           0.664 -0.632  1.000 
+set8b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:58:13 2019
+
+
+FIT:    data read from 'n1-highcpu-16.txt' u 1:2
+        format = x:z
+        #datapoints = 132
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set16f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 130.928           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.81091
+
+initial set of free parameter values
+
+set16tau1       = 1
+set16tau2       = 2
+set16A          = 1
+set16b          = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 0.484481
+rel. change during last iteration : -3.6974e-06
+
+degrees of freedom    (FIT_NDF)                        : 128
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0615224
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00378501
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set16tau1       = 1.05798          +/- 0.1229       (11.62%)
+set16tau2       = 0.784288         +/- 0.0574       (7.319%)
+set16A          = 0.422556         +/- 0.01295      (3.065%)
+set16b          = 24.4529          +/- 0.05307      (0.217%)
+
+
+correlation matrix of the fit parameters:
+
+               set16t set16t set16A set16b 
+set16tau1       1.000 
+set16tau2      -0.264  1.000 
+set16A          0.595 -0.444  1.000 
+set16b          0.563 -0.374  0.945  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:58:13 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:58:13 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:59:54 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:59:55 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:59:55 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.684603         +/- 0.1715       (25.05%)
+set4tau2        = 0.67967          +/- 0.05197      (7.646%)
+set4A           = 0.285557         +/- 0.02367      (8.289%)
+set4b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.419  1.000 
+set4A           0.664 -0.632  1.000 
+set4b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:59:55 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set8f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set8tau1        = 1
+set8tau2        = 2
+set8A           = 1
+set8b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set8tau1        = 0.684603         +/- 0.1715       (25.05%)
+set8tau2        = 0.67967          +/- 0.05197      (7.646%)
+set8A           = 0.285557         +/- 0.02367      (8.289%)
+set8b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set8ta set8ta set8A  set8b  
+set8tau1        1.000 
+set8tau2       -0.419  1.000 
+set8A           0.664 -0.632  1.000 
+set8b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:59:55 2019
+
+
+FIT:    data read from 'n1-highcpu-16.txt' u 1:2
+        format = x:z
+        #datapoints = 132
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set16f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 130.928           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.81091
+
+initial set of free parameter values
+
+set16tau1       = 1
+set16tau2       = 2
+set16A          = 1
+set16b          = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 0.484481
+rel. change during last iteration : -3.6974e-06
+
+degrees of freedom    (FIT_NDF)                        : 128
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0615224
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00378501
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set16tau1       = 1.05798          +/- 0.1229       (11.62%)
+set16tau2       = 0.784288         +/- 0.0574       (7.319%)
+set16A          = 0.422556         +/- 0.01295      (3.065%)
+set16b          = 24.4529          +/- 0.05307      (0.217%)
+
+
+correlation matrix of the fit parameters:
+
+               set16t set16t set16A set16b 
+set16tau1       1.000 
+set16tau2      -0.264  1.000 
+set16A          0.595 -0.444  1.000 
+set16b          0.563 -0.374  0.945  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:59:55 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 21:59:55 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:01:13 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:01:13 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:01:13 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.684603         +/- 0.1715       (25.05%)
+set4tau2        = 0.67967          +/- 0.05197      (7.646%)
+set4A           = 0.285557         +/- 0.02367      (8.289%)
+set4b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.419  1.000 
+set4A           0.664 -0.632  1.000 
+set4b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:01:13 2019
+
+
+FIT:    data read from 'n1-highcpu-8.txt' u 1:2
+        format = x:z
+        #datapoints = 90
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set8f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 125.478           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.90349
+
+initial set of free parameter values
+
+set8tau1        = 1
+set8tau2        = 2
+set8A           = 1
+set8b           = 24
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 0.296644
+rel. change during last iteration : -3.44948e-06
+
+degrees of freedom    (FIT_NDF)                        : 86
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0587311
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00344935
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set8tau1        = 1.27388          +/- 0.2634       (20.68%)
+set8tau2        = 0.582435         +/- 0.03987      (6.846%)
+set8A           = 0.310522         +/- 0.01822      (5.866%)
+set8b           = 24.1834          +/- 0.07299      (0.3018%)
+
+
+correlation matrix of the fit parameters:
+
+               set8ta set8ta set8A  set8b  
+set8tau1        1.000 
+set8tau2       -0.403  1.000 
+set8A           0.616 -0.655  1.000 
+set8b           0.597 -0.779  0.970  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:01:13 2019
+
+
+FIT:    data read from 'n1-highcpu-16.txt' u 1:2
+        format = x:z
+        #datapoints = 132
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set16f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 130.928           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.81091
+
+initial set of free parameter values
+
+set16tau1       = 1
+set16tau2       = 2
+set16A          = 1
+set16b          = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 0.484481
+rel. change during last iteration : -3.6974e-06
+
+degrees of freedom    (FIT_NDF)                        : 128
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0615224
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00378501
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set16tau1       = 1.05798          +/- 0.1229       (11.62%)
+set16tau2       = 0.784288         +/- 0.0574       (7.319%)
+set16A          = 0.422556         +/- 0.01295      (3.065%)
+set16b          = 24.4529          +/- 0.05307      (0.217%)
+
+
+correlation matrix of the fit parameters:
+
+               set16t set16t set16A set16b 
+set16tau1       1.000 
+set16tau2      -0.264  1.000 
+set16A          0.595 -0.444  1.000 
+set16b          0.563 -0.374  0.945  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:01:13 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:01:13 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:04:17 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:04:17 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:04:17 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.684603         +/- 0.1715       (25.05%)
+set4tau2        = 0.67967          +/- 0.05197      (7.646%)
+set4A           = 0.285557         +/- 0.02367      (8.289%)
+set4b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.419  1.000 
+set4A           0.664 -0.632  1.000 
+set4b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:04:17 2019
+
+
+FIT:    data read from 'n1-highcpu-8.txt' u 1:2
+        format = x:z
+        #datapoints = 90
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set8f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 125.478           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.90349
+
+initial set of free parameter values
+
+set8tau1        = 1
+set8tau2        = 2
+set8A           = 1
+set8b           = 24
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 0.296644
+rel. change during last iteration : -3.44948e-06
+
+degrees of freedom    (FIT_NDF)                        : 86
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0587311
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00344935
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set8tau1        = 1.27388          +/- 0.2634       (20.68%)
+set8tau2        = 0.582435         +/- 0.03987      (6.846%)
+set8A           = 0.310522         +/- 0.01822      (5.866%)
+set8b           = 24.1834          +/- 0.07299      (0.3018%)
+
+
+correlation matrix of the fit parameters:
+
+               set8ta set8ta set8A  set8b  
+set8tau1        1.000 
+set8tau2       -0.403  1.000 
+set8A           0.616 -0.655  1.000 
+set8b           0.597 -0.779  0.970  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:04:17 2019
+
+
+FIT:    data read from 'n1-highcpu-16.txt' u 1:2
+        format = x:z
+        #datapoints = 132
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set16f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 130.928           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.81091
+
+initial set of free parameter values
+
+set16tau1       = 1
+set16tau2       = 2
+set16A          = 1
+set16b          = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 0.484481
+rel. change during last iteration : -3.6974e-06
+
+degrees of freedom    (FIT_NDF)                        : 128
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0615224
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00378501
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set16tau1       = 1.05798          +/- 0.1229       (11.62%)
+set16tau2       = 0.784288         +/- 0.0574       (7.319%)
+set16A          = 0.422556         +/- 0.01295      (3.065%)
+set16b          = 24.4529          +/- 0.05307      (0.217%)
+
+
+correlation matrix of the fit parameters:
+
+               set16t set16t set16A set16b 
+set16tau1       1.000 
+set16tau2      -0.264  1.000 
+set16A          0.595 -0.444  1.000 
+set16b          0.563 -0.374  0.945  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:04:17 2019
+
+
+FIT:    data read from 'n1-highcpu-32.txt' u 1:2
+        format = x:z
+        #datapoints = 150
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set32f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 44.7225           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.563173
+
+initial set of free parameter values
+
+set32tau1       = 1
+set32tau2       = 2
+set32A          = 1
+set32b          = 24
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 0.151884
+rel. change during last iteration : -2.43528e-07
+
+degrees of freedom    (FIT_NDF)                        : 146
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0322537
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0010403
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set32tau1       = 0.79705          +/- 0.02931      (3.677%)
+set32tau2       = 13.9629          +/- 0.7597       (5.441%)
+set32A          = 0.58009          +/- 0.009609     (1.656%)
+set32b          = 31.9098          +/- 0.6531       (2.047%)
+
+
+correlation matrix of the fit parameters:
+
+               set32t set32t set32A set32b 
+set32tau1       1.000 
+set32tau2       0.609  1.000 
+set32A          0.043 -0.540  1.000 
+set32b          0.471  0.222  0.643  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:04:17 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:04:17 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:05:32 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:05:32 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:05:32 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.684603         +/- 0.1715       (25.05%)
+set4tau2        = 0.67967          +/- 0.05197      (7.646%)
+set4A           = 0.285557         +/- 0.02367      (8.289%)
+set4b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.419  1.000 
+set4A           0.664 -0.632  1.000 
+set4b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:05:32 2019
+
+
+FIT:    data read from 'n1-highcpu-8.txt' u 1:2
+        format = x:z
+        #datapoints = 90
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set8f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 125.478           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.90349
+
+initial set of free parameter values
+
+set8tau1        = 1
+set8tau2        = 2
+set8A           = 1
+set8b           = 24
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 0.296644
+rel. change during last iteration : -3.44948e-06
+
+degrees of freedom    (FIT_NDF)                        : 86
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0587311
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00344935
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set8tau1        = 1.27388          +/- 0.2634       (20.68%)
+set8tau2        = 0.582435         +/- 0.03987      (6.846%)
+set8A           = 0.310522         +/- 0.01822      (5.866%)
+set8b           = 24.1834          +/- 0.07299      (0.3018%)
+
+
+correlation matrix of the fit parameters:
+
+               set8ta set8ta set8A  set8b  
+set8tau1        1.000 
+set8tau2       -0.403  1.000 
+set8A           0.616 -0.655  1.000 
+set8b           0.597 -0.779  0.970  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:05:32 2019
+
+
+FIT:    data read from 'n1-highcpu-16.txt' u 1:2
+        format = x:z
+        #datapoints = 132
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set16f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 130.928           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.81091
+
+initial set of free parameter values
+
+set16tau1       = 1
+set16tau2       = 2
+set16A          = 1
+set16b          = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 0.484481
+rel. change during last iteration : -3.6974e-06
+
+degrees of freedom    (FIT_NDF)                        : 128
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0615224
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00378501
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set16tau1       = 1.05798          +/- 0.1229       (11.62%)
+set16tau2       = 0.784288         +/- 0.0574       (7.319%)
+set16A          = 0.422556         +/- 0.01295      (3.065%)
+set16b          = 24.4529          +/- 0.05307      (0.217%)
+
+
+correlation matrix of the fit parameters:
+
+               set16t set16t set16A set16b 
+set16tau1       1.000 
+set16tau2      -0.264  1.000 
+set16A          0.595 -0.444  1.000 
+set16b          0.563 -0.374  0.945  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:05:32 2019
+
+
+FIT:    data read from 'n1-highcpu-32.txt' u 1:2
+        format = x:z
+        #datapoints = 150
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set32f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 44.7225           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.563173
+
+initial set of free parameter values
+
+set32tau1       = 1
+set32tau2       = 2
+set32A          = 1
+set32b          = 24
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 0.151884
+rel. change during last iteration : -2.43528e-07
+
+degrees of freedom    (FIT_NDF)                        : 146
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0322537
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0010403
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set32tau1       = 0.79705          +/- 0.02931      (3.677%)
+set32tau2       = 13.9629          +/- 0.7597       (5.441%)
+set32A          = 0.58009          +/- 0.009609     (1.656%)
+set32b          = 31.9098          +/- 0.6531       (2.047%)
+
+
+correlation matrix of the fit parameters:
+
+               set32t set32t set32A set32b 
+set32tau1       1.000 
+set32tau2       0.609  1.000 
+set32A          0.043 -0.540  1.000 
+set32b          0.471  0.222  0.643  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:05:32 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:05:32 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:06:23 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f6(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 753.533           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.827053
+
+initial set of free parameter values
+
+f6tau1          = 1
+f6tau2          = 2
+f6A             = 1
+f6b             = 24
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 1.9458
+rel. change during last iteration : -5.31468e-06
+
+degrees of freedom    (FIT_NDF)                        : 713
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0522401
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00272903
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+f6tau1          = 0.949119         +/- 0.03868      (4.075%)
+f6tau2          = 0.767534         +/- 0.01968      (2.564%)
+f6A             = 0.413651         +/- 0.005037     (1.218%)
+f6b             = 24.4531          +/- 0.02048      (0.08375%)
+
+
+correlation matrix of the fit parameters:
+
+               f6tau1 f6tau2 f6A    f6b    
+f6tau1          1.000 
+f6tau2         -0.318  1.000 
+f6A             0.615 -0.517  1.000 
+f6b             0.589 -0.486  0.957  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:06:23 2019
+
+
+FIT:    data read from 'n1-highcpu-2.txt' u 1:2
+        format = x:z
+        #datapoints = 151
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set2f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 246.106           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.953344
+
+initial set of free parameter values
+
+set2tau1        = 1
+set2tau2        = 2
+set2A           = 1
+set2b           = 24
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 0.588702
+rel. change during last iteration : -8.10052e-09
+
+degrees of freedom    (FIT_NDF)                        : 147
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0632833
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00400478
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set2tau1        = 1.71075          +/- 0.3217       (18.8%)
+set2tau2        = 0.753828         +/- 0.04017      (5.329%)
+set2A           = 0.265418         +/- 0.01554      (5.853%)
+set2b           = 24.0421          +/- 0.09118      (0.3792%)
+
+
+correlation matrix of the fit parameters:
+
+               set2ta set2ta set2A  set2b  
+set2tau1        1.000 
+set2tau2       -0.396  1.000 
+set2A           0.575 -0.689  1.000 
+set2b           0.557 -0.824  0.969  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:06:23 2019
+
+
+FIT:    data read from 'n1-highcpu-4.txt' u 1:2
+        format = x:z
+        #datapoints = 142
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set4f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 201.318           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.907319
+
+initial set of free parameter values
+
+set4tau1        = 1
+set4tau2        = 2
+set4A           = 1
+set4b           = 24
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 1.07597
+rel. change during last iteration : -6.73568e-07
+
+degrees of freedom    (FIT_NDF)                        : 138
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0882998
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00779686
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set4tau1        = 0.684603         +/- 0.1715       (25.05%)
+set4tau2        = 0.67967          +/- 0.05197      (7.646%)
+set4A           = 0.285557         +/- 0.02367      (8.289%)
+set4b           = 24.0469          +/- 0.1141       (0.4744%)
+
+
+correlation matrix of the fit parameters:
+
+               set4ta set4ta set4A  set4b  
+set4tau1        1.000 
+set4tau2       -0.419  1.000 
+set4A           0.664 -0.632  1.000 
+set4b           0.646 -0.759  0.974  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:06:23 2019
+
+
+FIT:    data read from 'n1-highcpu-8.txt' u 1:2
+        format = x:z
+        #datapoints = 90
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set8f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 125.478           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.90349
+
+initial set of free parameter values
+
+set8tau1        = 1
+set8tau2        = 2
+set8A           = 1
+set8b           = 24
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 0.296644
+rel. change during last iteration : -3.44948e-06
+
+degrees of freedom    (FIT_NDF)                        : 86
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0587311
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00344935
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set8tau1        = 1.27388          +/- 0.2634       (20.68%)
+set8tau2        = 0.582435         +/- 0.03987      (6.846%)
+set8A           = 0.310522         +/- 0.01822      (5.866%)
+set8b           = 24.1834          +/- 0.07299      (0.3018%)
+
+
+correlation matrix of the fit parameters:
+
+               set8ta set8ta set8A  set8b  
+set8tau1        1.000 
+set8tau2       -0.403  1.000 
+set8A           0.616 -0.655  1.000 
+set8b           0.597 -0.779  0.970  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:06:23 2019
+
+
+FIT:    data read from 'n1-highcpu-16.txt' u 1:2
+        format = x:z
+        #datapoints = 132
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set16f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 130.928           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.81091
+
+initial set of free parameter values
+
+set16tau1       = 1
+set16tau2       = 2
+set16A          = 1
+set16b          = 24
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 0.484481
+rel. change during last iteration : -3.6974e-06
+
+degrees of freedom    (FIT_NDF)                        : 128
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0615224
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00378501
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set16tau1       = 1.05798          +/- 0.1229       (11.62%)
+set16tau2       = 0.784288         +/- 0.0574       (7.319%)
+set16A          = 0.422556         +/- 0.01295      (3.065%)
+set16b          = 24.4529          +/- 0.05307      (0.217%)
+
+
+correlation matrix of the fit parameters:
+
+               set16t set16t set16A set16b 
+set16tau1       1.000 
+set16tau2      -0.264  1.000 
+set16A          0.595 -0.444  1.000 
+set16b          0.563 -0.374  0.945  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:06:23 2019
+
+
+FIT:    data read from 'n1-highcpu-32.txt' u 1:2
+        format = x:z
+        #datapoints = 150
+        residuals are weighted equally (unit weight)
+
+function used for fitting: set32f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 44.7225           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.563173
+
+initial set of free parameter values
+
+set32tau1       = 1
+set32tau2       = 2
+set32A          = 1
+set32b          = 24
+
+After 10 iterations the fit converged.
+final sum of squares of residuals : 0.151884
+rel. change during last iteration : -2.43528e-07
+
+degrees of freedom    (FIT_NDF)                        : 146
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0322537
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0010403
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+set32tau1       = 0.79705          +/- 0.02931      (3.677%)
+set32tau2       = 13.9629          +/- 0.7597       (5.441%)
+set32A          = 0.58009          +/- 0.009609     (1.656%)
+set32b          = 31.9098          +/- 0.6531       (2.047%)
+
+
+correlation matrix of the fit parameters:
+
+               set32t set32t set32A set32b 
+set32tau1       1.000 
+set32tau2       0.609  1.000 
+set32A          0.043 -0.540  1.000 
+set32b          0.471  0.222  0.643  1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:06:23 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf1(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.147249
+
+initial set of free parameter values
+
+pf1lambda       = 1
+
+After 8 iterations the fit converged.
+final sum of squares of residuals : 15.0584
+rel. change during last iteration : -1.73417e-07
+
+degrees of freedom    (FIT_NDF)                        : 716
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.145022
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0210313
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf1lambda       = 16.8902          +/- 0.3417       (2.023%)
+
+
+correlation matrix of the fit parameters:
+
+               pf1lam 
+pf1lambda       1.000 
+
+
+*******************************************************************************
+Mon Apr  8 22:06:23 2019
+
+
+FIT:    data read from 'data.out' u 1:2
+        format = x:z
+        #datapoints = 717
+        residuals are weighted equally (unit weight)
+
+function used for fitting: pastf2(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 85.8189           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 0.130121
+
+initial set of free parameter values
+
+pf2lambda       = 1
+pf2k            = 1
+
+After 19 iterations the fit converged.
+final sum of squares of residuals : 9.08233
+rel. change during last iteration : -2.74315e-07
+
+degrees of freedom    (FIT_NDF)                        : 715
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.112706
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0127026
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+pf2lambda       = 14.5188          +/- 0.3997       (2.753%)
+pf2k            = 0.513517         +/- 0.01352      (2.634%)
+
+
+correlation matrix of the fit parameters:
+
+               pf2lam pf2k   
+pf2lambda       1.000 
+pf2k           -0.004  1.000 
