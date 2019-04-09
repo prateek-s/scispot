@@ -69,6 +69,7 @@ f6tau1 = 1
 f6tau2 = 2
 
 f6(x) = f6A*(1 - exp(-x/f6tau1) + exp((x-f6b)/f6tau2))
+#f6(x) = 1 - exp(-x/f6tau1) + f6A*exp((x-f6b)/f6tau2)
 fit f6(x) 'data.out' u 1:2 via f6tau1, f6tau2, f6A, f6b
 
 df6(x) = f6A * ( (1/f6tau1)*exp(-x/f6tau1) + (1/f6tau2)*exp((x-f6b)/f6tau2) )
