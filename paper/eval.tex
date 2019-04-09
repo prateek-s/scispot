@@ -9,16 +9,23 @@ Our evaluation consists of empirical analysis of the different scientific comput
 % \item What is performance and cost of 
 % \end{itemize}
 
-\noindent \textbf{Environment and Workloads:} All our empirical evaluation is conducted on the Google Public Cloud, and with these representative scientific applications: 
+\noindent \textbf{Environment and Workloads:} All our empirical evaluation is conducted on the Google Public Cloud, and with these representative scientific computing applications: 
 % open-source
-\vspace*{\tightext}
-\begin{description}
+%\vspace*{\tightext}
+%\begin{description}
   %TODO: Need MAX two sentence descriptions
-\item[NC.] The ions in nanoconfiment~\cite{} application computes dynamics of nanoparticles. Uses OpenMP and MPI parallelization. 
-\item[Shapes.]  Application to compute shapes of nanoparticles. Uses OpenMP and MPI parallelization and is embarrassingly parallel. 
-\item[Lulesh.] Popular hydrodynamics application with the default parameters. 
-\end{description}
-\vspace*{\tightext}
+
+\textbf{Nanoconfinement.}
+The nanoconfiment application launches molecular dynamics (MD) simulations of ions in nanoscale confinement created by material surfaces \cite{jyto,kadupitiya2017}.
+
+\textbf{Shapes.} The Shapes application runs an MD-based optimization dynamics to predict the optimal shape of deformable, charged nanoparticles \cite{jto1,jjzo1}. 
+
+\textbf{LULESH.} Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH) code is a popular code to for hydrodynamics simulations of continuum material models \cite{IPDPS13:LULESH,LULESH2:changes}. 
+%\end{description}
+%\vspace*{\tightext}
+
+These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering. These three examples are implemented as parallel programs that use OpenMP and MPI parallel computing techniques. The first two are used in nanoscale materials research \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto} and the last application is a widely used benchmark \cite{IPDPS13:LULESH,LULESH2:changes}.
+
 All applications use OpenMPI, are deployed on Slurm vXXX and 64-bit Ubuntu 18.04, and run on Google Cloud VMs with x86-64 Intel Broadwell CPUs. 
 %Networking? 
 
@@ -29,15 +36,14 @@ All applications use OpenMPI, are deployed on Slurm vXXX and 64-bit Ubuntu 18.04
 \subsubsection{Impact of server exploration}
 
 As described in Section~\ref{sec:design}, applications can be deployed on multiple types of VMs in the cloud, with each VM type having a different ``size''.
-In our evaluation of parallel scientific applications that are CPU intensive, we are primarily interested in the number of CPUs in a VM.
+In our evaluation of parallel scientific computing applications that are CPU intensive, we are primarily interested in the number of CPUs in a VM.
 
-When an application requests a total number of CPUs to run each of its jobs, \sysname first runs its exploration phase to find the ``right'' VM for the application.
-\sysname searches for the VM that minimizes the total expected cost of running the application, and this depends on  several factors such as the parallel structure of the application, the preemption probability and the associated job recomputation time, and the price of the VM.
+When an application (i.e., bag of jobs) requests a total number of CPUs to run each of its jobs, \sysname first runs its exploration phase to find the ``right'' VM for the application.
+\sysname searches for the VM that minimizes the total expected cost $E[C_{(i,n_i)}]$ of running the application, and this depends on several factors such as the parallel structure of the application, the preemption probability and the associated job recomputation time, and the price of the VM.
 
-
-Thus, even if the \emph{total} amount of resources (i.e., number of CPUs) per job is held constant, the total running time of an application depends on the choice of the VM, and the associated number of VMs required to meet the allocation constraint (Section~\ref{subsec:cost-model}).
+Thus, even if the \emph{total} amount of resources (i.e., number of CPUs) per job is held constant, the total running time of an application depends on the choice of the VM type ($i$), and the associated number of VMs ($n_i$) required to meet the allocation constraint (Section~\ref{subsec:cost-model}).
 %
-With preemptible instances, the total running time of a job is composed of two factors: the ``base'' running time of the job without any preemptions, and the expected recomputation time which depends on the probability of job failure (Equation~\ref{eq:t1}). 
+With preemptible instances, the total running time of a job is composed of two factors: the ``base'' running time of the job without any preemptions ($T_{(i,n_i)}$), and the expected recomputation time which depends on the probability of job failure (Equation~\ref{eq:et1}). 
 
 \begin{figure}
   \centering
@@ -48,17 +54,17 @@ With preemptible instances, the total running time of a job is composed of two f
 \end{figure}
 
 
-Figure~\ref{fig:runtimes-bar} shows the running times of the NC and Shapes application, when they are deployed on different VM sizes.
-In all cases, the total number of CPUs per job is set to 64, and thus the different VM sizes yield different cluster sizes (e.g., 16 VMs with 4 CPUs each are required).
+Figure~\ref{fig:runtimes-bar} shows the running times of the Nanoconfinement and Shapes application, when they are deployed on different VM sizes.
+In all cases, the total number of CPUs per job is set to 64, and thus the different VM sizes yield different cluster sizes (e.g., 16 VMs with 4 CPUs or 32 VMs with 2 CPUs).
 
 
-For the NC application, we observe that the the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
+For the Nanoconfinement application, we observe that the the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
 The running time on the ``best'' VM (i.e., with 32 CPUs) is nearly 40\% lower as compared to the worst case. 
 On the other hand, the Shapes application can scale to a larger number of VMs without any significant communication overheads, and does not see any significant change in its running time.
 
-Figure~\ref{fig:runtimes-bar} also shows the total expected running time, that is obtained by adding the the expected recomputation time, which depends on the expected lifetimes of the VM and the number of VMs, and is computed using the cost model introduced in Section~\ref{subsec:cost-model}. 
+Figure~\ref{fig:runtimes-bar} also shows the total expected running time $E[T_{(i,n_i)}]$, that is obtained by adding the the expected recomputation time, which depends on the expected lifetimes of the VM and the number of VMs, and is computed using the cost model introduced in Section~\ref{subsec:cost-model}. 
 While selecting larger VMs may reduce communication overheads and thus improve performance, it is not an adequate policy in the case of preemptible VMs, since the preemptions can significantly increase the total running time.
-We can observe this in the case of NC application when deployed on a 64 CPU VM---even though the base running time is lower compared to deploying the application on 2x32-CPU VMs, the recomputation time on the 64 CPU VM is almost $4\times$ higher due to the much lower expected lifetime of the larger VMs. 
+We can observe this in the case of Nanoconfinement application when deployed on a 64 CPU VM---even though the base running time is lower compared to deploying the application on 2x32-CPU VMs, the recomputation time on the 64 CPU VM is almost $4\times$ higher due to the much lower expected lifetime of the larger VMs. 
 Thus, on preemptible servers, there is a tradeoff between the base running time which only considers parallelization overheads, and the recomputation time.
 By considering \emph{both} these factors, \sysname's server selection policy can select the best VM for an application. 
 
@@ -80,16 +86,16 @@ By considering \emph{both} these factors, \sysname's server selection policy can
 The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible. 
 Figure~\ref{fig:cost-only-bar} compares the cost of running different applications with different cloud VM deployments.
 \sysname, which uses both cost-minimizing server selection, and preemptible VMs, results in significantly lower costs across the board, even when accounting for preemptions and recomputations. 
-Even with \sysname's server selection, using on-demand VMs result in a $5\times$ cost increase.
+Even with \sysname's server selection, using on-demand VMs result in a $5\times$ cost increase compared to \sysname.
 In the absence of server selection, we assume that the user will pick a ``median'' VM in terms of number of CPUs (in this case, 8 CPU VMs), which we also show in Figure~\ref{fig:cost-only-bar}.
-Note that \sysname's server selection considers both the base running times and recomputation time, which may not necessarily yield the best on-demand server configuration (which only needs to be cognizant of the base running times), and thus we see that the running time for the Shapes application on the median on-demand server is slightly lower than one with \sysname's server selection.
-However, it is still lower than \sysname's cost. 
+\vj{Note that \sysname's server selection considers both the base running times and recomputation time, which may not necessarily yield the best on-demand server configuration (which only needs to be cognizant of the base running times), and thus we see that the cost for the Shapes application on the median on-demand server is slightly lower than one with \sysname's server selection.
+However, it is still lower than \sysname's cost. rephrase}
 
 
-\noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5x compared to conventional on-demand cloud deployments.}
+\noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Comparison with HPC Clusters}
+\subsubsection{Comparison with HPC Overhead}
 
 Scientific applications are typically run on large-scale HPC clusters, where different performance and cost dynamics apply.
 While there are hardware differences between cloud VMs and HPC clusters that can contribute to performance differences, we are interested in the performance ``overheads''.
@@ -98,7 +104,7 @@ In the case of \sysname, the job failures and recomputations increase the total 
 On HPC clusters, jobs enjoy significantly lower recomputation probability, since the hardware on these clusters has MTTFs in the range of years to centuries~\cite{dongarra-ckpting}.
 However, we emphasize that there exist \emph{other} sources of performance overheads in HPC clusters.
 In particular, since HPC clusters have high resource utilization, they also have significant \emph{waiting} times. 
-On the other hand, cloud resource utilization is low~\cite{borg} and there is usually no need to wait for resources, which is why transient servers exist in the first place! 
+On the other hand, cloud resource utilization is low~\cite{borg} and there is usually no need to wait for resources, which is why transient servers exist in the first place. 
 
 
 Thus, we compare the performance overhead due to preemptions for \sysname, and job waiting times in conventional HPC deployments.
@@ -114,16 +120,19 @@ We analyze the waiting time of over two million jobs submitted over a 5 year per
 \end{figure}
 
 
-Figure~\ref{fig:hpc-vs-scispot} shows the increase in running time with \sysname, and due to waiting for resources in HPC clusters, for jobs of different lengths. We see that the average performance overhead due to waiting can be significant in the case of HPC clusters, and the job submission latency and queuing time dominate for smaller jobs, increasing their total running time by more $2.5\times$.
-This waiting is amortized in the case of longer running jobs, and the increase in running time as a percentage drops off for longer jobs, to around 30\%.
+We define the overhead as the increase in running time which is equal to the turnaround time (that is the time between the user submitting the job and getting the results back) divided by the base job running time (with no waiting or premptions). 
+%In HPC clusters, the overhead is the waiting time for resources, and in \sysname the overhead is the recomputation time due to preemptions.
+Figure~\ref{fig:hpc-vs-scispot} compares the overhead (as percentage increase in running time) of \sysname and HPC clusters  for jobs of different lengths. We see that the average performance overhead due to waiting can be significant in the case of HPC clusters, and the job submission latency and queuing time dominate for smaller jobs, increasing their total turnaround time by more $2.5\times$.
+This waiting is amortized in the case of longer running jobs, and the overhead drops off for longer jobs, to around 30\%.
 
 On the other hand, \sysname's performance overhead is significantly smaller for jobs of up to 8 hours in length.
 For longer jobs, the limited lifetime of Google Preemptible VMs (24 hours) begins to significantly increase the preemption probability and expected recomputation time.
-We emphasize that these are \emph{individual} job lengths, and not the running time of entire bags of jobs.
-We note that these large single jobs are rare, and for smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller.
+We emphasize that these are \emph{individual} job lengths, and not the running time of entire bag of jobs.
+We note that these large single jobs are rare, and for smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller. \vj{make more quantitative}
 
-\noindent \emph{ \textbf{Result:} While preemptions can increase running times due to recomputation, this increase is small, and is between 20 to 400\% lower compared to conventional HPC clusters. }
+\noindent \emph{ \textbf{Result:} While preemptions can increase running times due to recomputation, this increase is small, and is between 20 to 400\% lower compared to the waiting times associated as overhead in conventional HPC clusters. }
 
+\subsubsection{Comparison with HPC Performance}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{SciSpot Scaling}
