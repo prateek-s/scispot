@@ -133,16 +133,22 @@ We note that these large single jobs are rare, and for smaller jobs (within a mu
 \noindent \emph{ \textbf{Result:} While preemptions can increase running times due to recomputation, this increase is small, and is between 20 to 400\% lower compared to the waiting times associated as overhead in conventional HPC clusters. }
 
 \subsubsection{Comparison with HPC Performance}
+The performance of scientific computing applications has been extensively compared on HPC and cloud setups~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}. 
+For completeness, we show the running times on the Big Red II supercomputing cluster in Table~\ref{tab:bigred2}, and we see that our representative applications \emph{do not} face a penalty when deployed on the cloud. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{SciSpot Scaling}
-
 We now turn our attention to \sysname's scaling properties. We are primarily interested in observing the behavior of running bags of jobs of different applications with different resource requirements.
 In all cases unless otherwise stated, we run bags of 36 jobs, and impose that 90\% of all jobs complete (thus we target a completion of 32 jobs).
 The jobs in the bags are for exploring the different parameters (i.e., doing a parameter sweep), using \sysname's automated parameter sweeping functionality described in Section~\ref{sec:impl}. For reference, the distribution of running times for the different applications is shown in Figure~\ref{fig:XXX}. 
 In the rest of this section, we evaluate \sysname when the size of the cluster, the number of preemptions, and the number of jobs in the bag are increased. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\vspace*{\subsecspace}
 \subsubsection{Increasing Cluster Size} 
 
 \begin{figure}
@@ -221,6 +227,7 @@ This shows that \sysname is robust and can provide acceptable performance even u
   \caption{The increase in running time due to preemptions is under 50\%, even when the number of preemptions is high.}
   \label{fig:fails-time}
 \end{figure}
+
 
 %Summary of results? 
 

@@ -1,25 +1,32 @@
 \section{SciSpot Design}
 \label{sec:design}
 
-%\noindent \textbf{Design Goals:} 
-\sysname handles all the cloud resource management and job scheduling associated with running a bag of jobs on transient cloud servers. 
-In this section, we look at \sysname's policies for selecting the ``right'' cloud server for a given application, and policies for scheduling and running a bag of jobs on transient servers.
-Throughout, our aim is to minimize the overall cost and minimize the impact of preemptions.  \vj{\it have we defined what ``right'' is?, could be useful to define it again here}
+% \noindent \textbf{Design Goals:}
 
 
-\begin{figure}[h]
+% \sysname is our frahandles all the cloud resource management and job scheduling associated with running a bag of jobs on transient cloud servers. 
+% In this section, we look at the policies for selecting the ``right'' cloud server for a given application, and policies for scheduling and running a bag of jobs on transient servers. 
+% Throughout, our aim is to minimize the overall cost and minimize the impact of preemptions.  
+
+
+\sysname is designed as a framework that increases the usability and viability of transient cloud servers for scientific computing applications, and provides a simple user interface to allow users to deploy their applications with minimum workflow changes. 
+Most scientific computing applications are deployed on HPC clusters that have a batch scheduler such as Slurm~\cite{slurm} or Torque~\cite{torque}, and \sysname integrates with these schedulers (e.g., Slurm) to provide the same interface to applications. 
+As shown in Figure~\ref{fig:arch},
+\sysname creates and manages clusters of transient cloud servers, manages all aspects of the VM lifecycle and costs, and implements the various policies described in the rest of this section. 
+
+\begin{figure}[t]
   \includegraphics[width=0.3\textwidth]{../figures/Architecture.png}
-  \caption{SciSpot Architecture}
+\vspace*{\myfigspace}
+  \caption{SciSpot Architecture.}
   \label{fig:arch}
+  \vspace*{\myfigspace}
 \end{figure}
 
-\sysname aims to provide a simple user interface to allow users to deploy their applications with minimum changes to their workflow.
-Most scientific computing applications are deployed on HPC clusters that have a cluster manager such as Slurm~\cite{slurm} or Torque~\cite{torque}, and \sysname integrates with the cluster manager (e.g., Slurm) to provide the same interface to applications.
-As shown in Figure~\ref{fig:arch}, \sysname creates and manages clusters of transient cloud servers, manages all aspects of the VM lifecycle and costs, and implements the various policies described in the rest of this section. 
 
-
-\noindent \textbf{High-level workflow:} When a user wishes to run a bag of jobs, \sysname handles the provisioning of a cluster of transient cloud servers. In addition, \sysname deals with the scheduling and monitoring of the bag of jobs, and with preemptions.
-Execution of a bag of jobs proceeds in two phases. In the first phase, \sysname selects the ``right'' cluster configuration for a given application through a cost-minimizing exploration-based search policy, described in Section~\ref{subsec:server-selection}.
+\noindent \textbf{High-level workflow:} When a user wishes to run a bag of jobs, \sysname handles the provisioning of a cluster of transient cloud servers.
+In addition, \sysname deals with the scheduling and monitoring of the bag of jobs, and with VM preemptions. 
+Execution of a bag of jobs proceeds in two phases.
+In the first phase, \sysname selects the ``right'' cluster configuration for a given application through a cost-minimizing exploration-based search policy, described in Section~\ref{subsec:server-selection}. 
 In the second phase, \sysname proceeds to run the remaining jobs in the bag on the optimal cluster configuration. 
 
 \subsection{Server Selection}
@@ -28,7 +35,7 @@ In the second phase, \sysname proceeds to run the remaining jobs in the bag on t
 \subsubsection{Why Server Selection is Necessary}
 
 %\noindent \textbf{Why server selection is necessary:}
-Before deploying any application on the transient cloud servers, we must first select the ``right'' cloud server for the application. 
+Before deploying any application on the transient cloud servers, we must first select the appropriate cloud server for the application. 
 Since cloud platforms support a wide range of applications, they also offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.). 
 For example, a cloud provider may offer VMs with (4 CPUs, 4 GB memory), (8 CPUs, 8 GB memory), etc.
 Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}. 
@@ -39,58 +46,79 @@ Most clouds offer a large number of different hardware configurations---Amazon E
 
 %Selecting for performance 
 Even if we assume that the total amount of resources to be allocated to a job is fixed, there are multiple \emph{cluster configurations} to satisfy the allocation with the large number of available server types. 
-For example, a job requiring a total of 128 CPUs can be run on a cluster of 2 servers with 64 CPUs each, or 4 servers with 32 CPUs each, etc. 
-Server selection is especially important for parallel applications, because although the total amount of resources in each cluster configuration is constant, the resources are distributed differently. 
+%For example, a job requiring a total of 128 CPUs can be run on a cluster of 2 servers with 64 CPUs each, or 4 servers with 32 CPUs each, etc. 
+Server selection is especially important for parallel applications, because although the total amount of resources in each cluster configuration is constant, the resources are distributed differently---i.e., a job can run on either 2 VMs with 32 CPUs each, or a single 64 CPU VM.  
 Since the performance of parallel applications is particularly sensitive to their communication overheads, different cluster configurations may yield different job running times.
-For instance, a smaller cluster with large servers will result in lower inter-server communication, and thus shorter running times. 
+For instance, a smaller cluster with large VMs will result in lower inter-VM communication, and thus shorter running times. 
 
 %Selecting for preemptibility 
 However, the performance of an application is also affected by preemptions of transient servers.
-Since preemptions are essentially fail-stop failures, synchronous parallel applications (such as those using MPI) are forced to abort, and completing the job requires restarting it.
-Thus, preemptions can increase the overall running time of a job, with the increase in the job's actual running time determined by the frequency of preemptions.
+Since preemptions are essentially fail-stop failures, synchronous parallel applications (such as those using MPI) are 
+are forced to  abort, and completing the job requires restarting it. 
+Thus, frequent preemptions can increase the overall turnaround time of a job. 
 
 
 \subsubsection{Server Selection Policy}
 
 Having provided the motivation and tradeoffs in server selection, we now describe the \sysname's server selection policy. 
-Given an application and a bag of jobs, \sysname ``explores'' and searches for the right server type by minimizing the expected cost of running the job. \vj{is the cost minimized across the bag of jobs or for running the job as it says; should this be the cost of executing the application (full set of jobs)?}
+Given an application and a bag of jobs, \sysname ``explores'' and searches for the right server type by minimizing the expected cost of running the job.
+Since jobs in a bag have similar execution characteristics, optimizing server selection for an individual job also translates to the entire bag. 
 
-We first determine the search space, which is the space of all cluster configurations $\langle i,n_i \rangle$ \vj{not sure if $\langle \rangle$ is the best notation here, generally this would indicate an expected average of some quantitiy, think you just mean a pair here} such that $r_i n_i = \mathcal{R}$. \vj{define $r_i$ and $n_i$} With $N$ server types, this results in at most $N$ cluster configurations \vj{I am confused by this sentence, not sure what $N$ is? Different types of servers or total number of servers?}.
-Each configuration will yield different application performance, preemption overhead, and cost.
-Our server selection policy runs the application on each configuration to determine its running time (in the absence of preemptions), which is denoted by $T_{\langle i,n_i \rangle}$. 
-\sysname thus does an exhaustive search over all valid cluster configurations to find the lowest-cost configuration $\langle i, n_i \rangle$. 
 
+\sysname allows the users to specify the total amount of resources required per job, which we denote by $\mathcal{R}$.
+For example, $\mathcal{R}$ can be the total number of CPU cores. 
+We first determine the search space, which is the space of all cluster configurations $(i,n_i)$ such that $r_i n_i = \mathcal{R}$, where $r_i$ is the resource size of a VM of type $i$ (e.g., number of CPUs), and $n_i$ is the number of VMs of that type. 
+Based on the constraint, the number of servers of type $i$ required, $n_i = \mathcal{R}/r_i$.
+
+Each cluster configuration yields different application performance, preemption overhead, and cost.
+Our aim is to find the lowest-cost configuration $(i, n_i)$ for a given application, which we do through an exploratory search. 
+Our server selection policy runs the application on different cluster configurations to determine the base running time (in the absence of preemptions), which is denoted by $T_{(i,n_i)}$. 
+It then combines the empirical running time with a cost model, to estimate the expected cost of running the application. 
+
+
+%\sysname does an exhaustive search over all valid configurations to find the lowest-cost configuration $( i, n_i )$. 
+
+\begin{comment}
 We note that this search is different from conventional speedup plots in which the objective is to determine how well an application scales with increasing amount of resources and parallelism. 
 In contrast, we \emph{fix} the total amount of resources allocated to the application's job ($=\mathcal{R}$), and only vary \emph{how} these resources are distributed, which affects communication overhead and hence the performance.
 %Weak
-We assume that the total resource requirement for a job, $\mathcal{R}$, can be easily provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion. 
-
+We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.  
+\end{comment}
 
 
 \subsubsection{Server Cost Model}
 \label{subsec:cost-model}
 
-Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the ``best'' server type that minimizes the expected cost of running an application on transient cloud servers. 
+Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM that minimizes the expected cost of running an application on \sysname. 
 
 
-Let us assume that the cloud provider offers $N$ server types, with the price of a server type equal to $c_i$. 
-Let $\mathcal{R}$ denote the total amount of computing resources requested for the job. For ease of exposition, let us assume that $\mathcal{R}$ is the total number of CPU cores.
-Furthermore, let $r_i$ denote the ``size'' of the server of type $i$.
-Then, the number of servers of type $i$ required, $n_i = \mathcal{R}/r_i$. In what follows, we denote the expectation value of a quantity as $E[\ldots]$. \vj{there is some repitition in defining the symbols here which are used before in selection policy; may be this can be moved above. was wondering if we loose clarity by using $T_k$ to denote the running time on configuration $k$ that encodes the pair defined by the combination of server type $i$ - number of servers of type $i$ -- $(i,n_i)$; that is, $k\equiv (i,n_i)$, used as a superindex?}
+%Let $\mathcal{R}$ denote the total amount of computing resources requested for the job. For ease of exposition, let us assume that $\mathcal{R}$ is the total number of CPU cores.
+%Furthermore, let $r_i$ denote the ``size'' of the server of type $i$.
+%Then, the number of servers of type $i$ required, $n_i = \mathcal{R}/r_i$.
+%In what follows, we denote the expectation value of a quantity as $E[\ldots]$.
 
+%\vj{there is some repitition in defining the symbols here which are used before in selection policy; may be this can be moved above. was wondering if we loose clarity by using $T_k$ to denote the running time on configuration $k$ that encodes the pair defined by the combination of server type $i$ - number of servers of type $i$ -- $(i,n_i)$; that is, $k\equiv (i,n_i)$, used as a superindex?}
+
+Let us assume that the cloud provider offers $N$ server types, with the price (per unit time) of a server type equal to $c_i$. 
 The overall expected cost of running a job can then be expressed as follows:
 \begin{equation}
   \label{eq:e-cost}
-  E[C_{\langle i,n_i \rangle}] = n_i\times c_i \times E[T_{\langle i,n_i \rangle}]
+  E[C_{( i,n_i )}] = n_i\times c_i \times E[\mathcal{T}_{( i,n_i )}]
 \end{equation}
-Here, $E[T_{\langle i,n_i \rangle}]$ denotes the expected running time of the job on $n_i$ servers of type $i$. \vj{define $c_i$}
-This running time, in turn depends on the preemption probability of the server type:
+Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected turnaround time of the job (accounting for preemptions) on $n_i$ servers of type $i$.
+
+This turaround time depends on the preemption probability of the server type, and can be expressed as:
 \begin{align}
-  \label{eq:et1}
-  E[T_{\langle i,n_i \rangle}] &= T_{\langle i,n_i \rangle} + E[\text{Recomputation Time}] \\
-  &= T_{\langle i,n_i \rangle} + P(\text{at least one preemption})\times T_{\langle i,n_i \rangle}/2   
+  \label{eq:turnaround}
+  E[\mathcal{T}_{( i,n_i )}] &= T_{( i,n_i )} + E[\text{Recomputation Time}]
 \end{align}
-Here, $T_{\langle i,n_i \rangle}$ is the running time of the job without failures, which we obtain empirically as explained in the previous subsection.
+Here, $T_{( i,n_i )}$ is the base running time of a job without preemptions, which we obtain empirically as explained in the previous subsection.
+Since jobs have to be rerun when they fail due to preemptions, we define the recomputation time as:
+\begin{equation}
+  \label{eq:recomput}
+   E[\text{Recomputation Time}] = \frac{1}{2}*P(\text{at least one preemption})* T_{( i,n_i )}   
+ \end{equation}
+Our expression of the recomputation time assumes jobs will fail at the half-way mark on average, as is frequently assumed and observed~\cite{young-daly, bougeret}. 
 
 The probability that at least one VM out of $n_i$ will be preempted during the job execution can be expressed as:
 
@@ -98,7 +126,7 @@ The probability that at least one VM out of $n_i$ will be preempted during the j
   \label{eq:pfail1}
   P(\text{at least one preemption}) &= 1-P(\text{no preemptions}) \\
                                  &= 1-\left(1-P\left(i, t\right)\right)^{n_i} \\
-                                 &= 1-\left(1-\dfrac{T_{\langle i,n_i \rangle}}{E[L_i]}\right)^{n_i}      
+                                 &= 1-\left(1-\dfrac{T_{( i,n_i )}}{E[L_i]}\right)^{n_i}      
 \end{align}
 
 Here, $P(i, t)$ denotes the probability of a preemption of a VM of type $i$ when a job of duration $t$ runs on it. 
@@ -107,15 +135,19 @@ It depends on the type of server, and we use historically determined failure dis
 In the expectation, it is given by:
 \begin{equation}
   \label{eq:pi}
-  P(i, t) = \dfrac{t}{E[L_i]}
+  P(i, t) = min\left(\dfrac{t}{E[L_i]}, 1\right)
 \end{equation}
 Where $E[L_i]$ is the expected lifetime of the VM of type $i$ extracted using the the analytical model introduced in Section~\ref{subsec:analytical-model}.
-As a first order approximation, the running time $t$ of the job can be chosen as $t=T_{\langle i,n_i \rangle}$, where the latter is empirically obtained for a given application.
+As a first order approximation, the running time $t$ of the job can be chosen as $t=T_{( i,n_i )}$, where the latter is empirically obtained for a given application.
+We also thus assume that the running time of \emph{individual} jobs in a bag $T$, will be smaller than the expected lifetime of the VMs, otherwise we will see no forward progress since the jobs will always be preempted before completion.
+We again emphasize that $T$ is the running time of an \emph{individual} job, and that \sysname is designed for running large bags of small jobs, and that most HPC jobs are much smaller than the expected lifetimes, as we show in Section~\ref{sec:eval}. 
 
-Using Eq.~\ref{eq:et1} and Eq.~\ref{eq:pfail1}, the overall expected cost of running a job on transient cloud servers is obtained as
+
+
+Using Equations~\ref{eq:turnaround},\ref{eq:recomput}, and \ref{eq:pfail1}, the overall expected cost of running a job on transient cloud servers is obtained as
 \begin{equation}
   \label{eq:ecfinal}
-  E[C_{\langle i,n_i \rangle}] = \frac{1}{2}n_i c_i T_{\langle i,n_i \rangle}\left(3 - \left(1-\dfrac{T_{\langle i,n_i \rangle}}{E[L_i]}\right)^{n_i}\right)
+  E[C_{( i,n_i )}] = \frac{1}{2}n_i c_i T_{( i,n_i )}\left(3 - \left(1-\dfrac{T_{( i,n_i )}}{E[L_i]}\right)^{n_i}\right)
 \end{equation}
 
 Equation \ref{eq:ecfinal} shows that the expected cost $E[C]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$). \vj{there are some limiting conditions here that we should discuss to make sure this is correct}
