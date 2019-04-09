@@ -1,9 +1,12 @@
 % This is confinement results
 \begin{table}[]
-\begin{tabular}{llll}
-MPI tasks & VMs(CPUs) & \begin{tabular}[c]{@{}l@{}}BigRED2\\ Runtime (s)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Google Cloud VMs\\ Runtime (s)\end{tabular} \\
-1         & 16        & 2370.51                                                       & 1546.61                                                                \\
-4         & 16        & 1140.91                                                       & 851.32                                                                
+  \begin{tabular}{|l|l|r|r|}
+    \hline
+    \# Nodes & Application & Big Red II & \sysname \\
+    \hline
+  1         & Nanoconfinement        & 2370   & 1546                                                                \\
+    4         & Nanoconfinement        & 1140    & 851 \\
+    \hline
 \end{tabular}
 \end{table}
 
@@ -12,7 +15,13 @@ MPI tasks & VMs(CPUs) & \begin{tabular}[c]{@{}l@{}}BigRED2\\ Runtime (s)\end{tab
 \begin{table}[]
 \begin{tabular}{llll}
 MPI tasks & VMs(CPUs) & \begin{tabular}[c]{@{}l@{}}BigRED2\\ Runtime (s)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Google Cloud VMs\\ Runtime (s)\end{tabular} \\
-1         & 16        & 2649.6                                                        & 1194.75                                                                \\
-4         & 16        & 1209.60                                                       & 548.55                                                                
+1         & 16        & 2649                                                        & 1194                                                                \\
+4         & 16        & 1209                                                       & 548                                                                
 \end{tabular}
+\caption{Running times (in seconds) of different applications on the Big Red II HPC cluster vs \sysname.}
+\label{tab:bigred2}
 \end{table}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End:
