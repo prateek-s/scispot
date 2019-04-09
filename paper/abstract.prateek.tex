@@ -1,18 +1,11 @@
 Scientific computing applications are being increasingly deployed on cloud computing platforms.
-%
 Transient servers can be used to lower the costs of running applications on the cloud.
-%
 However, the frequent preemptions and resource heterogeneity of these transient servers introduces many challenges in their effective and efficient use.
-%
-In this paper, we develop techniques for modeling and mitigating preemptions of transient cloud servers, and present \sysname, a software framework for running scientific applications at low cost on the cloud.
-%
-\sysname's design is guided by our observation that most  scientific computing applications (such as simulations) are deployed as ``bag'' of jobs, which represent multiple instantiations of the same computation with different physical and computational parameters.
-%
-Treating bags of jobs as a unit of execution enables simple and powerful policies for optimizing the cost, makespan, and ease of deployment.
-%
-\sysname uses Google Cloud Preemptible VMs, and provides the first empirical and analytical model for their preemptions.
-%
-\sysname reduces costs by $5\times$ compared to conventional cloud deployments, and makespans by up to $10\times$ compared to conventional HPC clusters.
+In this paper, we develop techniques for modeling and mitigating preemptions of transient cloud servers, and present SciSpot, a software framework for running scientific applications at low cost on the cloud.
+SciSpot's design is guided by our observation that most  scientific computing applications (such as simulations) are deployed as ``bag'' of jobs, which represent multiple instantiations of the same computation with different physical and computational parameters.
+Treating bags of jobs as a unit of execution enables simple and powerful policies for optimizing the cost, makespan, and ease of deployment. 
+SciSpot uses Google Cloud Preemptible VMs, and provides the first empirical and analytical model for their preemptions. 
+SciSpot reduces costs by $5\times$ compared to conventional cloud deployments, and makespans by up to $10\times$ compared to conventional HPC clusters.
 
 
 

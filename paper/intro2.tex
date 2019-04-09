@@ -64,17 +64,17 @@ While systems and techniques for mitigating transient server preemptions have re
 %Thus, while recently developed transiency mitigation techniques such as
 For a bag of jobs, it is not necessary, or sufficient, to execute an individual job in timely manner---instead, we could selectively restart failed jobs in order to complete the necessary, desired subset of jobs in a bag.
 Thus, while recently developed techniques such as transiency-aware checkpointing~\cite{marathe2014exploiting, flint}
-and diversification~\cite{exosphere, spotweb} can indeed mitigate the effect of preemptions on application performance, these techniques do not yield sufficient  suitable for the bags of jobs execution model. 
+and diversification~\cite{exosphere, spotweb} can indeed mitigate the effect of preemptions on \emph{single} jobs, these techniques are not suitable for the bags of jobs execution model. 
 
 
 %
 Furthermore, treating the bag of jobs as a fundamental unit of computation allows us to select the ``best'' server configuration for a given application, by exploring different servers for initial jobs and running the remainder of the jobs on the optimal server configuration. 
-Unlike prior work on transient computing that assumes that the optimal resource allocation for an application is known apriori, \sysname can find the optimal allocation in an online manner. 
+Unlike prior work that assumes that the optimal resource allocation for an application is known apriori, \sysname can find the optimal allocation in an online manner. 
 Finally, \sysname runs applications on Google Cloud Preemptible VMs, and we develop the \emph{first} empirical and analytical models for understanding and characterizing their preemption dynamics, which informs our bags of jobs policies. 
 %%
 We implement these policies as part of the \sysname framework, and make the following contributions:
 \begin{enumerate}[leftmargin=12pt]
-\item In order to select the optimal VM for an application, from the plethora of choices offered by cloud providers, we develop a transient VM selection policy that minimizes the cost of running applications. Our search based policy selects a transient server type based on it's cost, parallel speedup, and probability of preemption. 
+\item In order to select the optimal VM for an application, from the plethora of choices offered by cloud providers, we develop a transient VM selection policy that minimizes the cost of running applications. Our search based policy selects a transient VM based on it's cost, parallel speedup, and probability of preemption. 
 
 % Yeah the "not spot" point below may need clarification before contribs
   
@@ -82,7 +82,7 @@ We implement these policies as part of the \sysname framework, and make the foll
 
 % WTF is even partial redundancy? 
   
-\item We implement all our policies as part of a new framework,\sysname, and evaluate the cost and performance of different representative scientific computing  applications on the Google Cloud Platform. Compared to conventional cloud deployments, \sysname can reduce costs of running bags of jobs by more than $5\times$, and even when compared to dedicated HPC clusters, can reduce the total turnaround time by an order of magnitude. 
+\item We implement all our policies as part of a new framework, \sysname, and evaluate the cost and performance of different representative scientific computing  applications on the Google Cloud Platform. Compared to conventional cloud deployments, \sysname can reduce costs of running bags of jobs by more than $5\times$, and even when compared to dedicated HPC clusters, can reduce the total turnaround time by an order of magnitude. 
 
 %\item Finally, ease of use and extensibility are one of the ``first principles'' in the design of \sysname, and we present the design and implementation of the system components and present case studies of how  scientific applications such as molecular dynamics simulations can be easily deployed on transient cloud VMs. 
 \end{enumerate}
