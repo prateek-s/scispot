@@ -27,12 +27,13 @@ set style line 15 linecolor rgb 'cyan' linetype 3 linewidth 1 pointtype 6 points
 set style line 16 linecolor rgb 'magenta' linetype 2 linewidth 1 pointtype 6 pointsize 1
 
 #for figures in scispot
-set style line 10 linecolor rgb 'brown' linetype 1 linewidth 1 pointtype 2 pointsize 1 #for data
-set style line 1 linecolor rgb 'red' linetype 2 linewidth 1 pointtype 6 pointsize 1
+set style line 10 linecolor rgb 'red' linetype 1 linewidth 1 pointtype 6 pointsize 1 #for data
+set style line 1 linecolor rgb 'brown' linetype 2 linewidth 2 pointtype 6 pointsize 1
+set style line 3 linecolor rgb 'blue' linetype 4 linewidth 2 pointtype 6 pointsize 1
+set style line 5 linecolor rgb 'black' linetype 1 linewidth 2 pointtype 6  pointsize 1
+
 set style line 2 linecolor rgb 'green' linetype 3 linewidth 1 pointtype 6  pointsize 1
-set style line 3 linecolor rgb 'blue' linetype 4 linewidth 1 pointtype 6 pointsize 1
 set style line 4 linecolor rgb 'orange' linetype 5 linewidth 1 pointtype 6 pointsize 1
-set style line 5 linecolor rgb 'black' linetype 1 linewidth 1 pointtype 6  pointsize 1
 set style line 6 linecolor rgb 'magenta' linetype 1 linewidth 1 pointtype 6  pointsize 1
 set style line 7 linecolor rgb 'brown' linetype 1 linewidth 1 pointtype 6  pointsize 1
 set style line 8 linecolor rgb 'purple' linetype 1 linewidth 1 pointtype 6  pointsize 1
@@ -87,88 +88,88 @@ print "set", set1, "   ", pf2lambda, "  ", pf2k
 print "pastf2(0) ", pastf2(0)
 
 ### new crevecouer+SKJ (4 param)
-cf5k = 1
-cf5beta = 0.1
-cf5alpha = 0.1
-cf5b = 1
+#cf5k = 1
+#cf5beta = 0.1
+#cf5alpha = 0.1
+#cf5b = 1
 
-cf5(x) = cf5k * (x**cf5beta) * exp(cf5alpha*(x**cf5b))
-fit cf5(x) 'data.out' u 1:2 via cf5k, cf5beta, cf5alpha, cf5b
+#cf5(x) = cf5k * (x**cf5beta) * exp(cf5alpha*(x**cf5b))
+#fit cf5(x) 'data.out' u 1:2 via cf5k, cf5beta, cf5alpha, cf5b
 
-dcf5(x) = cf5k * cf5beta * (x**(cf5beta-1)) * exp(cf5alpha*(x**cf5b)) * (1 + (cf5alpha*cf5b/cf5beta)* (x**cf5b))
+#dcf5(x) = cf5k * cf5beta * (x**(cf5beta-1)) * exp(cf5alpha*(x**cf5b)) * (1 + (cf5alpha*cf5b/cf5beta)* (x**cf5b))
 
-print "Crevecoeur + SKJ params"
-print "set", set1, "   ", cf5k, "  ", cf5beta, "  ", cf5alpha, cf5b
-print "cf5(0)", cf5(0)
+#print "Crevecoeur + SKJ params"
+#print "set", set1, "   ", cf5k, "  ", cf5beta, "  ", cf5alpha, cf5b
+#print "cf5(0)", cf5(0)
 
 ### new bath-tub inspired crevecouer (3 param)
-cf4k = 1
-cf4beta = 0.1
-cf4alpha = 0.1
+#cf4k = 1
+#cf4beta = 0.1
+#cf4alpha = 0.1
 
-cf4(x) = cf4k * (x**cf4beta) * exp(cf4alpha*x)
-fit cf4(x) 'data.out' u 1:2 via cf4k, cf4beta, cf4alpha
+#cf4(x) = cf4k * (x**cf4beta) * exp(cf4alpha*x)
+#fit cf4(x) 'data.out' u 1:2 via cf4k, cf4beta, cf4alpha
 
-dcf4(x) = cf4k * cf4beta * (x**(cf4beta-1)) * exp(cf4alpha*x) * (1 + cf4alpha*x/cf4beta)
+#dcf4(x) = cf4k * cf4beta * (x**(cf4beta-1)) * exp(cf4alpha*x) * (1 + cf4alpha*x/cf4beta)
 
-print "Crevecoeur fn params"
-print "set", set1, "   ", cf4k, "  ", cf4beta, "  ", cf4alpha
-print "cf4(0)", cf4(0)
+#print "Crevecoeur fn params"
+#print "set", set1, "   ", cf4k, "  ", cf4beta, "  ", cf4alpha
+#print "cf4(0)", cf4(0)
 
 ## for analysis
 
-set autoscale x
-set autoscale y
-set output 'fig-cdf-time.eps'
-set key vertical width 2 maxrows 10
-set key top left
-#set key at 1e4,165
-#set key samplen 2
-set key spacing 3
-set key font 'Helvetica, 18'
-set xtics font "Helvetica, 18"
-set ytics font "Helvetica, 18"
-set xtics offset 0,0
-set ytics offset 0,0
-set xlabel 'Time to Preemption (Hours)' font 'Helvetica,20'
-set ylabel 'CDF' font 'Helvetica,20'
-set xlabel offset 0,0
-set ylabel offset 0,0
-set xrange [0:25]
-set yrange [0:1.2]
-plot \
-'data.out' u 1:2 every 1 t 'data' with p ls 10, \
-f6(x) t 'Proposed Analytical Model' ls 5, \
-pastf1(x) t 'Classical Exponential' ls 1, \
-pastf2(x) t 'Classical Weibull' ls 2, \
-cf4(x) t 'Bathtub-shaped failure rate model (Crevecoeur)' ls 3, \
-cf5(x) t 'Crevecoeur+SKJ' ls 4
+#set autoscale x
+#set autoscale y
+#set output 'fig-cdf-time.eps'
+#set key vertical width 2 maxrows 10
+#set key top left
+##set key at 1e4,165
+##set key samplen 2
+#set key spacing 3
+#set key font 'Helvetica, 18'
+#set xtics font "Helvetica, 18"
+#set ytics font "Helvetica, 18"
+#set xtics offset 0,0
+#set ytics offset 0,0
+#set xlabel 'Time to Preemption (Hours)' font 'Helvetica,20'
+#set ylabel 'CDF' font 'Helvetica,20'
+#set xlabel offset 0,0
+#set ylabel offset 0,0
+#set xrange [0:25]
+#set yrange [0:1.2]
+#plot \
+#'data.out' u 1:2 every 1 t 'data' with p ls 10, \
+#f6(x) t 'Proposed Analytical Model' ls 5, \
+#pastf1(x) t 'Classical Exponential' ls 1, \
+#pastf2(x) t 'Classical Weibull' ls 2, \
+#cf4(x) t 'Bathtub-shaped failure rate model (Crevecoeur)' ls 3, \
+#cf5(x) t 'Crevecoeur+SKJ' ls 4
 
-set autoscale x
-set autoscale y
-set output 'fig-prob-time.eps'
-set key vertical width 2 maxrows 10
-set key top left
-#set key at 1e4,165
-#set key samplen 2
-set key spacing 3
-set key font 'Helvetica, 18'
-set xtics font "Helvetica, 18"
-set ytics font "Helvetica, 18"
-set xtics offset 0,0
-set ytics offset 0,0
-set xlabel 'Time to Preemption (Hours)' font 'Helvetica,20'
-set ylabel 'Probability' font 'Helvetica,20'
-set xlabel offset 0,0
-set ylabel offset 0,0
-set xrange [0:25]
-set yrange [0:1]
-plot \
-df6(x) t 'Proposed Analytical Model' ls 5, \
-dpastf1(x) t 'Classical Exponential' ls 1, \
-dpastf2(x) t 'Classical Weibull' ls 2, \
-dcf4(x) t 'Bathtub-shaped failure rate model (Crevecoeur)' ls 3, \
-dcf5(x) t 'Crevecoeur+SKJ' ls 4
+#set autoscale x
+#set autoscale y
+#set output 'fig-prob-time.eps'
+#set key vertical width 2 maxrows 10
+#set key top left
+##set key at 1e4,165
+##set key samplen 2
+#set key spacing 3
+#set key font 'Helvetica, 18'
+#set xtics font "Helvetica, 18"
+#set ytics font "Helvetica, 18"
+#set xtics offset 0,0
+#set ytics offset 0,0
+#set xlabel 'Time to Preemption (Hours)' font 'Helvetica,20'
+#set ylabel 'Probability' font 'Helvetica,20'
+#set xlabel offset 0,0
+#set ylabel offset 0,0
+#set xrange [0:25]
+#set yrange [0:1]
+#plot \
+#df6(x) t 'Proposed Analytical Model' ls 5, \
+#dpastf1(x) t 'Classical Exponential' ls 1, \
+#dpastf2(x) t 'Classical Weibull' ls 2, \
+#dcf4(x) t 'Bathtub-shaped failure rate model (Crevecoeur)' ls 3, \
+#dcf5(x) t 'Crevecoeur+SKJ' ls 4
 
 ## for paper
 
@@ -195,7 +196,7 @@ plot \
 'data.out' u 1:2 every 1 t 'data' with p ls 10, \
 f6(x) t 'Proposed Model' ls 5, \
 pastf1(x) t 'Classical Exponential' ls 1, \
-pastf2(x) t 'Classical Weibull' ls 2
+pastf2(x) t 'Classical Weibull' ls 3
 
 set autoscale x
 set autoscale y
@@ -217,9 +218,63 @@ set ylabel offset 0,0
 set xrange [0:25]
 set yrange [0:1]
 plot \
-df6(x) t 'Proposed Analytical Model' ls 5, \
+df6(x) t 'Proposed Model' ls 5, \
 dpastf1(x) t 'Classical Exponential' ls 1, \
-dpastf2(x) t 'Classical Weibull' ls 2
+dpastf2(x) t 'Classical Weibull' ls 3
+
+set autoscale x
+set autoscale y
+set output 'scispot-fig-cdf-prob-inset-time.eps'
+set multiplot
+set origin 0,0
+set size 1,1
+set key vertical width 2 maxrows 10
+set key bottom right
+#set key at 1e4,165
+#set key samplen 2
+set key spacing 3
+set key font 'Helvetica, 18'
+set xtics font "Helvetica, 18"
+set ytics font "Helvetica, 18"
+set xtics offset 0,0
+set ytics offset 0,0
+set xlabel 'Time to Preemption (Hours)' font 'Helvetica,20'
+set ylabel 'CDF' font 'Helvetica,20'
+set xlabel offset 0,0
+set ylabel offset 0,0
+set xrange [0:25]
+set yrange [0:1.1]
+plot \
+'data.out' u 1:2 every 1 t 'Empirical Data' with p ls 10, \
+f6(x) t 'Proposed Model' ls 5, \
+pastf1(x) t 'Classical Exponential' ls 1, \
+pastf2(x) t 'Classical Weibull' ls 3
+#inset
+set origin 0.11,0.565
+set size 0.45, 0.42
+set border linewidth 0.5
+set autoscale x
+set autoscale y
+unset key
+set xtics font "Helvetica, 14"
+set ytics font "Helvetica, 14"
+set xtics offset 0,0
+set ytics offset 0,0
+set xlabel 'Time to Preemption (Hours)' font 'Helvetica,20'
+unset xlabel
+set ylabel 'Probability' font 'Helvetica,14'
+set xlabel offset 0,0
+set ylabel offset 2,0
+set xrange [0:25]
+set yrange [0:1]
+plot \
+df6(x) notitle ls 5, \
+dpastf1(x) notitle ls 1, \
+dpastf2(x) notitle ls 3
+unset multiplot
+set origin 0,0
+set size 1,1
+set border linewidth 1
 
 exit
 
