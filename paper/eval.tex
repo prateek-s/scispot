@@ -58,7 +58,7 @@ Figure~\ref{fig:runtimes-bar} shows the running times of the Nanoconfinement and
 In all cases, the total number of CPUs per job is set to 64, and thus the different VM sizes yield different cluster sizes (e.g., 16 VMs with 4 CPUs or 32 VMs with 2 CPUs).
 
 
-For the Nanoconfinement application, we observe that the the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
+For the Nanoconfinement application, we observe that the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
 The running time on the ``best'' VM (i.e., with 32 CPUs) is nearly 40\% lower as compared to the worst case. 
 On the other hand, the Shapes application can scale to a larger number of VMs without any significant communication overheads, and does not see any significant change in its running time.
 
@@ -120,7 +120,7 @@ We analyze the waiting time of over two million jobs submitted over a 5 year per
 \end{figure}
 
 
-We define the overhead as the increase in running time which is equal to the turnaround time (that is the time between the user submitting the job and getting the results back) divided by the base job running time (with no waiting or premptions). 
+We define the overhead as the increase in running time which is equal to the turnaround time (i.e., the time between the job submission and successful completion) divided by the base job running time (with no waiting or premptions). 
 %In HPC clusters, the overhead is the waiting time for resources, and in \sysname the overhead is the recomputation time due to preemptions.
 Figure~\ref{fig:hpc-vs-scispot} compares the overhead (as percentage increase in running time) of \sysname and HPC clusters  for jobs of different lengths. We see that the average performance overhead due to waiting can be significant in the case of HPC clusters, and the job submission latency and queuing time dominate for smaller jobs, increasing their total turnaround time by more $2.5\times$.
 This waiting is amortized in the case of longer running jobs, and the overhead drops off for longer jobs, to around 30\%.
@@ -138,7 +138,7 @@ We note that these large single jobs are rare, and for smaller jobs (within a mu
 \subsection{SciSpot Scaling}
 
 We now turn our attention to \sysname's scaling properties. We are primarily interested in observing the behavior of running bags of jobs of different applications with different resource requirements.
-In all cases unless other wise stated, we run bags of 36 jobs, and impose that 90\% of all jobs complete (thus we target a completion of 32 jobs).
+In all cases unless otherwise stated, we run bags of 36 jobs, and impose that 90\% of all jobs complete (thus we target a completion of 32 jobs).
 The jobs in the bags are for exploring the different parameters (i.e., doing a parameter sweep), using \sysname's automated parameter sweeping functionality described in Section~\ref{sec:impl}. For reference, the distribution of running times for the different applications is shown in Figure~\ref{fig:XXX}. 
 In the rest of this section, we evaluate \sysname when the size of the cluster, the number of preemptions, and the number of jobs in the bag are increased. 
 
@@ -152,8 +152,8 @@ In the rest of this section, we evaluate \sysname when the size of the cluster, 
     \vspace*{\myfigspace}
 \end{figure}
 
-It is common to deploy scientific applications on large clusters, and we evaluate \sysname on different cluster sizes in Figure~\ref{fig:vm-per-job-scaling}.
-The figure shows the total running time of the bag of jobs for the NC and Shapes applications as the total number of VMs (and hence total number of CPUs) increases.
+It is common to deploy scientific computing applications on large clusters, and we evaluate \sysname on different cluster sizes in Figure~\ref{fig:vm-per-job-scaling}.
+The figure shows the total running time of the bag of jobs for the Nanoconfinement and Shapes applications as the total number of VMs (and hence total number of CPUs) increases.
 For this experiment, we used \texttt{n1-highcpu-32} VMs with 32 CPUs each, and we ran four jobs in parallel on the entire cluster. 
 We see classic scaling behavior: both applications can scale to a higher number of VMs up to a point, after which communication overhead starts to dominate, and the performance saturates and we see no reduction in running time. 
 
@@ -179,8 +179,8 @@ For both the NC and Shapes application, we see up to $6\times$ reduction in the 
 
 We now evaluate \sysname's behavior when running larger bags of jobs.
 Table~\ref{tab:100-jobs} shows the total running time of bags of 32 and 100 jobs.
-Since \sysname reuses VMs when running jobs from a bag, it is able to take advantage of the relatively low preemption rates of VMs once they pass the first phase of early failures (Figure~\ref{fig:cdf}), and thus minimizes the number of preemptions and thus job failures. 
-This makes \sysname particularly suitable for running the large bags of jobs that are required when using machine learning techniques for HPC workloads~\cite{}, since the training and testing data needed for statistical machine learning can be generated through \sysname's bag of jobs execution model. 
+Since \sysname reuses VMs when running jobs from a bag, it is able to take advantage of the relatively low preemption rates of VMs once they pass the first phase of early failures (Figure~\ref{fig:cdf}), and thus minimizes the number of preemptions as well as job failures. 
+This makes \sysname particularly suitable for running the large bags of jobs that are required when using machine learning techniques for HPC workloads, an emerging research area in many science and engineering disciplines~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs1,jcs2,fox2019learning}, since the training and testing data needed for statistical machine learning can be generated through \sysname's bag of jobs execution model. 
 
 
 %32_2_4 
@@ -209,7 +209,7 @@ This makes \sysname particularly suitable for running the large bags of jobs tha
 
 By reusing VMs across a bag of jobs and taking advantage of the low preemption rates during the middle of the 24 hour life of the preemptible VMs, the \emph{expected} job failure rates and recomputation times are fairly small with \sysname (as shown in Figures~\ref{fig:runtimes-bar},~\ref{fig:hpc-vs-scispot}).
 However, preemption rates can increase when the cloud operator sees high demand for resources.
-Figure~\ref{fig:fails-time} shows the running time of the bag of 32 NC jobs on a cluster of 4 \texttt{n1-highcpu-32} VMs, when different number of VMs are preempted. 
+Figure~\ref{fig:fails-time} shows the running time of the bag of 32 Nanoconfinement jobs on a cluster of 4 \texttt{n1-highcpu-32} VMs, when different number of VMs are preempted. 
 
 We see that even with a high number of preemptions, the running time only increases by 50\%. 
 We note that a higher than expected preemption rate (as shown in the figure) is rare, and happens with a vanishingly small likelihood. 
