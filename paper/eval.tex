@@ -1,3 +1,4 @@
+\vspace*{\subsecspace}
 \section{Experimental Evaluation}
 \label{sec:eval}
 
@@ -15,21 +16,21 @@ Our evaluation consists of empirical analysis of the different scientific comput
 %\begin{description}
   %TODO: Need MAX two sentence descriptions
 
-\textbf{Nanoconfinement.}
+\noindent \textbf{Nanoconfinement.}
 The nanoconfiment application launches molecular dynamics (MD) simulations of ions in nanoscale confinement created by material surfaces \cite{jyto,kadupitiya2017}.
 
-\textbf{Shapes.} The Shapes application runs an MD-based optimization dynamics to predict the optimal shape of deformable, charged nanoparticles \cite{jto1,jjzo1}. 
+\noindent \textbf{Shapes.} The Shapes application runs an MD-based optimization dynamics to predict the optimal shape of deformable, charged nanoparticles \cite{jto1,jjzo1}. 
 
-\textbf{LULESH.} Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH) code is a popular code to for hydrodynamics simulations of continuum material models \cite{IPDPS13:LULESH,LULESH2:changes}. 
+\noindent \textbf{LULESH.} Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH) code is a popular code to for hydrodynamics simulations of continuum material models \cite{IPDPS13:LULESH,LULESH2:changes}. 
 %\end{description}
 %\vspace*{\tightext}
 
-These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering. These three examples are implemented as parallel programs that use OpenMP and MPI parallel computing techniques. The first two are used in nanoscale materials research \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto} and the last application is a widely used benchmark \cite{IPDPS13:LULESH,LULESH2:changes}.
-
+These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering. These three examples are implemented as parallel programs that use OpenMP and MPI parallel computing techniques. The first two are used in nanoscale materials research \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto} and the LULESH is a widely used benchmark \cite{IPDPS13:LULESH,LULESH2:changes}. All applications are run with default parameters unless otherwise stated. 
 All applications use OpenMPI, are deployed on Slurm vXXX and 64-bit Ubuntu 18.04, and run on Google Cloud VMs with x86-64 Intel Broadwell CPUs. 
 %Networking? 
 
 
+\vspace*{\subsecspace}
 \subsection{SciSpot Performance and Cost}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -48,6 +49,7 @@ With preemptible instances, the total running time of a job is composed of two f
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/runtime-bars.pdf}
+      \vspace*{\myfigspace}
   \caption{Running times of applications on different VMs. The total number of CPUs is 64, yielding different number of VMs in each case. We see different tradeoffs in the base running times and recomputation costs for the different applications.}
   \label{fig:runtimes-bar}
     \vspace*{\myfigspace}
@@ -77,6 +79,7 @@ By considering \emph{both} these factors, \sysname's server selection policy can
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/cost-only-bar.pdf}
+  \vspace*{\myfigspace}
   \caption{SciSpot's use of preemptible VMs can reduce costs by up to $5\times$ compared to conventional cloud deployments.}
   \label{fig:cost-only-bar}
     \vspace*{\myfigspace}
@@ -114,6 +117,7 @@ We analyze the waiting time of over two million jobs submitted over a 5 year per
 \begin{figure}[t]
   \centering 
   \includegraphics[width=0.4\textwidth]{../graphs/hpc-vs-scispot.pdf}
+      \vspace*{\myfigspace}
   \caption{Increase in running time due to waiting/queuing on HPC clusters is significantly higher than the recomputation time for \sysname, especially for shorter jobs. }
   \label{fig:hpc-vs-scispot}
   \vspace*{\myfigspace}
@@ -153,6 +157,7 @@ In the rest of this section, we evaluate \sysname when the size of the cluster, 
 
 \begin{figure}
   \includegraphics[width=0.4\textwidth]{../graphs/vm-per-job-scaling.pdf}
+      \vspace*{\myfigspace}
   \caption{Bag of jobs running times exhibits classic parallel scaling behavior---performance improves until reaching a saturation point.}
   \label{fig:vm-per-job-scaling}
     \vspace*{\myfigspace}
@@ -165,7 +170,8 @@ We see classic scaling behavior: both applications can scale to a higher number 
 
 
 \begin{figure}
-  \includegraphics[width=0.3\textwidth]{../graphs/par-scaling.pdf}
+  \includegraphics[width=0.2\textwidth]{../graphs/par-scaling.pdf}
+      \vspace*{\myfigspace}
   \caption{\sysname can alleviate poor scaling by running more jobs in parallel and thus decreasing the intra-job parallelism (and hence number of CPUs per job, as shown in the figure).}
   \label{fig:par-scaling}
     \vspace*{\myfigspace}
@@ -224,6 +230,7 @@ This shows that \sysname is robust and can provide acceptable performance even u
 \begin{figure}[t]
   \centering 
   \includegraphics[width=0.4\textwidth]{../graphs/confin-fails-vs-time-relative.pdf}
+      \vspace*{\myfigspace}
   \caption{The increase in running time due to preemptions is under 50\%, even when the number of preemptions is high.}
   \label{fig:fails-time}
 \end{figure}

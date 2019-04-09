@@ -118,21 +118,18 @@ Since jobs have to be rerun when they fail due to preemptions, we define the rec
   \label{eq:recomput}
    E[\text{Recomputation Time}] = \frac{1}{2}*P(\text{at least one preemption})* T_{( i,n_i )}   
  \end{equation}
-Our expression of the recomputation time assumes jobs will fail at the half-way mark on average, as is frequently assumed and observed~\cite{young-daly, bougeret}. 
+Our expression of the recomputation time assumes jobs will fail at the half-way mark on average, as is frequently assumed and observed~\cite{daly2006higher, bougeret_checkpointing_2011}. 
 
 The probability that at least one VM out of $n_i$ will be preempted during the job execution can be expressed as:
-
 \begin{align}
   \label{eq:pfail1}
   P(\text{at least one preemption}) &= 1-P(\text{no preemptions}) \\
-                                 &= 1-\left(1-P\left(i, t\right)\right)^{n_i} \\
-                                 &= 1-\left(1-\dfrac{T_{( i,n_i )}}{E[L_i]}\right)^{n_i}      
+                                 &= 1-\left(1-P\left(i, t\right)\right)^{n_i}
 \end{align}
 
 Here, $P(i, t)$ denotes the probability of a preemption of a VM of type $i$ when a job of duration $t$ runs on it. 
 %
-It depends on the type of server, and we use historically determined failure distributions.
-In the expectation, it is given by:
+It depends on the type of server, and its associated expected lifetime, and is defined as:
 \begin{equation}
   \label{eq:pi}
   P(i, t) = min\left(\dfrac{t}{E[L_i]}, 1\right)
@@ -150,7 +147,7 @@ Using Equations~\ref{eq:turnaround},\ref{eq:recomput}, and \ref{eq:pfail1}, the 
   E[C_{( i,n_i )}] = \frac{1}{2}n_i c_i T_{( i,n_i )}\left(3 - \left(1-\dfrac{T_{( i,n_i )}}{E[L_i]}\right)^{n_i}\right)
 \end{equation}
 
-Equation \ref{eq:ecfinal} shows that the expected cost $E[C]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$). \vj{there are some limiting conditions here that we should discuss to make sure this is correct}
+Equation \ref{eq:ecfinal} shows that the expected cost $E[C]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
 %
 Thus, if we select VMs of smaller size, we will require more of them (higher $n_i$), and this cluster configuration will have a larger probability of failure and thus higher running times and costs.
 However, there is a tradeoff: selecting larger VMs results in smaller $n_i$, but larger VMs have higher preemption probability, as we have seen in Section~\ref{subsec:types-dynamics}. 
@@ -168,7 +165,7 @@ Furthermore, a large cluster of small servers is suboptimal for most application
 
 
 %\sysname launches clusters of preemptible VMs during the exploration phase. 
-
+\vspace*{\subsecspace}
 \subsection{Scheduling a Bag of Jobs}
 
 
@@ -176,17 +173,24 @@ Once the right cluster configuration for a job has been determined, \sysname the
 A bag of jobs is determined by the total number of jobs in the bag, associated parameters for each job, and the minimum number of jobs that must be successfully executed.  
 Given these parameters as input, \sysname then creates a cluster by launching preemptible VMs and starts scheduling the different jobs in a bag.
 
-\sysname also allows users to specify a deadline for bag completion, which we use to compute the number of jobs to execute in parallel. If the deadline specified is $D$, then the number of parallel jobs is $k=(D/m)\times E[T]$.\vj{what is m?} Thus if the exploration phase recommends $n_i$ VMs, then we launch a cluster of $k\times n_i$ VMs, with each job executing on $n_i$ VMs. 
+\sysname also allows users to specify a deadline for bag completion, which we use to compute the number of jobs to execute in parallel.
+If the deadline specified is $D$, then the number of parallel jobs is $k=(D/m)\times E[\mathcal{T}]$.
+\vj{what is m?}
+Thus if the exploration phase recommends $n_i$ VMs, then we launch a cluster of $k\times n_i$ VMs, with each job executing on $n_i$ VMs. 
 For this calculation, we assume that the running time of different jobs in a bag will largely be similar, but this is not a correctness requirement.
 Thus because of the stochasticity in job running times and VM lifetimes, \sysname only meets the deadline in a ``best effort'' manner, and does not guarantee strict makespan constraints. 
 
 Upon job completion, the next job in the bag is run. 
 When a job fails due to VM preemption, \sysname replenishes the cluster by launching replacement VM's and resubmits the job. 
-Jobs are restarted from a checkpoint if available.
+Jobs are restarted from a checkpoint if available. 
 We do not restart failed jobs as long as we can complete the minimum number of jobs in the bag.
 Due to high demand, preemptible VM's of the chosen type may not be available.
 In such cases, \sysname runs in a ``degraded'' mode---jobs are either run on a smaller number of VMs, or are run on VMs of a different size that are available but may have suboptimal cost.  
 
+
+\noindent \textbf{Checkpointing Policy.} Our analytical model for preemptions also permits advanced, non-periodic policies for the checkpointing interval.
+The classic Young-Daly periodic checkpointing interval~\cite{daly2006higher} is only applicable when failures follow an exponential distribution, which we have shown not to be true in the case of Google Preemptible VMs (Figure~\ref{fig:gcp1}).
+We thus develop a dynamic programming based checkpoint scheduling technique that is based on~\cite{bougeret_checkpointing_2011}.  
 
 
 %Jobs in bag can either be explicitly supplied with parameters, or 
@@ -203,7 +207,6 @@ In such cases, \sysname runs in a ``degraded'' mode---jobs are either run on a s
 
   Our server selection policy is empirical and black-box in nature in that we don't assume an application model.
 However due to the bag of jobs execution model, we do not need to special pilot jobs, but the jobs for doing the profiling come from the bag itself.
-
 
 Thus given a desired allocation, \sysname's server selection policies select the ``best'' server type for a given application. 
 
