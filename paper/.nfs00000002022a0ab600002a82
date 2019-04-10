@@ -1,0 +1,264 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{buyya-hpc-survey}
+\citation{spot-documentation}
+\citation{preemptible-documentation}
+\citation{azure-batch}
+\citation{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine,ferguson2017machine,ward2018matminer}
+\citation{spoton,exosphere,flint,marathe2014exploiting}
+\citation{marathe2014exploiting,flint}
+\citation{exosphere,spotweb}
+\@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{borg,resource-central-sosp17}
+\citation{ec2-spot}
+\citation{preemptible-documentation}
+\citation{azure-batch}
+\citation{packet-spot}
+\citation{alibaba-spot}
+\citation{spotcheck,prateek-thesis}
+\citation{flint,marathe2014exploiting,spoton}
+\citation{exosphere}
+\citation{hourglass-eurosys19}
+\citation{jcs1}
+\citation{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs1,jcs2,fox2019learning}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Transient Cloud Computing}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Bag of Jobs in Scientific Computing}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Modeling Preemption Dynamics}{2}{section.3}\protected@file@percent }
+\newlabel{sec:preemption-dynamics}{{3}{2}{Modeling Preemption Dynamics}{section.3}{}}
+\newlabel{sec:preemption-dynamics@cref}{{[section][3][]3}{[1][2][]2}}
+\citation{spotcheck,how-to-bid}
+\citation{prateek-thesis,shastri-thesis}
+\citation{Buyya-prices}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}The need for empirical preemption models}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{subsec:need-for-empirical}{{3.1}{3}{The need for empirical preemption models}{subsection.3.1}{}}
+\newlabel{subsec:need-for-empirical@cref}{{[subsection][1][3]3.1}{[1][2][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Empirical study of premptions in Google Cloud}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces CDF of lifetimes of Google Preemptible Instances. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.\relax }}{3}{figure.caption.3}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:gcp1}{{1}{3}{CDF of lifetimes of Google Preemptible Instances. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.\relax }{figure.caption.3}{}}
+\newlabel{fig:gcp1@cref}{{[figure][1][]1}{[1][3][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Model of constrained preemption dynamics}{3}{subsection.3.3}\protected@file@percent }
+\newlabel{subsec:analytical-model}{{3.3}{3}{Model of constrained preemption dynamics}{subsection.3.3}{}}
+\newlabel{subsec:analytical-model@cref}{{[subsection][3][3]3.3}{[1][3][]3}}
+\citation{mudholkar1993exponentiated,crevecoeur1993model}
+\citation{amazon-ec2-instance-types}
+\citation{gcp-preempt-faq}
+\newlabel{eq:blend1}{{1}{4}{Model of constrained preemption dynamics}{equation.3.1}{}}
+\newlabel{eq:blend1@cref}{{[equation][1][]1}{[1][4][]4}}
+\newlabel{eq:failrate}{{2}{4}{Model of constrained preemption dynamics}{equation.3.2}{}}
+\newlabel{eq:failrate@cref}{{[equation][2][]2}{[1][4][]4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The preemption characteristics of different VM types. Larger VMs are more likely to be preempted.\relax }}{4}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:cdf-comparison}{{2}{4}{The preemption characteristics of different VM types. Larger VMs are more likely to be preempted.\relax }{figure.caption.4}{}}
+\newlabel{fig:cdf-comparison@cref}{{[figure][2][]2}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Preemption dynamics of VMs of different types}{4}{subsection.3.4}\protected@file@percent }
+\newlabel{subsec:types-dynamics}{{3.4}{4}{Preemption dynamics of VMs of different types}{subsection.3.4}{}}
+\newlabel{subsec:types-dynamics@cref}{{[subsection][4][3]3.4}{[1][4][]4}}
+\citation{slurm}
+\citation{torque}
+\citation{amazon-ec2-instance-types}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces SciSpot architecture and system components.\relax }}{5}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:arch}{{3}{5}{SciSpot architecture and system components.\relax }{figure.caption.5}{}}
+\newlabel{fig:arch@cref}{{[figure][3][]3}{[1][5][]5}}
+\newlabel{eq:expected-lifetime}{{3}{5}{Preemption dynamics of VMs of different types}{equation.3.3}{}}
+\newlabel{eq:expected-lifetime@cref}{{[equation][3][]3}{[1][4][]5}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}SciSpot Design}{5}{section.4}\protected@file@percent }
+\newlabel{sec:design}{{4}{5}{SciSpot Design}{section.4}{}}
+\newlabel{sec:design@cref}{{[section][4][]4}{[1][5][]5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Server Selection}{5}{subsection.4.1}\protected@file@percent }
+\newlabel{subsec:server-selection}{{4.1}{5}{Server Selection}{subsection.4.1}{}}
+\newlabel{subsec:server-selection@cref}{{[subsection][1][4]4.1}{[1][5][]5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Why Server Selection is Necessary}{5}{subsubsection.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Server Selection Policy}{5}{subsubsection.4.1.2}\protected@file@percent }
+\citation{daly2006higher,bougeret_checkpointing_2011}
+\citation{dmtcp}
+\citation{daly2006higher}
+\citation{bougeret_checkpointing_2011}
+\newlabel{subsec:cost-model}{{4.1.3}{6}{Server Cost Model}{subsubsection.4.1.3}{}}
+\newlabel{subsec:cost-model@cref}{{[subsubsection][3][4,1]4.1.3}{[1][6][]6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Server Cost Model}{6}{subsubsection.4.1.3}\protected@file@percent }
+\newlabel{eq:e-cost}{{4}{6}{Server Cost Model}{equation.4.4}{}}
+\newlabel{eq:e-cost@cref}{{[equation][4][]4}{[1][6][]6}}
+\newlabel{eq:turnaround}{{5}{6}{Server Cost Model}{equation.4.5}{}}
+\newlabel{eq:turnaround@cref}{{[equation][5][]5}{[1][6][]6}}
+\newlabel{eq:recomput}{{6}{6}{Server Cost Model}{equation.4.6}{}}
+\newlabel{eq:recomput@cref}{{[equation][6][]6}{[1][6][]6}}
+\newlabel{eq:pfail1}{{7}{6}{Server Cost Model}{equation.4.7}{}}
+\newlabel{eq:pfail1@cref}{{[equation][7][]7}{[1][6][]6}}
+\newlabel{eq:pi}{{9}{6}{Server Cost Model}{equation.4.9}{}}
+\newlabel{eq:pi@cref}{{[equation][9][]9}{[1][6][]6}}
+\newlabel{eq:ecfinal}{{10}{6}{Server Cost Model}{equation.4.10}{}}
+\newlabel{eq:ecfinal@cref}{{[equation][10][]10}{[1][6][]6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Scheduling a Bag of Jobs}{6}{subsection.4.2}\protected@file@percent }
+\citation{gcp}
+\citation{gcloud-api}
+\citation{jyto,kadupitiya2017}
+\citation{jto1,jjzo1}
+\citation{IPDPS13:LULESH,LULESH2:changes}
+\citation{jso1,jso2,solis2013generating,jjzo1,jto1,jyto}
+\citation{IPDPS13:LULESH,LULESH2:changes}
+\citation{iosup_performance_2011,zhai_cloud_2011,marathe2013comparative,galante_analysis_2016,benedictis_cloud-aware_2014}
+\@writefile{toc}{\contentsline {section}{\numberline {5}SciSpot Implementation}{7}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Experimental Evaluation}{7}{section.6}\protected@file@percent }
+\newlabel{sec:eval}{{6}{7}{Experimental Evaluation}{section.6}{}}
+\newlabel{sec:eval@cref}{{[section][6][]6}{[1][7][]7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}SciSpot Performance and Cost}{7}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.1}Impact of server exploration}{7}{subsubsection.6.1.1}\protected@file@percent }
+\citation{dongarra-ckpting}
+\citation{borg}
+\citation{cmu-atlas}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Running times of applications on different VMs. The total number of CPUs is 64, yielding different number of VMs in each case. We see different tradeoffs in the base running times and recomputation times.\relax }}{8}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:runtimes-bar}{{4}{8}{Running times of applications on different VMs. The total number of CPUs is 64, yielding different number of VMs in each case. We see different tradeoffs in the base running times and recomputation times.\relax }{figure.caption.6}{}}
+\newlabel{fig:runtimes-bar@cref}{{[figure][4][]4}{[1][7][]8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces SciSpot's use of preemptible VMs can reduce costs by up to $5\times $ compared to conventional cloud deployments.\relax }}{8}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:cost-only-bar}{{5}{8}{SciSpot's use of preemptible VMs can reduce costs by up to $5\times $ compared to conventional cloud deployments.\relax }{figure.caption.7}{}}
+\newlabel{fig:cost-only-bar@cref}{{[figure][5][]5}{[1][8][]8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.2}Cost}{8}{figure.caption.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Increase in running time due to waiting on HPC clusters is significantly higher than the recomputation time for SciSpot\xspace  , except for very long and rare jobs (see inset). \relax }}{8}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:hpc-vs-scispot}{{6}{8}{Increase in running time due to waiting on HPC clusters is significantly higher than the recomputation time for \sysname , except for very long and rare jobs (see inset). \relax }{figure.caption.8}{}}
+\newlabel{fig:hpc-vs-scispot@cref}{{[figure][6][]6}{[1][8][]8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.3}Comparison with HPC Overhead}{8}{subsubsection.6.1.3}\protected@file@percent }
+\citation{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs1,jcs2,fox2019learning}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Bag of jobs running times exhibits classic parallel scaling behavior---performance improves until reaching a saturation point.\relax }}{9}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:vm-per-job-scaling}{{7}{9}{Bag of jobs running times exhibits classic parallel scaling behavior---performance improves until reaching a saturation point.\relax }{figure.caption.9}{}}
+\newlabel{fig:vm-per-job-scaling@cref}{{[figure][7][]7}{[1][9][]9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}SciSpot Scaling}{9}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Increasing Cluster Size}{9}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces SciSpot\xspace  can alleviate poor scaling by running more jobs in parallel and thus decreasing the intra-job parallelism (and hence number of CPUs per job, as shown in the figure).\relax }}{9}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:par-scaling}{{8}{9}{\sysname can alleviate poor scaling by running more jobs in parallel and thus decreasing the intra-job parallelism (and hence number of CPUs per job, as shown in the figure).\relax }{figure.caption.10}{}}
+\newlabel{fig:par-scaling@cref}{{[figure][8][]8}{[1][9][]9}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Running times and number of preemptions for bags of different sizes. \relax }}{9}{table.caption.11}\protected@file@percent }
+\newlabel{tab:100-jobs}{{1}{9}{Running times and number of preemptions for bags of different sizes. \relax }{table.caption.11}{}}
+\newlabel{tab:100-jobs@cref}{{[table][1][]1}{[1][9][]9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}Increasing Bag Size}{9}{subsubsection.6.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3}Increasing Preemptions}{9}{subsubsection.6.2.3}\protected@file@percent }
+\citation{iosup_performance_2011,zhai_cloud_2011,marathe2013comparative,galante_analysis_2016,benedictis_cloud-aware_2014}
+\citation{nanohub}
+\citation{gari_learning_2019}
+\citation{varshney_autobot_2019}
+\citation{spotinst}
+\citation{spoton,jain14demand,yi2010reducing,conductor,liu-spot,spot-run,dubois2016optispot}
+\citation{bidding4,mihailescu2012impact,bidding7,bidding1,bidding8,bidding3,bidding6,bid-cloud,bidding5,wolski_probabilistic_2017,guo_bidding_2015}
+\citation{}
+\citation{flint}
+\citation{spotcheck}
+\citation{marathe2014exploiting,gong_monetary_2015,xiang_spotmpi:_2011}
+\citation{dongarra_fault_nodate}
+\citation{Crevecour}
+\citation{spoton}
+\citation{exosphere}
+\citation{alipourfard_cherrypick,yadwadkar_selecting_2017}
+\bibstyle{acm}
+\bibdata{scicloud,bagsjobs,spot-bid}
+\bibcite{}{{1}{}{{}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces The increase in running time due to preemptions is under 50\%, even when the number of preemptions is high.\relax }}{10}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:fails-time}{{9}{10}{The increase in running time due to preemptions is under 50\%, even when the number of preemptions is high.\relax }{figure.caption.12}{}}
+\newlabel{fig:fails-time@cref}{{[figure][9][]9}{[1][10][]10}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Related Work}{10}{section.7}\protected@file@percent }
+\newlabel{sec:related}{{7}{10}{Related Work}{section.7}{}}
+\newlabel{sec:related@cref}{{[section][7][]7}{[1][10][]10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Cloud Computing For Science}{10}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Transient Cloud Computing}{10}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Preemption Mitigation}{10}{subsubsection.7.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Server Selection}{10}{subsubsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{10}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{8}{10}{Conclusion}{section.8}{}}
+\newlabel{sec:conclusion@cref}{{[section][8][]8}{[1][10][]10}}
+\bibcite{alibaba-spot}{{2}{}{{}}{{}}}
+\bibcite{amazon-ec2-instance-types}{{3}{}{{}}{{}}}
+\bibcite{ec2-spot}{{4}{}{{}}{{}}}
+\bibcite{azure-batch}{{5}{}{{}}{{}}}
+\bibcite{gcloud-api}{{6}{}{{}}{{}}}
+\bibcite{gcp}{{7}{}{{}}{{}}}
+\bibcite{preemptible-documentation}{{8}{}{{}}{{}}}
+\bibcite{packet-spot}{{9}{}{{}}{{}}}
+\bibcite{slurm}{{10}{}{{}}{{}}}
+\bibcite{torque}{{11}{}{{}}{{}}}
+\bibcite{spot-documentation}{{12}{}{{}}{{}}}
+\bibcite{spotweb}{{13}{}{{}}{{}}}
+\bibcite{alipourfard_cherrypick}{{14}{}{{}}{{}}}
+\bibcite{cmu-atlas}{{15}{}{{}}{{}}}
+\bibcite{ml.atomic2017}{{16}{}{{}}{{}}}
+\bibcite{benedictis_cloud-aware_2014}{{17}{}{{}}{{}}}
+\bibcite{bougeret_checkpointing_2011}{{18}{}{{}}{{}}}
+\bibcite{melko2017}{{19}{}{{}}{{}}}
+\bibcite{spot-run}{{20}{}{{}}{{}}}
+\bibcite{resource-central-sosp17}{{21}{}{{}}{{}}}
+\bibcite{crevecoeur1993model}{{22}{}{{}}{{}}}
+\bibcite{daly2006higher}{{23}{}{{}}{{}}}
+\bibcite{dongarra_fault_nodate}{{24}{}{{}}{{}}}
+\bibcite{ferguson2017machine}{{25}{}{{}}{{}}}
+\bibcite{fox2019learning}{{26}{}{{}}{{}}}
+\bibcite{galante_analysis_2016}{{27}{}{{}}{{}}}
+\bibcite{gari_learning_2019}{{28}{}{{}}{{}}}
+\bibcite{gong_monetary_2015}{{29}{}{{}}{{}}}
+\bibcite{guo_bidding_2015}{{30}{}{{}}{{}}}
+\bibcite{iosup_performance_2011}{{31}{}{{}}{{}}}
+\bibcite{jso1}{{32}{}{{}}{{}}}
+\bibcite{jso2}{{33}{}{{}}{{}}}
+\bibcite{jto1}{{34}{}{{}}{{}}}
+\bibcite{jyto}{{35}{}{{}}{{}}}
+\bibcite{jain14demand}{{36}{}{{}}{{}}}
+\bibcite{bidding4}{{37}{}{{}}{{}}}
+\bibcite{jjzo1}{{38}{}{{}}{{}}}
+\bibcite{hourglass-eurosys19}{{39}{}{{}}{{}}}
+\bibcite{jcs1}{{40}{}{{}}{{}}}
+\bibcite{jcs2}{{41}{}{{}}{{}}}
+\bibcite{kadupitiya2017}{{42}{}{{}}{{}}}
+\bibcite{IPDPS13:LULESH}{{43}{}{{}}{{}}}
+\bibcite{LULESH2:changes}{{44}{}{{}}{{}}}
+\bibcite{nanohub}{{45}{}{{}}{{}}}
+\bibcite{liu-spot}{{46}{}{{}}{{}}}
+\bibcite{fu2017}{{47}{}{{}}{{}}}
+\bibcite{long2015machine}{{48}{}{{}}{{}}}
+\bibcite{marathe2014exploiting}{{49}{}{{}}{{}}}
+\bibcite{marathe2013comparative}{{50}{}{{}}{{}}}
+\bibcite{mihailescu2012impact}{{51}{}{{}}{{}}}
+\bibcite{mudholkar1993exponentiated}{{52}{}{{}}{{}}}
+\bibcite{buyya-hpc-survey}{{53}{}{{}}{{}}}
+\bibcite{sam2017}{{54}{}{{}}{{}}}
+\bibcite{prateek-thesis}{{55}{}{{}}{{}}}
+\bibcite{flint}{{56}{}{{}}{{}}}
+\bibcite{exosphere}{{57}{}{{}}{{}}}
+\bibcite{spotcheck}{{58}{}{{}}{{}}}
+\bibcite{solis2013generating}{{59}{}{{}}{{}}}
+\bibcite{bidding5}{{60}{}{{}}{{}}}
+\bibcite{spoton}{{61}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{References}{11}{section*.14}\protected@file@percent }
+\bibcite{xiang_spotmpi:_2011}{{62}{}{{}}{{}}}
+\bibcite{bidding7}{{63}{}{{}}{{}}}
+\bibcite{varshney_autobot_2019}{{64}{}{{}}{{}}}
+\bibcite{borg}{{65}{}{{}}{{}}}
+\bibcite{ward2018matminer}{{66}{}{{}}{{}}}
+\bibcite{bidding1}{{67}{}{{}}{{}}}
+\bibcite{wolski_probabilistic_2017}{{68}{}{{}}{{}}}
+\bibcite{bidding8}{{69}{}{{}}{{}}}
+\bibcite{yadwadkar_selecting_2017}{{70}{}{{}}{{}}}
+\bibcite{bidding6}{{71}{}{{}}{{}}}
+\bibcite{zhai_cloud_2011}{{72}{}{{}}{{}}}
+\bibcite{bidding3}{{73}{}{{}}{{}}}
+\bibcite{bid-cloud}{{74}{}{{}}{{}}}
+\newlabel{tocindent-1}{0pt}
+\newlabel{tocindent0}{0pt}
+\newlabel{tocindent1}{4.185pt}
+\newlabel{tocindent2}{10.34999pt}
+\newlabel{tocindent3}{18.198pt}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\newlabel{TotPages}{{12}{12}{}{page.12}{}}

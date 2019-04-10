@@ -54,7 +54,8 @@ In the second phase, \sysname proceeds to run the remaining jobs in the bag on t
 \subsubsection{Why Server Selection is Necessary}
 
 %\noindent \textbf{Why server selection is necessary:}
-Before deploying any application on the transient cloud servers, we must first select the appropriate cloud server for the application. 
+%Before deploying any application on the transient cloud servers, we must first select the appropriate cloud server for the application. 
+Before deploying any application on the transient cloud servers, the appropriate cloud server for the application must be selected. 
 Since cloud platforms support a wide range of applications, they also offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.). 
 For example, a cloud provider may offer VMs with (4 CPUs, 4 GB memory), (8 CPUs, 8 GB memory), etc.
 Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}. 
@@ -71,9 +72,8 @@ Since the performance of parallel applications is particularly sensitive to thei
 For instance, a smaller cluster with large VMs will result in lower inter-VM communication, and thus shorter running times. 
 
 %Selecting for preemptibility 
-However, the performance of an application is also affected by preemptions of transient servers.
-Since preemptions are essentially fail-stop failures, synchronous parallel applications (such as those using MPI) are 
-are forced to  abort, and completing the job requires restarting it. 
+However, the performance of an application is also affected by the preemptions of transient servers.
+Since preemptions are essentially fail-stop failures, synchronous parallel applications (such as those using MPI) are forced to  abort, and completing the job requires restarting it. 
 Thus, frequent preemptions can increase the overall turnaround time of a job. 
 
 \vspace*{\subsecspace}
@@ -87,7 +87,7 @@ Since jobs in a bag have similar execution characteristics, optimizing server se
 \sysname allows the users to specify the total amount of resources required per job, which we denote by $\mathcal{R}$.
 For example, $\mathcal{R}$ can be the total number of CPU cores. 
 We first determine the search space, which is the space of all cluster configurations $(i,n_i)$ such that $r_i n_i = \mathcal{R}$, where $r_i$ is the resource size of a VM of type $i$ (e.g., number of CPUs), and $n_i$ is the number of VMs of that type. 
-Based on the constraint, the number of servers of type $i$ required, $n_i = \mathcal{R}/r_i$.
+Based on the constraint, the number of servers of type $i$ required is $n_i = \mathcal{R}/r_i$.
 
 Each cluster configuration yields different application performance, preemption overhead, and cost.
 Our aim is to find the lowest-cost configuration $(i, n_i)$ for a given application, which we do through an exploratory search. 
@@ -122,20 +122,20 @@ Let us assume that the cloud provider offers $N$ server types, with the price (p
 The overall expected cost of running a job can then be expressed as follows:
 \begin{equation}
   \label{eq:e-cost}
-  E[C_{( i,n_i )}] = n_i\times c_i \times E[\mathcal{T}_{( i,n_i )}]
+  E[C_{( i,n_i )}] = n_i\times c_i \times E[\mathcal{T}_{( i,n_i )}].
 \end{equation}
 Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected turnaround time of the job (accounting for preemptions) on $n_i$ servers of type $i$.
 %
 This turaround time depends on whether the job needs to be recomputed because of preemptions, and can be expressed as:
 \begin{align}
   \label{eq:turnaround}
-  E[\mathcal{T}_{( i,n_i )}] &= T_{( i,n_i )} + E[\text{Recomputation Time}]
+  E[\mathcal{T}_{( i,n_i )}] &= T_{( i,n_i )} + E[\text{Recomputation Time}].
 \end{align}
 Here, $T_{( i,n_i )}$ is the base running time of a job without preemptions, which we obtain empirically as explained in the previous subsection.
 Since jobs have to be rerun when they fail due to preemptions, we define the recomputation time as:
 \begin{equation}
   \label{eq:recomput}
-   E[\text{Recomputation Time}] = \frac{1}{2} P(\text{at least one preemption}) T_{( i,n_i )}   
+   E[\text{Recomputation Time}] = \frac{1}{2} \times P(\text{at least one preemption}) \times T_{( i,n_i )}.   
  \end{equation}
 Our expression of the recomputation time assumes jobs will fail at the half-way mark on average, as is frequently assumed and observed~\cite{daly2006higher, bougeret_checkpointing_2011}. 
 %
@@ -143,7 +143,7 @@ The probability that at least one VM out of $n_i$ will be preempted during the j
 \begin{align}
   \label{eq:pfail1}
   P(\text{at least one preemption}) &= 1-P(\text{no preemptions}) \\
-                                 &= 1-\left(1-P\left(i,T_{(i, n_i)}\right)\right)^{n_i}
+                                 &= 1-\left(1-P\left(i,T_{(i, n_i)}\right)\right)^{n_i}.
 \end{align}
 
 Here, $P(i, T_{(i, n_i)})$ denotes the probability of a preemption of a VM of type $i$ when a job of duration $T_{(i, n_i)}$ runs on it. 
@@ -151,9 +151,9 @@ Here, $P(i, T_{(i, n_i)})$ denotes the probability of a preemption of a VM of ty
 It depends on the type of server, and its associated expected lifetime, and is defined as:
 \begin{equation}
   \label{eq:pi}
-  P(i, T_{(i, n_i)}) = \text{min}\left(\dfrac{T_{(i, n_i)}}{E[L_i]}, 1\right)
+  P(i, T_{(i, n_i)}) = \text{min}\left(\dfrac{T_{(i, n_i)}}{E[L_i]}, 1\right),
 \end{equation}
-Where $E[L_i]$ is the expected lifetime of the VM of type $i$ extracted using the preemption model (Equation~\ref{eq:expected-lifetime}).
+where $E[L_i]$ is the expected lifetime of the VM of type $i$ extracted using the preemption model (Equation~\ref{eq:expected-lifetime}).
 %As a first order approximation, the running time $t$ of the job can be chosen as $t=T_{( i,n_i )}$, where the latter is empirically obtained for a given application.
 We also assume that the running time of \emph{individual} jobs in a bag ($T$), will be smaller than the expected lifetime of the VMs, otherwise we will see no forward progress since the jobs will always be preempted before completion.
 This is a safe assumption, since more than 90\% HPC jobs are less than 2 hours long (Figure~\ref{fig:hpc-vs-scispot} inset), and the average expected lifetime of transient VMs is ten hours or more.
@@ -165,7 +165,7 @@ Note that this restriction only applies to individual jobs---\sysname can smooth
 Using Equations~\ref{eq:turnaround},\ref{eq:recomput}, and \ref{eq:pfail1}, the overall expected cost of running a job on transient cloud servers is obtained as:
 \begin{equation}
   \label{eq:ecfinal}
-  E[C_{( i,n_i )}] = \frac{1}{2}n_i c_i T_{( i,n_i )}\left(3 - \left(1-\dfrac{T_{( i,n_i )}}{E[L_i]}\right)^{n_i}\right)
+  E[C_{( i,n_i )}] = \frac{1}{2}n_i c_i T_{( i,n_i )}\left(3 - \left(1-\dfrac{T_{( i,n_i )}}{E[L_i]}\right)^{n_i}\right).
 \end{equation}
 
 Equation \ref{eq:ecfinal} shows that the expected cost $E[C]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
@@ -204,16 +204,16 @@ For this calculation, we assume that the running time of different jobs in a bag
 Thus because of the stochasticity in job running times and VM lifetimes, \sysname only meets the deadline in a ``best effort'' manner, and does not guarantee makespan constraints. 
 
 Upon job completion, the next job in the bag is run. 
-When a job fails due to VM preemption, \sysname replenishes the cluster by launching replacement VM's and resubmits the job. 
+When a job fails due to VM preemption, \sysname replenishes the cluster by launching replacement VMs and resubmits the job. 
 Jobs are restarted from a checkpoint if available. 
 We do not restart failed jobs as long as we can complete the minimum number of jobs in the bag.
-Due to high demand, preemptible VM's of the chosen type may not be available.
+Due to high demand, preemptible VMs of the chosen type may not be available.
 In such cases, \sysname runs in a ``degraded'' mode---jobs are either run on a smaller number of VMs, or are run on VMs of a different size that are available but may have suboptimal cost.  
 
 
 \noindent \textbf{Checkpointing Policy.} When applicable, \sysname resumes jobs from the latest checkpoint performed using tools such as DMTCP~\cite{ansel2009dmtcp}.
 Since checkpointing also increases the running time of the job, the checkpoint interval must be carefully computed. 
-The classic Young-Daly periodic checkpointing interval~\cite{daly2006higher} is only applicable when failures follow an exponential distribution, which we have shown not to be true in the case of Google Preemptible VMs (Figure~\ref{fig:gcp1}). 
+The classic Young-Daly periodic checkpointing interval~\cite{daly2006higher} is only applicable when failures follow an exponential distribution, which we have shown is not true in the case of Google Preemptible VMs (Figure~\ref{fig:gcp1}). 
 Our analytical model for preemptions permits advanced, non-periodic checkpointing intervals that can be computed using a dynamic programming approach similar to~\cite{bougeret_checkpointing_2011}. 
 
 
