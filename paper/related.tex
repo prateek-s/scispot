@@ -1,19 +1,20 @@
+\vspace*{\subsecspace}
 \section{Related Work}
 \label{sec:related}
-\sysname builds upon a large body of prior work on running scientific applications on the cloud, and the various facets of transient cloud computing.  
+\sysname builds upon a large body of prior work on running scientific computing applications on the cloud, and the various facets of transient cloud computing.  
 
-\subsection{Scientific Computing Applications In The Cloud}
-
+\vspace*{\subsecspace}
+\subsection{Cloud Computing For Science}
 Running scientific applications on the cloud introduces many tradeoffs compared to conventional HPC clusters, along the dimensions of performance, cost, scalability, convenience, and reproducability.
 These tradeoffs are explored in~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014, hpc-sci-buyya}. 
 In general, clouds can provide increased elasticity, lower waiting times, and more choices in resource allocation that can be tailored to the application.
-The cloud resource model is also present in platforms like nanoHUB~\cite{nanohub}, that provide easy execution and dissemination of nanotechnology simulation applications such as Ref.~\cite{kadupitiya2017}.
+The cloud resource model is also present in platforms like nanoHUB~\cite{nanohub}, that provide easy execution and dissemination of nanotechnology simulation applications.
+%such as Ref.~\cite{kadupitiya2017}.
 Outside of the bags of jobs execution model, price optimizations for scientific workflows in the cloud is discussed in~\cite{gari_learning_2019}. 
-
-While bags of tasks~\cite{varshney_autobot_2019} are often used for parallel applications, \sysname is the first to use of the bags of \emph{jobs} abstraction for efficient and effective use of transient cloud servers. \vj{did not quite get the diff between task and job, more clarity will be useful here}
+While bags of tasks~\cite{varshney_autobot_2019} are often used for parallel applications, \sysname is the first to use of the bags of \emph{jobs} abstraction for efficient and effective use of transient cloud servers. 
 
 %\subsubsection{Bags of Jobs}
-
+\vspace*{\subsecspace}
 \subsection{Transient Cloud Computing}
 
 %The low cost of transient cloud servers has made them very appealing, inspite of their preemptible nature, and their efficient and effective use has been a significant amount of research~\cite{prateek-thesis}. 
@@ -26,7 +27,7 @@ However, as explained in Section~\ref{subsec:need-for-empirical}, it remains to 
 On the other hand, the effective use of transient resources provided by other cloud providers such as Google, Microsoft, Packet, and Alibaba largely remains unexplored. 
 Ours is the first work that studies the preemption characteristics and addresses the challenges involved in running large-scale applications on the Google Preemptible VMs, and provides insights on and leverages the unique preemption dynamics, as explained in Section~\ref{sec:preemption-dynamics}.
 
-
+\vspace*{\subsecspace}
 \subsubsection{Preemption Mitigation}
 Effective use of transient servers usually entails the use of fault-tolerance techniques such as checkpointing~\cite{flint}, migration~\cite{spotcheck}, and replication.
 In the context of HPC workloads,\cite{marathe2014exploiting,gong_monetary_2015,xiang_spotmpi:_2011} develop checkpointing and bidding strategies for MPI applications running on EC2 spot instances, based on spot pricing data and the older failure model.
@@ -37,7 +38,7 @@ By treating bags of jobs as an execution unit, allowing some jobs to fail, and u
 The first step towards mitigating preemptions is understanding their characteristics. 
 Our preemption model for Google preemptible VMs developed in Section~\ref{sec:failmodel} extends the classic Weibull-distribution based bathtub models~\cite{Crevecour} by introducing exponential reclamation near the deadline and additional paramters that capture and explain the preemption dynamics. 
 
-
+\vspace*{\subsecspace}
 \subsubsection{Server Selection}
 
 Optimized server selection is an important problem in cloud computing, and especially for transient servers because of the cost-performance-preemption tradeoff involved. 
@@ -48,7 +49,7 @@ Server selection is important even outside of preemptible VMs---developing bayes
 
 
 
-
+\vspace*{\subsecspace}
 %Parameter sweep aka bags of jobs ~\cite{casanova_heuristics_2000}
 
 %But nothing for bags of jobs themselves.. 
