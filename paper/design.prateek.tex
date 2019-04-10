@@ -15,7 +15,7 @@ It incorporates policies and mechanisms for generating, deploying, orchestrating
 Specifically, it runs a bag of jobs defined by these parameters:
 \begin{lstlisting}[basicstyle=\sffamily, frame=single, columns=fullflexible, escapeinside={(*}{*)}]
   Bag of job = {(*$\mathcal{A}$*): Application to execute,
-  (*$N$*): Number of jobs,
+  (*$n$*): Number of jobs,
   (*$m$*): Minimum number of jobs to finish,
   (*$\pi$*): Generator function for job parameters,
   (*$\mathcal{R}$*): Computing resources per job}
@@ -56,11 +56,11 @@ In the second phase, \sysname proceeds to run the remaining jobs in the bag on t
 %\noindent \textbf{Why server selection is necessary:}
 %Before deploying any application on the transient cloud servers, we must first select the appropriate cloud server for the application. 
 Before deploying any application on the transient cloud servers, the appropriate cloud server for the application must be selected. 
-Since cloud platforms support a wide range of applications, they also offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.). 
-For example, a cloud provider may offer VMs with (4 CPUs, 4 GB memory), (8 CPUs, 8 GB memory), etc.
-Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}. 
+Cloud platforms offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.).  \emph{Importantly, different server configurations have different cost, performance, and preemption characteristics. }
 
-\noindent \emph{Importantly, different server configurations have different cost, performance, and preemption characteristics. }
+%For example, a cloud provider may offer VMs with (4 CPUs, 4 GB memory), (8 CPUs, 8 GB memory), etc.
+%Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}. 
+
 
 % Why crucial for parallel jobs
 
@@ -192,12 +192,16 @@ Furthermore, a large cluster of small servers is suboptimal for most application
 \vspace*{\subsecspace}
 \subsection{Scheduling a Bag of Jobs}
 
+\sysname runs the exploration phase on preemptible VMs of different types. 
+By default, \sysname runs the same job in the exploration phase, but also provides users the option to run jobs with different parameters if the variation in running times is low.
+%A bag of jobs is determined by the total number of jobs in the bag, associated parameters for each job, and the minimum number of jobs that must be successfully executed.  
+%Given these parameters as input,
+Once the right cluster configuration for a job has been determined, \sysname then proceeds to run the remaining jobs in the bag on the cluster of VMs found through the exploration.
 
-Once the right cluster configuration for a job has been determined, \sysname then proceeds to run the remaining jobs in the bag.
-A bag of jobs is determined by the total number of jobs in the bag, associated parameters for each job, and the minimum number of jobs that must be successfully executed.  
-Given these parameters as input, \sysname then creates a cluster by launching preemptible VMs and starts scheduling the different jobs in a bag.
-Upon job completion, we launch the next job in the bag and run it on the existing cluster of preemptible VMs.
-This policy is based on our preemption dynamics model which shows that preemptible rates have a ``bath-tub'' shape.
+
+%\sysname creates a cluster by launching preemptible VMs and starts scheduling the different jobs in a bag.
+Upon job completion, we run the next job in the bag on the existing cluster of preemptible VMs, with job parameters obtained using the generator function $\pi.next()$. 
+This policy is based on our preemption dynamics model which shows that preemption rates have a ``bath-tub'' shape.
 Thus, jobs launched on ``stable'' VMs that have been running for a few hours, face low likelihood of failures---thereby reducing the number of job failures for the entire bag. 
 
 \sysname also allows users to specify a deadline for bag completion, which we use to compute the number of jobs to execute in parallel.
@@ -206,10 +210,10 @@ Thus if the exploration phase recommends $n_i$ VMs, then we launch a cluster of 
 For this calculation, we assume that the running time of different jobs in a bag will largely be similar, but this is not a correctness requirement.
 Thus because of the stochasticity in job running times and VM lifetimes, \sysname only meets the deadline in a ``best effort'' manner, and does not guarantee makespan constraints. 
 
-Upon job completion, the next job in the bag is run. 
+%Upon job completion, the next job in the bag is run. 
 When a job fails due to VM preemption, \sysname replenishes the cluster by launching replacement VMs and resubmits the job. 
 Jobs are restarted from a checkpoint if available. 
-We do not restart failed jobs as long as we can complete the minimum number of jobs in the bag.
+We do not restart failed jobs if we complete the minimum number of jobs in the bag.
 Due to high demand, preemptible VMs of the chosen type may not be available.
 In such cases, \sysname runs in a ``degraded'' mode---jobs are either run on a smaller number of VMs, or are run on VMs of a different size that are available but may have suboptimal cost.  
 
