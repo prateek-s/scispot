@@ -156,7 +156,7 @@ It depends on the type of server, and its associated expected lifetime, and is d
 Where $E[L_i]$ is the expected lifetime of the VM of type $i$ extracted using the preemption model (Equation~\ref{eq:expected-lifetime}).
 %As a first order approximation, the running time $t$ of the job can be chosen as $t=T_{( i,n_i )}$, where the latter is empirically obtained for a given application.
 We also assume that the running time of \emph{individual} jobs in a bag ($T$), will be smaller than the expected lifetime of the VMs, otherwise we will see no forward progress since the jobs will always be preempted before completion.
-This is a safe assumption, since more than 90\% HPC jobs are less than 2 hours long (Figure~\ref{fig:job-run-cdf}), and the average expected lifetime of transient VMs is ten hours or more.
+This is a safe assumption, since more than 90\% HPC jobs are less than 2 hours long (Figure~\ref{fig:hpc-vs-scispot} inset), and the average expected lifetime of transient VMs is ten hours or more.
 Note that this restriction only applies to individual jobs---\sysname can smoothly run large bags of jobs even if their total running time exceeds the VM lifetime. 
 %We again emphasize that $T$ is the running time of an \emph{individual} job, and that \sysname is designed for running large bags of small jobs, and that most HPC jobs are much smaller than the expected lifetimes, as we show in Section~\ref{sec:eval}. 
 
@@ -211,7 +211,7 @@ Due to high demand, preemptible VM's of the chosen type may not be available.
 In such cases, \sysname runs in a ``degraded'' mode---jobs are either run on a smaller number of VMs, or are run on VMs of a different size that are available but may have suboptimal cost.  
 
 
-\noindent \textbf{Checkpointing Policy.} When applicable, \sysname resumes jobs from the latest checkpoint performed using tools such as DMTCP~\cite{dmtcp}.
+\noindent \textbf{Checkpointing Policy.} When applicable, \sysname resumes jobs from the latest checkpoint performed using tools such as DMTCP~\cite{ansel2009dmtcp}.
 Since checkpointing also increases the running time of the job, the checkpoint interval must be carefully computed. 
 The classic Young-Daly periodic checkpointing interval~\cite{daly2006higher} is only applicable when failures follow an exponential distribution, which we have shown not to be true in the case of Google Preemptible VMs (Figure~\ref{fig:gcp1}). 
 Our analytical model for preemptions permits advanced, non-periodic checkpointing intervals that can be computed using a dynamic programming approach similar to~\cite{bougeret_checkpointing_2011}. 

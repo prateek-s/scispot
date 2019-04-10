@@ -1,23 +1,24 @@
 \vspace*{\subsecspace}
 \section{SciSpot Implementation}
+\label{sec:impl}
 
 \sysname is implemented as a light-weight, extensible framework that makes it convenient and cheap to run scientific computing applications in the cloud.
 We have implemented the \sysname prototype in Python in about 2,000 lines of code, and currently support running VMs on the Google Cloud Platform~\cite{gcp}. 
 
-\sysname is implemented as a centralized controller, which implements the server selection and job scheduling policies described in Section~\ref{sec:design}. 
+\sysname is implemented as a centralized controller, which implements the VM selection and job scheduling policies described in Section~\ref{sec:design}. 
 The controller can run on any machine (including the user's local machine, or inside a cloud VM), and exposes an HTTP API to end-users. 
-Users submit bags of jobs to the controller via the HTTP API, and the controller then launches and maintains a cluster of cloud VMs, and maintains status of each job in a local json database. 
-As a convenience feature, \sysname also can also automatically generate parameter combinations for a given bag size---based on a user-provided json file that provides start and end values for each parameter. 
-
+Users submit bags of jobs to the controller via the HTTP API, which then launches and maintains a cluster of cloud VMs, and maintains the job queue and metadata in a local database. 
+For improving usability, \sysname can automatically generate parameter combinations for a given bag size---based on a user-provided json file with ranges and constraints for each parameter. 
 
 
 \sysname integrates, and interfaces with two primary services.
 First, it uses the Google cloud API~\cite{gcloud-api} for launching, terminating, and monitoring VMs.
 Once a cluster is launched, it then configures a cluster manager such as Slurm or Torque, to which it submits jobs. 
-The current \sysname prototype supports the Slurm cluster manager, with each VM acting as a Slurm ``cloud'' node, which allows Slurm to gracefully handle VM preemptions. 
-\sysname monitors job completions and failures (due to VM preemptions) through the use of slurm call-backs, which issue HTTP requests back to the slurm controller.
+The current \sysname prototype supports the Slurm cluster manager, with each VM acting as a slurm ``cloud'' node, which allows Slurm to gracefully handle VM preemptions.
+The Slurm master node runs on a small, 2 CPU non-preemptible VM. 
+\sysname monitors job completions and failures (due to VM preemptions) through the use of Slurm call-backs, which issue HTTP requests back to the \sysname controller.
 
-As part of \sysname, we also provide a base VM image with Slurm and MPI integration, along with commonly used libraries and benchmarks for scientific computing. To run an application, users must provide a location to the application source code or binaries. Integrating \sysname with container-based image management tools such as Docker and Singularity is currently part of our ongoing work. 
+As part of \sysname, we also provide a base VM image with Slurm and MPI integration, along with commonly used libraries and benchmarks for scientific computing. To run an application, users must provide a location to the application source code or binaries. Integrating \sysname with container-based image management tools such as Docker~\cite{docker} and Singularity~\cite{kurtzer2017singularity} is part of our ongoing work. 
 
 
 

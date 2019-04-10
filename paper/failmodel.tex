@@ -35,14 +35,14 @@ Amazon's EC2 spot instances were the original cloud transient servers.
 The preemptions of EC2 spot instances are based on their \emph{price}, which is dynamically adjusted based on the supply and demand of cloud resources.
 Spot prices are based on a continuous second-price auction, and if the spot price increases above a pre-specified maximum-price, then the server is preempted.
 
-Thus, the time-series of these spot prices can be used for understanding preemption characteristics such as the frequency of preemptions and the ``Mean Time To Failure'' (MTTF) of the spot instances.
-Many research projects have used publicly available\footnotemark historical spot prices to characterize and model spot instance preemptions~\cite{spotcheck,how-to-bid}. %Add lots more here 
-For example, past work has analyzed spot prices and shown that the MTTFs of spot instances of different hardware configurations and geographical zones range from a few hours to a few days~\cite{prateek-thesis, shastri-thesis}. 
+Thus, the time-series of these spot prices can be used for understanding preemption characteristics such as the frequency of preemptions and the ``Mean Time To Failure'' (MTTF) of the spot instances. 
+Publicly available\footnotemark historical spot prices can be used to characterize and model spot instance preemptions~\cite{spotcheck,bid-cloud}. %Add lots more here 
+For example, past work has analyzed spot prices and shown that the MTTFs of spot instances of different hardware configurations and geographical zones range from a few hours to a few days~\cite{prateek-thesis, wolski_probabilistic_2017, icdcs-spotlight}. 
 
 
-\footnotetext{Amazon posts Spot prices of 3 months, and researchers have been collecting these prices since 2010~\cite{Buyya-prices}.}
+\footnotetext{Amazon posts Spot prices of 3 months, and researchers have been collecting these prices since 2010~\cite{bidding4}.}
 
-However, Amazon has recently changed the preemption characteristics of spot instances, and servers are now preempted even if the spot price is below the maximum price~\cite{spot-web, bid-change}.
+However, Amazon has recently changed the preemption characteristics of spot instances, and servers are now preempted even if the spot price is below the maximum price~\cite{spotweb, bid-change}.
 Thus, spot prices are no longer a completely reliable indicator of preemptions, and preemptions can no longer be inferred from looking at prices alone.
 Therefore, new techniques are required to model preemption dynamics that can supplement the earlier price-based approaches, and we develop these techniques next.
 
@@ -126,10 +126,13 @@ As VMs get closer to their maximum lifetime imposed by the cloud operator, they 
 Shifting the argument ($t$) of this term by $b$ ensures that the exponential reclamation is only applicable near the end of the VM's maximum lifetime and does not dominate over the entire temporal range. 
 %As noted before, $1/\tau_2$ is the rate of this reclamation. 
 
-The analytical model and the associated 4 parameter distribution function $\mathscr{F}$ introduced above provides a much better fit to the empirical data (Figure~\ref{fig:gcp1}) and captures the different phases of the preemption dynamics through parameters $\tau_1, \tau_2, b$, and $A$. These parameters can be obtained for a given empirical CDF by minimizing least-squared function fitting methods.\footnotemark 
+The analytical model and the associated 4 parameter distribution function $\mathscr{F}$ introduced above provides a much better fit to the empirical data (Figure~\ref{fig:gcp1}) and captures the different phases of the preemption dynamics through parameters $\tau_1, \tau_2, b$, and $A$. These parameters can be obtained for a given empirical CDF by minimizing least-squared function fitting methods.
+
+%\footnotemark 
 %
-\footnotetext{More details about the distribution fitting are presented in the implementation section(~\ref{sec:impl}}
+%\footnotetext{More details about the distribution fitting are presented in the implementation section(~\ref{sec:impl}}
 %
+
 Further, the failure or preemption rate can be derived from this CDF as 
 \begin{equation}
 \label{eq:failrate}
@@ -169,7 +172,7 @@ From Figure~\ref{fig:cdf-comparison}, we see that the CDFs obtained using our mo
 
 Interestingly, we can also observe that larger VMs have a higher rate of failure.
 This is because larger VMs require more computational resources (such as CPU and memory), and when the supply of resources is low, the cloud operator can reclaim a large amount of resources by preempting larger VMs.
-This observed behavior aligns with the guidelines for using preemptible VMs that suggests the use of smaller VMs when possible~\cite{gcp-preempt-faq}. 
+This observed behavior aligns with the guidelines for using preemptible VMs that suggests the use of smaller VMs when possible~\cite{preemptible-documentation}. 
 
 Our analytical model also helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
 More formally, we define the expected lifetime of a VM of type $i$, as 
