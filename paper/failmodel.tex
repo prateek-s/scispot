@@ -72,7 +72,7 @@ We launched more than 1,500 Google Preemptible VMs of different types over a two
   \label{fig:gcp1}
 \end{figure}
 
-A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution of the VM lifetimes. 
+A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution of the VM lifetimes of the \texttt{n1-highcpu-16} VM in the \texttt{us-east1-b} zone. 
 %enter the type of VM for which the data is shown
 Note that the cloud operator (Google) caps the \emph{maximum} lifetime of the VM to 24 hours, and all the VMs are preempted before that limit. 
 Furthermore, the lifetimes of VMs are \emph{not} uniformly distributed, but have three distinct phases. 
@@ -178,7 +178,8 @@ Most clouds offer a large number of different hardware configurations---Amazon E
 
 In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that \emph{particular} type.
 Thus, the preemption characteristics of VMs of different sizes, and running in different geographical zones are different.
-Figure~\ref{fig:cdf-comparison} shows the premption data from five different types of VMs in the Google Cloud \texttt{n1-highcpu-\{2,4,8,16,32\}}, where the number indicates the number of CPUs. We also show the associated CDFs ($\mathscr{F}$) computed using the proposed model. %along with the parameters of our four parameter distribution.
+Figure~\ref{fig:cdf-comparison} shows the preemption data from five different types of VMs in the Google Cloud \texttt{n1-highcpu-\{2,4,8,16,32\}}, where the number indicates the number of CPUs.
+All VMs are running in the \texttt{us-central1-c} zone, and we also show the associated CDFs ($\mathscr{F}$) computed using the proposed model. %along with the parameters of our four parameter distribution.
 
 From Figure~\ref{fig:cdf-comparison}, we see that the CDFs obtained using our model capture the preemption dynamics of different VM types reasonably well. For the smallest four VM sizes (2, 4, 8, 16), we find that the initial rate of preemptions range from $1/\tau_1 \in (0.5, 1.5)$ $\text{hr}^{-1}$, the final preemption rate is in general higher ($1/\tau_2 \in (1.28, 1.72)$  $\text{hr}^{-1}$), and the activation time for the final phase $b \in (24,24.5)$ hours. We note the distinct behavior of the analytical CDF for VMs of size 32, where the fit does not reproduce the final rise accurately but captures the slightly faster increase in premptions during the middle phase better than in other VM types.
 These plots also illustrate a deficiency in our model, whereby the boundary condition of $\mathscr{F} = 1$ for $t=24$ hours is not strictly imposed.
