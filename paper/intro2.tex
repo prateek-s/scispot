@@ -15,8 +15,8 @@
 % But now we have the cloud!!1
 
 Increasingly, cloud computing platforms have begun to supplement and complement conventional HPC infrastructure  to meet the large computing and storage requirements of scientific computing applications~\cite{buyya-hpc-survey}. 
-Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling. 
-Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of \emph{Virtual Machines (VMs)},  which run a wide range of applications such as web-services, distributed data processing, distributed machine learning, etc.
+Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as on-demand resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling. 
+Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of Virtual Machines (VMs),  which run a wide range of applications such as web-services, distributed data processing, distributed machine learning, etc.
 
 
 % a wide range of applications.
@@ -31,7 +31,7 @@ Due to their volatile nature, transient VMs such as Amazon EC2 Spot instances~\c
 % Very different from HPC and many challenges
 
 However, deploying applications on cloud platforms presents multiple challenges due to the \emph{fundamental} differences with conventional HPC clusters---which most applications still assume as their default execution environment.
-While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, the deployment of applications on cloud platforms must be cognizant of the heterogeneity in VM sizes, pricing, and availability for effective resource utilization. 
+While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, the deployment of applications on cloud platforms must be cognizant of the heterogeneity in VM sizes, pricing, and availability, for effective resource utilization. 
 Crucially, optimizing for \emph{cost} in addition to performance, becomes an important objective in cloud deployments.
 %
 Although using transient resources can drastically reduce computing costs, their preemptible nature results in frequent job failures, and thus reduces their viability and usability. 
@@ -58,23 +58,26 @@ These bags of jobs, ubiquitous in scientific computing, represent multiple insta
 %Bags of jobs are ubiquitous in scientific computing: 
 %for example, each job may be running a (parallel) simulation with a set of simulation input parameters, and different jobs in the collection (i.e., bag) run the same simulation with a different set of  parameters. 
 Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to isolate the set of desired parameters associated with the scientific computation model.
-A similar approach is adopted in the use of machine learning (ML) to enhance scientific computational methods ~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer}, when a collection of jobs with independent parameter sets are launched to train and test ML models.
+A similar approach is adopted in the use of machine learning (ML) to enhance scientific computational methods ~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer}, when a collection of jobs with different  parameter sets are launched to train and test ML models.
+%independent parameter sets 
 %to predict simulation results and/or accelerate the simulation technique. 
 
 
 
-While systems and techniques for mitigating transient server preemptions have received significant attention, prior work has mostly focussed on fault-tolerance and resource management for a \emph{single} job or application~\cite{spoton, exosphere, flint, marathe2014exploiting}. 
+While systems and techniques for mitigating transient server preemptions have received significant attention, prior work has mostly focused on fault-tolerance and resource management for a \emph{single} job or application~\cite{spoton, exosphere, flint, marathe2014exploiting}. 
 %Thus, while recently developed transiency mitigation techniques such as
-For a bag of jobs, it is not necessary, or sufficient, to execute an individual job in timely manner---instead, we could selectively restart failed jobs in order to complete the necessary, desired subset of jobs in a bag.
+For a bag of jobs, it is not necessary, or sufficient, to execute an individual job in timely manner---instead, we can selectively restart failed jobs in order to complete the necessary, desired subset of jobs in a bag.
 Thus, while recently developed techniques such as transiency-aware checkpointing~\cite{marathe2014exploiting, flint}
-and diversification~\cite{exosphere, spotweb} can indeed mitigate the effect of preemptions on \emph{single} jobs, these techniques are not suitable for the bags of jobs execution model. 
+and diversification~\cite{exosphere, spotweb} can indeed mitigate the effect of preemptions on a single job, these techniques are not suitable for the bags of jobs execution model. 
 
+% Not too happy with the last sentence and paragraph
 
 %
-Furthermore, treating the bag of jobs as a fundamental unit of computation enables \sysname to select the ``best'' server configuration for a given application that minimizes the costs, running time, and preemption likelihood.
+Treating the bag of jobs as a fundamental unit of computation enables \sysname to select the ``best'' server configuration for a given application that minimizes the costs, running time, and preemption likelihood.
 %, by exploring different servers for initial jobs and running the remainder of the jobs on the optimal server configuration. 
 %Unlike prior work that assumes that the optimal resource allocation for an application is known a priori, 
 \sysname can find the optimal allocation on-the-fly by exploring different servers for initial jobs and running the remainder of the jobs on the optimal server configuration. 
+
 Finally, \sysname runs applications on Google Cloud Preemptible VMs and addresses the unique reliability and systems challenges arising from their maximum 24-hour lifetime set by the provider.
 %%
 %Since transient server preemptions can disrupt the execution of jobs, 
