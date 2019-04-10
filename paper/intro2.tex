@@ -1,5 +1,5 @@
 \section{Introduction}
-
+\label{sec:intro}
 % Look, scientific applications are important, OK? And HPC. 
 
 %Scientific computing applications play a critical role in understanding natural and synthetic phenomena associated with a wide range of material, biological, and engineering systems. 
@@ -14,9 +14,9 @@
 
 % But now we have the cloud!!1
 
-Increasingly, cloud computing platforms have begun to supplement and complement conventional HPC infrastructure  to meet the large computing and storage requirements of scientific computing applications~\cite{buyya-hpc-survey}. 
+Increasingly, cloud computing platforms have begun to supplement and complement conventional high performance computing (HPC)  infrastructure  to meet the large computing and storage requirements of scientific computing applications~\cite{buyya-hpc-survey}. 
 Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as on-demand resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling. 
-Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of Virtual Machines (VMs),  which run a wide range of applications such as web-services, distributed data processing, distributed machine learning, etc.
+Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of virtual machines (VMs),  which run a wide range of applications such as web-services, distributed data processing, distributed machine learning, etc.
 
 
 % a wide range of applications.
@@ -68,7 +68,7 @@ While systems and techniques for mitigating transient server preemptions have re
 %Thus, while recently developed transiency mitigation techniques such as
 For a bag of jobs, it is not necessary, or sufficient, to execute an individual job in timely manner---instead, we can selectively restart failed jobs in order to complete the necessary, desired subset of jobs in a bag.
 Thus, while recently developed techniques such as transiency-aware checkpointing~\cite{marathe2014exploiting, flint}
-and diversification~\cite{exosphere, spotweb} can indeed mitigate the effect of preemptions on a single job, these techniques are not suitable for the bags of jobs execution model. 
+and diversification~\cite{exosphere, spotweb} can indeed mitigate the effect of preemptions on a single job, these techniques are not tailored for the bags of jobs execution model. 
 
 % Not too happy with the last sentence and paragraph
 
@@ -90,7 +90,7 @@ We implement these policies as part of the \sysname framework, and make the foll
 % Yeah the "not spot" point below may need clarification before contribs
   
 %\item Since transient server preemptions can disrupt the execution of jobs, we present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running times and costs of different scientific computing applications.
-\item We develop a new analytical model based on a large-scale, first-of-its-kind empirical study of lifetimes of Google preemptible VMs for understanding and characterizing their preemption dynamics. Our model captures the key effects resulting from the 24 hour constraint associated with these VMs, and enable accurate prediction of expected running times and costs of different scientific computing applications.
+\item We develop a new analytical model based on a large-scale, first-of-its-kind empirical study of lifetimes of Google preemptible VMs for understanding and characterizing their preemption dynamics. Our model captures the key effects resulting from the 24 hour lifetime constraint associated with these VMs, and enable accurate prediction of expected running times and costs of different scientific computing applications.
 % WTF is even partial redundancy? 
   
 \item We implement all our policies as part of a new framework, \sysname, and evaluate the cost and performance of different representative scientific computing  applications on the Google Cloud Platform. Compared to conventional cloud deployments, \sysname can reduce costs of running bags of jobs by more than $5\times$, and even when compared to dedicated HPC clusters, can reduce the total turnaround time by an order of magnitude. 
