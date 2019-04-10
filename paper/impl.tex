@@ -14,8 +14,8 @@ For improving usability, \sysname can automatically generate parameter combinati
 \sysname integrates, and interfaces with two primary services.
 First, it uses the Google cloud API~\cite{gcloud-api} for launching, terminating, and monitoring VMs.
 Once a cluster is launched, it then configures a cluster manager such as Slurm or Torque, to which it submits jobs. 
-The current \sysname prototype supports the Slurm cluster manager, with each VM acting as a slurm ``cloud'' node, which allows Slurm to gracefully handle VM preemptions.
-The Slurm master node runs on a small, 2 CPU non-preemptible VM. 
+The current \sysname prototype supports the Slurm cluster manager, with each VM acting as a Slurm ``cloud'' node, which allows Slurm to gracefully handle VM preemptions.
+The Slurm master node runs on a small, 2 CPU non-preemptible VM, which is shared by all applications and users. 
 \sysname monitors job completions and failures (due to VM preemptions) through the use of Slurm call-backs, which issue HTTP requests back to the \sysname controller.
 
 As part of \sysname, we also provide a base VM image with Slurm and MPI integration, along with commonly used libraries and benchmarks for scientific computing. To run an application, users must provide a location to the application source code or binaries. Integrating \sysname with container-based image management tools such as Docker~\cite{docker} and Singularity~\cite{kurtzer2017singularity} is part of our ongoing work. 

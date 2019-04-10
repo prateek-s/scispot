@@ -33,7 +33,7 @@ In this section, we present empirical and analytical models that describe these 
 
 Amazon's EC2 spot instances were the original cloud transient servers.
 The preemptions of EC2 spot instances are based on their \emph{price}, which is dynamically adjusted based on the supply and demand of cloud resources.
-Spot prices are based on a continuous second-price auction, and if the spot price increases above a pre-specified maximum-price, then the server is preempted.
+Spot prices are based on a continuous second-price auction, and if the spot price increases above a pre-specified maximum-price, then the server is preempted~\cite{spot-pricing2}.
 
 Thus, the time-series of these spot prices can be used for understanding preemption characteristics such as the frequency of preemptions and the ``Mean Time To Failure'' (MTTF) of the spot instances. 
 Publicly available\footnotemark historical spot prices can be used to characterize and model spot instance preemptions~\cite{spotcheck,bid-cloud}. %Add lots more here 
@@ -76,7 +76,7 @@ A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, 
 %enter the type of VM for which the data is shown
 Note that the cloud operator (Google) caps the \emph{maximum} lifetime of the VM to 24 hours, and all the VMs are preempted before that limit. 
 Furthermore, the lifetimes of VMs are \emph{not} uniformly distributed, but have three distinct phases. 
-In the first (initial) phase, characterized by VM lifetime $t\in (0,3)$ hours, we observe that many VMs are quickly preempted after they are launched, and thus have a steep rate of failure (derivative of the CDF) initially.
+In the first (initial) phase, characterized by VM lifetime $t\in [0, 3]$ hours, we observe that many VMs are quickly preempted after they are launched, and thus have a steep rate of failure (derivative of the CDF) initially.
 %; the rate of failure or preemptions can be obtained by taking the derivative of the CDF. 
 In the second phase, VMs that survive past 3 hours enjoy a relatively low preemption rate over a relatively broad range of lifetime (characterized by the slowly rising CDF in Figure~\ref{fig:gcp1}). The third and final phase exhibits a steep increase in the number of preemptions as the preemption deadline of 24 hours approaches. The overall rate of preemptions is ``bath tub'' shaped as shown in the inset of Figure~\ref{fig:gcp1}.
 %\it I think we should show the probability plot to exhibit the bath tub shape
@@ -94,7 +94,7 @@ This assumption breaks down when there is a fixed upper bound on the lifetime, a
 \subsection{Model of constrained preemption dynamics}
 \label{subsec:analytical-model}
 
-We now develop an analytical model for preemption dynamics that is faithful to the empirically observed data and provides a basis for developing running-time and cost-minimizing optimizations presented in Section~\ref{sec:design}. 
+We now develop an analytical model for preemption dynamics that is faithful to the empirically observed data and provides a basis for developing running-time and cost-minimizing optimizations. % presented in Section~\ref{sec:design}. 
 %
 To describe failures (preemptions) that are not memoryless (i.e., increasing or decreasing failure rate over time), the classic Weibull distribution with CDF $F(t)=1-e^{-(\lambda t)^k}$ is often employed. However, we find that the Weibull distribution is also unable to fit the empirical data (Figure~\ref{fig:gcp1}). 
 
@@ -181,7 +181,7 @@ Thus, the preemption characteristics of VMs of different sizes, and running in d
 Figure~\ref{fig:cdf-comparison} shows the preemption data from five different types of VMs in the Google Cloud \texttt{n1-highcpu-\{2,4,8,16,32\}}, where the number indicates the number of CPUs.
 All VMs are running in the \texttt{us-central1-c} zone, and we also show the associated CDFs ($\mathscr{F}$) computed using the proposed model. %along with the parameters of our four parameter distribution.
 
-From Figure~\ref{fig:cdf-comparison}, we see that the CDFs obtained using our model capture the preemption dynamics of different VM types reasonably well. For the smallest four VM sizes (2, 4, 8, 16), we find that the initial rate of preemptions range from $1/\tau_1 \in (0.5, 1.5)$ $\text{hr}^{-1}$, the final preemption rate is in general higher ($1/\tau_2 \in (1.28, 1.72)$  $\text{hr}^{-1}$), and the activation time for the final phase $b \in (24,24.5)$ hours. We note the distinct behavior of the analytical CDF for VMs of size 32, where the fit does not reproduce the final rise accurately but captures the slightly faster increase in premptions during the middle phase better than in other VM types.
+From Figure~\ref{fig:cdf-comparison}, we see that the CDFs obtained using our model capture the preemption dynamics of different VM types reasonably well. For the smallest four VM sizes (2, 4, 8, 16), we find that the initial rate of preemptions range from $1/\tau_1 \in [0.5, 1.5]$ $\text{hr}^{-1}$, the final preemption rate is in general higher ($1/\tau_2 \in [1.28, 1.72]$  $\text{hr}^{-1}$), and the activation time for the final phase $b \in [24, 24.5]$ hours. We note the distinct behavior of the analytical CDF for VMs of size 32, where the fit does not reproduce the final rise accurately but captures the slightly faster increase in premptions during the middle phase better than in other VM types.
 These plots also illustrate a deficiency in our model, whereby the boundary condition of $\mathscr{F} = 1$ for $t=24$ hours is not strictly imposed.
 
 Interestingly, we can also observe that larger VMs have a higher rate of failure.
