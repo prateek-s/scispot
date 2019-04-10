@@ -108,7 +108,7 @@ We assume that the total resource requirement for a job, $\mathcal{R}$, is provi
 \subsubsection{Server Cost Model}
 \label{subsec:cost-model}
 
-Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM that minimizes the expected cost of running an application on \sysname. 
+Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM type that minimizes the expected cost of running an application on \sysname. 
 
 
 %Let $\mathcal{R}$ denote the total amount of computing resources requested for the job. For ease of exposition, let us assume that $\mathcal{R}$ is the total number of CPU cores.
@@ -137,7 +137,7 @@ Since jobs have to be rerun when they fail due to preemptions, we define the rec
   \label{eq:recomput}
    E[\text{Recomputation Time}] = \frac{1}{2} \times P(\text{at least one preemption}) \times T_{( i,n_i )}.   
  \end{equation}
-Our expression of the recomputation time assumes jobs will fail at the half-way mark on average, as is frequently assumed and observed~\cite{daly2006higher, bougeret_checkpointing_2011}. 
+ Our expression of the recomputation time is based on the common assumption that jobs will fail at the half-way mark on average~\cite{daly2006higher, bougeret_checkpointing_2011}. 
 %
 The probability that at least one VM out of $n_i$ will be preempted during the job execution can be expressed as:
 \begin{align}
@@ -162,13 +162,16 @@ Note that this restriction only applies to individual jobs---\sysname can smooth
 
 
 
-Using Equations~\ref{eq:turnaround},\ref{eq:recomput}, and \ref{eq:pfail1}, the overall expected cost of running a job on transient cloud servers is obtained as:
-\begin{equation}
-  \label{eq:ecfinal}
-  E[C_{( i,n_i )}] = \frac{1}{2}n_i c_i T_{( i,n_i )}\left(3 - \left(1-\dfrac{T_{( i,n_i )}}{E[L_i]}\right)^{n_i}\right).
-\end{equation}
+% Using Equations~\ref{eq:turnaround},\ref{eq:recomput}, and \ref{eq:pfail1}, the overall expected cost of running a job on transient cloud servers is obtained as:
+% \begin{equation}
+%   \label{eq:ecfinal}
+%   E[C_{( i,n_i )}] = \frac{1}{2}n_i c_i T_{( i,n_i )}\left(3 - \left(1-\dfrac{T_{( i,n_i )}}{E[L_i]}\right)^{n_i}\right).
+% \end{equation}
 
-Equation \ref{eq:ecfinal} shows that the expected cost $E[C]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
+% Equation \ref{eq:ecfinal} shows that the expected cost $E[C]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
+
+
+Combining all the equations, we see that the expected cost $E[C_{(i, n_i)}]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
 %
 Thus, if we select VMs of smaller size, we will require more of them (higher $n_i$), and this cluster configuration will have a larger probability of failure and thus higher running times and costs.
 However, there is a tradeoff: selecting larger VMs results in smaller $n_i$, but larger VMs have higher preemption probability, as we have seen in Section~\ref{subsec:types-dynamics}. 
