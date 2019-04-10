@@ -28,7 +28,8 @@ The nanoconfiment application launches molecular dynamics (MD) simulations of io
 These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering. These three examples are implemented as parallel programs that use OpenMP and MPI parallel computing techniques. The first two are used in nanoscale materials research \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto} and the LULESH is a widely used benchmark \cite{IPDPS13:LULESH,LULESH2:changes}. All applications are run with default parameters unless otherwise stated. 
 All applications use OpenMPI v2.1.1, are deployed on Slurm v0.4.3 and 64-bit Ubuntu 18.04, and run on Google Cloud VMs with x86-64 Intel Broadwell CPUs. 
 %Networking? 
-For completeness and to guard against concerns about poor cloud performance relative to HPC clusters ~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}, we benchmarked the Nanoconfinement application on Big Red II cluster and compared to SciSpot. We find the run times on Big Red II as 1140 seconds for 4 nodes compared to 851 seconds on 4 nodes in SciSpot. We attribute the difference in run times to the newer CPUs on Google Cloud (AMD Opteron in Big Red II vs. Intel Broadwell in Google).
+For completeness and to guard against concerns about poor cloud performance relative to HPC clusters ~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}, we benchmarked the Nanoconfinement application on Big Red II cluster and compared to SciSpot. We find the run times on Big Red II as 1140 seconds for 4 nodes compared to 851 seconds on 4 nodes in SciSpot. 
+We attribute the difference in run times to the newer CPUs on Google Cloud (older 2012-era AMD Opterons in Big Red II vs. Intel Haswell).
 
 %For completeness, we show the running times on the Big Red II supercomputing cluster in Table~\ref{tab:bigred2}, with 16 CPU nodes used throughout, and we see that our representative applications \emph{do not} face a penalty when deployed on the cloud. 
 
@@ -78,6 +79,29 @@ By considering \emph{both} these factors, \sysname's server selection policy can
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Cost}
 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{../graphs/cost-vs-exosphere.pdf}
+  \vspace*{\myfigspace}
+  \caption{SciSpot's use of preemptible VMs can reduce costs by up to $5\times$ compared to conventional cloud deployments, and 20\% compared to the state of the art EC2 spot instance selection (ExoSphere~\cite{exosphere}).}
+  \label{fig:cost-only-bar}
+    \vspace*{\myfigspace}
+\end{figure}
+
+The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible. 
+Figure~\ref{fig:cost-only-bar} compares the cost of running different applications with different cloud VM deployments.
+\sysname, which uses both cost-minimizing server selection, and preemptible VMs, results in significantly lower costs across the board, even when accounting for preemptions and recomputations. 
+
+We also compare against ExoSphere~\cite{exosphere}, a state of the art  system for transient server selection.
+Unlike \sysname, ExoSphere only considers server price and preemption rates, and does \emph{not} consider application performance when selecting servers, and thus is unable to select the best server.
+Since the Google \texttt{highcpu} VMs have the same price per CPU, ExoSphere picks an arbitrary ``median'' VM to break ties, which may not necessarily yield the lowest running times.
+This results in a 20\% cost increase over \sysname. 
+
+\noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
+
+
+\eat{
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/cost-only-bar.pdf}
@@ -87,7 +111,6 @@ By considering \emph{both} these factors, \sysname's server selection policy can
     \vspace*{\myfigspace}
 \end{figure}
 
-
 The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible. 
 Figure~\ref{fig:cost-only-bar} compares the cost of running different applications with different cloud VM deployments.
 \sysname, which uses both cost-minimizing server selection, and preemptible VMs, results in significantly lower costs across the board, even when accounting for preemptions and recomputations. 
@@ -95,11 +118,8 @@ Even with \sysname's server selection, using on-demand VMs result in a $5\times$
 In the absence of server selection, we assume that the user will pick a ``median'' VM in terms of number of CPUs (in this case, 8 CPU VMs), which we also show in Figure~\ref{fig:cost-only-bar}.
 Note that since \sysname's server selection considers the turnaround time (which includes recomputation time), it may not always pick the optimal on-demand server. 
 
-%\vj{Note that \sysname's server selection considers both the base running times and recomputation time, which may not necessarily yield the best on-demand server configuration (which only needs to be cognizant of the base running times), and thus we see that the cost for the Shapes application on the median on-demand server is slightly lower than one with \sysname's server selection. However, it is still lower than \sysname's cost. rephrase}
-
-
 \noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
-
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Comparison with HPC Overhead}
 
