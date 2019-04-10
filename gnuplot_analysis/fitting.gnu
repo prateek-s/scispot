@@ -331,13 +331,13 @@ set key bottom right
 #set key at 1e4,165
 #set key samplen 2
 set key spacing 3
-set key font 'Helvetica, 18'
-set xtics font "Helvetica, 18"
-set ytics font "Helvetica, 18"
+set key font 'Helvetica, 22'
+set xtics font "Helvetica, 22"
+set ytics font "Helvetica, 22"
 set xtics offset 0,0
 set ytics offset 0,0
-set xlabel 'Time to Preemption (Hours)' font 'Helvetica,20'
-set ylabel 'CDF' font 'Helvetica,20'
+set xlabel 'Time to Preemption (Hours)' font 'Helvetica,24'
+set ylabel 'CDF' font 'Helvetica,24'
 set xlabel offset 0,0
 set ylabel offset 0,0
 set xrange [0:25]
@@ -354,15 +354,15 @@ set border linewidth 0.5
 set autoscale x
 set autoscale y
 unset key
-set xtics font "Helvetica, 14"
-set ytics font "Helvetica, 14"
+set xtics font "Helvetica, 18"
+set ytics font "Helvetica, 18"
 set xtics offset 0,0
 set ytics offset 0,0
 set xlabel 'Time to Preemption (Hours)' font 'Helvetica,20'
 unset xlabel
-set ylabel 'Probability' font 'Helvetica,14'
+set ylabel 'Probability' font 'Helvetica,18'
 set xlabel offset 0,0
-set ylabel offset 2,0
+set ylabel offset 1,0
 set xrange [0:25]
 set yrange [0:1]
 plot \

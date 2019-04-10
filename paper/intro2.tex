@@ -2,8 +2,8 @@
 
 % Look, scientific applications are important, OK? And HPC. 
 
-Scientific computing applications play a critical role in understanding natural and synthetic phenomena associated with a wide range of material, biological, and engineering systems. 
-The computational models and simulations for analyzing these systems can consume a large amount of computing resources, and require access to large dedicated high performance computing (HPC) infrastructure. 
+%Scientific computing applications play a critical role in understanding natural and synthetic phenomena associated with a wide range of material, biological, and engineering systems. 
+%The computational models and simulations for analyzing these systems can consume a large amount of computing resources, and require access to large dedicated high performance computing (HPC) infrastructure. 
 
 
 
@@ -14,14 +14,14 @@ The computational models and simulations for analyzing these systems can consume
 
 % But now we have the cloud!!1
 
-Increasingly, cloud computing platforms have begun to supplement and complement conventional HPC infrastructure  to meet the large computing and storage requirements of scientific applications~\cite{buyya-hpc-survey}. 
+Increasingly, cloud computing platforms have begun to supplement and complement conventional HPC infrastructure  to meet the large computing and storage requirements of scientific computing applications~\cite{buyya-hpc-survey}. 
 Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling. 
 Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of \emph{Virtual Machines (VMs)},  which run a wide range of applications such as web-services, distributed data processing, distributed machine learning, etc.
 
 
 % a wide range of applications.
 
-To meet the diverse resource demands of different applications, public clouds offer resources (i.e., VMs) with multiple different resource configurations (such as number of CPU cores,  memory capacity, etc.), and pricing and availability contracts. 
+%To meet the diverse resource demands of different applications, public clouds offer resources (i.e., VMs) with multiple different resource configurations (such as number of CPU cores,  memory capacity, etc.), and pricing and availability contracts. 
 Conventionally, cloud VMs have been offered with ``on-demand'' availability, such that the lifetime of the VM is solely determined by the owner of the VM (i.e., the cloud customer). 
 Increasingly however, cloud providers have begun offering VMs with \emph{transient}, rather than continuous on-demand availability. 
 Transient VMs can be unilaterally revoked and preempted by the cloud provider, and applications running inside them face fail-stop failures. 
@@ -45,18 +45,21 @@ Although using transient resources can drastically reduce computing costs, their
 
 In this paper, we develop principled approaches for deploying and orchestrating  scientific computing applications on the cloud, and present \sysname, a framework for scientific computing on transient cloud servers.
 %
-\sysname introduces and incorporates policies for addressing the heterogeneity and preemptibiilty of transient cloud VMs, and is suitable for running a wide range of scientific applications at low-cost and with minimal performance overhead.
+\sysname introduces and incorporates policies for addressing the heterogeneity and preemptibiilty of transient cloud VMs, and is suitable for low-cost, low-overhead scientific computing.
+%running a wide range of scientific applications at low-cost and with minimal performance overhead.
 %
-\sysname abstracts many popular scientific computing workloads and workflows into a new unit of execution, which we call as a ``bag of jobs''. 
-These bags of jobs represent multiple instantiations of the same application launched with possibly different physical and computational parameters. 
+\sysname abstracts typical scientific computing workloads and workflows into a new unit of execution, which we call as a ``bag of jobs''. 
+These bags of jobs, ubiquitous in scientific computing, represent multiple instantiations of the same application launched with possibly different physical and computational parameters. 
 
 
 
 %Where they are found. Needs to be crisper 
 
-Bags of jobs are ubiquitous in scientific computing: for example, each job may be running a (parallel) simulation with a set of simulation input parameters, and different jobs in the collection (i.e., bag) run the same simulation with a different set of  parameters. 
-Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to discover or narrow down the set of feasible and viable parameters associated with the modeled natural or synthetic processes.
-A similar approach is adopted in the use of machine learning (ML) to enhance scientific computational methods, a rapidly emerging area of research~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer}, when a collection of jobs with independent parameter sets are launched to train ML models to predict simulation results and/or accelerate the simulation technique. 
+%Bags of jobs are ubiquitous in scientific computing: 
+%for example, each job may be running a (parallel) simulation with a set of simulation input parameters, and different jobs in the collection (i.e., bag) run the same simulation with a different set of  parameters. 
+Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to isolate the set of desired parameters associated with the scientific computation model.
+A similar approach is adopted in the use of machine learning (ML) to enhance scientific computational methods ~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer}, when a collection of jobs with independent parameter sets are launched to train and test ML models.
+%to predict simulation results and/or accelerate the simulation technique. 
 
 
 
@@ -68,18 +71,23 @@ and diversification~\cite{exosphere, spotweb} can indeed mitigate the effect of 
 
 
 %
-Furthermore, treating the bag of jobs as a fundamental unit of computation allows us to select the ``best'' server configuration for a given application, by exploring different servers for initial jobs and running the remainder of the jobs on the optimal server configuration. 
-Unlike prior work that assumes that the optimal resource allocation for an application is known apriori, \sysname can find the optimal allocation in an online manner. 
-Finally, \sysname runs applications on Google Cloud Preemptible VMs, and we develop the \emph{first} empirical and analytical models for understanding and characterizing their preemption dynamics, which informs our bags of jobs policies. 
+Furthermore, treating the bag of jobs as a fundamental unit of computation enables \sysname to select the ``best'' server configuration for a given application that minimizes the costs, running time, and preemption likelihood.
+%, by exploring different servers for initial jobs and running the remainder of the jobs on the optimal server configuration. 
+%Unlike prior work that assumes that the optimal resource allocation for an application is known a priori, 
+\sysname can find the optimal allocation on-the-fly by exploring different servers for initial jobs and running the remainder of the jobs on the optimal server configuration. 
+Finally, \sysname runs applications on Google Cloud Preemptible VMs and addresses the unique reliability and systems challenges arising from their maximum 24-hour lifetime set by the provider.
 %%
+%Since transient server preemptions can disrupt the execution of jobs, 
+We present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running times and costs of different scientific computing applications, which informs our bags of jobs execution policies.
+
 We implement these policies as part of the \sysname framework, and make the following contributions:
 \begin{enumerate}[leftmargin=12pt]
-\item In order to select the optimal VM for an application, from the plethora of choices offered by cloud providers, we develop a transient VM selection policy that minimizes the cost of running applications. Our search based policy selects a transient VM based on it's cost, parallel speedup, and probability of preemption. 
+\item In order to select the optimal VM for an application, from the plethora of choices offered by cloud providers, we develop a transient VM selection policy that minimizes the cost of running applications. Our search based policy selects a transient VM based on it's cost, performance, and preemption rate. 
 
 % Yeah the "not spot" point below may need clarification before contribs
   
-\item Since transient server preemptions can disrupt the execution of jobs, we present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running and costs of jobs of different types and duration.
-
+%\item Since transient server preemptions can disrupt the execution of jobs, we present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running times and costs of different scientific computing applications.
+\item We develop a new analytical model based on a large-scale, first-of-its-kind empirical study of lifetimes of Google preemptible VMs for understanding and characterizing their preemption dynamics. Our model captures the key effects resulting from the 24 hour constraint associated with these VMs, and enable accurate prediction of expected running times and costs of different scientific computing applications.
 % WTF is even partial redundancy? 
   
 \item We implement all our policies as part of a new framework, \sysname, and evaluate the cost and performance of different representative scientific computing  applications on the Google Cloud Platform. Compared to conventional cloud deployments, \sysname can reduce costs of running bags of jobs by more than $5\times$, and even when compared to dedicated HPC clusters, can reduce the total turnaround time by an order of magnitude. 

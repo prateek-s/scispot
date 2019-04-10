@@ -28,9 +28,7 @@ The nanoconfiment application launches molecular dynamics (MD) simulations of io
 These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering. These three examples are implemented as parallel programs that use OpenMP and MPI parallel computing techniques. The first two are used in nanoscale materials research \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto} and the LULESH is a widely used benchmark \cite{IPDPS13:LULESH,LULESH2:changes}. All applications are run with default parameters unless otherwise stated. 
 All applications use OpenMPI v2.1.1, are deployed on Slurm v0.4.3 and 64-bit Ubuntu 18.04, and run on Google Cloud VMs with x86-64 Intel Broadwell CPUs. 
 %Networking? 
-For completeness and to guard against concerns about poor cloud performance relative to HPC clusters ~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}, we benchmarked the Nanoconfinement application on Big Red II cluster and compared to SciSpot. We find the run times on Big Red II as 1140 seconds for 4 nodes compared to 851 seconds on 4 nodes in SciSpot. We attribute the difference in run times to the newer CPUs on Google Cloud (AMD Opteron in Big Red II vs. Intel Broadwell in Google).
 
-%For completeness, we show the running times on the Big Red II supercomputing cluster in Table~\ref{tab:bigred2}, with 16 CPU nodes used throughout, and we see that our representative applications \emph{do not} face a penalty when deployed on the cloud. 
 
 \vspace*{\subsecspace}
 \subsection{SciSpot Performance and Cost}
@@ -121,7 +119,7 @@ We analyze the waiting time of over two million jobs submitted over a 5 year per
   \centering 
   \includegraphics[width=0.4\textwidth]{../graphs/hpc-vs-scispot.pdf}
       \vspace*{\myfigspace}
-  \caption{Increase in running time due to waiting on HPC clusters is significantly higher than the recomputation time for \sysname, except for very long and rare jobs (see inset). }
+  \caption{Increase in running time due to waiting/queuing on HPC clusters is significantly higher than the recomputation time for \sysname, especially for shorter jobs. }
   \label{fig:hpc-vs-scispot}
   \vspace*{\myfigspace}
 \end{figure}
@@ -135,15 +133,15 @@ This waiting is amortized in the case of longer running jobs, and the overhead d
 On the other hand, \sysname's performance overhead is significantly smaller for jobs of up to 8 hours in length.
 For longer jobs, the limited lifetime of Google Preemptible VMs (24 hours) begins to significantly increase the preemption probability and expected recomputation time.
 We emphasize that these are \emph{individual} job lengths, and not the running time of entire bag of jobs.
-We note that these large single jobs are rare, and for smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller.
+We note that these large single jobs are rare, and for smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller. \vj{make more quantitative}
 
 \noindent \emph{ \textbf{Result:} While preemptions can increase running times due to recomputation, this increase is small, and is between 20 to 400\% lower compared to the waiting times associated as overhead in conventional HPC clusters. }
 
-% \subsubsection{Comparison with HPC Performance}
-% The performance of scientific computing applications has been extensively compared on HPC and cloud setups~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}. 
-% For completeness, we show the running times on the Big Red II supercomputing cluster in Table~\ref{tab:bigred2}, with 16 CPU nodes used throughout, and we see that our representative applications \emph{do not} face a penalty when deployed on the cloud. 
-% 
-% \input{tab_bigred2}
+\subsubsection{Comparison with HPC Performance}
+The performance of scientific computing applications has been extensively compared on HPC and cloud setups~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}. 
+For completeness, we show the running times on the Big Red II supercomputing cluster in Table~\ref{tab:bigred2}, with 16 CPU nodes used throughout, and we see that our representative applications \emph{do not} face a penalty when deployed on the cloud. 
+
+\input{tab_bigred2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

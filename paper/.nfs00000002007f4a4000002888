@@ -2,13 +2,13 @@
 \begin{table}[]
   \begin{tabular}{|l|l|r|r|}
     \hline
-    Application & Nodes & Big Red II & \sysname \\
+    \Application & Nodes & Big Red II & \sysname \\
     \hline
   	Nanoconfinement	&	1	&	2370	& 1546	\\
-    	&	4	&	1140	&	851	\\
+    Nanoconfinement	&	4	&	1140	&	851	\\
     \hline
   	Shapes	&	1	&	2649	& 1194	\\
-    	&	4	&	1209	&	548	\\
+    Shapes	&	4	&	1209	&	548	\\
     \hline
 \end{tabular}
 \caption{Running times (in seconds) of different applications on the Big Red II HPC cluster vs \sysname.}
