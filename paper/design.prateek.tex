@@ -86,12 +86,12 @@ Since jobs in a bag have similar execution characteristics, optimizing server se
 
 \sysname allows the users to specify the total amount of resources required per job, which we denote by $\mathcal{R}$.
 For example, $\mathcal{R}$ can be the total number of CPU cores. 
-We first determine the search space, which is the space of all cluster configurations $(i,n_i)$ such that $r_i n_i = \mathcal{R}$, where $r_i$ is the resource size of a VM of type $i$ (e.g., number of CPUs), and $n_i$ is the number of VMs of that type. 
+It first determines the search space, which is the space of all cluster configurations $(i,n_i)$ such that $r_i n_i = \mathcal{R}$, where $r_i$ is the resource size of a VM of type $i$ (e.g., number of CPUs), and $n_i$ is the number of VMs of that type. 
 Based on the constraint, the number of servers of type $i$ required is $n_i = \mathcal{R}/r_i$.
 
 Each cluster configuration yields different application performance, preemption overhead, and cost.
-Our aim is to find the lowest-cost configuration $(i, n_i)$ for a given application, which we do through an exploratory search. 
-Our server selection policy runs the application on different cluster configurations to determine the base running time (in the absence of preemptions), which is denoted by $T_{(i,n_i)}$. 
+The aim is to find the lowest-cost configuration $(i, n_i)$ for a given application. 
+The server selection policy runs the application on different cluster configurations to determine the base running time (in the absence of preemptions), which is denoted by $T_{(i,n_i)}$. 
 It then combines the empirical running time with a cost model, to estimate the expected cost of running the application. 
 
 
@@ -151,7 +151,7 @@ Here, $P(i, T_{(i, n_i)})$ denotes the probability of a preemption of a VM of ty
 It depends on the type of server, and its associated expected lifetime, and is defined as:
 \begin{equation}
   \label{eq:pi}
-  P(i, T_{(i, n_i)}) = \text{min}\left(\dfrac{T_{(i, n_i)}}{E[L_i]}, 1\right),
+  P\left(i, T_{\left(i, n_i \right)}\right) = \text{min}\left(\dfrac{T_{(i, n_i)}}{E[L_i]}, 1\right),
 \end{equation}
 where $E[L_i]$ is the expected lifetime of the VM of type $i$ extracted using the preemption model (Equation~\ref{eq:expected-lifetime}).
 %As a first order approximation, the running time $t$ of the job can be chosen as $t=T_{( i,n_i )}$, where the latter is empirically obtained for a given application.
@@ -185,7 +185,7 @@ However, there is a tradeoff: selecting larger VMs results in smaller $n_i$, but
 To limit the search space, we observe that since most scientific computing applications are CPU bound, we only need to consider VMs meant for CPU-bound workloads, such as \texttt{highcpu} VMs in Google Cloud and the \texttt{cc} family in Amazon EC2.
 For example, the Google cloud offers a total of 7 \texttt{highcpu} server types with 1, 2, 4, 8, 16, 32, and 64 CPU's---yielding a small upper bound on the number of configurations to search. 
 Furthermore, a large cluster of small servers is suboptimal for most applications (except those that are completely embarassingly parallel and have no communication).
-\sysname thus explores VM's in descending order of their size and ignores exploring the small VMs (with 2 CPUs or fewer)---reducing the search space even further. 
+\sysname thus explores VM's in descending order of their size and ignores exploring the small VMs (with 1 and 2 CPUs)---reducing the search space even further. 
 
 
 %\sysname launches clusters of preemptible VMs during the exploration phase. 
