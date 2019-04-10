@@ -138,20 +138,20 @@ Since jobs have to be rerun when they fail due to preemptions, we define the rec
    E[\text{Recomputation Time}] = \frac{1}{2} P(\text{at least one preemption}) T_{( i,n_i )}   
  \end{equation}
 Our expression of the recomputation time assumes jobs will fail at the half-way mark on average, as is frequently assumed and observed~\cite{daly2006higher, bougeret_checkpointing_2011}. 
-
+%
 The probability that at least one VM out of $n_i$ will be preempted during the job execution can be expressed as:
 \begin{align}
   \label{eq:pfail1}
   P(\text{at least one preemption}) &= 1-P(\text{no preemptions}) \\
-                                 &= 1-\left(1-P\left(i, t\right)\right)^{n_i}
+                                 &= 1-\left(1-P\left(i,T_{(i, n_i)}\right)\right)^{n_i}
 \end{align}
 
-Here, $P(i, t)$ denotes the probability of a preemption of a VM of type $i$ when a job of duration $t$ runs on it. 
+Here, $P(i, T_{(i, n_i)})$ denotes the probability of a preemption of a VM of type $i$ when a job of duration $T_{(i, n_i)}$ runs on it. 
 %
 It depends on the type of server, and its associated expected lifetime, and is defined as:
 \begin{equation}
   \label{eq:pi}
-  P(i, t) = \text{min}\left(\dfrac{t}{E[L_i]}, 1\right)
+  P(i, T_{(i, n_i)}) = \text{min}\left(\dfrac{T_{(i, n_i)}}{E[L_i]}, 1\right)
 \end{equation}
 Where $E[L_i]$ is the expected lifetime of the VM of type $i$ extracted using the preemption model (Equation~\ref{eq:expected-lifetime}).
 %As a first order approximation, the running time $t$ of the job can be chosen as $t=T_{( i,n_i )}$, where the latter is empirically obtained for a given application.
@@ -201,7 +201,7 @@ Thus, jobs launched on ``stable'' VMs that have been running for a few hours, fa
 If the deadline specified is $D$, then the number of parallel jobs is $k=D/E[\mathcal{T}]$.
 Thus if the exploration phase recommends $n_i$ VMs, then we launch a cluster of $k\times n_i$ VMs, with each job executing on $n_i$ VMs. 
 For this calculation, we assume that the running time of different jobs in a bag will largely be similar, but this is not a correctness requirement.
-Thus because of the stochasticity in job running times and VM lifetimes, \sysname only meets the deadline in a ``best effort'' manner, and does not guarantee strict makespan constraints. 
+Thus because of the stochasticity in job running times and VM lifetimes, \sysname only meets the deadline in a ``best effort'' manner, and does not guarantee makespan constraints. 
 
 Upon job completion, the next job in the bag is run. 
 When a job fails due to VM preemption, \sysname replenishes the cluster by launching replacement VM's and resubmits the job. 

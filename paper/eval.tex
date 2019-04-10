@@ -93,7 +93,7 @@ By considering \emph{both} these factors, \sysname's server selection policy can
 The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible. 
 Figure~\ref{fig:cost-only-bar} compares the cost of running different applications with different cloud VM deployments.
 \sysname, which uses both cost-minimizing server selection, and preemptible VMs, results in significantly lower costs across the board, even when accounting for preemptions and recomputations. 
-
+%
 We also compare against ExoSphere~\cite{exosphere}, a state of the art  system for transient server selection.
 Unlike \sysname, ExoSphere only considers server price and preemption rates, and does \emph{not} consider application performance when selecting servers, and thus is unable to select the best server.
 Since the Google \texttt{highcpu} VMs have the same price per CPU, ExoSphere picks an arbitrary ``median'' VM to break ties, which may not necessarily yield the lowest running times.
@@ -156,9 +156,10 @@ This waiting is amortized in the case of longer running jobs, and the overhead d
 On the other hand, \sysname's performance overhead is significantly smaller for jobs of up to 8 hours in length.
 For longer jobs, the limited lifetime of Google Preemptible VMs (24 hours) begins to significantly increase the preemption probability and expected recomputation time.
 We emphasize that these are \emph{individual} job lengths, and not the running time of entire bag of jobs.
-We note that these large single jobs are rare, and for smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller.
+We note that these large single jobs are rare, accounting for less than 5\% of all HPC jobs (see inset in Figure~\ref{fig:hpc-vs-scispot}).
+For smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller. 
 
-\noindent \emph{ \textbf{Result:} While preemptions can increase running times due to recomputation, this increase is small, and is between 20 to 400\% lower compared to the waiting times associated as overhead in conventional HPC clusters. }
+\noindent \emph{\textbf{Result:} The increase in running time due to preemptions is small, and is up to $10\times$ lower compared to the waiting times associated as overhead in conventional HPC clusters. }
 
 % \subsubsection{Comparison with HPC Performance}
 % The performance of scientific computing applications has been extensively compared on HPC and cloud setups~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}. 
@@ -225,7 +226,7 @@ For both the NC and Shapes application, we see up to $6\times$ reduction in the 
 We now evaluate \sysname's behavior when running larger bags of jobs.
 Table~\ref{tab:100-jobs} shows the total running time of bags of 32 and 100 jobs.
 Since \sysname reuses VMs when running jobs from a bag, it is able to take advantage of the relatively low preemption rates of VMs once they pass the first phase of early failures (Figure~\ref{fig:gcp1}), and thus minimizes the number of preemptions as well as job failures. 
-This makes \sysname particularly suitable for running the large bags of jobs that are required when using machine learning techniques for HPC workloads, an emerging research area in many science and engineering disciplines~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs1,jcs2,fox2019learning}, since the training and testing data needed for statistical machine learning can be generated through \sysname's bag of jobs execution model. 
+This makes \sysname particularly suitable for running the large bags of jobs that are required when using machine learning techniques for HPC workloads, an emerging research area in many science and engineering disciplines~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs1,jcs2,fox2019learning}, since the training and testing data needed for statistical machine learning can be generated using \sysname's bag of jobs. 
 
 
 %32_2_4 
