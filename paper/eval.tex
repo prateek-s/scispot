@@ -4,7 +4,7 @@
 
 %Opening is deliberately short because we gonna be running out of space 
 In this section, we present empirical and analytical evaluation of the performance and cost of \sysname under different workloads and scales. 
-Our evaluation consists of empirical analysis of the different scientific computing applications, as well as model-driven simulations for analyzing and comparing \sysname behavior under different preemption and application dynamics. 
+Our evaluation consists of empirical analysis of  different scientific computing applications, as well as model-driven simulations for analyzing and comparing \sysname behavior under different preemption and application dynamics. 
 
 % \begin{itemize}
 % \item What is performance and cost of 
@@ -30,7 +30,7 @@ All applications use OpenMPI v2.1.1, are deployed on Slurm v0.4.3 and 64-bit Ubu
 %Networking? 
 For completeness and to guard against concerns about poor cloud performance relative to HPC clusters ~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}, we benchmarked the Nanoconfinement application on the Big Red II cluster~\cite{bigred2}. 
 When run on 4 nodes with 16 CPUs each, the application takes 1140 seconds on Big Red II vs 850 seconds on \sysname. 
-We attribute the 20\% improvement with \sysname due to the newer CPUs on Google Cloud (Intel Haswell vs. older 2012-era AMD Opteron in Big Red II).
+We attribute the 20\% improvement with \sysname to the newer CPUs on Google Cloud (Intel Haswell vs. older 2012-era AMD Opteron in Big Red II).
 
 %For completeness, we show the running times on the Big Red II supercomputing cluster in Table~\ref{tab:bigred2}, with 16 CPU nodes used throughout, and we see that our representative applications \emph{do not} face a penalty when deployed on the cloud. 
 
@@ -60,12 +60,12 @@ With preemptible instances, the total running time of a job is composed of two f
 \end{figure}
 
 
-Figure~\ref{fig:runtimes-bar} shows the running times of the Nanoconfinement and Shapes application, when they are deployed on different VM sizes.
+Figure~\ref{fig:runtimes-bar} shows the running times of the Nanoconfinement, Shapes, and LULESH applications, when they are deployed on different VM sizes.
 In all cases, the total number of CPUs per job is set to 64, and thus the different VM sizes yield different cluster sizes (e.g., 16 VMs with 4 CPUs or 32 VMs with 2 CPUs).
 
 
-For the Nanoconfinement application, we observe that the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
-The running time on the ``best'' VM (i.e., with 32 CPUs) is nearly 40\% lower as compared to the worst case. 
+For the Nanoconfinement and LULESH applications, we observe that the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
+For Nanoconfinement, the running time on the ``best'' VM (i.e., with 32 CPUs) is nearly 40\% lower as compared to the worst case. 
 On the other hand, the Shapes application can scale to a larger number of VMs without any significant communication overheads, and does not see any significant change in its running time.
 
 Figure~\ref{fig:runtimes-bar} also shows the expected turnaround time $E[\mathcal{T}_{(i,n_i)}]$, that is obtained by adding the the expected recomputation time, which depends on the expected lifetimes of the VM and the number of VMs, and is computed using the cost model introduced in Section~\ref{subsec:cost-model}. 
@@ -124,7 +124,7 @@ Note that since \sysname's server selection considers the turnaround time (which
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Comparison with HPC Overhead}
 
-Scientific applications are typically run on large-scale HPC clusters, where different performance and cost dynamics apply.
+Scientific computing applications are typically run on large-scale HPC clusters, where different performance and cost dynamics apply.
 While there are hardware differences between cloud VMs and HPC clusters that can contribute to performance differences, we are interested in the performance ``overheads''.
 In the case of \sysname, the job failures and recomputations increase the job turnaround time, and are thus the main source of overhead.
 
@@ -148,7 +148,7 @@ We analyze the waiting time of over two million jobs submitted over a 5 year per
 \end{figure}
 
 
-We define the overhead as the increase in running time which is equal to the turnaround time (i.e., the time between the job submission and successful completion) divided by the base job running time (with no waiting or premptions). 
+%We define the overhead as the increase in running time which is equal to the turnaround time (i.e., the time between the job submission and successful completion) divided by the base job running time (with no waiting or premptions). 
 %In HPC clusters, the overhead is the waiting time for resources, and in \sysname the overhead is the recomputation time due to preemptions.
 Figure~\ref{fig:hpc-vs-scispot} compares the overhead (as percentage increase in running time) of \sysname and HPC clusters  for jobs of different lengths. We see that the average performance overhead due to waiting can be significant in the case of HPC clusters, and the job submission latency and queuing time dominate for smaller jobs, increasing their total turnaround time by more $2.5\times$.
 This waiting is amortized in the case of longer running jobs, and the overhead drops off for longer jobs, to around 30\%.
@@ -159,7 +159,7 @@ We emphasize that these are \emph{individual} job lengths, and not the running t
 We note that these large single jobs are rare, accounting for less than 5\% of all HPC jobs (see inset in Figure~\ref{fig:hpc-vs-scispot}).
 For smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller. 
 
-\noindent \emph{\textbf{Result:} The increase in running time due to preemptions is small, and is up to $10\times$ lower compared to the waiting times associated as overhead in conventional HPC clusters. }
+\noindent \emph{\textbf{Result:} \sysname's overhead of recomputation due to preemptions is small, and is up to $10\times$ lower compared to the overhead of waiting in conventional HPC clusters. }
 
 % \subsubsection{Comparison with HPC Performance}
 % The performance of scientific computing applications has been extensively compared on HPC and cloud setups~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}. 
@@ -192,7 +192,7 @@ In the rest of this section, we evaluate \sysname with different cluster  sizes,
 \begin{figure}
   \includegraphics[width=0.4\textwidth]{../graphs/vm-per-job-scaling.pdf}
       \vspace*{\myfigspace}
-  \caption{Bag of jobs running times exhibits classic parallel scaling behavior---performance improves until reaching a saturation point.}
+  \caption{Bag of jobs running times exhibit classic parallel scaling behavior---performance improves until reaching a saturation point.}
   \label{fig:vm-per-job-scaling}
     \vspace*{\myfigspace}
 \end{figure}
@@ -226,20 +226,20 @@ For both the Nanoconfinement and Shapes application, we see up to $6\times$ redu
 We now evaluate \sysname's behavior when running larger bags of jobs.
 Table~\ref{tab:100-jobs} shows the total running time of bags of 32 and 100 jobs.
 Since \sysname reuses VMs when running jobs from a bag, it is able to take advantage of the relatively low preemption rates of VMs once they pass the first phase of early failures (Figure~\ref{fig:gcp1}), and thus minimizes the number of preemptions as well as job failures. 
-This makes \sysname particularly suitable for running the large bags of jobs that are required when using machine learning techniques for HPC workloads, an emerging research area in many science and engineering disciplines~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs2,fox2019learning}, since the training and testing data needed for statistical machine learning can be generated using \sysname's bag of jobs. 
+This makes \sysname particularly suitable for running the large bags of jobs that are required when using machine learning techniques for HPC workloads~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs2,fox2019learning}, since the training and testing data needed for statistical machine learning can be generated using \sysname's bag of jobs. 
 
 
 %32_2_4 
 \begin{table}
   \begin{tabular}{|l|r|r|r|}
     \hline
-    Workload & Jobs & Time (Hours) & \# Preemptions \\
+    Application & Jobs & Time (Hours) & \# Preemptions \\
     \hline
     Nanoconfinement & 32  & 1.87 & 0 \\
-    Nanoconfinement & 100  & 6.08 & 1 \\
+     & 100  & 6.08 & 1 \\
     \hline
     Shapes & 32 & 1.47 & 0 \\
-    Shapes & 100 & 4.49 & 5  \\  
+     & 100 & 4.49 & 5  \\  
     \hline
   \end{tabular}
   \caption{Running times and number of preemptions for bags of different sizes. }
