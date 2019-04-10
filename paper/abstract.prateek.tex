@@ -2,11 +2,13 @@ Scientific computing applications are being increasingly deployed on cloud compu
 Transient servers can be used to lower the costs of running applications on the cloud.
 However, the frequent preemptions and resource heterogeneity of these transient servers introduces many challenges in their effective and efficient use.
 %
-In this paper, we develop techniques for modeling and mitigating preemptions of transient cloud servers, and present SciSpot, a software framework for running scientific applications at low cost on the cloud.
+In this paper, we develop techniques for modeling and mitigating preemptions of transient servers, and present SciSpot, a software framework that enables low-cost scientific computing on the cloud. 
+%for running scientific applications at low cost on the cloud.
 %
-SciSpot deploys applications on Google Cloud Preemptible VMs, and introduces the first empirical and analytical model for their preemptions, which we use to develop policies for minimizing the cost and makespan.
-SciSpot's design is guided by our observation that most scientific computing applications (such as simulations) are deployed as ``bag'' of jobs, which represent multiple instantiations of the same computation with different physical and computational parameters. 
-For any given bag of job, SciSpot finds the optimal transient server on-the-fly, by taking into account their price, performance, and preemption rates. 
+SciSpot deploys applications on Google Cloud Preemptible VMs, and introduces the first empirical and analytical model for their preemptions. 
+%which we use to develop policies for minimizing the cost and makespan.
+SciSpot's design is guided by our observation that many scientific computing applications (such as simulations) are deployed as ``bag'' of jobs, which represent multiple instantiations of the same computation with different physical and computational parameters. 
+Given a bag of jobs, SciSpot finds the optimal transient server on-the-fly, by taking into account the price, performance, and preemption rates of different servers. 
 SciSpot reduces costs by $5\times$ compared to conventional cloud deployments, and makespans by up to $10\times$ compared to conventional HPC clusters.
 
 %Our policies enable scientific computing applications to run
