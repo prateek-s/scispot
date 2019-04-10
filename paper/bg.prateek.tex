@@ -32,7 +32,8 @@ The effect of preemptions is dependent on a combination of application resource 
   In contrast, \sysname can run applications on Google Preemptible VMs that have fixed price and \emph{unknown} preemption rates.
   Thus due to the lack of any historical preemption information and the fundamental differences in the preemption characteristics, techniques such as  as historical price-based bidding strategies~\cite{bid-cloud}, price-based checkpointing~\cite{marathe2014exploiting, xinhpdc, spoton}, and diversification~\cite{exosphere, spotweb}, are unfortunately largely inapplicable. 
 %
- To address the lack of historical preemption information in the Google Cloud, we conduct the first large-scale empirical study of preemption rates by launching more than a thousand VMs, and analyze and model their preemptions in Section~\ref{sec:preemption-dynamics}.
+To address these shortcomings, we conduct the first large-scale empirical study of preemption rates by launching more than a thousand Google Preemptible VMs, and analyze and model their preemptions in Section~\ref{sec:preemption-dynamics}. 
+  These models form the basis of our policies for minimizing cost and running time for a diverse set of scientific computing workloads that are launched as bags of jobs, as described next. 
   
 
 \vspace*{\subsecspace}

@@ -125,8 +125,8 @@ The overall expected cost of running a job can then be expressed as follows:
   E[C_{( i,n_i )}] = n_i\times c_i \times E[\mathcal{T}_{( i,n_i )}]
 \end{equation}
 Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected turnaround time of the job (accounting for preemptions) on $n_i$ servers of type $i$.
-
-This turaround time depends on the preemption probability of the server type, and can be expressed as:
+%
+This turaround time depends on whether the job needs to be recomputed because of preemptions, and can be expressed as:
 \begin{align}
   \label{eq:turnaround}
   E[\mathcal{T}_{( i,n_i )}] &= T_{( i,n_i )} + E[\text{Recomputation Time}]
@@ -162,7 +162,7 @@ Note that this restriction only applies to individual jobs---\sysname can smooth
 
 
 
-Using Equations~\ref{eq:turnaround},\ref{eq:recomput}, and \ref{eq:pfail1}, the overall expected cost of running a job on transient cloud servers is obtained as
+Using Equations~\ref{eq:turnaround},\ref{eq:recomput}, and \ref{eq:pfail1}, the overall expected cost of running a job on transient cloud servers is obtained as:
 \begin{equation}
   \label{eq:ecfinal}
   E[C_{( i,n_i )}] = \frac{1}{2}n_i c_i T_{( i,n_i )}\left(3 - \left(1-\dfrac{T_{( i,n_i )}}{E[L_i]}\right)^{n_i}\right)

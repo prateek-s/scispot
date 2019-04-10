@@ -97,7 +97,7 @@ Figure~\ref{fig:cost-only-bar} compares the cost of running different applicatio
 We also compare against ExoSphere~\cite{exosphere}, a state of the art  system for transient server selection.
 Unlike \sysname, ExoSphere only considers server price and preemption rates, and does \emph{not} consider application performance when selecting servers, and thus is unable to select the best server.
 Since the Google \texttt{highcpu} VMs have the same price per CPU, ExoSphere picks an arbitrary ``median'' VM to break ties, which may not necessarily yield the lowest running times.
-This results in a 20\% cost increase over \sysname. 
+This results in 20\% cost increase over \sysname. 
 
 \noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
 
@@ -258,7 +258,7 @@ However, preemption rates can increase when the cloud operator sees high demand 
 Figure~\ref{fig:fails-time} shows the running time of the bag of 32 Nanoconfinement jobs on a cluster of 4 \texttt{n1-highcpu-32} VMs, when different number of VMs are preempted. 
 %
 We see that even with a high number of preemptions, the running time only increases by 50\%.
-This is because most job failures are due to early VM preemptions, and this reduces the recomputation time and increase in bag turnaround time. 
+This is because most job failures are due to early VM preemptions, as observed in our empirical and analytical models, and this reduces the recomputation time. 
 We note that a higher than expected preemption rate (as shown in the figure) is rare, and happens with a vanishingly small likelihood. 
 This shows that \sysname is robust and can provide acceptable performance even under extreme, adverse conditions. 
 

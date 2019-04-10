@@ -58,9 +58,9 @@ In such cases, price-based models are inadequate, and other approaches to unders
 
 This task is further complicated by the fact that these cloud operators (Google and Microsoft) do not currently provide any information about preemption characteristics. 
 Thus, relatively little is known about the preemptions (and hence the performance) of these transient VMs. %significantly limiting their use?
-
+%
 To understand preemption dynamics of transient servers, we conduct a large-scale empirical measurement study which is the first of its kind. 
-We launched more than 1000 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
+We launched more than 1,500 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
 
 \footnotetext{We will release the complete preemption dataset and hope that other researchers can benefit.} %Weaksauce 
 
@@ -95,7 +95,7 @@ This assumption breaks down when there is a fixed upper bound on the lifetime, a
 \label{subsec:analytical-model}
 
 We now develop an analytical model for preemption dynamics that is faithful to the empirically observed data and provides a basis for developing running-time and cost-minimizing optimizations presented in Section~\ref{sec:design}. 
-
+%
 To describe failures (preemptions) that are not memoryless (i.e., increasing or decreasing failure rate over time), the classic Weibull distribution with CDF $F(t)=1-e^{-(\lambda t)^k}$ is often employed. However, we find that the Weibull distribution is also unable to fit the empirical data (Figure~\ref{fig:gcp1}). 
 
 The non-trivial bathtub-shaped failure rate of Google preemptible VMs (Figure~\ref{fig:gcp1}) requires models that capture the sudden onset of rise in preemptions near the deadline. 
@@ -141,9 +141,9 @@ p(t) = \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + 
 $p(t)$ vs. $t$ yields a bathtub type failure rate function for the associated fit parameters (inset of Figure~\ref{fig:gcp1}).
 In the next section, we use this analytical model for optimizing cloud resource selection to run scientific computing applications at low cost and shorter running (turnaround) times.
 
-In the absence of any prior work on constrained preemption dynamics, our motivation is to develop an interpretable model with a minimal number of parameters, that provides a sufficiently accurate characterization of observed preemptions. 
+In the absence of any prior work on constrained preemption dynamics, our motivation is to develop an interpretable model with a minimal number of parameters, that provides a sufficiently accurate characterization of observed preemptions data. 
 As is evident from Figure~\ref{fig:gcp1}, our model shows deviations from the data near the halfway point within the 24 hour lifetime. 
-Further generalization of this model to include more failure processes, would introduce more parameters and reduce the generalization power.
+Further generalization of this model to include more failure processes would introduce more parameters and reduce the generalization power.
 Exploring other approaches of modeling bathtub-type failure rates (e.g., exponential Weibull distributions) \cite{mudholkar1993exponentiated,crevecoeur1993model} is part of our future work. 
 
 
