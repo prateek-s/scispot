@@ -27,15 +27,15 @@ set style line 15 linecolor rgb 'cyan' linetype 3 linewidth 1 pointtype 6 points
 set style line 16 linecolor rgb 'magenta' linetype 2 linewidth 1 pointtype 6 pointsize 1
 
 #for figures in scispot
-set style line 10 linecolor rgb 'red' linetype 1 linewidth 1 pointtype 6 pointsize 1 #for data
+set style line 10 linecolor rgb 'red' linetype 1 linewidth 1 pointtype 6 pointsize 1.5 #for data
 set style line 5 linecolor rgb 'black' linetype 1 linewidth 2 pointtype 6  pointsize 1
 set style line 1 linecolor rgb 'brown' linetype 2 linewidth 2 pointtype 6 pointsize 1
 set style line 3 linecolor rgb 'blue' linetype 4 linewidth 2 pointtype 6 pointsize 1
 
-set style line 11 linecolor rgb 'blue' linetype 1 linewidth 1 pointtype 4 pointsize 1 #for data
-set style line 12 linecolor rgb 'cyan' linetype 1 linewidth 1 pointtype 12 pointsize 1 #for data
-set style line 13 linecolor rgb 'brown' linetype 1 linewidth 1 pointtype 8 pointsize 1 #for data
-set style line 14 linecolor rgb 'black' linetype 1 linewidth 1 pointtype 10 pointsize 1 #for data
+set style line 11 linecolor rgb 'blue' linetype 1 linewidth 1 pointtype 4 pointsize 1.5 #for data
+set style line 12 linecolor rgb 'cyan' linetype 1 linewidth 1 pointtype 12 pointsize 1.5 #for data
+set style line 13 linecolor rgb 'brown' linetype 1 linewidth 1 pointtype 8 pointsize 1.5 #for data
+set style line 14 linecolor rgb 'black' linetype 1 linewidth 1 pointtype 10 pointsize 1.5 #for data
 
 set style line 15 linecolor rgb 'red' linetype 1 linewidth 2 pointtype 6  pointsize 1
 set style line 16 linecolor rgb 'blue' linetype 2 linewidth 2 pointtype 6  pointsize 1
@@ -349,7 +349,7 @@ pastf1(x) t 'Classical Exponential' ls 1, \
 pastf2(x) t 'Classical Weibull' ls 3
 #inset
 set origin 0.11,0.565
-set size 0.45, 0.42
+set size 0.45, 0.41
 set border linewidth 0.5
 set autoscale x
 set autoscale y
@@ -379,17 +379,17 @@ set autoscale x
 set autoscale y
 set output 'scispot-fig-vm-types.eps'
 set key vertical width 2 maxrows 10
-set key top left
-#set key at 1e4,165
+#set key top left
+set key at 9,0.8
 #set key samplen 2
 set key spacing 3
-set key font 'Helvetica, 18'
-set xtics font "Helvetica, 18"
-set ytics font "Helvetica, 18"
+set key font 'Helvetica, 22'
+set xtics font "Helvetica, 22"
+set ytics font "Helvetica, 22"
 set xtics offset 0,0
 set ytics offset 0,0
-set xlabel 'Time to Preemption (Hours)' font 'Helvetica,20'
-set ylabel 'CDF' font 'Helvetica,20'
+set xlabel 'Time to Preemption (Hours)' font 'Helvetica,24'
+set ylabel 'CDF' font 'Helvetica,24'
 set xlabel offset 0,0
 set ylabel offset 0,0
 set xrange [0:25]
