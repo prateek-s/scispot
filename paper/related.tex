@@ -32,10 +32,11 @@ Ours is the first work that studies the preemption characteristics and addresses
 \vspace*{\subsecspace}
 \subsubsection{Preemption Mitigation}
 Effective use of transient servers usually entails the use of fault-tolerance techniques such as checkpointing~\cite{flint}, migration~\cite{spotcheck}, and replication.
-In the context of HPC workloads,\cite{marathe2014exploiting,gong_monetary_2015,xiang_spotmpi:_2011} develop checkpointing and bidding strategies for MPI applications running on EC2 spot instances, based on older spot pricing data and model.
-A comprehensive survey on periodic checkpointing for HPC applications can be found in~\cite{dongarra_fault_nodate}.  
+In the context of HPC workloads,\cite{marathe2014exploiting,gong_monetary_2015,xiang_spotmpi:_2011} develop checkpointing and bidding strategies for MPI applications running on EC2 spot instances, based on older spot pricing models. 
+%, which are inherently memoryless and not applicable in our case. 
+Periodic checkpointing~\cite{dongarra_fault_nodate} is not appropriate in our case because preemptions are not memoryless. 
 
-By treating bags of jobs as an execution unit, allowing some jobs to fail, and using insights from preemption models, we show that it is possible to reduce the recomputation times to acceptable levels even without the  use of periodic  checkpointing that imposes additional deployment and performance overheads.
+By treating bags of jobs as an execution unit, allowing some jobs to fail, and using insights from preemption models, we show that it is possible to reduce the recomputation times to acceptable levels even without the  use of periodic  checkpointing that imposes additional deployment and performance overheads. 
 %The first step towards mitigating preemptions is understanding their characteristics. 
 Our preemption model for Google preemptible VMs developed in Section~\ref{sec:preemption-dynamics} extends the classic Weibull-distribution based bathtub models~\cite{mudholkar1993exponentiated,crevecoeur1993model} by introducing exponential reclamation near the deadline and additional paramters that capture and explain the preemption dynamics. 
 
@@ -46,7 +47,7 @@ Optimized server selection is an important problem in cloud computing, and espec
 Similar to \sysname, SpotOn~\cite{spoton} is also a batch computing service that selects servers based on job characteristics and failure rates of different EC2 spot VMs. However, it is restricted to individual, single-VM batch jobs, and its design is tied to EC2 spot instances.
 The state of the art transient server selection involves the use of multiple types of VMs~\cite{exosphere}, and selecting a heterogeneous cluster can reduce the likelihood of mass concurrent preemptions.
 However, since scientific computing applications are mostly synchronous, even a single failure affects the entire job, and heterogeneous clusters are not required, and are in fact, detrimental. 
-Server selection is important even outside of preemptible VMs---developing bayesian optimization and application performance model based search for the ``best'' cloud VM is an active research area~\cite{alipourfard_cherrypick, yadwadkar_selecting_2017}. 
+Server selection is important even outside of preemptible VMs---developing bayesian optimization and application performance model based search for the ``best'' cloud VM is an active research area~\cite{alipourfard_cherrypick, yadwadkar_selecting_2017}, but these techniques do not  account  for preemptions. 
 
 \begin{figure}[t]
   \centering 
