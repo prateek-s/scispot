@@ -50,7 +50,7 @@ Therefore, new techniques are required to model preemption dynamics that can sup
 
 %\subsection{Empirical model of preemptions}
 %\subsection{Empirical preemption behavior}
-\subsection{Empirical Study Of Premptions In Google Cloud}
+\subsection{Empirical Study Of Preemptions In Google Cloud}
 
 The preemptions of transient servers need not be related to their price.
 For example, Google's Preemptible VMs and Azure Batch VMs have a \emph{fixed} price relative to their non-preemptible counterparts. 
@@ -68,7 +68,7 @@ We launched more than 1,500 Google Preemptible VMs of different types over a two
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/scispot-fig-cdf-prob-inset-time.eps}
-  \caption{CDF of lifetimes of Google Preemptible Instances. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.}
+  \caption{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.}
   \label{fig:gcp1}
 \end{figure}
 
@@ -136,7 +136,7 @@ The analytical model and the associated  distribution function $\mathscr{F}$ int
 %\footnotetext{More details about the distribution fitting are presented in the implementation section(~\ref{sec:impl}}
 %
 
-Further, the failure or preemption rate can be derived from this CDF as 
+Further, the failure or preemption rate can be derived from this CDF as:
 \begin{equation}
 \label{eq:failrate}
 p(t) = \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{1}{\tau_2}e^{\frac{t-b}{\tau_2}}\right).
@@ -163,8 +163,6 @@ Further generalization of this model to include more failure processes, which wo
 %We also note that approaches (e.g., exponential Weibull distributions) to model bathtub-type failure rates have been proposed in the literature  \cite{mudholkar1993exponentiated,crevecoeur1993model}.
 %These methods did not perform better than our model resulting in parameter variables and values that were relatively difficult to interpret; this could likely be due to the unique constraint-driven failures in preemption dynamics as opposed to aging-related increasing failure rate considered in previous work. 
 
-
-
 \subsection{Preemption Dynamics of VMs of Different Types}
 \label{subsec:types-dynamics}
 %%%%%%%%%%%%%%%%%%%% OPTIONAL
@@ -188,7 +186,7 @@ We also show the associated CDFs ($\mathscr{F}$) computed using the proposed mod
 
 From Figure~\ref{fig:cdf-comparison}, we see that the CDFs obtained using our model capture the preemption dynamics of different VM types reasonably well.
 For the smallest four VM sizes (2, 4, 8, 16), we find that the initial rate of preemptions ($1/\tau_1 \in [0.5, 1.5]$ $\text{hr}^{-1}$) is typically smaller than the final rate of preemptions ($1/\tau_2 \in [1.28, 1.72]$  $\text{hr}^{-1}$),  and the activation time for the final phase $b \in [24, 24.5]$ hours. 
-We note the distinct behavior of the analytical CDF for VMs of size 32, where the fit does not reproduce the final rise accurately but captures the slightly faster increase in premptions during the middle phase better. 
+We note the distinct behavior of the analytical CDF for VMs of size 32, where the fit does not reproduce the final rise accurately but captures the slightly faster increase in preemptions during the middle phase better. 
 These plots also illustrate a deficiency in our model, whereby the boundary condition of $\mathscr{F} = 1$ for $t=24$ hours is not strictly imposed.
 
 Interestingly, we can also observe that larger VMs have a higher rate of failure.
@@ -196,10 +194,10 @@ This is because larger VMs require more computational resources (such as CPU and
 This observed behavior aligns with the guidelines for using preemptible VMs that suggests the use of smaller VMs when possible~\cite{preemptible-documentation}. 
 
 Our analytical model also helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
-More formally, we define the expected lifetime of a VM of type $i$, as 
+More formally, we define the expected lifetime of a VM of type $i$, as: 
 \begin{equation}
   \label{eq:expected-lifetime}
-E[L_i] =  \int_{0}^{24} t {p_i}(t)~dt 
+E[L_i] =  \int_{0}^{24} t {p_i}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{24}
 \end{equation}
 where $p_i(t)$ is the rate of preemptions of VMs of type $i$ (Equation~\ref{eq:failrate}).
 %= \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{t-b}{\tau_2}e^{\frac{t-b}{\tau_2}}\right) $ 

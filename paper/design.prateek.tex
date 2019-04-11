@@ -126,7 +126,7 @@ The overall expected cost of running a job can then be expressed as follows:
 \end{equation}
 Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected turnaround time of the job (accounting for preemptions) on $n_i$ servers of type $i$.
 %
-This turaround time depends on whether the job needs to be recomputed because of preemptions, and can be expressed as:
+This turnaround time depends on whether the job needs to be recomputed because of preemptions, and can be expressed as:
 \begin{align}
   \label{eq:turnaround}
   E[\mathcal{T}_{( i,n_i )}] &= T_{( i,n_i )} + E[\text{Recomputation Time}].
@@ -184,8 +184,8 @@ However, there is a tradeoff: selecting larger VMs results in smaller $n_i$, but
 
 To limit the search space, we observe that since most scientific computing applications are CPU bound, we only need to consider VMs meant for CPU-bound workloads, such as \texttt{highcpu} VMs in Google Cloud and the \texttt{cc} family in Amazon EC2.
 For example, the Google cloud offers a total of 7 \texttt{highcpu} server types with 1, 2, 4, 8, 16, 32, and 64 CPU's---yielding a small upper bound on the number of configurations to search. 
-Furthermore, a large cluster of small servers is suboptimal for most applications (except those that are completely embarassingly parallel and have no communication).
-\sysname thus explores VM's in descending order of their size and ignores exploring the small VMs (with 1 and 2 CPUs)---reducing the search space even further. 
+Furthermore, a large cluster of small servers is suboptimal for most applications (except those that are completely embarrassingly parallel and have no communication).
+\sysname thus explores VMs in descending order of their size and ignores exploring the small VMs (with 1 and 2 CPUs)---reducing the search space even further. 
 
 
 %\sysname launches clusters of preemptible VMs during the exploration phase. 
@@ -208,7 +208,8 @@ Thus, jobs launched on ``stable'' VMs that have been running for a few hours, fa
 If the deadline specified is $D$, then the number of parallel jobs is $k=D/E[\mathcal{T}]$.
 Thus if the exploration phase recommends $n_i$ VMs, then we launch a cluster of $k\times n_i$ VMs, with each job executing on $n_i$ VMs. 
 For this calculation, we assume that the running time of different jobs in a bag will largely be similar, but this is not a correctness requirement.
-Thus because of the stochasticity in job running times and VM lifetimes, \sysname only meets the deadline in a ``best effort'' manner, and does not guarantee makespan constraints. 
+%Thus because of
+Due to the stochasticity in job running times and VM lifetimes, \sysname only meets the deadline in a ``best effort'' manner, and does not guarantee makespan constraints. 
 
 %Upon job completion, the next job in the bag is run. 
 When a job fails due to VM preemption, \sysname replenishes the cluster by launching replacement VMs and resubmits the job. 
