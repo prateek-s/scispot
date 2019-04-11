@@ -10,7 +10,7 @@
 
 %\subsection{SciSpot Overview}
 
-\sysname is a general-purpose software framework for running scientific computing applications on low-cost cloud transient servers.
+\sysname is a general-purpose software framework for running scientific computing applications on low-cost transient cloud servers.
 It incorporates policies and mechanisms for generating, deploying, orchestrating, and monitoring bags of jobs on cloud servers.
 Specifically, it runs a bag of jobs defined by these parameters:
 \begin{lstlisting}[basicstyle=\sffamily, frame=single, columns=fullflexible, escapeinside={(*}{*)}]
@@ -26,7 +26,7 @@ Specifically, it runs a bag of jobs defined by these parameters:
 
 %it is suitable for running a large variety of applications.
 \sysname seeks to minimize the cost and running time of bags of jobs of scientific computing applications.
-\sysname's cost and time minimizing policies for running bags of jobs are based on empirical and analytical models of the cost and preemption dynamics of cloud transient servers, which we present in the next section. 
+\sysname's cost and time minimizing policies for running bags of jobs are based on empirical and analytical models of the cost and preemption dynamics of  transient cloud servers, which we present in the next section. 
 
 \sysname is designed as a framework that increases the usability and viability of transient cloud servers for scientific computing applications, and provides a simple user interface to allow users to deploy their applications with minimum workflow changes. 
 Most scientific computing applications are deployed on HPC clusters that have a batch scheduler such as Slurm~\cite{slurm} or Torque~\cite{torque}, and \sysname integrates with these schedulers (e.g., Slurm) to provide the same interface to applications. 
@@ -201,7 +201,7 @@ Once the right cluster configuration for a job has been determined, \sysname the
 
 %\sysname creates a cluster by launching preemptible VMs and starts scheduling the different jobs in a bag.
 Upon job completion, we run the next job in the bag on the existing cluster of preemptible VMs, with job parameters obtained using the generator function $\pi.next()$. 
-This policy is based on our preemption dynamics model which shows that preemption rates have a ``bath-tub'' shape.
+This policy is based on our preemption dynamics model which shows that preemption rates have a bathtub shape.
 Thus, jobs launched on ``stable'' VMs that have been running for a few hours, face low likelihood of failures---thereby reducing the number of job failures for the entire bag. 
 
 \sysname also allows users to specify a deadline for bag completion, which we use to compute the number of jobs to execute in parallel.
