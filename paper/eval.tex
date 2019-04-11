@@ -4,7 +4,7 @@
 
 %Opening is deliberately short because we gonna be running out of space 
 In this section, we present empirical and analytical evaluation of the performance and cost of \sysname under different workloads and scales. 
-Our evaluation consists of empirical analysis of the different scientific computing applications, as well as model-driven simulations for analyzing and comparing \sysname behavior under different preemption and application dynamics. 
+Our evaluation consists of empirical analysis of  different scientific computing applications, as well as model-driven simulations for analyzing and comparing \sysname behavior under different preemption and application dynamics. 
 
 % \begin{itemize}
 % \item What is performance and cost of 
@@ -17,18 +17,23 @@ Our evaluation consists of empirical analysis of the different scientific comput
   %TODO: Need MAX two sentence descriptions
 
 \noindent \textbf{Nanoconfinement.}
-The nanoconfiment application launches molecular dynamics (MD) simulations of ions in nanoscale confinement created by material surfaces \cite{jyto,kadupitiya2017}.
+The nanoconfinement application launches molecular dynamics (MD) simulations of ions in nanoscale confinement created by material surfaces \cite{jyto,kadupitiya2017}.
 
 \noindent \textbf{Shapes.} The Shapes application runs an MD-based optimization dynamics to predict the optimal shape of deformable, charged nanoparticles \cite{jto1,jjzo1}. 
 
-\noindent \textbf{LULESH.} Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH) code is a popular code to for hydrodynamics simulations of continuum material models \cite{IPDPS13:LULESH,LULESH2:changes}. 
+\noindent \textbf{LULESH.} Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH)  is a popular benchmark for hydrodynamics simulations of continuum material models \cite{IPDPS13:LULESH,LULESH2:changes}. 
 %\end{description}
 %\vspace*{\tightext}
 
-These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering. These three examples are implemented as parallel programs that use OpenMP and MPI parallel computing techniques. The first two are used in nanoscale materials research \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto} and the LULESH is a widely used benchmark \cite{IPDPS13:LULESH,LULESH2:changes}. All applications are run with default parameters unless otherwise stated. 
-All applications use OpenMPI v2.1.1, are deployed on Slurm v0.4.3 and 64-bit Ubuntu 18.04, and run on Google Cloud VMs with x86-64 Intel Broadwell CPUs. 
-%Networking? 
-For completeness and to guard against concerns about poor cloud performance relative to HPC clusters ~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}, we benchmarked the Nanoconfinement application on Big Red II cluster and compared to SciSpot. We find the run times on Big Red II as 1140 seconds for 4 nodes compared to 851 seconds on 4 nodes in SciSpot. We attribute the difference in run times to the newer CPUs on Google Cloud (AMD Opteron in Big Red II vs. Intel Broadwell in Google).
+These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering. These three examples are implemented as parallel programs that use OpenMP and MPI parallel computing techniques. The first two are used in nanoscale materials research \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto} and LULESH is a widely used benchmark \cite{IPDPS13:LULESH,LULESH2:changes}.
+All applications are run with default parameters unless otherwise stated. 
+
+
+All applications use OpenMPI v2.1.1, are deployed on Slurm v0.4.3 and 64-bit Ubuntu 18.04, and run on Google Cloud VMs with x86-64 Intel Haswell CPUs. 
+% Networking?
+For completeness and to guard against concerns about poor cloud performance relative to HPC clusters ~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}, we benchmarked the Nanoconfinement application on the Big Red II cluster~\cite{bigred2}. 
+When run on 4 nodes with 16 CPUs each, the application takes 1140 seconds on Big Red II vs 850 seconds on \sysname. 
+We attribute the 20\% improvement with \sysname to the newer CPUs on Google Cloud (Intel Haswell vs. older 2012-era AMD Opteron in Big Red II).
 
 %For completeness, we show the running times on the Big Red II supercomputing cluster in Table~\ref{tab:bigred2}, with 16 CPU nodes used throughout, and we see that our representative applications \emph{do not} face a penalty when deployed on the cloud. 
 
@@ -58,12 +63,12 @@ With preemptible instances, the total running time of a job is composed of two f
 \end{figure}
 
 
-Figure~\ref{fig:runtimes-bar} shows the running times of the Nanoconfinement and Shapes application, when they are deployed on different VM sizes.
+Figure~\ref{fig:runtimes-bar} shows the running times of the Nanoconfinement, Shapes, and LULESH applications, when they are deployed on different VM sizes.
 In all cases, the total number of CPUs per job is set to 64, and thus the different VM sizes yield different cluster sizes (e.g., 16 VMs with 4 CPUs or 32 VMs with 2 CPUs).
 
 
-For the Nanoconfinement application, we observe that the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
-The running time on the ``best'' VM (i.e., with 32 CPUs) is nearly 40\% lower as compared to the worst case. 
+For the Nanoconfinement and LULESH applications, we observe that the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
+For Nanoconfinement, the running time on the ``best'' VM (i.e., with 32 CPUs) is nearly 40\% lower as compared to the worst case. 
 On the other hand, the Shapes application can scale to a larger number of VMs without any significant communication overheads, and does not see any significant change in its running time.
 
 Figure~\ref{fig:runtimes-bar} also shows the expected turnaround time $E[\mathcal{T}_{(i,n_i)}]$, that is obtained by adding the the expected recomputation time, which depends on the expected lifetimes of the VM and the number of VMs, and is computed using the cost model introduced in Section~\ref{subsec:cost-model}. 
@@ -78,6 +83,29 @@ By considering \emph{both} these factors, \sysname's server selection policy can
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Cost}
 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.4\textwidth]{../graphs/cost-vs-exosphere.pdf}
+  \vspace*{\myfigspace}
+  \caption{SciSpot's use of preemptible VMs can reduce costs by up to $5\times$ compared to conventional cloud deployments, and 20\% compared to the state of the art EC2 spot instance selection (ExoSphere~\cite{exosphere}).}
+  \label{fig:cost-only-bar}
+    \vspace*{\myfigspace}
+\end{figure}
+
+The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible. 
+Figure~\ref{fig:cost-only-bar} compares the cost of running different applications with different cloud VM deployments.
+\sysname, which uses both cost-minimizing server selection, and preemptible VMs, results in significantly lower costs across the board, even when accounting for preemptions and recomputations. 
+%
+We also compare against ExoSphere~\cite{exosphere}, a state of the art  system for transient server selection.
+Unlike \sysname, ExoSphere only considers server price and preemption rates, and does \emph{not} consider application performance when selecting servers, and thus is unable to select the best server.
+Since the Google \texttt{highcpu} VMs have the same price per CPU, ExoSphere picks an arbitrary ``median'' VM to break ties, which may not necessarily yield the lowest running times.
+This results in 20\% cost increase over \sysname. 
+
+\noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
+
+
+\eat{
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/cost-only-bar.pdf}
@@ -87,7 +115,6 @@ By considering \emph{both} these factors, \sysname's server selection policy can
     \vspace*{\myfigspace}
 \end{figure}
 
-
 The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible. 
 Figure~\ref{fig:cost-only-bar} compares the cost of running different applications with different cloud VM deployments.
 \sysname, which uses both cost-minimizing server selection, and preemptible VMs, results in significantly lower costs across the board, even when accounting for preemptions and recomputations. 
@@ -95,19 +122,16 @@ Even with \sysname's server selection, using on-demand VMs result in a $5\times$
 In the absence of server selection, we assume that the user will pick a ``median'' VM in terms of number of CPUs (in this case, 8 CPU VMs), which we also show in Figure~\ref{fig:cost-only-bar}.
 Note that since \sysname's server selection considers the turnaround time (which includes recomputation time), it may not always pick the optimal on-demand server. 
 
-%\vj{Note that \sysname's server selection considers both the base running times and recomputation time, which may not necessarily yield the best on-demand server configuration (which only needs to be cognizant of the base running times), and thus we see that the cost for the Shapes application on the median on-demand server is slightly lower than one with \sysname's server selection. However, it is still lower than \sysname's cost. rephrase}
-
-
 \noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
-
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Comparison with HPC Overhead}
 
-Scientific applications are typically run on large-scale HPC clusters, where different performance and cost dynamics apply.
+Scientific computing applications are typically run on large-scale HPC clusters, where different performance and cost dynamics apply.
 While there are hardware differences between cloud VMs and HPC clusters that can contribute to performance differences, we are interested in the performance ``overheads''.
 In the case of \sysname, the job failures and recomputations increase the job turnaround time, and are thus the main source of overhead.
 
-On HPC clusters, jobs enjoy significantly lower recomputation probability, since the hardware on these clusters has MTTFs in the range of years to centuries~\cite{dongarra-ckpting}.
+On HPC clusters, jobs enjoy significantly lower recomputation probability, since the hardware on these clusters has MTTFs in the range of years to centuries~\cite{dongarra_fault_nodate}.
 However, we emphasize that there exist \emph{other} sources of performance overheads in HPC clusters.
 In particular, since HPC clusters have high resource utilization, they also have significant \emph{waiting} times. 
 On the other hand, cloud resource utilization is low~\cite{borg} and there is usually no need to wait for resources, which is why transient servers exist in the first place. 
@@ -127,7 +151,7 @@ We analyze the waiting time of over two million jobs submitted over a 5 year per
 \end{figure}
 
 
-We define the overhead as the increase in running time which is equal to the turnaround time (i.e., the time between the job submission and successful completion) divided by the base job running time (with no waiting or premptions). 
+%We define the overhead as the increase in running time which is equal to the turnaround time (i.e., the time between the job submission and successful completion) divided by the base job running time (with no waiting or premptions). 
 %In HPC clusters, the overhead is the waiting time for resources, and in \sysname the overhead is the recomputation time due to preemptions.
 Figure~\ref{fig:hpc-vs-scispot} compares the overhead (as percentage increase in running time) of \sysname and HPC clusters  for jobs of different lengths. We see that the average performance overhead due to waiting can be significant in the case of HPC clusters, and the job submission latency and queuing time dominate for smaller jobs, increasing their total turnaround time by more $2.5\times$.
 This waiting is amortized in the case of longer running jobs, and the overhead drops off for longer jobs, to around 30\%.
@@ -135,9 +159,10 @@ This waiting is amortized in the case of longer running jobs, and the overhead d
 On the other hand, \sysname's performance overhead is significantly smaller for jobs of up to 8 hours in length.
 For longer jobs, the limited lifetime of Google Preemptible VMs (24 hours) begins to significantly increase the preemption probability and expected recomputation time.
 We emphasize that these are \emph{individual} job lengths, and not the running time of entire bag of jobs.
-We note that these large single jobs are rare, and for smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller.
+We note that these large single jobs are rare, accounting for less than 5\% of all HPC jobs (see inset in Figure~\ref{fig:hpc-vs-scispot}).
+For smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller. 
 
-\noindent \emph{ \textbf{Result:} While preemptions can increase running times due to recomputation, this increase is small, and is between 20 to 400\% lower compared to the waiting times associated as overhead in conventional HPC clusters. }
+\noindent \emph{\textbf{Result:} \sysname's overhead of recomputation due to preemptions is small, and is up to $10\times$ lower compared to the overhead of waiting in conventional HPC clusters. }
 
 % \subsubsection{Comparison with HPC Performance}
 % The performance of scientific computing applications has been extensively compared on HPC and cloud setups~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}. 
@@ -148,10 +173,12 @@ We note that these large single jobs are rare, and for smaller jobs (within a mu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{SciSpot Scaling}
+
 We now turn our attention to \sysname's scaling properties. We are primarily interested in observing the behavior of running bags of jobs of different applications with different resource requirements.
 In all cases unless otherwise stated, we run bags of 36 jobs, and impose that 90\% of all jobs complete (thus we target a completion of 32 jobs).
-The jobs in the bags are for exploring the different parameters (i.e., doing a parameter sweep), using \sysname's automated parameter sweeping functionality described in Section~\ref{sec:impl}. For reference, the distribution of running times for the different applications is shown in Figure~\ref{fig:job-run-cdf}. 
-In the rest of this section, we evaluate \sysname when the size of the cluster, the number of preemptions, and the number of jobs in the bag are increased.
+The jobs in the bags are for exploring the different parameters (i.e., doing a parameter sweep), using \sysname's automated parameter sweeping functionality described in Section~\ref{sec:impl}.
+%For reference, the distribution of running times for the different applications is shown in Figure~\ref{fig:job-run-cdf}. 
+In the rest of this section, we evaluate \sysname with different cluster  sizes, number of preemptions, and bag sizes. 
 
 % \begin{figure}
 %   \includegraphics[width=0.2\textwidth]{../graphs/job-run-cdf.pdf}
@@ -168,7 +195,7 @@ In the rest of this section, we evaluate \sysname when the size of the cluster, 
 \begin{figure}
   \includegraphics[width=0.4\textwidth]{../graphs/vm-per-job-scaling.pdf}
       \vspace*{\myfigspace}
-  \caption{Bag of jobs running times exhibits classic parallel scaling behavior---performance improves until reaching a saturation point.}
+  \caption{Bag of jobs running times exhibit classic parallel scaling behavior---performance improves until reaching a saturation point.}
   \label{fig:vm-per-job-scaling}
     \vspace*{\myfigspace}
 \end{figure}
@@ -176,7 +203,7 @@ In the rest of this section, we evaluate \sysname when the size of the cluster, 
 It is common to deploy scientific computing applications on large clusters, and we evaluate \sysname on different cluster sizes in Figure~\ref{fig:vm-per-job-scaling}.
 The figure shows the total running time (i.e., turnaround time) of the bag of jobs for the Nanoconfinement and Shapes applications as the total number of VMs (and hence total number of CPUs) increases.
 For this experiment, we used \texttt{n1-highcpu-32} VMs with 32 CPUs each, and we ran four jobs in parallel on the entire cluster. 
-We see classic scaling behavior: both applications can scale to a higher number of VMs up to a point, after which communication overhead starts to dominate, and the performance saturates and we see no reduction in running time. 
+We see classic scaling behavior: both applications can scale to a higher number of VMs up to a point, after which communication overhead  dominates, the performance saturates, and we see no reduction in running time. 
 
 
 \begin{figure}
@@ -193,7 +220,7 @@ That is, for a given fixed cluster size, it can run more jobs in parallel, by re
 of an individual job. 
 The effect of changing the number of parallel jobs is shown in Figure~\ref{fig:par-scaling}, which shows the running time of an entire bag of jobs when the total cluster size is fixed (256 CPUs), but the number of parallel jobs and hence the number of CPUs per job changes.
 We see that a \emph{smaller} number of CPUs per job limits the communication overhead, and thus reduces the total running time of the bag.
-For both the NC and Shapes application, we see up to $6\times$ reduction in the total bag running time when more number of jobs are launched in parallel and a smaller number of CPUs per job are used. 
+For both the Nanoconfinement and Shapes application, we see up to $6\times$ reduction in the total bag running time when more number of jobs are launched in parallel and a smaller number of CPUs per job are used. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,28 +228,28 @@ For both the NC and Shapes application, we see up to $6\times$ reduction in the 
 
 We now evaluate \sysname's behavior when running larger bags of jobs.
 Table~\ref{tab:100-jobs} shows the total running time of bags of 32 and 100 jobs.
-Since \sysname reuses VMs when running jobs from a bag, it is able to take advantage of the relatively low preemption rates of VMs once they pass the first phase of early failures (Figure~\ref{fig:cdf}), and thus minimizes the number of preemptions as well as job failures. 
-This makes \sysname particularly suitable for running the large bags of jobs that are required when using machine learning techniques for HPC workloads, an emerging research area in many science and engineering disciplines~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs1,jcs2,fox2019learning}, since the training and testing data needed for statistical machine learning can be generated through \sysname's bag of jobs execution model. 
+Since \sysname reuses VMs when running jobs from a bag, it is able to take advantage of the relatively low preemption rates of VMs once they pass the first phase of early failures (Figure~\ref{fig:gcp1}), and thus minimizes the number of preemptions as well as job failures. 
+This makes \sysname particularly suitable for running the large bags of jobs that are required when using machine learning techniques for HPC workloads~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs2,fox2019learning}, since the training and testing data needed for statistical machine learning can be generated using \sysname's bag of jobs. 
 
 
 %32_2_4 
 \begin{table}
   \begin{tabular}{|l|r|r|r|}
     \hline
-    Workload & Jobs & Time (Hours) & \# Preemptions \\
+    Application & Jobs & Time (Hours) & \# Preemptions \\
     \hline
     Nanoconfinement & 32  & 1.87 & 0 \\
-    Nanoconfinement & 100  & 6.08 & 1 \\
+     & 100  & 6.08 & 1 \\
     \hline
     Shapes & 32 & 1.47 & 0 \\
-    Shapes & 100 & 4.49 & 5  \\  
+     & 100 & 4.49 & 5  \\  
     \hline
   \end{tabular}
   \caption{Running times and number of preemptions for bags of different sizes. }
   \label{tab:100-jobs}
   \vspace*{\myfigspace}
+  \vspace*{\myfigspace}
 \end{table}
-
 
 
 
@@ -232,18 +259,11 @@ This makes \sysname particularly suitable for running the large bags of jobs tha
 By reusing VMs across a bag of jobs and taking advantage of the low preemption rates during the middle of the 24 hour life of the preemptible VMs, the \emph{expected} job failure rates and recomputation times are fairly small with \sysname (as shown in Figures~\ref{fig:runtimes-bar},~\ref{fig:hpc-vs-scispot}).
 However, preemption rates can increase when the cloud operator sees high demand for resources.
 Figure~\ref{fig:fails-time} shows the running time of the bag of 32 Nanoconfinement jobs on a cluster of 4 \texttt{n1-highcpu-32} VMs, when different number of VMs are preempted. 
-
-We see that even with a high number of preemptions, the running time only increases by 50\%. 
+%
+We see that even with a high number of preemptions, the running time only increases by 50\%.
+This is because most job failures are due to early VM preemptions, as observed in our empirical and analytical models, and this reduces the recomputation time. 
 We note that a higher than expected preemption rate (as shown in the figure) is rare, and happens with a vanishingly small likelihood. 
 This shows that \sysname is robust and can provide acceptable performance even under extreme, adverse conditions. 
-
-\begin{figure}[t]
-  \centering 
-  \includegraphics[width=0.2\textwidth]{../graphs/confin-fails-vs-time-relative.pdf}
-      \vspace*{\myfigspace}
-  \caption{The increase in running time due to preemptions is under 50\%, even when the number of preemptions is high.}
-  \label{fig:fails-time}
-\end{figure}
 
 
 %Summary of results? 
