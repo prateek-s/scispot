@@ -28,7 +28,7 @@ In this section, we present empirical and analytical models that describe these 
 
 
 
-\subsection{The need for empirical preemption models}
+\subsection{The Need For Empirical Preemption Models}
 \label{subsec:need-for-empirical}
 
 Amazon's EC2 spot instances were the original transient cloud servers.
@@ -50,7 +50,7 @@ Therefore, new techniques are required to model preemption dynamics that can sup
 
 %\subsection{Empirical model of preemptions}
 %\subsection{Empirical preemption behavior}
-\subsection{Empirical study of premptions in Google Cloud}
+\subsection{Empirical Study Of Premptions In Google Cloud}
 
 The preemptions of transient servers need not be related to their price.
 For example, Google's Preemptible VMs and Azure Batch VMs have a \emph{fixed} price relative to their non-preemptible counterparts. 
@@ -91,7 +91,7 @@ The classic exponential distribution is unable to model the observed preemption 
 %We attribute this deficiency to the central assumption made in the underlying reliability theory principles that leads to the classical exponential distribution: the rate of preemptions is independent of the lifetime of the VMs, in other words, the preemptions are \emph{memoryless}.
 This assumption breaks down when there is a fixed upper bound on the lifetime, as is the case for Google Preemptible VMs, and the conventional approach becomes insufficient to model this constrained preemption dynamics. 
 
-\subsection{Model of constrained preemption dynamics}
+\subsection{Model Of Constrained Preemption Dynamics}
 \label{subsec:analytical-model}
 
 We now develop an analytical model for preemption dynamics that is faithful to the empirically observed data and provides a basis for developing running-time and cost-minimizing optimizations. % presented in Section~\ref{sec:design}. 
@@ -165,7 +165,7 @@ Further generalization of this model to include more failure processes, which wo
 
 
 
-\subsection{Preemption dynamics of VMs of different types}
+\subsection{Preemption Dynamics of VMs of Different Types}
 \label{subsec:types-dynamics}
 %%%%%%%%%%%%%%%%%%%% OPTIONAL
 Since cloud platforms support a wide range of applications, they also offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.). 
