@@ -1,0 +1,190 @@
+Decision: Reject before Response and Revision
+Submission: SciSpot: Scientific Computing on Transient Cloud Servers
+Contributors: Jadhao, Kadupitiya, Sharma
+
+Key for the below column headings: show
+Summary of Reviews of pap105s2: SciSpot: Scientific Computing on Transient Cloud Servers	
+Reviewer	rate
+Reviewer 1	WEAK REJECT (2)
+Reviewer 2	WEAK REJECT (2)
+Reviewer 3	WEAK REJECT (2)
+Averages:	2.0
+
+Sections Below
+
+    Full Reviews · jump down
+    Committee Comments & Notes · jump down
+
+
+ Full Reviews
+* Review of pap105s2 by Reviewer 1 	top
+
+Detailed Comments for Authors
+
+    This paper presents SciSpot, a framework for running bag of jobs applications
+    on transient cloud computing resources to optimize costs. The authors utilize
+    Google cloud instances which are preemptible, whereas previous work focuses on
+    AWS EC2 instances which previously had an auction based model and was only
+    preempted when the cost exceeded a specified price. The authors observed
+    preemptions on Google cloud and developed a model that takes into account
+    preemptions, cost, and performance. Evaluation results show that the
+    turnaround of jobs is better than a batch computing resource for jobs running
+    less than 8 hours, which account for the majority of batch jobs.
+
+    This paper presents a novel strategy for utilizing
+    transient compute resources and will be relevant to the Supercomputing
+    community but lacks real world results. It would have been a stronger paper if the authors had discussed existing use and real experiences with the tool within the scientific
+    community.
+
+
+Comments for Revision
+
+    Future works is briefly mentioned on line 444 but there is no explicit Future
+    Work section so that would be good to add. Might be interesting to talk about
+    how the model could be adapted to work for GPUs as well. Maybe consider an
+    "expensive" mode where the user just wants to return the result as quickly as
+    possible.
+
+    The authors mention Exosphere as a related work in Section 6.1.2. Line 111
+    says that SciSpot is the first emperical model and analysis of transient
+    server availability that deals with non bidding models like Google cloud. Is
+    that the case? Section 6.1.2 just says Exosphere doesn't consider application
+    performance but would you consider their model emperical? Might be worth
+    mentioning them in more detail again in Related Work.
+
+    Initially, I assumed bag of tasks referred to multiple single serial jobs but
+    the text shows that the assumption is multiple parallel jobs. Not sure if
+    others will make the same assumption but that could be good to clarify in
+    Section 2.2.
+
+
+Scored Review Questions
+
+	rate
+pap105s2	WEAK REJECT (2)
+
+* Review of pap105s2 by Reviewer 2 	top
+
+Detailed Comments for Authors
+
+    In this paper, the authors present SciSpot, a software framework that deploys a bag of jobs on transient cloud servers while managing tradeoffs between the “turnaround” time and cost. Specifically, it targets Google Cloud, which implements a different model than that of Amazon EC2 Spot market (although more similar after Amazon’s recent changes). The authors present empirical evaluation of terminations, develop a model to represent terminations, present a full-featured system that uses this model to manage cloud resources, and finally evaluate their approach using several scientific applications.
+
+    From a general perspective I have two significant questions.
+
+    First, the idea of a “bag of jobs” is mentioned throughout the paper but it is not clearly defined and compared with other common models that readers would be familiar with (e.g., bag of tasks). The authors mention that it is common in parameter sweep and ML applications but there are no concrete examples of what these workloads look like in practice. It also doesn’t seem like SciSpot is only useful to this class of workload?
+
+    Second, SciSpot encompasses more than just a model of preemption. It includes an online profiling mechanism to match jobs with VMs and functionality to acquire cloud infrastructure. This broad problem description should be presented earlier in the paper and the paper would be easier to follow if all capabilities were described in one place (at present it is sprinkled throughout the paper including new features in the evaluation section).
+
+    The empirical evaluation of the lifetimes of Google preemptable VMs is interesting and the authors clearly show that previously proposed exponential distributions do not fit the actual preemption behaviors of Google Cloud. What is not completely clear is how the experiments have been conducted including what instance types, regions, workloads, and user accounts are used for the study. I am particularly curious about the workload as one might imagine a strategy where Google preempts lightly (or heavily) used instances differently.
+
+    Section 4.1 outlines an online profiling approach. This seems reasonable, although it is somewhat simplistic in that it is designed primarily for CPU usage. The authors state that most HPC jobs are CPU bound, however they provide no real justification. Certainly there are many examples of HPC jobs that are memory or I/O bound. Another issue is that scientific applications have a lot of tunable parameters that can be tuned, and thus determining accurate performance is hard. There is a lot of related work in this area which is only briefly mentioned. At present the profiling approach is fairly briefly introduced without going into sufficient details to completely understand the approach.
+
+    The framework is implemented in Python and tested with four real-world scientific applications. These applications however appear to be more benchmark style applications than real production applications? The authors should clarify this point.
+
+    The results presented in 6.1.1 are interesting. The basic idea is that the middle sized instances for these jobs provide the best match to the termination curve.
+
+    I don’t completely follow the comparison with ExoSphere. Is this really an “apples to apples” comparison? The idea of ExoSphere is to pick a portfolio of instance types to meet cost/revocation risk without considering runtime estimation. It has also been designed for Amazon (pre spot market change I think) and therefore I’m unsure how suitable it is for this problem? It is likely that the benefits presented here are due to the simple selection of the median VM.
+
+    In 6.1.3 the authors compare SciSpot on Google Cloud with a HPC deployment. I have two main concerns with this comparison: 1) I don’t think the point of this paper is to compare Cloud with HPC and therefore this comparison feels unnecessary; 2) the comparison is somewhat contrived. Of course some HPC resources have long queue delays, others have very short delays. Further, users of HPC clusters will often use pilot jobs or are running non deadline-constrained analyses that can tolerate delays and thus queueing delays are less impactful. The authors have also chosen one specific HPC cluster, whereas others have much shorter delays. In practice if one were to request HPC allocations of the size evaluated here (<10 nodes) the queue delay on a large cluster would be very low (could even be done in debug queues); and secondly, if one were to request thousands of nodes via cloud platforms (especially pre-emptible instances) I’m not sure it would be allowed by the cloud provider and I don’t imagine it would be immediate?
+
+    The scaling experiments are somewhat small with 256 CPUs (8 instances) and ~30 jobs. Is this representative of the scale of bag of jobs the system is designed? Without understanding real workloads, it is hard to know what is reasonable. I think it’s unlikely that you would discover scaling problems at this scale and therefore I’m not sure what we can take away about the performance of the system.
+
+    A minor detail to fix or explain: On page 8, line 835-836: ‘For Nanoconfinement, the running time on the “best” VM (i.e., with 32 CPUs) is …’. However, in Figure 4, the lowest green bar (representing Nanoconfinement) is at CPU=64, not 32. This may be a typo.
+
+
+Comments for Revision
+
+    Please clearly define what is meant by a bag of jobs, how it compares to other well-known models (bag of tasks, many task, etc.), and describe concrete examples beyond a high level parameter sweep.
+
+    SciSpot appears to be a complete system that has been developed by the authors. Is it currently in production use? What have been your experiences using it?
+
+    The evaluation explores cost, scalability, and comparison with HPC. It is not clear to me that these are the types of questions that are most important for this work. Please justify why these experiments demonstrate the unique aspects of the approach.
+
+
+Scored Review Questions
+
+	rate
+pap105s2	WEAK REJECT (2)
+
+* Review of pap105s2 by Reviewer 3 	top
+
+Detailed Comments for Authors
+
+    The paper deals with the usage of transient VMs on Google Cloud
+    Platform. A main contribution is a campaign of measurements (Section 3)
+    of VM preemption times on such a platform (not based on price) as well
+    as a mathematical formulation of it (tradeoff between simplicity and
+    accuracy). A second contribution is the presentation of the design of
+    SciSpot, a framework for executing bag of jobs on transient VM of
+    Google Cloud Platform using the previous model. Last, a series of
+    experiment evaluated it.
+
+    The paper is globally sound and solid and the subject of the paper is
+    very interesting.
+
+    However, as it targets to present a complete system, it presents some
+    shortages.
+
+    * Validity of the model: Section 3 is probably the most interesting
+    one, but the paper does not discuss a lot of obtained data. For
+    example, there is not any discussion about the validity of the model
+    across time; when (day/hour) have been run the experiments? did you
+    study potential cycles (day-night-week-other) that may impact the
+    result? Last, the authors mentions that Amazon did change its
+    policy, so what prevent Google of doing the same, and hence impact
+    the model?
+
+    * Related work: Executing a bag of jobs/tasks on a set of preemptible
+    machines has been studied in the context of deskstop
+    computing/peer-to-peer computing (cf [1] for example in SC
+    series). I know it is not exactly the same problem as here but it
+    covers most of SciSpot but the scheduling policy.
+
+
+    [1] M. Silberstein, A. Sharov, D. Geiger and A. Schuster, "GridBot:
+    execution of bags of tasks in multiple grids," Proceedings of the
+    Conference on High Performance Computing Networking, Storage and
+    Analysis, Portland, OR, 2009, pp. 1-12. doi: 10.1145/1654059.1654071
+    URL: http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6375558&isnumber=6375513
+
+    Minor remarks:
+
+    - Line 579: It is untrue that jobs in a bag have similar execution time
+    in general! There are plenty of examples of the contrary.
+
+    - Line 640: Please specify that it is only true for your set of jobs!
+    The duration of an high-end HPC jobs can be much larger than a day.
+
+    - Line 654: Again, that is only true for your set of jobs. Many HPC
+    applications are memory or communication bounds.
+
+    - Line 736: What about security issues if it is shared by all users?
+
+
+    - Section 6.1.3: The comparison is interesting but it seems biases as
+    it does not take into account the price! Also, pilot jobs is a
+    classical technique to amortize the queue waiting time.
+
+
+Comments for Revision
+
+    Pleasy present and/or discuss the time/day distribution of the
+    experiments. What about hour/day/... cycles and standard deviation? Is
+    there any impact on preemption time?
+
+
+Scored Review Questions
+
+	rate
+pap105s2	WEAK REJECT (2)
+
+
+ 
+Committee Comments & Notes	top
+Committee Comments for Authors  
+
+    None
+
+
+
+SC Conference Series Website	Powered by Linklings 	Privacy Policies	Contact Support

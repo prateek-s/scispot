@@ -48,15 +48,23 @@ In this paper, we develop principled approaches for deploying and orchestrating 
 \sysname introduces and incorporates policies for addressing the heterogeneity and preemptibiilty of transient cloud VMs, and is suitable for low-cost, low-overhead scientific computing.
 %running a wide range of scientific applications at low-cost and with minimal performance overhead.
 %
-\sysname abstracts typical scientific computing workloads and workflows into a new unit of execution, which we call as a ``bag of jobs''. 
-These bags of jobs, ubiquitous in scientific computing, represent multiple instantiations of the same application launched with possibly different physical and computational parameters. 
+
+\prat{This is where the reordering and expansion occurs}
+
+\sysname runs applications on Google Cloud Preemptible VMs and addresses the unique reliability and systems challenges arising from their maximum 24-hour lifetime set by the provider. 
+Resource management and fault-tolerance for transient cloud computing has primarily relied on Amazon EC2 spot prices for VM availability and preemption information. However, this approach cannot be used in the case of 
+
+, however, this approach is not applicable in other contexts (such as 
+We present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running times and costs of different scientific computing applications, which informs our bags of jobs execution policies.
 
 
 
 %Where they are found. Needs to be crisper 
-
 %Bags of jobs are ubiquitous in scientific computing: 
 %for example, each job may be running a (parallel) simulation with a set of simulation input parameters, and different jobs in the collection (i.e., bag) run the same simulation with a different set of  parameters. 
+
+\sysname abstracts typical scientific computing workloads and workflows into a new unit of execution, which we call as a ``bag of jobs''. 
+These bags of jobs, ubiquitous in scientific computing, represent multiple instantiations of the same application launched with possibly different physical and computational parameters. 
 Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to isolate the set of desired parameters associated with the scientific computation model.
 A similar approach is adopted in the use of machine learning (ML) to enhance scientific computational methods ~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer}, when a collection of jobs with different  parameter sets are launched to train and test ML models.
 %independent parameter sets 
@@ -79,8 +87,6 @@ Treating the bag of jobs as a fundamental unit of computation enables \sysname t
 \sysname can find the optimal allocation on-the-fly by exploring different servers for initial jobs and running the remainder of the jobs on the optimal server configuration. 
 
 Finally, \sysname runs applications on Google Cloud Preemptible VMs and addresses the unique reliability and systems challenges arising from their maximum 24-hour lifetime set by the provider.
-%%
-%Since transient server preemptions can disrupt the execution of jobs, 
 We present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running times and costs of different scientific computing applications, which informs our bags of jobs execution policies.
 
 We implement these policies as part of the \sysname framework, and make the following contributions:

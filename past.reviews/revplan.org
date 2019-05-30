@@ -1,0 +1,87 @@
+
+* Intro and Motivation
+    Second, SciSpot encompasses more than just a model of preemption. It includes an online profiling mechanism to match jobs with VMs and functionality to acquire cloud infrastructure. This broad problem description should be presented earlier in the paper and the paper would be easier to follow if all capabilities were described in one place (at present it is sprinkled throughout the paper including new features in the evaluation section).
+
+*::TODO:: Intro fix*
+
+    The authors mention Exosphere as a related work in Section 6.1.2. Line 111
+    says that SciSpot is the first emperical model and analysis of transient
+    server availability that deals with non bidding models like Google cloud. Is
+    that the case? Section 6.1.2 just says Exosphere doesn't consider application
+    performance but would you consider their model emperical? Might be worth
+    mentioning them in more detail again in Related Work.
+
+ It would have been a stronger paper if the authors had discussed
+existing use and real experiences with the tool within the scientific
+community.
+
+
+* Data analysis
+
+/For example, there is not any discussion about the validity of the
+model across time; when (day/hour) have been run the experiments?  did
+you study potential cycles (day-night-week-other) that may impact the
+result? Last, the authors mentions that Amazon did change its policy,
+so what prevent Google of doing the same, and hence impact the model?/
+
+What is not completely clear is how the experiments have been conducted including what instance types, regions, workloads, and user accounts are used for the study.
+
+
+I am particularly curious about the workload as one might imagine a strategy where Google preempts lightly (or heavily) used instances differently.
+
+*::DECIDE:: Hedge, saying later? Or do some?*
+
+
+* BoJ 
+
+Related work: Executing a bag of jobs/tasks on a set of preemptible
+machines has been studied in the context of deskstop
+computing/peer-to-peer computing (cf [1] for example in SC series). I
+know it is not exactly the same problem as here but it covers most of
+SciSpot but the scheduling policy.
+
+
+  [1] M. Silberstein, A. Sharov, D. Geiger and A. Schuster, "GridBot:
+  execution of bags of tasks in multiple grids," Proceedings of the
+  Conference on High Performance Computing Networking, Storage and
+  Analysis, Portland, OR, 2009, pp. 1-12. doi: 10.1145/1654059.1654071
+  URL: http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6375558&isnumber=6375513
+
+    First, the idea of a “bag of jobs” is mentioned throughout the paper but it is not clearly defined and compared with other common models that readers would be familiar with (e.g., bag of tasks). The authors mention that it is common in parameter sweep and ML applications but there are no concrete examples of what these workloads look like in practice. It also doesn’t seem like SciSpot is only useful to this class of workload?
+
+*::TODO:: Intro fix and minor throughout paper*
+
+* Exploration Policy
+
+    Section 4.1 outlines an online profiling approach. This seems reasonable, although it is somewhat simplistic in that it is designed primarily for CPU usage. The authors state that most HPC jobs are CPU bound, however they provide no real justification. Certainly there are many examples of HPC jobs that are memory or I/O bound. Another issue is that scientific applications have a lot of tunable parameters that can be tuned, and thus determining accurate performance is hard. There is a lot of related work in this area which is only briefly mentioned. At present the profiling approach is fairly briefly introduced without going into sufficient details to completely understand the approach.
+
+*::TWEAK:: SoCC may have similar concerns. Exploration is overly simple. Maybe just say that outright?*
+
+* Workloads and Eval 
+    The evaluation explores cost, scalability, and comparison with HPC. It is not clear to me that these are the types of questions that are most important for this work. Please justify why these experiments demonstrate the unique aspects of the approach.
+
+    - Line 579: It is untrue that jobs in a bag have similar execution time
+    in general! There are plenty of examples of the contrary.
+
+    - Line 640: Please specify that it is only true for your set of jobs!
+    The duration of an high-end HPC jobs can be much larger than a day.
+
+    - Line 654: Again, that is only true for your set of jobs. Many HPC
+    applications are memory or communication bounds.
+
+*::TODO:: Minor writing*
+
+ExoSphere comparison overly unfair because it selects median VM. 
+
+    A minor detail to fix or explain: On page 8, line 835-836: ‘For Nanoconfinement, the running time on the “best” VM (i.e., with 32 CPUs) is …’. However, in Figure 4, the lowest green bar (representing Nanoconfinement) is at CPU=64, not 32. This may be a typo.
+
+*::TODO:: Minor writing*
+
+* Misc and HPC 
+ 
+- Line 736: What about security issues if it is shared by all users?
+
+*::TODO:: Minor writing*
+
+What are pilot jobs? 
+
