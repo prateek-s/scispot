@@ -76,7 +76,7 @@ However, the performance of an application is also affected by the preemptions o
 Since preemptions are essentially fail-stop failures, synchronous parallel applications (such as those using MPI) are forced to  abort, and completing the job requires restarting it. 
 Thus, frequent preemptions can increase the overall turnaround time of a job. 
 
-\vspace*{\subsecspace}
+%\vspace*{\subsecspace}
 \subsubsection{Server Selection Policy}
 
 Having provided the motivation and tradeoffs in server selection, we now describe the \sysname's server selection policy. 
@@ -104,7 +104,7 @@ In contrast, we \emph{fix} the total amount of resources allocated to the applic
 We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.  
 \end{comment}
 
-\vspace*{\subsecspace}
+%\vspace*{\subsecspace}
 \subsubsection{Server Cost Model}
 \label{subsec:cost-model}
 
@@ -127,23 +127,21 @@ The overall expected cost of running a job can then be expressed as follows:
 \end{equation}
 Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected turnaround time of the job (accounting for preemptions) on $n_i$ servers of type $i$.
 %
-This turnaround time depends on whether the job needs to be recomputed because of preemptions, and can be expressed as:
+This turnaround time depends on whether the job needs to be recomputed because of preemptions, and is expressed as:
 \begin{align}
   \label{eq:turnaround}
   \vspace*{\eqnspace}
   E[\mathcal{T}_{( i,n_i )}] &= T_{( i,n_i )} + E[\text{Recomputation Time}].
 \end{align}
 Here, $T_{( i,n_i )}$ is the base running time of a job without preemptions, which we obtain empirically as explained in the previous subsection.
-Since jobs have to be rerun when they fail due to preemptions, we define the recomputation time as:
+Since jobs have to be rerun when they fail due to preemptions, the recomputation time is:
 \begin{equation}
   \label{eq:recomput}
-  \vspace*{\eqnspace}
-   E[\text{Recomputation Time}] = \frac{1}{2} \times P(\text{at least one preemption}) \times T_{( i,n_i )}.   
+   E[\text{Recomputation Time}] = \frac{T_{( i,n_i )}}{2} \times P(\text{at least one preemption})
  \end{equation}
  Our expression of the recomputation time is based on the common assumption that jobs will fail at the half-way mark on average~\cite{daly2006higher, bougeret_checkpointing_2011}. 
 %
  The probability that at least one VM out of $n_i$ will be preempted during the job execution can be expressed as:
-   \vspace*{-0.4cm}
 \begin{align}
   \label{eq:pfail1}
   P(\text{at least one preemption}) &= 1-P(\text{no preemptions}) \\
@@ -196,8 +194,9 @@ Furthermore, a large cluster of small servers is suboptimal for most application
 \vspace*{\subsecspace}
 \subsection{Scheduling a Bag of Jobs}
 
-\sysname runs the exploration phase on preemptible VMs of different types. 
-By default, \sysname runs the same job in the exploration phase, but also provides users the option to run jobs with different parameters if the variation in running times is low.
+%\sysname runs the exploration phase on preemptible VMs of different types. 
+%By default, \sysname runs the same job in the exploration phase, but also provides users the option to run jobs with different parameters if the variation in running times is low.
+%
 %A bag of jobs is determined by the total number of jobs in the bag, associated parameters for each job, and the minimum number of jobs that must be successfully executed.  
 %Given these parameters as input,
 Once the right cluster configuration for a job has been determined, \sysname then proceeds to run the remaining jobs in the bag on the cluster of VMs found through the exploration.
@@ -208,10 +207,10 @@ Upon job completion, we run the next job in the bag on the existing cluster of p
 This policy is based on our preemption dynamics model which shows that preemption rates have a bathtub shape.
 Thus, jobs launched on ``stable'' VMs that have been running for a few hours, face low likelihood of failures---thereby reducing the number of job failures for the entire bag. 
 
-\sysname also allows users to specify a deadline for bag completion, which we use to compute the number of jobs to execute in parallel.
+\sysname also allows users to specify a deadline for bag completion, which we use to compute the number of \emph{jobs} to execute in parallel. 
 If the deadline specified is $D$, then the number of parallel jobs is $k=D/E[\mathcal{T}]$.
 Thus if the exploration phase recommends $n_i$ VMs, then we launch a cluster of $k\times n_i$ VMs, with each job executing on $n_i$ VMs. 
-For this calculation, we assume that the running time of different jobs in a bag will largely be similar, but this is not a correctness requirement.
+For this calculation, we assume that the running time of different jobs in a bag will largely be similar (as illustrated in Figure~\ref{fig:heatmap}), but this is not a correctness requirement. 
 %Thus because of
 Due to the stochasticity in job running times and VM lifetimes, \sysname only meets the deadline in a ``best effort'' manner, and does not guarantee makespan constraints. 
 
