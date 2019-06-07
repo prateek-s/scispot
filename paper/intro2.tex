@@ -1,3 +1,4 @@
+\vspace*{\largesubsecspace}
 \section{Introduction}
 \label{sec:intro}
 % Look, scientific applications are important, OK? And HPC. 
@@ -14,27 +15,49 @@
 
 % But now we have the cloud!!1
 
-Increasingly, cloud computing platforms have begun to supplement and complement conventional high performance computing (HPC)  infrastructure  to meet the large computing and storage requirements of scientific computing applications~\cite{buyya-hpc-survey}. 
-Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as on-demand resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling. 
-Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of virtual machines (VMs),  which run a wide range of applications such as web-services, distributed data processing, distributed machine learning, etc.
+Scientific computing applications are a crucial component in the advancement of science and engineering, and play an important role in the analysis and processing of data, and understanding and modeling natural processes. 
+% These applications are typically implemented as large-scale parallel programs that use parallel-computing communication and coordination frameworks such as MPI.
+These applications are usually parallelized and require a large amount of computing resources, and are deployed on large, dedicated high performance computing (HPC) infrastructure such as super computers. \prat{add some refs.}
+
+Increasingly, cloud computing platforms have begun to supplement and complement conventional HPC  infrastructure  to meet the large computing and storage requirements of scientific computing applications~\cite{buyya-hpc-survey}. 
+%
+Applications can benefit from the multiple benefits of public clouds: on-demand resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling. 
+%Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of virtual machines (VMs),  which run a wide range of applications such as web-services, distributed data processing, distributed machine learning, etc.
+
+
+Cloud deployment costs can be reduced through the use of \emph{transient} computing resources (i.e., VMs) that can be unilaterally revoked and preempted by the cloud provider.
+Due to their volatile nature, transient VMs such as Amazon EC2 Spot instances~\cite{spot-documentation}, Google Preemptible VMs~\cite{preemptible-documentation}, and Azure Batch VMs~\cite{azure-batch}, are offered at steeply discounted rates ranging from 50 to 90\%. 
+Although using transient resources can drastically reduce computing costs, their preemptible nature results in frequent job failures, and thus reduces their viability and usability. 
+
+
+Deploying scientific applications on cloud platforms presents multiple challenges due to the \emph{fundamental} differences with conventional HPC clusters.
+Conventional HPC resource management frameworks such as Slurm~\cite{} and Torque~\cite{} typically assume static, homogenous clusters, and are not cognizant of transient availability and the plethora of choices in cloud VM sizes and pricing. %, for effective resource utilization. 
+%---which most applications still assume as their default execution environment. 
+%While the on-demand provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, the deployment of applications on cloud platforms must be cognizant of the plethora of choices in VM sizes, pricing, and availability. %, for effective resource utilization. 
+Crucially, optimizing for \emph{cost} in addition to performance, becomes an important 
+ objective in cloud deployments. 
+
+%
 
 
 % a wide range of applications.
 
-%To meet the diverse resource demands of different applications, public clouds offer resources (i.e., VMs) with multiple different resource configurations (such as number of CPU cores,  memory capacity, etc.), and pricing and availability contracts. 
+% To meet the diverse resource demands of different applications, public clouds offer resources (i.e., VMs) with multiple different resource configurations (such as number of CPU cores,  memory capacity, etc.), and pricing and availability contracts.
+
+
+
+\eat{
 Conventionally, cloud VMs have been offered with ``on-demand'' availability, such that the lifetime of the VM is solely determined by the owner of the VM (i.e., the cloud customer). 
 Increasingly however, cloud providers have begun offering VMs with \emph{transient}, rather than continuous on-demand availability. 
 Transient VMs can be unilaterally revoked and preempted by the cloud provider, and applications running inside them face fail-stop failures. 
 Due to their volatile nature, transient VMs such as Amazon EC2 Spot instances~\cite{spot-documentation}, Google Preemptible VMs~\cite{preemptible-documentation}, and Azure Batch VMs~\cite{azure-batch}, are offered at steeply discounted rates ranging from 50 to 90\%.
+Although using transient resources can drastically reduce computing costs, their preemptible nature results in frequent job failures, and thus reduces their viability and usability. 
+}
+
 %Amazon EC2 spot instances, Google Cloud Preemptible VMs, and Azure Batch VMs, are all examples of transient VMs, and are offered at discounts ranging from 50 to 90\%.  
 
 % Very different from HPC and many challenges
 
-However, deploying applications on cloud platforms presents multiple challenges due to the \emph{fundamental} differences with conventional HPC clusters---which most applications still assume as their default execution environment.
-While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, the deployment of applications on cloud platforms must be cognizant of the heterogeneity in VM sizes, pricing, and availability, for effective resource utilization. 
-Crucially, optimizing for \emph{cost} in addition to performance, becomes an important objective in cloud deployments.
-%
-Although using transient resources can drastically reduce computing costs, their preemptible nature results in frequent job failures, and thus reduces their viability and usability. 
 %
 
 %While preemptions can be mitigated with additional fault-tolerance mechanisms and policies~\cite{flint, marathe2014exploiting}, these policies must be typically tailored to the application, and impose additional performance and deployment overheads, and thus reduce the viability and usability of transient resources. 
@@ -43,19 +66,25 @@ Although using transient resources can drastically reduce computing costs, their
 %These considerations of cost, server configuration heterogeneity, and frequent job failures are intrinsic to transient servers, and  present multiple challenges in deploying applications on cloud platforms which are \emph{fundamentally} different from those that appear in using HPC clusters as the execution environment for the scientific computing applications.
 % Finally getting to the point 
 
-In this paper, we develop principled approaches for deploying and orchestrating  scientific computing applications on the cloud, and present \sysname, a framework for scientific computing on transient cloud servers.
+
+In this paper, we develop principled approaches for deploying and orchestrating scientific computing applications on the cloud, and present \sysname, a framework that optimizes the deployment of scientific computing applications on transient cloud servers.
+%\prat{Optimized deployment on cloud transient}
 %
-\sysname introduces and incorporates policies for addressing the heterogeneity and preemptibiilty of transient cloud VMs, and is suitable for low-cost, low-overhead scientific computing.
+\sysname introduces and incorporates policies for addressing the heterogeneity and preemptibiilty of transient cloud VMs, and is suitable for low-cost, low-overhead scientific computing. 
 %running a wide range of scientific applications at low-cost and with minimal performance overhead.
 %
 
-\prat{This is where the reordering and expansion occurs}
+\sysname runs applications on Google Cloud Preemptible VMs and addresses the unique reliability and systems challenges arising from their maximum 24-hour lifetime enforced by the cloud platform.
+While several techniques for mitigating revocations of transient VMs have been developed~\cite{}, they are all designed for Amazon's EC2 spot market, and rely on information about the past availability inferred through the dynamic spot price published by Amazon. 
+These techniques \emph{cannot} be directly applied in the case of other cloud transient VMs, such as Microsoft's Batch VMs and Google's Preemptible VMs, in which availability of VMs cannot be inferred through dynamic pricing.
 
-\sysname runs applications on Google Cloud Preemptible VMs and addresses the unique reliability and systems challenges arising from their maximum 24-hour lifetime set by the provider. 
-Resource management and fault-tolerance for transient cloud computing has primarily relied on Amazon EC2 spot prices for VM availability and preemption information. However, this approach cannot be used in the case of 
+To address this gap and to develop cost and run-time minimizing resource allocation policies,
+we develop an empirical model derived from over a thousand preemption events of Google Preemptible VMs, that allows us to predict expected running times and costs of different scientific computing applications. 
+To the best of our knowledge, this is the \emph{first} empirical analysis and model of preemptions that is not based on classical EC2 spot instance bidding.
 
-, however, this approach is not applicable in other contexts (such as 
-We present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running times and costs of different scientific computing applications, which informs our bags of jobs execution policies.
+%models for EC2 spot instances that have been proposed thus far.
+
+%We develop an empirical model derived from over a thousand preemption events, which allows us to predict expected running times and costs of different scientific computing applications. %, which informs our bags of jobs execution policies.
 
 
 
@@ -71,13 +100,6 @@ A similar approach is adopted in the use of machine learning (ML) to enhance sci
 %to predict simulation results and/or accelerate the simulation technique. 
 
 
-
-While systems and techniques for mitigating transient server preemptions have received significant attention, prior work has mostly focused on fault-tolerance and resource management for a \emph{single} job or application~\cite{spoton, exosphere, flint, marathe2014exploiting}. 
-%Thus, while recently developed transiency mitigation techniques such as
-For a bag of jobs, it is not necessary, or sufficient, to execute an individual job in timely manner---instead, we can selectively restart failed jobs in order to complete the necessary, desired subset of jobs in a bag.
-Thus, while recently developed techniques such as transiency-aware checkpointing~\cite{marathe2014exploiting, flint}
-and diversification~\cite{exosphere, spotweb} can indeed mitigate the effect of preemptions on a single job, these techniques are not tailored for the bags of jobs execution model. 
-
 % Not too happy with the last sentence and paragraph
 
 %
@@ -86,8 +108,18 @@ Treating the bag of jobs as a fundamental unit of computation enables \sysname t
 %Unlike prior work that assumes that the optimal resource allocation for an application is known a priori, 
 \sysname can find the optimal allocation on-the-fly by exploring different servers for initial jobs and running the remainder of the jobs on the optimal server configuration. 
 
+\prat{Not sure if this is needed..}
+While systems and techniques for mitigating transient server preemptions have received significant attention, prior work has mostly focused on fault-tolerance and resource management for a \emph{single} job or application~\cite{spoton, exosphere, flint, marathe2014exploiting}. 
+%Thus, while recently developed transiency mitigation techniques such as
+For a bag of jobs, it is not necessary, or sufficient, to execute an individual job in timely manner---instead, we can selectively restart failed jobs in order to complete the necessary, desired subset of jobs in a bag.
+Thus, while recently developed techniques such as transiency-aware checkpointing~\cite{marathe2014exploiting, flint}
+and diversification~\cite{exosphere, spotweb} can indeed mitigate the effect of preemptions on a single job, these techniques are not tailored for the bags of jobs execution model. 
+
+
+\eat{
 Finally, \sysname runs applications on Google Cloud Preemptible VMs and addresses the unique reliability and systems challenges arising from their maximum 24-hour lifetime set by the provider.
 We present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running times and costs of different scientific computing applications, which informs our bags of jobs execution policies.
+}
 
 We implement these policies as part of the \sysname framework, and make the following contributions:
 \begin{enumerate}[leftmargin=12pt]

@@ -1,6 +1,7 @@
 %\section{Understanding and Modeling Transient Server Preemptions}
 %\section{Modeling the Dynamics of Transient Server Preemptions}
 %\section{Preemption Dynamics of Transient Cloud Servers}
+\vspace*{\subsecspace}
 \section{Modeling Preemption Dynamics}
 \label{sec:preemption-dynamics}
 
@@ -27,7 +28,7 @@ In this section, we present empirical and analytical models that describe these 
 
 
 
-
+\vspace*{\subsecspace}
 \subsection{The Need For Empirical Preemption Models}
 \label{subsec:need-for-empirical}
 
@@ -50,6 +51,7 @@ Therefore, new techniques are required to model preemption dynamics that can sup
 
 %\subsection{Empirical model of preemptions}
 %\subsection{Empirical preemption behavior}
+\vspace*{\subsecspace}
 \subsection{Empirical Study Of Preemptions In Google Cloud}
 
 The preemptions of transient servers need not be related to their price.
@@ -91,6 +93,7 @@ The classic exponential distribution is unable to model the observed preemption 
 %We attribute this deficiency to the central assumption made in the underlying reliability theory principles that leads to the classical exponential distribution: the rate of preemptions is independent of the lifetime of the VMs, in other words, the preemptions are \emph{memoryless}.
 This assumption breaks down when there is a fixed upper bound on the lifetime, as is the case for Google Preemptible VMs, and the conventional approach becomes insufficient to model this constrained preemption dynamics. 
 
+\vspace*{\subsecspace}
 \subsection{Model Of Constrained Preemption Dynamics}
 \label{subsec:analytical-model}
 
@@ -163,6 +166,7 @@ Further generalization of this model to include more failure processes, which wo
 %We also note that approaches (e.g., exponential Weibull distributions) to model bathtub-type failure rates have been proposed in the literature  \cite{mudholkar1993exponentiated,crevecoeur1993model}.
 %These methods did not perform better than our model resulting in parameter variables and values that were relatively difficult to interpret; this could likely be due to the unique constraint-driven failures in preemption dynamics as opposed to aging-related increasing failure rate considered in previous work. 
 
+\vspace*{\subsecspace}
 \subsection{Preemption Dynamics of VMs of Different Types}
 \label{subsec:types-dynamics}
 %%%%%%%%%%%%%%%%%%%% OPTIONAL
