@@ -1,4 +1,4 @@
-\vspace*{\largesubsecspace}
+\vspace*{\subsecspace}
 \section{Background}
 
 We now give an overview of transient cloud computing, and motivate the need for the bag of jobs abstraction in scientific computing workflows.
@@ -12,7 +12,7 @@ Infrastructure as a service (IaaS) clouds such as Amazon EC2, Google Public Clou
 % too long an opening sentence, not to the point 
 Conventionally, these VMs are leased on an ``on-demand'' basis: cloud customers can start up a VM when needed, and the cloud platform provisions and runs these VMs until they are shut-down by the customer. 
 %Due to the temporal dynamics of cloud workloads, the overall utilization of cloud platforms is also highly dynamic.
-Cloud workloads, and hence the utilization of cloud platforms, shows large temporal variations.  
+Cloud workloads, and hence the utilization of cloud platforms, shows large temporal variation. 
 To satisfy user demand, cloud capacity is typically provisioned for the \emph{peak} load, and thus the average utilization tends to be low, of the order of 25\%~\cite{borg,resource-central-sosp17}. 
 
 
@@ -22,7 +22,7 @@ Due to their popularity among users, smaller cloud providers such as Packet~\cit
 
 However, effective use of transient servers is challenging for applications because of their uncertain availability~\cite{spotcheck, prateek-thesis}. 
 Preemptions are akin to fail-stop failures, and result in loss of the application's memory and disk state, leading to downtimes for interactive applications such as web services, and poor throughput for long-running batch-computing applications. 
-Consequently, researchers have explored fault-tolerance techniques such as checkpointing~\cite{flint, marathe2014exploiting, spoton} and resource management techniques~\cite{exosphere} to ameliorate the effects of preemptions for a wide range of applications. 
+Consequently, researchers have explored fault-tolerance techniques such as checkpointing~\cite{flint, marathe2014exploiting, spoton} and resource management techniques~\cite{exosphere} to ameliorate the effects of preemptions. % for a wide range of applications. 
 The effect of preemptions is dependent on a combination of application resource and fault model, and mitigating preemptions for different applications remains an active research area~\cite{hourglass-eurosys19}.
 
 
@@ -34,35 +34,42 @@ The effect of preemptions is dependent on a combination of application resource 
   In contrast, \sysname can run applications on Google Preemptible VMs that have fixed price and \emph{unknown} preemption rates.
   Thus due to the lack of any historical preemption information and the fundamental differences in the preemption characteristics, techniques such as historical price-based bidding strategies~\cite{bid-cloud}, price-based checkpointing~\cite{marathe2014exploiting, xinhpdc, spoton}, and diversification~\cite{exosphere, spotweb}, are unfortunately largely inapplicable. 
 %
-To address these shortcomings, we conduct the first large-scale empirical study of preemption rates by launching over 1,500 Google Preemptible VMs, and analyze and model their preemptions in Section~\ref{sec:preemption-dynamics}. 
-  These models form the basis of our policies for minimizing cost and running time for a diverse set of scientific computing workloads that are launched as bags of jobs, as described next. 
+To address these shortcomings, we develop an empirical model of preemptions in Section~\ref{sec:preemption-dynamics}. 
+This model informs our policies for minimizing cost and running time of scientific computing workloads that are launched as bags of jobs, as described next. 
   
 
 \vspace*{\subsecspace}
 \subsection{Bag of Jobs in Scientific Computing}
 
+\begin{figure}[t]
+  \includegraphics[width=0.3\textwidth]{../graphs/hmap.png}
+  \caption{Running times of the Nanoconfinement application with different sets of parameters (particle size and length) show little variation.}
+  \label{fig:heatmap}
+  \vspace*{\myfigspace}
+\end{figure}
+
 The typical workflow associated with most scientific computing applications, often involves evaluating a computational model across a wide range of physical and computational parameters. 
-For instance, constructing and calibrating a molecular dynamics application (such as~\cite{jcs2}), usually involves running a simulation with different physical parameters such as characteristic sizes and interaction potentials, as well as computational parameters such as simulation timesteps. 
+For instance, constructing and calibrating a molecular dynamics application (such as Nanoconfinement~\cite{jcs2}), usually involves running a simulation with different physical parameters such as characteristic sizes and interaction potentials, as well as computational parameters such as simulation timesteps. 
 Each of these parameters can take a wide range of values, resulting in a large number of combinations which must be evaluated by invoking the application multiple times (also known as a parameter sweep). 
-Since each computational job explores a single combination of parameters, this results in executing a ``bag of jobs'', with each job in the bag running the same application, but with possibly different parameters. 
+Since each computational job explores a single combination of parameters, this results in executing a ``bag of jobs'', with each job in the bag running the same application, but with possibly different parameters.
+Bags of jobs are analogous to, but distinct from the bag of \emph{tasks} design that is for  embarrassingly parallel applications~\cite{bot-2003}. In contrast, the bags of jobs abstraction is independent of the application design. 
+
 
 
 The bag of jobs execution model is pervasive in scientific computing and applicable in many contexts.
 In addition to exploratory parameter sweeps, bags of jobs also result from running the application a large number of times to account for the model or computational stochasticity, and can be used to obtain tighter confidence intervals. 
-Increasingly, bags of jobs also arise in the emerging research that combines statistical machine learning (ML) techniques and scientific simulations~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer,jcs2,fox2019learning}.
-For instance, large bags of jobs are run to provide the necessary training and testing data for learning statistical models such as neural networks that are then used to improve the efficacy of the simulations~\cite{jcs2}.  
+Increasingly, bags of jobs also arise in the emerging research that combines statistical machine learning (ML) techniques and scientific simulations~\cite{ml.atomic2017,melko2017,sam2017}. %,fu2017,long2015machine, ferguson2017machine,ward2018matminer,jcs2,fox2019learning}.
+For instance, large bags of jobs are run to provide the necessary training and testing data for learning statistical models (such as neural networks) that are then used to improve the efficacy of the simulations~\cite{jcs2}.  
 
 %The bag of jobs resulting from exploratory parameter sweeps are an integral component in the model discovery and validation process, and ar
 
 %More formally, a bag of jobs is defined as a collection of : \{Application, $N$: Number of jobs, $m$: Minimum number of jobs to finish, $\pi$: Generator function for job parameters, $\mathcal{R}$: Computing resources per job\}
 
 The bag of jobs execution model has multiple characteristics, that give rise to unique challenges and opportunities when deploying them on transient cloud servers. 
-First, since bags of jobs require a large amount of computing resources, deploying them on the cloud can result in high overall costs, thus requiring policies for minimizing the cost and overall running time. 
-Second, we observe that usually, there is no dependency between individual jobs in a bag, thus allowing increased flexibility in job scheduling.
+Since bags of jobs require a large amount of computing resources, deploying them on the cloud can result in high overall costs, thus requiring policies for minimizing the cost and overall running time. 
+The similarity in execution characteristics of jobs (such as their running times and parallel speedup) allows for bag-wide optimizations (Figure~\ref{fig:heatmap}). 
+%Second, there is no dependency between individual jobs in a bag, thus allowing increased flexibility in job scheduling.
 And last, treating entire bags of jobs as an execution unit, instead of individual jobs, can allow us to use partial redundancy between jobs and reduce the fault-tolerance overhead to mitigate transient server preemptions. 
-
-
-
 
 
 

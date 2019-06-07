@@ -122,6 +122,7 @@ Let us assume that the cloud provider offers $N$ server types, with the price (p
 The overall expected cost of running a job can then be expressed as follows:
 \begin{equation}
   \label{eq:e-cost}
+\vspace*{\eqnspace}
   E[C_{( i,n_i )}] = n_i\times c_i \times E[\mathcal{T}_{( i,n_i )}].
 \end{equation}
 Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected turnaround time of the job (accounting for preemptions) on $n_i$ servers of type $i$.
@@ -129,17 +130,20 @@ Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected turnaround time of the j
 This turnaround time depends on whether the job needs to be recomputed because of preemptions, and can be expressed as:
 \begin{align}
   \label{eq:turnaround}
+  \vspace*{\eqnspace}
   E[\mathcal{T}_{( i,n_i )}] &= T_{( i,n_i )} + E[\text{Recomputation Time}].
 \end{align}
 Here, $T_{( i,n_i )}$ is the base running time of a job without preemptions, which we obtain empirically as explained in the previous subsection.
 Since jobs have to be rerun when they fail due to preemptions, we define the recomputation time as:
 \begin{equation}
   \label{eq:recomput}
+  \vspace*{\eqnspace}
    E[\text{Recomputation Time}] = \frac{1}{2} \times P(\text{at least one preemption}) \times T_{( i,n_i )}.   
  \end{equation}
  Our expression of the recomputation time is based on the common assumption that jobs will fail at the half-way mark on average~\cite{daly2006higher, bougeret_checkpointing_2011}. 
 %
-The probability that at least one VM out of $n_i$ will be preempted during the job execution can be expressed as:
+ The probability that at least one VM out of $n_i$ will be preempted during the job execution can be expressed as:
+   \vspace*{-0.4cm}
 \begin{align}
   \label{eq:pfail1}
   P(\text{at least one preemption}) &= 1-P(\text{no preemptions}) \\

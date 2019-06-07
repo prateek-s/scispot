@@ -13,7 +13,7 @@ Therefore, in this section, we present empirical and analytical models to help u
 }
 
 To measure and improve the performance of applications running on transient cloud servers, it is critical to understand the nature and dynamics of their preemptions.
-The preemption characteristics are governed by the supply of surplus resources, the demand for cloud resources, and the resource allocation policies enforced by the cloud operator.
+The preemption characteristics are governed by the supply of surplus resources, the demand from applications, and resource allocation policies of the cloud operator.
 In this section, we present empirical and analytical models that describe these characteristics and enable an intuitive understanding of the nature of preemptions. 
 
 
@@ -29,7 +29,7 @@ In this section, we present empirical and analytical models that describe these 
 
 
 \vspace*{\subsecspace}
-\subsection{The Need For Empirical Preemption Models}
+\subsection{Need For Empirical Preemption Models}
 \label{subsec:need-for-empirical}
 
 Amazon's EC2 spot instances were the original transient cloud servers.
@@ -42,6 +42,7 @@ For example, past work has analyzed spot prices and shown that the MTTFs of spot
 
 
 \footnotetext{Amazon posts Spot prices of 3 months, and researchers have been collecting these prices since 2010~\cite{bidding4}.}
+
 
 However, Amazon has recently changed the preemption characteristics of spot instances, and servers are now preempted even if the spot price is below the maximum price~\cite{spotweb, bid-change}.
 Thus, spot prices are no longer a completely reliable indicator of preemptions, and preemptions can no longer be inferred from looking at prices alone.
@@ -64,13 +65,14 @@ Thus, relatively little is known about the preemptions (and hence the performanc
 To understand preemption dynamics of transient servers, we conduct a large-scale empirical measurement study which is the first of its kind. 
 We launched more than 1,500 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
 
-\footnotetext{We will release the complete preemption dataset and hope that other researchers can benefit.} %Weaksauce 
+\footnotetext{We will release the complete preemption dataset for further analysis.} %Weaksauce 
 
 
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/scispot-fig-cdf-prob-inset-time.eps}
   \caption{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.}
+  \vspace*{\captionspace}
   \label{fig:gcp1}
 \end{figure}
 
@@ -94,7 +96,7 @@ The classic exponential distribution is unable to model the observed preemption 
 This assumption breaks down when there is a fixed upper bound on the lifetime, as is the case for Google Preemptible VMs, and the conventional approach becomes insufficient to model this constrained preemption dynamics. 
 
 \vspace*{\subsecspace}
-\subsection{Model Of Constrained Preemption Dynamics}
+\subsection{Modeling Constrained Preemption Dynamics}
 \label{subsec:analytical-model}
 
 We now develop an analytical model for preemption dynamics that is faithful to the empirically observed data and provides a basis for developing running-time and cost-minimizing optimizations. % presented in Section~\ref{sec:design}. 
@@ -118,7 +120,9 @@ The first process dominates over the initial temporal phase and yields the class
 Based on these observations, we propose the following general form for the CDF:
 \begin{equation}
   \label{eq:blend1}
+  \vspace*{\eqnspace}
   \mathscr{F}\left(t\right) = A\left(1-e^{-\frac{t}{\tau_1}} + e^{\frac{t-b}{\tau_2}}\right),
+    \vspace*{\eqnspace}
 \end{equation}
 where $t$ is the time to preemption, $1/\tau_1$ is the rate of preemptions in the initial phase, $1/\tau_2$ is the rate of preemptions in the final phase, $b$ denotes the time that characterizes ``activation'' of the final phase where preemptions occur at a very high rate, and $A$ is a scaling constant.
 In practice, typical fit values yield $b \approx 24$ hours, and $\tau_2 \approx 1$ hour, which ensures that our proposed distribution meets the initial condition $\mathscr{F}(0) \approx 0$.
@@ -141,7 +145,8 @@ The analytical model and the associated  distribution function $\mathscr{F}$ int
 
 Further, the failure or preemption rate can be derived from this CDF as:
 \begin{equation}
-\label{eq:failrate}
+  \label{eq:failrate}
+    \vspace*{\eqnspace}
 p(t) = \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{1}{\tau_2}e^{\frac{t-b}{\tau_2}}\right).
 \end{equation}
 $p(t)$ vs. $t$ yields a bathtub type failure rate function for the associated fit parameters (inset of Figure~\ref{fig:gcp1}).
@@ -179,6 +184,7 @@ Most clouds offer a large number of different hardware configurations---Amazon E
   \includegraphics[width=0.4\textwidth]{../graphs/scispot-fig-vm-types.eps}
   \caption{The preemption characteristics of different VM types. Larger VMs are more likely to be preempted.}
   \label{fig:cdf-comparison}
+    \vspace*{\myfigspace}
 \end{figure}
 
 In general, the preemption dynamics of a VM is determined by the supply and demand of VMs of that \emph{particular} type.

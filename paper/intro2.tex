@@ -122,8 +122,8 @@ To the best of our knowledge, this is the \emph{first} empirical analysis and mo
 
 \sysname abstracts typical scientific computing workloads and workflows into a new unit of execution, which we call as a ``bag of jobs''. 
 These bags of jobs, ubiquitous in scientific computing, represent multiple instantiations of the same application launched with possibly different physical and computational parameters. 
-Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to isolate the set of desired parameters associated with the scientific computation model.
-A similar approach is adopted in the use of machine learning (ML) to enhance scientific computational methods ~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer}, when a collection of jobs with different  parameter sets are launched to train and test ML models.
+Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to isolate the set of desired parameters associated with the scientific computation model. 
+Bags of jobs also help in the use of machine learning (ML) to enhance scientific computational methods ~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer}, when a collection of jobs with different  parameters  are launched to train and test ML models.
 %independent parameter sets 
 %to predict simulation results and/or accelerate the simulation technique. 
 
@@ -131,14 +131,15 @@ A similar approach is adopted in the use of machine learning (ML) to enhance sci
 % Not too happy with the last sentence and paragraph
 
 %
-Treating the bag of jobs as a fundamental unit of computation enables \sysname to select the ``best'' server configuration for a given application that minimizes the costs, running time, and preemption likelihood.
+Treating bag of jobs as a fundamental unit of computation enables \sysname to select the ``best'' server configuration for a given application that minimizes the costs, running time, and preemption likelihood.
 %, by exploring different servers for initial jobs and running the remainder of the jobs on the optimal server configuration. 
 %Unlike prior work that assumes that the optimal resource allocation for an application is known a priori, 
 \sysname can find the optimal allocation on-the-fly by exploring different servers for initial jobs and running the remainder of the jobs on the optimal server configuration. 
 %
-Prior work on transiency-mitigation has mostly focused on fault-tolerance and resource management for a \emph{single} job or application~\cite{spoton, exosphere, flint, marathe2014exploiting}. 
 %Thus, while recently developed transiency mitigation techniques such as
 For a bag of jobs, it is not necessary, or sufficient, to execute an individual job in timely manner---instead, we can selectively restart failed jobs in order to complete the necessary, desired subset of jobs in a bag.
+In contrast, prior work on transiency-mitigation has mostly focused on fault-tolerance and resource management for a \emph{single} job or application~\cite{spoton, exosphere, flint, marathe2014exploiting}. 
+
 %Thus, while recently developed techniques such as transiency-aware checkpointing~\cite{marathe2014exploiting, flint} and diversification~\cite{exosphere, spotweb} can indeed mitigate the effect of preemptions on a single job, these techniques are not tailored for the bags of jobs execution model. 
 
 
@@ -148,6 +149,7 @@ We present the \emph{first} empirical model and analysis of transient server ava
 }
 
 Our empirical preemption model, cost-optimizing server-selection policies, and the bag of jobs abstraction are implemented as part of the \sysname framework, and we make the following contributions:
+%\vspace*{\largesubsecspace}
 \begin{enumerate}[leftmargin=12pt]
 % Yeah the "not spot" point below may need clarification before contribs
 %\item Since transient server preemptions can disrupt the execution of jobs, we present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running times and costs of different scientific computing applications.
@@ -162,6 +164,7 @@ Our empirical preemption model, cost-optimizing server-selection policies, and t
 
 %\item Finally, ease of use and extensibility are one of the ``first principles'' in the design of \sysname, and we present the design and implementation of the system components and present case studies of how  scientific applications such as molecular dynamics simulations can be easily deployed on transient cloud VMs. 
 \end{enumerate}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
