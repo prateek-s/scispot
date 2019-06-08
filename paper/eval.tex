@@ -3,8 +3,8 @@
 \label{sec:eval}
 
 %Opening is deliberately short because we gonna be running out of space 
-In this section, we present empirical and analytical evaluation of the performance and cost of \sysname under different workloads and scales. 
-Our evaluation consists of empirical analysis of  different scientific computing applications, as well as model-driven simulations for analyzing and comparing \sysname behavior under different preemption and application dynamics. 
+In this section, we present empirical and analytical evaluation of the performance and cost of \sysname with different scientific computing workloads and scales. 
+Our evaluation consists of empirical analysis, as well as model-driven simulations for analyzing and comparing \sysname behavior under different preemption and application dynamics.  
 
 % \begin{itemize}
 % \item What is performance and cost of 
@@ -33,7 +33,7 @@ All applications use OpenMPI v2.1.1, are deployed on Slurm v0.4.3 and 64-bit Ubu
 % Networking?
 For completeness and to guard against concerns about poor cloud performance relative to HPC clusters ~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}, we benchmarked the Nanoconfinement application on the Big Red II cluster~\cite{bigred2}. 
 When run on 4 nodes with 16 CPUs each, the application takes 1140 seconds on Big Red II vs 850 seconds on \sysname. 
-We attribute the 20\% improvement with \sysname to the newer CPUs on Google Cloud (Intel Haswell vs. older 2012-era AMD Opteron in Big Red II).
+We attribute the 20\% improvement with \sysname to the newer CPUs on Google Cloud (Intel Haswell vs. older 2012-era AMD Opterons in Big Red II).
 
 %For completeness, we show the running times on the Big Red II supercomputing cluster in Table~\ref{tab:bigred2}, with 16 CPU nodes used throughout, and we see that our representative applications \emph{do not} face a penalty when deployed on the cloud. 
 
@@ -154,7 +154,7 @@ We analyze the waiting time of over two million jobs submitted over a 5 year per
 %We define the overhead as the increase in running time which is equal to the turnaround time (i.e., the time between the job submission and successful completion) divided by the base job running time (with no waiting or premptions). 
 %In HPC clusters, the overhead is the waiting time for resources, and in \sysname the overhead is the recomputation time due to preemptions.
 Figure~\ref{fig:hpc-vs-scispot} compares the overhead (as percentage increase in running time) of \sysname and HPC clusters  for jobs of different lengths. We see that the average performance overhead due to waiting can be significant in the case of HPC clusters, and the job submission latency and queuing time dominate for smaller jobs, increasing their total turnaround time by more $2.5\times$.
-This waiting is amortized in the case of longer running jobs, and the overhead drops off for longer jobs, to around 30\%.
+This waiting is amortized in the case of longer running jobs, and the overhead for longer jobs is around 30\%.
 
 On the other hand, \sysname's performance overhead is significantly smaller for jobs of up to 8 hours in length.
 For longer jobs, the limited lifetime of Google Preemptible VMs (24 hours) begins to significantly increase the preemption probability and expected recomputation time.

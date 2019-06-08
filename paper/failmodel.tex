@@ -193,6 +193,16 @@ Further generalization of this model to include more failure processes, which wo
     \vspace*{\myfigspace}
 \end{figure}
 
+\begin{figure}
+  \centering 
+  \includegraphics[width=0.35\textwidth]{../gnuplot_analysis/time-breakdown.pdf}
+      \vspace*{\myfigspace}
+  \caption{Variations due to time of day and workload.}
+  \label{fig:time-breakdown}
+    \vspace*{\myfigspace}
+\end{figure}
+
+
 In general, the preemption dynamics of a VM is determined by the supply and demand of VMs of that \emph{particular} type.
 Thus, the preemption characteristics of VMs of different sizes, and running in different geographical zones, are different. 
 Figure~\ref{fig:cdf-comparison} shows the preemption data from five different types of VMs in the Google Cloud \texttt{n1-highcpu-\{2,4,8,16,32\}}, where the number indicates the number of CPUs.
@@ -212,6 +222,8 @@ These plots also illustrate a deficiency in our model, whereby the boundary cond
 \noindent Larger VMs require more computational resources (such as CPU and memory), and when the supply of resources is low, the cloud operator can reclaim a large amount of resources by preempting larger VMs.
 This observed behavior aligns with the guidelines for using preemptible VMs that suggests the use of smaller VMs when possible~\cite{preemptible-documentation}. 
 
+
+
 Our analytical model also helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
 More formally, we define the expected lifetime of a VM of type $i$, as: 
 \begin{equation}
@@ -222,7 +234,17 @@ where $p_i(t)$ is the rate of preemptions of VMs of type $i$ (Equation~\ref{eq:f
 %= \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{t-b}{\tau_2}e^{\frac{t-b}{\tau_2}}\right) $ 
 %
 %Since preemptions require restarting a job and increase the job completion time, it may be more prudent to select transient VMs with higher expected lifetimes.
-We use the analytically derived expected lifetimes of VMs of different types in \sysname when selecting the ``best'' VM type for a given bag of jobs. This server selection is a key part of \sysname design, which we describe next. 
+We use the analytically derived expected lifetimes of VMs of different types in \sysname when selecting the ``best'' VM type for a given bag of jobs. This server selection is a key part of \sysname design. 
+
+%%%%%%%%
+\noindent \textbf{Observation 5:} \emph{Preemptions exhibit diurnal variations, and are also affected by the workload inside the VM.}
+
+\noindent From Figure~\ref{fig:time-breakdown}, we can see that VMs have a slightly longer lifetime during the night (8 PM to 8 AM) than during the day.
+We also notice that completely idle VMs have longer lifetimes than VMs running some workload.
+%We attribute both these 
+
+
+
 
 % \subsection{EC2 spot instances}
 

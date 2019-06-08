@@ -1,0 +1,1598 @@
+
+
+Python 3
+
+    File
+    Edit
+    View
+    Insert
+    Cell
+    Kernel
+    Widgets
+    Help
+
+All functions needed for curve fitting
+
+    get runtimes data: gcloud compute operations --format=json list > m21.json
+    get instance types: gcloud compute instances list > instances-m21.txt
+
+#Filtering data based on machine type
+
+import json
+
+import pandas as pd
+
+import numpy as np
+
+import time
+
+import datetime
+
+import dateutil.parser 
+
+import matplotlib.pyplot as plt
+
+%matplotlib inline
+
+plt.style.use('default')
+
+import math
+
+from scipy.integrate import quad
+
+from scipy.optimize import curve_fit
+
+import glob
+
+import inspect
+
+​
+
+#Instance types as a dic
+
+def get_instance_types(path):
+
+    try:
+
+        frames = [ pd.read_csv(file,delim_whitespace=True, header=None) for file in sorted(glob.iglob(path)) ]
+
+        instance_info = pd.concat(frames)
+
+        instances = pd.Series(instance_info[2].values,index=instance_info[0].values).to_dict()
+
+        del instances['NAME']
+
+    except Exception as msg:
+
+        print(msg)
+
+        raise
+
+    return instances
+
+    
+
+# convert to mins
+
+def ttl_in_minutes(start_time, end_time):
+
+    s=dateutil.parser.parse(start_time)
+
+    e=dateutil.parser.parse(end_time)
+
+    diff = e-s
+
+    return diff.total_seconds()
+
+​
+
+#from datetime import date
+
+import calendar
+
+def date_to_weekday(date):
+
+    return calendar.day_name[dateutil.parser.parse(date).weekday()]
+
+​
+
+def idle_vs_not(date):
+
+    date_start = '2019-03-07T00:00:00.000-00:00'
+
+    date_start = dateutil.parser.parse(date_start)
+
+    date = dateutil.parser.parse(date)
+
+    idle_val = 'idle'
+
+    if date > date_start:
+
+        idle_val = 'non-idle'
+
+    return idle_val
+
+​
+
+def date_to_hour(date):
+
+    return dateutil.parser.parse(date).hour
+
+​
+
+#get all runtime information
+
+def get_runtimes(path):
+
+    out = dict()
+
+    try:
+
+        for file in sorted(glob.iglob(path)):
+
+            with open(file) as json_file:  
+
+                data = json.load(json_file)
+
+​
+
+            for entry in data:
+
+                eid = entry['id']
+
+                iname = entry['targetLink']
+
+                if not iname in out:
+
+                    if entry['operationType']=='insert':
+
+                        out[iname] = (entry, np.nan)
+
+​
+
+            #Adding time data
+
+            for entry in data:
+
+                eid = entry['id']
+
+                iname = entry['targetLink']      
+
+                if entry['operationType']=='compute.instances.preempted':
+
+                    if iname in out:
+
+                        orig_entry = out[iname][0]
+
+                        start_time = orig_entry['insertTime']
+
+                        end_time = entry['insertTime']
+
+                        ttl = ttl_in_minutes(start_time, end_time)
+
+                        day_of_week = date_to_weekday(end_time)
+
+                        hour_ = date_to_hour(end_time)
+
+                        idle_para = idle_vs_not(end_time)
+
+                        out[iname] = (orig_entry, ttl, day_of_week, hour_, idle_para)
+
+​
+
+        #removing the datapoint which did not have endtime
+
+        #removing the datapoint which have longer time than 30 hours
+
+        for i in list(out):
+
+            if np.isnan(out[i][1]):
+
+                out.pop(i)
+
+            elif (out[i][1]/3600.0 > 30):
+
+                print(out[i][0]['targetLink'])
+
+                out.pop(i)
+
+    except Exception as msg:
+
+        print(msg)
+
+        raise
+
+    return out
+
+​
+
+#Creating lists for eah machine type
+
+def get_runtimes_for_machine_type(runtimes, instances):
+
+    all_data = dict() 
+
+    try:
+
+        assert(isinstance(runtimes, dict))
+
+        assert(isinstance(instances, dict))
+
+        for key, value in runtimes.items():   
+
+            iname = key.split('/')[-1]
+
+            if iname in instances:
+
+                if instances[iname] in all_data:
+
+                    all_data[instances[iname]].append(value[1]/3600.0)
+
+                else:
+
+                    all_data[instances[iname]] = [value[1]/3600.0]
+
+​
+
+        #Sorting            
+
+        for key, value in all_data.items():
+
+            all_data[key] = np.sort(all_data[key])
+
+            
+
+    except Exception as msg:
+
+        print(msg)
+
+        raise
+
+    return all_data
+
+​
+
+#curve fitting sinh
+
+def func_approx(t, R, t0, tau, C):
+
+    return R*np.sinh((t-t0)/tau) + C
+
+​
+
+#curve fitting inverse sinh
+
+def func_approx_inverse_by_interpolation(value, R, t0, tau, C):
+
+    t=np.linspace(value-2, value+2, 10000, endpoint=True)
+
+    values =func_approx(t, R, t0, tau, C)
+
+    index_close_to_one = np.argmin(np.abs(values-1.0))
+
+    return t[index_close_to_one]
+
+​
+
+#curve fitting inverse: This is junk due to periodic? behaviour sinh
+
+def func_approx_inverse(f, R, t0, tau, C):
+
+    return tau*np.arcsinh((f/R)-C) + t0
+
+​
+
+#derivative of the function sinh
+
+def func_approx_dif(t, R, t0, tau, C):
+
+    return R*np.cosh((t-t0)/tau)/tau
+
+​
+
+#Expected value function sinh
+
+def func_approx_exp(t, R, t0, tau, C):
+
+    return t*R*np.cosh((t-t0)/tau)/tau
+
+​
+
+#curve fitting exp
+
+def func_approx_exponential(t, alpha):
+
+    return (1.0 - np.exp(-alpha*t))
+
+​
+
+#curve fitting inverse sinh
+
+def func_approx_exponential_inverse_by_interpolation(value, alpha):
+
+    t=np.linspace(value-2, value+2, 10000, endpoint=True)
+
+    values =func_approx_exponential(t, alpha)
+
+    index_close_to_one = np.argmin(np.abs(values-1.0))
+
+    return t[index_close_to_one]
+
+​
+
+#derivative of the function exp
+
+def func_approx_exponential_dif(t, alpha):
+
+    return alpha*np.exp(-alpha*t)
+
+​
+
+#Expected value function exp
+
+def func_approx_exponential_exp(t, alpha):
+
+    return t*alpha*np.exp(-alpha*t)
+
+​
+
+​
+
+#################### New approx by Vikram#####################
+
+def func_approx_4_param_expon(t, A, b, tau1, tau2):
+
+    return A*(1.0-np.exp(-t/tau1) + np.exp((t-b)/tau2))
+
+​
+
+def func_approx_4_param_expon_inverse_by_interpolation(value, A, b, tau1, tau2):
+
+    t=np.linspace(value-2, value+2, 10000, endpoint=True)
+
+    values =func_approx_4_param_expon(t, A, b, tau1, tau2)
+
+    index_close_to_one = np.argmin(np.abs(values-1.0))
+
+    return t[index_close_to_one]
+
+​
+
+def func_approx_4_param_expon_dif(t, A, b, tau1, tau2):
+
+    return A*((np.exp(-t/tau1)/tau1) + (np.exp((t-b)/tau2))/tau2)
+
+​
+
+#Expected value function exp
+
+def func_approx_4_param_expon_exp(t, A, b, tau1, tau2):
+
+    return t*A*((np.exp(-t/tau1)/tau1) + (np.exp((t-b)/tau2))/tau2)
+
+​
+
+# Compute the cross_entropy between two arrays
+
+def cross_entropy(prediction, empirical, epsilon=1e-12):
+
+    prediction = np.clip(prediction, epsilon, 1. - epsilon)
+
+    return -np.sum(empirical*np.log(prediction+1e-9))/prediction.shape[0]
+
+​
+
+# Compute the MSE between two arrays
+
+def mean_square_error(prediction, empirical):
+
+    return (np.square(empirical - prediction)).mean(axis=0)
+
+​
+
+#generate curve fitting for all the data for one of the machine grouping
+
+def fit_data(all_data_conc, func_approx, func_approx_exp):
+
+    temp_data = dict() 
+
+    try:
+
+        #Check whether data size is at least 4 points and if it has points in span of 10 hrs
+
+        if (len(all_data_conc) > 3) and ((max(all_data_conc) - min(all_data_conc)) > 10 ): 
+
+            temp_data['t'] = np.sort(all_data_conc)
+
+            temp_data['cdf'] = np.linspace(0,1,len(all_data_conc), endpoint=True)
+
+            #fit the curve: method= 'trf', 'dogbox' or 'lm'
+
+            #‘trf’ : Trust Region Reflective algorithm, particularly suitable for large sparse problems with bounds. Generally robust method.
+
+            #‘dogbox’ : dogleg algorithm with rectangular trust regions, typical use case is small problems with bounds. Not recommended for problems with rank-deficient Jacobian.
+
+            #‘lm’ : Levenberg-Marquardt algorithm as implemented in MINPACK. Doesn’t handle bounds and sparse Jacobians. Usually the most efficient method for small unconstrained problems.
+
+            optimized_param, param_covariance = curve_fit(func_approx, temp_data['t'], temp_data['cdf'], maxfev=20000, method='dogbox')
+
+            temp_data['optimized_params'] = optimized_param
+
+            temp_data['param_covariance'] = param_covariance
+
+            # Cross Entropy between fit and empirical data
+
+            temp_data['cross_entropy'] = cross_entropy(func_approx(temp_data['t'], *temp_data['optimized_params']), temp_data['cdf'])
+
+             # MSE between fit and empirical data
+
+            temp_data['mean_square_error'] = mean_square_error(func_approx(temp_data['t'], *temp_data['optimized_params']), temp_data['cdf'])
+
+            #Expected value computation
+
+            I = quad(func=func_approx_exp, a=temp_data['t'][0], b=temp_data['t'][-1],args=tuple(optimized_param))
+
+            temp_data['expected_value'] = I
+
+    except Exception as msg:
+
+        print(msg)
+
+        raise
+
+    return temp_data
+
+​
+
+​
+
+def emit_cdf(all_data_conc):
+
+    outst = ""
+
+    temp_data = dict() 
+
+    temp_data['t'] = np.sort(all_data_conc)
+
+    temp_data['cdf'] = np.linspace(0,1,len(all_data_conc), endpoint=True)
+
+    z = zip(temp_data['t'], temp_data['cdf'])
+
+    for tu in z:
+
+        print("{} {}".format(tu[0], tu[1]))
+
+​
+
+​
+
+#generate curve fitting data for all the curves considering machine grouping
+
+def fit_all_types(all_data, func_approx, func_approx_exp):
+
+    optimized_params = dict() 
+
+    try:
+
+        for key, value in all_data.items():
+
+            #Check whether data size is at least 4 points and if it has points in span of 10 hrs
+
+            if (len(value) > 3) and ((max(value) - min(value)) > 10 ):
+
+                optimized_params[key] = fit_data(value, func_approx, func_approx_exp)
+
+    except Exception as msg:
+
+        print(msg)
+
+        raise
+
+    return optimized_params
+
+​
+
+# Plot the curve fitting data
+
+def plot_CDF(key, value, func_approx, func_approx_dif, func_approx_inverse_by_interpolation):
+
+    plt.figure(figsize=(5, 4))
+
+    #plot data points
+
+    plt.scatter(value['t'], value['cdf'], c='green', label='Empirical', s=5)
+
+    # Save the data
+
+    np.savetxt('runtime-data-by-group/'+key+'.txt', np.column_stack((value['t'],value['cdf'])), delimiter='\t')
+
+    #find the value of t for when func_approx = 1.0
+
+    edge_point_near_one = func_approx_inverse_by_interpolation(value['t'][-1],*value['optimized_params'] )
+
+    
+
+    # Intepolate to get more data points for t
+
+    #t=np.linspace(value['t'][0], value['t'][-1], 10000, endpoint=True)
+
+    t=np.linspace(0, edge_point_near_one, 10000, endpoint=True)
+
+    #Plot the fitted function : label='F(t)=R*np.sinh((t-t0)/tau) + C'
+
+    plt.plot(t, func_approx(t, *value['optimized_params']), c= "red",  label='F(t)')
+
+    #differentiation of the funtion : label='dF(t)=R*np.cosh((t-t0)/tau)/tau'
+
+    plt.plot(t, func_approx_dif(t, *value['optimized_params']), c= "blue", label='dF(t)')
+
+    x = plt.legend()
+
+    plt.xlabel("Time(hrs)")
+
+    plt.ylabel("CDF")
+
+    #Plot text value['t']
+
+    #creating function args list
+
+    txt = ', fit: '
+
+    function_args = inspect.getfullargspec(func_approx)[0]
+
+    for i in range(len(function_args) -1):
+
+        if float("{:.3f}".format( value['optimized_params'][i])) == 0.0:
+
+            txt = txt +  function_args[i+1] +'=%.3E, '
+
+        else:
+
+            txt = txt +  function_args[i+1] +'=%.3f, ' 
+
+        
+
+    txt = txt % tuple(value['optimized_params'])
+
+    text = key + txt + ', E(t)=%.3f ' % (value['expected_value'][0]) + ', CrossEntropy=%.3f ' % (value['cross_entropy'])
+
+    text = text + ', MSE=%.3f ' % (value['mean_square_error'])
+
+    plt.title(text)
+
+​
+
+# Plot the curve fitting data
+
+def plot_two_CDF(key, value,value2, func_approx, func_approx_dif, func_approx_inverse_by_interpolation,  
+
+                 func_approx2, func_approx_dif2, func_approx_inverse_by_interpolation2):
+
+    
+
+    plt.figure(figsize=(5, 4))
+
+    #plot data points
+
+    plt.scatter(value['t'], value['cdf'], c='green', label='Empirical', s=5)
+
+    
+
+    #find the value of t for when func_approx = 1.0
+
+    edge_point_near_one = func_approx_inverse_by_interpolation(value['t'][-1],*value['optimized_params'] )
+
+    
+
+    # Intepolate to get more data points for t
+
+    #t=np.linspace(value['t'][0], value['t'][-1], 10000, endpoint=True)
+
+    t=np.linspace(0, edge_point_near_one, 10000, endpoint=True)
+
+    #Plot the fitted function : label='F(t)=R*np.sinh((t-t0)/tau) + C'
+
+    plt.plot(t, func_approx(t, *value['optimized_params']), c= "red",  label='F(t)')
+
+    #differentiation of the funtion : label='dF(t)=R*np.cosh((t-t0)/tau)/tau'
+
+    plt.plot(t, func_approx_dif(t, *value['optimized_params']), c= "blue", label='dF(t)')
+
+    
+
+    #2nd plot
+
+    edge_point_near_one2 = func_approx_inverse_by_interpolation2(value2['t'][-1],*value2['optimized_params'] )
+
+    t2=np.linspace(0, edge_point_near_one2, 10000, endpoint=True)
+
+    plt.plot(t2, func_approx2(t2, *value2['optimized_params']), c= "black",  label='F2(t)')
+
+    #plt.plot(t2, func_approx_dif2(t2, *value2['optimized_params']), c= "purple", label='dF2(t)')
+
+    
+
+    x = plt.legend()
+
+    plt.xlabel("Time(hrs)")
+
+    plt.ylabel("CDF")
+
+    #Plot text value['t']
+
+    #creating function args list
+
+    txt = ', fit: '
+
+    function_args = inspect.getfullargspec(func_approx)[0]
+
+    for i in range(len(function_args) -1):
+
+        if float("{:.3f}".format( value['optimized_params'][i])) == 0.0:
+
+            txt = txt +  function_args[i+1] +'=%.3E, '
+
+        else:
+
+            txt = txt +  function_args[i+1] +'=%.3f, ' 
+
+        
+
+    txt = txt % tuple(value['optimized_params'])
+
+    text = key + txt + ', E(t)=%.3f ' % (value['expected_value'][0]) + ', CrossEntropy=%.3f ' % (value['cross_entropy'])
+
+    text = text + ', MSE=%.3f ' % (value['mean_square_error'])
+
+    plt.title(text)    
+
+    
+
+# Plot the curve fitting data
+
+def plot_all_types(optimized_params, func_approx, func_approx_dif, func_approx_inverse_by_interpolation):
+
+    try:
+
+        for key, value in optimized_params.items():
+
+            #Plot text
+
+            plot_CDF(key, value, func_approx, func_approx_dif, func_approx_inverse_by_interpolation)
+
+            
+
+    except Exception as msg:
+
+        print(msg)
+
+        raise
+
+Group by machine type
+
+#Get instance data
+
+instances = get_instance_types('instance-data/instances*.txt')
+
+​
+
+#Get runtime data
+
+runtime_data = get_runtimes('runtime-data/*.json')
+
+​
+
+#Get runtime data per machine type
+
+all_data = get_runtimes_for_machine_type(runtime_data, instances)
+
+​
+
+#print(all_data)
+
+https://www.googleapis.com/compute/v1/projects/first-220321/zones/us-east1-b/instances/abacus2
+https://www.googleapis.com/compute/v1/projects/first-220321/zones/us-east1-b/instances/abacus3
+
+#generate curve fitting data for all the curves
+
+optimized_parameters_group_by_machine = fit_all_types(all_data, func_approx_4_param_expon, func_approx_4_param_expon_exp)
+
+​
+
+# Plot the curve fitting data
+
+plot_all_types(optimized_parameters_group_by_machine, func_approx_4_param_expon, func_approx_4_param_expon_dif, func_approx_4_param_expon_inverse_by_interpolation)
+
+​
+
+C:\ProgramData\Anaconda3\lib\site-packages\ipykernel_launcher.py:164: RuntimeWarning: overflow encountered in exp
+
+Different time of day; day-of-week
+
+#Creating lists for eah machine type
+
+def get_runtimes_for_days_of_week(runtimes):
+
+    all_data = dict() 
+
+    try:
+
+        assert(isinstance(runtimes, dict))
+
+        for key, value in runtimes.items():   
+
+            day = value[2]
+
+            if day in all_data:
+
+                all_data[day].append(value[1]/3600.0)
+
+            else:
+
+                all_data[day] = [value[1]/3600.0]
+
+​
+
+        #Sorting            
+
+        for key, value in all_data.items():
+
+            all_data[key] = np.sort(all_data[key])
+
+            
+
+    except Exception as msg:
+
+        print(msg)
+
+        raise
+
+    return all_data
+
+​
+
+​
+
+#Get runtime data per machine type
+
+all_data_days_of_week = get_runtimes_for_days_of_week(runtime_data)
+
+​
+
+#print(all_data_days_of_week)
+
+#generate curve fitting data for all the curves
+
+optimized_parameters_days_of_week = fit_all_types(all_data_days_of_week, func_approx_4_param_expon, func_approx_4_param_expon_exp)
+
+​
+
+# Plot the curve fitting data
+
+plot_all_types(optimized_parameters_days_of_week, func_approx_4_param_expon, func_approx_4_param_expon_dif, func_approx_4_param_expon_inverse_by_interpolation)
+
+​
+
+C:\ProgramData\Anaconda3\lib\site-packages\ipykernel_launcher.py:164: RuntimeWarning: overflow encountered in exp
+C:\ProgramData\Anaconda3\lib\site-packages\ipykernel_launcher.py:164: RuntimeWarning: divide by zero encountered in true_divide
+C:\ProgramData\Anaconda3\lib\site-packages\ipykernel_launcher.py:177: RuntimeWarning: divide by zero encountered in double_scalars
+C:\ProgramData\Anaconda3\lib\site-packages\ipykernel_launcher.py:177: RuntimeWarning: invalid value encountered in double_scalars
+C:\ProgramData\Anaconda3\lib\site-packages\scipy\integrate\quadpack.py:385: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  warnings.warn(msg, IntegrationWarning)
+C:\ProgramData\Anaconda3\lib\site-packages\ipykernel_launcher.py:164: RuntimeWarning: invalid value encountered in true_divide
+C:\ProgramData\Anaconda3\lib\site-packages\ipykernel_launcher.py:173: RuntimeWarning: divide by zero encountered in true_divide
+C:\ProgramData\Anaconda3\lib\site-packages\ipykernel_launcher.py:173: RuntimeWarning: invalid value encountered in true_divide
+
+Different hours of day; within 24hrs
+
+#Creating lists for eah machine type
+
+def get_runtimes_for_24_hrs(runtimes):
+
+    all_data = dict() 
+
+    try:
+
+        assert(isinstance(runtimes, dict))
+
+        for key, value in runtimes.items():   
+
+            hours_val = value[3]
+
+            if hours_val<4:
+
+                hours_val = '0-4'
+
+            elif hours_val<8: 
+
+                hours_val = '4-8'
+
+            elif hours_val<12: 
+
+                hours_val = '8-12'
+
+            elif hours_val<16: 
+
+                hours_val = '12-16'
+
+            elif hours_val<20: 
+
+                hours_val = '16-20'
+
+            else:
+
+                hours_val = '20-24'
+
+                
+
+            if hours_val in all_data:
+
+                all_data[hours_val].append(value[1]/3600.0)
+
+            else:
+
+                all_data[hours_val] = [value[1]/3600.0]
+
+​
+
+        #Sorting            
+
+        for key, value in all_data.items():
+
+            all_data[key] = np.sort(all_data[key])
+
+            
+
+    except Exception as msg:
+
+        print(msg)
+
+        raise
+
+    return all_data
+
+​
+
+​
+
+#Get runtime data per machine type
+
+all_data_24_hrs = get_runtimes_for_24_hrs(runtime_data)
+
+​
+
+#print(all_data_24_hrs)
+
+def get_day_night_runtimes(runtimes):
+
+    all_data = dict() 
+
+    try:
+
+        assert(isinstance(runtimes, dict))
+
+        for key, value in runtimes.items():   
+
+            hours_val = value[3]
+
+            if (hours_val>=0 and hours_val<8) or (hours_val>=20) :
+
+                hours_val = 'Night'
+
+            else:
+
+                hours_val = 'Day'
+
+                
+
+            if hours_val in all_data:
+
+                all_data[hours_val].append(value[1]/3600.0)
+
+            else:
+
+                all_data[hours_val] = [value[1]/3600.0]
+
+​
+
+        #Sorting            
+
+        for key, value in all_data.items():
+
+            all_data[key] = np.sort(all_data[key])
+
+            
+
+    except Exception as msg:
+
+        print(msg)
+
+        raise
+
+    return all_data
+
+​
+
+​
+
+#Get runtime data per machine type
+
+all_day_night = get_day_night_runtimes(runtime_data)
+
+​
+
+emit_cdf(all_day_night['Day'])
+
+0.0007766666666666666 0.0
+0.0008344444444444444 0.0014925373134328358
+0.0008733333333333334 0.0029850746268656717
+0.0009319444444444444 0.004477611940298508
+0.000975 0.005970149253731343
+0.001266111111111111 0.007462686567164179
+0.00192 0.008955223880597015
+0.002265555555555556 0.010447761194029851
+0.003301388888888889 0.011940298507462687
+0.005136944444444444 0.013432835820895522
+0.005467777777777778 0.014925373134328358
+0.005988888888888888 0.016417910447761194
+0.0061447222222222216 0.01791044776119403
+0.007197777777777778 0.019402985074626865
+0.008059166666666668 0.020895522388059702
+0.008173333333333333 0.022388059701492536
+0.008267777777777778 0.023880597014925373
+0.008340277777777778 0.02537313432835821
+0.008678888888888889 0.026865671641791045
+0.008978888888888889 0.028358208955223882
+0.009074166666666668 0.029850746268656716
+0.009374166666666666 0.03134328358208955
+0.009418333333333332 0.03283582089552239
+0.009589166666666668 0.034328358208955224
+0.009889166666666666 0.03582089552238806
+0.010085833333333332 0.0373134328358209
+0.010113888888888888 0.03880597014925373
+0.01027222222222222 0.04029850746268657
+0.010385833333333334 0.041791044776119404
+0.0104225 0.04328358208955224
+0.010526111111111111 0.04477611940298507
+0.010598055555555555 0.04626865671641791
+0.010660555555555555 0.04776119402985075
+0.010675277777777777 0.049253731343283584
+0.010757222222222222 0.05074626865671642
+0.010785 0.05223880597014925
+0.010908888888888888 0.05373134328358209
+0.011056388888888888 0.05522388059701493
+0.011225833333333332 0.056716417910447764
+0.011244722222222222 0.058208955223880594
+0.011276111111111112 0.05970149253731343
+0.011461666666666667 0.06119402985074627
+0.011551666666666667 0.0626865671641791
+0.01158 0.06417910447761194
+0.01177361111111111 0.06567164179104477
+0.01194111111111111 0.06716417910447761
+0.012014444444444446 0.06865671641791045
+0.012135277777777778 0.07014925373134329
+0.01280638888888889 0.07164179104477612
+0.01317888888888889 0.07313432835820896
+0.013573888888888889 0.0746268656716418
+0.013686388888888889 0.07611940298507462
+0.013688611111111111 0.07761194029850746
+0.013915833333333334 0.0791044776119403
+0.01394388888888889 0.08059701492537313
+0.014092499999999999 0.08208955223880597
+0.014516944444444445 0.08358208955223881
+0.014614722222222222 0.08507462686567165
+0.01564916666666667 0.08656716417910448
+0.015655 0.08805970149253732
+0.015862222222222222 0.08955223880597014
+0.018470833333333336 0.09104477611940298
+0.02065222222222222 0.09253731343283582
+0.020661944444444445 0.09402985074626866
+0.0207825 0.0955223880597015
+0.025187777777777778 0.09701492537313433
+0.026062500000000002 0.09850746268656717
+0.02653583333333333 0.1
+0.02828638888888889 0.10149253731343284
+0.028625555555555557 0.10298507462686567
+0.029868333333333334 0.1044776119402985
+0.030404444444444446 0.10597014925373134
+0.030414166666666666 0.10746268656716418
+0.030833888888888886 0.10895522388059702
+0.033993611111111106 0.11044776119402985
+0.03453055555555556 0.11194029850746269
+0.03577611111111111 0.11343283582089553
+0.037193055555555556 0.11492537313432837
+0.03811805555555555 0.11641791044776119
+0.04223472222222222 0.11791044776119403
+0.04355333333333333 0.11940298507462686
+0.046018055555555555 0.1208955223880597
+0.046190555555555554 0.12238805970149254
+0.04715083333333333 0.12388059701492538
+0.048725 0.1253731343283582
+0.049529166666666666 0.12686567164179105
+0.05005194444444445 0.12835820895522387
+0.05129666666666667 0.12985074626865672
+0.05274611111111111 0.13134328358208955
+0.05464638888888889 0.1328358208955224
+0.05877083333333333 0.13432835820895522
+0.05962805555555556 0.13582089552238807
+0.06134027777777777 0.1373134328358209
+0.06205416666666667 0.13880597014925372
+0.06349111111111111 0.14029850746268657
+0.0648038888888889 0.1417910447761194
+0.06482361111111111 0.14328358208955225
+0.0724736111111111 0.14477611940298507
+0.07549861111111111 0.14626865671641792
+0.07558277777777778 0.14776119402985075
+0.07720888888888888 0.1492537313432836
+0.0778225 0.15074626865671642
+0.0782025 0.15223880597014924
+0.08230694444444445 0.1537313432835821
+0.0823325 0.15522388059701492
+0.0849563888888889 0.15671641791044777
+0.08867694444444445 0.1582089552238806
+0.08899361111111112 0.15970149253731344
+0.09504499999999999 0.16119402985074627
+0.09666833333333333 0.16268656716417912
+0.09738694444444444 0.16417910447761194
+0.09830555555555555 0.16567164179104477
+0.1014225 0.16716417910447762
+0.10367444444444444 0.16865671641791044
+0.11343 0.1701492537313433
+0.11556222222222222 0.17164179104477612
+0.11799888888888889 0.17313432835820897
+0.11883972222222222 0.1746268656716418
+0.12121638888888889 0.17611940298507464
+0.12162888888888888 0.17761194029850746
+0.12242138888888889 0.1791044776119403
+0.13730527777777776 0.18059701492537314
+0.13910527777777779 0.18208955223880596
+0.13995333333333332 0.18358208955223881
+0.1449888888888889 0.18507462686567164
+0.14735277777777778 0.1865671641791045
+0.14754277777777777 0.1880597014925373
+0.14973444444444445 0.18955223880597016
+0.15426666666666666 0.191044776119403
+0.16233916666666667 0.1925373134328358
+0.16504527777777778 0.19402985074626866
+0.165165 0.19552238805970149
+0.16567972222222221 0.19701492537313434
+0.16769722222222222 0.19850746268656716
+0.17930083333333333 0.2
+0.18160166666666666 0.20149253731343283
+0.19541777777777777 0.20298507462686569
+0.19547166666666665 0.2044776119402985
+0.19942805555555557 0.20597014925373133
+0.20720388888888888 0.20746268656716418
+0.20922083333333336 0.208955223880597
+0.21372694444444446 0.21044776119402986
+0.21820611111111113 0.21194029850746268
+0.2284822222222222 0.21343283582089553
+0.2372308333333333 0.21492537313432836
+0.24449055555555557 0.2164179104477612
+0.24884055555555556 0.21791044776119403
+0.2509388888888889 0.21940298507462686
+0.25399694444444443 0.2208955223880597
+0.2636027777777778 0.22238805970149253
+0.26715055555555556 0.22388059701492538
+0.27319916666666666 0.2253731343283582
+0.2733761111111111 0.22686567164179106
+0.2768186111111111 0.22835820895522388
+0.2787161111111111 0.22985074626865673
+0.28548666666666667 0.23134328358208955
+0.28782888888888886 0.23283582089552238
+0.2923594444444444 0.23432835820895523
+0.29969222222222225 0.23582089552238805
+0.3034972222222222 0.2373134328358209
+0.3053472222222222 0.23880597014925373
+0.3191111111111111 0.24029850746268658
+0.3301502777777778 0.2417910447761194
+0.3301525 0.24328358208955225
+0.3342566666666667 0.24477611940298508
+0.3460447222222222 0.2462686567164179
+0.3488972222222222 0.24776119402985075
+0.35307 0.24925373134328357
+0.3532491666666666 0.2507462686567164
+0.3579555555555556 0.25223880597014925
+0.3679786111111111 0.2537313432835821
+0.3751569444444445 0.25522388059701495
+0.37550194444444446 0.25671641791044775
+0.39712555555555556 0.2582089552238806
+0.3981097222222222 0.25970149253731345
+0.4142163888888889 0.26119402985074625
+0.418075 0.2626865671641791
+0.42189333333333334 0.26417910447761195
+0.4225688888888889 0.2656716417910448
+0.4298988888888889 0.2671641791044776
+0.4383313888888889 0.26865671641791045
+0.45883277777777776 0.2701492537313433
+0.4623747222222222 0.27164179104477615
+0.4882372222222222 0.27313432835820894
+0.49489333333333335 0.2746268656716418
+0.4955427777777778 0.27611940298507465
+0.5000249999999999 0.27761194029850744
+0.5003177777777778 0.2791044776119403
+0.5026688888888888 0.28059701492537314
+0.5068905555555556 0.282089552238806
+0.5122688888888889 0.2835820895522388
+0.5155141666666667 0.28507462686567164
+0.5350472222222222 0.2865671641791045
+0.5352188888888889 0.2880597014925373
+0.5389875 0.28955223880597014
+0.5531755555555555 0.291044776119403
+0.6114247222222222 0.29253731343283584
+0.6178138888888889 0.29402985074626864
+0.6386830555555556 0.2955223880597015
+0.6519163888888888 0.29701492537313434
+0.6565227777777778 0.2985074626865672
+0.6644302777777777 0.3
+0.664455 0.30149253731343284
+0.6723750000000001 0.3029850746268657
+0.6765808333333333 0.3044776119402985
+0.6780888888888889 0.30597014925373134
+0.6841602777777778 0.3074626865671642
+0.6925522222222222 0.30895522388059704
+0.6949244444444445 0.31044776119402984
+0.7040091666666667 0.3119402985074627
+0.7117058333333334 0.31343283582089554
+0.7280613888888889 0.31492537313432833
+0.7329030555555556 0.3164179104477612
+0.7432347222222222 0.31791044776119404
+0.752256111111111 0.3194029850746269
+0.7546680555555555 0.3208955223880597
+0.762485 0.32238805970149254
+0.7699427777777778 0.3238805970149254
+0.7806797222222223 0.32537313432835824
+0.7879502777777778 0.32686567164179103
+0.8159827777777778 0.3283582089552239
+0.8230052777777778 0.32985074626865674
+0.8256205555555556 0.33134328358208953
+0.8546488888888889 0.3328358208955224
+0.8552508333333333 0.33432835820895523
+0.859603611111111 0.3358208955223881
+0.8815361111111112 0.3373134328358209
+0.8972736111111111 0.33880597014925373
+0.9019288888888889 0.3402985074626866
+0.9303686111111111 0.3417910447761194
+0.9502019444444444 0.34328358208955223
+0.9644838888888888 0.3447761194029851
+0.9690138888888888 0.34626865671641793
+0.9699066666666667 0.34776119402985073
+0.9814933333333334 0.3492537313432836
+0.9929133333333333 0.35074626865671643
+1.0032191666666666 0.3522388059701493
+1.0215016666666668 0.3537313432835821
+1.0299480555555556 0.35522388059701493
+1.0414241666666666 0.3567164179104478
+1.0447552777777778 0.3582089552238806
+1.05228 0.3597014925373134
+1.0653930555555555 0.3611940298507463
+1.0835297222222222 0.36268656716417913
+1.0837252777777777 0.3641791044776119
+1.1081183333333333 0.3656716417910448
+1.1223844444444444 0.36716417910447763
+1.1529130555555556 0.3686567164179104
+1.1656077777777778 0.3701492537313433
+1.1673675000000001 0.3716417910447761
+1.1719480555555555 0.373134328358209
+1.1756302777777778 0.3746268656716418
+1.1848333333333332 0.3761194029850746
+1.2011494444444444 0.3776119402985075
+1.210001388888889 0.3791044776119403
+1.2913058333333334 0.3805970149253731
+1.3363372222222223 0.382089552238806
+1.3814005555555557 0.3835820895522388
+1.3986266666666665 0.3850746268656716
+1.4177136111111113 0.38656716417910447
+1.4180588888888888 0.3880597014925373
+1.43509 0.3895522388059702
+1.4381913888888889 0.39104477611940297
+1.4543430555555557 0.3925373134328358
+1.4893833333333333 0.3940298507462687
+1.5043052777777777 0.3955223880597015
+1.5060658333333334 0.3970149253731343
+1.5101952777777778 0.39850746268656717
+1.5108741666666667 0.4
+1.5781916666666667 0.4014925373134328
+1.5898330555555555 0.40298507462686567
+1.6016694444444446 0.4044776119402985
+1.603718888888889 0.40597014925373137
+1.621105277777778 0.40746268656716417
+1.6408666666666667 0.408955223880597
+1.6418091666666665 0.41044776119402987
+1.6608891666666667 0.41194029850746267
+1.702736388888889 0.4134328358208955
+1.7537880555555554 0.41492537313432837
+1.76065 0.4164179104477612
+1.778243888888889 0.417910447761194
+1.7850069444444443 0.41940298507462687
+1.7959108333333336 0.4208955223880597
+1.8157769444444443 0.42238805970149257
+1.823178888888889 0.42388059701492536
+1.842997777777778 0.4253731343283582
+1.9737302777777779 0.42686567164179107
+2.1099602777777777 0.42835820895522386
+2.143041388888889 0.4298507462686567
+2.190738611111111 0.43134328358208956
+2.2193911111111113 0.4328358208955224
+2.2245988888888886 0.4343283582089552
+2.2272330555555553 0.43582089552238806
+2.3484288888888885 0.4373134328358209
+2.355573611111111 0.4388059701492537
+2.365075277777778 0.44029850746268656
+2.367709722222222 0.4417910447761194
+2.4276219444444447 0.44328358208955226
+2.4682705555555553 0.44477611940298506
+2.470841666666667 0.4462686567164179
+2.5847258333333336 0.44776119402985076
+2.6094833333333334 0.4492537313432836
+2.6356772222222222 0.4507462686567164
+2.6412683333333336 0.45223880597014926
+2.651339722222222 0.4537313432835821
+2.687321388888889 0.4552238805970149
+2.7398966666666666 0.45671641791044776
+2.7448341666666667 0.4582089552238806
+2.751508888888889 0.45970149253731346
+2.7970002777777774 0.46119402985074626
+2.8316275 0.4626865671641791
+2.861539722222222 0.46417910447761196
+2.9849633333333334 0.46567164179104475
+2.9883955555555555 0.4671641791044776
+3.036401666666667 0.46865671641791046
+3.0642027777777776 0.4701492537313433
+3.1154916666666668 0.4716417910447761
+3.2806369444444443 0.47313432835820896
+3.3106241666666665 0.4746268656716418
+3.392464722222222 0.47611940298507466
+3.4412158333333336 0.47761194029850745
+3.5223050000000002 0.4791044776119403
+3.5510941666666667 0.48059701492537316
+3.5562519444444445 0.48208955223880595
+3.6251305555555553 0.4835820895522388
+3.7781211111111115 0.48507462686567165
+3.804773611111111 0.4865671641791045
+3.8610305555555553 0.4880597014925373
+3.981980277777778 0.48955223880597015
+4.047607777777778 0.491044776119403
+4.059638888888889 0.4925373134328358
+4.104794166666666 0.49402985074626865
+4.375784166666667 0.4955223880597015
+4.376401944444445 0.49701492537313435
+4.421409166666667 0.49850746268656715
+4.617990555555555 0.5
+4.664487777777778 0.5014925373134328
+4.665206944444444 0.5029850746268657
+4.805988055555556 0.5044776119402985
+4.922063055555555 0.5059701492537313
+5.799809722222222 0.5074626865671642
+5.8038525 0.508955223880597
+5.901548888888889 0.5104477611940299
+7.134334444444444 0.5119402985074627
+7.436001111111111 0.5134328358208955
+7.790651666666667 0.5149253731343284
+7.799578888888889 0.5164179104477612
+7.987561666666667 0.517910447761194
+8.406832222222222 0.5194029850746269
+9.088001666666667 0.5208955223880597
+10.242003888888888 0.5223880597014925
+10.246348055555556 0.5238805970149254
+10.395185833333334 0.5253731343283582
+10.867885 0.5268656716417911
+11.004792499999999 0.5283582089552239
+11.06793638888889 0.5298507462686567
+11.314478611111111 0.5313432835820896
+11.755675555555555 0.5328358208955224
+11.934280555555556 0.5343283582089552
+12.999179444444446 0.5358208955223881
+13.635143611111111 0.5373134328358209
+13.651443055555555 0.5388059701492537
+13.906510555555556 0.5402985074626866
+13.957038888888889 0.5417910447761194
+14.020510555555557 0.5432835820895523
+14.13671861111111 0.5447761194029851
+14.181183055555556 0.5462686567164179
+15.251727222222222 0.5477611940298508
+15.602371944444444 0.5492537313432836
+15.7630325 0.5507462686567164
+16.471080833333335 0.5522388059701493
+16.588272777777778 0.5537313432835821
+17.034845555555556 0.5552238805970149
+17.14073861111111 0.5567164179104478
+17.230631388888888 0.5582089552238806
+17.81714138888889 0.5597014925373134
+18.19492361111111 0.5611940298507463
+18.513373611111113 0.5626865671641791
+18.548146388888892 0.564179104477612
+18.799541944444442 0.5656716417910448
+18.815760833333332 0.5671641791044776
+19.05916222222222 0.5686567164179105
+20.447423611111113 0.5701492537313433
+20.598399444444443 0.5716417910447761
+21.324079722222223 0.573134328358209
+21.451754722222223 0.5746268656716418
+21.94122111111111 0.5761194029850746
+22.463796666666667 0.5776119402985075
+23.060872777777778 0.5791044776119403
+23.77938722222222 0.5805970149253732
+24.011013611111114 0.582089552238806
+24.016861111111112 0.5835820895522388
+24.017284722222225 0.5850746268656717
+24.017311111111113 0.5865671641791045
+24.01815 0.5880597014925373
+24.018778888888892 0.5895522388059702
+24.0188525 0.591044776119403
+24.020608055555556 0.5925373134328358
+24.022011944444444 0.5940298507462687
+24.02222611111111 0.5955223880597015
+24.02295111111111 0.5970149253731344
+24.024485277777778 0.5985074626865672
+24.0247975 0.6
+24.02544361111111 0.6014925373134329
+24.026341666666667 0.6029850746268657
+24.02730111111111 0.6044776119402985
+24.028228611111114 0.6059701492537314
+24.029835555555554 0.6074626865671642
+24.030129166666665 0.608955223880597
+24.030427777777778 0.6104477611940299
+24.03058083333333 0.6119402985074627
+24.030658055555556 0.6134328358208956
+24.031108333333336 0.6149253731343284
+24.031296944444442 0.6164179104477612
+24.032231666666668 0.6179104477611941
+24.03231277777778 0.6194029850746269
+24.032320555555557 0.6208955223880597
+24.034145555555554 0.6223880597014926
+24.034238333333334 0.6238805970149254
+24.034310555555553 0.6253731343283582
+24.03537888888889 0.6268656716417911
+24.03573861111111 0.6283582089552239
+24.036725555555556 0.6298507462686567
+24.037682500000003 0.6313432835820896
+24.038100277777776 0.6328358208955224
+24.038326666666666 0.6343283582089553
+24.039957222222224 0.6358208955223881
+24.04012611111111 0.6373134328358209
+24.040853055555555 0.6388059701492538
+24.040883055555557 0.6402985074626866
+24.04171611111111 0.6417910447761194
+24.04343833333333 0.6432835820895523
+24.04510888888889 0.6447761194029851
+24.045328055555554 0.6462686567164179
+24.04623861111111 0.6477611940298508
+24.046621944444446 0.6492537313432836
+24.04797388888889 0.6507462686567165
+24.048390555555557 0.6522388059701493
+24.048771944444443 0.6537313432835821
+24.048785833333334 0.655223880597015
+24.05511277777778 0.6567164179104478
+24.05612888888889 0.6582089552238806
+24.063001944444444 0.6597014925373135
+24.064768333333333 0.6611940298507463
+24.066858888888888 0.6626865671641791
+24.0699475 0.664179104477612
+24.070899444444443 0.6656716417910448
+24.07263944444444 0.6671641791044777
+24.072950277777778 0.6686567164179105
+24.074691944444446 0.6701492537313433
+24.076145555555556 0.6716417910447762
+24.077245555555557 0.673134328358209
+24.07942277777778 0.6746268656716418
+24.080670833333333 0.6761194029850747
+24.081165277777778 0.6776119402985075
+24.08174 0.6791044776119403
+24.081829444444445 0.6805970149253732
+24.087716666666665 0.682089552238806
+24.088340277777775 0.6835820895522388
+24.09078722222222 0.6850746268656717
+24.091054999999997 0.6865671641791045
+24.091251944444444 0.6880597014925374
+24.09236611111111 0.6895522388059702
+24.093543888888888 0.691044776119403
+24.09575027777778 0.6925373134328359
+24.096201666666666 0.6940298507462687
+24.100348611111112 0.6955223880597015
+24.103616944444443 0.6970149253731344
+24.104452777777777 0.6985074626865672
+24.104593055555558 0.7
+24.10609861111111 0.7014925373134329
+24.109501666666667 0.7029850746268657
+24.110436111111113 0.7044776119402986
+24.111002222222222 0.7059701492537314
+24.111012777777777 0.7074626865671642
+24.114798055555557 0.7089552238805971
+24.115740833333334 0.7104477611940299
+24.11611027777778 0.7119402985074627
+24.11913388888889 0.7134328358208956
+24.1192275 0.7149253731343284
+24.119904166666668 0.7164179104477612
+24.120372777777778 0.7179104477611941
+24.121293055555554 0.7194029850746269
+24.12185361111111 0.7208955223880598
+24.12201611111111 0.7223880597014926
+24.128084444444447 0.7238805970149254
+24.128102777777777 0.7253731343283583
+24.130049722222225 0.7268656716417911
+24.130385555555556 0.7283582089552239
+24.131186111111113 0.7298507462686568
+24.133143055555557 0.7313432835820896
+24.134716944444445 0.7328358208955223
+24.14051027777778 0.7343283582089553
+24.14630388888889 0.735820895522388
+24.14668972222222 0.7373134328358208
+24.148606944444445 0.7388059701492538
+24.165474166666666 0.7402985074626866
+24.16804527777778 0.7417910447761195
+24.173563055555558 0.7432835820895523
+24.176208055555556 0.744776119402985
+24.17848916666667 0.746268656716418
+24.179827222222222 0.7477611940298508
+24.180511666666668 0.7492537313432835
+24.181990000000003 0.7507462686567165
+24.18224027777778 0.7522388059701492
+24.182649166666664 0.753731343283582
+24.185043611111112 0.755223880597015
+24.18637611111111 0.7567164179104477
+24.186993333333334 0.7582089552238807
+24.187688888888886 0.7597014925373134
+24.18796222222222 0.7611940298507462
+24.19009972222222 0.7626865671641792
+24.1916925 0.764179104477612
+24.192142222222223 0.7656716417910447
+24.192453333333333 0.7671641791044777
+24.19321 0.7686567164179104
+24.193570833333332 0.7701492537313432
+24.19395138888889 0.7716417910447761
+24.195023333333335 0.7731343283582089
+24.19526583333333 0.7746268656716419
+24.19600611111111 0.7761194029850746
+24.196094444444444 0.7776119402985074
+24.196815 0.7791044776119403
+24.197764444444445 0.7805970149253731
+24.19852638888889 0.7820895522388059
+24.19904138888889 0.7835820895522388
+24.19921027777778 0.7850746268656716
+24.19997888888889 0.7865671641791044
+24.200069999999997 0.7880597014925373
+24.20131111111111 0.7895522388059701
+24.203500000000002 0.791044776119403
+24.20581111111111 0.7925373134328358
+24.207270555555557 0.7940298507462686
+24.20954638888889 0.7955223880597015
+24.20999972222222 0.7970149253731343
+24.211309166666666 0.7985074626865671
+24.2115725 0.8
+24.21271972222222 0.8014925373134328
+24.212732777777777 0.8029850746268656
+24.21552416666667 0.8044776119402985
+24.216185555555555 0.8059701492537313
+24.219166388888887 0.8074626865671641
+24.2198275 0.808955223880597
+24.219859166666666 0.8104477611940298
+24.222539166666667 0.8119402985074627
+24.223331666666667 0.8134328358208955
+24.223932777777776 0.8149253731343283
+24.22480611111111 0.8164179104477612
+24.225390277777777 0.817910447761194
+24.225793055555556 0.8194029850746268
+24.226779722222226 0.8208955223880597
+24.228938333333332 0.8223880597014925
+24.22954222222222 0.8238805970149253
+24.230579444444444 0.8253731343283582
+24.232064444444443 0.826865671641791
+24.2321675 0.8283582089552239
+24.232232777777778 0.8298507462686567
+24.23549 0.8313432835820895
+24.23599 0.8328358208955224
+24.236093611111112 0.8343283582089552
+24.236740555555556 0.835820895522388
+24.237846944444442 0.8373134328358209
+24.2382475 0.8388059701492537
+24.238819444444445 0.8402985074626865
+24.240041944444442 0.8417910447761194
+24.24089 0.8432835820895522
+24.241558055555554 0.8447761194029851
+24.241719999999997 0.8462686567164179
+24.24331888888889 0.8477611940298507
+24.243911944444445 0.8492537313432836
+24.245198333333335 0.8507462686567164
+24.248248333333333 0.8522388059701492
+24.248765555555554 0.8537313432835821
+24.27007111111111 0.8552238805970149
+24.271807499999998 0.8567164179104477
+24.273501111111113 0.8582089552238806
+24.282643611111112 0.8597014925373134
+24.286005555555555 0.8611940298507462
+24.29629611111111 0.8626865671641791
+24.29934861111111 0.8641791044776119
+24.30388611111111 0.8656716417910448
+24.305778611111112 0.8671641791044776
+24.312064722222225 0.8686567164179104
+24.312264722222224 0.8701492537313433
+24.312308333333334 0.8716417910447761
+24.31254611111111 0.8731343283582089
+24.315616944444447 0.8746268656716418
+24.31679111111111 0.8761194029850746
+24.31756111111111 0.8776119402985074
+24.32101972222222 0.8791044776119403
+24.323021388888886 0.8805970149253731
+24.324791666666666 0.882089552238806
+24.32867 0.8835820895522388
+24.33290722222222 0.8850746268656716
+24.392030000000002 0.8865671641791045
+24.398080555555556 0.8880597014925373
+24.400355833333332 0.8895522388059701
+24.41508083333333 0.891044776119403
+24.43183388888889 0.8925373134328358
+24.434573888888888 0.8940298507462686
+24.436254444444444 0.8955223880597015
+24.468767222222223 0.8970149253731343
+24.470498055555556 0.8985074626865672
+24.47370527777778 0.9
+24.511747777777778 0.9014925373134328
+24.518440833333333 0.9029850746268657
+24.518961944444445 0.9044776119402985
+24.519596111111113 0.9059701492537313
+24.52060638888889 0.9074626865671642
+24.52172361111111 0.908955223880597
+24.523580000000003 0.9104477611940298
+24.529306944444446 0.9119402985074627
+24.532589166666664 0.9134328358208955
+24.533002777777778 0.9149253731343283
+24.562289444444446 0.9164179104477612
+24.56340333333333 0.917910447761194
+24.566164166666667 0.9194029850746269
+24.568201666666667 0.9208955223880597
+24.56917111111111 0.9223880597014925
+24.571371666666664 0.9238805970149254
+24.57288722222222 0.9253731343283582
+24.574153888888887 0.926865671641791
+24.58037861111111 0.9283582089552239
+24.586031666666667 0.9298507462686567
+24.588853888888888 0.9313432835820895
+24.588953333333336 0.9328358208955224
+24.590120555555554 0.9343283582089552
+24.59217333333333 0.9358208955223881
+24.592203333333334 0.9373134328358209
+24.592615000000002 0.9388059701492537
+24.594202777777777 0.9402985074626866
+24.59546027777778 0.9417910447761194
+24.59927111111111 0.9432835820895522
+24.61577388888889 0.9447761194029851
+24.617112777777777 0.9462686567164179
+24.61734638888889 0.9477611940298507
+24.62413666666667 0.9492537313432836
+24.62556888888889 0.9507462686567164
+24.6280925 0.9522388059701493
+24.643092222222222 0.9537313432835821
+24.66971444444444 0.9552238805970149
+24.68919 0.9567164179104478
+24.692072222222222 0.9582089552238806
+24.702102777777778 0.9597014925373134
+24.702461944444444 0.9611940298507463
+24.708210277777777 0.9626865671641791
+24.70971972222222 0.9641791044776119
+24.724198055555554 0.9656716417910448
+24.727777777777778 0.9671641791044776
+24.729968055555553 0.9686567164179105
+24.731678055555555 0.9701492537313433
+24.73642472222222 0.9716417910447761
+24.7418175 0.973134328358209
+24.766578888888887 0.9746268656716418
+24.768888333333337 0.9761194029850746
+24.769358333333333 0.9776119402985075
+24.777112222222225 0.9791044776119403
+24.79206138888889 0.9805970149253731
+24.793049444444446 0.982089552238806
+24.79949138888889 0.9835820895522388
+24.801278611111112 0.9850746268656716
+24.802437222222224 0.9865671641791045
+24.80430916666667 0.9880597014925373
+24.804481388888888 0.9895522388059702
+24.806774444444446 0.991044776119403
+24.811451944444443 0.9925373134328358
+24.81361 0.9940298507462687
+24.813928055555557 0.9955223880597015
+24.825355000000002 0.9970149253731343
+24.83083111111111 0.9985074626865672
+24.832843055555557 1.0
