@@ -73,6 +73,7 @@ We launched more than 1,500 Google Preemptible VMs of different types over a two
 \begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/scispot-fig-cdf-prob-inset-time.eps}
+  \vspace*{-0.2cm}
   \caption{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.}
   \vspace*{\captionspace}
   \label{fig:gcp1}
@@ -142,14 +143,7 @@ As VMs get closer to their maximum lifetime imposed by the cloud operator, they 
 Shifting the argument ($t$) of this term by $b$ ensures that the exponential reclamation is only applicable near the end of the VM's maximum lifetime and does not dominate over the entire temporal range. 
 %As noted before, $1/\tau_2$ is the rate of this reclamation. 
 
-The analytical model and the associated  distribution function $\mathscr{F}$ introduced above provides a much better fit to the empirical data (Figure~\ref{fig:gcp1}) and captures the different phases of the preemption dynamics through parameters $\tau_1, \tau_2, b$, and $A$. These parameters can be obtained for a given empirical CDF using least squares function fitting methods.
-
-%\footnotemark 
-%
-%\footnotetext{More details about the distribution fitting are presented in the implementation section(~\ref{sec:impl}}
-%
-
-Further, the failure or preemption rate can be derived from this CDF as:
+The analytical model and the associated  distribution function $\mathscr{F}$ introduced above provides a much better fit to the empirical data (Figure~\ref{fig:gcp1}) and captures the different phases of the preemption dynamics through parameters $\tau_1, \tau_2, b$, and $A$. These parameters can be obtained for a given empirical CDF using least squares function fitting methods. The failure or preemption rate can be derived from this CDF as:
 \begin{equation}
   \label{eq:failrate}
     \vspace*{\eqnspace}

@@ -8,7 +8,7 @@ We have implemented the \sysname prototype in Python in about 2,000 lines of cod
 \sysname is implemented as a centralized controller, which implements the VM selection and job scheduling policies described in Section~\ref{sec:design}. 
 The controller can run on any machine (including the user's local machine, or inside a cloud VM), and exposes an HTTP API to end-users. 
 Users submit bags of jobs to the controller via the HTTP API, which then launches and maintains a cluster of cloud VMs, and maintains the job queue and metadata in a local database. 
-For improving usability, \sysname can automatically generate parameter combinations for a given bag size---based on a user-provided json file with ranges and constraints for each parameter. 
+To improve usability, we automatically generate parameter combinations for a given bag size, based on a user-provided json file with ranges and constraints for each parameter. 
 
 \sysname integrates, and interfaces with two primary services.
 First, it uses the Google cloud API~\cite{gcloud-api} for launching, terminating, and monitoring VMs.
