@@ -7,14 +7,18 @@
 
 \vspace*{\subsecspace}
 \subsection{Cloud Computing For Science}
-
-Running scientific applications on the cloud introduces many tradeoffs compared to conventional HPC clusters, along the dimensions of performance, cost, scalability, convenience, and reproducability.
-These tradeoffs are explored in~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014, buyya-hpc-survey}
+\vspace*{-0.2cm}
+Running scientific applications on the cloud introduces many tradeoffs compared to conventional HPC clusters, along the dimensions of performance, cost, scalability, convenience, and reproducability~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014, buyya-hpc-survey}. 
 In general, clouds can provide increased elasticity, lower waiting times, and more choices in resource allocation that can be tailored to the application.
 The cloud resource model is also present in educational platforms like nanoHUB~\cite{nanohub}, that provide easy execution and dissemination of nanotechnology simulation applications.
 %such as Ref.~\cite{kadupitiya2017}.
 Outside of the bags of jobs execution model, price optimizations for scientific workflows in the cloud is discussed in~\cite{gari_learning_2019}. 
-While bags of tasks~\cite{varshney_autobot_2019} are often used for parallel applications, \sysname is the first to use the bags of \emph{jobs} abstraction for efficient and effective use of transient servers. 
+Techniques for scheduling of bags of tasks in the cloud under time and budget constraints are  orthogonal to our work because they don't consider transient VMs~\cite{bats, gridbot}. 
+The finer-grained nature of tasks compared to jobs, requires different scheduling, placement, and bin-packing policies. 
+For EC2 spot instances, AutoBoT~\cite{varshney_autobot_2019} develops price-based policies for bidding, checkpointing, and scheduling bag of tasks. 
+
+%are often used for parallel applications, \sysname is the first to use the bags of \emph{jobs} abstraction for efficient and effective use of transient servers.
+
 
 %\subsubsection{Bags of Jobs}
 \vspace*{\subsecspace}
@@ -33,10 +37,11 @@ Ours is the first work that studies the preemption characteristics and addresses
 \vspace*{\subsecspace}
 \subsubsection{Preemption Mitigation}
 Effective use of transient servers usually entails the use of fault-tolerance techniques such as checkpointing~\cite{flint}, migration~\cite{spotcheck}, and replication.
-In the context of HPC workloads,~\cite{marathe2014exploiting,gong_monetary_2015,xiang_spotmpi:_2011} develop checkpointing and bidding strategies for MPI applications running on EC2 spot instances, based on older spot pricing models. 
-%, which are inherently memoryless and not applicable in our case. 
-Periodic checkpointing~\cite{dongarra_fault_nodate} is not appropriate in our case because preemptions are not memoryless. 
+In the context of HPC workloads,~\cite{marathe2014exploiting,gong_monetary_2015,xiang_spotmpi:_2011} develop checkpointing and bidding strategies for MPI applications running on EC2 spot instances, based on older spot pricing models.
 
+
+%, which are inherently memoryless and not applicable in our case. 
+Periodic checkpointing~\cite{dongarra_fault_nodate} is not optimal in our case because preemptions are not memoryless. 
 By treating bags of jobs as an execution unit, allowing some jobs to fail, and using insights from preemption models, we show that it is possible to reduce the recomputation times to acceptable levels even without the  use of periodic  checkpointing that imposes additional deployment and performance overheads. 
 %The first step towards mitigating preemptions is understanding their characteristics. 
 Our preemption model for Google preemptible VMs developed in Section~\ref{sec:preemption-dynamics} provides a novel characterization of bathtub shaped failure rates not captured by the classic Weibull distribution, and is distinct from prior efforts~\cite{mudholkar1993exponentiated, crevecoeur1993model}. 
@@ -50,7 +55,7 @@ Optimized server selection is an important problem in cloud computing, and espec
 Similar to \sysname, SpotOn~\cite{spoton} is also a batch computing service that selects servers based on job characteristics and failure rates of different EC2 spot VMs. However, it is restricted to individual, single-VM batch jobs, and its design is tied to EC2 spot instances.
 The state of the art transient server selection involves the use of multiple types of VMs~\cite{exosphere}, and selecting a heterogeneous cluster can reduce the likelihood of mass concurrent preemptions.
 However, since scientific computing applications are mostly synchronous, even a single failure affects the entire job, and heterogeneous clusters are not required, and are in fact, detrimental~\cite{exosphere}. 
-Server selection is important even outside of preemptible VMs---developing bayesian optimization and application performance model based search for the ``best'' cloud VM is an active research area~\cite{alipourfard_cherrypick, yadwadkar_selecting_2017}, but these techniques do not  account for preemptions. 
+Server selection is important even outside of preemptible VMs---developing bayesian optimization and application performance model based search for the ``best'' cloud VM is an active research area~\cite{alipourfard_cherrypick, yadwadkar_selecting_2017}, but these techniques do not account for preemptions, which can substantially change the running time characteristics. Investigating these sophisticated search techniques for reducing exploration times is part of our future work. 
 
 \begin{figure}[t]
   \centering 

@@ -22,8 +22,7 @@ The nanoconfinement application launches molecular dynamics (MD) simulations of 
 \noindent \textbf{Shapes.} The Shapes application runs an MD-based optimization dynamics to predict the optimal shape of deformable, charged nanoparticles \cite{jto1,jjzo1}. 
 
 \noindent \textbf{LULESH.} Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH)  is a popular benchmark for hydrodynamics simulations of continuum material models \cite{IPDPS13:LULESH,LULESH2:changes}. 
-%\end{description}
-%\vspace*{\tightext}
+% \end{description}
 
 These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering. These three examples are implemented as parallel programs that use OpenMP and MPI parallel computing techniques. The first two are used in nanoscale materials research \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto} and LULESH is a widely used benchmark \cite{IPDPS13:LULESH,LULESH2:changes}.
 All applications are run with default parameters unless otherwise stated. 
@@ -43,8 +42,8 @@ We attribute the 20\% improvement with \sysname to the newer CPUs on Google Clou
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Impact of server exploration}
 
-As described in Section~\ref{sec:design}, applications can be deployed on multiple types of VMs in the cloud, with each VM type having a different ``size''.
-In our evaluation of parallel scientific computing applications that are CPU intensive, we are primarily interested in the number of CPUs in a VM.
+%As described in Section~\ref{sec:design}, applications can be deployed on multiple types of VMs in the cloud, with each VM type having a different ``size''.
+%In our evaluation of parallel scientific computing applications that are CPU intensive, we are primarily interested in the number of CPUs in a VM.
 
 When an application (i.e., bag of jobs) requests a total number of CPUs to run each of its jobs, \sysname first runs its exploration phase to find the ``right'' VM for the application.
 \sysname searches for the VM that minimizes the total expected cost $E[C_{(i,n_i)}]$ of running the application, and this depends on several factors such as the parallel structure of the application, the preemption probability and the associated job recomputation time, and the price of the VM.
@@ -57,23 +56,23 @@ With preemptible instances, the total running time of a job is composed of two f
   \centering
   \includegraphics[width=0.4\textwidth]{../graphs/runtime-bars.pdf}
       \vspace*{\myfigspace}
-  \caption{Running times of applications on different VMs. The total number of CPUs is 64, yielding different number of VMs in each case. We see different tradeoffs in the base running times and recomputation times.}
+  \caption{Running times of applications on different VMs. Total number of CPUs is 64, yielding different number of VMs in each case. We see different tradeoffs in the base running times and recomputation times.}
   \label{fig:runtimes-bar}
     \vspace*{\myfigspace}
 \end{figure}
 
 
-Figure~\ref{fig:runtimes-bar} shows the running times of the Nanoconfinement, Shapes, and LULESH applications, when they are deployed on different VM sizes.
+Figure~\ref{fig:runtimes-bar} shows the running times of the Nanoconfinement, Shapes, and LULESH applications, when they are deployed on different VM sizes. 
 In all cases, the total number of CPUs per job is set to 64, and thus the different VM sizes yield different cluster sizes (e.g., 16 VMs with 4 CPUs or 32 VMs with 2 CPUs).
+LULESH requires CPUs to be cube of an integer, which limits the valid cluster configurations. 
 
-
-For the Nanoconfinement and LULESH applications, we observe that the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
+For Nanoconfinement and LULESH, we observe that the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
 For Nanoconfinement, the running time on the ``best'' VM (i.e., with 32 CPUs) is nearly 40\% lower as compared to the worst case. 
-On the other hand, the Shapes application can scale to a larger number of VMs without any significant communication overheads, and does not see any significant change in its running time.
+On the other hand, the Shapes application can scale to a larger number of VMs without any significant communication overheads, and does not see any significant change in its running time. 
 
 Figure~\ref{fig:runtimes-bar} also shows the expected turnaround time $E[\mathcal{T}_{(i,n_i)}]$, that is obtained by adding the the expected recomputation time, which depends on the expected lifetimes of the VM and the number of VMs, and is computed using the cost model introduced in Section~\ref{subsec:cost-model}. 
 While selecting larger VMs may reduce communication overheads and thus improve performance, it is not an adequate policy in the case of preemptible VMs, since the preemptions can significantly increase the turnaround time.
-We can observe this in the case of Nanoconfinement application when deployed on a 64 CPU VM---even though the base running time is lower compared to deploying the application on 2x32-CPU VMs, the recomputation time on the 64 CPU VM is almost $4\times$ higher due to the much lower expected lifetime of the larger VMs. 
+Therefore, even though the base running time of Nanoconfinement is lower on a 64 CPU VM, the recomputation time on the 64 CPU VM is almost $4\times$ higher compared to a 2x32-CPU cluster,  due to the much lower expected lifetime of the larger VMs. 
 Thus, on preemptible servers, there is a tradeoff between the base running time which only considers parallelization overheads, and the recomputation time.
 By considering \emph{both} these factors, \sysname's server selection policy can select the best VM for an application. 
 
@@ -94,11 +93,13 @@ By considering \emph{both} these factors, \sysname's server selection policy can
 \end{figure}
 
 The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible. 
-Figure~\ref{fig:cost-only-bar} compares the cost of running different applications with different cloud VM deployments.
+Figure~\ref{fig:cost-only-bar} compares the cost of running different applications with different cloud VM deployments. 
 \sysname, which uses both cost-minimizing server selection, and preemptible VMs, results in significantly lower costs across the board, even when accounting for preemptions and recomputations. 
 %
 We also compare against ExoSphere~\cite{exosphere}, a state of the art  system for transient server selection.
-Unlike \sysname, ExoSphere only considers server price and preemption rates, and does \emph{not} consider application performance when selecting servers, and thus is unable to select the best server.
+ExoSphere implements a portfolio-theory approach using EC2 spot prices to balance average cost saving and risk of revocations using diversification and selecting VMs with low price correlation.
+However, this approach is ineffective for the flat prices of Google Preemptible VMs. 
+Unlike \sysname, ExoSphere does \emph{not} consider application performance when selecting servers, and thus is unable to select the best server for parallel applications. 
 Since the Google \texttt{highcpu} VMs have the same price per CPU, ExoSphere picks an arbitrary ``median'' VM to break ties, which may not necessarily yield the lowest running times.
 This results in 20\% cost increase over \sysname. 
 
@@ -171,7 +172,7 @@ For smaller jobs (within a much larger bag), both the preemption probability and
 % \input{tab_bigred2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\vspace*{\subsecspace}
 \subsection{SciSpot Scaling}
 
 We now turn our attention to \sysname's scaling properties. We are primarily interested in observing the behavior of running bags of jobs of different applications with different resource requirements.
@@ -202,6 +203,7 @@ In the rest of this section, we evaluate \sysname with different cluster  sizes,
 
 It is common to deploy scientific computing applications on large clusters, and we evaluate \sysname on different cluster sizes in Figure~\ref{fig:vm-per-job-scaling}.
 The figure shows the total running time (i.e., turnaround time) of the bag of jobs for the Nanoconfinement and Shapes applications as the total number of VMs (and hence total number of CPUs) increases.
+The error bars in Figure~\ref{fig:vm-per-job-scaling} indicate the running times of individual jobs in the bag. 
 For this experiment, we used \texttt{n1-highcpu-32} VMs with 32 CPUs each, and we ran four jobs in parallel on the entire cluster. 
 We see classic scaling behavior: both applications can scale to a higher number of VMs up to a point, after which communication overhead  dominates, the performance saturates, and we see no reduction in running time. 
 
@@ -215,12 +217,12 @@ We see classic scaling behavior: both applications can scale to a higher number 
 \end{figure}
 
 
-We note that \sysname provides the option to alleviate the parallel scaling bottleneck, by increasing the number of parallel jobs.
-That is, for a given fixed cluster size, it can run more jobs in parallel, by reducing the total resources allocated and hence the parallelism 
+\sysname provides the option to alleviate the parallel scaling bottleneck, by increasing the number of parallel jobs.
+That is, for a given fixed cost, it can run more jobs in parallel, by reducing the total resources allocated and hence the parallelism 
 of an individual job. 
 The effect of changing the number of parallel jobs is shown in Figure~\ref{fig:par-scaling}, which shows the running time of an entire bag of jobs when the total cluster size is fixed (256 CPUs), but the number of parallel jobs and hence the number of CPUs per job changes.
 We see that a \emph{smaller} number of CPUs per job limits the communication overhead, and thus reduces the total running time of the bag.
-For both the Nanoconfinement and Shapes application, we see up to $6\times$ reduction in the total bag running time when more number of jobs are launched in parallel and a smaller number of CPUs per job are used. 
+For both Nanoconfinement and Shapes, we see up to $6\times$ reduction in the total bag running time, when more number of jobs are launched in parallel (with a smaller number of CPUs per job). 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

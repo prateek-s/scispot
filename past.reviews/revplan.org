@@ -47,7 +47,7 @@ SciSpot but the scheduling policy.
   Analysis, Portland, OR, 2009, pp. 1-12. doi: 10.1145/1654059.1654071
   URL: http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6375558&isnumber=6375513
 
-    First, the idea of a “bag of jobs” is mentioned throughout the paper but it is not clearly defined and compared with other common models that readers would be familiar with (e.g., bag of tasks). The authors mention that it is common in parameter sweep and ML applications but there are no concrete examples of what these workloads look like in practice. It also doesn’t seem like SciSpot is only useful to this class of workload?
+    First, the idea of a “bag of jobs” is mentioned throughout the paper but it is not clearly defined and compared with other common models that readers would be familiar with (e.g., bag of tasks). The authors mention that it is common in parameter sweep and ML applications but there are no concrete examples of what these workloads look like in practice. *It also doesn’t seem like SciSpot is only useful to this class of workload?*
 
 *::TODO:: Intro fix and minor throughout paper*
 
