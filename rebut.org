@@ -1,7 +1,7 @@
 Thanks to all reviewers for their detailed comments. 
-It is gratifying to know that the preemption data analysis and modeling was Generally appreciated and seen as a positive for the paper. 
+It is gratifying to know that the preemption data analysis and modeling was generally appreciated and seen as a positive for the paper. 
+We believe that every concern raised can be suitably addressed in a camera-ready version. 
 
-Below, we try to address and clarify the major concerns raised:
 
 * Reviewer 1
 - Model is not robust to changes. 
