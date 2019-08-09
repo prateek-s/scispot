@@ -1,4 +1,6 @@
-Thanks to all reviewers for their detailed comments. Below, we try to address and clarify the major concerns raised:
+Thanks to all reviewers for their detailed comments. 
+It is gratifying to know that the preemption data analysis and modeling was Generally appreciated and seen as a positive for the paper. 
+Below, we try to address and clarify the major concerns raised:
 
 * Reviewer 1
 - Model is not robust to changes. 
