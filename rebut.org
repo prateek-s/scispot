@@ -1,5 +1,6 @@
 Thanks to all reviewers for their detailed comments. 
 It is gratifying to know that the preemption data analysis and modeling was Generally appreciated and seen as a positive for the paper. 
+
 Below, we try to address and clarify the major concerns raised:
 
 * Reviewer 1
@@ -59,8 +60,11 @@ Fig 10 (parallelism), again an important factor for scaling and mitigating paral
 
 * R3 
 
-Current preemption dynamics. 
-Having model and CDF allows us to find phase changes. 
-Again, no one has ever done this and beyond the scope of this paper. 
+- Current preemption dynamics. 
 
+This is a valid concern that is applicable to /all/ work on transient computing. 
+Our preemption model allows detecting policy and phase changes by comparing observed preemption data with the model, and opens the door for principled techniques for change-point detection. 
+
+More broadly, the nature and specifics of preemption dynamics are at the mercy of the cloud provider, as is all other public-cloud-based research. 
+However, changes are rare: Google's preemption policy has not changed since its inception in 2015. 
 
