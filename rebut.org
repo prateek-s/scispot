@@ -1,0 +1,64 @@
+Thanks to all reviewers for their detailed comments. Below, we try to address and clarify the major concerns raised:
+
+* Reviewer 1
+- Model is not robust to changes. 
+No transient computing model is. At provider's mercy. 
+Constrainted dynamics work with different timescales. 
+Fundamental contribution is modeling preemptions/failures with finite lifetimes, that no model has ever attempted to do. 
+
+R1 point 3. 
+Single preemption leads to recomputation for MPI applications that are synchrnous. We will clarify that in future versions. 
+
+R1 point 4 (model never evaluated). 
+Focused on empirical evaluation, the expected turnaround time will be added as a column in Table 1 for comparison. Emphasize model is only for finding best server, which we do (see Figure 6 and 7), and so only relative expected turnaround times are actually necessary. 
+The model is not meant to predict exact times, because our design not need it, so its accuracy is not the main focus of the paper. 
+We believe that this makes our design not strongly dependent on the turnaround time model, and thus more robust. 
+Since preemptions are stochastic, a thorough evaluation of the model (which is outside the scope anyway) would require running 1000s of jobs, which we hope to do as scispot's use increases. 
+
+R1 9
+Yes, expected recomputation time 
+
+* R2 
+
+Data analysis confusion. 
+Normalize across dates and times for different types. 
+More than 1000 VMs launched, none on peak usage days (Spring only). 
+
+Further data analysis is part of future work due to space issues and contributions are model, and using it effectively for real applications.  
+
+As mentioned in various places: Bag of jobs allows exploration and optional restarting of jobs based on the number of jobs submitted and completed which are all not possible with single job at a time. Amortizes the exploration cost of finding best server. 
+Also helps us estimate the job durations and decide whether to launch a new server based on the server's age. 
+
+
+Experiment concerns: 
+Given nothing can model GCP. 
+Vs. EC2 model: Exosphere used. As stated, no distribution even fits the model and thus would lead to many errors. 
+Furthermore, nearly all EC2-based systems do arbitraging or assume historical prices neither of which are possible here. Many systems have a tight integration between prices and allocation, which makes it hard to tease out the model. 
+As stated, if the Fundamental underlying failure model cannot be captured, this would make these ec2-based systems not viable. 
+Our difficulty is the /first/ paper on analyzing and using GCP, and its unique 24-hour preemption window which makes it fundamentally different from other preemption policies studied over the past decade. 
+The exponential failures models implicitly or explicitly assumed by other papers can in no way model GCP, as shown in Figure 1, dumbass. 
+
+Others not aging aware and trivial to construct examples with high preemption counts etc. 
+
+Other systems also dont do performance based server selection aaargh, as shown in figure 7 vs exosphere. 
+
+Which size scispot picks: will be mentioned in future versions. 
+
+HPC overhead ATLAS. 
+Generally true. Many papers do cluster analysis with Google traces. 
+It is relevant when moving SC workloads from HPC to cloud and comparing recomputation vs. waiting time. Also done in other HPC papers 
+
+Exosphere different code lines. We reimplemented Exosphere's server selection policy for evaluation and are not using its other components. 
+
+Fig 6 and 10 dont say anything about SciSpot.
+Annotate Fig 6 with SciSpot's selected server (already in text). 
+Fig 10 (parallelism), again an important factor for scaling and mitigating parallel bottlenecks. Ok it can be removed. 
+
+
+* R3 
+
+Current preemption dynamics. 
+Having model and CDF allows us to find phase changes. 
+Again, no one has ever done this and beyond the scope of this paper. 
+
+
