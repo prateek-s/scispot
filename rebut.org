@@ -54,7 +54,7 @@ Bag of jobs allows server selection cost to be amortized, instead of incurring s
 
 - ExoSphere 
 
-We implemented ExoSphere's server policy in SciSpot for a fair comparison. 
+We implemented ExoSphere's portfolio policy in SciSpot for a fair comparison. 
 
 - " ExoSphere just does not know that larger VMs are better"
 
