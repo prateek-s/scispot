@@ -60,7 +60,7 @@ We implemented ExoSphere's portfolio policy in SciSpot for a fair comparison.
 
 This is precisely why our sever selection is important. 
 
-- Fig 6 and 10 dont say anything about SciSpot.
+- Fig 6 and 10 don't say anything about SciSpot.
 
 Figure 6 shows the importance of server selection (SciSpot selects the best server, as explained in the text; the caption can be enhanced based on this text). Figure 10 is important to show parallel scaling as practically many scientific computing applications are deployed on large clusters, but this figure can be removed if desired. 
 
