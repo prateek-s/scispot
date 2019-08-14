@@ -4,7 +4,7 @@ Thanks to all reviewers for their detailed comments. We are glad that the the pr
 
 - Preemption model novelty and insights 
 
-Constrained preemptions are a relatively unexplored phenomenon and are challenging to model. By generalizing beyond EC2, the model and the associated data are an important contribution to transient cloud computing. We have evaluated the model on different VM types, temporal domains, etc., and have shown it to be general and robust. 
+Constrained preemptions are a relatively unexplored phenomenon and are challenging to model. The model and the associated data expand transient cloud computing to beyond EC2-spot. We have evaluated the model on different VM types, temporal domains, etc., and have shown it to be general and robust. 
 
 - Experiment concerns (comparison with EC2-based models)
 
@@ -12,7 +12,7 @@ EC2-spot based systems all assume historical pricing, exponentially distributed 
 
 - What if nature of preemptions changes?
 
-This is a valid concern, applicable to /all/ work on transient computing. Our model allows detecting policy and phase changes by comparing observed data with the model, and opens the door for principled techniques for change-point detection. More broadly, the nature and specifics of preemption dynamics are at the mercy of the cloud provider, as is all other public-cloud-based research. However, changes are rare: Google's preemption policy has not changed since its inception in 2015. 
+This is a valid concern, applicable to /all/ work on transient computing. Our model allows detecting policy and phase changes by comparing observed data with the model and do change-point detection. The nature and specifics of preemption dynamics are at the mercy of the cloud provider. However, changes are rare: Google's preemption policy has not changed since its inception in 2015. 
 
 
 * Reviewer A
