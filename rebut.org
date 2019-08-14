@@ -4,7 +4,7 @@ Thanks to all reviewers for their detailed comments. We are glad that the the pr
 
 - Preemption model novelty and insights 
 
-Constrained preemptions are a relatively unexplored phenomenon and challenging to model. Our model and the associated data expand transient cloud computing to beyond EC2-spot. We have evaluated the model on different VM types, temporal domains, etc., and have shown it to be general and robust. 
+Constrained preemptions are a relatively unexplored phenomenon and challenging to model. Our model and the associated data expand transient cloud computing to beyond EC2-spot. We have evaluated the model under different practical conditions including different VM types and temporal domains, and have shown it to be general and robust. 
 
 - Experiment concerns (comparison with EC2-based models)
 
@@ -19,7 +19,7 @@ This is a valid concern, applicable to /all/ work on transient computing. Our mo
 
 - Cost-model equation (item 3) 
 
-For synchronous applications like MPI, a single preemption leads to application-failure and recomputation, which our model assumes. The equation is also a first-order approximation, and assumes that job running times to be smaller than expected lifetimes, and thus multiple failures are vanishingly rare. 
+For synchronous applications like MPI, a single preemption leads to application-failure and recomputation, which our model assumes. The equation is also a first-order approximation, and assumes job running times to be smaller than expected lifetimes, and thus multiple failures are vanishingly rare. 
 
 - Model never evaluated (items 4, 8)
 
