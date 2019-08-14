@@ -1,6 +1,6 @@
 Thanks to all reviewers for their detailed comments. We are glad that the the preemption data analysis and modeling was generally appreciated and are eager to share our dataset with the community. Below, we address concerns from each reviewer:
 
-* R3 and R1 
+* Reviewer C and Reviewer A
 
 - Restricted to current preemption dynamics. 
 
@@ -10,7 +10,7 @@ However, changes are rare: Google's preemption policy has not changed since its 
 
 
 
-* Reviewer1
+* Reviewer A
 
 - Cost-model equation (item 3) 
 
@@ -28,10 +28,11 @@ Since D is deadline for the entire bag, parallelism = Deadline/Time-per-job, and
 Yes, last part of Section 6.1 should be read as expected recomputation time. 
 
 - Item 10
-::TODO:: 
+::TODO::
+Were these results obtained for different bags (launched at different times) leading to variability? For short (~2 hours) jobs like these, you expect variations in runtimes to the scale shown in Fig. 9 and 10 generally.
 
 
-* Reviewer-B
+* Reviewer B
 
 - Preemption data 
 
@@ -41,7 +42,7 @@ The bathtub shape is prevalent across all VM types and temporal domains (as show
 
 - Need for bag-of-jobs
 
-Bag of jobs allows server-selection cost to be amortized, and optional restarting of jobs based on the number of jobs submitted and completed. 
+Bag of jobs allows server-selection cost to be amortized, which enables SciSpot to make better decisions concerning optional restarting of jobs based on the number of jobs submitted and completed (, and the cost evaluation?). /I think we should be more clear about the translation of bag of jobs benefits to SciSpot decision making abilities/
 These benefits do not apply without this abstraction. 
 
 
@@ -58,9 +59,9 @@ This is precisely why our sever selection is important.
 
 - Fig 6 and 10 dont say anything about SciSpot.
 
-Figure 6 shows the importance of server selection (SciSpot selects the best server, as explained in the text). Figure 10 is important to show parallel scaling, but can be removed if desired. 
+Figure 6 shows the importance of server selection (SciSpot selects the best server, as explained in the text; the caption can be enhanced based on this text). Figure 10 is important to show parallel scaling as practically many scientific computing applications are deployed on large clusters, but this figured can be removed if desired. 
 
 - Use of ATLAS traces. 
 
-Scientific workloads are run on HPC clusters, and we compare HPC waiting time vs. recomputation time, which is a very common concern in cloud-based scientific-computing. Our observations hold because of the large size and duration of ATLAS traces. We note that this is analogous to dozens of papers using (only) Google cluster traces. 
+Scientific workloads are run on HPC clusters, and we compare HPC waiting time vs. recomputation time, which is a very common concern in cloud-based scientific-computing. Our observations hold because of the large size and duration of ATLAS traces. We note that this is analogous to dozens of papers using (only) Google cluster traces. /I did not get the last sentence/
 
