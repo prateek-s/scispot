@@ -1,28 +1,32 @@
 \subsection{Generalization and Physical Interpretation}
 
 In this subsection, we seek a broader understanding of constrained preemptions by looking at other scenarios where our model may be applicable, and show a surprising connection with statistical physics. 
-We saw earlier that the constraint of finite lifetime exhibits a bath-tub shaped preemption distribution, and seek more insight into this behavior.
+We saw earlier that the constraint of finite lifetime exhibits a bath-tub shaped preemption distribution, and seek more insight into this behavior. 
 
 %fundamental reasons as to why this behaviour might be expected. 
 
 
-While the exponential aging/reclamation model can model constrained preemptions, we ask the question: ``Are there underlying processes that can explain the bath-tub characteristics?''
-While the preemption behaviour is ultimately up to the cloud provider, and we postulate some general observations that are based on insights and theories from statistical physics. 
+While the exponential aging/reclamation model is a good empirical  model for constrained preemptions, we ask the question: ``Are there underlying processes that can explain the bath-tub characteristics?''
+While the preemption behaviour is ultimately up to the cloud provider, we postulate some general observations that are based on insights and theories from statistical physics. 
 
 
-From a cluster management perspective, preempting a VM entails identifying and marking the victim VM according to some policy, giving it the preemption warning, and finally terminating it.
+From a cluster management perspective, preempting a VM entails identifying and marking the victim VM according to some policy, giving it the preemption warning, and finally terminating it. 
 This process frees up cluster resources and causes a change in the overall resource allocation state of the cluster. 
-These preemption operations performed on different VMs must be carried out in a mutually exclusive manner so that only one VM at a time is preempted, so that the cluster state information is consistent.
+These preemption operations performed on different VMs may be carried out in a mutually exclusive manner so that only one VM at a time is preempted, and the cluster state information is consistent. 
 
 
-This ``only one preemption at a time'' policy might also be be helpful to applications (and therefore cloud users) that want to avoid concurrent preemptions for reliability or performance reasons. %Needs explanation. 
+This ``only one preemption at a time'' policy might also be be helpful to applications (and therefore cloud users) that want to avoid concurrent preemptions for reliability or performance reasons.
+For instance, for a clustered web application, losing a single server (due to preemption) out of $n$ servers will mean that the load can be distributed among the remaining $n-1$ servers. 
+Assuming $k$ servers are preempted simultaenously, the increase in load is $\frac{n-k}{n}$.
+If the application's preemption-handling policy requires replenishment, this increase in load is temporary, but may still lead to SLA latency violations. 
+% Needs explanation. 
 Thus, we can assume that the preemption operation operations cannot overlap.
 
 
 \noindent \textbf{From Preemptions To Particles.}
-Given this assumption of non-overlapping preemptions, we now seek the probability distribution of these preemption events over the maximum VM lifetime. 
-This is analogous to finding the distribution of $N$ randomly distributed  particles of diameter $d$ in a 1 dimensional interval of length $L$.
-Just as preemption events cannot overlap, these particles cannot occupy the space of another particle (i.e., they are ``hard'').
+Given this assumption of non-overlapping preemptions, we now seek to model the probability distribution of preemption events. 
+Our main insight, is that this is analogous to finding the distribution of $N$ randomly distributed  particles of diameter $d$ in a 1 dimensional interval of length $L$. 
+Just as preemption events cannot overlap, these particles cannot occupy the space of another particle (i.e., they are ``hard''). 
 
 
 The problem of analyzing distributions of particles in such a setup has long been studied in statistical physics. 
@@ -39,18 +43,24 @@ In particular, near the edge, the probability of finding a particle is equal to
   P(t\geq s) = \dfrac{1}{L-Ns}\left(1-\dfrac{N-1}{L-Ns}(t-s/2)\right)
 \end{equation}
 
-
 %This explanation has turned out to be too similar to Krauth. Needs some fresh words. 
 Informally, this occurs because each particle has a ``halo'' around it in which other particles can't be around. 
-When placed near the edge, the particle's halo is reduced---leaving more space for other pins, and thus this configuration has higher probability if particles (i.e. preemptions) occur randomly.
-This can also be used to explain why particles tend to cluster together, because their halos overlap and the ``cancel'' each other.
+When placed near the edge, the particle's halo is reduced---leaving more space for other particles, and thus this configuration has higher probability if particles are placed occur randomly. 
+This can also be used to explain why particles tend to cluster together, because their halos overlap and the ``cancel'' each other. 
 
+
+In this model, the ``size'' of a preemption is the duration of the temporal mutual exclusion; the number of particles is the number of preemptible VMs under the cluster management perspective; and the length is the maximum VM lifetime (i.e., 24 hours). 
 
 \noindent \textbf{Temporally Constrained Dynamics.}
-The particle analogy allows us to analyze other situations in which non-overlapping events must occur in a confined interval.
-The theoretical and practical analysis of particles in a confined environment, provides us a strong conceptual framework with which to analyze such scenarios.
+The particle analogy allows us to analyze other situations in which non-overlapping events must occur in a confined interval. 
+The theoretical and practical analysis of particles in a confined environment, provides us a strong conceptual framework with which to analyze such scenarios. 
 Our goal here 
 
 
 % Why are we doing this?
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
