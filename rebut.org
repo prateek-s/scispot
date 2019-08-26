@@ -1,66 +1,70 @@
-Thanks to all reviewers for their detailed comments. We are glad that the the preemption data analysis and modeling was generally appreciated and are eager to share our dataset with the community. Below, we address concerns from each reviewer:
+Thanks to all reviewers for their detailed comments. We are glad that the the preemption data analysis and modeling was generally appreciated and are eager to share our dataset with the community. 
 
-* R3 and R1 
+* Common concerns 
 
-- Restricted to current preemption dynamics. 
+- Preemption model novelty and insights 
 
-This is a valid concern that is applicable to /all/ work on transient computing. Our preemption model allows detecting policy and phase changes by comparing observed preemption data with the model, and opens the door for principled techniques for change-point detection. 
-More broadly, the nature and specifics of preemption dynamics are at the mercy of the cloud provider, as is all other public-cloud-based research. 
-However, changes are rare: Google's preemption policy has not changed since its inception in 2015. 
+Constrained preemptions are a relatively unexplored phenomenon and challenging to model. Our model and the associated data expand transient cloud computing to beyond EC2-spot. We have evaluated the model under different practical conditions including different VM types and temporal domains, and have shown it to be general and robust. 
+
+- Experiment concerns (comparison with EC2-based models)
+
+All EC2-spot based systems assume historical pricing, exponentially distributed failures (see Figure-2), and can't account for finite VM lifetimes, and thus are not applicable and directly comparable. 
+
+- What if nature of preemptions changes?
+
+This is a valid concern, applicable to /all/ work on transient computing. Our model allows detecting policy and phase changes by comparing observed data with model-predictions and detect change-points. The nature and specifics of preemption dynamics are at the mercy of the cloud provider. However, changes are rare: Google's preemption policy has not changed since its inception in 2015. 
 
 
-
-* Reviewer1
+* Reviewer A
 
 - Cost-model equation (item 3) 
 
-For synchronous applications like MPI, a single preemption leads to application-failure and recomputation, which our model assumes. 
+For synchronous applications like MPI, a single preemption leads to application-failure and recomputation, which our model assumes. The equation is also a first-order approximation, and assumes job running times to be smaller than expected lifetimes, and thus multiple failures are vanishingly rare. 
 
 - Model never evaluated (items 4, 8)
 
-We emphasize that the model is only for server selection, which we show in Figure 6 and 7, and only /relative/ expected turnaround times are actually necessary. Our design doesn't use the model for predicting exact times. 
-Nevertheless, we will add a column in Table 1 with the model's estimate, and compare it with empirical running times. No new experiments will be required. Finally, a thorough evaluation of expected turnaround time requires running 1000s of jobs on different server types, and is beyond the scope of the current paper, but possible after SciSpot's increased adoption. 
+The model is only for server selection, which we show in Figure 6 and 7, and only /relative/ expected turnaround times are actually necessary. We don't use the model for predicting exact times. Nevertheless, we'll add a column in Table-1 to compare expectation vs. empirical running times. No new experiments will be required. 
+
+- Item 6 
+
+The search algorithm runs a job from the bag on different VMs in parallel, and there is no early stopping. Search-time is roughly equal to performance on slowest server. Since search cost is directly proportional to number of server-types, restricting to highcpu VMs limits the search space to ~10 instead of ~100. 
 
 - Item 7
-Since D is deadline for the entire bag, parallelism = Deadline/Time-per-job, and the current equation holds. 
+
+D/E[T] is number of jobs launched sequentially. The number of parallel jobs is n*E[T]/D. The error is regretted, but does not affect the cost model or evaluation. 
 
 - Item 9 
+
 Yes, last part of Section 6.1 should be read as expected recomputation time. 
 
 - Item 10
-::TODO:: 
+
+Because of different resource configurations (32-CPU VMs in Fig 9 vs. 64 in Fig 10), the two graphs cannot be directly compared. 
 
 
-* Reviewer-B
+* Reviewer B
 
 - Preemption data 
 
-Figure 2 shows 100 *random* events out of 1500, for ease of exposition.
-The bathtub shape is prevalent across all VM types and temporal domains (as shown in Figures 3 and 4), and our observations are robust against sampling biases. No experiment was run during known peak-load days. VM launch-times and other metadata will be part of our public dataset. 
-
+Figure-2 shows 100 *random* events out of 1500, for ease of exposition. The bathtub shape is prevalent across all VM types and temporal domains, and our observations are robust against sampling biases. No experiment was run during known peak-load days. VM launch-times and other metadata will be part of our public dataset. 
 
 - Need for bag-of-jobs
 
-Bag of jobs allows server-selection cost to be amortized, and optional restarting of jobs based on the number of jobs submitted and completed. 
-These benefits do not apply without this abstraction. 
+Bag of jobs allows server selection cost to be amortized, instead of incurring selection costs for each job individually. We also optionally restart jobs based on number of jobs submitted and completed. These benefits do not apply without this abstraction. 
 
+- ExoSphere 
 
-- Experiment concerns (EC2-based models)
-
-We implemented ExoSphere's policy (which assumes a non-constrained, EC2-like preemption dynamics) in SciSpot for a fair comparison, shown in Figure 7. 
-We emphasize all EC2-spot based systems proposed thus far, are /not/ applicable, because they all assume historical pricing, exponentially distributed failures, and can't account for finite VM lifetimes. 
-This can be seen from figure 2: the exponential distribution doesn't fit the data, and all EC2 systems have assumed that implicitly or explicitly.   
+We implemented ExoSphere's portfolio policy in SciSpot for a fair comparison. 
 
 - " ExoSphere just does not know that larger VMs are better"
 
 This is precisely why our sever selection is important. 
 
-
 - Fig 6 and 10 dont say anything about SciSpot.
 
-Figure 6 shows the importance of server selection (SciSpot selects the best server, as explained in the text). Figure 10 is important to show parallel scaling, but can be removed if desired. 
+Figure 6 shows the importance of server selection (SciSpot selects the best server, as explained in the text; the caption can be enhanced based on this text). Figure 10 is important to show parallel scaling as practically many scientific computing applications are deployed on large clusters, but this figure can be removed if desired. 
 
 - Use of ATLAS traces. 
 
-Scientific workloads are run on HPC clusters, and we compare HPC waiting time vs. recomputation time, which is a very common concern in cloud-based scientific-computing. Our observations hold because of the large size and duration of ATLAS traces. We note that this is analogous to dozens of papers using (only) Google cluster traces. 
+Scientific workloads are typically run on HPC clusters, and we address the common concern of waiting time vs. recomputation time tradeoff. Our observations hold because of the large size and duration of ATLAS traces, analogous to using Google cluster traces to draw insights on cluster management. 
 
