@@ -58,6 +58,7 @@ def P_success_CDF(twindow, start_time):
     right_idx = start_time + job_start_time + twindow
 
     pfail = sinh_CDF(right_idx/60.0) - sinh_CDF(left_idx/60.0)
+    # TODO : Replace by 5-parameter CDF and make time/hours/minutes consistent. 
     psuc = max(0, 1.0-pfail)
     return math.pow(psuc, Num_servers)
 
