@@ -1,0 +1,22 @@
+
+
+\textbf{Optional text. Spoils flow currently}
+Preemption dynamics can also be analyzed through the \emph{survival rates} of VMs.
+Let $S(t)$ denote the number of VMs that survive till time $t$.
+Then, without loss of generality: $F(t) = A(1-S(t))$
+% Well actually, not really. A spoils that, but whatevs.
+
+In the case of the blended exponential distribution, $S(t)$ depends on $S(t)$ itself, as well as the failure rates of different phases and the current lifetime ($t$), as follows:
+\begin{equation}
+  \label{eq:ramanujan}
+  \dfrac{dS(t)}{dt} = \{\dfrac{1}{\tau_2} - \dfrac{1}{\bar{\tau}}(\dfrac{1}{1-e^{-b/\tau_2} \cdot e^{t/\bar{\tau}}}) \}S(t)
+\end{equation}
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End:

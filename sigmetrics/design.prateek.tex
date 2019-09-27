@@ -1,0 +1,259 @@
+\section{SciSpot Design}
+\label{sec:design}
+
+% \noindent \textbf{Design Goals:}
+
+
+% \sysname is our frahandles all the cloud resource management and job scheduling associated with running a bag of jobs on transient cloud servers. 
+% In this section, we look at the policies for selecting the ``right'' cloud server for a given application, and policies for scheduling and running a bag of jobs on transient servers. 
+% Throughout, our aim is to minimize the overall cost and minimize the impact of preemptions.  
+
+%\subsection{SciSpot Overview}
+
+\sysname is a general-purpose software framework for running scientific computing applications on low-cost transient cloud servers.
+It incorporates policies and mechanisms for generating, deploying, orchestrating, and monitoring bags of jobs on cloud servers.
+Specifically, it runs a bag of jobs defined by these parameters:
+\begin{lstlisting}[basicstyle=\sffamily, frame=single, columns=fullflexible, escapeinside={(*}{*)}]
+  Bag of job = {(*$\mathcal{A}$*): Application to execute,
+  (*$n$*): Number of jobs,
+  (*$m$*): Minimum number of jobs to finish,
+  (*$\pi$*): Generator function for job parameters,
+  (*$\mathcal{R}$*): Computing resources per job}
+\end{lstlisting}
+
+
+%Additionally, ease-of-use is one of \sysname's primary design goals, and we specifically incorporate
+
+%it is suitable for running a large variety of applications.
+\sysname seeks to minimize the cost and running time of bags of jobs of scientific computing applications.
+\sysname's cost and time minimizing policies for running bags of jobs are based on empirical and analytical models of the cost and preemption dynamics of  transient cloud servers, which we present in the next section. 
+
+\sysname is designed as a framework that increases the usability and viability of transient cloud servers for scientific computing applications, and provides a simple user interface to allow users to deploy their applications with minimum workflow changes. 
+Most scientific computing applications are deployed on HPC clusters that have a batch scheduler such as Slurm~\cite{slurm} or Torque~\cite{torque}, and \sysname integrates with these schedulers (e.g., Slurm) to provide the same interface to applications. 
+As shown in Figure~\ref{fig:arch},
+\sysname creates and manages clusters of transient cloud servers, manages all aspects of the VM lifecycle and costs, and implements the various policies described in the rest of this section. 
+
+\begin{figure}[t]
+  \includegraphics[width=0.3\textwidth]{../figures/Architecture.png}
+\vspace*{\myfigspace}
+  \caption{SciSpot architecture and system components.}
+  \label{fig:arch}
+  \vspace*{\myfigspace}
+\end{figure}
+
+
+\noindent \textbf{High-level workflow:} When a user wishes to run a bag of jobs, \sysname handles the provisioning of a cluster of transient cloud servers.
+In addition, \sysname deals with the scheduling and monitoring of the bag of jobs, and with VM preemptions. 
+Execution of a bag of jobs proceeds in two phases.
+In the first phase, \sysname selects the ``right'' cluster configuration for a given application through a cost-minimizing exploration-based search policy, described in Section~\ref{subsec:server-selection}. 
+In the second phase, \sysname proceeds to run the remaining jobs in the bag on the optimal cluster configuration. 
+
+\vspace*{\subsecspace}
+\subsection{Server Selection}
+\label{subsec:server-selection}
+
+\subsubsection{Why Server Selection is Necessary}
+
+%\noindent \textbf{Why server selection is necessary:}
+%Before deploying any application on the transient cloud servers, we must first select the appropriate cloud server for the application. 
+Before deploying any application on the transient cloud servers, the appropriate cloud server for the application must be selected. 
+Cloud platforms offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.).  \emph{Importantly, different server configurations have different cost, performance, and preemption characteristics. }
+
+%For example, a cloud provider may offer VMs with (4 CPUs, 4 GB memory), (8 CPUs, 8 GB memory), etc.
+%Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}. 
+
+
+% Why crucial for parallel jobs
+
+%Selecting for performance 
+Even if we assume that the total amount of resources to be allocated to a job is fixed, there are multiple \emph{cluster configurations} to satisfy the allocation with the large number of available server types. 
+%For example, a job requiring a total of 128 CPUs can be run on a cluster of 2 servers with 64 CPUs each, or 4 servers with 32 CPUs each, etc. 
+Server selection is especially important for parallel applications, because although the total amount of resources in each cluster configuration is constant, the resources are distributed differently---i.e., a job can run on either 2 VMs with 32 CPUs each, or a single 64 CPU VM.  
+Since the performance of parallel applications is particularly sensitive to their communication overheads, different cluster configurations may yield different job running times.
+For instance, a smaller cluster with large VMs will result in lower inter-VM communication, and thus shorter running times. 
+
+%Selecting for preemptibility 
+However, the performance of an application is also affected by the preemptions of transient servers.
+Since preemptions are essentially fail-stop failures, synchronous parallel applications (such as those using MPI) are forced to  abort, and completing the job requires restarting it. 
+Thus, frequent preemptions can increase the overall turnaround time of a job. 
+
+%\vspace*{\subsecspace}
+\subsubsection{Server Selection Policy}
+
+Having provided the motivation and tradeoffs in server selection, we now describe the \sysname's server selection policy. 
+Given an application and a bag of jobs, \sysname ``explores'' and searches for the right server type by minimizing the expected cost of running the job.
+Since jobs in a bag have similar execution characteristics, optimizing server selection for an individual job also translates to the entire bag. 
+
+
+\sysname allows the users to specify the total amount of resources required per job, which we denote by $\mathcal{R}$.
+For example, $\mathcal{R}$ can be the total number of CPU cores. 
+It first determines the search space, which is the space of all cluster configurations $(i,n_i)$ such that $r_i n_i = \mathcal{R}$, where $r_i$ is the resource size of a VM of type $i$ (e.g., number of CPUs), and $n_i$ is the number of VMs of that type. 
+Based on the constraint, the number of servers of type $i$ required is $n_i = \mathcal{R}/r_i$.
+
+Each cluster configuration yields different application performance, preemption overhead, and cost.
+The aim is to find the lowest-cost configuration $(i, n_i)$ for a given application. 
+The server selection policy runs the application on different cluster configurations to determine the base running time (in the absence of preemptions), which is denoted by $T_{(i,n_i)}$. 
+It then combines the empirical running time with a cost model, to estimate the expected cost of running the application. 
+
+
+%\sysname does an exhaustive search over all valid configurations to find the lowest-cost configuration $( i, n_i )$. 
+
+\begin{comment}
+We note that this search is different from conventional speedup plots in which the objective is to determine how well an application scales with increasing amount of resources and parallelism. 
+In contrast, we \emph{fix} the total amount of resources allocated to the application's job ($=\mathcal{R}$), and only vary \emph{how} these resources are distributed, which affects communication overhead and hence the performance.
+%Weak
+We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.  
+\end{comment}
+
+\vspace*{\subsecspace}
+\subsubsection{Server Cost Model}
+\label{subsec:cost-model}
+
+Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM type that minimizes the expected cost of running an application on \sysname. 
+
+
+%Let $\mathcal{R}$ denote the total amount of computing resources requested for the job. For ease of exposition, let us assume that $\mathcal{R}$ is the total number of CPU cores.
+%Furthermore, let $r_i$ denote the ``size'' of the server of type $i$.
+%Then, the number of servers of type $i$ required, $n_i = \mathcal{R}/r_i$.
+%In what follows, we denote the expectation value of a quantity as $E[\ldots]$.
+
+%\vj{there is some repitition in defining the symbols here which are used before in selection policy; may be this can be moved above. was wondering if we loose clarity by using $T_k$ to denote the running time on configuration $k$ that encodes the pair defined by the combination of server type $i$ - number of servers of type $i$ -- $(i,n_i)$; that is, $k\equiv (i,n_i)$, used as a superindex?}
+
+Let us assume that the cloud provider offers $N$ server types, with the price (per unit time) of a server type equal to $c_i$. 
+The overall expected cost of running a job can then be expressed as follows:
+\begin{equation}
+  \label{eq:e-cost}
+\vspace*{\eqnspace}
+  E[C_{( i,n_i )}] = n_i\times c_i \times E[\mathcal{T}_{( i,n_i )}].
+\end{equation}
+Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected turnaround time of the job (accounting for preemptions) on $n_i$ servers of type $i$.
+%
+This turnaround time depends on whether the job needs to be recomputed because of preemptions, and is expressed as:
+\begin{align}
+  \label{eq:turnaround}
+  \vspace*{\eqnspace}
+  E[\mathcal{T}_{( i,n_i )}] &= T_{( i,n_i )} + E[\text{Recomputation Time}].
+\end{align}
+Here, $T_{( i,n_i )}$ is the base running time of a job without preemptions, which we obtain empirically as explained in the previous subsection.
+Since jobs have to be rerun when they fail due to preemptions, the recomputation time is:
+\begin{equation}
+  \label{eq:recomput}
+   E[\text{Recomputation Time}] = \frac{T_{( i,n_i )}}{2} \times P(\text{at least one preemption})
+ \end{equation}
+ Our expression of the recomputation time is based on the common assumption that jobs will fail at the half-way mark on average~\cite{daly2006higher, bougeret_checkpointing_2011}. 
+%
+ The probability that at least one VM out of $n_i$ will be preempted during the job execution is:
+\begin{align}
+  \label{eq:pfail1}
+  P(\text{at least one preemption}) &= 1-P(\text{no preemptions}) \\
+                                 &= 1-\left(1-P\left(i,T_{(i, n_i)}\right)\right)^{n_i}.
+\end{align}
+
+Here, $P(i, T_{(i, n_i)})$ denotes the probability of a preemption of a VM of type $i$ when a job of duration $T_{(i, n_i)}$ runs on it. 
+%
+It depends on the type of server, and its associated expected lifetime, and is defined as:
+\begin{equation}
+  \label{eq:pi}
+  P\left(i, T_{\left(i, n_i \right)}\right) = \text{min}\left(\dfrac{T_{(i, n_i)}}{E[L_i]}, 1\right),
+\end{equation}
+where $E[L_i]$ is the expected lifetime of the VM of type $i$ extracted using the preemption model (Equation~\ref{eq:expected-lifetime}).
+%As a first order approximation, the running time $t$ of the job can be chosen as $t=T_{( i,n_i )}$, where the latter is empirically obtained for a given application.
+We also assume that the running time of \emph{individual} jobs in a bag ($T$), will be smaller than the expected lifetime of the VMs, otherwise we will see no forward progress since the jobs will always be preempted before completion.
+This is a safe assumption, since more than 90\% HPC jobs are less than 2 hours long (Figure~\ref{fig:hpc-vs-scispot} inset), and the expected lifetime of transient VMs is more than 10 hours.
+This restriction only applies to individual jobs---\sysname can run large bags of jobs even if their total running time exceeds the VM lifetime by replenishing preempted VMs.
+%We again emphasize that $T$ is the running time of an \emph{individual} job, and that \sysname is designed for running large bags of small jobs, and that most HPC jobs are much smaller than the expected lifetimes, as we show in Section~\ref{sec:eval}. 
+
+
+
+% Using Equations~\ref{eq:turnaround},\ref{eq:recomput}, and \ref{eq:pfail1}, the overall expected cost of running a job on transient cloud servers is obtained as:
+% \begin{equation}
+%   \label{eq:ecfinal}
+%   E[C_{( i,n_i )}] = \frac{1}{2}n_i c_i T_{( i,n_i )}\left(3 - \left(1-\dfrac{T_{( i,n_i )}}{E[L_i]}\right)^{n_i}\right).
+% \end{equation}
+
+% Equation \ref{eq:ecfinal} shows that the expected cost $E[C]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
+
+
+Combining all the equations, we see that the expected cost $E[C_{(i, n_i)}]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
+%
+Thus, if we select VMs of smaller size, we will require more of them (higher $n_i$), and this cluster configuration will have a larger probability of failure and thus higher running times and costs.
+However, there is a tradeoff: selecting larger VMs results in smaller $n_i$, but larger VMs have higher preemption probability (Section~\ref{subsec:types-dynamics}).
+
+
+
+% Limiting the exploration search space
+%\sysname thus explores the cluster configuration space to find empirical job running times, which depend on the application and it's parallel structure.
+%We then use the analytically derived preemption probability to compute the expected running time, and finally the total expected cost.
+
+To limit the search space, we observe that since most scientific computing applications are CPU bound, we only need to consider VMs meant for CPU-bound workloads, such as \texttt{highcpu} VMs in Google Cloud and the \texttt{cc} family in Amazon EC2.
+For example, the Google cloud offers a total of 7 \texttt{highcpu} server types with 1, 2, 4, 8, 16, 32, and 64 CPU's---yielding a small upper bound on the number of configurations to search. 
+Furthermore, a large cluster of small servers is suboptimal for most applications (except those that are completely embarrassingly parallel and have no communication).
+\sysname thus explores VMs in descending order of their size and ignores exploring the small VMs (with 1 and 2 CPUs)---reducing the search space even further. 
+
+
+%\sysname launches clusters of preemptible VMs during the exploration phase. 
+\vspace*{\subsecspace}
+\subsection{Scheduling a Bag of Jobs}
+
+%\sysname runs the exploration phase on preemptible VMs of different types. 
+%By default, \sysname runs the same job in the exploration phase, but also provides users the option to run jobs with different parameters if the variation in running times is low.
+%
+%A bag of jobs is determined by the total number of jobs in the bag, associated parameters for each job, and the minimum number of jobs that must be successfully executed.  
+%Given these parameters as input,
+Once the right cluster configuration for a job has been determined, \sysname then proceeds to run the remaining jobs in the bag on the cluster of VMs found through the exploration.
+
+
+%\sysname creates a cluster by launching preemptible VMs and starts scheduling the different jobs in a bag.
+Upon job completion, we run the next job in the bag on the existing cluster of preemptible VMs, with job parameters obtained using the generator function $\pi.next()$. 
+This policy is based on our preemption dynamics model which shows that preemption rates have a bathtub shape.
+Thus, jobs launched on ``stable'' VMs that have been running for a few hours, face low likelihood of failures---thereby reducing the number of job failures for the entire bag. 
+
+\sysname also allows users to specify a deadline for bag completion, which we use to compute the number of \emph{jobs} to execute in parallel. 
+If the deadline specified is $D$, then the number of parallel jobs is $k=D/E[\mathcal{T}]$.
+Thus if the exploration phase recommends $n_i$ VMs, then we launch a cluster of $k\times n_i$ VMs, with each job executing on $n_i$ VMs. 
+For this calculation, we assume that the running time of different jobs in a bag will largely be similar (as illustrated in Figure~\ref{fig:heatmap}), but this is not a correctness requirement. 
+%Thus because of
+Due to the stochasticity in job running times and VM lifetimes, \sysname only meets the deadline in a ``best effort'' manner, and does not guarantee makespan constraints. 
+
+%Upon job completion, the next job in the bag is run. 
+When a job fails due to VM preemption, \sysname replenishes the cluster by launching replacement VMs and resubmits the job. 
+Jobs are restarted from a checkpoint if available. 
+We do not restart failed jobs if we complete the minimum number of jobs in the bag.
+Due to high demand, preemptible VMs of the chosen type may not be available.
+In such cases, \sysname runs in a ``degraded'' mode---jobs are either run on a smaller number of VMs, or are run on VMs of a different size that are available but may have suboptimal cost.  
+
+
+\noindent \textbf{Checkpointing Policy.} When applicable, \sysname resumes jobs from the latest checkpoint performed using tools such as DMTCP~\cite{ansel2009dmtcp}.
+Since checkpointing also increases the running time of the job, the checkpoint interval must be carefully computed. 
+The classic Young-Daly periodic checkpointing interval~\cite{daly2006higher} is only applicable when failures follow an exponential distribution, which we have shown is not true in the case of Google Preemptible VMs (Figure~\ref{fig:gcp1}). 
+Our analytical model for preemptions permits advanced, non-periodic checkpointing intervals that can be computed using a dynamic programming approach similar to~\cite{bougeret_checkpointing_2011}. 
+
+
+%Jobs in bag can either be explicitly supplied with parameters, or 
+
+
+
+%We note that the jobs in the bags are for the same application, so their computational and communication complexity can be assumed to the same across the bag. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{comment}
+
+  Our server selection policy is empirical and black-box in nature in that we don't assume an application model.
+However due to the bag of jobs execution model, we do not need to special pilot jobs, but the jobs for doing the profiling come from the bag itself.
+
+Thus given a desired allocation, \sysname's server selection policies select the ``best'' server type for a given application. 
+
+One of key characteristics of transient cloud computing is the heterogeneity and diversity in the server configurations offered by most cloud platforms. 
+Different configurations or types of servers have different prices 
+
+\end{comment}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End:

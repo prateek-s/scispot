@@ -1,0 +1,91 @@
+\documentclass[sigconf, 10pt]{acmart} %timestamp 
+% \documentclass[sigconf, review]{acmart} %timestamp 
+%, timestamp
+%\usepackage{usenix}
+%end of changed lines
+%\usepackage{times}
+\usepackage{microtype}
+%\usepackage[hyphens]{url} %Option clash
+\usepackage{amsmath, amssymb, amsfonts, mathrsfs}
+\input{packages}
+
+\crefformat{section}{\S#2#1#3} % see manual of cleveref, section 8.2.1
+
+\input{macros}
+
+\newcommand{\sign}[1]{\operatorname{sign}\left({#1}\right)}
+
+
+\newcommand\prat[1]{\noindent \textcolor{red}{(Prateek: #1)}}
+\newcommand\vikram[1]{\textcolor{blue}{(Vikram: #1)}}
+%\newcommand\vj[1]{\textcolor{blue}{#1}} %for inline smaller changes
+
+%%%%%%%% For submission only
+
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\acmConference{}{}{}
+\acmPrice{}
+\acmISBN{}
+\acmDOI{}
+\acmYear{}
+\acmMonth{}
+\settopmatter{printfolios=true}
+%%%%%%%%%%%%%%%%%%%
+
+\raggedbottom
+
+\begin{document}
+% \title{SciSpot: A Framework for Low-cost Scientific Computing On Transient Cloud Servers}
+% \title{SciSpot: Scientific Computing On Transient Cloud Servers}
+\title{Modeling Constrained Preemption Dynamics Of Transient Cloud Servers}
+%On? With? 
+\author{Paper \# 24}{}{}
+
+\begin{abstract}
+  %\input{abstract}
+  \input{abstract.prateek}
+\end{abstract}
+
+\maketitle
+
+
+
+\input{intro2}
+
+\input{bg.prateek}
+%\input{background}
+
+\input{failmodel}
+
+\input{policies}
+
+%\input{design.prateek}
+
+%\input{ckpting}
+
+\input{impl}
+
+\input{eval}
+
+\input{related}
+
+\input{conclusion}
+
+%% 10 pages plus references 
+
+{
+\bibliographystyle{acm}
+\interlinepenalty=10000 %%%%For fixing url-related errors only 
+\bibliography{scicloud,bagsjobs,spot-bid}
+%\bibliography{bagsjobs}
+}
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
