@@ -31,24 +31,60 @@ The effect of preemptions is dependent on a combination of application resource 
 %Novelty
 
 
-  Past work on transient computing has almost exclusively focused on the Amazon EC2 spot market, which has a radically different preemption model and dynamics compared to other transient cloud servers such as those offered by Google Cloud and Azure. 
-  In contrast, \sysname can run applications on Google Preemptible VMs that have fixed price and \emph{unknown} preemption rates.
-  Thus due to the lack of any historical preemption information and the fundamental differences in the preemption characteristics, techniques such as historical price-based bidding strategies~\cite{bid-cloud}, price-based checkpointing~\cite{marathe2014exploiting, xinhpdc, spoton}, and diversification~\cite{exosphere, spotweb}, are unfortunately largely inapplicable. 
-%
-To address these shortcomings, we develop an empirical model of preemptions in Section~\ref{sec:preemption-dynamics}. 
-This model informs our policies for minimizing cost and running time of scientific computing workloads that are launched as bags of jobs, as described next. 
-  
+%In contrast, \sysname can run applications on Google Preemptible VMs that have fixed price and \emph{unknown} preemption rates.
+\vspace*{\subsecspace}
+\subsection{Preemption Modeling of Transient VMs}
+
+%Mainly about spot instances? 
+
+Past work on transient computing has almost exclusively focused on the Amazon EC2 spot market, which has a radically different preemption model and dynamics compared to other transient cloud servers such as those offered by Google Cloud and Azure. 
+
+Launched in 2009, Amazon's EC2 spot instances are the first example of transient cloud servers.
+The preemptions of EC2 spot instances are based on their \emph{price}, which is dynamically adjusted based on the supply and demand of cloud resources.
+Spot prices are based on a continuous second-price auction, and if the spot price increases above a pre-specified maximum-price, then the server is preempted~\cite{spot-pricing2}.
+
+Thus, the time-series of these spot prices can be used for understanding preemption characteristics such as the frequency of preemptions and the ``Mean Time To Failure'' (MTTF) of the spot instances. 
+Publicly available\footnotemark historical spot prices have been used to characterize and model spot instance preemptions~\cite{spotcheck,bid-cloud}. %Add lots more here 
+For example, past work has analyzed spot prices and shown that the MTTFs of spot instances of different hardware configurations and geographical zones range from a few hours to a few days~\cite{prateek-thesis, wolski_probabilistic_2017, icdcs-spotlight}.
+\prat{sigcomm paper} 
+
+\footnotetext{Amazon posts Spot prices of 3 months, and researchers have been collecting these prices since 2010~\cite{bidding4}.}
+
+
+However the price-based approach for inferring preemption characteristics is of limited utility.
+Other transient VMs such as those offered by Google and Azure have \emph{flat} pricing, and price-based techniques for preemption modeling and cost optimization are not applicable.
+Furthermore, price-based techniques may be of limited value after Amazon's recent change where preemptions were decoupled with pricing.
+To address this shortcomings, we develop \emph{empirical} preemptions models for transient VMs.
+In particular, we focus on Google Preemptible VMs, whose preemption properties have been unknown so far.
+Additionally, their unique fixed lifetime leads to new challenges for conventional reliability theory models, and requires new modeling techniques, which we develop later in Section~\ref{sec:failmodel}. 
+
+%This is an important point but not relevant for us right now 
+%However, pricing based models and the policies based on them are at risk when there are changes in the cloud provider's pricing mechanisms and policies. 
+%For instance, Amazon has recently changed the preemption characteristics of spot instances, and servers are now preempted even if the spot price is below the maximum price~\cite{spotweb, bid-change}.
+%Thus, spot prices are no longer a completely reliable indicator of preemptions, and preemptions can no longer be inferred from looking at prices alone.
+%Therefore, new techniques are required to model preemption dynamics that can supplement the earlier price-based approaches, and we develop these techniques next.
+
+
+% Thus due to the lack of any historical preemption information and the fundamental differences in the preemption characteristics, techniques such as historical price-based bidding strategies~\cite{bid-cloud}, price-based checkpointing~\cite{marathe2014exploiting, xinhpdc, spoton}, and diversification~\cite{exosphere, spotweb}, are unfortunately largely inapplicable. 
+% %
+% To address these shortcomings, we develop an empirical model of preemptions in Section~\ref{sec:preemption-dynamics}. 
+% This model informs our policies for minimizing cost and running time of scientific computing workloads that are launched as bags of jobs, as described next. 
+
+
 
 \vspace*{\subsecspace}
 \subsection{Scientific Simulation Workloads}
 \prat{Not sure. Probably something on scientific workloads though?}
-\begin{figure}[t]
-  \includegraphics[width=0.3\textwidth]{../graphs/hmap.png}
-    \vspace*{\myfigspace}
-  \caption{Running times of the Nanoconfinement application with different sets of parameters have low variation.}
-  \label{fig:heatmap}
-  \vspace*{\myfigspace}
-\end{figure}
+
+% \begin{figure}[t]
+%   \includegraphics[width=0.3\textwidth]{../graphs/hmap.png}
+%     \vspace*{\myfigspace}
+%   \caption{Running times of the Nanoconfinement application with different sets of parameters have low variation.}
+%   \label{fig:heatmap}
+%   \vspace*{\myfigspace}
+% \end{figure}
+
+Large computational requirements of scientific simulations make them ideal for low-cost transient servers. 
 
 The typical workflow associated with most scientific computing applications, often involves evaluating a computational model across a wide range of physical and computational parameters. 
 For instance, constructing and calibrating a molecular dynamics application (such as Nanoconfinement~\cite{jcs2}), usually involves running a simulation with different physical parameters such as characteristic sizes and interaction potentials, as well as computational parameters such as simulation timesteps. 

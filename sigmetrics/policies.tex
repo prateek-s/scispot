@@ -18,6 +18,10 @@ This preemption-based scheduling is particularly effective in case of scientific
 
 %and the preemption probability provided by our model.
 
+Given a job of length T that must be started on a server that has been running for s time, the probability of failure on the existing server $P_{\text{existing}} = max(1, F(t+s) - F(t))$.
+$P_{\text{new}} = F(t)$. We therefore decide new or existing server based on comparing the $P_{\text{existing}}, P_{\text{new}}$. 
+
+\prat{What about parallel jobs? How many new servers to launch?}
 
 \subsection{Periodic Checkpointing}
 
@@ -35,6 +39,59 @@ We will implement this policy for MPI and Spark, and compare against prior check
 
 \prat{Dynamic Programming Formulation}
 
+Because of non-uniform failure rate, the periodic checkpointing with Young-Daly method is not appropriate.
+The checkpointing frequency must be based on the failure probability.
+
+
+Let the uninterrupted running time of the job be $T$. Or in other words, $T$ amount of work needs to be performed. 
+
+Let the checkpoint cost be $\delta$. 
+Then, the expected running time is sum of T, periodic checkpointing cost, and the expected recomputation.
+
+We will recursively compute the makespan of the job.
+Let $M(W, t, s)$ denote the makespan when $W$ length of job must be exectued, $t$ is amount of job successfully done, and $s$ was the starting time (wallclock time) of the job.
+
+
+Goal is to find the checkpoint schedule.
+
+The expected makespan when there are no failures,
+
+Suppose $t$ units of the job have completed. 
+If we take a checkpoint when $i$ units of the job have completed, then we have two cases.
+Either there are no failures till the checkpoint period, or there is a failure before the checkpoint.
+
+We denote the makespan with $M$.
+Then, $M(a, b)$ denotes makespan of executing $a$ units of job, when $b$ units have already been successfully executed.
+Therefore our goal is to find $M(T,0)$ .
+We do this recursively, by finding the expectation of M and using linearity of expectation. 
+
+There are two cases. 
+
+$E[M_{\text{succ}}] = t+i+\delta + E[M(T-i, t+i+\delta)]$
+
+$E[M_{\text{fail}}] = E[T_{\text{lost}}(i+\delta, t)] + E[M(T, t+i+\delta)]$
+
+Here, $E[T_{\text{loss}}(i+\delta, t)]$ is the expected job running time that is ``lost'' due to the failure. In the case of memoryless distribution, this is approximated as $\frac{i+\delta}{2}$.
+In our case, we use the failure CDF instead:
+
+$E[T_{\text{loss}}(i+\delta, t)] = \int_{i+\delta}^{i+\delta+t}{xf(x)dx} $
+
+We can now combine the two cases: 
+
+$E[{C(i, t)}] = P_{\text{suc}}(i+\delta, t)E[M_{\text{succ}}] + P_{\text{fail}}(i+\delta, t)E[M_{\text{fail}}]$
+
+
+Where $P_{\text{fail}}(i+\delta,t) = F(t+i+\delta)-F(i+\delta)$ is computed using the CDF, 
+
+and $P_{\text{succ}} = 1 - P_{\text{fail}}$ 
+
+We claim that $E[\mathcal{T}] = \min_{0 < i \leq T}{E[M(T,0)]}$
+
+
+Now, we use a dynamic programming approach to find the $i$ that minimizes $E[C(i,t)]$
+
+
+
 \subsection{VM Selection}
 
 \noindent \textbf{VM-selection} is an important optimization in cloud environments, because VMs have different tradeoffs of cost, performance, and preemption characteristics.
@@ -45,49 +102,9 @@ Initial analysis indicates that careful VM selection can reduce costs by  up to 
 
 \prat{Start old text}
 
-\subsubsection{Why Server Selection is Necessary}
-
-%\noindent \textbf{Why server selection is necessary:}
-%Before deploying any application on the transient cloud servers, we must first select the appropriate cloud server for the application. 
-Before deploying any application on the transient cloud servers, the appropriate cloud server for the application must be selected. 
-Cloud platforms offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.).  \emph{Importantly, different server configurations have different cost, performance, and preemption characteristics. }
-
-%For example, a cloud provider may offer VMs with (4 CPUs, 4 GB memory), (8 CPUs, 8 GB memory), etc.
-%Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}. 
-
-
-% Why crucial for parallel jobs
-
-%Selecting for performance 
-Even if we assume that the total amount of resources to be allocated to a job is fixed, there are multiple \emph{cluster configurations} to satisfy the allocation with the large number of available server types. 
-%For example, a job requiring a total of 128 CPUs can be run on a cluster of 2 servers with 64 CPUs each, or 4 servers with 32 CPUs each, etc. 
-Server selection is especially important for parallel applications, because although the total amount of resources in each cluster configuration is constant, the resources are distributed differently---i.e., a job can run on either 2 VMs with 32 CPUs each, or a single 64 CPU VM.  
-Since the performance of parallel applications is particularly sensitive to their communication overheads, different cluster configurations may yield different job running times.
-For instance, a smaller cluster with large VMs will result in lower inter-VM communication, and thus shorter running times. 
-
-%Selecting for preemptibility 
-However, the performance of an application is also affected by the preemptions of transient servers.
-Since preemptions are essentially fail-stop failures, synchronous parallel applications (such as those using MPI) are forced to  abort, and completing the job requires restarting it. 
-Thus, frequent preemptions can increase the overall turnaround time of a job. 
 
 %\vspace*{\subsecspace}
 \subsubsection{Server Selection Policy}
-
-Having provided the motivation and tradeoffs in server selection, we now describe the \sysname's server selection policy. 
-Given an application and a bag of jobs, \sysname ``explores'' and searches for the right server type by minimizing the expected cost of running the job.
-Since jobs in a bag have similar execution characteristics, optimizing server selection for an individual job also translates to the entire bag. 
-
-
-\sysname allows the users to specify the total amount of resources required per job, which we denote by $\mathcal{R}$.
-For example, $\mathcal{R}$ can be the total number of CPU cores. 
-It first determines the search space, which is the space of all cluster configurations $(i,n_i)$ such that $r_i n_i = \mathcal{R}$, where $r_i$ is the resource size of a VM of type $i$ (e.g., number of CPUs), and $n_i$ is the number of VMs of that type. 
-Based on the constraint, the number of servers of type $i$ required is $n_i = \mathcal{R}/r_i$.
-
-Each cluster configuration yields different application performance, preemption overhead, and cost.
-The aim is to find the lowest-cost configuration $(i, n_i)$ for a given application. 
-The server selection policy runs the application on different cluster configurations to determine the base running time (in the absence of preemptions), which is denoted by $T_{(i,n_i)}$. 
-It then combines the empirical running time with a cost model, to estimate the expected cost of running the application. 
-
 
 %\sysname does an exhaustive search over all valid configurations to find the lowest-cost configuration $( i, n_i )$. 
 
@@ -165,23 +182,6 @@ This restriction only applies to individual jobs---\sysname can run large bags o
 % \end{equation}
 
 % Equation \ref{eq:ecfinal} shows that the expected cost $E[C]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
-
-
-Combining all the equations, we see that the expected cost $E[C_{(i, n_i)}]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
-%
-Thus, if we select VMs of smaller size, we will require more of them (higher $n_i$), and this cluster configuration will have a larger probability of failure and thus higher running times and costs.
-However, there is a tradeoff: selecting larger VMs results in smaller $n_i$, but larger VMs have higher preemption probability (Section~\ref{subsec:types-dynamics}).
-
-
-
-% Limiting the exploration search space
-%\sysname thus explores the cluster configuration space to find empirical job running times, which depend on the application and it's parallel structure.
-%We then use the analytically derived preemption probability to compute the expected running time, and finally the total expected cost.
-
-To limit the search space, we observe that since most scientific computing applications are CPU bound, we only need to consider VMs meant for CPU-bound workloads, such as \texttt{highcpu} VMs in Google Cloud and the \texttt{cc} family in Amazon EC2.
-For example, the Google cloud offers a total of 7 \texttt{highcpu} server types with 1, 2, 4, 8, 16, 32, and 64 CPU's---yielding a small upper bound on the number of configurations to search. 
-Furthermore, a large cluster of small servers is suboptimal for most applications (except those that are completely embarrassingly parallel and have no communication).
-\sysname thus explores VMs in descending order of their size and ignores exploring the small VMs (with 1 and 2 CPUs)---reducing the search space even further. 
 
 
 

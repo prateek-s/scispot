@@ -2,7 +2,7 @@
 %\section{Modeling the Dynamics of Transient Server Preemptions}
 %\section{Preemption Dynamics of Transient Cloud Servers}
 \vspace*{\subsecspace}
-\section{Modeling Preemption Dynamics}
+\section{Modeling Constrained Preemptions}
 \label{sec:preemption-dynamics}
 
 %Understanding the nature and dynamics of transient cloud servers such as their preemption frequency is a prerequisite to understand and improve the performance of applications.
@@ -28,27 +28,6 @@ In this section, we present empirical analysis of preemptions of Google Preempti
 % Thus, selecting the ``right'' server type is crucial for minimizing the overall costs. 
 
 
-
-\vspace*{\subsecspace}
-\subsection{Need For Empirical Preemption Models}
-\label{subsec:need-for-empirical}
-
-Launched in 2009, Amazon's EC2 spot instances are the first example of transient cloud servers.
-The preemptions of EC2 spot instances are based on their \emph{price}, which is dynamically adjusted based on the supply and demand of cloud resources.
-Spot prices are based on a continuous second-price auction, and if the spot price increases above a pre-specified maximum-price, then the server is preempted~\cite{spot-pricing2}.
-
-Thus, the time-series of these spot prices can be used for understanding preemption characteristics such as the frequency of preemptions and the ``Mean Time To Failure'' (MTTF) of the spot instances. 
-Publicly available\footnotemark historical spot prices have been used to characterize and model spot instance preemptions~\cite{spotcheck,bid-cloud}. %Add lots more here 
-For example, past work has analyzed spot prices and shown that the MTTFs of spot instances of different hardware configurations and geographical zones range from a few hours to a few days~\cite{prateek-thesis, wolski_probabilistic_2017, icdcs-spotlight}. 
-
-
-\footnotetext{Amazon posts Spot prices of 3 months, and researchers have been collecting these prices since 2010~\cite{bidding4}.}
-
-
-However, pricing based models and the policies based on them are at risk when there are changes in the cloud provider's pricing mechanisms and policies. 
-For instance, Amazon has recently changed the preemption characteristics of spot instances, and servers are now preempted even if the spot price is below the maximum price~\cite{spotweb, bid-change}.
-Thus, spot prices are no longer a completely reliable indicator of preemptions, and preemptions can no longer be inferred from looking at prices alone.
-Therefore, new techniques are required to model preemption dynamics that can supplement the earlier price-based approaches, and we develop these techniques next.
 
 %\cite{alicloud-spot, packet-spot}
 

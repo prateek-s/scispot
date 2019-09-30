@@ -23,10 +23,76 @@ Specifically, it runs a bag of jobs defined by these parameters:
 
 
 %Additionally, ease-of-use is one of \sysname's primary design goals, and we specifically incorporate
+\subsection{Exploration-based Server Selection}
 
 %it is suitable for running a large variety of applications.
 \sysname seeks to minimize the cost and running time of bags of jobs of scientific computing applications.
 \sysname's cost and time minimizing policies for running bags of jobs are based on empirical and analytical models of the cost and preemption dynamics of  transient cloud servers, which we present in the next section. 
+
+\textbf{Why Server Selection is Necessary}
+
+%\noindent \textbf{Why server selection is necessary:}
+%Before deploying any application on the transient cloud servers, we must first select the appropriate cloud server for the application. 
+Before deploying any application on the transient cloud servers, the appropriate cloud server for the application must be selected. 
+Cloud platforms offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.).  \emph{Importantly, different server configurations have different cost, performance, and preemption characteristics. }
+
+%For example, a cloud provider may offer VMs with (4 CPUs, 4 GB memory), (8 CPUs, 8 GB memory), etc.
+%Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}. 
+
+
+% Why crucial for parallel jobs
+
+%Selecting for performance 
+Even if we assume that the total amount of resources to be allocated to a job is fixed, there are multiple \emph{cluster configurations} to satisfy the allocation with the large number of available server types. 
+%For example, a job requiring a total of 128 CPUs can be run on a cluster of 2 servers with 64 CPUs each, or 4 servers with 32 CPUs each, etc. 
+Server selection is especially important for parallel applications, because although the total amount of resources in each cluster configuration is constant, the resources are distributed differently---i.e., a job can run on either 2 VMs with 32 CPUs each, or a single 64 CPU VM.  
+Since the performance of parallel applications is particularly sensitive to their communication overheads, different cluster configurations may yield different job running times.
+For instance, a smaller cluster with large VMs will result in lower inter-VM communication, and thus shorter running times. 
+
+%Selecting for preemptibility 
+However, the performance of an application is also affected by the preemptions of transient servers.
+Since preemptions are essentially fail-stop failures, synchronous parallel applications (such as those using MPI) are forced to  abort, and completing the job requires restarting it. 
+Thus, frequent preemptions can increase the overall turnaround time of a job. 
+
+
+Having provided the motivation and tradeoffs in server selection, we now describe the \sysname's server selection policy. 
+Given an application and a bag of jobs, \sysname ``explores'' and searches for the right server type by minimizing the expected cost of running the job.
+Since jobs in a bag have similar execution characteristics, optimizing server selection for an individual job also translates to the entire bag. 
+
+
+\sysname allows the users to specify the total amount of resources required per job, which we denote by $\mathcal{R}$.
+For example, $\mathcal{R}$ can be the total number of CPU cores. 
+It first determines the search space, which is the space of all cluster configurations $(i,n_i)$ such that $r_i n_i = \mathcal{R}$, where $r_i$ is the resource size of a VM of type $i$ (e.g., number of CPUs), and $n_i$ is the number of VMs of that type. 
+Based on the constraint, the number of servers of type $i$ required is $n_i = \mathcal{R}/r_i$.
+
+Each cluster configuration yields different application performance, preemption overhead, and cost.
+The aim is to find the lowest-cost configuration $(i, n_i)$ for a given application. 
+The server selection policy runs the application on different cluster configurations to determine the base running time (in the absence of preemptions), which is denoted by $T_{(i,n_i)}$. 
+It then combines the empirical running time with a cost model, to estimate the expected cost of running the application. 
+
+
+
+Combining all the equations, we see that the expected cost $E[C_{(i, n_i)}]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
+%
+Thus, if we select VMs of smaller size, we will require more of them (higher $n_i$), and this cluster configuration will have a larger probability of failure and thus higher running times and costs.
+However, there is a tradeoff: selecting larger VMs results in smaller $n_i$, but larger VMs have higher preemption probability (Section~\ref{subsec:types-dynamics}).
+
+
+
+% Limiting the exploration search space
+%\sysname thus explores the cluster configuration space to find empirical job running times, which depend on the application and it's parallel structure.
+%We then use the analytically derived preemption probability to compute the expected running time, and finally the total expected cost.
+
+To limit the search space, we observe that since most scientific computing applications are CPU bound, we only need to consider VMs meant for CPU-bound workloads, such as \texttt{highcpu} VMs in Google Cloud and the \texttt{cc} family in Amazon EC2.
+For example, the Google cloud offers a total of 7 \texttt{highcpu} server types with 1, 2, 4, 8, 16, 32, and 64 CPU's---yielding a small upper bound on the number of configurations to search. 
+Furthermore, a large cluster of small servers is suboptimal for most applications (except those that are completely embarrassingly parallel and have no communication).
+\sysname thus explores VMs in descending order of their size and ignores exploring the small VMs (with 1 and 2 CPUs)---reducing the search space even further. 
+
+
+
+
+
+\subsection{Design}
 
 \sysname is designed as a framework that increases the usability and viability of transient cloud servers for scientific computing applications, and provides a simple user interface to allow users to deploy their applications with minimum workflow changes. 
 Most scientific computing applications are deployed on HPC clusters that have a batch scheduler such as Slurm~\cite{slurm} or Torque~\cite{torque}, and \sysname integrates with these schedulers (e.g., Slurm) to provide the same interface to applications. 
