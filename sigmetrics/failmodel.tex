@@ -81,7 +81,7 @@ The classic exponential distribution is unable to model the observed preemption 
 This assumption breaks down when there is a fixed upper bound on the lifetime, as is the case for Google Preemptible VMs, and the conventional approach becomes insufficient to model this constrained preemption dynamics. 
 
 \vspace*{\subsecspace}
-\subsection{Modeling Constrained Preemption Dynamics}
+\subsection{Analytical Model}
 \label{subsec:analytical-model}
 
 We now develop an analytical model for preemption dynamics that is faithful to the empirically observed data and provides a basis for developing running-time and cost-minimizing optimizations. % presented in Section~\ref{sec:design}. 
@@ -137,11 +137,11 @@ Further generalization of this model to include more failure processes would int
 Exploring other approaches of modeling bathtub-type failure rates (e.g., exponential Weibull distributions) \cite{mudholkar1993exponentiated,crevecoeur1993model} is part of our future work. 
 
 
-\eat{
+
 We emphasize that our motivation is to develop an interpretable \emph{minimal} model that provides a sufficiently accurate description of the observed constrained preemption dynamics of Google VMs with a minimal number of meaningful parameters. 
 As is evident from Figure~\ref{fig:gcp1}, $\mathscr{F}$ shows deviations from the data near the halfway point within the 24 hour lifetime.
 Further generalization of this model to include more failure processes, which would introduce more parameters, or exploring other approaches of modeling bathtub-type failure rates (e.g., exponential Weibull distributions) \cite{mudholkar1993exponentiated,crevecoeur1993model} may yield alternate model descriptions that capture the data with higher accuracy.
-}
+
 
 %PXXX part of future work? 
 
