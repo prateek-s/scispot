@@ -36,7 +36,18 @@ The effect of preemptions is dependent on a combination of application resource 
 \vspace*{\subsecspace}
 \subsection{Preemption Modeling of Transient VMs}
 
-%Mainly about spot instances? 
+% Mainly about spot instances?
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.48\textwidth]{../graphs/scispot-fig-cdf-prob-inset-time.eps}
+  \vspace*{-0.2cm}
+  \caption{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.}
+  \vspace*{\captionspace}
+  \label{fig:gcp1}
+\end{figure}
+
+
 
 Past work on transient computing has almost exclusively focused on the Amazon EC2 spot market, which has a radically different preemption model and dynamics compared to other transient cloud servers such as those offered by Google Cloud and Azure. 
 
