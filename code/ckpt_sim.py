@@ -148,6 +148,11 @@ class DPCkpt:
             self.ckpt_schedule[W] = [chunksize]
     
     ##################################################
+
+    def Exp_runtime(self):
+        return self.soldict[(self.job_len, 0, 0)][0]
+
+    ##################################################
         
     def makespan(self, W, nofail, Wdone, start_time, recursion_level):
         """ This is the primary function.
