@@ -37,10 +37,9 @@ We attribute the 20\% improvement with \sysname to the newer CPUs on Google Clou
 %For completeness, we show the running times on the Big Red II supercomputing cluster in Table~\ref{tab:bigred2}, with 16 CPU nodes used throughout, and we see that our representative applications \emph{do not} face a penalty when deployed on the cloud. 
 
 \vspace*{\subsecspace}
-\subsection{SciSpot Performance and Cost}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Impact of server exploration}
+\subsubsection{Cost}
 
 %As described in Section~\ref{sec:design}, applications can be deployed on multiple types of VMs in the cloud, with each VM type having a different ``size''.
 %In our evaluation of parallel scientific computing applications that are CPU intensive, we are primarily interested in the number of CPUs in a VM.
@@ -75,11 +74,11 @@ Therefore, even though the base running time of Nanoconfinement is lower on a 64
 Thus, on preemptible servers, there is a tradeoff between the base running time which only considers parallelization overheads, and the recomputation time.
 By considering \emph{both} these factors, \sysname's server selection policy can select the best VM for an application. 
 
+\prat{Show Scispot selection and naive selection}
 
 \noindent \emph{\textbf{Result:} SciSpot's server selection, by considering both the base running time and recomputation time, can improve performance by up to 40\% , and can keep the increase in running time due to recomputation to less than 5\%.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Cost}
 
 
 \begin{figure}
@@ -124,8 +123,37 @@ Note that since \sysname's server selection considers the turnaround time (which
 
 \noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
 }
+
+\subsection{Model-based Policies}
+
+\subsubsection{Scheduling}
+
+\begin{figure}[t]
+  \includegraphics[width=0.4\textwidth]{../graphs/Sched-bathtub.pdf}
+  \caption{Job failure probability is reduced with the help of our deadline aware scheduling policy, especially for jobs starting near the end of the VM's lifetime}
+  \label{fig:sched-bathtub}
+\end{figure}
+
+
+\begin{figure}[t]
+  \includegraphics[width=0.4\textwidth]{../graphs/Sched-fail-prob.pdf}
+  \caption{Job failure probability is lower with our deadline aware policy across all job sizes}
+  \label{fig:sched-all}
+\end{figure}
+
+
+
+\subsubsection{Checkpointing}
+
+\begin{figure}[t]
+  \includegraphics[width=0.4\textwidth]{}
+  \caption{Placeholder}
+  \label{fig:ckpt}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Comparison with HPC Overhead}
+%HPC should be the last thing ?
+\subsubsection{Comparison with HPC Clusters}
 
 Scientific computing applications are typically run on large-scale HPC clusters, where different performance and cost dynamics apply.
 While there are hardware differences between cloud VMs and HPC clusters that can contribute to performance differences, we are interested in the performance ``overheads''.
@@ -171,6 +199,8 @@ For smaller jobs (within a much larger bag), both the preemption probability and
 % \input{tab_bigred2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\eat{
 \vspace*{\subsecspace}
 \subsection{SciSpot Scaling}
 
@@ -190,6 +220,8 @@ In the rest of this section, we evaluate \sysname with different cluster  sizes,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\vspace*{\subsecspace}
+
+
 \subsubsection{Increasing Cluster Size} 
 
 \begin{figure}
@@ -223,6 +255,7 @@ The effect of changing the number of parallel jobs is shown in Figure~\ref{fig:p
 We see that a \emph{smaller} number of CPUs per job limits the communication overhead, and thus reduces the total running time of the bag.
 For both Nanoconfinement and Shapes, we see up to $6\times$ reduction in the total bag running time, when more number of jobs are launched in parallel (with a smaller number of CPUs per job). 
 
+} %eat 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Increasing Bag Size}
