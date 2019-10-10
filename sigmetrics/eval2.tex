@@ -1,6 +1,10 @@
 \vspace*{\subsecspace}
-\section{Experimental Evaluation}
+%\section{Experimental Evaluation}
+%\section{Model Testing and Validation}
+\section{Testing and Evaluation of Model-Informed Policies}
 \label{sec:eval}
+
+\input{impl}
 
 %Opening is deliberately short because we gonna be running out of space 
 In this section, we present empirical and analytical evaluation of the performance and cost of \sysname with different scientific computing workloads and scales. 
@@ -139,6 +143,7 @@ Figure~\ref{fig:sched-all} shows the job failure probability for jobs of differe
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{comment}
 \subsubsection{Server Selection}
 \label{subsec:eval-serversel}
 
@@ -176,8 +181,10 @@ By considering \emph{both} these factors, \sysname's server selection policy can
 
 \noindent \emph{\textbf{Result:} Our server selection policy, by considering both the base running time and recomputation time, can improve performance by up to 40\% , and can keep the increase in running time due to recomputation to less than 5\%.}
 
+\end{comment}
 
-\subsection{SciSpot Evaluation}
+%\subsection{SciSpot Evaluation}
+\subsection{Evaluation using Typical User-End Scientific Computing Applications}
 
 We show the empirical cost and performance and effectiveness of our \sysname framework which incorporates our model-based insights and is an easy to use integrated Framework for scientific computing applications. 
 

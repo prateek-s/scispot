@@ -109,7 +109,7 @@ Since the makespan is recursively defined, we can do this minimization using a d
 
 
 
-
+\begin{comment}
 \subsection{VM Selection}
 
 \noindent \textbf{VM-selection} is an important optimization in cloud environments, because VMs have different tradeoffs of cost, performance, and preemption characteristics.
@@ -119,12 +119,12 @@ We propose to develop cost models for selecting the ``right'' type of  VMs that 
 Initial analysis indicates that careful VM selection can reduce costs by  up to 30\%.  
 
 
-\begin{comment}
+%\begin{comment}
 We note that this search is different from conventional speedup plots in which the objective is to determine how well an application scales with increasing amount of resources and parallelism. 
 In contrast, we \emph{fix} the total amount of resources allocated to the application's job ($=\mathcal{R}$), and only vary \emph{how} these resources are distributed, which affects communication overhead and hence the performance.
 %Weak
 We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.  
-\end{comment}
+%\end{comment}
 
 
 Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM type that minimizes the expected cost of running an application on \sysname. 
@@ -196,12 +196,7 @@ This restriction only applies to individual jobs---\sysname can run large bags o
 
 % Equation \ref{eq:ecfinal} shows that the expected cost $E[C]$ is higher for larger number of servers (high $n_i$), while it is reduced if the expected lifetime of the VM is larger (high $E[L_i]$).
 
-
-
-
-
-
-
+\end{comment}
 
 %%% Local Variables:
 %%% mode: latex
