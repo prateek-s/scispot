@@ -30,6 +30,38 @@ https://www.alibabacloud.com/help/doc-detail/52088.htm
 Packet Bare Metal Cloud Spot Market
 https://support.packet.com/kb/articles/spot-market
 
+The preemptions of transient servers need not be related to their price.
+-For example, Google's Preemptible VMs and Azure Batch VMs have a \emph{fixed} price relative to their non-preemptible counterparts. 
+-In such cases, price-based models are inadequate, and other approaches to understand preemptions are required.
+ 
+-This task is further complicated by the fact that these cloud operators (Google and Microsoft) do not currently provide any information about preemption characteristics. 
+-Thus, relatively little is known about the preemptions (and hence the performance) of these transient VMs. %significantly limiting their use?
+-%
+-To understand preemption dynamics of transient servers, we conduct a large-scale empirical measurement study. 
+ We launched more than 1,500 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
+ 
+ \footnotetext{We will release the complete preemption dataset for further analysis.} %Weaksauce 
+ 
+ 
+ \begin{figure}
+-  \centering
+-  \includegraphics[width=0.4\textwidth]{../graphs/scispot-fig-cdf-prob-inset-time.eps}
+-  \vspace*{-0.2cm}
+-  \caption{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.}
+-  \vspace*{\captionspace}
+-
+
+
+-To describe failures (preemptions) that are not memoryless (i.e., increasing or decreasing failure rate over time), the classic Weibull distribution with CDF $F(t)=1-e^{-(\lambda t)^k}$ is often employed. However, the Weibull distribution is also unable to fit the empirical data (Figure~\ref{fig:gcp1}). 
+-
+-The non-trivial bathtub-shaped failure rate of Google preemptible VMs (Figure~\ref{fig:gcp1}) requires models that capture the sudden onset of  the rise in preemptions near the deadline. 
+-%which imposes a dynamics that is more akin to a constrained dynamics problem as opposed to dynamics characterized with a gradually rising failure rate.
+-Our new model, informed by the cumulative distribution of lifetimes that has multiple distinct temporal phases, addresses this need. The key assumption underlying our model is the presence of two distinct failure processes.
+
+-% Since cloud platforms support a wide range of applications, they also offer a large range of servers (VMs) with different resource configurations (such as the number of CPU cores, memory size, I/O bandwidths, etc.). 
+-% For example, a cloud provider may offer VMs with (4 CPUs, 4 GB memory), (8 CPUs, 8 GB memory), etc.
+-% Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}.
+
 
 %%% Local Variables:
 %%% mode: latex

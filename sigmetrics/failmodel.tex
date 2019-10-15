@@ -39,6 +39,12 @@ In this section, we present empirical analysis of preemptions of Google Preempti
 
 % The preemptions of transient servers need not be related to their price.
 
+\begin{figure}
+  \includegraphics[width=0.47\textwidth]{../graphs/scispot-fig-cdf-prob-inset-time.eps}
+  \caption{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.}
+  \label{fig:gcp1}
+\end{figure}
+
 To understand the nature of temporally constrained preemptions, we conducted the first empirical study of Google's Preemptible VMs, that have a fixed price and a maximum 24 hour lifetime.
 Our empirical study is necesitated by the fact that the cloud operator (Google) does not disclose any other information about the preemption rates, and thus relatively little is known about the preemptions (and hence the performance) of these VMs.
 
