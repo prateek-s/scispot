@@ -50,7 +50,7 @@ Our preemption model for Google preemptible VMs developed in Section~\ref{sec:pr
 
 %extends the classic Weibull-distribution based bathtub models~\cite{mudholkar1993exponentiated, crevecoeur1993model} by introducing exponential reclamation near the deadline and additional paramters that capture and explain the preemption dynamics. 
 
-\vspace*{\subsecspace}
+
 \subsubsection{Fault Tolerance}
 
 
@@ -60,17 +60,6 @@ Our preemption model for Google preemptible VMs developed in Section~\ref{sec:pr
 % The state of the art transient server selection involves the use of multiple types of VMs~\cite{exosphere}, and selecting a heterogeneous cluster can reduce the likelihood of mass concurrent preemptions.
 % However, since scientific computing applications are mostly synchronous, even a single failure affects the entire job, and heterogeneous clusters are not required, and are in fact, detrimental~\cite{exosphere}. 
 % Server selection is important even outside of preemptible VMs---developing bayesian optimization and application performance model based search for the ``best'' cloud VM is an active research area~\cite{alipourfard_cherrypick, yadwadkar_selecting_2017}, but these techniques do not account for preemptions, which can substantially change the running time characteristics. Investigating these sophisticated search techniques for reducing exploration times is part of our future work. 
-
-\begin{figure}[t]
-  \centering 
-       \vspace*{\myfigspace} \includegraphics[width=0.22\textwidth]{../graphs/confin-fails-vs-time-relative.pdf}
-      \vspace*{\myfigspace}
-      \caption{The increase in running time due to preemptions is under 50\%, even at high preemption rates.}
-        %when the number of preemptions is high.}
-  \label{fig:fails-time}
-        \vspace*{\myfigspace}
-\end{figure}
-
 
 
 

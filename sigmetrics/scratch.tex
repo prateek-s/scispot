@@ -63,6 +63,26 @@ The preemptions of transient servers need not be related to their price.
 -% Most clouds offer a large number of different hardware configurations---Amazon EC2 offers more than 50 hardware configurations, for example~\cite{amazon-ec2-instance-types}.
 
 
+
+In this section, we present empirical and analytical evaluation of the performance and cost of \sysname with different scientific computing workloads and scales. 
+Our evaluation consists of empirical analysis, as well as model-driven simulations for analyzing and comparing \sysname behavior under different preemption and application dynamics.
+
+We shed insight into the fundamental tradeoffs in constrained preemptions, the effectiveness of our model-based policies, and detailed empirical analysis of the cost and performance of our \sysname framework with real-world scientific computing applications. 
+We have already established the goodness of fit of our model and compared it to existing models earlier in Section~\ref{sec:failmodel}. 
+
+% \begin{itemize}
+% \item What is performance and cost of 
+% \end{itemize}
+All applications use OpenMPI v2.1.1, are deployed on Slurm v0.4.3 and 64-bit Ubuntu 18.04, and run on Google Cloud VMs with x86-64 Intel Haswell CPUs. 
+% Networking?
+For completeness and to guard against concerns about poor cloud performance relative to HPC clusters ~\cite{iosup_performance_2011, zhai_cloud_2011, marathe2013comparative, galante_analysis_2016, benedictis_cloud-aware_2014}, we benchmarked the Nanoconfinement application on the Big Red II cluster~\cite{bigred2}. 
+When run on 4 nodes with 16 CPUs each, the application takes 1140 seconds on Big Red II vs 850 seconds on \sysname. 
+We attribute the 20\% improvement with \sysname to the newer CPUs on Google Cloud (Intel Haswell vs. older 2012-era AMD Opterons in Big Red II).
+
+%For completeness, we show the running times on the Big Red II supercomputing cluster in Table~\ref{tab:bigred2}, with 16 CPU nodes used throughout, and we see that our representative applications \emph{do not} face a penalty when deployed on the cloud. 
+
+\vspace*{\subsecspace}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "paper"
