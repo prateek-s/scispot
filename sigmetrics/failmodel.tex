@@ -300,23 +300,51 @@ As $t$ approaches and exceeds $b$, the increase in failure rate kicks in, accoun
 %We also note that approaches (e.g., exponential Weibull distributions) to model bathtub-type failure rates have been proposed in the literature  \cite{mudholkar1993exponentiated,crevecoeur1993model}.
 %These methods did not perform better than our model resulting in parameter variables and values that were relatively difficult to interpret; this could likely be due to the unique constraint-driven failures in preemption dynamics as opposed to aging-related increasing failure rate considered in previous work. 
 
-\subsection{Connection to Statistical Mechanics}
+\subsection{Role of Cloud Providers: Analogy to Constrained Physical Systems}
 
-In addition to empirically-informed reliability models for preemptions, we also seek to understand \emph{why} their distribution is bathtub shaped in order to provide a mechanistic understanding of preemptions and enhance the model interpretability and generalizability. 
-%Our key insight is that the problem of analyzing constrained preemptions can be ``mapped'' to an equivalent problem in statistical mechanics of a physical system, and we can use the theoretical and analytical framework of statistical mechanics to develop a broader understanding of preemptions. 
-%This connection to statistical mechanics is given below. 
-To this end, we propose to ``map'' the problem of constrained preemptions to an equivalent problem of constrained many particle physical systems that can be analyzed employing the general theoretical framework of statistical mechanics.
+The bathtub-shaped distribution of the preemption probability is essential to capture the empirical data with higher accuracy compared to other models. We want to probe the following question now: how much of this unique shape is enforced by the cloud provider, and how much is dictated by assuming that (akin to other cloud providers such as EC2), preemptions of Google Preemptible VMs are placed along the timeline of 24 hours with uniform probability? We make the question more precise and inject a relatively harmless assumption: if the cloud provider decides to ``place'' $N$ preemptions within the temporal boundary of interval $L$ with flat probability distribution ($\mathscr{P}(e_1, e_2, \ldots e_N)$ = 1 whenever legal) such that the preemptions are mutually exclusive (that is there is a finite non-zero waiting time between preemptions), what is the probability of finding a preemption at time $t$? Naively, deducing from $\mathscr{P}$, one may expect $p(t)$ to be 1 for $t\in L$, or a constant (flat) distribution. However, intruigingly, this is not true. Thus, as we discuss in more detail below, the cloud provider may have the simplest of preemption policies implemented at their end, and yet give rise to the relatively complex and non-trivial probability to preemption. 
 
+To understand the above assertions with a simple example that sheds further insights into the origins of the bathtub-shaped distribution, we discuss analogous questions in the context of general physical systems of constrained (confined) particles.
+These systems are generally analyzed using the theoretical framework of statistical mechanics often complemented with associated particle dynamics simulations. We choose an exactly solvable and simple system of hard (non-overlapping) particles (or beads) confined to move in one dimension within a finite spatial interval to draw interesting connections. 
 
-A simple mapping can be established by assuming that the cluster management policy requires mutually exclusive preemptions.
-This assumption helps cluster management by serializing VM preemptions and making cluster operations easier, and it reduces the challenges associated with reacting to simultaneous preemptions. The preemption events become hard particles that cannot overlap. The probability distribution of $N$ constrained preemption events gets mapped to the density of $N$ randomly distributed particles confined in a 1-dimensional interval of length $L$ (analogous to 24 hours). 
-The particle size is equivalent to the length of the critical section, which is related to the preemption warning (30 seconds for Google PVMs).
-Finding the distribution of non-overlapping (i.e., hard) particles is a central problem in statistical mechanics [5].
-%Interestingly, the distribution of particles in a confined interval can be obtained analytically via the exact closed-form expression of the so-called partition function (a common statistical mechanical quantity useful for obtaining the microscopic understanding of macroscopic phenomena).
+A simple mapping from the system of temporally-constrained preemptions in the cloud to the system of spatially-constrained particles within one-dimensional confinement can be established by assuming that the cluster management policy requires mutually exclusive preemptions.
+This assumption helps cluster management by serializing VM preemptions and making cluster operations easier, and it reduces the challenges associated with reacting to simultaneous preemptions. 
+The preemption events become hard particles that cannot overlap. The preemption probability distribution gets mapped to the density of $N$ particles, each modeled as a one-dimensional ``sphere'' of width $\sigma$, confined in a 1-dimensional interval (line segment) of length $L$. $L$ can be considered as corresponding to the deadline interval of 24 hours. $\sigma$ is equivalent to the length of the critical section, which is related to the preemption warning (30 seconds for Google PVMs). 
+
+The particles are placed, one after another, at random positions. Configurations where any overlap is generated are not included. Thus particles will be placed with a flat probability distribution.
+The question we are trying to simulate with this set up is the familiar one noted above: what is the probability $p(x)$ of finding a preemption at time $x$?
+
+This problem can be solved by first defining a partition function for the system. And doing some neat math.
+
+Present the solution
+
 This distribution is \emph{not} uniform over the interval, but is higher towards the ends of the interval---analogous to the bath-tub shaped nature of preemptions! 
+
+Discuss more.
+
+We thus draw a few critical observations. An immediate inclincation may be to attribute the observed non-trivial bathtub-shaped preemption probability function to a uniquely designed and structured operational policy of the cloud provider. However, the above analysis shows that even with the vanilla operational policy of placing preemptions with a uniform probability distribution, the finite excluded temporal volume of preemptions in conjunction with the relatively short deadline (which together imply a high average preemption rate) enforce a bathtub-shape-like distribution for finding a preemption at time $t$. Clearly, this does not provide all the subtle features observed in the preemption data as well as the failure model. But even there, it enables to gauge the extent to which the provider has changed the policy on top of the simplest possible implementation.
 
 The analytical framework suggests that the bath-tub shape of the probability distribution is the key characteristic of constrained preemptions.
 Therefore, our approach will remain relevant in the face of future changes in preemption characteristics due to changes in cloud usage and operational policies.
+
+
+
+%These systems underlie a variety of phenomena in chemical and materials engineering applications such as ions confined in nanochannels \cite{jing,solis}. 
+
+%In addition to empirically-informed reliability models for preemptions, we also seek to understand \emph{why} their distribution is bathtub shaped in order to provide a mechanistic understanding of preemptions and enhance the model interpretability and generalizability. 
+%Our key insight is that the problem of analyzing constrained preemptions can be ``mapped'' to an equivalent problem in statistical mechanics of a physical system, and we can use the theoretical and analytical framework of statistical mechanics to develop a broader understanding of preemptions. 
+%This connection to statistical mechanics is given below. 
+%To this end, we propose to ``map'' the problem of constrained preemptions to an equivalent problem of constrained many particle physical systems that can be analyzed employing the general theoretical framework of statistical mechanics.
+
+%A simple mapping can be established by assuming that the cluster management policy requires mutually exclusive preemptions.
+%This assumption helps cluster management by serializing VM preemptions and making cluster operations easier, and it reduces the challenges associated with reacting to simultaneous preemptions. The preemption events become hard particles that cannot overlap. The probability distribution of $N$ constrained preemption events gets mapped to the density of $N$ randomly distributed particles confined in a 1-dimensional interval of length $L$ (analogous to 24 hours). 
+%The particle size is equivalent to the length of the critical section, which is related to the preemption warning (30 seconds for Google PVMs).
+%Finding the distribution of non-overlapping (i.e., hard) particles is a central problem in statistical mechanics [5].
+%Interestingly, the distribution of particles in a confined interval can be obtained analytically via the exact closed-form expression of the so-called partition function (a common statistical mechanical quantity useful for obtaining the microscopic understanding of macroscopic phenomena).
+%This distribution is \emph{not} uniform over the interval, but is higher towards the ends of the interval---analogous to the bath-tub shaped nature of preemptions! 
+
+%The analytical framework suggests that the bath-tub shape of the probability distribution is the key characteristic of constrained preemptions.
+%Therefore, our approach will remain relevant in the face of future changes in preemption characteristics due to changes in cloud usage and operational policies.
 
 
 % \subsection{EC2 spot instances}
