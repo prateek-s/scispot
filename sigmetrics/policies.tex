@@ -1,9 +1,14 @@
 
 \section{Application Policies For Constrained Preemptions}
 
-For applications running on transient servers, the effects of preemptions can be ameliorated through different policies for fault tolerance and resource management.
-Prior work in transient computing has established the benefits of such policies for a broad range of applications. 
-We now show how our empirical insights and analytical model can be used to develop policies for optimized execution of batch applications on Google Preemptible VMs. 
+Having analyzed the statistical behavior of constrained preemptions and presented our probability model, we now examine how the bathtub shape of the failure rate impacts applications.
+Based on insights drawn from our statistical analysis and the model, we develop various policies for ameliorating the effects of preemptions. 
+Prior work in transient computing has established the benefits of such policies for a broad range of applications.
+However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required, which we present below. 
+
+% For applications running on transient servers, the effects of preemptions can be ameliorated through different policies for fault tolerance and resource management.
+% Prior work in transient computing has established the benefits of such policies for a broad range of applications. 
+% We now show how our empirical insights and analytical model can be used to develop policies for optimized execution of batch applications on Google Preemptible VMs. 
 
 %We propose to develop optimized preemption mitigating policies that make fundamental use of insights from our models and highlight their practical significance. 
 
