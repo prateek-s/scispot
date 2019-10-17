@@ -67,7 +67,9 @@ The above equation for $E[T]$ thus becomes:
 \end{align}
 
 
-This expression for the expected running time assumes that the job will be preempted at most once, which is a used by transient computing systems to minimize the effect of repeated preemptions. 
+This expression for the expected running time assumes that the job will be preempted at most once and ignores the higher order terms.
+Most transient computing systems seek to avoid repeated preemptions, since they want to avoid pathological behavior of preemptions. 
+This assump, which is a used by transient computing systems to minimize the effect of repeated preemptions. 
 This can be due to multiple reasons: if a job is preempted twice, it may be prudent to move it to an non-preemptible on-demand VM, or delay its execution to a later time when the preemption rate decreases.
 
 We note here that both the increase in wasted time ($E[W_1(T)]/T$) and expected running time $(E[T]/T)$ depend on the length of the job for non-memoryless constrained preemptions.
