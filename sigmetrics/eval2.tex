@@ -53,10 +53,10 @@ All applications are run with default parameters unless otherwise stated.
 
 \begin{figure}[t]
   \subfloat[Computation wasted due to one preemption. \label{fig:vs-uniform}]
-  {  \includegraphics[width=0.4\textwidth]{../graphs/uniform-v-bathtub.pdf} }
+  {  \includegraphics[width=0.3\textwidth]{../graphs/uniform-v-bathtub.pdf} }
   \\
     \subfloat[Expected increase in running time. \label{fig:vs-uniform-2}]
-    {  \includegraphics[width=0.4\textwidth]{../graphs/uniform-v-bathtub-2.pdf} }
+    {  \includegraphics[width=0.3\textwidth]{../graphs/uniform-v-bathtub-2.pdf} }
     \caption{Wasted computation and expected increase in running time for uniform vs. baththub failures. For jobs $>5$ hours, bathtub distribution results in significantly lower wasted computation.}
   \label{fig:vs-uniform-both}
   
@@ -134,10 +134,10 @@ Thus, our model-based job scheduling policy can reduce job failure probability b
 
 \begin{figure}[t]
   \subfloat[Effect of job start time on the failure probability. \label{fig:sched-bathtub}]
-  {  \includegraphics[width=0.4\textwidth]{../graphs/Sched-bathtub.pdf}}
+  {  \includegraphics[width=0.3\textwidth]{../graphs/Sched-bathtub.pdf}}
   \\
   \subfloat[Job failure probability for jobs of different lengths. \label{fig:sched-all}]
-  {  \includegraphics[width=0.4\textwidth]{../graphs/Sched-fail-prob.pdf}}
+  {  \includegraphics[width=0.3\textwidth]{../graphs/Sched-fail-prob.pdf}}
   \caption{Job failure probability is lower with our deadline aware policy across all job sizes.}
   \label{fig:sched-both}
 \end{figure}
@@ -185,14 +185,14 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 
 \begin{figure}[t]
   \subfloat[Checkpointing overhead for jobs of length 4 at different starting times \label{fig:ckpt-4}]
-{  \includegraphics[width=0.4\textwidth]{../graphs/ckpt-4.pdf} }
+{  \includegraphics[width=0.3\textwidth]{../graphs/ckpt-4.pdf} }
 %\hfill
 % \subfloat[Running time with checkpointing when jobs start at time=0. \label{fig:ckpt-start-0}]
 % {  \includegraphics[width=0.3\textwidth]{../graphs/ckpt-start-0.pdf}}
 % \hfill
 \\
 \subfloat[Increase in running time with Checkpointing when jobs start at time=0. \label{fig:ckpt-start-0-relative}]
-{\includegraphics[width=0.4\textwidth]{../graphs/ckpt-start-relative.pdf}}
+{\includegraphics[width=0.3\textwidth]{../graphs/ckpt-start-relative.pdf}}
 
   \caption{Checkpointing effectiveness.}
   \label{fig:ckpt-all}
@@ -218,14 +218,21 @@ We use our model-driven job scheduling policy, but do not use checkpointing, sin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{figure}
+\begin{figure}[t]
   \centering
-  \includegraphics[width=0.4\textwidth]{../graphs/cost-vs-exosphere.pdf}
-  \vspace*{\myfigspace}
-  \caption{SciSpot's use of preemptible VMs can reduce costs by up to $5\times$ compared to conventional cloud deployments, and 20\% compared to the state of the art EC2 spot instance selection (ExoSphere~\cite{exosphere}).}
-  \label{fig:cost-only-bar}
-    \vspace*{\myfigspace}
-\end{figure}
+  \subfloat[Cost \label{fig:cost-only-bar}]
+{  \includegraphics[width=0.25\textwidth]{../graphs/cost-vs-ondem.pdf} }
+\hfill
+\subfloat[Preemptions \label{fig:fails-time}]
+{ \includegraphics[width=0.2\textwidth]{../graphs/confin-fails-vs-time-relative.pdf} }
+\label{fig:service-all}
+\caption{Cost and preemptions with our service.}
+\end{figure}  
+
+%  \caption{SciSpot's use of preemptible VMs can reduce costs by up to $5\times$ compared to conventional cloud deployments, and 20\% compared to the state of the art EC2 spot instance selection (ExoSphere~\cite{exosphere}).}
+%  \label{fig:cost-only-bar}
+%    \vspace*{\myfigspace}
+
 
 \noindent \textbf{Cost:}
 The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible.
@@ -246,13 +253,13 @@ We see that the net impact of preemptions results in a roughly linear increase i
 Each preemption results in a roughly 3\% increase in running time, which validates our analytical evaluation shown earlier in Figure~\ref{fig:vs-uniform-2}. 
 
 
-\begin{figure}[t]
-  \centering 
-        \includegraphics[width=0.22\textwidth]{../graphs/confin-fails-vs-time-relative.pdf}
-      \caption{The increase in running time due to preemptions is under 50\%, even at high preemption rates.}
-        %when the number of preemptions is high.}
-  \label{fig:fails-time}
-\end{figure}
+% \begin{figure}[t]
+%   \centering 
+%         \includegraphics[width=0.22\textwidth]{../graphs/confin-fails-vs-time-relative.pdf}
+%       \caption{The increase in running time due to preemptions is under 50\%, even at high preemption rates.}
+%         %when the number of preemptions is high.}
+%   \label{fig:fails-time}
+% \end{figure}
 
 
 

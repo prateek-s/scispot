@@ -8,17 +8,21 @@ Our model and the associated data expand transient cloud computing to beyond EC2
 We have evaluated the model under different practical conditions including different VM types and temporal domains, and have shown it to be general and robust. 
 However, many questions and avenues of future investigation remain open:
 
-\noindent \textbf{What if preemption characteristics change?} Long-term validity of the model cannot be guaranteed since preemption characteristics are up to the cloud provider policies, the supply and demand of transient and on-demand and reserved VMs, etc. 
-Our model allows detecting policy and phase changes by comparing observed data with model-predictions and detect change-points. The nature and specifics of preemption dynamics are at the mercy of the cloud provider. However, changes are rare: Google's preemption policy has not changed since its inception in 2015. 
+\noindent \textbf{What if preemption characteristics change?}
+Ultimately, the preemption characteristics are based on the cloud provider policies, the supply and demand of transient and on-demand and reserved VMs, etc. 
+Our model allows detecting policy and phase changes by comparing observed data with model-predictions and detect change-points.
+However, changes are rare: Google's preemption policy has not changed since its inception in 2015. 
 Regardless, we believe that VMs with constrained preemptions are an interesting \emph{new} type of transient resources, and our analysis, observations, and policies should continue to be relevant. 
 
 
-\noindent \textbf{Piece-wise model.} Our statistical analysis indicates that the preemption rates have three distinct phases. 
+\noindent \textbf{Piece-wise model.}
+Our statistical analysis indicates that the preemption rates have three distinct phases. 
 Our model is a continuously differentiable and allows capturing the three phases reasonably. 
 However it may be possible to use a piece-wise model, where the three phases are modeled either as three segmented linear regions (found using segmented linear regression), or an initial exponential phase and two linear phases. 
 Such a piece-wise model would be able to capture the phase transitions with even more accuracy, and is part of our future work. 
 
-\noindent \textbf{Statistical mechanics connection.} We have only presented the initial connection between constrained preemptions and statistical mechanics, and we conjecture that a deeper connection may exist. 
+\noindent \textbf{Statistical mechanics connection.} Our proof of Lemma~\ref{lemma:1} used the partition function from statistical mechanics. 
+We have only presented the initial connection between constrained preemptions and statistical mechanics, and we conjecture that a deeper connection may exist. 
 Central to our connection is the assumption of mutually exclusive preemptions---that is, the provider preempts VMs in a mutually exclusive manner.
 This assumption makes sense from a cluster management and application perspective. 
 However,  analyzing constrained preemptions after relaxing the mutual exclusion assumption is \emph{also} possible with statistical mechanics approaches. 

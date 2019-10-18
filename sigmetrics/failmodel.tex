@@ -326,7 +326,7 @@ For constrained preemptions, one might expect to see uniformly distributed preem
 However, as our empirical analysis shows, the preemption distribution is baththub shaped.
 Interestingly, we can show using exact analytical arguments that non-uniform, baththub distributions are in fact a \emph{general} characteristic of systems with constrained preemptions, modulo some assumptions. 
 
-\begin{lemma}
+\begin{lemma}\label{lemma:1}
   Consider $N$ randomly distributed preemptions over an interval $[0, L]$.
   Assume that each preemption takes $w$ time-units to perform, and that preemptions cannot overlap and occur in a mutually exclusive manner.
   Then, there exists an $ \epsilon > 0$ such that  $P(L-\epsilon) > \frac{1}{L}$, where 
