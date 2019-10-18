@@ -31,18 +31,17 @@ The expected wasted work depends on two factors:
 \end{enumerate}
 
 We can analyze the wasted work due a preemption using the failure probability model.
-We first compute the expected amount of wasted work \emph{assuming} the job faces a single preemption, which we denote by $E[W_1(J)]$, where $J$ is the original job running time (without preemptions).
-%Question: J or T?
+We first compute the expected amount of wasted work \emph{assuming} the job faces a single preemption, which we denote by $E[W_1(T)]$, where $T$ is the original job running time (without preemptions).
 \begin{equation}
-E[W_1(J)] = \int_0^{J} t~P(t | t \leq J)~dt , 
+E[W_1(T)] = \int_0^{T} t~P(t | t \leq T)~dt , 
 \end{equation}
-where $P(t)$ is the probability of a preemption at time $t$, and is given by $P(t) = f(t)$ , where $f(t)$ is the probability distribution function from Equation~\ref{eq:failrate}.
+where $P(t)$ is the probability of a preemption at time $t$, and is given by $P(t) = f(t)$ , where $f(t)$ is the probability distribution function given by Equation~\ref{eq:failrate}.
 We can therefore write the above equation as:
 \begin{align}
-  E[W_1(J)] &= \int_0^{J} t~P(t | t \leq J)~dt \nonumber 
-  = \int_0^{J} t~\frac{f(t)}{P(t \leq J)}~dt \\ 
-  &= \int_0^{J} t~\frac{f(t)}{F(J)}~dt 
-    = \frac{1}{F(J)}  \int_0^{J} t~f(t)~dt
+  E[W_1(T)] &= \int_0^{T} t~P(t | t \leq T)~dt \nonumber 
+  = \int_0^{T} t~\frac{f(t)}{P(t \leq T)}~dt \\ 
+  &= \int_0^{T} t~\frac{f(t)}{F(T)}~dt 
+    = \frac{1}{F(T)}  \int_0^{T} t~f(t)~dt
     \label{eq:wasted}
 \end{align}
 
@@ -50,46 +49,58 @@ We note that the integral is the same as the ``expected lifetime'', given by Equ
 
 The above expression for the expected waste given a single preemption can be used by users and application frameworks to estimate the increase in running time due to preemptions. %and other scenarios.
 The total running time (also known as makespan) of a job \emph{with} preemptions is given by:
-
 \begin{equation}
   \label{eq:tot-run-time}
   E[T] = P(\text{no failure})~T + P(\text{1 failure})~(T + E[W_1(T)])
 \end{equation}
-
 Where $P(\text{no failure}) = P(t > T) =  1- F(T)$ and $P(\text{1 failure}) = P(t \leq T) = F(T)$.
 The above equation for $E[T]$ thus becomes: 
-
+%
 \begin{align}
   \label{eq:tot-run-time-2}
   E[T] &= (1-F(T))~T + F(T)~(T + E[W_1(T)]) \\ \nonumber
   &= (1-F(T))~T + F(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
        &= T + \int_0^{T} t~f(t)~dt         
 \end{align}
-
-
 This expression for the expected running time assumes that the job will be preempted at most once and ignores the higher order terms.
-Most transient computing systems seek to avoid repeated preemptions, since they want to avoid pathological behavior of preemptions. 
-This assump, which is a used by transient computing systems to minimize the effect of repeated preemptions. 
-This can be due to multiple reasons: if a job is preempted twice, it may be prudent to move it to an non-preemptible on-demand VM, or delay its execution to a later time when the preemption rate decreases.
+Since the probability of multiple preemptions is low, most transient computing systems seek to avoid repeated preemptions, and discard the job if multiple preemptions occur or move them to on-demand VMs. 
 
-We note here that both the increase in wasted time ($E[W_1(T)]/T$) and expected running time $(E[T]/T)$ depend on the length of the job for non-memoryless constrained preemptions.
+% since they want to avoid pathological behavior of preemptions. 
+% This assump, which is a used by transient computing systems to minimize the effect of repeated preemptions. 
+% This can be due to multiple reasons: if a job is preempted twice, it may be prudent to move it to an non-preemptible on-demand VM, or delay its execution to a later time when the preemption rate decreases.
+
+We note here that both the increase in wasted time ($E[W_1(T)]/T$) and expected running time $(E[T]/T)$ depend on the length of the job for non-memoryless constrained preemptions. 
 In the case of memoryless exponential distributions, this has the expected waste is $T/2$, but this assumption is not valid for constrained preemptions, and thus job lengths must be considered when evaluating the suitability of preemptible VMs for jobs. 
 
+
+Users and transient computing systems can thus use the expected running time analysis for scheduling and monitoring purposes.
+Since the preemption characteristics are dependent on the type of the VM and temporal effects, this analysis also allows principled \emph{selection} of VM types for jobs of a given length.
+% Model-based insight? 
+For instance, VMs having a higher initial rate of preemptions are particularly detrimental for short jobs, because the jobs will see high rate of failure and are not long enough to run during the VM's stable period with low  preemption rates. 
 We evaluate the expected wasted time and running time for Google Preemptible VMs later in Section~\ref{sec:eval}. 
 
 \subsection{Job Scheduling}
 
-Many cloud-based applications and services are \emph{long-running}, and typically run a continuous sequence of tasks and jobs on cloud servers. 
-In the case of deadline-constrained bathtub preemptions, applications face a choice: they can either run a new task on an already running server, or relinquish the server and run the task on a \emph{new} server. 
+Many cloud-based applications and services are \emph{long-running}, and typically run a continuous sequence of tasks and jobs on cloud VMs. 
+In the case of deadline-constrained bathtub preemptions, applications face a choice: they can either run a new task on an already running VM, or relinquish the VM and run the task on a \emph{new} VM. 
 This choice is important in the case of non-uniform failure rates, since the job's failure probability depends on the ``age'' of the server.
-Furthermore, since newly launched servers also have high preemption rates (and thus high job failure probability), the choice of running the job on an existing server vs. a new server is not obvious.
+Because of the bathtub failure distribution, VMs enjoy a long period of low failure rates during the middle of their total lifespan.
+Thus, it is beneficial to \emph{reuse} VMs for multiple jobs, and relinquishing VMs after every job completion may not be an optimal choice.
 
+%Model-based insight? 
+
+However, jobs launched towards the end of VM life face a tradeoff.
+While they may start during periods of low failure rate, the 24 hour deadline-imposed sharp increase in preemptions poses a high risk of preemptions, especially for longer jobs.
+The alternative is to discard the VM and run the job on a new VM. 
+However, newly launched VMs also have high preemption rates (and thus high job failure probability), the choice of running the job on an existing server vs. a new server is not obvious.
+
+% Expand on this about stable regions etc. 
 
 Our job scheduling policy uses the preemption model to determine the preemption probability of jobs of a given length $T$. 
-Assume that the running server's age (time since launch) is $s$. 
-Then, the the probability of failure on the existing server $P_{\text{Existing}} = max(1, F(T+s) - F(T))$.
-The alternative is to discard the server and launch a new server, in which case, the failure probability is $P_{\text{New}} = F(T)$.
-Depending on the server's age $s$ and the job's running time $T$, we can compare $P_{\text{Existing}}$ and $P_{\text{New}}$, and run the job on whichever case yields the lower failure probability.
+Assume that the running VM's age (time since launch) is $s$. 
+Then, the the probability of failure on the existing VM $P_{\text{Existing}} = max(1, F(T+s) - F(T))$.
+The alternative is to discard the VM and launch a new VM, in which case, the failure probability is $P_{\text{New}} = F(T)$.
+Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_{\text{Existing}}$ and $P_{\text{New}}$, and run the job on whichever case yields the lower failure probability. 
 
 % Some more intuitive analysis ? 
 
@@ -104,52 +115,44 @@ Checkpointing application state to stable storage (such as network file systems 
 However, each checkpoint entails capturing, serializing, and writing application state to a disk, and increases the total running time of the application.
 Thus, the frequency of checkpointing can have a significant effect on the total expected running time.
 
-Existing checkpointing systems for handling hardware failures in high performance computing, and for cloud transient servers such as EC2 spot instances, incorporate the classic Young-Daly periodic checkpointing interval that assumes that failures are exponentially distributed. 
+Existing checkpointing systems for handling hardware failures in high performance computing, and for cloud transient servers such as EC2 spot instances, incorporate the classic Young-Daly~\cite{dongarra_fault_nodate, daly2006higher, flint, marathe2014exploiting} periodic checkpointing interval that assumes that failures are exponentially distributed. 
 That is, the application is checkpointed every $\tau = \sqrt{2 \cdot \delta \cdot \text{MTTF}}$ time units, where $\delta$ is the time overhead of writing a single checkpoint to disk. 
 
 
 However, checkpointing with a uniform period is sub-optimal in case of time dependent failure rates, and especially for bathtub failure rates.
 A sub-optimal checkpointing rate can lead to increased recomputation and wasted work, or result in excessive checkpointing overhead. 
-Intuitively, the checkpointing rate should depend on the failure rate, and our analytical preemption model can be used for designing an optimized checkpointing schedule. 
+Intuitively, the checkpointing rate should depend on the failure rate, and our analytical preemption model can be used for designing an optimized checkpointing schedule. We now present our checkpointing policy that uses the preemption model, and results in non-uniform checkpoint intervals:  
 
-Let the uninterrupted running time of the job be $T$. Or in other words, $T$ amount of work needs to be performed. 
-Let the checkpoint cost be $\delta$.
+
+Let the uninterrupted running time of the job be $T$. Or in other words, $T$ amount of work needs to be performed. We assume that each job-step takes one unit of time, for ease of exposition. 
+Let the checkpoint cost be $\delta$---i.e, it takes each checkpoint increases the running time by $\delta$. 
 We seek to minimize the total expected running time or the \emph{makespan}, which is the sum of T, the expected periodic checkpointing cost, and the expected recomputation.
 
 The makespan $M$ can be recursively defined and computed.
-Let $M(W, t, i)$ denote the makespan when $W$ length of job must be exectued, $t$ is amount of job already done. %, and $s$ was the starting time (wallclock time) of the job.
+Let $M(W, t)$ denote the makespan where $W$ is remaining length of job to be executed, and $t$ is amount of time already elapsed. %, and $s$ was the starting time (wallclock time) of the job.
 We now need to determine when to take the \emph{next} checkpoint, which we take after $i$ steps. Let $E[M^*]$ denote the minimum expected makespan.
-
-
 \begin{equation}
   \label{eq:m0}
   E[M^*(W, t)] = \min_{0<i\leq W}{E[M(W, t, i)]}
 \end{equation}
-
 The makespan is affected by whether or not there is a failure \emph{before} we take the checkpoint: 
-
 \begin{equation}
   \label{eq:m1}
 E[M(W, t, i)] = P_{\text{succ}}(t, i+\delta) \cdot E[M_{\text{succ}}] + P_{\text{fail}}(t, i+\delta) \cdot E[M_{\text{fail}}]
 \end{equation}
-
 Here $P_{\text{succ}}(t, i+\delta)$ denotes the probability of the job successfully executing without failures until the checkpoint is taken, i.e., from $t$ to $t+i+\delta$. $P_{\text{fail}}(t, i+\delta) = F(t+i+\delta)-F(i+\delta)$ is computed using the CDF, 
 and $P_{\text{succ}} = 1 - P_{\text{fail}}$ .
 
 
-
 $E[M_{\text{succ}}]$ is the expected makespan when there are no job failures when the job is executing from step $t$ to $t+i+\delta$, and is given by a recursive definition:
-
 \begin{equation}
   \label{eq:msuc}
 E[M_{\text{succ}}(W, t, i)] = t+i+\delta + E[M^*(W-i, t+i+\delta)]  
 \end{equation}
-
 \noindent Note that the makespan includes the amount of work already done $t+i$, the checkpointing overhead $\delta$, and the expected minimum makespan of the rest of the job.
 Similarly, when the job fails before step $i$, then that portion is ``lost work'', and can be denoted by $E[L(t, i+\delta)]$ which denotes the expected lost work when there is a failure during the time interval $t$ to $t+i+\delta$.
 A failure before the checkpoint means that we have made no progress, and $W$ steps of the job still remain.
 The expected makespan in the failure case is then given by:
-
 \begin{equation}
   \label{eq:mfail}
  E[M_{\text{fail}}(W, t, i)] = E[L(t, i+\delta)] + E[M^*(W, t+i+\delta)]
@@ -157,9 +160,8 @@ The expected makespan in the failure case is then given by:
 
 
 
-In the case of memoryless distribution, $E[L(t, i+\delta)]$ is approximated as $\frac{i+\delta}{2}$.
+In the case of memoryless failures, $E[L(t, i+\delta)]$ is approximated as $\frac{i+\delta}{2}$.
 In our case, the lost work is the wasted work that we defined earlier in Equation~\ref{eq:wasted}, but we need to consider the different start and end times, and we get:
-
 \begin{equation}
   \label{eq:exploss}
 E[L(t, i+\delta)] = \int_{t}^{t+i+\delta}{x~f(x)~dx}   , 
@@ -168,8 +170,15 @@ where $f(x)$ is our probability density function represented by Equation~\ref{eq
 
 Thus we can find the minimum makespan $E[M^*(W, t)]$ by using Equations~\ref{eq:m0}--\ref{eq:exploss}. 
 Given a job of length $J$, minimizing the total expected makespan involves computing $E[M^*(J, s)]$, where $s$ is the current age of the server. 
-Since the makespan is recursively defined, we can do this minimization using a dynamic programming approach, and extract the job-steps at which checkpointing results in a minimum expected makespan. 
+Since the makespan is recursively defined, we can do this minimization using a dynamic programming approach, and extract the job-steps at which checkpointing results in a minimum expected makespan.
+Once all the values of $E[M(W, t, i)]$ are computed, the job's checkpointing schedule is determined as follows.
+We first locate the checkpointing interval $i_1$ that minimizes $E[M(W,0,i]$.
+Then, we recursively find the next checkpointing interval $i_2$ by minimizing  $E[M(W-i_i,i_i,i)]$, and so on, until the $W\leq0$.
 
+If a job encounters a failure, it is resumed from the most recent checkpoint, on a new VM.
+After every such resume-event, we compute the optimal checkpointing schedule again, since the job's failure rate is dependent on the VM age when it starts, and the job may be resumed at a later time or on a VM of a different type, etc.
+
+% Explain how 
 
 
 \begin{comment}

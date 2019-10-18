@@ -1,5 +1,5 @@
-\vspace*{\subsecspace}
-\vspace*{-0.2cm}
+%\vspace*{\subsecspace}
+%\vspace*{-0.2cm}
 \section{Background}
 
 We now give an overview of transient cloud computing, and motivate the need for the bag of jobs abstraction in scientific computing workflows.
@@ -34,30 +34,54 @@ The effect of preemptions is dependent on a combination of application resource 
 
 %In contrast, \sysname can run applications on Google Preemptible VMs that have fixed price and \emph{unknown} preemption rates.
 %\vspace*{\subsecspace}
-\subsection{Preemption Modeling of Transient VMs}
+\subsection{Modeling Preemptions of Transient VMs}
 
-%Mainly about spot instances? 
+% Mainly about spot instances?
 
-Past work on transient computing has almost exclusively focused on the Amazon EC2 spot market, which has a radically different preemption model and dynamics compared to other transient cloud servers such as those offered by Google Cloud and Azure. 
+Underlying \emph{all} techniques and systems in transient computing is the notion of using some probabilistic or even a deterministic model of their preemptions.
+Such a preemption model is then used to quantify and analyze the impact of preemptions on application performance and availability; and to design model-informed policies to minimizing the effect of preemptions.
 
-Launched in 2009, Amazon's EC2 spot instances are the first example of transient cloud servers.
+For example, the preemption rate or MTTF (Mean time to failure) of transient servers has found extensive use in selecting the appropriate type transient server for applications~\cite{exosphere, spoton}, determining the optimal checkpointing frequency~\cite{flint, marathe2014exploiting, proteus-eur17, spark-ckpt-hpdc}, etc.
+
+However, \emph{all} prior work on transient computing has exclusively focused on Amazon's EC2 spot instances.
+Launched in 2009, Amazon's EC2 spot instances are the first example of transient cloud servers, and their low price (often 90\% cheaper than equivalent on-demand instances) provided the motivation to develop optimized policies for reducing the impact of preemptions and the overall cost. 
+
 The preemptions of EC2 spot instances are based on their \emph{price}, which is dynamically adjusted based on the supply and demand of cloud resources.
 Spot prices are based on a continuous second-price auction, and if the spot price increases above a pre-specified maximum-price, then the server is preempted~\cite{spot-pricing2}.
-
+%
 Thus, the time-series of these spot prices can be used for understanding preemption characteristics such as the frequency of preemptions and the ``Mean Time To Failure'' (MTTF) of the spot instances. 
-Publicly available\footnotemark historical spot prices have been used to characterize and model spot instance preemptions~\cite{spotcheck,bid-cloud}. %Add lots more here 
-For example, past work has analyzed spot prices and shown that the MTTFs of spot instances of different hardware configurations and geographical zones range from a few hours to a few days~\cite{prateek-thesis, wolski_probabilistic_2017, icdcs-spotlight}.
-\prat{sigcomm paper} 
+Publicly available\footnotemark historical spot prices have been used to characterize and model spot instance preemptions~\cite{spotcheck, bid-cloud, tr-guarantees}. %Add lots more here 
+For example, past work has analyzed spot prices and shown that the MTTFs of spot instances of different hardware configurations and geographical zones range from a few hours to a few days~\cite{wolski_probabilistic_2017, icdcs-spotlight, wolski-new}.
+
+However, using pricing information for preemption modeling is \emph{not} a generalizable approach and is not applicable to other types of transient cloud servers such as Google Preemptible VMs and Azure Low-priority batch VMs.
+These servers have \emph{flat} pricing, and thus pricing cannot be used to infer preemptions, unlike in the case of EC2.
+Moreover, these cloud providers (Google and Azure) do not expose \emph{any} public information about the preemption characteristics.
+
+The total lack of information about the preemption characteristics precludes the vast array of optimizations and systems that have been developed to make transient computing more appealing to different kinds of applications.
+Therefore in this paper, we seek to develop the \emph{first} empirical model of preemptions of Google Preemptible VMs~\cite{pvm}.
+Our empirical data and preemption model allows the development of preemption mitigation policies.
+%
+
+Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{constrained} preemption introduces new challenges in preemption modeling.
+Past work on failure modeling of EC2 spot instances have assumed preemptions to be \emph{memoryless} and follow the exponential distribution.
+However, the 24 hour constraint precludes such memoryless assumptions, and as we see in the next section, require new modeling techniques.  
+
+
+
+
+% Past work on transient computing has almost exclusively focused on the Amazon EC2 spot market, which has a radically different preemption model and dynamics compared to other transient cloud servers such as those offered by Google Cloud and Azure. 
+
+% \prat{sigcomm paper} 
 
 \footnotetext{Amazon posts Spot prices of 3 months, and researchers have been collecting these prices since 2010~\cite{bidding4}.}
 
 
-However the price-based approach for inferring preemption characteristics is of limited utility.
-Other transient VMs such as those offered by Google and Azure have \emph{flat} pricing, and price-based techniques for preemption modeling and cost optimization are not applicable.
-Furthermore, price-based techniques may be of limited value after Amazon's recent change where preemptions were decoupled with pricing.
-To address this shortcomings, we develop \emph{empirical} preemptions models for transient VMs.
-In particular, we focus on Google Preemptible VMs, whose preemption properties have been unknown so far.
-Additionally, their unique fixed lifetime leads to new challenges for conventional reliability theory models, and requires new modeling techniques, which we develop later in Section~\ref{sec:failmodel}. 
+% However the price-based approach for inferring preemption characteristics is of limited utility.
+% Other transient VMs such as those offered by Google and Azure have \emph{flat} pricing, and price-based techniques for preemption modeling and cost optimization are not applicable.
+% Furthermore, price-based techniques may be of limited value after Amazon's recent change where preemptions were decoupled with pricing.
+% To address this shortcomings, we develop \emph{empirical} preemptions models for transient VMs.
+% In particular, we focus on Google Preemptible VMs, whose preemption properties have been unknown so far.
+% Additionally, their unique fixed lifetime leads to new challenges for conventional reliability theory models, and requires new modeling techniques, which we develop later in Section~\ref{sec:failmodel}. 
 
 %This is an important point but not relevant for us right now 
 %However, pricing based models and the policies based on them are at risk when there are changes in the cloud provider's pricing mechanisms and policies. 
