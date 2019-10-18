@@ -57,22 +57,22 @@ A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, 
 %enter the type of VM for which the data is shown
 Note that the cloud operator (Google) caps the \emph{maximum} lifetime of the VM to 24 hours, and all the VMs are preempted before that limit. 
 
-\begin{figure}
-  \centering 
-  \includegraphics[width=0.4\textwidth]{../graphs/scispot-fig-vm-types.eps}
-  \caption{Preemption characteristics of different VM types. Larger VMs are more likely to be preempted.}
-  \label{fig:cdf-comparison}
-    %\vspace*{\myfigspace}
-\end{figure}
+\begin{figure*}
+  %\centering
+  \subfloat[Preemption characteristics of different VM types. Larger VMs are more likely to be preempted.
+  \label{fig:cdf-comparison}]
+  {  \includegraphics[width=0.35\textwidth]{../graphs/scispot-fig-vm-types.eps} }
+  \hfill
+\subfloat[Variations due to time of day and workload. \label{fig:time-breakdown}]
+{  \includegraphics[width=0.3\textwidth]{../gnuplot_analysis/time-breakdown.pdf} }
+\hfill
+\subfloat[By region. \label{fig:time-breakdown}]
+{  \includegraphics[width=0.3\textwidth]{../gnuplot_analysis/time-breakdown.pdf} }
 
-\begin{figure}
-  \centering 
-  \includegraphics[width=0.35\textwidth]{../gnuplot_analysis/time-breakdown.pdf}
-      \vspace*{\myfigspace}
-  \caption{Variations due to time of day and workload.}
-  \label{fig:time-breakdown}
+\label{fig:breakdown-all}
+\caption{Analysis of preemption characteristics by VM-type, region, time-of-day, and workload type.}
     %\vspace*{\myfigspace}
-\end{figure}
+\end{figure*}
 
 \noindent \textbf{Observation 1:} \emph{The lifetimes of VMs are not uniformly distributed, but have three distinct phases.}
 
@@ -321,31 +321,59 @@ As $t$ approaches and exceeds $b$ (i.e., $b\lesssim t < L$), the increase in the
 %These methods did not perform better than our model resulting in parameter variables and values that were relatively difficult to interpret; this could likely be due to the unique constraint-driven failures in preemption dynamics as opposed to aging-related increasing failure rate considered in previous work. 
 
 \subsection{Insights on the bathtub shape distribution}
-The immediate yet striking feature of the bathtub shaped probability distribution associated with events occuring in a constrained system is that the probability of finding an event (in our case the preemption) at the edge (deadline) is higher than the probability of finding an event at the center of the interval. We now show using exact analytical arguments that this aspect is a general feature of constrained systems assuming some assumptions are satisfied. We later discuss the justification of these assumptions for our specific problem of constrained preemptions.
 
-\emph{Lemma}: Consider $N$ preemptions to occur randomly with a flat probability distribution within a finite temporal interval $0 < t < L$ such that the preemptions are mutually exclusive. We define $p(t)$ as the probability of finding a preemption at time $t$. Then, there exists an $\epsilon > 0$ such that $\frac{p(L-\epsilon)}{p(L/2)} > 1$.
+For constrained preemptions, one might expect to see uniformly distributed preemptions with a probability $1/L$ over $[0, L]$. 
+However, as our empirical analysis shows, the preemption distribution is baththub shaped.
+Interestingly, we can show using exact analytical arguments that non-uniform, baththub distributions are in fact a \emph{general} characteristic of systems with constrained preemptions, modulo some assumptions. 
 
-%Naively, deducing from $\mathscr{P}$, one may expect $p(t)$ to be 1 for $t\in L$, or a constant (flat) distribution. However, intruigingly, this is not true.
+\begin{lemma}
+  Consider $N$ randomly distributed preemptions over an interval $[0, L]$.
+  Assume that each preemption takes $w$ time-units to perform, and that preemptions cannot overlap and occur in a mutually exclusive manner.
+  Then, there exists an $ \epsilon > 0$ such that  $P(L-\epsilon) > \frac{1}{L}$, where 
+ $P(t)$ as the probability of finding a preemption at time $t$. 
+\end{lemma}
 
-%close to the deadline, and $p(t = L/2$ as the probability of finding a preemption near the middle of the interval.
 
-\emph{Proof:} 
+\begin{proof}
 We first make some preliminary remarks and introduce concepts necessary to complete the proof.
-Mutual exclusion of preemptions implies that there is a finite non-zero waiting time between preemptions. Let this waiting time be $w$. Thus $N$ preemptions occupy a ``temporal volume'' of $Nw$. The amount of free volume or excluded volume available in the constrained system is $L - Nw$ given that $L$ is the maximum possible volume (note that the term volume is used to mean one-dimensional volume). The idea of excluded volume is central in physics and materials engineering where it underpins the origin of entropic forces in material systems. 
+Mutual exclusion of preemptions implies that there is a finite non-zero waiting time between preemptions. Let this waiting time be $w$.
+Thus $N$ preemptions occupy a ``temporal volume'' of $Nw$.
+The amount of free volume or excluded volume available in the constrained system is $L - Nw$ (note that the term volume is used to mean one-dimensional volume).
+The idea of excluded volume is central in physics and materials engineering where it underpins the origin of entropic forces in material systems, and is characterized by the partition function in statistical mechanics~\cite{kreuth}. 
 
 We begin by counting the total number of configurations available to place $N$ preemptions in the constrained temporal ``volume'' $L$. 
-The number of configurations one preemption can generate is proportional to the excluded volume available, i.e., $L-Nw$. For $N$ preemptions, the number of configurations grow exponentially and are proportional to the volume of the $N$-dimensional hypercube: $Z = (L-Nw)^N$. 
+The number of configurations one preemption can generate is proportional to the excluded volume available, i.e., $L-Nw$.
+For $N$ preemptions, the number of configurations grows exponentially and is proportional to the volume of the $N$-dimensional hypercube: $Z = (L-Nw)^N$. 
 
-Given the condition of mutually exclusive preemptions and the interval definition, we note that if we assume that there is a preemption at $t=L-w$, then $p(t> L-w) = 0$. For this case, the available configurations are proportional to the temporal volume accessible in the $N-1$ dimensional hypercube to $N-1$ preemptions: $Z_{1} = (L-w-(N-1)w)^{N-1} = (L-Nw)^{N-1}$. 
+Given the condition of mutually exclusive preemptions, we note that if we assume that there is a preemption at $t=L-w$, then $P(t> L-w) = 0$.
+For this case, the available, valid, non-overlapping configurations are proportional to the temporal volume accessible in the $N-1$ dimensional hypercube to $N-1$ preemptions: $Z_{1} = (L-w-(N-1)w)^{N-1} = (L-Nw)^{N-1}$. 
 
-The probability of finding 1 preemption near the deadline at $t=L-w$ is given as the ratio of the two computed volumes. That is, $p(L-w) = Z_1 / Z = 1/(L - Nw)$.
+The probability of finding 1 preemption near the deadline at $t=L-w$ is given as the ratio of the two computed volumes.
+That is, $P(L-w) = \frac{Z_1}{Z} = \frac{1}{(L - Nw)} > \frac{1}{L}$ , since $N \geq 1$ and $w>0$.
 
-Given the uniform distribution of the placement of $N$ preemptions, the probability of finding a preemption near the middle of the interval at $t = L/2$ approaches $1/L$ as $L \to \infty$, that is $\lim_{t\to \infty}p(L/2) = 1/L$. We note that $L$ is finite (given the notion of constraint). \vikram{this can be made more precise from here on, but I am cheating now}
+% Given the uniform distribution of the placement of $N$ preemptions, the probability of finding a preemption near the middle of the interval at $t = L/2$ approaches $1/L$ as $L \to \infty$, that is $\lim_{t\to \infty}p(L/2) = 1/L$. We note that $L$ is finite (given the notion of constraint). \vikram{this can be made more precise from here on, but I am cheating now}
 
-$p(L/2) = 1/L$ follows because we can always choose a large enough $L$ to make $p(L/2) - 1/L$ as close to 0 as possible.
+% $p(L/2) = 1/L$ follows because we can always choose a large enough $L$ to make $p(L/2) - 1/L$ as close to 0 as possible.
 
-Choosing $\epsilon = w$ and observing that $1/(L-Nw) - 1/L > 0$ for every finite $L$ and non-zero $w$, proves $p(L-\epsilon) > p(L/2)$ or  $\frac{p(L-\epsilon)}{p(L/2)} > 1$.
+% Choosing $\epsilon = w$ and observing that $1/(L-Nw) - 1/L > 0$ for every finite $L$ and non-zero $w$, proves $p(L-\epsilon) > p(L/2)$ or  $\frac{p(L-\epsilon)}{p(L/2)} > 1$.
+\end{proof}
 
+
+By symmetry arguments, the above lemma is in fact valid for both the end points of the interval, i.e., $P(\epsilon) \geq \frac{1}{L}$.
+Thus, the preemption probability is higher towards the end points than the average preemption probability of $1/L$, and we get a bathtub shaped distribution.
+Thus, the bathtub distribution can be considered to be a general artifact of constrained preemptions. Ofcourse, the empirical preemption distribution is determined by the cloud platform's policies and supply and demand, and we elaborate more about the generality of our model and observation in Section~\ref{sec:discussion}. 
+
+% How ?
+%Crucial to our The assumption of preemption events
+For the above proof, we assumed that each preemption event occurs over a timespan of $w$, which is determined by the preemption warning that the cloud platform provides (which is 30 seconds for Google Preemptible VMs and 120 seconds for Amazon EC2 spot instances). 
+Preempting a VM and reclaiming its resources involves manipulating the cluster-management state, and mutually exclusive preemptions may be convenient from  a cluster management perspective, since serializing VM preemptions makes accounting and other cluster operations easier.
+From an application standpoint, non-overlapping preemptions are also beneficial, since handling multiple concurrent preemptions is significantly more challenging~\cite{exosphere}. 
+
+
+
+
+
+\begin{comment}
 \subsection{Elsewhere: Role of Cloud Providers: Analogy to Constrained Physical Systems}
 
 The bathtub-shaped distribution of the preemption probability is essential to capture the empirical data with higher accuracy compared to other models. We want to probe the following question now: how much of this unique shape is enforced by the cloud provider, and how much is dictated by assuming that (akin to other cloud providers such as EC2), preemptions of Google Preemptible VMs are placed along the timeline of 24 hours with uniform probability? We make the question more precise and inject a relatively harmless assumption: if the cloud provider decides to ``place'' $N$ preemptions within the temporal boundary of interval $L$ with flat probability distribution ($\mathscr{P}(e_1, e_2, \ldots e_N)$ = 1 whenever legal) such that the preemptions are mutually exclusive (that is there is a finite non-zero waiting time between preemptions), what is the probability of finding a preemption at time $t$? Naively, deducing from $\mathscr{P}$, one may expect $p(t)$ to be 1 for $t\in L$, or a constant (flat) distribution. However, intruigingly, this is not true. Thus, as we discuss in more detail below, the cloud provider may have the simplest of preemption policies implemented at their end, and yet give rise to the relatively complex and non-trivial probability to preemption. 
@@ -368,12 +396,13 @@ This distribution is \emph{not} uniform over the interval, but is higher towards
 
 Discuss more.
 
-We thus draw a few critical observations. An immediate inclincation may be to attribute the observed non-trivial bathtub-shaped preemption probability function to a uniquely designed and structured operational policy of the cloud provider. However, the above analysis shows that even with the vanilla operational policy of placing preemptions with a uniform probability distribution, the finite excluded temporal volume of preemptions in conjunction with the relatively short deadline (which together imply a high average preemption rate) enforce a bathtub-shape-like distribution for finding a preemption at time $t$. Clearly, this does not provide all the subtle features observed in the preemption data as well as the failure model. But even there, it enables to gauge the extent to which the provider has changed the policy on top of the simplest possible implementation.
+We thus draw a few critical observations.
+An immediate inclincation may be to attribute the observed non-trivial bathtub-shaped preemption probability function to a uniquely designed and structured operational policy of the cloud provider. However, the above analysis shows that even with the vanilla operational policy of placing preemptions with a uniform probability distribution, the finite excluded temporal volume of preemptions in conjunction with the relatively short deadline (which together imply a high average preemption rate) enforce a bathtub-shape-like distribution for finding a preemption at time $t$. Clearly, this does not provide all the subtle features observed in the preemption data as well as the failure model. But even there, it enables to gauge the extent to which the provider has changed the policy on top of the simplest possible implementation.
 
 The analytical framework suggests that the bath-tub shape of the probability distribution is the key characteristic of constrained preemptions.
 Therefore, our approach will remain relevant in the face of future changes in preemption characteristics due to changes in cloud usage and operational policies.
 
-
+\end{comment}
 
 %These systems underlie a variety of phenomena in chemical and materials engineering applications such as ions confined in nanochannels \cite{jing,solis}. 
 
