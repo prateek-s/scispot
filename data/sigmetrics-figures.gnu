@@ -24,6 +24,9 @@ set style line 17 linecolor rgb 'cyan' linetype 4 linewidth 2 pointtype 6  point
 set style line 18 linecolor rgb 'brown' linetype 5 linewidth 2 pointtype 6  pointsize 1
 set style line 19 linecolor rgb 'black' linetype 3 linewidth 2 pointtype 6  pointsize 1
 
+set style line 20 linecolor rgb 'black' linetype 1 linewidth 2 pointtype 6  pointsize 1
+set style line 21 linecolor rgb 'red' linetype 3 linewidth 2 pointtype 6  pointsize 1
+
 set style line 1 linecolor rgb 'brown' linetype 2 linewidth 2 pointtype 6 pointsize 1
 set style line 2 linecolor rgb 'green' linetype 3 linewidth 1 pointtype 6  pointsize 1
 set style line 3 linecolor rgb 'blue' linetype 4 linewidth 2 pointtype 6 pointsize 1
@@ -44,8 +47,6 @@ set origin 0,0
 set size 1,1
 set key vertical width 2 maxrows 10
 set key bottom right
-#set key at 1e4,165
-#set key samplen 2
 set key spacing 3
 set key font 'Helvetica, 22'
 set xtics font "Helvetica, 22"
@@ -60,11 +61,10 @@ set xrange [0:25]
 set yrange [0:1.02]
 plot \
 'runtime-data-by-group/All_data.txt' u 1:2 every 1 t 'Empirical Data' with p ls 10, \
-'runtime-data-by-group/blended_exp_model/All_data.txt' t 'Our Model' w l every 3 ls 5, \
-'runtime-data-by-group/plain_exp_model/All_data.txt' t 'Classical Exponential' every 3 w l ls 1, \
-'runtime-data-by-group/weibull/All_data.txt' t 'Classic Weibull' every 3 w l ls 3, \
-'runtime-data-by-group/gm_model/All_data.txt' t 'Gompertz-Makeham' every 3 w l ls 4
-#inset
+'runtime-data-by-group/blended_exp_model/All_data.txt' u 1:2 every 3 t 'Our Model' w l ls 5, \
+'runtime-data-by-group/plain_exp_model/All_data.txt' u 1:2 every 3 t 'Classical Exponential' w l ls 1, \
+'runtime-data-by-group/weibull/All_data.txt' u 1:2 every 3 t 'Classic Weibull' w l ls 3, \
+'runtime-data-by-group/gm_model/All_data.txt' u 1:2 every 4 t 'Gompertz-Makeham' w l ls 4
 set origin 0.105,0.6
 set size 0.42, 0.38
 set border linewidth 0.5
@@ -83,10 +83,10 @@ set ylabel offset 1,0
 set xrange [0:25]
 set yrange [0:1]
 plot \
-'runtime-data-by-group/blended_exp_model/All_data_diff.txt' t 'Our Model' w l ls 5, \
-'runtime-data-by-group/plain_exp_model/All_data_diff.txt' t 'Classical Exponential' w l ls 1, \
-'runtime-data-by-group/weibull/All_data_diff.txt' t 'Classic Weibull' w l ls 3, \
-'runtime-data-by-group/gm_model/All_data_diff.txt' t 'Gompertz-Makeham' w l ls 4
+'runtime-data-by-group/blended_exp_model/All_data_diff.txt' u 1:2 every 3 t 'Our Model' w l ls 5, \
+'runtime-data-by-group/plain_exp_model/All_data_diff.txt' u 1:2 every 3 t 'Classical Exponential' w l ls 1, \
+'runtime-data-by-group/weibull/All_data_diff.txt' u 1:2 every 3 t 'Classic Weibull' w l ls 3, \
+'runtime-data-by-group/gm_model/All_data_diff.txt' u 1:2 every 4 t 'Gompertz-Makeham' w l ls 4
 
 unset multiplot
 set origin 0,0
@@ -95,11 +95,9 @@ set border linewidth 1
 
 set autoscale x
 set autoscale y
-set output 'gnuplot-figures/scispot-fig-vm-types.eps'
+set output 'gnuplot-figures/sigmetrics-fig-vm-types.eps'
 set key vertical width 2 maxrows 10
-#set key top left
-set key at 9,0.8
-#set key samplen 2
+set key at 8.7,0.73
 set key spacing 3
 set key font 'Helvetica, 22'
 set xtics font "Helvetica, 22"
@@ -111,29 +109,25 @@ set ylabel 'CDF' font 'Helvetica,24'
 set xlabel offset 0,0
 set ylabel offset 0,0
 set xrange [0:25]
-set yrange [0:1.1]
+set yrange [0:1.02]
 plot \
 'runtime-data-by-group/n1-highcpu-2.txt' u 1:2 every 1 t 'n1-highcpu-2' with p ls 10, \
-'runtime-data-by-group/blended_exp_model/n1-highcpu-2.txt' t 'Our Model' w l ls 15, \
+'runtime-data-by-group/blended_exp_model/n1-highcpu-2.txt' u 1:2 every 3 notitle w l ls 15, \
 'runtime-data-by-group/n1-highcpu-4.txt' u 1:2 every 1 t 'n1-highcpu-4' with p ls 11, \
-'runtime-data-by-group/blended_exp_model/n1-highcpu-4.txt' t 'Our Model' w l ls 16, \
+'runtime-data-by-group/blended_exp_model/n1-highcpu-4.txt' u 1:2 every 4 notitle w l ls 16, \
 'runtime-data-by-group/n1-highcpu-8.txt' u 1:2 every 1 t 'n1-highcpu-8' with p ls 13, \
-'runtime-data-by-group/blended_exp_model/n1-highcpu-8.txt' t 'Our Model' w l ls 18, \
+'runtime-data-by-group/blended_exp_model/n1-highcpu-8.txt' u 1:2 every 5 notitle w l ls 18, \
 'runtime-data-by-group/n1-highcpu-16.txt' u 1:2 every 1 t 'n1-highcpu-16' with p ls 12, \
-'runtime-data-by-group/blended_exp_model/n1-highcpu-16.txt' t 'Our Model' w l ls 17, \
+'runtime-data-by-group/blended_exp_model/n1-highcpu-16.txt' u 1:2 every 5 notitle w l ls 17, \
 'runtime-data-by-group/n1-highcpu-32.txt' u 1:2 every 1 t 'n1-highcpu-32' with p ls 14, \
-'runtime-data-by-group/blended_exp_model/n1-highcpu-32.txt' t 'Our Model' w l ls 19
-
-unset key
+'runtime-data-by-group/blended_exp_model/n1-highcpu-32.txt' u 1:2 every 3 notitle w l ls 19
 
 set autoscale x
 set autoscale y
-set output 'gnuplot-figures/time-breakdown.eps'
+set output 'gnuplot-figures/sigmetrics-time-breakdown.eps'
 set key vertical width 2 maxrows 10
-set key top left
-#set key at 9,0.8
-#set key samplen 2
-set key spacing 1
+set key at 6, 0.7
+set key spacing 4
 set key font 'Helvetica, 22'
 set xtics font "Helvetica, 22"
 set ytics font "Helvetica, 22"
@@ -144,23 +138,22 @@ set ylabel 'CDF' font 'Helvetica,24'
 set xlabel offset 0,0
 set ylabel offset 0,0
 set xrange [0:25]
-set yrange [0:1.1]
+set yrange [0:1.02]
 plot \
 'runtime-data-by-group/blended_exp_model/idle.txt' u 1:2 every 1 t 'Idle' with l ls 15, \
-'runtime-data-by-group/blended_exp_model/non-idle.txt' u 1:2 every 1 t 'Non-Idle' with l ls 15, \
+'runtime-data-by-group/blended_exp_model/non-idle.txt' u 1:2 every 1 t 'Non-Idle' with l ls 21, \
 'runtime-data-by-group/blended_exp_model/Night.txt' u 1:2 every 1 t 'Night' with l ls 19, \
-'runtime-data-by-group/blended_exp_model/Day.txt' u 1:2 every 1 t 'Day' with l ls 19
+'runtime-data-by-group/blended_exp_model/Day.txt' u 1:2 every 1 t 'Day' with l ls 20
 
 unset key
 
 set autoscale x
 set autoscale y
-set output 'gnuplot-figures/region-breakdown.eps'
+set output 'gnuplot-figures/sigmetrics-region-breakdown.eps'
 set key vertical width 2 maxrows 10
-set key top left
-set key at 1,0.95
-set key samplen 2
-set key spacing 3
+set key at 8,0.7
+set key samplen 3
+set key spacing 4
 set key font 'Helvetica, 22'
 set xtics font "Helvetica, 22"
 set ytics font "Helvetica, 22"
@@ -174,33 +167,9 @@ set ylabel offset 0,0
 plot \
 'runtime-data-by-group/blended_exp_model/us-central1-c.txt' u 1:2 every 3 with l ls 15 title 'us-central1-c', \
 'runtime-data-by-group/blended_exp_model/us-central1-f.txt' u 1:2 every 3 with l ls 16 title 'us-central1-f', \
-'runtime-data-by-group/blended_exp_model/us-west1-a.txt' u 1:2 every 3 with l ls 17 title 'us-west1-a', \
-'runtime-data-by-group/blended_exp_model/us-east1-b.txt' u 1:2 every 3 with l ls 18 title 'us-east1-b'
+'runtime-data-by-group/blended_exp_model/us-west1-a.txt' u 1:2 every 1 with l ls 17 title 'us-west1-a', \
+'runtime-data-by-group/blended_exp_model/us-east1-b.txt' u 1:2 every 5 with l ls 18 title 'us-east1-b'
 	
 unset key
-
-set autoscale x
-set autoscale y
-set output 'gnuplot-figures/region-breakdown.eps'
-set key vertical width 2 maxrows 10
-set key top left
-set key at 1,0.95
-set key samplen 2
-set key spacing 3
-set key font 'Helvetica, 22'
-set xtics font "Helvetica, 22"
-set ytics font "Helvetica, 22"
-set xtics offset 0,0
-set ytics offset 0,0
-set xlabel 'Time to Preemption (Hours)' font 'Helvetica,24'
-set ylabel 'CDF' font 'Helvetica,24'
-set xlabel offset 0,0
-set ylabel offset 0,0
-#set xrange [0:25]
-plot \
-'runtime-data-by-group/blended_exp_model/us-central1-c.txt' u 1:2 every 3 with l ls 15 title 'us-central1-c', \
-'runtime-data-by-group/blended_exp_model/us-central1-f.txt' u 1:2 every 3 with l ls 16 title 'us-central1-f', \
-'runtime-data-by-group/blended_exp_model/us-west1-a.txt' u 1:2 every 3 with l ls 17 title 'us-west1-a', \
-'runtime-data-by-group/blended_exp_model/us-east1-b.txt' u 1:2 every 3 with l ls 18 title 'us-east1-b'
 	
 exit 
