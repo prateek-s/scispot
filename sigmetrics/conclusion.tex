@@ -2,12 +2,11 @@
 
 \section{Conclusion}
 \label{sec:conclusion}
-\vspace*{-0.2cm}
-Given the rise of transient cloud computing and its use in web services and distributed data processing, it is not the question of if, but when, transient cloud computing becomes a credible and powerful alternative to HPC clusters for scientific computing applications. 
-In this paper, we developed principled approaches for deploying and orchestrating scientific computing applications on the cloud, and presented \sysname, a framework for low-cost scientific computing on  transient cloud servers. 
-\sysname develops the first empirical and analytical preemption model of Google Preemptible VMs, and uses the model for mitigating preemptions for ``bags of jobs''. 
-\sysname's cost-minimizing server selection and job scheduling policies can reduce costs by up to $5\times$ compared to conventional cloud deployments.
-When compared to HPC clusters, \sysname can reduce the total job turnaround times by up to $10\times$. 
+The effective use of transient computing relies on understanding the preemption characteristics.
+While past work on transient computing has developed techniques and systems for Amazon's EC2 spot instances, ours is the \emph{first} work to understand the behavior of Google's Preemptible VMs, that have a unique characteristic of having a maximum 24 hour lifetime.
+Our large-scale empirical study shows that the constraint imposes a bathtub failure distribution, and we develop a new phenomenological probability model for capturing its three distinct temporal phases. 
+Our insights and model-based policies can reduce the preemption overheads by more than $5\times$ compared to existing preemption models, and our batch computing service can reduce computing costs by over $5\times$. 
+
 
 
 %%% Local Variables:

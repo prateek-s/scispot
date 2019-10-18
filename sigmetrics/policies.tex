@@ -1,9 +1,14 @@
 
 \section{Application Policies For Constrained Preemptions}
 
-For applications running on transient servers, the effects of preemptions can be ameliorated through different policies for fault tolerance and resource management.
-Prior work in transient computing has established the benefits of such policies for a broad range of applications. 
-We now show how our empirical insights and analytical model can be used to develop policies for optimized execution of batch applications on Google Preemptible VMs. 
+Having analyzed the statistical behavior of constrained preemptions and presented our probability model, we now examine how the bathtub shape of the failure rate impacts applications.
+Based on insights drawn from our statistical analysis and the model, we develop various policies for ameliorating the effects of preemptions. 
+Prior work in transient computing has established the benefits of such policies for a broad range of applications.
+However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required, which we present below. 
+
+% For applications running on transient servers, the effects of preemptions can be ameliorated through different policies for fault tolerance and resource management.
+% Prior work in transient computing has established the benefits of such policies for a broad range of applications. 
+% We now show how our empirical insights and analytical model can be used to develop policies for optimized execution of batch applications on Google Preemptible VMs. 
 
 %We propose to develop optimized preemption mitigating policies that make fundamental use of insights from our models and highlight their practical significance. 
 
@@ -13,6 +18,64 @@ We now show how our empirical insights and analytical model can be used to devel
 
 %\noindent \textbf{High-level System Architecture:} 
 
+
+\subsection{Impact On Running Time}
+
+When a preemption occurs during the job's execution, it results in wasted work, assuming there is no checkpointing.
+This increases the job's total expected running time, since it must restart after a preemption.
+
+The expected wasted work depends on two factors:
+\begin{enumerate}
+\item The probability of the job being preempted during its execution. 
+\item \emph{When} the preemption occurs during the execution. 
+\end{enumerate}
+
+We can analyze the wasted work due a preemption using the failure probability model.
+We first compute the expected amount of wasted work \emph{assuming} the job faces a single preemption, which we denote by $E[W_1(J)]$, where $J$ is the original job running time (without preemptions).
+%Question: J or T?
+\begin{equation}
+E[W_1(J)] = \int_0^{J} t~P(t | t \leq J)~dt , 
+\end{equation}
+where $P(t)$ is the probability of a preemption at time $t$, and is given by $P(t) = f(t)$ , where $f(t)$ is the probability distribution function from Equation~\ref{eq:failrate}.
+We can therefore write the above equation as:
+\begin{align}
+  E[W_1(J)] &= \int_0^{J} t~P(t | t \leq J)~dt \nonumber 
+  = \int_0^{J} t~\frac{f(t)}{P(t \leq J)}~dt \\ 
+  &= \int_0^{J} t~\frac{f(t)}{F(J)}~dt 
+    = \frac{1}{F(J)}  \int_0^{J} t~f(t)~dt
+    \label{eq:wasted}
+\end{align}
+
+We note that the integral is the same as the ``expected lifetime'', given by Equation~\ref{eq:expected-lifetime}.
+
+The above expression for the expected waste given a single preemption can be used by users and application frameworks to estimate the increase in running time due to preemptions. %and other scenarios.
+The total running time (also known as makespan) of a job \emph{with} preemptions is given by:
+
+\begin{equation}
+  \label{eq:tot-run-time}
+  E[T] = P(\text{no failure})~T + P(\text{1 failure})~(T + E[W_1(T)])
+\end{equation}
+
+Where $P(\text{no failure}) = P(t > T) =  1- F(T)$ and $P(\text{1 failure}) = P(t \leq T) = F(T)$.
+The above equation for $E[T]$ thus becomes: 
+
+\begin{align}
+  \label{eq:tot-run-time-2}
+  E[T] &= (1-F(T))~T + F(T)~(T + E[W_1(T)]) \\ \nonumber
+  &= (1-F(T))~T + F(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
+       &= T + \int_0^{T} t~f(t)~dt         
+\end{align}
+
+
+This expression for the expected running time assumes that the job will be preempted at most once and ignores the higher order terms.
+Most transient computing systems seek to avoid repeated preemptions, since they want to avoid pathological behavior of preemptions. 
+This assump, which is a used by transient computing systems to minimize the effect of repeated preemptions. 
+This can be due to multiple reasons: if a job is preempted twice, it may be prudent to move it to an non-preemptible on-demand VM, or delay its execution to a later time when the preemption rate decreases.
+
+We note here that both the increase in wasted time ($E[W_1(T)]/T$) and expected running time $(E[T]/T)$ depend on the length of the job for non-memoryless constrained preemptions.
+In the case of memoryless exponential distributions, this has the expected waste is $T/2$, but this assumption is not valid for constrained preemptions, and thus job lengths must be considered when evaluating the suitability of preemptible VMs for jobs. 
+
+We evaluate the expected wasted time and running time for Google Preemptible VMs later in Section~\ref{sec:eval}. 
 
 \subsection{Job Scheduling}
 
@@ -67,7 +130,7 @@ The makespan is affected by whether or not there is a failure \emph{before} we t
 
 \begin{equation}
   \label{eq:m1}
-E[M(W, t, i)] = P_{\text{succ}}(t, i+\delta) \cdot E[M_{\text{succ}}] + P_{\text{fail}}(i+\delta, t) \cdot E[M_{\text{fail}}]
+E[M(W, t, i)] = P_{\text{succ}}(t, i+\delta) \cdot E[M_{\text{succ}}] + P_{\text{fail}}(t, i+\delta) \cdot E[M_{\text{fail}}]
 \end{equation}
 
 Here $P_{\text{succ}}(t, i+\delta)$ denotes the probability of the job successfully executing without failures until the checkpoint is taken, i.e., from $t$ to $t+i+\delta$. $P_{\text{fail}}(t, i+\delta) = F(t+i+\delta)-F(i+\delta)$ is computed using the CDF, 
@@ -95,11 +158,11 @@ The expected makespan in the failure case is then given by:
 
 
 In the case of memoryless distribution, $E[L(t, i+\delta)]$ is approximated as $\frac{i+\delta}{2}$.
-In our case, we use the failure CDF instead:
+In our case, the lost work is the wasted work that we defined earlier in Equation~\ref{eq:wasted}, but we need to consider the different start and end times, and we get:
 
 \begin{equation}
   \label{eq:exploss}
-E[L(t, i+\delta)] = \int_{t}^{t+i+\delta}{xf(x)~dx}   , 
+E[L(t, i+\delta)] = \int_{t}^{t+i+\delta}{x~f(x)~dx}   , 
 \end{equation}
 where $f(x)$ is our probability density function represented by Equation~\ref{eq:failrate}.
 
