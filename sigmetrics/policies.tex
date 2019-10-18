@@ -35,13 +35,14 @@ We first compute the expected amount of wasted work \emph{assuming} the job face
 \begin{equation}
 E[W_1(T)] = \int_0^{T} t~P(t | t \leq T)~dt , 
 \end{equation}
-where $P(t)$ is the probability of a preemption at time $t$, and is given by $P(t) = f(t)$ , where $f(t)$ is the probability distribution function given by Equation~\ref{eq:failrate}.
+where $P(t|t\leq T) = P(t) / P(t<T)$. Here, $P(t\leq T)$ is the probability that there is a preemption within time $T$ and is given by $P(t<T) = \mathscr{F}(T)$ where $\mathscr{F}(T)$ is our CDF. 
+$P(t)$ is the probability of a preemption at time $t$, and is given by $P(t) = f(t)$ , where $f(t)$ is the probability distribution function given by Equation~\ref{eq:failrate}.
 We can therefore write the above equation as:
 \begin{align}
   E[W_1(T)] &= \int_0^{T} t~P(t | t \leq T)~dt \nonumber 
   = \int_0^{T} t~\frac{f(t)}{P(t \leq T)}~dt \\ 
-  &= \int_0^{T} t~\frac{f(t)}{F(T)}~dt 
-    = \frac{1}{F(T)}  \int_0^{T} t~f(t)~dt
+  &= \int_0^{T} t~\frac{f(t)}{\mathscr{F}(T)}~dt 
+    = \frac{1}{\mathscr{F}(T)}  \int_0^{T} t~f(t)~dt
     \label{eq:wasted}
 \end{align}
 
@@ -70,7 +71,7 @@ Since the probability of multiple preemptions is low, most transient computing s
 % This can be due to multiple reasons: if a job is preempted twice, it may be prudent to move it to an non-preemptible on-demand VM, or delay its execution to a later time when the preemption rate decreases.
 
 We note here that both the increase in wasted time ($E[W_1(T)]/T$) and expected running time $(E[T]/T)$ depend on the length of the job for non-memoryless constrained preemptions. 
-In the case of memoryless exponential distributions, this has the expected waste is $T/2$, but this assumption is not valid for constrained preemptions, and thus job lengths must be considered when evaluating the suitability of preemptible VMs for jobs. 
+In the case of memoryless exponential distributions, the expected waste is $T/2$, but this assumption is not valid for constrained preemptions, and thus job lengths must be considered when evaluating the suitability of preemptible VMs for jobs. 
 
 
 Users and transient computing systems can thus use the expected running time analysis for scheduling and monitoring purposes.
@@ -125,7 +126,7 @@ Intuitively, the checkpointing rate should depend on the failure rate, and our a
 
 
 Let the uninterrupted running time of the job be $T$. Or in other words, $T$ amount of work needs to be performed. We assume that each job-step takes one unit of time, for ease of exposition. 
-Let the checkpoint cost be $\delta$---i.e, it takes each checkpoint increases the running time by $\delta$. 
+Let the checkpoint cost be $\delta$---i.e, each checkpoint increases the running time by $\delta$. 
 We seek to minimize the total expected running time or the \emph{makespan}, which is the sum of T, the expected periodic checkpointing cost, and the expected recomputation.
 
 The makespan $M$ can be recursively defined and computed.
@@ -133,21 +134,21 @@ Let $M(W, t)$ denote the makespan where $W$ is remaining length of job to be exe
 We now need to determine when to take the \emph{next} checkpoint, which we take after $i$ steps. Let $E[M^*]$ denote the minimum expected makespan.
 \begin{equation}
   \label{eq:m0}
-  E[M^*(W, t)] = \min_{0<i\leq W}{E[M(W, t, i)]}
+  E[M^*(W, t)] = \min_{0<i\leq W}{E[M(W, t, i)]}.
 \end{equation}
 The makespan is affected by whether or not there is a failure \emph{before} we take the checkpoint: 
 \begin{equation}
   \label{eq:m1}
-E[M(W, t, i)] = P_{\text{succ}}(t, i+\delta) \cdot E[M_{\text{succ}}] + P_{\text{fail}}(t, i+\delta) \cdot E[M_{\text{fail}}]
+E[M(W, t, i)] = P_{\text{succ}}(t, i+\delta) \cdot E[M_{\text{succ}}] + P_{\text{fail}}(t, i+\delta) \cdot E[M_{\text{fail}}].
 \end{equation}
 Here $P_{\text{succ}}(t, i+\delta)$ denotes the probability of the job successfully executing without failures until the checkpoint is taken, i.e., from $t$ to $t+i+\delta$. $P_{\text{fail}}(t, i+\delta) = F(t+i+\delta)-F(i+\delta)$ is computed using the CDF, 
 and $P_{\text{succ}} = 1 - P_{\text{fail}}$ .
 
 
-$E[M_{\text{succ}}]$ is the expected makespan when there are no job failures when the job is executing from step $t$ to $t+i+\delta$, and is given by a recursive definition:
+$E[M_{\text{succ}}]$ is the expected makespan if there are no job failures when the job is executing from step $t$ to $t+i+\delta$, and is given by a recursive definition:
 \begin{equation}
   \label{eq:msuc}
-E[M_{\text{succ}}(W, t, i)] = t+i+\delta + E[M^*(W-i, t+i+\delta)]  
+E[M_{\text{succ}}(W, t, i)] = t+i+\delta + E[M^*(W-i, t+i+\delta)].  
 \end{equation}
 \noindent Note that the makespan includes the amount of work already done $t+i$, the checkpointing overhead $\delta$, and the expected minimum makespan of the rest of the job.
 Similarly, when the job fails before step $i$, then that portion is ``lost work'', and can be denoted by $E[L(t, i+\delta)]$ which denotes the expected lost work when there is a failure during the time interval $t$ to $t+i+\delta$.
@@ -155,7 +156,7 @@ A failure before the checkpoint means that we have made no progress, and $W$ ste
 The expected makespan in the failure case is then given by:
 \begin{equation}
   \label{eq:mfail}
- E[M_{\text{fail}}(W, t, i)] = E[L(t, i+\delta)] + E[M^*(W, t+i+\delta)]
+ E[M_{\text{fail}}(W, t, i)] = E[L(t, i+\delta)] + E[M^*(W, t+i+\delta)].
 \end{equation}
 
 
