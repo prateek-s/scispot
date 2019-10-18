@@ -339,17 +339,18 @@ We first make some preliminary remarks and introduce concepts necessary to compl
 Mutual exclusion of preemptions implies that there is a finite non-zero waiting time between preemptions. Let this waiting time be $w$.
 Thus $N$ preemptions occupy a ``temporal volume'' of $Nw$.
 The amount of free volume or excluded volume available in the constrained system is $L - Nw$ (note that the term volume is used to mean one-dimensional volume).
-The idea of excluded volume is central in physics and materials engineering where it underpins the origin of entropic forces in material systems, and is characterized by the partition function in statistical mechanics~\cite{kreuth}. 
+The idea of excluded volume is central in physics and materials engineering where it underpins the origin of entropic forces in material systems. 
 
 We begin by counting the total number of configurations available to place $N$ preemptions in the constrained temporal ``volume'' $L$. 
 The number of configurations one preemption can generate is proportional to the excluded volume available, i.e., $L-Nw$.
 For $N$ preemptions, the number of configurations grows exponentially and is proportional to the volume of the $N$-dimensional hypercube: $Z = (L-Nw)^N$. 
+This computation of the number of valid system configurations is in fact the partition function of the system in statistical mechanics~\cite{kreuth}. 
 
 Given the condition of mutually exclusive preemptions, we note that if we assume that there is a preemption at $t=L-w$, then $P(t> L-w) = 0$.
 For this case, the available, valid, non-overlapping configurations are proportional to the temporal volume accessible in the $N-1$ dimensional hypercube to $N-1$ preemptions: $Z_{1} = (L-w-(N-1)w)^{N-1} = (L-Nw)^{N-1}$. 
 
-The probability of finding 1 preemption near the deadline at $t=L-w$ is given as the ratio of the two computed volumes.
-That is, $P(L-w) = \frac{Z_1}{Z} = \frac{1}{(L - Nw)} > \frac{1}{L}$ , since $N \geq 1$ and $w>0$.
+The probability of finding 1 preemption near the deadline at $t=L-\epsilon$ when $\epsilon \in [w/2, w)$ is given as the ratio of the two computed volumes.
+That is, $P(L-\epsilon) = \frac{Z_1}{Z} = \frac{1}{(L - N\epsilon)} > \frac{1}{L}$ , since $N \geq 1$ and $\epsilon>0$. 
 
 % Given the uniform distribution of the placement of $N$ preemptions, the probability of finding a preemption near the middle of the interval at $t = L/2$ approaches $1/L$ as $L \to \infty$, that is $\lim_{t\to \infty}p(L/2) = 1/L$. We note that $L$ is finite (given the notion of constraint). \vikram{this can be made more precise from here on, but I am cheating now}
 
