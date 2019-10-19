@@ -2,12 +2,12 @@ reset
 set fontpath \
 "/usr/share/texmf/fonts/type1/public/cm-super/" \
 "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/"
-set terminal postscript eps enhanced color lw 1.5 dl 3.0 \
+set terminal postscript eps enhanced color lw 1.0 dl 3.0 \
 font 'Helvetica' \
-fontfile 'cmmi10.pfb' \
-fontfile 'cmr10.pfb' \
-fontfile 'cmmib10.pfb' \
-fontfile 'cmti10.pfb'
+#fontfile 'cmmi10.pfb' \
+#fontfile 'cmr10.pfb' \
+#fontfile 'cmmib10.pfb' \
+#fontfile 'cmti10.pfb'
   
 set border linewidth 1
 
@@ -30,8 +30,8 @@ set style line 21 linecolor rgb 'red' linetype 3 linewidth 2 pointtype 6  points
 set style line 1 linecolor rgb 'brown' linetype 2 linewidth 2 pointtype 6 pointsize 1
 set style line 2 linecolor rgb 'green' linetype 3 linewidth 1 pointtype 6  pointsize 1
 set style line 3 linecolor rgb 'blue' linetype 4 linewidth 2 pointtype 6 pointsize 1
-set style line 4 linecolor rgb 'olive' linetype 5 linewidth 1 pointtype 6 pointsize 1
-set style line 5 linecolor rgb 'black' linetype 1 linewidth 2 pointtype 6  pointsize 1
+set style line 4 linecolor rgb 'olive' linetype 5  linewidth 1 pointtype 6 pointsize 1
+set style line 5 linecolor rgb 'black' linetype 3 linewidth 2 pointtype 6  pointsize 1
 set style line 6 linecolor rgb 'magenta' linetype 1 linewidth 1 pointtype 6  pointsize 1
 set style line 7 linecolor rgb 'brown' linetype 1 linewidth 1 pointtype 6  pointsize 1
 set style line 8 linecolor rgb 'purple' linetype 1 linewidth 1 pointtype 6  pointsize 1
@@ -47,10 +47,10 @@ set origin 0,0
 set size 1,1
 set key vertical width 2 maxrows 10
 set key bottom right
-set key spacing 3
-set key font 'Helvetica, 22'
-set xtics font "Helvetica, 22"
-set ytics font "Helvetica, 22"
+set key spacing 1
+set key font 'Helvetica, 24'
+set xtics font "Helvetica, 24"
+set ytics font "Helvetica, 24"
 set xtics offset 0,0
 set ytics offset 0,0
 set xlabel 'Time to Preemption (Hours)' font 'Helvetica,24'
@@ -61,10 +61,10 @@ set xrange [0:25]
 set yrange [0:1.02]
 plot \
 'runtime-data-by-group/All_data.txt' u 1:2 every 1 t 'Empirical Data' with p ls 10, \
-'runtime-data-by-group/blended_exp_model/All_data.txt' u 1:2 every 3 t 'Our Model' w l ls 5, \
+'runtime-data-by-group/blended_exp_model/All_data.txt' u 1:2 every 3 t 'Our Model' w l ls 5 lw 3, \
 'runtime-data-by-group/plain_exp_model/All_data.txt' u 1:2 every 3 t 'Classical Exponential' w l ls 1, \
 'runtime-data-by-group/weibull/All_data.txt' u 1:2 every 3 t 'Classic Weibull' w l ls 3, \
-'runtime-data-by-group/gm_model/All_data.txt' u 1:2 every 4 t 'Gompertz-Makeham' w l ls 4
+'runtime-data-by-group/gm_model/All_data.txt' u 1:2 every 2 t 'Gompertz-Makeham' w l ls 4 lw 3 dashtype 3
 set origin 0.105,0.6
 set size 0.42, 0.38
 set border linewidth 0.5
@@ -86,7 +86,7 @@ plot \
 'runtime-data-by-group/blended_exp_model/All_data_diff.txt' u 1:2 every 3 t 'Our Model' w l ls 5, \
 'runtime-data-by-group/plain_exp_model/All_data_diff.txt' u 1:2 every 3 t 'Classical Exponential' w l ls 1, \
 'runtime-data-by-group/weibull/All_data_diff.txt' u 1:2 every 3 t 'Classic Weibull' w l ls 3, \
-'runtime-data-by-group/gm_model/All_data_diff.txt' u 1:2 every 4 t 'Gompertz-Makeham' w l ls 4
+'runtime-data-by-group/gm_model/All_data_diff.txt' u 1:2 every 4 t 'Gompertz-Makeham' w l ls 4 
 
 unset multiplot
 set origin 0,0
@@ -97,11 +97,11 @@ set autoscale x
 set autoscale y
 set output 'gnuplot-figures/sigmetrics-fig-vm-types.eps'
 set key vertical width 2 maxrows 10
-set key at 8.7,0.73
-set key spacing 3
-set key font 'Helvetica, 22'
-set xtics font "Helvetica, 22"
-set ytics font "Helvetica, 22"
+set key at 10.2,0.73
+set key spacing 1
+set key font 'Helvetica, 24'
+set xtics font "Helvetica, 24"
+set ytics font "Helvetica, 24"
 set xtics offset 0,0
 set ytics offset 0,0
 set xlabel 'Time to Preemption (Hours)' font 'Helvetica,24'
@@ -126,11 +126,11 @@ set autoscale x
 set autoscale y
 set output 'gnuplot-figures/sigmetrics-time-breakdown.eps'
 set key vertical width 2 maxrows 10
-set key at 6, 0.7
-set key spacing 4
-set key font 'Helvetica, 22'
-set xtics font "Helvetica, 22"
-set ytics font "Helvetica, 22"
+set key at 7, 0.7
+set key spacing 1
+set key font 'Helvetica, 24'
+set xtics font "Helvetica, 24"
+set ytics font "Helvetica, 24"
 set xtics offset 0,0
 set ytics offset 0,0
 set xlabel 'Time to Preemption (Hours)' font 'Helvetica,24'
@@ -140,9 +140,9 @@ set ylabel offset 0,0
 set xrange [0:25]
 set yrange [0:1.02]
 plot \
-'runtime-data-by-group/blended_exp_model/idle.txt' u 1:2 every 1 t 'Idle' with l ls 15, \
-'runtime-data-by-group/blended_exp_model/non-idle.txt' u 1:2 every 1 t 'Non-Idle' with l ls 21, \
-'runtime-data-by-group/blended_exp_model/Night.txt' u 1:2 every 1 t 'Night' with l ls 19, \
+'runtime-data-by-group/blended_exp_model/idle.txt' u 1:2 every 1 t 'Idle' with l ls 15 lw 3, \
+'runtime-data-by-group/blended_exp_model/non-idle.txt' u 1:2 every 1 t 'Non-Idle' with l ls 21 lw 3 dashtype 2, \
+'runtime-data-by-group/blended_exp_model/Night.txt' u 1:2 every 1 t 'Night' with l ls 19 dashtype 2, \
 'runtime-data-by-group/blended_exp_model/Day.txt' u 1:2 every 1 t 'Day' with l ls 20
 
 unset key
@@ -151,12 +151,12 @@ set autoscale x
 set autoscale y
 set output 'gnuplot-figures/sigmetrics-region-breakdown.eps'
 set key vertical width 2 maxrows 10
-set key at 8,0.7
+set key at 9,0.8
 set key samplen 3
-set key spacing 4
-set key font 'Helvetica, 22'
-set xtics font "Helvetica, 22"
-set ytics font "Helvetica, 22"
+set key spacing 1
+set key font 'Helvetica, 24'
+set xtics font "Helvetica, 24"
+set ytics font "Helvetica, 24"
 set xtics offset 0,0
 set ytics offset 0,0
 set xlabel 'Time to Preemption (Hours)' font 'Helvetica,24'
@@ -165,10 +165,10 @@ set xlabel offset 0,0
 set ylabel offset 0,0
 #set xrange [0:25]
 plot \
-'runtime-data-by-group/blended_exp_model/us-central1-c.txt' u 1:2 every 3 with l ls 15 title 'us-central1-c', \
-'runtime-data-by-group/blended_exp_model/us-central1-f.txt' u 1:2 every 3 with l ls 16 title 'us-central1-f', \
-'runtime-data-by-group/blended_exp_model/us-west1-a.txt' u 1:2 every 1 with l ls 17 title 'us-west1-a', \
-'runtime-data-by-group/blended_exp_model/us-east1-b.txt' u 1:2 every 5 with l ls 18 title 'us-east1-b'
+'runtime-data-by-group/blended_exp_model/us-central1-c.txt' u 1:2 every 3 with l ls 15 lw 3 dashtype 2 title 'us-central1-c', \
+'runtime-data-by-group/blended_exp_model/us-central1-f.txt' u 1:2 every 3 with l ls 16 lw 3 title 'us-central1-f', \
+'runtime-data-by-group/blended_exp_model/us-west1-a.txt' u 1:2 every 1 with l ls 14 lw 3 title 'us-west1-a', \
+'runtime-data-by-group/blended_exp_model/us-east1-b.txt' u 1:2 every 5 with l ls 18 lw 3 dashtype 5  title 'us-east1-b'
 	
 unset key
 	

@@ -40,7 +40,7 @@ In this section, we present empirical analysis of preemptions of Google Preempti
 % The preemptions of transient servers need not be related to their price.
 
 \begin{figure}
-  \includegraphics[width=0.47\textwidth]{../graphs/scispot-fig-cdf-prob-inset-time.eps}
+  \includegraphics[width=0.47\textwidth]{../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf} 
   \caption{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.}
   \label{fig:gcp1}
 \end{figure}
@@ -61,13 +61,13 @@ Note that the cloud operator (Google) caps the \emph{maximum} lifetime of the VM
   %\centering
   \subfloat[Preemption characteristics of different VM types. Larger VMs are more likely to be preempted.
   \label{fig:cdf-comparison}]
-  {  \includegraphics[width=0.35\textwidth]{../graphs/scispot-fig-vm-types.eps} }
+  {  \includegraphics[width=0.3\textwidth]{../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf} }
   \hfill
 \subfloat[Variations due to time of day and workload. \label{fig:time-breakdown}]
-{  \includegraphics[width=0.3\textwidth]{../gnuplot_analysis/time-breakdown.pdf} }
+{  \includegraphics[width=0.3\textwidth]{../data/gnuplot-figures/sigmetrics-time-breakdown.pdf} }
 \hfill
 \subfloat[By region. \label{fig:time-breakdown}]
-{  \includegraphics[width=0.3\textwidth]{../gnuplot_analysis/time-breakdown.pdf} }
+{  \includegraphics[width=0.3\textwidth]{../data/gnuplot-figures/sigmetrics-region-breakdown.pdf} }
 
 \label{fig:breakdown-all}
 \caption{Analysis of preemption characteristics by VM-type, region, time-of-day, and workload type.}
@@ -133,8 +133,10 @@ Presumably, this could be a result of the lower resource utilization of idle VMs
 
 \begin{figure}
   \includegraphics[width=0.4\textwidth]{../graphs/QQ.pdf}
+    \vspace*{-5pt}
   \caption{QQ plot}
   \label{fig:QQ}
+  \vspace*{-5pt}
 \end{figure}
 
 %being more amenable to resource overcommitment, and therefore don
