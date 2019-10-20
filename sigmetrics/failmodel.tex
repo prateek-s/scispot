@@ -143,7 +143,7 @@ Presumably, this could be a result of the lower resource utilization of idle VMs
 \begin{figure}
   \includegraphics[width=0.4\textwidth]{../graphs/QQ.pdf}
     \vspace*{-5pt}
-  \caption{QQ plot}
+  \caption{QQ plot of different preemption models. Existing models are unable to capture all the preemption phases.}
   \label{fig:QQ}
   \vspace*{-5pt}
 \end{figure}
@@ -165,16 +165,16 @@ We first discuss why existing approaches to preemption modeling are not adequate
 
 \subsubsection{Inadequacy of existing failure distributions}
 
-Spot instance preemptions have been modeled using exponential distribution~\cite{sigcomm-bidcloud, hotcloud-notbid, flint}, which is the default in most reliability theory applications. 
+Spot instance preemptions have been modeled using exponential distribution~\cite{bid-cloud, hotcloud-not-bid, flint}, which is the default in most reliability theory applications. 
 However, the strict 24 hour constraint and the distinct preemption phases are not compatible with the memoryless properties of the exponential distribution. 
 %
 To describe failures (preemptions) that are not memoryless (i.e., increasing or decreasing failure rate over time), the classic Weibull distribution with CDF $F(t)=1-e^{-(\lambda t)^k}$ is often employed. However, the Weibull distribution is also unable to fit the empirical data (Figure~\ref{fig:gcp1}) and especially unable to model the sharp increase in preemptions near the 24 hour deadline. 
 
 For constrained preemptions, the increase in failure rate as modeled by the Weibull distribution is not high enough.
-Other distributions, such as Gompertz-Makeham, have also been used for modeling bathtub behavior, especially  for actuarial use-cases.
+Other distributions, such as Gompertz-Makeham, have also been used for modeling bathtub behavior, especially  for actuarial use-cases~\cite{missov2013gompertz}. 
 The key idea is to incorporate an exponential aging process, which is used to model human mortality.
 The CDF of the Gompertz-Makeham distribution is given by $F(t) = 1 - \exp\left(-\lambda t - \dfrac{\alpha}{\beta}(e^{\beta t} - 1) \right)$
-  and is fitted to the data in Figure XXX, and is also unable to provide a good model for the observed preemption data. 
+  and is fitted to the data in Figure~\ref{fig:gcp1}, and is also unable to provide a good model for the observed preemption data. 
 
 %Specifically, it is unable to model the bathtub preemption rate and the different preemption phases, and 
 
@@ -188,17 +188,17 @@ From an application and transiency policy perspective, the preemption model must
 For example, the preemption model should be able to warn applications about impending deadline, which existing failure distributions cannot account for. 
 % which imposes a dynamics that is more akin to a constrained dynamics problem as opposed to dynamics characterized with a gradually rising failure rate.
 Thus, not only is it important to minimize the total distribution fitting error, it is also important to capture the changes in phase.
-However, as we can see from the \textbf{QQ plots}, existing distributions are unable to capture the effects of the deadline and the phases of the preemptions, and a new modeling approach is needed, which we develop next.  
+However, as we can see from Figure~\ref{fig:QQ}, existing distributions are unable to capture the effects of the deadline and the phases of the preemptions, and a new modeling approach is needed, which we develop next.  
 
 \subsubsection{Our  model}
-
+\label{subsec:preemption-model}
 
 
 %This is especially important from a policy design perspective, as the ``phase changes'' in preemption behavior can greatly affect the failure probability and performance of applications.
 %Our new model, informed by the cumulative distribution of lifetimes that has multiple distinct temporal phases, addresses this need.
 
 Our failure probability model seeks to address the drawbacks of existing reliability theory models for modeling constrained preemptions. 
-The presence of three distinct phases exhibiting non-differentiable transition points (sudden changes in CDF near the deadline, for example) suggests that for accurate results, models that treat the probability as a step function (CDF as a piecewise-continuous function) should be employed. However, this limits the range of model applicability and general interpretability of the underlying preemption behavior. Our goal is to provide a broadly applicable, \vikram{continuosly differentiable}, and informative model built on reasonable assumptions.  
+The presence of three distinct phases exhibiting non-differentiable transition points (sudden changes in CDF near the deadline, for example) suggests that for accurate results, models that treat the probability as a step function (CDF as a piecewise-continuous function) should be employed. However, this limits the range of model applicability and general interpretability of the underlying preemption behavior. Our goal is to provide a broadly applicable, continuosly differentiable, and informative model built on reasonable assumptions.  
 
 We begin by making a key assumption: the preemption behavior arises from the presence of \emph{two} distinct failure processes.
 %that give rise to a new probability distribution characterizing the preemptions and the observed CDF, and ensure the dependence of the rate of failure on the VM lifetime. 
@@ -224,9 +224,11 @@ Based on these observations, we propose the following general form for the CDF:
 \noindent where $t$ is the time to preemption, $1/\tau_1$ is the rate of preemptions in the initial phase, $1/\tau_2$ is the rate of preemptions in the final phase, $b$ denotes the time that characterizes ``activation'' of the final phase where preemptions occur at a very high rate, and $A$ is a scaling constant. 
 
 The temporal interval or deadline of 24 hours, noted with the parameter $L$, enters implicitly by demanding that $0 < t < L$. Combination of the 4 fit parameters ($\tau_1, \tau_2, b$, and $A$) are chosen to ensure that boundary conditions are reasonably met: $\mathscr{F}(0) \approx 0$ and $\mathscr{F}(L) \approx 1$. When not used as a fit parameter, $A$ is chosen as $A = 1/(1-e^{-\frac{L}{\tau_1}} + e^{\frac{L-b}{\tau_2}})$ to ensure $F(L) = 1$, yielding results similar to the 4 parameter fit. 
-In practice, typical fit values yield $b \approx 24$ hours, $\tau_1 = ??$, $\tau_2 \approx 1$ hour, and $A \approx 1/(1-e^{-\frac{L}{\tau_1}} + e^{\frac{L-b}{\tau_2}}$. \vikram{I suggest giving ranges here for all} 
+In practice, typical fit values yield $b \approx 24$ hours, $\tau_1 \in [0.5, 0.8] $, $\tau_2 \approx 1$ hour, and $A \approx 1/(1-e^{-\frac{L}{\tau_1}} + e^{\frac{L-b}{\tau_2}}) \approx 0.7 $.
 
-\vikram{check, and provide typical fit values for all these parameters as well as their range extremes. ideally, you want to fit with A set to the above expression to avoid any $\mathscr{F}(t)$ or $p(t)$ > 1 scenarios. turns out that having A is important in reliability analysis -- check next column}
+
+
+%\vikram{check, and provide typical fit values for all these parameters as well as their range extremes. ideally, you want to fit with A set to the above expression to avoid any $\mathscr{F}(t)$ or $p(t)$ > 1 scenarios. turns out that having A is important in reliability analysis -- check next column}
 
 
 %of  0 $\approx 0$ premptions.
@@ -250,8 +252,8 @@ $p(t)$ vs. $t$ yields a bathtub type failure rate function for the associated fi
 
 In the absence of any prior work on constrained preemption dynamics, our aim is to provide an interpretable model with a minimal number of parameters, that provides a sufficiently accurate characterization of observed preemptions data. 
 %As is evident from Figure~\ref{fig:gcp1}, our model shows deviations from the data near the halfway point within the 24 hour lifetime. 
-Further generalization of this model to include more failure processes would introduce more parameters and reduce the generalization power.
-Exploring other approaches of modeling bathtub-type failure rates (e.g., exponential Weibull distributions) \cite{mudholkar1993exponentiated,crevecoeur1993model} is part of our future work. 
+Further generalization of this model to include more failure processes would introduce more parameters and reduce the generalization power. 
+%Exploring other approaches of modeling bathtub-type failure rates (e.g., exponential Weibull distributions) \cite{mudholkar1993exponentiated,crevecoeur1993model} is part of our future work. 
 
 
 \subsubsection{Reliability Analysis}
@@ -271,7 +273,7 @@ where $f_i(t)$ is the rate of preemptions of VMs of type $i$ (Equation~\ref{eq:f
 %
 %Since preemptions require restarting a job and increase the job completion time, it may be more prudent to select transient VMs with higher expected lifetimes.
 
-This expected lifetime can be used in lieu of MTTF, for policies and applications that require a ``coarse-grained'' comparison of the preemption rates of servers of different types, which is a key requirement in cost-minimizing server selection, which we develop later in Section. 
+This expected lifetime can be used in lieu of MTTF, for policies and applications that require a ``coarse-grained'' comparison of the preemption rates of servers of different types, which has been uesd for cost-minimizing server selection~\cite{flint}. 
 
 %We use the analytically derived expected lifetimes of VMs of different types in \sysname when selecting the ``best'' VM type for a given bag of jobs. This server selection is a key part of \sysname design. 
 
@@ -297,17 +299,19 @@ Since we model multiple failure rates and deadline-driven preemptions, our hazar
   = \dfrac{r_1 e^{- r_1 t} + r_2 e^{r_2 (t - b)}}{1/A - 1 + e^{- r_1 t} - e^{r_2 (t - b)}}
 \end{equation}
 where we have introduced $r_1 = 1/\tau_1$, $r_2 = 1/\tau_2$ to denote the rates of preemptions associated with initial and final phases respectively.
-\vikram{without the A term, hazard rate becomes negative for the older expression you had when $t > b r2 / (r1+r2)$. that is for t roughly greater than b/2, which is for more than 12 hours. hazard rate can never be negative.}
+
+%\vikram{without the A term, hazard rate becomes negative for the older expression you had when $t > b r2 / (r1+r2)$. that is for t roughly greater than b/2, which is for more than 12 hours. hazard rate can never be negative.}
 %Here we have introduced the sum of the two failure rate constants, $\bar{r} = r_1 + r_2$, to simplify the expression. \vikram{check}
 
-Employing the value for $A$ resulting from ensuring (via fit or by force) that our CDF goes to 1 at $t = L$ (where $L$ is 24 hours), we find
+%Employing the value for $A$ resulting from ensuring (via fit or by force) that our CDF goes to 1 at $t = L$ (where $L$ is 24 hours), we find
 
-\begin{equation}
-  \label{eq:hmodel2}
-  \lambda %= r_2 + \bar{r} \left( \dfrac{1}{1 - e^{- r_2 b} e^{\bar{r} t}}\right)
-  %= \dfrac{r_1 + r_2 e^{- r_2 b} e^{\bar{r} t}}{1 - e^{- r_2 b} e^{\bar{r} t}}.  
-  = \dfrac{r_1 e^{- r_1 t} + r_2 e^{r_2 (t - b)}}{e^{r_2 (L - b)}  - e^{- r_1 L} + e^{- r_1 t} - e^{r_2 (t - b)} }
-\end{equation}
+% \begin{equation}
+%   \label{eq:hmodel2}
+%   \lambda %= r_2 + \bar{r} \left( \dfrac{1}{1 - e^{- r_2 b} e^{\bar{r} t}}\right)
+%   %= \dfrac{r_1 + r_2 e^{- r_2 b} e^{\bar{r} t}}{1 - e^{- r_2 b} e^{\bar{r} t}}.  
+%   = \dfrac{r_1 e^{- r_1 t} + r_2 e^{r_2 (t - b)}}{e^{r_2 (L - b)}  - e^{- r_1 L} + e^{- r_1 t} - e^{r_2 (t - b)} }
+% \end{equation}
+
 Recall that the sharp increase in preemption rate only happens close to the deadline, which means that $b \lesssim L$. Thus, when $0 < t \ll b$, we get $\lambda(t) \approx r_1$, mimicking the hazard rate for the classic exponential distribution.
 As $t$ approaches and exceeds $b$ (i.e., $b\lesssim t < L$), the increase in the hazard rate due to the second failure process kicks in, accounting for the deadline-driven rise in preemptions. Note that our hazard rate satisfies $\lambda(t) \ge 0$ for $0<t<L$.
 
@@ -362,21 +366,14 @@ The idea of excluded volume is central in physics and materials engineering wher
 We begin by counting the total number of configurations available to place $N$ preemptions in the constrained temporal ``volume'' $L$. 
 The number of configurations one preemption can generate is proportional to the excluded volume available, i.e., $L-Nw$.
 For $N$ preemptions, the number of configurations grows exponentially and is proportional to the volume of the $N$-dimensional hypercube: $Z = (L-Nw)^N$. 
-This computation of the number of valid system configurations is in fact the partition function of the system in statistical mechanics~\cite{kreuth}. 
+This computation of the number of valid system configurations is in fact the partition function of the system in statistical mechanics~\cite{krauth2006statistical}. 
 
 Given the condition of mutually exclusive preemptions, we note that if we assume that there is a preemption at $t=L-w$, then $P(t> L-w) = 0$.
 For this case, the available, valid, non-overlapping configurations are proportional to the temporal volume accessible in the $N-1$ dimensional hypercube to $N-1$ preemptions: $Z_{1} = (L-w-(N-1)w)^{N-1} = (L-Nw)^{N-1}$. 
 
 The probability of finding 1 preemption near the deadline at $t=L-\epsilon$ when $\epsilon \in [w/2, w)$ is given as the ratio of the two computed volumes.
 That is, $P(L-\epsilon) = \frac{Z_1}{Z} = \frac{1}{(L - N\epsilon)} > \frac{1}{L}$ , since $N \geq 1$ and $\epsilon>0$. 
-
-% Given the uniform distribution of the placement of $N$ preemptions, the probability of finding a preemption near the middle of the interval at $t = L/2$ approaches $1/L$ as $L \to \infty$, that is $\lim_{t\to \infty}p(L/2) = 1/L$. We note that $L$ is finite (given the notion of constraint). \vikram{this can be made more precise from here on, but I am cheating now}
-
-% $p(L/2) = 1/L$ follows because we can always choose a large enough $L$ to make $p(L/2) - 1/L$ as close to 0 as possible.
-
-% Choosing $\epsilon = w$ and observing that $1/(L-Nw) - 1/L > 0$ for every finite $L$ and non-zero $w$, proves $p(L-\epsilon) > p(L/2)$ or  $\frac{p(L-\epsilon)}{p(L/2)} > 1$.
 \end{proof}
-
 
 By symmetry arguments, the above lemma is in fact valid for both the end points of the interval, i.e., $P(\epsilon) \geq \frac{1}{L}$.
 Thus, the preemption probability is higher towards the end points than the average preemption probability of $1/L$, and we get a bathtub shaped distribution.
