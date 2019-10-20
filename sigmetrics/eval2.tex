@@ -15,7 +15,7 @@ We have already presented the statistical analysis of our model in Section~\ref{
 \begin{enumerate}
 \item How do constrained preemptions impact the total running time of applications?
 
-\item How What is the effect of our model-based policies when compared to existing transient computing approaches?
+\item  What is the effect of our model-based policies when compared to existing transient computing approaches?
 
 %\item What is the real-world cost and performance of running batch applications?
 
@@ -44,7 +44,8 @@ The nanoconfinement application launches molecular dynamics (MD) simulations of 
 % \end{description}
 
 % These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering. These three examples are implemented as parallel programs that use OpenMP and MPI parallel computing techniques. The first two are used in nanoscale materials research \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto} and LULESH is a widely used benchmark \cite{IPDPS13:LULESH,LULESH2:changes}.
-All applications are run with default parameters unless otherwise stated.
+
+%All applications are run with default parameters unless otherwise stated.
 
 
 
@@ -64,23 +65,19 @@ All applications are run with default parameters unless otherwise stated.
 
 %\caption{The expected wasted computation, given a single failure, is lower when preemptions are distributed in a bathtub shape, compared to uniformly distributed over the 24 hour interval}
 
-We begin by examining how constrained preemptions impacts the total job running times.
-When a preemption occurs during the job's execution, it results in wasted work, assuming there is no checkpointing.
+We begin by examining how constrained preemptions impacts the total job running times. 
+When a preemption occurs during the job's execution, it results in wasted work, assuming there is no checkpointing. 
 This increases the job's total expected running time, since it must restart after a preemption.
+In case of constrained preemptions, the expected waste depends both on the probability of job preemption, as well as \emph{when} the job was preempted. 
 
-The expected wasted work depends on two factors:
-\begin{enumerate}
-\item The probability of the job being preempted during its execution. 
-\item \emph{When} the preemption occurs during the execution. 
-\end{enumerate}
 
 For a job of length $J$, the wasted work, assuming that the job faces a \emph{single} preemption, is $E[W_1(J)]$, and is given by Equation~\ref{eq:wasted}.
 We first analyze this wasted work for jobs of different lengths in Figure~\ref{fig:vs-uniform}
-We analyze two failure probability distributions for constrained preemptions: a uniform distribution such that $F(t) = 24-t$, and the bathtub shaped distribution with parameters corresponding to the \texttt{n1-highcpu-16} VM type shown in Figure~\ref{fig:gcp}. 
+We analyze two failure probability distributions for constrained preemptions: a uniform distribution such that $F(t) = 24-t$, and the bathtub shaped distribution with parameters corresponding to the \texttt{n1-highcpu-16} VM type shown in Figure~\ref{fig:gcp1}. 
 
 
 For the uniform distribution, the wasted work is linear in the job length, and is given by $J/2$.
-For the bathtub distribution, the wasted work is given by Equation~\ref{eq:wasted2}, and is \emph{significantly} lower, especially for longer jobs (longer than 5 hours). 
+For the bathtub distribution, the wasted work is given by Equation~\ref{eq:wasted}, and is \emph{significantly} lower, especially for longer jobs (longer than 5 hours). 
 With the bathtub distribution, jobs see a high rate of failure initially, but that also reduces the wasted work. 
 Once jobs survive the initial high failure rate, the rate of failure is low, and thus the wasted work is more or less constant for all but the shortest and longest jobs. 
 
@@ -117,27 +114,27 @@ Specifically, we seek to compare the effectiveness of our job scheduling and che
 
 In the previous subsection, we have quantified the increase in running time due to preemptions, but we had assumed that jobs start on a newly launched server.
 In many scenarios however, a server may be used for running a long-running sequence of jobs, such as in a batch-computing service. 
-
+%
 Our job scheduling policy is model-driven and decides whether to request a new VM for a job or run it on an existing VM.
 A new VM may be preferable if the job starts running near the VM's 24 hour preemption deadline.
 %However, since new VMs have a high initial rate of failure, we must be judicious 
 
-Figure~\ref{fig:sched-bathtub} shows the effect of our job scheduling policy for an 8 hour job, for different job starting times (relative to the VM's starting time). 
+Figure~\ref{fig:sched-bathtub} shows the effect of our job scheduling policy for a six hour job, for different job starting times (relative to the VM's starting time). 
 We compare against a baseline of memoryless job scheduling that is not informed by constrained preemption dynamics.
-Such memoryless policies are the default in existing transient computing systems such as SpotOn~\cite{spoton} and others~\cite{}. 
+Such memoryless policies are the default in existing transient computing systems such as SpotOn~\cite{spoton}. 
 In the absence of insights about bathtub preemptions, the memoryless policy continues to run jobs on the existing VM. 
 As the figure shows, the empirical job failure probability is bathtub shaped. 
-However since the job is 8 hours long, with the memoryless policy, it will always fail when launched after $24-8=16$ hours.
-In contrast, our model-based policy determines that after 16 hours, we will be better off running the job on a newer VM, and results in a much lower job failure probability (=0.4).
+However since the job is 8 hours long, with the memoryless policy, it will always fail when launched after $24-6=18$ hours.
+In contrast, our model-based policy determines that after 18 hours, we will be better off running the job on a newer VM, and results in a much lower job failure probability (=0.4).
 Thus, our model-based job scheduling policy can reduce job failure probability by taking into account the time-varying failure rates of VMs, which is not considered by existing systems that use memoryless scheduling policies.
 
 
 \begin{figure}[t]
   \subfloat[Effect of job start time on the failure probability. \label{fig:sched-bathtub}]
-  {  \includegraphics[width=0.3\textwidth]{../graphs/Sched-bathtub.pdf}}
+  {  \includegraphics[width=0.35\textwidth]{../graphs/Sched-bathtub.pdf}}
   \\
   \subfloat[Job failure probability for jobs of different lengths. \label{fig:sched-all}]
-  {  \includegraphics[width=0.3\textwidth]{../graphs/Sched-fail-prob.pdf}}
+  {  \includegraphics[width=0.35\textwidth]{../graphs/Sched-fail-prob.pdf}}
   \caption{Job failure probability is lower with our deadline aware policy across all job sizes.}
   \label{fig:sched-both}
 \end{figure}
@@ -149,7 +146,7 @@ For all but the shortest and longest jobs, the failure probability with our poli
 This difference is primarily due to the differences in how the two policies perform for jobs launched near the end of the VM preemption deadline, which we examined previously in Figure~\ref{fig:sched-bathtub}. 
 
 
-\noindent \textbf{Result:} \emph{Our model-based job scheduling policy can decrease job failure probability by $2\times$.}
+\noindent \textbf{Result:} \emph{Our model-based job scheduling and VM-reuse policy can decrease job failure probability by $2\times$.}
 
 
 
@@ -184,15 +181,15 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 
 
 \begin{figure}[t]
-  \subfloat[Checkpointing overhead for jobs of length 4 at different starting times \label{fig:ckpt-4}]
-{  \includegraphics[width=0.3\textwidth]{../graphs/ckpt-4.pdf} }
+  \subfloat[Checkpointing overhead for different job starting times. \label{fig:ckpt-4}]
+{  \includegraphics[width=0.35\textwidth]{../graphs/ckpt-4.pdf} }
 %\hfill
 % \subfloat[Running time with checkpointing when jobs start at time=0. \label{fig:ckpt-start-0}]
 % {  \includegraphics[width=0.3\textwidth]{../graphs/ckpt-start-0.pdf}}
 % \hfill
 \\
-\subfloat[Increase in running time with Checkpointing when jobs start at time=0. \label{fig:ckpt-start-0-relative}]
-{\includegraphics[width=0.3\textwidth]{../graphs/ckpt-start-relative.pdf}}
+\subfloat[Increase in running time with checkpointing when jobs start at time=0. \label{fig:ckpt-start-0-relative}]
+{\includegraphics[width=0.35\textwidth]{../graphs/ckpt-start-relative.pdf}}
 
   \caption{Checkpointing effectiveness.}
   \label{fig:ckpt-all}
@@ -236,7 +233,7 @@ We use our model-driven job scheduling policy, but do not use checkpointing, sin
 
 \noindent \textbf{Cost:}
 The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible.
-To evaluate the cost of using our batch computing service, we run a bag of 32 jobs, all running on a cluster of 32 VMs of type \texttt{n1-highcpu-32}. 
+To evaluate the cost of using our batch computing service, we run a bag of 100 jobs, all running on a cluster of 32 VMs of type \texttt{n1-highcpu-32}. 
 Within a bag, different jobs are exploring different physical parameters, and job running times show little variance. 
 Figure~\ref{fig:cost-only-bar} shows the cost of using Preemptible VMs compared to conventional on-demand VMs.
 We see that for all the three applications, using our service can reduce costs by $5\times$.
@@ -249,8 +246,9 @@ However, incorporating checkpointing would reduce the costs even further, since 
 Finally, we examine the effect of preemptions on the increase in running time under real-world settings.
 We ran a cluster of 32 \texttt{n1-highcpu-32} VMs running the Nanoconfinement application, and repeated the experiment multiple times to observe the effect of preemptions.
 Figure~\ref{fig:fails-time} shows the increase in running time of the entire bag of jobs, when different number of VM preemptions are observed during the entire course of execution.
-We see that the net impact of preemptions results in a roughly linear increase in running time.
-Each preemption results in a roughly 3\% increase in running time, which validates our analytical evaluation shown earlier in Figure~\ref{fig:vs-uniform-2}. 
+We see that the net impact of preemptions results in a roughly linear increase in running time. 
+Each preemption results in a roughly 3\% increase in running time, which validates our analytical evaluation shown earlier in Figure~\ref{fig:vs-uniform-2}.
+The result also highlights the effectiveness of the job scheduling and VM-reuse policy, since most jobs run on the stable VMs, and  those that run on new VMs ``fail fast'' and result in only a small amount of wasted work and increase in running time. 
 
 
 % \begin{figure}[t]
@@ -263,7 +261,8 @@ Each preemption results in a roughly 3\% increase in running time, which validat
 
 
 
-\noindent \emph{\textbf{Result:} Our batch computing service can reduce costs by up to 5$\times$ compared to conventional on-demand cloud deployments. In practice, the performance impact of preemptions is as low as 3\%.}
+\noindent \emph{\textbf{Result:} Our batch computing service can reduce costs by up to 5$\times$ compared to conventional on-demand cloud deployments. Because of the VM-reuse policy, the performance impact of preemptions is as low as 3\%.}
+  %which is $20\times$ lower than a memoryless policy.}
 
 
 

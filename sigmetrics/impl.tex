@@ -14,7 +14,7 @@ We have implemented our prototype in Python in about 2,000 lines of code, and cu
 %
 
 
-Our service is implemented as a centralized controller, which implements the VM selection and job scheduling policies described in Section~\ref{sec:design}. 
+Our service is implemented as a centralized controller, which implements the VM selection and job scheduling policies described in Section~\ref{sec:policies}. 
 The controller can run on any machine (including the user's local machine, or inside a cloud VM), and exposes an HTTP API to end-users. 
 Users submit bags of jobs to the controller via the HTTP API, which then launches and maintains a cluster of cloud VMs, and maintains the job queue and metadata in a local database. 
 %To improve usability, we automatically generate parameter combinations for a given bag size, based on a user-provided json file with ranges and constraints for each parameter. 
@@ -49,13 +49,14 @@ To minimize this overhead, we precompute the checkpointing schedule of jobs of d
 \noindent \textbf{Bag of Jobs Abstraction For Scientific Simulations:}
 While our service is intended for general batch jobs, we incorporate a special optimization for scientific simulation workloads that improves the ease-of-use of our service, and also helps in our policy implementation. 
 Our insight is that most scientific simulations involve launching a series of jobs that explore a large parameter space that results from different combinations of physical and computational parameters.
-
+%
 These workloads therefore can be abstracted as a ``bag of jobs'', with each job running the same application with slightly different parameters.
 A bag of jobs is characterized by the job and all the different parameters with which it must be executed.
 Within a bag, jobs show little varition in their running time and execution characteristics.
 
 
-We allow users to submit entire bags of jobs, which permits us to determine the running time of the jobs, which we use in our scheduling and checkpointing policy.
+We allow users to submit entire bags of jobs, which permits us to determine the running time of jobs based on previous jobs in the bag.
+For constrained preemptions, the running time and checkpointing are determined by job lengths, and the job run time estimates are extremely useful. 
 Having a large sequence of jobs is also particularly useful with bathtub preemptions, since we can re-use ``stable'' VMs with low preemption probability for running new jobs from a bag.
 If jobs were submitted one at a time, a batch computing service may have to terminate the VM after job completion, which would increase the job failure probability resulting from running on new VMs that have a high initial failure rate. 
 

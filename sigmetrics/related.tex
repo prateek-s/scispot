@@ -52,8 +52,8 @@ However, periodic checkpointing~\cite{dongarra_fault_nodate} is not optimal in o
 %The first step towards mitigating preemptions is understanding their characteristics. 
 
 \noindent \textbf{Preemption Modeling.}
-Clasically, exponential distribution used to model preemptions, even for EC2 spot instances~\cite{bid-cloud, flint, not-bid}. 
-Our preemption model for Google preemptible VMs developed in Section~\ref{sec:preemption-dynamics} provides a novel characterization of bathtub shaped failure rates not captured by the classic Weibull distribution, and is distinct from prior efforts~\cite{mudholkar1993exponentiated, crevecoeur1993model}. 
+Clasically, exponential distribution used to model preemptions, even for EC2 spot instances~\cite{bid-cloud, flint, hotcloud-not-bid}. 
+Our preemption model for Google preemptible VMs developed in Section~\ref{sec:failmodel} provides a novel characterization of bathtub shaped failure rates not captured by the classic Weibull distribution, and is distinct from prior efforts~\cite{mudholkar1993exponentiated, crevecoeur1993model}. 
 
 %extends the classic Weibull-distribution based bathtub models~\cite{mudholkar1993exponentiated, crevecoeur1993model} by introducing exponential reclamation near the deadline and additional paramters that capture and explain the preemption dynamics. 
 

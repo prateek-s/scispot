@@ -1,6 +1,6 @@
 
 \section{Application Policies For Constrained Preemptions}
-
+\label{sec:policies}
 Having analyzed the statistical behavior of constrained preemptions and presented our probability model, we now examine how the bathtub shape of the failure rate impacts applications.
 Based on insights drawn from our statistical analysis and the model, we develop various policies for ameliorating the effects of preemptions. 
 Prior work in transient computing has established the benefits of such policies for a broad range of applications.
@@ -63,24 +63,26 @@ The above equation for $E[T]$ thus becomes:
   &= (1-F(T))~T + F(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
        &= T + \int_0^{T} t~f(t)~dt         
 \end{align}
-This expression for the expected running time assumes that the job will be preempted at most once and ignores the higher order terms.
-Since the probability of multiple preemptions is low, most transient computing systems seek to avoid repeated preemptions, and discard the job if multiple preemptions occur or move them to on-demand VMs. 
+This expression for the expected running time assumes that the job will be preempted at most once.
+An expression which considers the higher order terms and multiple job failures easily follows from the base case, but presents relatively low practical value. 
+The probability of multiple preemptions is low, and most transient computing systems seek to avoid repeated preemptions, and discard the job if multiple preemptions occur or move them to on-demand VMs. 
 
 % since they want to avoid pathological behavior of preemptions. 
 % This assump, which is a used by transient computing systems to minimize the effect of repeated preemptions. 
 % This can be due to multiple reasons: if a job is preempted twice, it may be prudent to move it to an non-preemptible on-demand VM, or delay its execution to a later time when the preemption rate decreases.
 
-We note here that both the increase in wasted time ($E[W_1(T)]/T$) and expected running time $(E[T]/T)$ depend on the length of the job for non-memoryless constrained preemptions. 
-In the case of memoryless exponential distributions, the expected waste is $T/2$, but this assumption is not valid for constrained preemptions, and thus job lengths must be considered when evaluating the suitability of preemptible VMs for jobs. 
+\noindent \textbf{Consequences for applications:}
+Based on our analysis, both the increase in wasted time ($E[W_1(T)]/T$) and expected running time $(E[T]/T)$ depend on the length of the job for non-memoryless constrained preemptions. 
+For memoryless exponential distributions, the expected waste is simply $T/2$, but this assumption is not valid for constrained preemptions, and thus job lengths must be considered when evaluating the suitability of Preemptible VMs. 
 
 
-Users and transient computing systems can thus use the expected running time analysis for scheduling and monitoring purposes.
-Since the preemption characteristics are dependent on the type of the VM and temporal effects, this analysis also allows principled \emph{selection} of VM types for jobs of a given length.
+Users and transient computing systems can use the expected running time analysis for scheduling and monitoring purposes.
+Since the preemption characteristics are dependent on the type of the VM and temporal effects, this analysis also allows principled \emph{selection} of VM types for jobs of a given length. 
 % Model-based insight? 
 For instance, VMs having a higher initial rate of preemptions are particularly detrimental for short jobs, because the jobs will see high rate of failure and are not long enough to run during the VM's stable period with low  preemption rates. 
 We evaluate the expected wasted time and running time for Google Preemptible VMs later in Section~\ref{sec:eval}. 
 
-\subsection{Job Scheduling}
+\subsection{Job Scheduling and VM Reuse Policy}
 
 Many cloud-based applications and services are \emph{long-running}, and typically run a continuous sequence of tasks and jobs on cloud VMs. 
 In the case of deadline-constrained bathtub preemptions, applications face a choice: they can either run a new task on an already running VM, or relinquish the VM and run the task on a \emph{new} VM. 
@@ -96,12 +98,25 @@ The alternative is to discard the VM and run the job on a new VM.
 However, newly launched VMs also have high preemption rates (and thus high job failure probability), the choice of running the job on an existing server vs. a new server is not obvious.
 
 % Expand on this about stable regions etc. 
+Our job scheduling policy uses the preemption model to determine the preemption probability of jobs of a given length $T$. 
+Assume that the running VM's age (time since launch) is $s$.
+Then, the the probability of failure on the existing VM $P_{\text{Existing}} = max(1, F(T+s) - F(T))$. 
+The intuition is to reuse the VM only if the expected running time is lower, compared to running on a new VM. 
+To compute the expected running time of a job of length $T$ starting at vm-age $s$, we can modify our earlier expression for running time (Equation~\ref{eq:tot-run-time-2}) as follows:
+\begin{equation}
+  \label{eq:tot-run-time-s}
+    E[T_s]  = T + \int_{s}^{s+T} t~f(t)~dt
+  \end{equation}
+  The alternative is to discard the VM and launch a new VM, in which case, Equation~\ref{eq:tot-run-time-2} applies.
+Depending on the VM's age $s$ and the job's running time $T$, we can compare Equations~\ref{eq:tot-run-time-2} and ~\ref{eq:tot-run-time-s}, and run the job on whichever case yields the lower expected running time. 
 
+\begin{comment}
 Our job scheduling policy uses the preemption model to determine the preemption probability of jobs of a given length $T$. 
 Assume that the running VM's age (time since launch) is $s$. 
-Then, the the probability of failure on the existing VM $P_{\text{Existing}} = max(1, F(T+s) - F(T))$.
+Then, the the probability of failure on the existing VM $P_{\text{Existing}} = max(1, F(T+s) - F(T))$. 
 The alternative is to discard the VM and launch a new VM, in which case, the failure probability is $P_{\text{New}} = F(T)$.
 Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_{\text{Existing}}$ and $P_{\text{New}}$, and run the job on whichever case yields the lower failure probability. 
+\end{comment}
 
 % Some more intuitive analysis ? 
 
@@ -109,7 +124,7 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 %Minimizing work wasted due to preemptions is a prerequisite to minimizing cost, and 
 
 
-\subsection{Checkpointing}
+\subsection{Checkpointing Policy}
 
 A common technique for reducing the total expected running time of jobs on transient servers is to use fault-tolerance techniques such as periodic checkpointing \cite{flint}.
 Checkpointing application state to stable storage (such as network file systems or centralized cloud storage) reduces the amount of \emph{wasted work} due to preemptions.
@@ -122,7 +137,7 @@ That is, the application is checkpointed every $\tau = \sqrt{2 \cdot \delta \cdo
 
 However, checkpointing with a uniform period is sub-optimal in case of time dependent failure rates, and especially for bathtub failure rates.
 A sub-optimal checkpointing rate can lead to increased recomputation and wasted work, or result in excessive checkpointing overhead. 
-Intuitively, the checkpointing rate should depend on the failure rate, and our analytical preemption model can be used for designing an optimized checkpointing schedule. We now present our checkpointing policy that uses the preemption model, and results in non-uniform checkpoint intervals:  
+Intuitively, the checkpointing rate should depend on the failure rate, and our analytical preemption model can be used for designing an optimized checkpointing schedule. We now present our checkpointing policy that uses the preemption model and provides non-uniform, failure-rate dependent checkpointing. 
 
 
 Let the uninterrupted running time of the job be $T$. Or in other words, $T$ amount of work needs to be performed. We assume that each job-step takes one unit of time, for ease of exposition. 
