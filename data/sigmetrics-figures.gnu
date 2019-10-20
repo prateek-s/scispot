@@ -126,7 +126,7 @@ set autoscale x
 set autoscale y
 set output 'gnuplot-figures/sigmetrics-time-breakdown.eps'
 set key vertical width 2 maxrows 10
-set key at 7, 0.7
+set key at 8, 0.7
 set key spacing 1
 set key font 'Helvetica, 24'
 set xtics font "Helvetica, 24"
@@ -151,7 +151,7 @@ set autoscale x
 set autoscale y
 set output 'gnuplot-figures/sigmetrics-region-breakdown.eps'
 set key vertical width 2 maxrows 10
-set key at 9,0.8
+set key at 10,0.69
 set key samplen 3
 set key spacing 1
 set key font 'Helvetica, 24'
