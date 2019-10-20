@@ -13,9 +13,17 @@ The preemption characteristics are governed by the supply of surplus resources, 
 Therefore, in this section, we present empirical and analytical models to help us understand the nature of preemptions. 
 }
 
-To measure and improve the performance of applications running on transient cloud servers, it is critical to understand the nature and dynamics of their preemptions. 
+%To measure and improve the performance of applications running on transient cloud VMs, it is critical to understand the nature and dynamics of their preemptions.
+%
+In this section, we first present an empirical analysis of preemptions of Google Preemptible VMs, and then develop a new  probability model based on our observations. 
+Finally, we discuss the unique aspects and general characteristics of constrained preemptions using reliability theory and statistical mechanics.
+
+
+%and present  general observations about constrained preemptions using statistical mechanics. 
+
 %The preemption characteristics are governed by the supply of surplus resources, the demand from applications, and resource allocation policies of the cloud operator.
-In this section, we present empirical analysis of preemptions of Google Preemptible VMs, develop a new empirically-informed probability model that predicts preemptions, and discuss the unique aspects of the observed preemption rates with a simple analytical calculation.  
+
+
 %that describe these characteristics and enable an intuitive understanding of the nature of preemptions. 
 
 
@@ -41,7 +49,7 @@ In this section, we present empirical analysis of preemptions of Google Preempti
 
 \begin{figure}
   \includegraphics[width=0.47\textwidth]{../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf} 
-  \caption{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to the conventional exponential and the Weibull distributions. Inset shows the probability of failure as a function of time for the three distributions.}
+  \caption{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides better fits to the empirical data compared to other failure distributions. Inset shows the probability density functions.}
   \label{fig:gcp1}
 \end{figure}
 
@@ -50,6 +58,7 @@ Our empirical study is necesitated by the fact that the cloud operator (Google) 
 
 
 We launched more than 1,500 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
+To ensure the generality of our empirical observations, VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads. 
 %
 \footnotetext{We will release the complete preemption dataset for further analysis.} %Weaksauce 
 %
@@ -66,12 +75,12 @@ Note that the cloud operator (Google) caps the \emph{maximum} lifetime of the VM
 \subfloat[Variations due to time of day and workload. \label{fig:time-breakdown}]
 {  \includegraphics[width=0.3\textwidth]{../data/gnuplot-figures/sigmetrics-time-breakdown.pdf} }
 \hfill
-\subfloat[By region. \label{fig:time-breakdown}]
+\subfloat[\textbf{n1-highcpu-2} in different regions. \label{fig:region-breakdown}]
 {  \includegraphics[width=0.3\textwidth]{../data/gnuplot-figures/sigmetrics-region-breakdown.pdf} }
-
+\vspace*{-0.6cm}
 \label{fig:breakdown-all}
 \caption{Analysis of preemption characteristics by VM-type, region, time-of-day, and workload type.}
-    %\vspace*{\myfigspace}
+    \vspace*{\myfigspace}
 \end{figure*}
 
 \noindent \textbf{Observation 1:} \emph{The lifetimes of VMs are not uniformly distributed, but have three distinct phases.}
@@ -93,12 +102,12 @@ Figure~\ref{fig:gcp1} shows the CDF ($=1-e^{-\lambda t}$) of the exponential dis
 The classic exponential distribution is unable to model the observed preemption behavior because it assumes that the rate of preemptions is independent of the lifetime of the VMs, i.e., the preemptions are \emph{memoryless}.
 %The primary reason is that the exponential distribution assumes that the \vj{the rate of preemptions is independent of the lifetime of the VMs} (preemptions are \emph{memoryless}), which does not hold true when there is a fixed upper bound on the lifetime, as is the case for Google Preemptible VMs. \vj{In other words, the conventional approach is insufficient to model constrained preemption dynamics.}
 %We attribute this deficiency to the central assumption made in the underlying reliability theory principles that leads to the classical exponential distribution: the rate of preemptions is independent of the lifetime of the VMs, in other words, the preemptions are \emph{memoryless}.
-This assumption breaks down when there is a fixed upper bound on the lifetime, as is the case for Google Preemptible VMs.%, and the conventional approach becomes insufficient to model this constrained preemption dynamics. 
+This assumption breaks down when there is a fixed upper bound on the lifetime. %, as is the case for Google Preemptible VMs.%, and the conventional approach becomes insufficient to model this constrained preemption dynamics. 
 
 \noindent \textbf{Observation 3:} \emph{The three preemption phases and associated bathtub shaped preemption probability are general, universal characteristics of Preemptible VMs.}
 
-In general, the preemption dynamics of a VM is determined by the supply and demand of VMs of that \emph{particular} type.
-Thus, our empirical study looked at preemptions of VMs of different sizes, in different geographical zones, at different times of the day, and running different workloads (Figure \textbf{YYY}).
+In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that \emph{particular} type.
+Thus, our empirical study looked at preemptions of VMs of different sizes, in different geographical zones, at different times of the day, and running different workloads (Figure~\ref{fig:breakdown-all}).
 In all cases, we find that there are three distinct phases associated with the preemption dynamics giving rise to the bathtub shaped preemption probability. 
 We argue that this is not a coincindence, but may be a result of practical and fundamental outcomes of cluster management policies. 
 
@@ -106,17 +115,17 @@ While the actual specific preemption policy is up to the cloud operator, we will
 %The bathtub behavior results in a high rate of failure initially. 
 For applications that do not incorporate explicit fault-tolerance (such as checkpointing), early preemptions result in less wasted work than if the preemptions were uniformly distributed over the 24 hour interval.
 Furthermore, the low rate of preemptions in the middle periods allows jobs that are smaller than 24 hours to finish execution with only a low probability of failure, once they survive the initial preemption phase. 
-We compare job performance with bathtub shaped preemptions vs. uniform preemption rates in Section Evaluation.
-
-%We can define the wasted work of a job of length J as E[Wasted_J] = integ_{0}^{J} P(t)t dt . where P(t) is probability of failure at time t . We can see from the figure that the wasted work is smaller in the case of the bathtub shaped distribution compared to the uniform failure rate. 
-
-\sout{In addition to being beneficial to applications, we also conjecture that the bathtub behavior is a \emph{fundamental} characteristic of any system where events are randomly distributed in a finite interval.
-Intriguingly, we can analyze such temporally constrained preemptions through a statistical mechanics framework, and we elaborate on this connection later in Section~\ref{subsec:statmech}.}
+We evaluate the performance of applications with bathtub shaped preemptions in Section~\ref{sec:eval}. 
+%
+In addition to being beneficial to applications, we also conjecture that the bathtub behavior may be  a \emph{fundamental} and general characteristic of constrained preemptions, which we show later in Section~\ref{subsec:stat-mech}. 
+%system where events are randomly distributed in a finite interval later in Section~\ref{subsec:stat-mech}. 
+%
+%Intriguingly, we can analyze such temporally constrained preemptions through a statistical mechanics framework, and we elaborate on this connection later in Section~\ref{subsec:statmech}.
 
 
 \noindent \textbf{Observation 4:}\emph{ Larger VMs have a higher rate of preemptions.}
 
-\noindent Figure~\ref{fig:cdf-comparison} shows the preemption data from five different types of VMs in the Google Cloud \texttt{n1-highcpu-\{2,4,8,16,32\}}, where the number indicates the number of CPUs.
+Figure~\ref{fig:cdf-comparison} shows the preemption data from five different types of VMs in the Google Cloud \texttt{n1-highcpu-\{2,4,8,16,32\}}, where the number indicates the number of CPUs.
 All VMs are running in the \texttt{us-central1-c} zone. 
 We see that the larger VMs (16 and 32 CPUs) have a higher probability of preemptions compared to the smaller VMs.
 While this could be simply due to higher demand for larger VMs, it can also be explained from a cluster management perspective. 
@@ -125,9 +134,9 @@ This observed behavior aligns with the guidelines for using preemptible VMs that
 
 \noindent \textbf{Observation 5:} \emph{Preemptions exhibit diurnal variations, and are also affected by the workload inside the VM.}
 
-\noindent From Figure~\ref{fig:time-breakdown}, we can see that VMs have a slightly longer lifetime during the night (8 PM to 8 AM) than during the day.
+From Figure~\ref{fig:time-breakdown}, we can see that VMs have a slightly longer lifetime during the night (8 PM to 8 AM) than during the day.
 This is expected because fundamentally, the preemption rates are higher during periods of higer demand. 
-
+%
 We also notice that completely idle VMs have longer lifetimes than VMs running some workload.
 Presumably, this could be a result of the lower resource utilization of idle VMs being more amenable to resource overcommitment, and result in lower preemptions. 
 
@@ -181,7 +190,7 @@ For example, the preemption model should be able to warn applications about impe
 Thus, not only is it important to minimize the total distribution fitting error, it is also important to capture the changes in phase.
 However, as we can see from the \textbf{QQ plots}, existing distributions are unable to capture the effects of the deadline and the phases of the preemptions, and a new modeling approach is needed, which we develop next.  
 
-\subsubsection{Multiple failure rate model}
+\subsubsection{Our  model}
 
 
 
@@ -246,7 +255,7 @@ Exploring other approaches of modeling bathtub-type failure rates (e.g., exponen
 
 
 \subsubsection{Reliability Analysis}
-
+\label{subsec:reliability}
 
 We now analyze and place our model in a reliability theory framework. 
 %
@@ -329,6 +338,7 @@ As $t$ approaches and exceeds $b$ (i.e., $b\lesssim t < L$), the increase in the
 %These methods did not perform better than our model resulting in parameter variables and values that were relatively difficult to interpret; this could likely be due to the unique constraint-driven failures in preemption dynamics as opposed to aging-related increasing failure rate considered in previous work. 
 
 \subsection{Insights on the bathtub shape distribution}
+\label{subsec:stat-mech}
 
 For constrained preemptions, one might expect to see uniformly distributed preemptions with a probability $1/L$ over $[0, L]$. 
 However, as our empirical analysis shows, the preemption distribution is baththub shaped.
