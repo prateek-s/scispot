@@ -251,7 +251,7 @@ The analytical model and the associated  distribution function $\mathscr{F}$ int
     \vspace*{\eqnspace}
 f(t) = \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{1}{\tau_2}e^{\frac{t-b}{\tau_2}}\right).
 \end{equation}
-$p(t)$ vs. $t$ yields a bathtub type failure rate function for the associated fit parameters (inset of Figure~\ref{fig:gcp1}).
+$f(t)$ vs. $t$ yields a bathtub type failure rate function for the associated fit parameters (inset of Figure~\ref{fig:gcp1}).
 %In the next section, we use this analytical model for optimizing cloud resource selection to run scientific computing applications at low cost and shorter running (turnaround) times.
 
 
@@ -376,18 +376,6 @@ We are interested in calculating the probability that a preemption starts at tim
 The probability $P(L-w)$ is obtained as the ratio of the valid configurations given by the two partition functions computed above.
 That is, 
 $P(L-w) = Z_{N-1}/ {Z_N} = \frac{1}{L - Nw} > \frac{1}{L}$ , since $N \geq 1$ and $w>0$. Choosing $\epsilon = w > 0$ completes the proof.
-
-
-%We begin by counting the total number of configurations available to place $N$ preemptions in the constrained temporal ``volume'' $L$. 
-%The number of configurations one preemption can generate is proportional to the excluded volume available, i.e., $L-Nw$.
-%For $N$ preemptions, the number of configurations grows exponentially and is proportional to the volume of the $N$-dimensional hypercube: $Z = (L-Nw)^N$. 
-%This computation of the number of valid system configurations is in fact the partition function of the system in statistical mechanics~\cite{krauth2006statistical}. 
-
-%Given the condition of mutually exclusive preemptions, we note that if we assume that there is a preemption at $t=L-w$, then $P(t> L-w) = 0$.
-%For this case, the available, valid, non-overlapping configurations are proportional to the temporal volume accessible in the $N-1$ dimensional hypercube to $N-1$ preemptions: $Z_{1} = (L-w-(N-1)w)^{N-1} = (L-Nw)^{N-1}$. 
-
-%The probability of finding 1 preemption near the deadline at $t=L-\epsilon$ when $\epsilon \in [w/2, w)$ is given as the ratio of the two computed volumes.
-%That is, $P(L-\epsilon) = \frac{Z_1}{Z} = \frac{1}{(L - N\epsilon)} > \frac{1}{L}$ , since $N \geq 1$ and $\epsilon>0$. 
 \end{proof}
 
 By symmetry arguments, the above lemma is in fact valid for both the end points of the interval, i.e., $P(\epsilon) > \frac{1}{L}$.
@@ -402,6 +390,16 @@ Preempting a VM and reclaiming its resources involves manipulating the cluster-m
 From an application standpoint, non-overlapping preemptions are also beneficial, since handling multiple concurrent preemptions is significantly more challenging~\cite{exosphere}. 
 
 
+%We begin by counting the total number of configurations available to place $N$ preemptions in the constrained temporal ``volume'' $L$. 
+%The number of configurations one preemption can generate is proportional to the excluded volume available, i.e., $L-Nw$.
+%For $N$ preemptions, the number of configurations grows exponentially and is proportional to the volume of the $N$-dimensional hypercube: $Z = (L-Nw)^N$. 
+%This computation of the number of valid system configurations is in fact the partition function of the system in statistical mechanics~\cite{krauth2006statistical}. 
+
+%Given the condition of mutually exclusive preemptions, we note that if we assume that there is a preemption at $t=L-w$, then $P(t> L-w) = 0$.
+%For this case, the available, valid, non-overlapping configurations are proportional to the temporal volume accessible in the $N-1$ dimensional hypercube to $N-1$ preemptions: $Z_{1} = (L-w-(N-1)w)^{N-1} = (L-Nw)^{N-1}$. 
+
+%The probability of finding 1 preemption near the deadline at $t=L-\epsilon$ when $\epsilon \in [w/2, w)$ is given as the ratio of the two computed volumes.
+%That is, $P(L-\epsilon) = \frac{Z_1}{Z} = \frac{1}{(L - N\epsilon)} > \frac{1}{L}$ , since $N \geq 1$ and $\epsilon>0$. 
 
 
 
@@ -418,7 +416,7 @@ This assumption helps cluster management by serializing VM preemptions and makin
 The preemption events become hard particles that cannot overlap. The preemption probability distribution gets mapped to the density of $N$ particles, each modeled as a one-dimensional ``sphere'' of width $\sigma$, confined in a 1-dimensional interval (line segment) of length $L$. $L$ can be considered as corresponding to the deadline interval of 24 hours. $\sigma$ is equivalent to the length of the critical section, which is related to the preemption warning (30 seconds for Google PVMs). 
 
 The particles are placed, one after another, at random positions. Configurations where any overlap is generated are not included. Thus particles will be placed with a flat probability distribution.
-The question we are trying to simulate with this set up is the familiar one noted above: what is the probability $p(x)$ of finding a preemption at time $x$?
+The question we are trying to simulate with this set up is the familiar one noted above: what is the probability $P(x)$ of finding a preemption at time $x$?
 
 This problem can be solved by first defining a partition function for the system. And doing some neat math.
 
