@@ -15,7 +15,7 @@ We have implemented our prototype in Python in about 2,000 lines of code, and cu
 %Our service is implemented as a
 We use a centralized controller (Figure~\ref{fig:arch}), which implements the VM selection and job scheduling policies described in Section~\ref{sec:policies}. 
 The controller can run on any machine (including the user's local machine, or inside a cloud VM), and exposes an HTTP API to end-users. 
-Users submit bags of jobs to the controller via the HTTP API, which then launches and maintains a cluster of cloud VMs, and maintains the job queue and metadata in a local database. 
+Users submit jobs to the controller via the HTTP API, which then launches and maintains a cluster of cloud VMs, and maintains the job queue and metadata in a local database. 
 %To improve usability, we automatically generate parameter combinations for a given bag size, based on a user-provided json file with ranges and constraints for each parameter. 
 
 Our service integrates, and interfaces with two primary services.
@@ -28,7 +28,7 @@ We monitor job completions and failures (due to VM preemptions) through the use 
 \noindent \textbf{Policy Implementation:}
 Our service creates and manages clusters of transient cloud servers, manages all aspects of the VM lifecycle and costs, and implements the model-based policies.
 It manages a cluster of VMs, and parametrizes the bathtub model based on the VM type, region,  time-of-day, and day-of-week.
-When a new batch job is to be launched, it finds a ``free'' VM in the cluster that is idle, and uses the job scheduling policy to determine if the VM is suitable or a new VM must be launched.
+When a new batch job is to be launched, we find a ``free'' VM in the cluster that is idle, and uses the job scheduling policy to determine if the VM is suitable or a new VM must be launched. 
 Due to the bathtub nature of the failure rate, VMs that have survived the initial failures are ``stable'' and have a very low rate of failure, and thus are ``valuable''.
 We keep these stable VMs as ``hot spares'' instead of terminating them, for a period of one hour. 
 For the checkpointing policy, our dynamic programming algorithm has a time complexity of $O(T^3)$, for a job of length $T$.
@@ -49,9 +49,9 @@ To minimize this overhead, we precompute the checkpointing schedule of jobs of d
 While our service is intended for general batch jobs, we incorporate a special optimization for scientific simulation workloads that improves the ease-of-use of our service, and also helps in our policy implementation. 
 Our insight is that most scientific simulations involve launching a series of jobs that explore a large parameter space that results from different combinations of physical and computational parameters.
 %
-These workloads therefore can be abstracted as a ``bag of jobs'', with each job running the same application with slightly different parameters.
+These workloads can be abstracted as a ``bag of jobs'', with each job running the same application with  different parameters.
 A bag of jobs is characterized by the job and all the different parameters with which it must be executed.
-Within a bag, jobs show little varition in their running time and execution characteristics.
+Within a bag, jobs show little variation in their running time and execution characteristics.
 
 
 We allow users to submit entire bags of jobs, which permits us to determine the running time of jobs based on previous jobs in the bag.
