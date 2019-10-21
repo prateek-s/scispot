@@ -56,27 +56,27 @@ Moreover, no information about preemption characteristics is publicly available,
 This lack of information and understanding about preemption behavior precludes most failure modeling and transient computing optimizations. 
 
 
-To address this gap, we seek to understand the preemption characteristics of Google's Preemptible VMs, whose distinguishing characteristic is that they have a \emph{maximum lifetime of 24 hours}. 
+To address this gap, we seek to understand the preemption characteristics of Google's Preemptible VMs, whose distinguishing characteristic is that they have a \emph{maximum lifetime of approximately 24 hours}. 
 We conduct a large empirical study of over 1,500 preemptions of Google Preemptible VMs, and develop an analytical probability model of preemptions. 
 We find that the temporal constraint is a radical departure from pricing-based preemptions, and presents fundamental challenges in preemption modeling and their effective use. % of Preemptible VMs.
 
 
 % XXX point to figure here? 
 
-Due to the temporal preemption constraint, classical models that form the basis of preemption modeling and policies, such as memoryless exponential failure rates, are not applicable.
+Due to the preemption constraint on preemptions, classical models that form the basis of preemption modeling and policies, such as memoryless exponential failure rates, are not applicable.
 We find that preemption rates are \emph{not} uniform, but bathtub shaped with multiple distinct temporal phases, and are incapable of being modeled by existing bathtub distributions such as Weibull. 
 We capture these characteristics by developing a new probability model. 
 Our model uses reliability theory principles to capture the 24-hour lifetime of VMs, and generalizes to VMs of different resource capacities, geographical regions, and across different temporal domains. 
 To the best of our knowledge, this is the \emph{first} work on constrained preemption modeling. 
 %
-Our investigation also points to a new, surprising connection to statistical mechanics, which can lead to new insights for modeling  temporally constrained events. 
+Our investigation also points to an interesting connection to statistical mechanics, which can be leveraged to obtain fresh insights for modeling temporally constrained preemptions. 
 
 
 We show the applicability and effectiveness of our model by developing optimized policies for job scheduling and  checkpointing. 
 These policies are fundamentally dependent on empirical and analytical insights from our model such as different time-dependent failure rates of different types of VMs. 
 These optimized policies are a building block for transient computing systems and reducing the performance degradation and costs of preemptible VMs. 
 %and we show that the existing exponential ones are not suitable? 
-We implement and evaluate these policies as part of a batch computing service, which we also use for empirically evaluating the effectiveness of our model and policies. 
+\vikram{something not right about this sentence: We implement and evaluate these policies as part of a batch computing service, which we also use for empirically evaluating the effectiveness of our model and policies.}
 
 
 % \sysname abstracts typical scientific computing workloads and workflows into a new unit of execution, which we call as a ``bag of jobs''. 
@@ -92,14 +92,14 @@ Towards our goal of developing a better understanding of constrained preemptions
 %\item Since transient server preemptions can disrupt the execution of jobs, we present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running times and costs of different scientific computing applications.
 
 \item We conduct a large-scale, first of its kind empirical study of preemptions of Google's Preemptible VMs. We then show a statistical analysis of preemptions based on the VM type, temporal effects, geographical regions, etc. Our analysis 
-  indicates that the 24-hour constraint is a defining characteristic, and that the preemption rates are \emph{not} uniform, but have distinctive phases. 
+  indicates that the 24-hour constraint is a defining characteristic, and that the preemption rates are \emph{not} uniform, but have distinct phases. 
 
-\item We develop a probability model of constrained preemptions based on empirical and statistical insights for understanding and characterizing preemption dynamics.  Our model captures the key effects resulting from the 24 hour lifetime constraint associated with these VMs, and we analyze it through the lens of reliability theory and statistical mechanics. 
+\item We develop a probability model of constrained preemptions based on empirical and statistical insights that point to distinct failure processes underpinning the preemption rates. Our model captures the key effects resulting from the 24 hour lifetime constraint associated with these VMs, and we analyze it through the lens of reliability theory and statistical mechanics. 
 
 %  and enables accurate prediction of expected running times and costs of different scientific computing applications.
 % WTF is even partial redundancy? 
 
-\item We develop optimized policies for job scheduling and  checkpointing that minimize the total time and cost of running applications. These policies are based on our preemption models, and reduce job running times by up to $5\times$ compared to existing preemption models used for transient VMs. 
+\item Based on our preemption model, we develop optimized policies for job scheduling and checkpointing that minimize the total time and cost of running applications. These policies reduce job running times by up to $5\times$ compared to existing preemption models used for transient VMs. 
   
 %\item In order to select the optimal VM for an application, from the plethora of choices offered by cloud providers, we develop a transient VM selection policy that minimizes the cost of running applications. Our search based policy selects a transient VM based on it's cost, performance, and preemption rate. 
 
