@@ -26,7 +26,7 @@ Due to their popularity among users, smaller cloud providers such as Packet~\cit
 \footnotetext{We use servers and VMs interchangeably throughout the paper.}
 
 However, effective use of transient servers is challenging for applications because of their uncertain availability~\cite{transient}. 
-Preemptions are akin to fail-stop failures, and result in loss of the application memory and disk state, leading to downtimes for interactive applications such as web services, and poor throughput for long-running batch-computing applications. 
+Preemptions are akin to fail-stop failures, and result in loss of the application memory and disk state, leading to downtimes for interactive applications such as web services, and poor throughput for batch-computing applications. 
 Consequently, researchers have explored fault-tolerance techniques such as checkpointing~\cite{flint, marathe2014exploiting, spoton} and resource management techniques~\cite{exosphere} to ameliorate the effects of preemptions. % for a wide range of applications. 
 The effect of preemptions depends on the application's delay insensitivity and fault model, and mitigating preemptions for different applications remains an active research area~\cite{hourglass-eurosys19}. 
 
