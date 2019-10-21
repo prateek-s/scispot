@@ -27,8 +27,8 @@ We have already presented the statistical analysis of our model in Section~\ref{
 
 
 \noindent \textbf{Environment and Workloads:}
-All our empirical evaluation is conducted on the Google Public cloud using our batch computing service described in the previous section. 
-We use three scientific computing workloads that are representative of typical applications in the broad domains of physics, material sciences, and chemical engineering:
+All our empirical evaluation is conducted on the Google Public cloud using our batch computing service described in Section~\ref{sec:impl}. 
+We use three scientific computing workloads that are representative of typical applications in the broad domains of physics and material sciences:% , and chemical engineering:
 
 % open-source
 %\vspace*{\tightext}
@@ -135,11 +135,12 @@ Thus, our model-based job scheduling policy can reduce job failure probability b
 \begin{figure}[t]
   \vspace*{\myfigspace}
   \subfloat[Effect of job start time on the failure probability. \label{fig:sched-bathtub}]
-  {  \includegraphics[width=0.35\textwidth]{../graphs/Sched-bathtub.pdf}}
+  {  \includegraphics[width=0.33\textwidth]{../graphs/Sched-bathtub.pdf}}
   \\
   \vspace*{-0.4cm}
   \subfloat[Job failure probability for jobs of different lengths. \label{fig:sched-all}]
-  {  \includegraphics[width=0.35\textwidth]{../graphs/Sched-fail-prob.pdf}}
+  {  \includegraphics[width=0.33\textwidth]{../graphs/Sched-fail-prob.pdf}}
+    \vspace*{\myfigspace}
   \caption{Job failure probability is lower with our deadline aware policy across all job sizes.}
   \vspace*{\myfigspace}
   \label{fig:sched-both}
@@ -195,7 +196,7 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 % {  \includegraphics[width=0.3\textwidth]{../graphs/ckpt-start-0.pdf}}
 % \hfill
 \\
-\vspace*{-5pt}
+\vspace*{-8pt}
 \subfloat[Increase in running time with checkpointing when jobs start at time=0. \label{fig:ckpt-start-0-relative}]
 {\includegraphics[width=0.35\textwidth]{../graphs/ckpt-start-relative.pdf}}
 \vspace*{\myfigspace}

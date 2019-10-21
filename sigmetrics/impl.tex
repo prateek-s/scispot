@@ -6,15 +6,14 @@
 
 We have implemented a prototype batch computing service that implements various policies for constrained preemptions. 
 We use this service to examine the effectiveness and practicality of our model and policies in real-world settings. 
-
-
-
+%
 Our service is implemented as a light-weight, extensible framework that makes it convenient and cheap to run batch jobs in the cloud. 
 We have implemented our prototype in Python in about 2,000 lines of code, and currently support running VMs on the Google Cloud Platform~\cite{gcp}. 
 %
 
 
-Our service is implemented as a centralized controller, which implements the VM selection and job scheduling policies described in Section~\ref{sec:policies}. 
+%Our service is implemented as a
+We use a centralized controller (Figure~\ref{fig:arch}), which implements the VM selection and job scheduling policies described in Section~\ref{sec:policies}. 
 The controller can run on any machine (including the user's local machine, or inside a cloud VM), and exposes an HTTP API to end-users. 
 Users submit bags of jobs to the controller via the HTTP API, which then launches and maintains a cluster of cloud VMs, and maintains the job queue and metadata in a local database. 
 %To improve usability, we automatically generate parameter combinations for a given bag size, based on a user-provided json file with ranges and constraints for each parameter. 

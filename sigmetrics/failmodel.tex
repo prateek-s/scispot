@@ -268,10 +268,10 @@ We now analyze and place our model in a reliability theory framework.
 %
 
 \noindent \textbf{Expected Lifetime:} Our analytical model also helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
-More formally, we define the expected lifetime of a VM as: 
+More formally, we define the expected lifetime of a VM ($\mathscr{L}$) as: 
 \begin{equation}
   \label{eq:expected-lifetime}
-E[L] =  \int_{0}^{24} t {f}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{24}
+E[\mathscr{L}] =  \int_{0}^{24} t {f}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{L}
 \end{equation}
 where $f(t)$ is the rate of preemptions of the VM (Equation~\ref{eq:failrate}).
 %= \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{t-b}{\tau_2}e^{\frac{t-b}{\tau_2}}\right) $ 
@@ -371,7 +371,10 @@ The idea of excluded volume is central in physics and materials engineering wher
 
 Secondly, we note that the system of $N$ preemptions within a constrained deadline of interval $L$ maps \emph{exactly} to a well known and analytically solvable system in classical statistical mechanics, the Tonks gas model \cite{tonks}, where one considers a system of $N$ hard-spheres of diameter $w$ to move along a line segment of length $L$. The structural quantities associated with this system including the probability of finding a sphere at position $x$ within the interval $L$ are computed by evaluating the partition function of the system, which essentially measures the number of valid system configurations \cite{krauth2006statistical}. Employing this mapping and the associated statistical mechanics tools, the original model of non-overlapping (interacting) preemptions can be mapped to a system of $N$ overlapping (non-interacting) preemptions, each allowed to access an excluded volume of $L_e$, and the number of valid configurations is given by the partition function $Z_N = L_e^N$. For the case of $N$ preemptions, we have $Z_N = (L- Nw)^N$.
 
-We are interested in calculating the probability that a preemption starts at time $t=L-w$, i.e., $P(L-w)$. Given that the time to perform the preemption $w$ is generally expected to be much smaller than the total time interval $L$, $P(L-w)$ is the probability of finding a preemption near the deadline. The assumption of mutually exclusive preemptions implies that no other preemption can be found for $t > L - w$, that is, $P(t> L-w) = 0$. Hence, the remaining $N-1$ preemptions must occur such that the last of those finish by $t=L-w$ (the preemption at time $L-w$ essentially sets an effective deadline for the other $N-1$ preemptions). The number of ways this can happen is given by the partition function $Z_{N-1} = L_e^{N-1}= (L-2w - (N-2)w)^{N-1} = (L - Nw)^{N-1}$, where $L_e = L - Nw$ is the corresponding excluded temporal volume accessible to each of the $N-1$ preemption. It is interesting to note that the excluded volume in this case is the same as that of the original $N$ preemption system: this fortuitous result arises because the reduction in available volume to place the preemptions is commensurate with the need to place $N-1$ preemptions instead of $N$.
+We are interested in calculating the probability that a preemption starts at time $t=L-w$, i.e., $P(L-w)$. Given that the time to perform the preemption $w$ is generally expected to be much smaller than the total time interval $L$, $P(L-w)$ is the probability of finding a preemption near the deadline. The assumption of mutually exclusive preemptions implies that no other preemption can be found for $t > L - w$, that is, $P(t> L-w) = 0$. Hence, the remaining $N-1$ preemptions must occur such that the last of those finish by $t=L-w$ (the preemption at time $L-w$ essentially sets an effective deadline for the other $N-1$ preemptions). The number of ways this can happen is given by the partition function $Z_{N-1} = L_e^{N-1}= (L-2w - (N-2)w)^{N-1} = (L - Nw)^{N-1}$, where $L_e = L - Nw$ is the corresponding excluded temporal volume accessible to each of the $N-1$ preemptions.
+It is interesting to note that this excluded volume
+%in this case
+is the same as that of the original $N$ preemption system: this fortuitous result arises because the decrease in available volume to place the preemptions is commensurate with the need to place $N-1$ preemptions instead of $N$.
 
 The probability $P(L-w)$ is obtained as the ratio of the valid configurations given by the two partition functions computed above.
 That is, 

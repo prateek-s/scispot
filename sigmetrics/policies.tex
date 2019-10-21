@@ -4,7 +4,9 @@
 Having analyzed the statistical behavior of constrained preemptions and presented our probability model, we now examine how the bathtub shape of the failure rate impacts applications.
 Based on insights drawn from our statistical analysis and the model, we develop various policies for ameliorating the effects of preemptions. 
 Prior work in transient computing has established the benefits of such policies for a broad range of applications.
-However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required, which we present below. 
+However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required.
+
+%, which we present below. 
 
 % For applications running on transient servers, the effects of preemptions can be ameliorated through different policies for fault tolerance and resource management.
 % Prior work in transient computing has established the benefits of such policies for a broad range of applications. 
@@ -35,14 +37,14 @@ We first compute the expected amount of wasted work \emph{assuming} the job face
 \begin{equation}
 E[W_1(T)] = \int_0^{T} t~P(t | t \leq T)~dt , 
 \end{equation}
-where $P(t|t\leq T) = P(t) / P(t<T)$. Here, $P(t\leq T)$ is the probability that there is a preemption within time $T$ and is given by $P(t<T) = \mathscr{F}(T)$ where $\mathscr{F}(T)$ is our CDF. 
+where $P(t|t\leq T) = P(t) / P(t<T)$. Here, $P(t\leq T)$ is the probability that there is a preemption within time $T$ and is given by $P(t<T) = F(T)$ where $F(T)$ is the CDF. 
 $P(t)$ is the probability of a preemption at time $t$, and is given by $P(t) = f(t)$ , where $f(t)$ is the probability distribution function given by Equation~\ref{eq:failrate}.
 We can therefore write the above equation as:
 \begin{align}
   E[W_1(T)] &= \int_0^{T} t~P(t | t \leq T)~dt \nonumber 
   = \int_0^{T} t~\frac{f(t)}{P(t \leq T)}~dt \\ 
-  &= \int_0^{T} t~\frac{f(t)}{\mathscr{F}(T)}~dt 
-    = \frac{1}{\mathscr{F}(T)}  \int_0^{T} t~f(t)~dt
+  &= \int_0^{T} t~\frac{f(t)}{F(T)}~dt 
+    = \frac{1}{F(T)}  \int_0^{T} t~f(t)~dt
     \label{eq:wasted}
 \end{align}
 
@@ -54,13 +56,13 @@ The total running time (also known as makespan) of a job \emph{with} preemptions
   \label{eq:tot-run-time}
   E[T] = P(\text{no failure})~T + P(\text{1 failure})~(T + E[W_1(T)])
 \end{equation}
-Where $P(\text{no failure}) = P(t > T) =  1- \mathscr{F}(T)$ and $P(\text{1 failure}) = P(t \leq T) = \mathscr{F}(T)$.
+Where $P(\text{no failure}) = P(t > T) =  1- F(T)$ and $P(\text{1 failure}) = P(t \leq T) = F(T)$.
 The above equation for $E[T]$ thus becomes: 
 %
 \begin{align}
   \label{eq:tot-run-time-2}
-  E[T] &= (1-\mathscr{F}(T))~T + \mathscr{F}(T)~(T + E[W_1(T)]) \\ \nonumber
-  &= (1-\mathscr{F}(T))~T + \mathscr{F}(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
+  E[T] &= (1-F(T))~T + F(T)~(T + E[W_1(T)]) \\ \nonumber
+  &= (1-F(T))~T + F(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
        &= T + \int_0^{T} t~f(t)~dt         
 \end{align}
 This expression for the expected running time assumes that the job will be preempted at most once.
@@ -102,7 +104,7 @@ Our job scheduling policy uses the preemption model to determine the preemption 
 Assume that the running VM's age (time since launch) is $s$.
 Then, the the probability of failure on the existing VM $P_{\text{Existing}} = max(1, F(T+s) - F(T))$. 
 The intuition is to reuse the VM only if the expected running time is lower, compared to running on a new VM. 
-To compute the expected running time of a job of length $T$ starting at vm-age $s$, we can modify our earlier expression for running time (Equation~\ref{eq:tot-run-time-2}) as follows:
+To compute the expected running time of a job of length $T$ starting at vm-age $s$, we  modify our earlier expression for running time (Equation~\ref{eq:tot-run-time-2}) to: % as follows:
 \begin{equation}
   \label{eq:tot-run-time-s}
     E[T_s]  = T + \int_{s}^{s+T} t~f(t)~dt
@@ -137,10 +139,17 @@ That is, the application is checkpointed every $\tau = \sqrt{2 \cdot \delta \cdo
 
 However, checkpointing with a uniform period is sub-optimal in case of time dependent failure rates, and especially for bathtub failure rates.
 A sub-optimal checkpointing rate can lead to increased recomputation and wasted work, or result in excessive checkpointing overhead. 
-Intuitively, the checkpointing rate should depend on the failure rate, and our analytical preemption model can be used for designing an optimized checkpointing schedule. We now present our checkpointing policy that uses the preemption model and provides non-uniform, failure-rate dependent checkpointing. 
+Intuitively, the checkpointing rate should depend on the failure rate, and our analytical preemption model can be used for designing an optimized checkpointing schedule.
 
+We now present our checkpointing policy that uses the preemption model and provides non-uniform, failure-rate dependent checkpointing.
+In a nutshell, our policy allows us to compute the optimal checkpointing schedule for jobs of different lengths and different starting times, employing a new dynamic programming approach that minimizes the total expected makespan. 
 
-Let the uninterrupted running time of the job be $J$. Or in other words, $J$ amount of work needs to be performed. We assume that each job-step takes one unit of time, for ease of exposition. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noindent \textbf{Algorithm description:}
+Let the uninterrupted running time of the job be $J$.
+%In other words, $J$ amount of work needs to be performed.
+For ease of exposition, we assume that each job-step takes one unit of time, yielding $J$ job-steps. 
 Let the checkpoint cost be $\delta$---i.e, each checkpoint increases the running time by $\delta$. 
 We seek to minimize the total expected running time or the \emph{makespan}, which is the sum of $J$, the expected periodic checkpointing cost, and the expected recomputation. 
 
@@ -167,7 +176,7 @@ E[M_{\text{succ}}(J, t, i)] = t+i+\delta + E[M^*(J-i, t+i+\delta)].
 \end{equation}
 \noindent Note that the makespan includes the amount of work already done ($t+i$), the checkpointing overhead ($\delta$), and the expected minimum makespan of the rest of the job. 
 Similarly, when the job fails before step $i$, then that portion is ``lost work'', and can be denoted by $E[L(t, i+\delta)]$ which is the expected lost work when there is a failure during the time interval $t$ to $t+i+\delta$.
-A failure before the checkpoint means that we have made no progress, and $J$ steps of the job still remain.
+A failure before the checkpoint results in no progress, and $J$ steps of the job still remain.
 The expected makespan in the failure case is then given by:
 \begin{equation}
   \label{eq:mfail}
@@ -184,12 +193,12 @@ E[L(t, i+\delta)] = \int_{t}^{t+i+\delta}{x~f(x)~dx}   ,
 \end{equation}
 where $f(x)$ is the probability density function from Equation~\ref{eq:failrate}.
 
-Thus we can find the minimum makespan $E[M^*(J, t)]$ by using Equations~\ref{eq:m0}--\ref{eq:exploss}. 
+\noindent \textbf{Computing the optimal checkpoint schedule:} We can find the minimum makespan $E[M^*(J, t)]$ by using Equations~\ref{eq:m0}--\ref{eq:exploss}. 
 Given a job of length $J$, minimizing the total expected makespan involves computing $E[M^*(J, s)]$, where $s$ is the current age of the server. 
-Since the makespan is recursively defined, we can do this minimization using  dynamic programming, and extract the job-steps at which checkpointing results in a minimum expected makespan. 
+Since the makespan is recursively defined, we can do this minimization using dynamic programming, and extract the job-steps at which checkpointing results in a minimum expected makespan. 
 %Once all the values of $E[M(J, t, i)]$ are computed, T
-The job's checkpointing schedule is determined as follows.
-We first locate the checkpointing interval $i_1$ that minimizes $E[M(J,0,i)]$ (assume the job starts at $s=0$ for ease of exposition). 
+The job's checkpointing schedule is determined as follows (assume the job starts at $s=0$ for ease of exposition). 
+We first locate the checkpointing interval $i_1$ that minimizes $E[M(J,0,i)]$.  
 Then, we recursively find the next checkpointing interval $i_2$ by minimizing  $E[M(J-i_1, i_1,i)]$, and so on, until the $J\leq0$. %Each $E[M(a, b, c)]$ is obtained with a simple lookup in the generated dynamic programming table. 
 
 If a job encounters a failure, it is resumed from the most recent checkpoint, on a new VM.
