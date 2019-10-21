@@ -165,9 +165,9 @@ $E[M_{\text{succ}}]$ is the expected makespan if there are no job failures when 
   \label{eq:msuc}
 E[M_{\text{succ}}(J, t, i)] = t+i+\delta + E[M^*(J-i, t+i+\delta)].  
 \end{equation}
-\noindent Note that the makespan includes the amount of work already done $t+i$, the checkpointing overhead $\delta$, and the expected minimum makespan of the rest of the job.
-Similarly, when the job fails before step $i$, then that portion is ``lost work'', and can be denoted by $E[L(t, i+\delta)]$ which denotes the expected lost work when there is a failure during the time interval $t$ to $t+i+\delta$.
-A failure before the checkpoint means that we have made no progress, and $W$ steps of the job still remain.
+\noindent Note that the makespan includes the amount of work already done ($t+i$), the checkpointing overhead ($\delta$), and the expected minimum makespan of the rest of the job. 
+Similarly, when the job fails before step $i$, then that portion is ``lost work'', and can be denoted by $E[L(t, i+\delta)]$ which is the expected lost work when there is a failure during the time interval $t$ to $t+i+\delta$.
+A failure before the checkpoint means that we have made no progress, and $J$ steps of the job still remain.
 The expected makespan in the failure case is then given by:
 \begin{equation}
   \label{eq:mfail}
@@ -186,11 +186,11 @@ where $f(x)$ is the probability density function from Equation~\ref{eq:failrate}
 
 Thus we can find the minimum makespan $E[M^*(J, t)]$ by using Equations~\ref{eq:m0}--\ref{eq:exploss}. 
 Given a job of length $J$, minimizing the total expected makespan involves computing $E[M^*(J, s)]$, where $s$ is the current age of the server. 
-Since the makespan is recursively defined, we can do this minimization using a dynamic programming approach, and extract the job-steps at which checkpointing results in a minimum expected makespan. 
+Since the makespan is recursively defined, we can do this minimization using  dynamic programming, and extract the job-steps at which checkpointing results in a minimum expected makespan. 
 %Once all the values of $E[M(J, t, i)]$ are computed, T
-he job's checkpointing schedule is determined as follows.
+The job's checkpointing schedule is determined as follows.
 We first locate the checkpointing interval $i_1$ that minimizes $E[M(J,0,i)]$ (assume the job starts at $s=0$ for ease of exposition). 
-Then, we recursively find the next checkpointing interval $i_2$ by minimizing  $E[M(J-i_1, i_1,i)]$, and so on, until the $J\leq0$.
+Then, we recursively find the next checkpointing interval $i_2$ by minimizing  $E[M(J-i_1, i_1,i)]$, and so on, until the $J\leq0$. %Each $E[M(a, b, c)]$ is obtained with a simple lookup in the generated dynamic programming table. 
 
 If a job encounters a failure, it is resumed from the most recent checkpoint, on a new VM.
 After every such resume-event, we compute the optimal checkpointing schedule for $E[M^*(J_{\text{Remaining}}, 0)]$, since the job's failure rate is dependent on the VM age when it starts, and the job may be resumed at a later time or on a VM of a different type, etc.
