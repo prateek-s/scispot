@@ -75,7 +75,7 @@ In case of constrained preemptions, the expected waste depends both on the proba
 
 
 For a job of length $J$, the wasted work, assuming that the job faces a \emph{single} preemption, is $E[W_1(J)]$, and is given by Equation~\ref{eq:wasted}.
-We first analyze this wasted work for jobs of different lengths in Figure~\ref{fig:vs-uniform}
+We first analyze this wasted work for jobs of different lengths in Figure~\ref{fig:vs-uniform}. 
 We analyze two failure probability distributions for constrained preemptions: a uniform distribution such that $F(t) = 24-t$, and the bathtub shaped distribution with parameters corresponding to the \texttt{n1-highcpu-16} VM type shown in Figure~\ref{fig:gcp1}. 
 
 
@@ -99,7 +99,7 @@ Thus, the bathtub preemptions are beneficial for applications and users, as the 
 Since the failure rate distribution is ultimately controlled by the cloud provider, our analysis can be used to determine the appropriate distribution based on the job length distributions.
 For instance, if short jobs are very common, then uniformly distributed preemptions are preferable, otherwise, bathtub distributions can offer significant benefits. 
 
-\noindent \textbf{Result:} \emph{For constrained preemptions, bathtub distributions significantly reduce the expected increase in running times for medium to long running jobs, but are slightly inferior for short jobs.}
+\noindent \textbf{Result:} \emph{For constrained preemptions, bathtub distributions significantly reduce the expected increase in running times for medium to long running jobs ($5-15$ hours), but are slightly inferior for short jobs ($<5$ hours).}
 
 
 
@@ -149,7 +149,7 @@ The job failure probability is determined by the job length and the job starting
 We examine the failure probability for jobs of different lengths in Figure~\ref{fig:sched-all}, in which we average the failure probability across different start times.
 We again see that our policy results in significantly lower failure probability compared to memoryless scheduling.
 For all but the shortest and longest jobs, the failure probability with our policy is \emph{half} of that of existing memoryless policies.
-This difference is primarily due to the differences in how the two policies perform for jobs launched near the end of the VM preemption deadline, which we examined previously in Figure~\ref{fig:sched-bathtub}. 
+This reduction is primarily due to the differences in how the two policies perform for jobs launched near the end of the VM preemption deadline, which we examined previously in Figure~\ref{fig:sched-bathtub}. 
 
 
 \noindent \textbf{Result:} \emph{Our model-based job scheduling and VM-reuse policy can decrease job failure probability by $2\times$.}
@@ -172,8 +172,8 @@ Throughout, we assume that each checkpoint takes 1 minute.
 The increase in running time depends on the failure rate and thus the job's starting time. 
 With our model-based checkpointing policy, the increase in running time is bathtub shaped and is below 5\%, and around 1\% when the job is launched when the VM is between 5 and 15 hours old. 
 
-We also compare with the Young-Daly periodic checkpointing policy, and use the initial failure rate of the VM to set the MTTF, which corresponds to an MTTF of 1 hour. 
-This results in a high, constant rate of checkpointing, and thus increases the running time of the job by more than 25\%.
+We also compare with the Young-Daly~\cite{daly2006higher} periodic checkpointing policy, and use the initial failure rate of the VM to set the MTTF, which corresponds to an MTTF of 1 hour. 
+This results in a high, constant rate of checkpointing, and increases the running time of the job by more than 25\%.
 The increase in running time is primarily due to the overhead of checkpointing. 
 Note that checkpointing with a lower frequency decreases the checkpointing overhead, but increases the recomputation required.
 
@@ -224,14 +224,15 @@ We use our model-driven job scheduling policy, but do not use checkpointing, sin
 
 
 \begin{figure}[t]
+  \vspace*{\myfigspace}
   \centering
   \subfloat[Cost \label{fig:cost-only-bar}]
 {  \includegraphics[width=0.25\textwidth]{../graphs/cost-vs-ondem.pdf} }
 \hfill
 \subfloat[Preemptions \label{fig:fails-time}]
 { \includegraphics[width=0.2\textwidth]{../graphs/confin-fails-vs-time-relative.pdf} }
-\vspace*{\myfigspace}
 \label{fig:service-all}
+\vspace*{-0.4cm}
 \caption{Cost and preemptions with our service.}
 \vspace*{\myfigspace}
 \end{figure}  

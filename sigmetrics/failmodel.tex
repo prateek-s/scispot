@@ -54,10 +54,10 @@ Finally, we discuss the unique aspects and general characteristics of constraine
 \end{figure}
 
 To understand the nature of temporally constrained preemptions, we conducted the first empirical study of Google's Preemptible VMs, that have a fixed price and a maximum 24 hour lifetime.
-Our empirical study is necesitated by the fact that the cloud operator (Google) does not disclose any other information about the preemption rates, and thus relatively little is known about the preemptions of these VMs, and as a result their performance.
+Our empirical study is necessitated by the fact that the cloud operator (Google) does not disclose any other information about the preemption rates, and thus relatively little is known about the preemptions of these VMs, and as a result their performance.
 
 
-We launched more than 1,500 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
+We launched  1,516 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
 To ensure the generality of our empirical observations, VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads. 
 %
 \footnotetext{We will release the complete preemption dataset for further analysis.} %Weaksauce 
@@ -75,7 +75,7 @@ Note that the cloud operator (Google) caps the \emph{maximum} lifetime of the VM
 \subfloat[Variations due to time of day and workload. \label{fig:time-breakdown}]
 {  \includegraphics[width=0.3\textwidth]{../data/gnuplot-figures/sigmetrics-time-breakdown.pdf} }
 \hfill
-\subfloat[\textbf{n1-highcpu-2} in different regions. \label{fig:region-breakdown}]
+\subfloat[\textbf{n1-highcpu-16} in different regions. \label{fig:region-breakdown}]
 {  \includegraphics[width=0.3\textwidth]{../data/gnuplot-figures/sigmetrics-region-breakdown.pdf} }
 \vspace*{-0.6cm}
 \caption{Analysis of preemption characteristics by VM-type, region, time-of-day, and workload type.}
@@ -109,7 +109,7 @@ This assumption breaks down when there is a fixed upper bound on the lifetime. %
 In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that \emph{particular} type.
 Thus, our empirical study looked at preemptions of VMs of different sizes, in different geographical zones, at different times of the day, and running different workloads (Figure~\ref{fig:breakdown-all}).
 In all cases, we find that there are three distinct phases associated with the preemption dynamics giving rise to the bathtub shaped preemption probability. 
-We argue that this is not a coincindence, but may be a result of practical and fundamental outcomes of cluster management policies. 
+We argue that this is not a coincidence, but may be a result of practical and fundamental outcomes of cluster management policies. 
 
 While the actual specific preemption policy is up to the cloud operator, we will show that the bathtub behavior has benefits for applications. 
 %The bathtub behavior results in a high rate of failure initially. 
@@ -198,7 +198,7 @@ However, as we can see from Figure~\ref{fig:QQ}, existing distributions are unab
 %Our new model, informed by the cumulative distribution of lifetimes that has multiple distinct temporal phases, addresses this need.
 
 Our failure probability model seeks to address the drawbacks of existing reliability theory models for modeling constrained preemptions. 
-The presence of three distinct phases exhibiting non-differentiable transition points (sudden changes in CDF near the deadline, for example) suggests that for accurate results, models that treat the probability as a step function (CDF as a piecewise-continuous function) should be employed. However, this limits the range of model applicability and general interpretability of the underlying preemption behavior. Our goal is to provide a broadly applicable, continuosly differentiable, and informative model built on reasonable assumptions.  
+The presence of three distinct phases exhibiting non-differentiable transition points (sudden changes in CDF near the deadline, for example) suggests that for accurate results, models that treat the probability as a step function (CDF as a piecewise-continuous function) should be employed. However, this limits the range of model applicability and general interpretability of the underlying preemption behavior. Our goal is to provide a broadly applicable, continuously differentiable, and informative model built on reasonable assumptions.  
 
 We begin by making a key assumption: the preemption behavior arises from the presence of \emph{two} distinct failure processes.
 %that give rise to a new probability distribution characterizing the preemptions and the observed CDF, and ensure the dependence of the rate of failure on the VM lifetime. 
@@ -243,7 +243,7 @@ As VMs get closer to their maximum lifetime imposed by the cloud operator, they 
 Shifting the argument ($t$) of this term by $b$ ensures that the exponential reclamation is only applicable near the end of the VM's maximum lifetime and does not dominate over the entire temporal range. 
 %As noted before, $1/\tau_2$ is the rate of this reclamation. 
 
-The analytical model and the associated  distribution function $\mathscr{F}$ introduced above provides a much better fit to the empirical data (Figure~\ref{fig:gcp1}) and captures the different phases of the preemption dynamics through parameters $\tau_1, \tau_2, b$, and $A$. These parameters can be obtained for a given empirical CDF using least squares function fitting methods (we use scipy's \texttt{optimize.curve\_fit} with the dogbox technique). The failure or preemption rate can be derived from this CDF as:
+The analytical model and the associated  distribution function $\mathscr{F}$ introduced above provides a much better fit to the empirical data (Figure~\ref{fig:gcp1}) and captures the different phases of the preemption dynamics through parameters $\tau_1, \tau_2, b$, and $A$. These parameters can be obtained for a given empirical CDF using least squares function fitting methods (we use scipy's \texttt{optimize.curve\_fit} with the dogbox technique~\cite{scipy-fit}). The failure or preemption rate can be derived from this CDF as:
 \begin{equation}
   \label{eq:failrate}
     \vspace*{\eqnspace}
@@ -266,17 +266,17 @@ We now analyze and place our model in a reliability theory framework.
 %
 
 \noindent \textbf{Expected Lifetime:} Our analytical model also helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
-More formally, we define the expected lifetime of a VM of type $i$, as: 
+More formally, we define the expected lifetime of a VM as: 
 \begin{equation}
   \label{eq:expected-lifetime}
-E[L_i] =  \int_{0}^{24} t {f_i}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{24}
+E[L] =  \int_{0}^{24} t {f}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{24}
 \end{equation}
-where $f_i(t)$ is the rate of preemptions of VMs of type $i$ (Equation~\ref{eq:failrate}).
+where $f(t)$ is the rate of preemptions of the VM (Equation~\ref{eq:failrate}).
 %= \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{t-b}{\tau_2}e^{\frac{t-b}{\tau_2}}\right) $ 
 %
 %Since preemptions require restarting a job and increase the job completion time, it may be more prudent to select transient VMs with higher expected lifetimes.
 
-This expected lifetime can be used in lieu of MTTF, for policies and applications that require a ``coarse-grained'' comparison of the preemption rates of servers of different types, which has been uesd for cost-minimizing server selection~\cite{flint}. 
+This expected lifetime can be used in lieu of MTTF, for policies and applications that require a ``coarse-grained'' comparison of the preemption rates of servers of different types, which has been used for cost-minimizing server selection~\cite{flint}. 
 
 %We use the analytically derived expected lifetimes of VMs of different types in \sysname when selecting the ``best'' VM type for a given bag of jobs. This server selection is a key part of \sysname design. 
 
@@ -390,7 +390,7 @@ $P(L-w) = Z_{N-1}/ {Z_N} = \frac{1}{L - Nw} > \frac{1}{L}$ , since $N \geq 1$ an
 
 By symmetry arguments, the above lemma is in fact valid for both the end points of the interval, i.e., $P(\epsilon) > \frac{1}{L}$.
 Thus, the probability of preemption is higher near the end points (deadline) than the average preemption probability of $1/L$, and we get a bathtub shaped distribution.
-Thus, the bathtub distribution can be considered to be a general artifact of constrained preemptions. Ofcourse, the empirical preemption distribution is determined by the cloud platform's policies and supply and demand, and we elaborate more about the generality of our model and observation in Section~\ref{sec:discussion}. 
+Thus, the bathtub distribution can be considered to be a general artifact of constrained preemptions. Of course, the empirical preemption distribution is determined by the cloud platform's policies and supply and demand, and we elaborate more about the generality of our model and observation in Section~\ref{sec:discussion}. 
 
 % How ?
 %Crucial to our The assumption of preemption events
