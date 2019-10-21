@@ -174,7 +174,9 @@ For constrained preemptions, the increase in failure rate as modeled by the Weib
 Other distributions, such as Gompertz-Makeham, have also been used for modeling bathtub behavior, especially  for actuarial use-cases~\cite{missov2013gompertz}. 
 The key idea is to incorporate an exponential aging process, which is used to model human mortality.
 The CDF of the Gompertz-Makeham distribution is given by $F(t) = 1 - \exp\left(-\lambda t - \dfrac{\alpha}{\beta}(e^{\beta t} - 1) \right)$
-  and is fitted to the data in Figure~\ref{fig:gcp1}, and is also unable to provide a good model for the observed preemption data. 
+and is fitted to the data in Figure~\ref{fig:gcp1}, and is also unable to provide a good model for the observed preemption data.
+%
+
 
 %Specifically, it is unable to model the bathtub preemption rate and the different preemption phases, and 
 
@@ -182,13 +184,13 @@ The CDF of the Gompertz-Makeham distribution is given by $F(t) = 1 - \exp\left(-
 %We also analyze other distributions used for modeling bathtub failures from reliability and actuarial theory in Figure \textbf{XXX}.
 
 
-The non-trivial bathtub-shaped failure rate of Google preemptible VMs (Figure~\ref{fig:gcp1}) requires models that capture the sudden onset of the rise in preemptions near the deadline.
+The non-trivial bathtub-shaped failure rate of Google preemptible VMs (Figure~\ref{fig:gcp1}) requires models that capture the sudden onset of the rise in preemptions near the deadline, which is challenging for the existing failure distributions because of the sharp inflection point. 
 From an application and transiency policy perspective, the preemption model must provide insights about the phase transitions, so that the application can adapt to the sharp differences in preemption rates.
 %
 For example, the preemption model should be able to warn applications about impending deadline, which existing failure distributions cannot account for. 
 % which imposes a dynamics that is more akin to a constrained dynamics problem as opposed to dynamics characterized with a gradually rising failure rate.
 Thus, not only is it important to minimize the total distribution fitting error, it is also important to capture the changes in phase.
-However, as we can see from Figure~\ref{fig:QQ}, existing distributions are unable to capture the effects of the deadline and the phases of the preemptions, and a new modeling approach is needed, which we develop next.  
+However, as we can see from the QQ plots in Figure~\ref{fig:QQ}, existing distributions are unable to capture the effects of the deadline and all the phases of the preemptions, and a new modeling approach is needed, which we develop next.  
 
 \subsubsection{Our  model}
 \label{subsec:preemption-model}

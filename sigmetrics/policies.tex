@@ -140,21 +140,21 @@ A sub-optimal checkpointing rate can lead to increased recomputation and wasted 
 Intuitively, the checkpointing rate should depend on the failure rate, and our analytical preemption model can be used for designing an optimized checkpointing schedule. We now present our checkpointing policy that uses the preemption model and provides non-uniform, failure-rate dependent checkpointing. 
 
 
-Let the uninterrupted running time of the job be $T$. Or in other words, $T$ amount of work needs to be performed. We assume that each job-step takes one unit of time, for ease of exposition. 
+Let the uninterrupted running time of the job be $J$. Or in other words, $J$ amount of work needs to be performed. We assume that each job-step takes one unit of time, for ease of exposition. 
 Let the checkpoint cost be $\delta$---i.e, each checkpoint increases the running time by $\delta$. 
-We seek to minimize the total expected running time or the \emph{makespan}, which is the sum of T, the expected periodic checkpointing cost, and the expected recomputation.
+We seek to minimize the total expected running time or the \emph{makespan}, which is the sum of $J$, the expected periodic checkpointing cost, and the expected recomputation. 
 
 The makespan $M$ can be recursively defined and computed.
-Let $M(W, t)$ denote the makespan where $W$ is remaining length of job to be executed, and $t$ is amount of time already elapsed. %, and $s$ was the starting time (wallclock time) of the job.
+Let $M(J, t)$ denote the makespan where $J$ is remaining length of job to be executed, and $t$ is the time elapsed since the  VM's starting time (i.e., the VM's current age). 
 We now need to determine when to take the \emph{next} checkpoint, which we take after $i$ steps. Let $E[M^*]$ denote the minimum expected makespan.
 \begin{equation}
   \label{eq:m0}
-  E[M^*(W, t)] = \min_{0<i\leq W}{E[M(W, t, i)]}.
+  E[M^*(J, t)] = \min_{0<i\leq J}{E[M(J, t, i)]}.
 \end{equation}
 The makespan is affected by whether or not there is a failure \emph{before} we take the checkpoint: 
 \begin{equation}
   \label{eq:m1}
-E[M(W, t, i)] = P_{\text{succ}}(t, i+\delta) \cdot E[M_{\text{succ}}] + P_{\text{fail}}(t, i+\delta) \cdot E[M_{\text{fail}}].
+E[M(J, t, i)] = P_{\text{succ}}(t, i+\delta) \cdot E[M_{\text{succ}}] + P_{\text{fail}}(t, i+\delta) \cdot E[M_{\text{fail}}].
 \end{equation}
 Here $P_{\text{succ}}(t, i+\delta)$ denotes the probability of the job successfully executing without failures until the checkpoint is taken, i.e., from $t$ to $t+i+\delta$. $P_{\text{fail}}(t, i+\delta) = F(t+i+\delta)-F(i+\delta)$ is computed using the CDF, 
 and $P_{\text{succ}} = 1 - P_{\text{fail}}$ .
@@ -163,7 +163,7 @@ and $P_{\text{succ}} = 1 - P_{\text{fail}}$ .
 $E[M_{\text{succ}}]$ is the expected makespan if there are no job failures when the job is executing from step $t$ to $t+i+\delta$, and is given by a recursive definition:
 \begin{equation}
   \label{eq:msuc}
-E[M_{\text{succ}}(W, t, i)] = t+i+\delta + E[M^*(W-i, t+i+\delta)].  
+E[M_{\text{succ}}(J, t, i)] = t+i+\delta + E[M^*(J-i, t+i+\delta)].  
 \end{equation}
 \noindent Note that the makespan includes the amount of work already done $t+i$, the checkpointing overhead $\delta$, and the expected minimum makespan of the rest of the job.
 Similarly, when the job fails before step $i$, then that portion is ``lost work'', and can be denoted by $E[L(t, i+\delta)]$ which denotes the expected lost work when there is a failure during the time interval $t$ to $t+i+\delta$.
@@ -171,7 +171,7 @@ A failure before the checkpoint means that we have made no progress, and $W$ ste
 The expected makespan in the failure case is then given by:
 \begin{equation}
   \label{eq:mfail}
- E[M_{\text{fail}}(W, t, i)] = E[L(t, i+\delta)] + E[M^*(W, t+i+\delta)].
+ E[M_{\text{fail}}(J, t, i)] = E[L(t, i+\delta)] + E[M^*(J, t+i+\delta)].
 \end{equation}
 
 
@@ -184,15 +184,16 @@ E[L(t, i+\delta)] = \int_{t}^{t+i+\delta}{x~f(x)~dx}   ,
 \end{equation}
 where $f(x)$ is the probability density function from Equation~\ref{eq:failrate}.
 
-Thus we can find the minimum makespan $E[M^*(W, t)]$ by using Equations~\ref{eq:m0}--\ref{eq:exploss}. 
+Thus we can find the minimum makespan $E[M^*(J, t)]$ by using Equations~\ref{eq:m0}--\ref{eq:exploss}. 
 Given a job of length $J$, minimizing the total expected makespan involves computing $E[M^*(J, s)]$, where $s$ is the current age of the server. 
 Since the makespan is recursively defined, we can do this minimization using a dynamic programming approach, and extract the job-steps at which checkpointing results in a minimum expected makespan. 
-Once all the values of $E[M(W, t, i)]$ are computed, the job's checkpointing schedule is determined as follows.
-We first locate the checkpointing interval $i_1$ that minimizes $E[M(W,0,i)]$ (assume the job starts at $s=0$ for ease of exposition). 
-Then, we recursively find the next checkpointing interval $i_2$ by minimizing  $E[M(W-i_1, i_1,i)]$, and so on, until the $W\leq0$.
+%Once all the values of $E[M(J, t, i)]$ are computed, T
+he job's checkpointing schedule is determined as follows.
+We first locate the checkpointing interval $i_1$ that minimizes $E[M(J,0,i)]$ (assume the job starts at $s=0$ for ease of exposition). 
+Then, we recursively find the next checkpointing interval $i_2$ by minimizing  $E[M(J-i_1, i_1,i)]$, and so on, until the $J\leq0$.
 
 If a job encounters a failure, it is resumed from the most recent checkpoint, on a new VM.
-After every such resume-event, we compute the optimal checkpointing schedule for $E[M^*(W_{\text{Remaining}}, 0)]$, since the job's failure rate is dependent on the VM age when it starts, and the job may be resumed at a later time or on a VM of a different type, etc.
+After every such resume-event, we compute the optimal checkpointing schedule for $E[M^*(J_{\text{Remaining}}, 0)]$, since the job's failure rate is dependent on the VM age when it starts, and the job may be resumed at a later time or on a VM of a different type, etc.
 
 % Explain how 
 
