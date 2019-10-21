@@ -222,9 +222,12 @@ Based on these observations, we propose the following general form for the CDF:
   \mathscr{F}\left(t\right) = A\left(1-e^{-\frac{t}{\tau_1}} + e^{\frac{t-b}{\tau_2}}\right)}
   \end{equation}
 \noindent where $t$ is the time to preemption, $1/\tau_1$ is the rate of preemptions in the initial phase, $1/\tau_2$ is the rate of preemptions in the final phase, $b$ denotes the time that characterizes ``activation'' of the final phase where preemptions occur at a very high rate, and $A$ is a scaling constant. 
-
-The temporal interval or deadline of 24 hours, noted with the parameter $L$, enters implicitly by demanding that $0 < t < L$. Combination of the 4 fit parameters ($\tau_1, \tau_2, b$, and $A$) are chosen to ensure that boundary conditions are reasonably met: $\mathscr{F}(0) \approx 0$ and $\mathscr{F}(L) \approx 1$. When not used as a fit parameter, $A$ is chosen as $A = 1/(1-e^{-\frac{L}{\tau_1}} + e^{\frac{L-b}{\tau_2}})$ to ensure $F(L) = 1$, yielding results similar to the 4 parameter fit. 
-In practice, typical fit values yield $b \approx 24$ hours, $\tau_1 \in [0.5, 0.8] $, $\tau_2 \approx 1$ hour, and $A \approx 1/(1-e^{-\frac{L}{\tau_1}} + e^{\frac{L-b}{\tau_2}}) \approx 0.7 $.
+%
+The model is fit to data for $0 < t < L$, where $L \approx 24$ hours represents the temporal interval (deadline).
+Combination of the 4 fit parameters ($\tau_1, \tau_2, b$, and $A$) are chosen to ensure that boundary condition $\mathscr{F}(0) \approx 0$ is satisfied.
+%and $\mathscr{F}(L) \approx 1$. 
+%%When not used as a fit parameter, $A$ is chosen as $A = 1/(1-e^{-\frac{L}{\tau_1}} + e^{\frac{L-b}{\tau_2}})$ to ensure $F(L) = 1$, yielding results similar to the 4 parameter fit. 
+In practice, typical fit values yield $b \approx 24$ hours, $\tau_1 \in [0.5, 0.8] $, $\tau_2 \approx 1$ hour, and $A \approx 0.7$.
 
 
 
@@ -350,37 +353,48 @@ Interestingly, we can show using exact analytical arguments that non-uniform, ba
 
 \begin{lemma}\label{lemma:1}
   Consider $N$ randomly distributed preemptions over an interval $[0, L]$.
-  Assume that each preemption takes $w$ time-units to perform, and that preemptions cannot overlap and occur in a mutually exclusive manner.
-  Then, there exists an $ \epsilon > 0$ such that  $P(L-\epsilon) > \frac{1}{L}$, where 
- $P(t)$ as the probability of finding a preemption at time $t$. 
+  Assume that each preemption takes $w > 0$ time-units to perform, and preemptions cannot overlap, i.e, they occur in a mutually exclusive manner.
+  Then, there exists $\epsilon > 0$ such that  $P(L-\epsilon) > \frac{1}{L}$, where 
+ $P(t)$ is the probability of finding a preemption at time $t$. 
 \end{lemma}
 
 
 \begin{proof}
-We first make some preliminary remarks and introduce concepts necessary to complete the proof.
-Mutual exclusion of preemptions implies that there is a finite non-zero waiting time between preemptions. Let this waiting time be $w$.
-Thus $N$ preemptions occupy a ``temporal volume'' of $Nw$.
-The amount of free volume or excluded volume available in the constrained system is $L - Nw$ (note that the term volume is used to mean one-dimensional volume).
-The idea of excluded volume is central in physics and materials engineering where it underpins the origin of entropic forces in material systems. 
+We first make some preliminary remarks and introduce concepts necessary to complete the proof. 
 
-We begin by counting the total number of configurations available to place $N$ preemptions in the constrained temporal ``volume'' $L$. 
-The number of configurations one preemption can generate is proportional to the excluded volume available, i.e., $L-Nw$.
-For $N$ preemptions, the number of configurations grows exponentially and is proportional to the volume of the $N$-dimensional hypercube: $Z = (L-Nw)^N$. 
-This computation of the number of valid system configurations is in fact the partition function of the system in statistical mechanics~\cite{krauth2006statistical}. 
+Firstly, mutual exclusion of preemptions implies that there is a finite non-zero waiting time $w>0$ between preemptions. 
+For $N$ preemptions to occur within $L$ interval, evidently, we must have $Nw < L$. Also, while $w >0$, the time to perform the preemption is generally expected to be much smaller than the total time interval $L$.
+$N$ preemptions occupy a ``temporal volume'' of $Nw$ (volume here represents the one-dimensional volume). We assume that while a premption may start at $t=0$, the last preemption must finish by $t = L$. Thus, the amount of free or excluded ``temporal volume'' available within the constrained system is $L_e = L - w - (N-1)w = L - Nw$.
+The idea of excluded volume is central in physics and materials engineering where it underpins the origin of entropic or steric forces in material systems \cite{krauth2006statistical,jing2015ionic}. 
 
-Given the condition of mutually exclusive preemptions, we note that if we assume that there is a preemption at $t=L-w$, then $P(t> L-w) = 0$.
-For this case, the available, valid, non-overlapping configurations are proportional to the temporal volume accessible in the $N-1$ dimensional hypercube to $N-1$ preemptions: $Z_{1} = (L-w-(N-1)w)^{N-1} = (L-Nw)^{N-1}$. 
+Secondly, we note that the system of $N$ preemptions within a constrained deadline of interval $L$ maps \emph{exactly} to a well known and analytically solvable system in classical statistical mechanics, the Tonks gas model \cite{tonks}, where one considers a system of $N$ hard-spheres of diameter $w$ to move along a line segment of length $L$. The structural quantities associated with this system including the probability of finding a sphere at position $x$ within the interval $L$ are computed by evaulating the partition function of the system, which essentially measures the number of valid system configurations \cite{krauth2006statistical}. Employing this mapping and the associated statistical mechanics tools, the original model of non-overlapping (interacting) preemptions can be mapped to a system of $N$ overlapping (non-interacting) preemptions, each allowed to access an excluded volume of $L_e$, and the number of valid configurations is given by the partition function $Z_N = L_e^N$. For the case of $N$ preemptions, we have $Z_N = (L- Nw)^N$.
 
-The probability of finding 1 preemption near the deadline at $t=L-\epsilon$ when $\epsilon \in [w/2, w)$ is given as the ratio of the two computed volumes.
-That is, $P(L-\epsilon) = \frac{Z_1}{Z} = \frac{1}{(L - N\epsilon)} > \frac{1}{L}$ , since $N \geq 1$ and $\epsilon>0$. 
+We are interested in calculating the probability that a preemption starts at time $t=L-w$, i.e., $P(L-w)$. Given that the time to perform the preemption $w$ is generally expected to be much smaller than the total time interval $L$, $P(L-w)$ represents the probability of finding a preemption near the deadline. The assumption of mutually exclusive preemptions implies that no other preemption can be found for $t > L - w$, that is, $P(t> L-w) = 0$. Hence, the remaining $N-1$ preemptions must occur such that the last of those finish by $t=L-w$ (the preemption at time $L-w$ essentially sets an effective deadline for the other $N-1$ preemptions). The number of ways this can happen is given by the partition function $Z_{N-1} = L_e^{N-1}= (L-2w - (N-2)w)^{N-1} = (L - Nw)^{N-1}$, where $L_e = L - Nw$ is the corresponding excluded temporal volume accessible to each of the $N-1$ preemtpion. It is interesting to note that the excluded volume in this case is the same as that of the original $N$ preemption systems: this fortuitous result arises because the reduction in available volume to place the preemptions is commensurate with the need to place $N-1$ preemptions instead of $N$.
+
+The probability $P(L-w)$ is obtained as the ratio of the valid configurations given by the two partition functions computed above.
+That is, 
+$P(L-w) = Z_{N-1}/ {Z_N} = \frac{1}{L - Nw} > \frac{1}{L}$ , since $N \geq 1$ and $w>0$. Choosing $\epsilon = w > 0$ completes the proof.
+
+
+%We begin by counting the total number of configurations available to place $N$ preemptions in the constrained temporal ``volume'' $L$. 
+%The number of configurations one preemption can generate is proportional to the excluded volume available, i.e., $L-Nw$.
+%For $N$ preemptions, the number of configurations grows exponentially and is proportional to the volume of the $N$-dimensional hypercube: $Z = (L-Nw)^N$. 
+%This computation of the number of valid system configurations is in fact the partition function of the system in statistical mechanics~\cite{krauth2006statistical}. 
+
+%Given the condition of mutually exclusive preemptions, we note that if we assume that there is a preemption at $t=L-w$, then $P(t> L-w) = 0$.
+%For this case, the available, valid, non-overlapping configurations are proportional to the temporal volume accessible in the $N-1$ dimensional hypercube to $N-1$ preemptions: $Z_{1} = (L-w-(N-1)w)^{N-1} = (L-Nw)^{N-1}$. 
+
+%The probability of finding 1 preemption near the deadline at $t=L-\epsilon$ when $\epsilon \in [w/2, w)$ is given as the ratio of the two computed volumes.
+%That is, $P(L-\epsilon) = \frac{Z_1}{Z} = \frac{1}{(L - N\epsilon)} > \frac{1}{L}$ , since $N \geq 1$ and $\epsilon>0$. 
 \end{proof}
 
-By symmetry arguments, the above lemma is in fact valid for both the end points of the interval, i.e., $P(\epsilon) \geq \frac{1}{L}$.
-Thus, the preemption probability is higher towards the end points than the average preemption probability of $1/L$, and we get a bathtub shaped distribution.
+By symmetry arguments, the above lemma is in fact valid for both the end points of the interval, i.e., $P(\epsilon) > \frac{1}{L}$.
+Thus, the probability of preemption is higher near the end points (deadline) than the average preemption probability of $1/L$, and we get a bathtub shaped distribution.
 Thus, the bathtub distribution can be considered to be a general artifact of constrained preemptions. Ofcourse, the empirical preemption distribution is determined by the cloud platform's policies and supply and demand, and we elaborate more about the generality of our model and observation in Section~\ref{sec:discussion}. 
 
 % How ?
 %Crucial to our The assumption of preemption events
+
 For the above proof, we assumed that each preemption event occurs over a timespan of $w$, which is determined by the preemption warning that the cloud platform provides (which is 30 seconds for Google Preemptible VMs and 120 seconds for Amazon EC2 spot instances). 
 Preempting a VM and reclaiming its resources involves manipulating the cluster-management state, and mutually exclusive preemptions may be convenient from  a cluster management perspective, since serializing VM preemptions makes accounting and other cluster operations easier.
 From an application standpoint, non-overlapping preemptions are also beneficial, since handling multiple concurrent preemptions is significantly more challenging~\cite{exosphere}. 
