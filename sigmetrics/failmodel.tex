@@ -200,7 +200,9 @@ However, as we can see from the QQ plots in Figure~\ref{fig:QQ}, existing distri
 %Our new model, informed by the cumulative distribution of lifetimes that has multiple distinct temporal phases, addresses this need.
 
 Our failure probability model seeks to address the drawbacks of existing reliability theory models for modeling constrained preemptions. 
-The presence of three distinct phases exhibiting non-differentiable transition points (sudden changes in CDF near the deadline, for example) suggests that for accurate results, models that treat the probability as a step function (CDF as a piecewise-continuous function) should be employed. However, this limits the range of model applicability and general interpretability of the underlying preemption behavior. Our goal is to provide a broadly applicable, continuously differentiable, and informative model built on reasonable assumptions.  
+The presence of three distinct phases exhibiting non-differentiable transition points (sudden changes in CDF near the deadline, for example) suggests that for accurate results, models that treat the probability as a step function (CDF as a piecewise-continuous function) could be employed.
+However, this limits the range of model applicability and general interpretability of the underlying preemption behavior. Our goal is to provide a broadly applicable, continuously differentiable, and informative model built on reasonable assumptions.  
+
 
 We begin by making a key assumption: the preemption behavior arises from the presence of \emph{two} distinct failure processes.
 %that give rise to a new probability distribution characterizing the preemptions and the observed CDF, and ensure the dependence of the rate of failure on the VM lifetime. 
@@ -271,7 +273,7 @@ We now analyze and place our model in a reliability theory framework.
 More formally, we define the expected lifetime of a VM ($\mathscr{L}$) as: 
 \begin{equation}
   \label{eq:expected-lifetime}
-E[\mathscr{L}] =  \int_{0}^{24} t {f}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{L}
+E[\mathscr{L}] =  \int_{0}^{L} t {f}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{L}
 \end{equation}
 where $f(t)$ is the rate of preemptions of the VM (Equation~\ref{eq:failrate}).
 %= \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{t-b}{\tau_2}e^{\frac{t-b}{\tau_2}}\right) $ 
@@ -283,12 +285,12 @@ This expected lifetime can be used in lieu of MTTF, for policies and application
 %We use the analytically derived expected lifetimes of VMs of different types in \sysname when selecting the ``best'' VM type for a given bag of jobs. This server selection is a key part of \sysname design. 
 
 \noindent \textbf{Hazard Rate:}
-The hazard rate $\lambda(t)$ governs the dynamics of the failure (or survival) processes. It is generally defined as $\lambda(t) = \frac{g(t)}{S(t)}$, often expressed via the following differential equation (rate law):
+The hazard rate $\lambda(t)$ governs the dynamics of the failure (or survival) processes. It is generally defined as $\lambda(t) = \frac{f(t)}{S(t)}$, often expressed via the following differential equation (rate law):
 \begin{equation}\label{eq:hazard}
 \frac{dS(t)}{dt} = -\lambda(t) S(t)
 \end{equation}
 %$\lambda(t) = \frac{f(t)}{S(t)}$ \vikram{this was inverted, I fixed. double check please}, 
-where $S(t) = 1 - F(t)$ is the survival function associated with a CDF $F(t)$, and $g(t)=dF(t)/dt$ is the failure probability function (rate) at time $t$. The survival function indicates the amount of VMs that have survived at time $t$.
+where $S(t) = 1 - F(t)$ is the survival function associated with a CDF $F(t)$, and $f(t)=dF(t)/dt$ is the failure probability function (rate) at time $t$. The survival function indicates the amount of VMs that have survived at time $t$.
 The hazard rate can also be directly expressed in terms of the CDF as follows: $1-F(t) = \exp{\int_0^t{-\lambda(x) ~dx}}$. 
 The exponential distribution has a constant hazard rate $\lambda$.
 The Gompertz-Makeham distribution has an increasing failure rate to account for the increase in mortality, and its hazard rate is accordingly non-uniform and given by $\lambda(t) = \lambda + \alpha e^{\beta t}$.
