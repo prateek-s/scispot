@@ -1,13 +1,14 @@
 Transient cloud servers such as Amazon Spot instances, Google Preemptible VMs, and Azure Low-priority batch VMs, can reduce cloud computing costs by as much as $10\times$, but can be unilaterally preempted by the cloud provider.
 Understanding preemption characteristics (such as frequency) is a key first step in minimizing the effect of preemptions on application performance, availability, and cost. 
 %However, transient servers can be unilaterally preempted by the cloud provider, and minimizing the effect of preemptions remains a key challenge.
-In this paper, we conduct a first of its kind empirical, statistical, and analytical study of the preemption behavior of Google's Preemptible VMs, 
+In this paper, we conduct a first of its kind empirical study of the preemption behavior of Google's Preemptible VMs, 
 that have a distinguishing characteristic of having a \emph{maximum} lifetime of 24 hours. 
 This temporal constraint introduces many challenges in preemption modeling, since existing memoryless models are not applicable. 
 
-We develop a probability model of constrained preemptions that is based on a large scale empirical study of over 1,500 VM preemptions. 
-Our statistical analysis indicates that preemptions are \emph{not} uniformly distributed, but have distinct temporal phases, which introduces new challenges in failure modeling.  
-Our preemption model uses insights from reliability theory and  statistical mechanics. 
+Our statistical analysis indicates that preemptions of Google Preemptible VMs are \emph{not} uniformly distributed, but have three distinct temporal phases, which introduces new challenges in failure modeling.  
+We introduce and develop a new probability model of constrained preemptions that is based on a large scale empirical study of over 1,500 VM preemptions. 
+%Our preemption model uses insights from reliability theory and  statistical mechanics. 
+We place our preemption probability model in the framework of reliability theory and use insights from statistical mechanics to understand the general nature of constrained preemptions. 
 To highlight the effectiveness of our model, we develop optimized policies for job scheduling and checkpointing for constrained preemptions. 
 Compared to existing preemption modeling techniques, our model-based policies can reduce the running time of jobs on preemptible VMs by up to $5\times$, and reduce the probability of job failure by more than $2\times$. 
 We also implement our policies as part of a batch computing service, which can reduce the cost by $5\times$ compared to conventional cloud deployments.
