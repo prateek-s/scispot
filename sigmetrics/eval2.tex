@@ -53,12 +53,14 @@ The nanoconfinement application launches molecular dynamics (MD) simulations of 
 \subsection{Impact of Constrained Preemptions on Job Running Times}
 
 \begin{figure}[t]
+  \vspace*{\myfigspace}    
   \subfloat[Computation wasted due to one preemption. \label{fig:vs-uniform}]
   {  \includegraphics[width=0.3\textwidth]{../graphs/uniform-v-bathtub.pdf} }
   \\
     \subfloat[Expected increase in running time. \label{fig:vs-uniform-2}]
     {  \includegraphics[width=0.3\textwidth]{../graphs/uniform-v-bathtub-2.pdf} }
     \caption{Wasted computation and expected increase in running time for uniform vs. baththub failures. For jobs $>5$ hours, bathtub distribution results in significantly lower wasted computation.}
+\vspace*{\myfigspace}    
   \label{fig:vs-uniform-both}
   
 \end{figure}
@@ -130,12 +132,15 @@ Thus, our model-based job scheduling policy can reduce job failure probability b
 
 
 \begin{figure}[t]
+  \vspace*{\myfigspace}
   \subfloat[Effect of job start time on the failure probability. \label{fig:sched-bathtub}]
   {  \includegraphics[width=0.35\textwidth]{../graphs/Sched-bathtub.pdf}}
   \\
+  \vspace*{-0.4cm}
   \subfloat[Job failure probability for jobs of different lengths. \label{fig:sched-all}]
   {  \includegraphics[width=0.35\textwidth]{../graphs/Sched-fail-prob.pdf}}
   \caption{Job failure probability is lower with our deadline aware policy across all job sizes.}
+  \vspace*{\myfigspace}
   \label{fig:sched-both}
 \end{figure}
 
@@ -181,6 +186,7 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 
 
 \begin{figure}[t]
+  \vspace*{\myfigspace}
   \subfloat[Checkpointing overhead for different job starting times. \label{fig:ckpt-4}]
 {  \includegraphics[width=0.35\textwidth]{../graphs/ckpt-4.pdf} }
 %\hfill
@@ -188,9 +194,10 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 % {  \includegraphics[width=0.3\textwidth]{../graphs/ckpt-start-0.pdf}}
 % \hfill
 \\
+\vspace*{-5pt}
 \subfloat[Increase in running time with checkpointing when jobs start at time=0. \label{fig:ckpt-start-0-relative}]
 {\includegraphics[width=0.35\textwidth]{../graphs/ckpt-start-relative.pdf}}
-
+\vspace*{\myfigspace}
   \caption{Checkpointing effectiveness.}
   \label{fig:ckpt-all}
 \end{figure}
@@ -222,8 +229,10 @@ We use our model-driven job scheduling policy, but do not use checkpointing, sin
 \hfill
 \subfloat[Preemptions \label{fig:fails-time}]
 { \includegraphics[width=0.2\textwidth]{../graphs/confin-fails-vs-time-relative.pdf} }
+\vspace*{\myfigspace}
 \label{fig:service-all}
 \caption{Cost and preemptions with our service.}
+\vspace*{\myfigspace}
 \end{figure}  
 
 %  \caption{SciSpot's use of preemptible VMs can reduce costs by up to $5\times$ compared to conventional cloud deployments, and 20\% compared to the state of the art EC2 spot instance selection (ExoSphere~\cite{exosphere}).}

@@ -23,7 +23,7 @@ However, the constrained nature of preemptions introduces new challenges that do
 
 When a preemption occurs during the job's execution, it results in wasted work, assuming there is no checkpointing.
 This increases the job's total expected running time, since it must restart after a preemption.
-
+%
 The expected wasted work depends on two factors:
 \begin{enumerate}
 \item The probability of the job being preempted during its execution. 
@@ -182,14 +182,14 @@ In our case, the lost work is the wasted work that we defined earlier in Equatio
   \label{eq:exploss}
 E[L(t, i+\delta)] = \int_{t}^{t+i+\delta}{x~f(x)~dx}   , 
 \end{equation}
-where $f(x)$ is our probability density function represented by Equation~\ref{eq:failrate}.
+where $f(x)$ is the probability density function from Equation~\ref{eq:failrate}.
 
 Thus we can find the minimum makespan $E[M^*(W, t)]$ by using Equations~\ref{eq:m0}--\ref{eq:exploss}. 
 Given a job of length $J$, minimizing the total expected makespan involves computing $E[M^*(J, s)]$, where $s$ is the current age of the server. 
-Since the makespan is recursively defined, we can do this minimization using a dynamic programming approach, and extract the job-steps at which checkpointing results in a minimum expected makespan.
+Since the makespan is recursively defined, we can do this minimization using a dynamic programming approach, and extract the job-steps at which checkpointing results in a minimum expected makespan. 
 Once all the values of $E[M(W, t, i)]$ are computed, the job's checkpointing schedule is determined as follows.
-We first locate the checkpointing interval $i_1$ that minimizes $E[M(W,0,i]$.
-Then, we recursively find the next checkpointing interval $i_2$ by minimizing  $E[M(W-i_1,i_1,i)]$, and so on, until the $W\leq0$.
+We first locate the checkpointing interval $i_1$ that minimizes $E[M(W,0,i)]$ (assume the job starts at $s=0$ for ease of exposition). 
+Then, we recursively find the next checkpointing interval $i_2$ by minimizing  $E[M(W-i_1, i_1,i)]$, and so on, until the $W\leq0$.
 
 If a job encounters a failure, it is resumed from the most recent checkpoint, on a new VM.
 After every such resume-event, we compute the optimal checkpointing schedule for $E[M^*(W_{\text{Remaining}}, 0)]$, since the job's failure rate is dependent on the VM age when it starts, and the job may be resumed at a later time or on a VM of a different type, etc.
