@@ -54,13 +54,13 @@ The total running time (also known as makespan) of a job \emph{with} preemptions
   \label{eq:tot-run-time}
   E[T] = P(\text{no failure})~T + P(\text{1 failure})~(T + E[W_1(T)])
 \end{equation}
-Where $P(\text{no failure}) = P(t > T) =  1- F(T)$ and $P(\text{1 failure}) = P(t \leq T) = F(T)$.
+Where $P(\text{no failure}) = P(t > T) =  1- \mathscr{F}(T)$ and $P(\text{1 failure}) = P(t \leq T) = \mathscr{F}(T)$.
 The above equation for $E[T]$ thus becomes: 
 %
 \begin{align}
   \label{eq:tot-run-time-2}
-  E[T] &= (1-F(T))~T + F(T)~(T + E[W_1(T)]) \\ \nonumber
-  &= (1-F(T))~T + F(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
+  E[T] &= (1-\mathscr{F}(T))~T + \mathscr{F}(T)~(T + E[W_1(T)]) \\ \nonumber
+  &= (1-\mathscr{F}(T))~T + \mathscr{F}(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
        &= T + \int_0^{T} t~f(t)~dt         
 \end{align}
 This expression for the expected running time assumes that the job will be preempted at most once.
