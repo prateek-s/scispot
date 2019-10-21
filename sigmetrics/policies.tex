@@ -189,10 +189,10 @@ Given a job of length $J$, minimizing the total expected makespan involves compu
 Since the makespan is recursively defined, we can do this minimization using a dynamic programming approach, and extract the job-steps at which checkpointing results in a minimum expected makespan.
 Once all the values of $E[M(W, t, i)]$ are computed, the job's checkpointing schedule is determined as follows.
 We first locate the checkpointing interval $i_1$ that minimizes $E[M(W,0,i]$.
-Then, we recursively find the next checkpointing interval $i_2$ by minimizing  $E[M(W-i_i,i_i,i)]$, and so on, until the $W\leq0$.
+Then, we recursively find the next checkpointing interval $i_2$ by minimizing  $E[M(W-i_1,i_1,i)]$, and so on, until the $W\leq0$.
 
 If a job encounters a failure, it is resumed from the most recent checkpoint, on a new VM.
-After every such resume-event, we compute the optimal checkpointing schedule again, since the job's failure rate is dependent on the VM age when it starts, and the job may be resumed at a later time or on a VM of a different type, etc.
+After every such resume-event, we compute the optimal checkpointing schedule for $E[M^*(W_{\text{Remaining}}, 0)]$, since the job's failure rate is dependent on the VM age when it starts, and the job may be resumed at a later time or on a VM of a different type, etc.
 
 % Explain how 
 
