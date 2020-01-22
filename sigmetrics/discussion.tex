@@ -27,12 +27,15 @@ Our model is a continuously differentiable and allows capturing the three phases
 However it may be possible to use a ``phase-wise'' model such as a piece-wise continuously differentiable model, where the three phases are modeled either as three segmented linear regions (found using segmented linear regression), or an initial exponential phase and two linear phases. 
 Such a piece-wise model would be able to capture the phase transitions with even more accuracy, and is part of our future work. 
 
+\begin{comment}
 \noindent \textbf{Connection to constrained systems and statistical mechanics.} Our proof of Lemma~\ref{lemma:1} used mapping to constrained physical systems and employed the statistical mechanics tools such as partition functions \cite{krauth2006statistical}. 
 We have only presented the initial connection between the behavior of constrained preemptions and the statistical mechanics of constraint-driven phenomena in many particle systems \cite{krauth2006statistical,solis}, and we conjecture that a deeper analogy may exist. 
 Central to our proof is the assumption of mutually exclusive preemptions---that is, the provider preempts VMs in a mutually exclusive manner.
 This assumption makes sense from a cluster management and application perspective. 
 However, analyzing constrained preemptions with weaker versions of the mutual exclusion assumption is \emph{also} possible with statistical mechanics approaches. 
-For example, for studies of situations where weakly overlapping preemptions are preferred, one can leverage the statistical mechanics framework of constrained ``soft'' particles often investigated using molecular dynamics simulations \cite{jing2015ionic}. 
+For example, for studies of situations where weakly overlapping preemptions are preferred, one can leverage the statistical mechanics framework of constrained ``soft'' particles often investigated using molecular dynamics simulations \cite{jing2015ionic}.
+\end{comment}
+
 %where mutual exclusion is only preferred and not mandatory, we can leverage the statistical mechanics of constrained ``soft'' particles, which is also a well studied \cite{solis}, often with molecular dynamics simulations \cite{jyto}. 
 
 %%% Local Variables:
