@@ -1,4 +1,77 @@
 
+\subsubsection{Reliability Analysis}
+\label{subsec:reliability}
+
+We now analyze and place our model in a reliability theory framework. 
+%
+
+\noindent \textbf{Expected Lifetime:} Our analytical model also helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
+More formally, we define the expected lifetime of a VM ($\mathscr{L}$) as: 
+\begin{equation}
+  \label{eq:expected-lifetime}
+E[\mathscr{L}] =  \int_{0}^{L} t {f}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{L}
+\end{equation}
+where $f(t)$ is the rate of preemptions of the VM (Equation~\ref{eq:failrate}).
+%= \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{t-b}{\tau_2}e^{\frac{t-b}{\tau_2}}\right) $ 
+%
+%Since preemptions require restarting a job and increase the job completion time, it may be more prudent to select transient VMs with higher expected lifetimes.
+
+This expected lifetime can be used in lieu of MTTF, for policies and applications that require a ``coarse-grained'' comparison of the preemption rates of servers of different types, which has been used for cost-minimizing server selection~\cite{flint}. 
+
+%We use the analytically derived expected lifetimes of VMs of different types in \sysname when selecting the ``best'' VM type for a given bag of jobs. This server selection is a key part of \sysname design. 
+
+\noindent \textbf{Hazard Rate:}
+The hazard rate $\lambda(t)$ governs the dynamics of the failure (or survival) processes. It is generally defined as $\lambda(t) = \frac{f(t)}{S(t)}$, often expressed via the following differential equation (rate law):
+\begin{equation}\label{eq:hazard}
+\frac{dS(t)}{dt} = -\lambda(t) S(t)
+\end{equation}
+%$\lambda(t) = \frac{f(t)}{S(t)}$ \vikram{this was inverted, I fixed. double check please}, 
+where $S(t) = 1 - F(t)$ is the survival function associated with a CDF $F(t)$, and $f(t)=dF(t)/dt$ is the failure probability function (rate) at time $t$. The survival function indicates the amount of VMs that have survived at time $t$.
+The hazard rate can also be directly expressed in terms of the CDF as follows: $1-F(t) = \exp{\int_0^t{-\lambda(x) ~dx}}$. 
+The exponential distribution has a constant hazard rate $\lambda$.
+The Gompertz-Makeham distribution has an increasing failure rate to account for the increase in mortality, and its hazard rate is accordingly non-uniform and given by $\lambda(t) = \lambda + \alpha e^{\beta t}$.
+
+Since we model multiple failure rates and deadline-driven preemptions, our hazard rate is expected to increase with time. Defining the survival function for our model: $S = 1 - \mathscr{F}$, and using Eq.~\ref{eq:hazard} yields the hazard rate associated with our model: 
+%$\lambda(t) = \dfrac{- r_1 e^{- r_1 t} - r_2 e^{r_2 (t - b)}}{e^{- r_1 t} - e^{r_2 (t - b)}}$. 
+% missing minus sign in the above equation
+\noindent 
+\begin{equation}
+  \label{eq:hmodel}
+  \lambda %= r_2 + \bar{r} \left( \dfrac{1}{1 - e^{- r_2 b} e^{\bar{r} t}}\right)
+  %= \dfrac{r_1 + r_2 e^{- r_2 b} e^{\bar{r} t}}{1 - e^{- r_2 b} e^{\bar{r} t}}.  
+  = \dfrac{r_1 e^{- r_1 t} + r_2 e^{r_2 (t - b)}}{1/A - 1 + e^{- r_1 t} - e^{r_2 (t - b)}}
+\end{equation}
+where we have introduced $r_1 = 1/\tau_1$, $r_2 = 1/\tau_2$ to denote the rates of preemptions associated with initial and final phases respectively.
+
+%\vikram{without the A term, hazard rate becomes negative for the older expression you had when $t > b r2 / (r1+r2)$. that is for t roughly greater than b/2, which is for more than 12 hours. hazard rate can never be negative.}
+%Here we have introduced the sum of the two failure rate constants, $\bar{r} = r_1 + r_2$, to simplify the expression. \vikram{check}
+
+%Employing the value for $A$ resulting from ensuring (via fit or by force) that our CDF goes to 1 at $t = L$ (where $L$ is 24 hours), we find
+
+% \begin{equation}
+%   \label{eq:hmodel2}
+%   \lambda %= r_2 + \bar{r} \left( \dfrac{1}{1 - e^{- r_2 b} e^{\bar{r} t}}\right)
+%   %= \dfrac{r_1 + r_2 e^{- r_2 b} e^{\bar{r} t}}{1 - e^{- r_2 b} e^{\bar{r} t}}.  
+%   = \dfrac{r_1 e^{- r_1 t} + r_2 e^{r_2 (t - b)}}{e^{r_2 (L - b)}  - e^{- r_1 L} + e^{- r_1 t} - e^{r_2 (t - b)} }
+% \end{equation}
+
+Recall that the sharp increase in preemption rate only happens close to the deadline, which means that $b \lesssim L$. Thus, when $0 < t \ll b$, we get $\lambda(t) \approx r_1$, mimicking the hazard rate for the classic exponential distribution.
+As $t$ approaches and exceeds $b$ (i.e., $b\lesssim t < L$), the increase in the hazard rate due to the second failure process kicks in, accounting for the deadline-driven rise in preemptions. Note that our hazard rate satisfies $\lambda(t) \ge 0$ for $0<t<L$.
+
+% For ease of exposition, we can write this as:
+
+% \begin{equation}
+%  \label{eq:hmodelsimple}
+% \lambda =  \dfrac{r_1 + \gamma_1 e^{\delta (t-b)}}{1 - \gamma_2 e^{\delta (t-b)}}
+% \end{equation}
+% 
+% We note that the numerator is  similar to the hazard rate associated with Gompertz-Makeham distribution.
+% The key difference is the $1-\gamma_2 e^{t-b}$ factor in the denominator. 
+% Recall that the sharp increase in preemption rate only happens close to the deadline, which means that $b \leq 24$. Thus, when $t < b$, we get a conventional $\lambda = r_1$, or the classic exponential distribution.
+% As $t$ approaches and exceeds $b$, the increase in failure rate kicks in, accounting for the deadline-driven rise in preemptions. 
+
+
+
 \subsection{Insights on the bathtub shape distribution}
 \label{subsec:stat-mech}
 

@@ -2,7 +2,8 @@
 %\section{Modeling the Dynamics of Transient Server Preemptions}
 %\section{Preemption Dynamics of Transient Cloud Servers}
 \vspace*{\subsecspace}
-\section{Constrained Preemptions of Google Preemptible VMs}
+% \section{Constrained Preemptions of Google Preemptible VMs} %sigmetrics
+\section{Understanding temporally constrained VM preemptions}
 \label{sec:failmodel}
 
 %Understanding the nature and dynamics of transient cloud servers such as their preemption frequency is a prerequisite to understand and improve the performance of applications.
@@ -15,8 +16,15 @@ Therefore, in this section, we present empirical and analytical models to help u
 
 %To measure and improve the performance of applications running on transient cloud VMs, it is critical to understand the nature and dynamics of their preemptions.
 %
-In this section, we first present an empirical analysis of preemptions of Google Preemptible VMs, and then develop a new  probability model based on our observations. 
-Finally, we discuss the unique aspects and general characteristics of constrained preemptions using reliability theory and statistical mechanics.
+
+In our quest to understand temporally constrained preemptions, we  conduct an empirical study of preemptions of Google Preemptible VMs.
+Based on our observations and insights from the study, we then develop a probability model for temporally constrained preemptions, which we later use to develop preemption-mitigating resource management application policies. 
+
+
+
+
+%In this section, we first present an empirical analysis of preemptions of Google Preemptible VMs, and then develop a new  probability model based on our observations. 
+%Finally, we discuss the unique aspects and general characteristics of constrained preemptions using reliability theory. % and statistical mechanics.
 
 
 %and present  general observations about constrained preemptions using statistical mechanics. 
@@ -44,6 +52,7 @@ Finally, we discuss the unique aspects and general characteristics of constraine
 %\subsection{Empirical preemption behavior}
 %\vspace*{\subsecspace}
 \subsection{Empirical Study Of Preemptions}
+%\subsection{Understanding Empirical Preemption Behavior}
 
 % The preemptions of transient servers need not be related to their price.
 
@@ -57,8 +66,13 @@ To understand the nature of temporally constrained preemptions, we conducted the
 Our empirical study is necessitated by the fact that the cloud operator (Google) does not disclose any other information about the preemption rates, and thus relatively little is known about the preemptions of these VMs, and as a result their performance.
 
 
-We launched  1,516 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
-To ensure the generality of our empirical observations, VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads. 
+\noindent \textbf{Methodology.} We launched  1,516 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
+VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads.
+%
+To ensure the generality of our empirical observations, VMs were not launched during well-known peak utilization days (such as Black Friday). 
+
+
+
 %
 \footnotetext{We will release the complete preemption dataset for further analysis.} %Weaksauce 
 %
@@ -108,19 +122,7 @@ This assumption breaks down when there is a fixed upper bound on the lifetime. %
 
 In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that \emph{particular} type.
 Thus, our empirical study looked at preemptions of VMs of different sizes, in different geographical zones, at different times of the day, and running different workloads (Figure~\ref{fig:breakdown-all}).
-In all cases, we find that there are three distinct phases associated with the preemption dynamics giving rise to the bathtub shaped preemption probability. 
-We argue that this is not a coincidence, but may be a result of practical and fundamental outcomes of cluster management policies. 
-
-While the actual specific preemption policy is up to the cloud operator, we will show that the bathtub behavior has benefits for applications. 
-%The bathtub behavior results in a high rate of failure initially. 
-For applications that do not incorporate explicit fault-tolerance (such as checkpointing), early preemptions result in less wasted work than if the preemptions were uniformly distributed over the 24 hour interval.
-Furthermore, the low rate of preemptions in the middle periods allows jobs that are smaller than 24 hours to finish execution with only a low probability of failure, once they survive the initial preemption phase. 
-We evaluate the performance of applications with bathtub shaped preemptions in Section~\ref{sec:eval}. 
-%
-In addition to being beneficial to applications, we also conjecture that the bathtub behavior may be  a \emph{fundamental} and general characteristic of constrained preemptions, which we show later in Section~\ref{subsec:stat-mech}. 
-%system where events are randomly distributed in a finite interval later in Section~\ref{subsec:stat-mech}. 
-%
-%Intriguingly, we can analyze such temporally constrained preemptions through a statistical mechanics framework, and we elaborate on this connection later in Section~\ref{subsec:statmech}.
+In all cases, we find that there are three distinct phases associated with the preemption dynamics giving rise to the bathtub shaped preemption probability.
 
 
 \noindent \textbf{Observation 4:}\emph{ Larger VMs have a higher rate of preemptions.}
@@ -140,17 +142,44 @@ This is expected because fundamentally, the preemption rates are higher during p
 We also notice that completely idle VMs have longer lifetimes than VMs running some workload.
 Presumably, this could be a result of the lower resource utilization of idle VMs being more amenable to resource overcommitment, and result in lower preemptions. 
 
-\begin{figure}
-  \includegraphics[width=0.4\textwidth]{../graphs/QQ.pdf}
-    \vspace*{-5pt}
-    \caption{QQ plot of different preemption models. Weibull and Gompertz-Makeham can model preemptions up to CDF=0.5, but not over the entire range.}
-      \vspace*{-7pt}
-      %Existing models are unable to capture all the preemption phases.}
-  \label{fig:QQ}
-  \vspace*{-5pt}
-\end{figure}
+% \begin{figure}
+%   \includegraphics[width=0.4\textwidth]{../graphs/QQ.pdf}
+%     \vspace*{-5pt}
+%     \caption{QQ plot of different preemption models. Weibull and Gompertz-Makeham can model preemptions up to CDF=0.5, but not over the entire range.}
+%       \vspace*{-7pt}
+%       %Existing models are unable to capture all the preemption phases.}
+%   \label{fig:QQ}
+%   \vspace*{-5pt}
+% \end{figure}
 
 %being more amenable to resource overcommitment, and therefore don
+
+
+\noindent \textbf{Why temporal constraints result in bathtub preemptions.}
+
+The above empirical observations indicate that temporally constrained preemptions are \emph{not} uniformly distributed. 
+%
+The bathtub shaped preemption distribution is not a coincidence.
+It is a result of fundamental characteristics of constrained preemptions that benefit applications. 
+%We argue that this is not a coincidence, but may be a result of practical and fundamental outcomes of cluster management policies. 
+%
+%While the actual specific preemption policy is up to the cloud operator, we will show that the bathtub behavior has benefits for applications. 
+%The bathtub behavior results in a high rate of failure initially. 
+For applications that do not incorporate explicit fault-tolerance (such as checkpointing), early preemptions result in less wasted work than if the preemptions were uniformly distributed over the 24 hour interval.
+%
+Furthermore, the low rate of preemptions in the middle periods allows jobs that are smaller than 24 hours to finish execution with only a low probability of failure, once they survive the initial preemption phase. 
+%
+We compare application performance with bathtub preemptions and uniformly distributed preemptions later in Section~\ref{sec:eval}, and find that bathtub preemptions can reduce the performance overheads of preemptions by up to an order of magnitude. 
+
+%But can improve runtime by as much as 4x compared to uniform preemption rates. 
+%
+%In addition to being beneficial to applications, we also conjecture that the bathtub behavior may be  a \emph{fundamental} and general characteristic of constrained preemptions, which we show later in Section~\ref{subsec:stat-mech}. 
+%system where events are randomly distributed in a finite interval later in Section~\ref{subsec:stat-mech}. 
+%
+%Intriguingly, we can analyze such temporally constrained preemptions through a statistical mechanics framework, and we elaborate on this connection later in Section~\ref{subsec:statmech}.
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -160,10 +189,16 @@ Presumably, this could be a result of the lower resource utilization of idle VMs
 
 %Based on our empirical analysis of preemptions,  
 We now develop an analytical probability model for finding a preemption at time $t$ (preemption dynamics) that is faithful to the empirically observed data and provides a basis for developing running-time and cost-minimizing optimizations. %
-Modeling preemptions constrained by a finite deadline raises many challenges for existing preemption models that have been used for other transient servers such as EC2 spot instances. 
+%
+% Something about generalizability etc.
+% 
+Modeling preemptions constrained by a finite deadline raises many challenges for existing preemption models that have been used for other transient servers such as EC2 spot instances.
+%
 We first discuss why existing approaches to preemption modeling are not adequate, and then present our closed-form probability model and associated reliability theory connections. 
 
 %How to avoid sounding like the background section?
+
+% Motivations and requirements from a new model? Capture all these observations : differences, and also the general bathtub distribution. 
 
 \subsubsection{Inadequacy of existing failure distributions}
 
@@ -192,7 +227,10 @@ From an application and transiency policy perspective, the preemption model must
 For example, the preemption model should be able to warn applications about impending deadline, which existing failure distributions cannot account for. 
 % which imposes a dynamics that is more akin to a constrained dynamics problem as opposed to dynamics characterized with a gradually rising failure rate.
 Thus, not only is it important to minimize the total distribution fitting error, it is also important to capture the changes in phase.
-However, as we can see from the QQ plots in Figure~\ref{fig:QQ}, existing distributions are unable to capture the effects of the deadline and all the phases of the preemptions, and a new modeling approach is needed, which we develop next.  
+%
+However,
+%as we can see from the QQ plots in Figure~\ref{fig:QQ},
+existing distributions are unable to capture the effects of the deadline and all the phases of the preemptions, and a new modeling approach is needed, which we develop next.  
 
 \subsubsection{Our  model}
 \label{subsec:preemption-model}
@@ -264,77 +302,6 @@ In the absence of any prior work on constrained preemption dynamics, our aim is 
 Further generalization of this model to include more failure processes would introduce more parameters and reduce the generalization power. 
 %Exploring other approaches of modeling bathtub-type failure rates (e.g., exponential Weibull distributions) \cite{mudholkar1993exponentiated,crevecoeur1993model} is part of our future work. 
 
-
-\subsubsection{Reliability Analysis}
-\label{subsec:reliability}
-
-We now analyze and place our model in a reliability theory framework. 
-%
-
-\noindent \textbf{Expected Lifetime:} Our analytical model also helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
-More formally, we define the expected lifetime of a VM ($\mathscr{L}$) as: 
-\begin{equation}
-  \label{eq:expected-lifetime}
-E[\mathscr{L}] =  \int_{0}^{L} t {f}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{L}
-\end{equation}
-where $f(t)$ is the rate of preemptions of the VM (Equation~\ref{eq:failrate}).
-%= \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{t-b}{\tau_2}e^{\frac{t-b}{\tau_2}}\right) $ 
-%
-%Since preemptions require restarting a job and increase the job completion time, it may be more prudent to select transient VMs with higher expected lifetimes.
-
-This expected lifetime can be used in lieu of MTTF, for policies and applications that require a ``coarse-grained'' comparison of the preemption rates of servers of different types, which has been used for cost-minimizing server selection~\cite{flint}. 
-
-%We use the analytically derived expected lifetimes of VMs of different types in \sysname when selecting the ``best'' VM type for a given bag of jobs. This server selection is a key part of \sysname design. 
-
-\noindent \textbf{Hazard Rate:}
-The hazard rate $\lambda(t)$ governs the dynamics of the failure (or survival) processes. It is generally defined as $\lambda(t) = \frac{f(t)}{S(t)}$, often expressed via the following differential equation (rate law):
-\begin{equation}\label{eq:hazard}
-\frac{dS(t)}{dt} = -\lambda(t) S(t)
-\end{equation}
-%$\lambda(t) = \frac{f(t)}{S(t)}$ \vikram{this was inverted, I fixed. double check please}, 
-where $S(t) = 1 - F(t)$ is the survival function associated with a CDF $F(t)$, and $f(t)=dF(t)/dt$ is the failure probability function (rate) at time $t$. The survival function indicates the amount of VMs that have survived at time $t$.
-The hazard rate can also be directly expressed in terms of the CDF as follows: $1-F(t) = \exp{\int_0^t{-\lambda(x) ~dx}}$. 
-The exponential distribution has a constant hazard rate $\lambda$.
-The Gompertz-Makeham distribution has an increasing failure rate to account for the increase in mortality, and its hazard rate is accordingly non-uniform and given by $\lambda(t) = \lambda + \alpha e^{\beta t}$.
-
-Since we model multiple failure rates and deadline-driven preemptions, our hazard rate is expected to increase with time. Defining the survival function for our model: $S = 1 - \mathscr{F}$, and using Eq.~\ref{eq:hazard} yields the hazard rate associated with our model: 
-%$\lambda(t) = \dfrac{- r_1 e^{- r_1 t} - r_2 e^{r_2 (t - b)}}{e^{- r_1 t} - e^{r_2 (t - b)}}$. 
-% missing minus sign in the above equation
-\noindent 
-\begin{equation}
-  \label{eq:hmodel}
-  \lambda %= r_2 + \bar{r} \left( \dfrac{1}{1 - e^{- r_2 b} e^{\bar{r} t}}\right)
-  %= \dfrac{r_1 + r_2 e^{- r_2 b} e^{\bar{r} t}}{1 - e^{- r_2 b} e^{\bar{r} t}}.  
-  = \dfrac{r_1 e^{- r_1 t} + r_2 e^{r_2 (t - b)}}{1/A - 1 + e^{- r_1 t} - e^{r_2 (t - b)}}
-\end{equation}
-where we have introduced $r_1 = 1/\tau_1$, $r_2 = 1/\tau_2$ to denote the rates of preemptions associated with initial and final phases respectively.
-
-%\vikram{without the A term, hazard rate becomes negative for the older expression you had when $t > b r2 / (r1+r2)$. that is for t roughly greater than b/2, which is for more than 12 hours. hazard rate can never be negative.}
-%Here we have introduced the sum of the two failure rate constants, $\bar{r} = r_1 + r_2$, to simplify the expression. \vikram{check}
-
-%Employing the value for $A$ resulting from ensuring (via fit or by force) that our CDF goes to 1 at $t = L$ (where $L$ is 24 hours), we find
-
-% \begin{equation}
-%   \label{eq:hmodel2}
-%   \lambda %= r_2 + \bar{r} \left( \dfrac{1}{1 - e^{- r_2 b} e^{\bar{r} t}}\right)
-%   %= \dfrac{r_1 + r_2 e^{- r_2 b} e^{\bar{r} t}}{1 - e^{- r_2 b} e^{\bar{r} t}}.  
-%   = \dfrac{r_1 e^{- r_1 t} + r_2 e^{r_2 (t - b)}}{e^{r_2 (L - b)}  - e^{- r_1 L} + e^{- r_1 t} - e^{r_2 (t - b)} }
-% \end{equation}
-
-Recall that the sharp increase in preemption rate only happens close to the deadline, which means that $b \lesssim L$. Thus, when $0 < t \ll b$, we get $\lambda(t) \approx r_1$, mimicking the hazard rate for the classic exponential distribution.
-As $t$ approaches and exceeds $b$ (i.e., $b\lesssim t < L$), the increase in the hazard rate due to the second failure process kicks in, accounting for the deadline-driven rise in preemptions. Note that our hazard rate satisfies $\lambda(t) \ge 0$ for $0<t<L$.
-
-% For ease of exposition, we can write this as:
-
-% \begin{equation}
-%  \label{eq:hmodelsimple}
-% \lambda =  \dfrac{r_1 + \gamma_1 e^{\delta (t-b)}}{1 - \gamma_2 e^{\delta (t-b)}}
-% \end{equation}
-% 
-% We note that the numerator is  similar to the hazard rate associated with Gompertz-Makeham distribution.
-% The key difference is the $1-\gamma_2 e^{t-b}$ factor in the denominator. 
-% Recall that the sharp increase in preemption rate only happens close to the deadline, which means that $b \leq 24$. Thus, when $t < b$, we get a conventional $\lambda = r_1$, or the classic exponential distribution.
-% As $t$ approaches and exceeds $b$, the increase in failure rate kicks in, accounting for the deadline-driven rise in preemptions. 
 
 
 

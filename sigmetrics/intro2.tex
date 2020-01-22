@@ -54,10 +54,16 @@ However, these pricing-based models are not generalizable to other transient VMs
 Moreover, no information about preemption characteristics is publicly available, not even coarse-grained metrics such as MTTFs. 
 %
 This lack of information and understanding about preemption behavior precludes most failure modeling and transient computing optimizations. 
+%
 
 
-To address this gap, we seek to understand the preemption characteristics of Google's Preemptible VMs, whose distinguishing characteristic is that they have a \emph{maximum lifetime of 24 hours}. 
-We conduct a large empirical study of over 1,500 preemptions of Google Preemptible VMs, and develop an analytical probability model of preemptions. 
+
+To address this gap, we seek to understand the preemption characteristics of Google's Preemptible VMs, whose distinguishing characteristic is that they have a \emph{maximum lifetime of 24 hours}.
+%
+This temporal constraint results in new preemption phenomena and impacts application performance and cost in new and interesting ways that have not received attention.
+%
+We conduct a large empirical study of over 1,500 preemptions of Google Preemptible VMs, and develop an analytical probability model for temporally constrained preemptions.
+%
 We find that the temporal constraint is a radical departure from pricing-based preemptions, and presents fundamental challenges in preemption modeling and their effective use. % of Preemptible VMs.
 
 
@@ -69,7 +75,7 @@ We capture these characteristics by developing a new probability model.
 Our model uses reliability theory principles to capture the 24-hour lifetime of VMs, and generalizes to VMs of different resource capacities, geographical regions, and across different temporal domains. 
 To the best of our knowledge, this is the \emph{first} work on constrained preemption modeling. 
 %
-Our investigation also points to an interesting connection to statistical mechanics (the Tonks gas model~\cite{tonks}), which can be leveraged to obtain fresh insights for modeling temporally constrained preemptions. 
+%Our investigation also points to an interesting connection to statistical mechanics (the Tonks gas model~\cite{tonks}), which can be leveraged to obtain fresh insights for modeling temporally constrained preemptions. 
 
 
 We show the applicability and effectiveness of our model by developing optimized policies for job scheduling and  checkpointing. 
@@ -94,7 +100,8 @@ Towards our goal of developing a better understanding of constrained preemptions
 \item We conduct a large-scale, first of its kind empirical study of preemptions of Google's Preemptible VMs. We then show a statistical analysis of preemptions based on the VM type, temporal effects, geographical regions, etc. Our analysis 
   indicates that the 24-hour constraint is a defining characteristic, and that the preemption rates are \emph{not} uniform, but have distinct phases. 
 
-\item We develop a probability model of constrained preemptions based on empirical and statistical insights that point to distinct failure processes underpinning the preemption rates. Our model captures the key effects resulting from the 24 hour lifetime constraint associated with these VMs, and we analyze it through the lens of reliability theory and statistical mechanics. 
+\item We develop a probability model of constrained preemptions based on empirical and statistical insights that point to distinct failure processes underpinning the preemption rates. Our model captures the key effects resulting from the 24 hour lifetime constraint associated with these VMs, and we analyze it through the lens of reliability theory.
+  %and statistical mechanics. 
 
 %  and enables accurate prediction of expected running times and costs of different scientific computing applications.
 % WTF is even partial redundancy? 
