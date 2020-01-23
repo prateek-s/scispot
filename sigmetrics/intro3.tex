@@ -16,74 +16,71 @@
 % But now we have the cloud!!1 %Is this too long? 
 
 Transient cloud computing is an emerging and popular resource allocation model used by all major cloud providers, and allows unused capacity to be offered at low costs as preemptible virtual machines.
-Transient VMs can be unilaterally revoked and preempted by the cloud provider, and applications running inside them face fail-stop failures. 
-Due to their volatile nature, transient VMs are offered at steeply discounted rates. Amazon EC2 spot instances~\cite{spot-documentation}, Google Cloud Preemptible VMs~\cite{preemptible-documentation}, and Azure Low-priority Batch VMs~\cite{azure-batch}, are all examples of transient VMs, and are offered at discounts ranging from 50 to 90\% compared to conventional, non-preemptible ``on-demand'' VMs.
-
-
+%
+Transient VMs can be unilaterally revoked and preempted by the cloud provider, and applications running inside them face fail-stop failures.
+%
+%Due to their volatile nature, transient VMs are offered at steeply discounted rates.
+%Amazon EC2 spot instances~\cite{spot-documentation}, Google Cloud Preemptible VMs~\cite{preemptible-documentation}, and Azure Low-priority Batch VMs~\cite{azure-batch}, are all examples of transient VMs, and are offered at discounts ranging from 50 to 90\% compared to conventional, non-preemptible ``on-demand'' VMs.
 %
 % Transient VMs are essentially surplus low-priority resources, and the frequency of preemptions is influenced by the availability of surplus resources and cloud operator's resource reclamation policies.
 % Thus, preemptions are \emph{not} due to conventional hardware failures, and occur at higher rates. 
 % From an application perspective however, preemptions are still akin to fail-stop failures, and cause application execution to be disrupted, leading to downtimes and performance degradation.
-
-
-
-To expand the usability and appeal of transient VMs, many systems and techniques have been proposed that seek to ameliorate the effects of preemptions and reduce the computing costs of applications. 
 %
-Fault-tolerance mechanisms~\cite{spotcheck, marathe2014exploiting}, resource management policies~\cite{exosphere, conductor}, and cost optimization techniques~\cite{dubois2016optispot, shastri2017hotspot} have been proposed for a wide range of applications---ranging from interactive web services, distributed data processing, parallel computing, etc.
+To expand the usability and appeal of transient VMs, many systems and techniques have been proposed that  ameliorate the effects of preemptions and reduce the computing costs of applications. 
 %
-These techniques have been shown to minimize the performance-degradation and downtimes due to preemptions, and reduce computing costs by up to 90\%. 
+Fault-tolerance mechanisms~\cite{spotcheck, marathe2014exploiting}, resource management policies~\cite{exosphere, conductor}, and cost optimization techniques~\cite{dubois2016optispot, shastri2017hotspot} have been developed for a wide range of applications---such as interactive web services, distributed data processing, parallel computing, etc.
+%
+%These techniques have been shown to minimize the performance-degradation and downtimes due to preemptions, and reduce computing costs by up to 90\%. 
 
 
-However, the success of these techniques depends on probabilistic estimates of when and how frequently preemptions occur. 
-%the characteristics of the preemption rates. 
-For instance, many fault-tolerance and resource optimization policies are parametrized by the mean time to failure (MTTF) of the transient VMs. 
-A commonly used technique in transient computing is 
-to periodically checkpoint application state, and the ``optimal'' checkpointing frequency that minimizes the total expected running time of a job depends on the MTTF of the VMs~\cite{daly2006higher}. 
+
+Transiency mitigation techniques all depend on probabilistic estimates of when and how frequently preemptions occur.
+%
+For instance, many fault-tolerance and resource optimization policies are parametrized by the mean time to failure (MTTF) of the transient VMs.
+%
+The preemption characteristics are governed by the transient availability model chosen by the cloud provider.
 
 
-%Inspite of the ubiquity of cloud transient VMs, to the best of our knowledge, all prior work has focused on Amazon's EC2 spot instances, whose preemptions are determined based on dynamic prices (that are in turn set using a continuous second-price auction). 
+%
+%Past work on transient computing has focused on
+\emph{Spot} markets (used by Amazon EC2's spot instances and others) are a popular model, where preemptions are governed by dynamic prices (which are in turn set using a continuous second-price auction~\cite{spot-pricing2}). 
+%
+In this paper, we focus on a different transient availability model---temporally constrained preemptions.
+%
+In this model, transient VMs have a fixed maximum lifetime, that acts as a temporal constraint on the preemption events. 
+%
+Google's Preemptible VMs are temporally constrained---they have a maximum lifetime of 24 hours, and are always preempted within the $[0,24]$ hour interval.
+%
+Preemptions behavior in temporally constrained systems is \emph{not} determined by dynamic pricing, and prior pricing based approaches developed for spot markets are not applicable.
 
-%Since transient VMs are essentially surplus low-priority resources, their frequency of preemptions is influenced by the availability of surplus resources and cloud operator's resource reclamation policies.
 
-
-% price based spot markets such as 
-Past work on transient computing has focused on Amazon EC2's spot instances, whose preemption characteristics are determined by dynamic prices (which are in turn set using a continuous second-price auction~\cite{spot-pricing2}). 
+The temporally constrained preemption model is distinct from spot markets, and presents fundamental challenges in preemption modeling and effective use of transient VMs. 
+%
 Transiency-mitigation techniques such as VM migration~\cite{spotcheck}, checkpointing~\cite{flint, marathe2014exploiting}, diversification~\cite{exosphere}, \emph{all} use price-signals to model the availability and preemption rates of spot instances. 
-However, these pricing-based models are not generalizable to other transient VMs having a flat price (such as Google's or Azure's offerings).
 %
-% Replace by other forms of transient availability such as temporally constrained preemptions where VMs have a maximum lifetime and can be preempted within the interval, such as Google preemptible VMs.
-% Is a fundamental departure from price based techniques.
+With flat pricing, these approaches are not applicable. 
 %
-Moreover, no information about preemption characteristics is publicly available, not even coarse-grained metrics such as MTTFs. 
+Furthermore, no other information about preemption characteristics is publicly available, not even coarse-grained metrics such as MTTFs. 
 %
-This lack of information and understanding about preemption behavior precludes most failure modeling and transient computing optimizations. 
+To address this, we develop an \emph{empirical} approach for understanding and modeling preemptions. 
 %
+We conduct a large empirical study of over 1,500 preemptions of Google Preemptible VMs, and develop an analytical probability model for temporally constrained preemptions. 
 
 
-% Focus on temporal constraints here. Other transient availability models not based on spot markets such as temporally constrained preemptions. 
 
-To address this gap, we seek to understand the preemption characteristics of Google's Preemptible VMs, whose distinguishing characteristic is that they have a \emph{maximum lifetime of 24 hours}.
 %
-This temporal constraint results in new preemption phenomena and impacts application performance and cost in new and interesting ways that have not received attention.
+Due to the temporal constraint on preemptions, classical models that form the basis of preemption modeling and policies, such as memoryless exponential failure rates, are not applicable. 
 %
-We conduct a large empirical study of over 1,500 preemptions of Google Preemptible VMs, and develop an analytical probability model for temporally constrained preemptions.
+We find that preemption rates are \emph{not} uniform, but bathtub shaped with multiple distinct temporal phases, and are incapable of being modeled by existing bathtub distributions such as Weibull.
 %
-We find that the temporal constraint is a radical departure from pricing-based preemptions, and presents fundamental challenges in preemption modeling and their effective use. % of Preemptible VMs.
-
-% Above line should be first.... 
-
-% XXX point to figure here? 
-
-Due to the preemption constraint on preemptions, classical models that form the basis of preemption modeling and policies, such as memoryless exponential failure rates, are not applicable.
-We find that preemption rates are \emph{not} uniform, but bathtub shaped with multiple distinct temporal phases, and are incapable of being modeled by existing bathtub distributions such as Weibull. 
-We capture these characteristics by developing a new probability model. 
-Our model uses reliability theory principles to capture the 24-hour lifetime of VMs, and generalizes to VMs of different resource capacities, geographical regions, and across different temporal domains. 
+We capture these characteristics by \emph{developing a new probability model}. 
+Our model uses reliability theory principles to capture the 24-hour lifetime of VMs, and generalizes to VMs of different resource capacities, geographical regions, and across different temporal domains.
+%
 To the best of our knowledge, this is the \emph{first} work on constrained preemption modeling. 
-%
-%Our investigation also points to an interesting connection to statistical mechanics (the Tonks gas model~\cite{tonks}), which can be leveraged to obtain fresh insights for modeling temporally constrained preemptions. 
 
 
-We show the applicability and effectiveness of our model by developing optimized policies for job scheduling and  checkpointing. 
+
+We show the applicability and effectiveness of our model by developing optimized policies for job scheduling and checkpointing. 
 These policies are fundamentally dependent on empirical and analytical insights from our model such as different time-dependent failure rates of different types of VMs. 
 These optimized policies are a building block for transient computing systems and reducing the performance degradation and costs of preemptible VMs. 
 %and we show that the existing exponential ones are not suitable? 
