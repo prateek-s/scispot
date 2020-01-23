@@ -157,6 +157,36 @@ This reduction is primarily due to how the two policies perform for jobs launche
 \noindent \textbf{Result:} \emph{Our model-based job scheduling and VM-reuse policy can decrease job failure probability by $2\times$.}
 
 
+\begin{figure}
+  \includegraphics[width=0.3\textwidth]{../graphs/wrong-model.pdf}
+  \caption{Impact of choosing  ``wrong'' bathtub model parameters on the scheduling policy is negligible.}
+  \label{fig:wrong-model}
+\end{figure}
+
+
+
+\noindent \textbf{Sensitivity to model fitting.}
+The effectiveness of our policies depends on the goodness of fit of the preemption model---i.e., how accurately it captures empirical data.
+%
+We now evaluate the impact on our scheduling policy \emph{if the wrong model parameters are chosen.}
+%
+That is, we seek to understand how sensitive our policies are when the underlying preemption behavior does not match the model, which can occur due to changes in supply/demand, minor cloud policy changes, etc.
+%
+Figure~\ref{fig:wrong-model} compares the job failure probability with the ``correct'' model that best fits the empirical data, and a ``wrong'' model intentionally chosen to have the worst fit.
+%
+Specifically, the ``wrong'' case models the \texttt{n1-highcpu-16} VMs for \texttt{n1-highcpu-32} VMs, which from Figure~\ref{fig:cdf-comparison} we can see are significantly different.
+%
+However even with the ``wrong'' model, the increase in job failure probability is less than 2\% compared to the best-fit model.
+%
+This negligible difference is because of the fact that even the wrong model captures the bathtub shape, and this is enough for the policy to make the ``right'' scheduling decision.
+
+Thus, our policies are not particularly sensitive to the exact model parameters.
+%
+This is desirable in cloud environments where the underlying preemption distribution can change, and thus our empirical model driven approach is a feasible technique for harnessing temporally constrained VMs. 
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Checkpointing}
@@ -204,6 +234,8 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
   \caption{Checkpointing effectiveness.}
   \label{fig:ckpt-all}
 \end{figure}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
