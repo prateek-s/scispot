@@ -14,10 +14,10 @@ However, many questions and avenues of future investigation remain open:
 %Ultimately, the preemption characteristics are based on the cloud provider policies, the supply and demand of transient and on-demand and reserved VMs, etc., and may change over time.  
 Our model allows detecting policy and phase changes by comparing observed data with model-predictions and detect change-points, and 
 a long-running cloud service can continuously update the model based on recent preemption behavior. 
-However, changes are rare: Google's preemption policy has not changed since its inception in 2015.
+However, changes are rare: Google's preemption policy has not changed since its inception in 2015. 
 %EC2 pricing and preemptions were relatively stable~\cite{hotcloud-not-bid} until 2017~\cite{irwin-icccn19, baughman2019deconstructing, spotweb}.
 %
-Regardless, we believe that VMs with constrained preemptions are an interesting \emph{new} type of transient resource, and our analysis, observations, and policies should continue to be relevant. 
+Regardless, VMs with constrained preemptions are an interesting \emph{new} type of transient resource, and our analysis, observations, and policies should continue to be relevant. 
 Furthermore, we demonstrate that the multi-phase bathtub failure distribution may be a fundamental characteristic of constrained preemptions that benefit both the cloud platform and applications, and thus models that capture the distinct preemption phases would still be relevant even if the finer-grained preemption characteristics change. % over time. 
 %
 We have also shown that our policies are not particularly sensitive to the model parameters, and even using a ``wrong'' or outdated model can provide significant benefits compared to existing memoryless models. 

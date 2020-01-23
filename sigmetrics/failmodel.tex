@@ -62,8 +62,8 @@ Based on our observations and insights from the study, we then develop a probabi
   \label{fig:gcp1}
 \end{figure}
 
-To understand the nature of temporally constrained preemptions, we conducted an empirical study of Google's Preemptible VMs, that have a fixed price and a maximum 24 hour lifetime.
-Our empirical study is necessitated by the fact that the cloud operator (Google) does not disclose any other information about the preemption rates, and thus relatively little is known about the preemptions of these VMs, and as a result their performance.
+To understand the nature of temporally constrained preemptions, we conducted an empirical study of Google's Preemptible VMs, that have a fixed price and a maximum 24 hour lifetime. 
+Our empirical approach is necessary since the cloud operator (Google) does not disclose any other information about the preemption rates, and thus relatively little is known about the preemptions of these VMs. 
 
 
 \noindent \textbf{Methodology.} We launched  1,516 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
@@ -210,7 +210,7 @@ We first discuss why existing approaches to preemption modeling are not adequate
 %How to avoid sounding like the background section?
 
 % Motivations and requirements from a new model? Capture all these observations : differences, and also the general bathtub distribution. 
-
+\vspace*{\subsecspace}
 \subsubsection{Inadequacy of existing failure distributions}
 
 Spot instance preemptions have been modeled using exponential distribution~\cite{bid-cloud, hotcloud-not-bid, flint}, which is the default in most reliability theory applications. 
@@ -243,6 +243,7 @@ However,
 %as we can see from the QQ plots in Figure~\ref{fig:QQ},
 existing distributions are unable to capture the effects of the deadline and all the phases of the preemptions, and a new modeling approach is needed, which we develop next.  
 
+\vspace*{\subsecspace}
 \subsubsection{Our  model}
 \label{subsec:preemption-model}
 

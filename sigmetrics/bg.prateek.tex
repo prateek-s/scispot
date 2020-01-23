@@ -69,16 +69,17 @@ Moreover, these cloud providers (Google and Azure) do not expose \emph{any} publ
 
 The lack of information about the preemption characteristics precludes the vast array of optimizations and systems that have been developed to make transient computing more appealing to different kinds of applications.
 %
-Prior work has indicated the usefulness and value of even coarse-grained preemption statistics such as MTTF~\cite{chien-ic2e19}---however even they are unvailable for cloud platforms other than Amazon EC2. 
+Prior work has indicated the utility of even coarse-grained preemption statistics such as MTTFs~\cite{chien-ic2e19}---but they are also unvailable for cloud platforms other than Amazon EC2. 
 %
-Therefore in this paper, we seek to develop an empirical model of preemptions of Google Preemptible VMs~\cite{preemptible-documentation}.
-Our empirical data and preemption model allows the development of preemption mitigation policies for temporally constrained preemptions. 
+Therefore in this paper, we propose an empirical approach for modeling preemptions. 
+Our empirical data and the resulting preemption model allows the development of preemption mitigation policies for temporally constrained preemptions. 
 %
 
 Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{constrained} preemption introduces new challenges in preemption modeling. 
 %
 Spot instance preemptions can be modeled using \emph{memoryless}  exponential distributions~\cite{bid-cloud, hotcloud-not-bid, flint, ghit-spark-hpdc, chien-ic2e19}. 
-However, the 24 hour constraint precludes such memoryless assumptions, and as we see in the next section, require new modeling techniques.  
+However, the 24 hour constraint precludes such memoryless assumptions, require new modeling techniques and policies, because constrained preemptions are not memoryless. 
+%
 
 
 

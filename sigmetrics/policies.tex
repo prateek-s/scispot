@@ -90,13 +90,16 @@ We evaluate the expected wasted time and running time for Google Preemptible VMs
 \vspace*{\subsecspace}
 \subsection{Job Scheduling and VM Reuse Policy}
 
-Our bathtub probability model allows us to develop optimized job-scheduling policies for reducing the overheads of preemptions, which we develop below. 
+%The time-dependent bathtub preemption rates provide new challenges and opportunities in preemption-mitigation, that do not arise under memoryless preemptions. 
+%
+Our bathtub probability model also allows us to develop optimized job-scheduling policies for reducing  job-failures.
+%, which we develop in this subsection. 
 
 Many cloud-based applications and services are \emph{long-running}, and typically run a continuous sequence of tasks and jobs on cloud VMs. 
 In the case of deadline-constrained bathtub preemptions, applications face a choice: they can either run a new task on an already running VM, or relinquish the VM and run the task on a \emph{new} VM. 
 This choice is important in the case of non-uniform failure rates, since the job's failure probability depends on the ``age'' of the server.
 Because of the bathtub failure distribution, VMs enjoy a long period of low failure rates during the middle of their total lifespan.
-Thus, it is beneficial to \emph{reuse} VMs for multiple jobs, and relinquishing VMs after every job completion may not be an optimal choice.
+Thus, it is beneficial to \emph{reuse} VMs for multiple jobs, and relinquishing VMs after every job completion may not be an optimal choice. 
 
 %Model-based insight? 
 
@@ -137,7 +140,7 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 
 A common technique for reducing the total expected running time of jobs on transient servers is to use fault-tolerance techniques such as periodic checkpointing \cite{flint}.
 %
-However, the bathtub nature of constrained preemptions requires new checkpointing policies, which we develop in this subsection. 
+However, the bathtub nature of constrained preemptions requires new checkpointing policies that are not rooted in the memoryless assumption, which we develop in this subsection.  
 
 
 Checkpointing application state to stable storage (such as network file systems or centralized cloud storage) reduces the amount of \emph{wasted work} due to preemptions.

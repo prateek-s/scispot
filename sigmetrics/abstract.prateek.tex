@@ -13,20 +13,20 @@ preemption probability model, new model-driven resource management
 policies, and implement them in a batch computing service for
 scientific computing workloads.
 
-Our statistical and simulation-based analysis indicates that
-temporally constrained preemptions are \emph{not} uniformly
-distributed, but are time-dependent and have a bathtub shape.  We find
-that existing memoryless models and policies are not suitable for
-temporally constrained preemptions.  We develop a new probability
-model for bathtub preemptions, and analyze it through the lens of
-reliability theory.  To highlight the effectiveness of our model, we
-develop optimized policies for job scheduling and checkpointing.
-Compared to existing preemption models, our model-based policies can
-reduce the running time of jobs on preemptible VMs by up to $5\times$,
-and reduce the probability of job failure by more than $2\times$.  We
-also implement our policies as part of a batch computing service for
-scientific computing applications, which can reduce the cost by
-$5\times$ compared to conventional cloud deployments.
+Our statistical and experimental analysis indicates that temporally
+constrained preemptions are \emph{not} uniformly distributed, but are
+time-dependent and have a bathtub shape.  We find that existing
+memoryless models and policies are not suitable for temporally
+constrained preemptions.  We develop a new probability model for
+bathtub preemptions, and analyze it through the lens of reliability
+theory.  To highlight the effectiveness of our model, we develop
+optimized policies for job scheduling and checkpointing.  Compared to
+existing techniques, our model-based policies can reduce the
+probability of job failure by more than $2\times$.  We also implement
+our policies as part of a batch computing service for scientific
+computing applications, which reduces cost by $5\times$ compared to
+conventional cloud deployments and keeps performance overheads under
+$3\%$.
 
 
 

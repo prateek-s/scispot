@@ -77,13 +77,13 @@ We capture these characteristics by \emph{developing a new probability model}.
 Our model uses reliability theory principles to capture the 24-hour lifetime of VMs, and generalizes to VMs of different resource capacities, geographical regions, and across different temporal domains.
 %
 %To the best of our knowledge, this is the \emph{first} work on constrained preemption modeling. 
-
+Using our probability model, we find that bathtub failures can reduce the recomputation overhead of preeemptions by as much as $10\times$ compared to uniform failures---which has important implications for cloud users and providers. 
 
 
 We show the applicability and effectiveness of our model by developing optimized policies for job scheduling and checkpointing. 
 These policies are fundamentally dependent on empirical and analytical insights from our model. % such as different time-dependent failure rates of different types of VMs.
 %
-Our job-scheduling policy uses the bathtub behavior to decide whether to run a new job on a running VM or to request a new VM, and reduces job-failure probability by $5\times$ compared to  conventional memoryless policies. 
+Our job-scheduling policy uses the bathtub behavior to decide whether to run a new job on a running VM or to request a new VM, and reduces job-failure probability by $2\times$ compared to  conventional memoryless policies. 
 %
 The bathtub distribution also requires a new approach to periodic checkpointing---since existing Young-Daly~\cite{daly2006higher} checkpointing is restricted to memoryless preemptions. 
 %
@@ -115,11 +115,12 @@ Towards our goal of developing a better understanding of constrained preemptions
 %  and enables accurate prediction of expected running times and costs of different scientific computing applications.
 % WTF is even partial redundancy? 
 
-\item Based on our preemption model, we develop optimized policies for job scheduling and checkpointing that minimize the total time and cost of running applications. These policies reduce job running times by up to $5\times$ compared to existing preemption models used for transient VMs. 
+\item Based on our preemption model, we develop optimized policies for job scheduling and checkpointing that minimize the total time and cost of running applications. These policies reduce job running times by up to $2\times$ compared to existing preemption models used for transient VMs. 
   
 %\item In order to select the optimal VM for an application, from the plethora of choices offered by cloud providers, we develop a transient VM selection policy that minimizes the cost of running applications. Our search based policy selects a transient VM based on it's cost, performance, and preemption rate. 
 
-\item We implement and evaluate our policies as part of a batch computing service for Google Preemptible VMs. Our service is especially suitable for scientific simulation applications, and can reduce computing costs by $5\times$ compared to conventional cloud deployments, and reduce job failure probability by up to  $2\times$. 
+\item We implement and evaluate our policies as part of a batch computing service for Google Preemptible VMs. Our service is especially suitable for scientific simulation applications, and can reduce computing costs by $5\times$ compared to conventional cloud deployments, and reduce the performance overhead of preemptible VMs to less than $3\%$. 
+%  and reduce job failure probability by up to  $2\times$. 
 
  
 %\item Finally, ease of use and extensibility are one of the ``first principles'' in the design of \sysname, and we present the design and implementation of the system components and present case studies of how  scientific applications such as molecular dynamics simulations can be easily deployed on transient cloud VMs. 
