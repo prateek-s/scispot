@@ -49,7 +49,7 @@ The nanoconfinement application launches molecular dynamics (MD) simulations of 
 
 
 
-
+\vspace*{\subsecspace}
 \subsection{Impact of Constrained Preemptions on Job Running Times}
 
 \begin{figure}[t]
@@ -106,6 +106,7 @@ For instance, if short jobs are very common, then uniformly distributed preempti
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace*{\subsecspace}
 \subsection{Model-based Policies}
 \label{subsec:eval-policy}
 
@@ -113,7 +114,7 @@ We now evaluate the effectiveness of model-driven policies that we proposed earl
 Specifically, we seek to compare the effectiveness of our job scheduling and checkpointing policies with existing transient computing approaches.
 
 
-
+\vspace*{\subsecspace}
 \subsubsection{Job Scheduling}
 
 In the previous subsection, we have quantified the increase in running time due to preemptions, but we had assumed that jobs start on a newly launched server.
@@ -214,6 +215,7 @@ This is desirable in cloud environments where the underlying preemption distribu
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace*{\subsecspace}
 \subsubsection{Checkpointing}
 \label{subsec:eval-ckpt}
 
@@ -255,9 +257,10 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 \vspace*{-8pt}
 \subfloat[Increase in running time with checkpointing when jobs start at time=0. \label{fig:ckpt-start-0-relative}]
 {\includegraphics[width=0.35\textwidth]{../graphs/ckpt-start-relative.pdf}}
-%\vspace*{\myfigspace}
+\vspace*{\myfigspace}
   \caption{Checkpointing effectiveness.}
   \label{fig:ckpt-all}
+  \vspace*{\myfigspace}
 \end{figure}
 
 
@@ -266,6 +269,7 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\subsection{SciSpot Evaluation}
+\vspace*{\subsecspace}
 \subsection{Effectiveness on Scientific Computing Workloads}
 
 We now show the effectiveness of our batch computing service on Google Preemptible VMs.
@@ -291,7 +295,7 @@ We run scientific simulation workloads described earlier in this section, and ar
 \subfloat[Preemptions \label{fig:fails-time}]
 { \includegraphics[width=0.2\textwidth]{../graphs/confin-fails-vs-time-relative.pdf} }
 \label{fig:service-all}
-%\vspace*{-0.4cm}
+\vspace*{-0.4cm}
 \caption{Cost and preemptions with our service.}
 \vspace*{\myfigspace}
 \end{figure}  

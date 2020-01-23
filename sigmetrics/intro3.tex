@@ -81,7 +81,14 @@ To the best of our knowledge, this is the \emph{first} work on constrained preem
 
 
 We show the applicability and effectiveness of our model by developing optimized policies for job scheduling and checkpointing. 
-These policies are fundamentally dependent on empirical and analytical insights from our model such as different time-dependent failure rates of different types of VMs. 
+These policies are fundamentally dependent on empirical and analytical insights from our model such as different time-dependent failure rates of different types of VMs.
+%
+Our job-scheduling policy uses the the bathtub behavior to decide whether to run a new job on a running VM or to request a new VM, and reduces job-failure probability by $5\times$ compared to existing memoryless preemption models.
+%
+The bathtub distribution also requires a new approach to periodic checkpointing---since existing Young-Daly~\cite{daly2006higher} checkpointing is restricted to memoryless preemptions. 
+%
+Our checkpointing policy is based on dynamic programming, and can reduce the checkpointing overhead by more than $10\times$. 
+%
 These optimized policies are a building block for transient computing systems and reducing the performance degradation and costs of preemptible VMs. 
 %and we show that the existing exponential ones are not suitable? 
 We implement and evaluate these policies as part of a batch computing service, which we also use for empirically evaluating the effectiveness of our model and policies under real-world conditions. 

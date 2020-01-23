@@ -1,4 +1,4 @@
-
+\vspace*{\subsecspace}
 \section{Application Policies For Constrained Preemptions}
 \label{sec:policies}
 Having analyzed the statistical behavior of constrained preemptions and presented our probability model, we now examine how the bathtub shape of the failure rate impacts applications.
@@ -20,7 +20,7 @@ However, the constrained nature of preemptions introduces new challenges that do
 
 %\noindent \textbf{High-level System Architecture:} 
 
-
+\vspace*{\subsecspace}
 \subsection{Impact On Running Time}
 
 When a preemption occurs during the job's execution, it results in wasted work, assuming there is no checkpointing.
@@ -84,6 +84,7 @@ Since the preemption characteristics are dependent on the type of the VM and tem
 For instance, VMs having a higher initial rate of preemptions are particularly detrimental for short jobs, because the jobs will see high rate of failure and are not long enough to run during the VM's stable period with low  preemption rates. 
 We evaluate the expected wasted time and running time for Google Preemptible VMs later in Section~\ref{sec:eval}. 
 
+\vspace*{\subsecspace}
 \subsection{Job Scheduling and VM Reuse Policy}
 
 Many cloud-based applications and services are \emph{long-running}, and typically run a continuous sequence of tasks and jobs on cloud VMs. 
@@ -125,7 +126,7 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 %Server preemptions lead to \emph{wasted work}, since the progress made by the job is lost (in the absence of any fault-tolerance).
 %Minimizing work wasted due to preemptions is a prerequisite to minimizing cost, and 
 
-
+\vspace*{\subsecspace}
 \subsection{Checkpointing Policy}
 
 A common technique for reducing the total expected running time of jobs on transient servers is to use fault-tolerance techniques such as periodic checkpointing \cite{flint}.
