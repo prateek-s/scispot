@@ -36,7 +36,7 @@ Fault-tolerance mechanisms~\cite{spotcheck, marathe2014exploiting}, resource man
 
 Transiency mitigation techniques all depend on probabilistic estimates of when and how frequently preemptions occur.
 %
-For instance, many fault-tolerance and resource optimization policies are parametrized by the mean time to failure (MTTF) of the transient VMs.
+For instance, many fault-tolerance and resource optimization policies are parametrized by the mean time to failure (MTTF) of the transient VMs. 
 %
 The preemption characteristics are governed by the transient availability model chosen by the cloud provider.
 
@@ -51,7 +51,7 @@ In this model, transient VMs have a fixed maximum lifetime, that acts as a tempo
 %
 Google's Preemptible VMs are temporally constrained---they have a maximum lifetime of 24 hours, and are always preempted within the $[0,24]$ hour interval.
 %
-Preemptions behavior in temporally constrained systems is \emph{not} determined by dynamic pricing, and prior pricing based approaches developed for spot markets are not applicable.
+%Preemption behavior in temporally constrained systems is \emph{not} determined by dynamic pricing, and prior pricing based approaches developed for spot markets are not applicable. 
 
 
 The temporally constrained preemption model is distinct from spot markets, and presents fundamental challenges in preemption modeling and effective use of transient VMs. 
@@ -76,18 +76,18 @@ We find that preemption rates are \emph{not} uniform, but bathtub shaped with mu
 We capture these characteristics by \emph{developing a new probability model}. 
 Our model uses reliability theory principles to capture the 24-hour lifetime of VMs, and generalizes to VMs of different resource capacities, geographical regions, and across different temporal domains.
 %
-To the best of our knowledge, this is the \emph{first} work on constrained preemption modeling. 
+%To the best of our knowledge, this is the \emph{first} work on constrained preemption modeling. 
 
 
 
 We show the applicability and effectiveness of our model by developing optimized policies for job scheduling and checkpointing. 
-These policies are fundamentally dependent on empirical and analytical insights from our model such as different time-dependent failure rates of different types of VMs.
+These policies are fundamentally dependent on empirical and analytical insights from our model. % such as different time-dependent failure rates of different types of VMs.
 %
-Our job-scheduling policy uses the the bathtub behavior to decide whether to run a new job on a running VM or to request a new VM, and reduces job-failure probability by $5\times$ compared to existing memoryless preemption models.
+Our job-scheduling policy uses the bathtub behavior to decide whether to run a new job on a running VM or to request a new VM, and reduces job-failure probability by $5\times$ compared to  conventional memoryless policies. 
 %
 The bathtub distribution also requires a new approach to periodic checkpointing---since existing Young-Daly~\cite{daly2006higher} checkpointing is restricted to memoryless preemptions. 
 %
-Our checkpointing policy is based on dynamic programming, and can reduce the checkpointing overhead by more than $10\times$. 
+Our checkpointing policy combines our preemption model and dynamic programming to reduce the checkpointing overhead by more than $10\times$. 
 %
 These optimized policies are a building block for transient computing systems and reducing the performance degradation and costs of preemptible VMs. 
 %and we show that the existing exponential ones are not suitable? 

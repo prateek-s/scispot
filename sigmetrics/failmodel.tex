@@ -62,7 +62,7 @@ Based on our observations and insights from the study, we then develop a probabi
   \label{fig:gcp1}
 \end{figure}
 
-To understand the nature of temporally constrained preemptions, we conducted the first empirical study of Google's Preemptible VMs, that have a fixed price and a maximum 24 hour lifetime.
+To understand the nature of temporally constrained preemptions, we conducted an empirical study of Google's Preemptible VMs, that have a fixed price and a maximum 24 hour lifetime.
 Our empirical study is necessitated by the fact that the cloud operator (Google) does not disclose any other information about the preemption rates, and thus relatively little is known about the preemptions of these VMs, and as a result their performance.
 
 
@@ -292,7 +292,7 @@ In practice, typical fit values yield $b \approx 24$ hours, $\tau_1 \in [0.5, 1,
 %of  0 $\approx 0$ premptions.
 %used to scale the CDF to ensure that the initial conditions ($F(0)=0$) are met.
 
-For most of its life, a VM sees failures according to the classic exponential distribution with a rate of failure equal to $1/\tau_1$ -- this behavior is captured by the $1-e^{-t/\tau_1}$ term in Equation~\ref{eq:blend1}. 
+For most of its life, a VM sees failures according to the classic exponential distribution with failure-rate equal to $1/\tau_1$ -- this behavior is captured by the $1-e^{-t/\tau_1}$ term in Equation~\ref{eq:blend1}. 
 %However, this does not capture the finite lifetime of the VM imposed by the cloud operator.
 As VMs get closer to their maximum lifetime imposed by the cloud operator, they are reclaimed (i.e., preempted) at a high rate $1/\tau_2$, which is captured by the second exponential term, $e^{(t-b)/\tau_2}$ of Equation~\ref{eq:blend1}. 
 Shifting the argument ($t$) of this term by $b$ ensures that the exponential reclamation is only applicable near the end of the VM's maximum lifetime and does not dominate over the entire temporal range. 

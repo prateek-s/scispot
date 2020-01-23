@@ -1,10 +1,11 @@
 \vspace*{\subsecspace}
 \section{Application Policies For Constrained Preemptions}
 \label{sec:policies}
-Having analyzed the statistical behavior of constrained preemptions and presented our probability model, we now examine how the bathtub shape of the failure rate impacts applications.
+Having analyzed the statistical behavior of constrained preemptions and presented our probability model, we now examine how the bathtub shape of the failure rate impacts applications. 
 Based on insights drawn from our statistical analysis and the model, we develop various policies for ameliorating the effects of preemptions. 
-Prior work in transient computing has established the benefits of such policies for a broad range of applications.
-However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required.
+Prior work in transient computing has established the benefits of such policies for a broad range of applications. 
+However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required. 
+In this section, we first analyze the impact of constrained preemptions on job running time, and then develop new constrained-preemption aware policies for job scheduling and checkpointing. 
 
 %, which we present below. 
 
@@ -23,7 +24,9 @@ However, the constrained nature of preemptions introduces new challenges that do
 \vspace*{\subsecspace}
 \subsection{Impact On Running Time}
 
-When a preemption occurs during the job's execution, it results in wasted work, assuming there is no checkpointing.
+We now look at how temporally constrained preemptions impact the total expected running time of applications by using our failure probability model. 
+%
+When a preemption occurs during the job's execution, it results in wasted work, assuming there is no checkpointing. 
 This increases the job's total expected running time, since it must restart after a preemption.
 %
 The expected wasted work depends on two factors:
@@ -87,6 +90,8 @@ We evaluate the expected wasted time and running time for Google Preemptible VMs
 \vspace*{\subsecspace}
 \subsection{Job Scheduling and VM Reuse Policy}
 
+Our bathtub probability model allows us to develop optimized job-scheduling policies for reducing the overheads of preemptions, which we develop below. 
+
 Many cloud-based applications and services are \emph{long-running}, and typically run a continuous sequence of tasks and jobs on cloud VMs. 
 In the case of deadline-constrained bathtub preemptions, applications face a choice: they can either run a new task on an already running VM, or relinquish the VM and run the task on a \emph{new} VM. 
 This choice is important in the case of non-uniform failure rates, since the job's failure probability depends on the ``age'' of the server.
@@ -129,7 +134,12 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 \vspace*{\subsecspace}
 \subsection{Checkpointing Policy}
 
+
 A common technique for reducing the total expected running time of jobs on transient servers is to use fault-tolerance techniques such as periodic checkpointing \cite{flint}.
+%
+However, the bathtub nature of constrained preemptions requires new checkpointing policies, which we develop in this subsection. 
+
+
 Checkpointing application state to stable storage (such as network file systems or centralized cloud storage) reduces the amount of \emph{wasted work} due to preemptions.
 However, each checkpoint entails capturing, serializing, and writing application state to a disk, and increases the total running time of the application.
 Thus, the frequency of checkpointing can have a significant effect on the total expected running time.
@@ -138,7 +148,7 @@ Existing checkpointing systems for handling hardware failures in high performanc
 That is, the application is checkpointed every $\tau = \sqrt{2 \cdot \delta \cdot \text{MTTF}}$ time units, where $\delta$ is the time overhead of writing a single checkpoint to disk. 
 
 
-However, checkpointing with a uniform period is sub-optimal in case of time dependent failure rates, and especially for bathtub failure rates.
+However, checkpointing with a uniform period is sub-optimal in case of time dependent failure rates, and especially for bathtub failure rates. 
 A sub-optimal checkpointing rate can lead to increased recomputation and wasted work, or result in excessive checkpointing overhead. 
 Intuitively, the checkpointing rate should depend on the failure rate, and our analytical preemption model can be used for designing an optimized checkpointing schedule.
 
