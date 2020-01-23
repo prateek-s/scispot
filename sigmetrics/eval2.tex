@@ -132,20 +132,45 @@ However since the job is 6 hours long, with the memoryless policy, it will alway
 In contrast, our model-based policy determines that after 18 hours, we will be better off running the job on a newer VM, and results in a much lower job failure probability (=0.4).
 Thus, our model-based job scheduling policy can reduce job failure probability by taking into account the time-varying failure rates of VMs, which is not considered by existing systems that use memoryless scheduling policies.
 
+\begin{figure*}
+  \centering
+  \begin{minipage}[c]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{../graphs/Sched-bathtub.pdf}
+    \vspace*{-0.6cm}
+    \caption{Effect of job start time on the failure probability.} \label{fig:sched-bathtub}
+  \end{minipage}
+%  \caption{Our model-driven job-scheduling policy reduces job-failures.}
+%  \label{fig:sched-top}
+  \hfill 
+  \begin{minipage}[c]{0.3\linewidth}
+    \includegraphics[width=\textwidth]{../graphs/Sched-fail-prob.pdf}
+    \vspace*{-0.6cm}
+    \caption{Job failure probability for jobs of different lengths.} \label{fig:sched-all}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{../graphs/wrong-model.pdf}
+    \vspace*{-0.8cm}
+  \caption{Impact of choosing  ``wrong'' bathtub model parameters on the scheduling policy is negligible.}
+  \label{fig:wrong-model}
+\end{minipage}
+\vspace*{-0.4cm}
+\end{figure*}
 
-\begin{figure}[t]
-  \vspace*{\myfigspace}
-  \subfloat[Effect of job start time on the failure probability. \label{fig:sched-bathtub}]
-  {  \includegraphics[width=0.33\textwidth]{../graphs/Sched-bathtub.pdf}}
-  \\
-  \vspace*{-0.4cm}
-  \subfloat[Job failure probability for jobs of different lengths. \label{fig:sched-all}]
-  {  \includegraphics[width=0.33\textwidth]{../graphs/Sched-fail-prob.pdf}}
-  %  \vspace*{\myfigspace}
-  \caption{Job failure probability is lower with our deadline aware policy across all job sizes.}
-  \vspace*{\myfigspace}
-  \label{fig:sched-both}
-\end{figure}
+
+% \begin{figure}[t]
+%   \vspace*{\myfigspace}
+%   \subfloat[Effect of job start time on the failure probability. \label{fig:sched-bathtub}]
+%   {  \includegraphics[width=0.33\textwidth]{../graphs/Sched-bathtub.pdf}}
+%   \\
+%   \vspace*{-0.4cm}
+%   \subfloat[Job failure probability for jobs of different lengths. \label{fig:sched-all}]
+%   {  \includegraphics[width=0.33\textwidth]{../graphs/Sched-fail-prob.pdf}}
+%   %  \vspace*{\myfigspace}
+%   \caption{Job failure probability is lower with our deadline aware policy across all job sizes.}
+%   \vspace*{\myfigspace}
+%   \label{fig:sched-both}
+% \end{figure}
 
 The job failure probability is determined by the job length and the job starting time.
 We examine the failure probability for jobs of different lengths in Figure~\ref{fig:sched-all}, in which we average the failure probability across different start times.
@@ -157,11 +182,11 @@ This reduction is primarily due to how the two policies perform for jobs launche
 \noindent \textbf{Result:} \emph{Our model-based job scheduling and VM-reuse policy can decrease job failure probability by $2\times$.}
 
 
-\begin{figure}
-  \includegraphics[width=0.3\textwidth]{../graphs/wrong-model.pdf}
-  \caption{Impact of choosing  ``wrong'' bathtub model parameters on the scheduling policy is negligible.}
-  \label{fig:wrong-model}
-\end{figure}
+% \begin{figure}
+%   \includegraphics[width=0.3\textwidth]{../graphs/wrong-model.pdf}
+%   \caption{Impact of choosing  ``wrong'' bathtub model parameters on the scheduling policy is negligible.}
+%   \label{fig:wrong-model}
+% \end{figure}
 
 
 

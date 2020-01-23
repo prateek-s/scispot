@@ -68,9 +68,14 @@ Our empirical study is necessitated by the fact that the cloud operator (Google)
 
 \noindent \textbf{Methodology.} We launched  1,516 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
 VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads.
-%
+% Explain which ones? regions and instance types? 
 To ensure the generality of our empirical observations, VMs were not launched during well-known peak utilization days (such as Black Friday). 
-
+%
+Due to the relatively high preemption rates compared to EC2 spot instances, we were able to collect these 1,500 data points for less than \$5,000. 
+%
+The preemption data collection was bootstrapped: a small amount of data points were used to estimate and model the preemption CDF, which we then used to run our batch computing service (described and evaluated in Sections~\ref{sec:impl} and \ref{sec:eval}), which generated the rest of the preemption data.  
+%
+Thus the effective cost overhead of the empirical data collection is small. 
 
 
 %
@@ -155,8 +160,9 @@ Presumably, this could be a result of the lower resource utilization of idle VMs
 %being more amenable to resource overcommitment, and therefore don
 
 
-\noindent \textbf{Why temporal constraints result in bathtub preemptions.}
+%\noindent \textbf{Why temporal constraints result in bathtub preemptions.}
 
+\noindent \textbf{Significance of bathtub preemptions.} 
 The above empirical observations indicate that temporally constrained preemptions are \emph{not} uniformly distributed. 
 %
 The bathtub shaped preemption distribution is not a coincidence.
@@ -169,7 +175,12 @@ For applications that do not incorporate explicit fault-tolerance (such as check
 %
 Furthermore, the low rate of preemptions in the middle periods allows jobs that are smaller than 24 hours to finish execution with only a low probability of failure, once they survive the initial preemption phase. 
 %
-We compare application performance with bathtub preemptions and uniformly distributed preemptions later in Section~\ref{sec:eval}, and find that bathtub preemptions can reduce the performance overheads of preemptions by up to an order of magnitude. 
+We compare application performance with bathtub preemptions and uniformly distributed preemptions later in Section~\ref{sec:eval}, and find that bathtub preemptions can reduce the performance overheads of preemptions by up to an order of magnitude.
+%
+However, effective policies for using Preemptible VMs requires a probability model of preemptions, which is challenging due to the temporal constraint and the steep bathtub behavior.
+%
+Existing preemption models are not applicable, and we present our new model next. 
+
 
 %But can improve runtime by as much as 4x compared to uniform preemption rates. 
 %
@@ -301,6 +312,22 @@ In the absence of any prior work on constrained preemption dynamics, our aim is 
 %As is evident from Figure~\ref{fig:gcp1}, our model shows deviations from the data near the halfway point within the 24 hour lifetime. 
 Further generalization of this model to include more failure processes would introduce more parameters and reduce the generalization power. 
 %Exploring other approaches of modeling bathtub-type failure rates (e.g., exponential Weibull distributions) \cite{mudholkar1993exponentiated,crevecoeur1993model} is part of our future work. 
+
+
+\noindent \textbf{Expected Lifetime:} Our analytical model also helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
+More formally, we define the expected lifetime of a VM ($\mathscr{L}$) as: 
+\begin{equation}
+  \label{eq:expected-lifetime}
+E[\mathscr{L}] =  \int_{0}^{L} t {f}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{L}
+\end{equation}
+where $f(t)$ is the rate of preemptions of the VM (Equation~\ref{eq:failrate}).
+%= \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{t-b}{\tau_2}e^{\frac{t-b}{\tau_2}}\right) $ 
+%
+%Since preemptions require restarting a job and increase the job completion time, it may be more prudent to select transient VMs with higher expected lifetimes.
+
+This expected lifetime can be used in lieu of MTTF, for policies and applications that require a ``coarse-grained'' comparison of the preemption rates of servers of different types, which has been used for cost-minimizing server selection~\cite{flint}. 
+
+
 
 
 
