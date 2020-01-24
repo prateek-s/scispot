@@ -42,44 +42,41 @@ The effect of preemptions depends on the application's delay insensitivity and f
 
 % Mainly about spot instances?
 
-Underlying \emph{all} techniques and systems in transient computing is the notion of using some probabilistic or even a deterministic model of their preemptions.
+Underlying \emph{all} techniques and systems in transient computing is the notion of using some probabilistic or even a deterministic model of  preemptions. 
 %
-Such a preemption model is then used to quantify and analyze the impact of preemptions on application performance and availability; and to design model-informed policies to minimizing the effect of preemptions.
+Such a preemption model is then used to quantify and analyze the impact of preemptions on application performance and availability; and to design model-informed policies to minimizing the effect of preemptions. 
 %
 For example, the preemption rate or MTTF (Mean Time To Failure) of transient servers has found extensive use in selecting the appropriate type transient server for applications~\cite{exosphere, spoton}, determining the optimal checkpointing frequency~\cite{flint, marathe2014exploiting, proteus-eur17, ghit-spark-hpdc}, etc. 
 
 %However, prior work on transient computing has largely focused on Amazon's EC2 spot instances. 
 %Launched in 2009, spot instances are the first example of transient cloud servers, and their low price (often 90\% cheaper than equivalent on-demand instances) provided the motivation to develop optimized policies for reducing the impact of preemptions and the overall cost. 
 
-The preemptions of EC2 spot instances are based on their \emph{price}, which is dynamically adjusted based on the supply and demand of cloud resources. 
+Preemptions of spot market based VMs (such as EC2 spot instances) are based on their \emph{price}, which is dynamically adjusted based on the supply and demand of cloud resources. 
 Spot prices are based on a continuous second-price auction, and if the spot price increases above a pre-specified maximum-price, then the server is preempted~\cite{spot-pricing2}.
 %
 Thus, the time-series of these spot prices can be used for understanding preemption characteristics such as the frequency of preemptions and the ``Mean Time To Failure'' (MTTF) of the spot instances. 
 Publicly available\footnotemark historical spot prices have been used to characterize and model spot instance preemptions~\cite{spotcheck, bid-cloud, transient-guarantees, wolski2016providing}. %Add lots more here 
 For example, past work has analyzed spot prices and shown that the MTTFs of spot instances of different hardware configurations and geographical zones range from a few hours to a few days~\cite{wolski_probabilistic_2017, icdcs-spotlight, wolski2016providing, baughman2018predicting, wolski2017probabilistic}.
 %
+Spot instance preemptions can be modeled using \emph{memoryless}  exponential distributions~\cite{bid-cloud, hotcloud-not-bid, flint, ghit-spark-hpdc, chien-ic2e19}, which permits optimized periodic checkpointing policies such as Young-Daly~\cite{daly2006higher}. 
+
 
 %While the public availability of spot prices has 
 
-However, using pricing information for preemption modeling is \emph{not} a generalizable approach and is not applicable to other types of transient cloud VMs such as Google Preemptible VMs and Azure Low-priority batch VMs.
+However, using pricing information for preemption modeling is \emph{not} a generalizable approach, and is not applicable to other models of transient availability used by other transient VMs like Google Preemptible VMs and Azure Low-priority batch VMs. 
 %
-These VMs have \emph{flat} pricing, and thus pricing cannot be used to infer preemptions, unlike in the case of EC2.
+These VMs have \emph{flat} pricing, and thus pricing cannot be used to infer preemptions. 
 %
-Moreover, these cloud providers (Google and Azure) do not expose \emph{any} public information about their preemption characteristics.
-
-The lack of information about the preemption characteristics precludes the vast array of optimizations and systems that have been developed to make transient computing more appealing to different kinds of applications.
+Moreover, these cloud providers (Google and Azure) do not expose \emph{any} public information about their preemption characteristics, even coarse grained metrics like MTTF that can be useful in mitigating preemptions~\cite{chien-ic2e19}. 
+%The lack of information about the preemption characteristics precludes the vast array of optimizations and systems that have been developed to make transient computing more appealing to different kinds of applications.
 %
-Prior work has indicated the utility of even coarse-grained preemption statistics such as MTTFs~\cite{chien-ic2e19}---but they are also unvailable for cloud platforms other than Amazon EC2. 
+%Prior work has indicated the utility of even coarse-grained preemption statistics such as MTTFs~\cite{chien-ic2e19}---but they are also unvailable for cloud platforms other than Amazon EC2. 
 %
-Therefore in this paper, we propose an empirical approach for modeling preemptions. 
-Our empirical data and the resulting preemption model allows the development of preemption mitigation policies for temporally constrained preemptions. 
+In this paper, we propose an empirical approach for modeling preemptions of temporally constrained VMs such as Google Preemptible VMs.
 %
-
-Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{constrained} preemption introduces new challenges in preemption modeling. 
+Our empirical data and the resulting preemption model allows the development of preemption mitigation policies. 
 %
-Spot instance preemptions can be modeled using \emph{memoryless}  exponential distributions~\cite{bid-cloud, hotcloud-not-bid, flint, ghit-spark-hpdc, chien-ic2e19}. 
-However, the 24 hour constraint precludes such memoryless assumptions, require new modeling techniques and policies, because constrained preemptions are not memoryless. 
-%
+Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{constrained} preemption is not memoryless, and requires new fundamental modeling approaches. 
 
 
 

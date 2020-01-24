@@ -1,7 +1,7 @@
 %\section{Understanding and Modeling Transient Server Preemptions}
 %\section{Modeling the Dynamics of Transient Server Preemptions}
 %\section{Preemption Dynamics of Transient Cloud Servers}
-\vspace*{\subsecspace}
+%\vspace*{\subsecspace}
 % \section{Constrained Preemptions of Google Preemptible VMs} %sigmetrics
 \section{Understanding temporally constrained VM preemptions}
 \label{sec:failmodel}
@@ -62,8 +62,8 @@ Based on our observations and insights from the study, we then develop a probabi
   \label{fig:gcp1}
 \end{figure}
 
-To understand the nature of temporally constrained preemptions, we conducted an empirical study of Google's Preemptible VMs, that have a fixed price and a maximum 24 hour lifetime. 
-Our empirical approach is necessary since the cloud operator (Google) does not disclose any other information about the preemption rates, and thus relatively little is known about the preemptions of these VMs. 
+%To understand the nature of temporally constrained preemptions, we conducted an empirical study of Google's Preemptible VMs, that have a fixed price and a maximum 24 hour lifetime. 
+%Our empirical approach is necessary since the cloud operator (Google) does not disclose any other information about the preemption rates, and thus relatively little is known about the preemptions of these VMs. 
 
 
 \noindent \textbf{Methodology.} We launched  1,516 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
@@ -83,7 +83,12 @@ Thus the effective cost overhead of our empirical data collection approach  is s
 %
 A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution function (CDF) of the VM lifetimes of the \texttt{n1-highcpu-16} VM in the \texttt{us-east1-b} zone. 
 %enter the type of VM for which the data is shown
-Note that the cloud operator (Google) caps the \emph{maximum} lifetime of the VM to 24 hours, and all the VMs are preempted before that limit. 
+%
+Our empirical approach allows us to make the following  observations.
+
+%Based on the observ
+%
+%Note that the cloud operator (Google) caps the \emph{maximum} lifetime of the VM to 24 hours, and all the VMs are preempted before that limit. 
 
 \begin{figure*}
   %\centering
@@ -175,9 +180,9 @@ For applications that do not incorporate explicit fault-tolerance (such as check
 %
 Furthermore, the low rate of preemptions in the middle periods allows jobs that are smaller than 24 hours to finish execution with only a low probability of failure, once they survive the initial preemption phase. 
 %
-We compare application performance with bathtub preemptions and uniformly distributed preemptions later in Section~\ref{sec:eval}, and find that bathtub preemptions can reduce the performance overheads of preemptions by up to an order of magnitude.
+We compare application performance with bathtub preemptions and uniformly distributed preemptions later in Section~\ref{sec:eval}, and find that bathtub preemptions can reduce the performance overheads of preemptions by up $10\times$.
 %
-However, effective policies for using Preemptible VMs requires a probability model of preemptions, which is challenging due to the temporal constraint and the steep bathtub behavior.
+However, effective policies for constrained preemptions  requires a probability model of preemptions, which is challenging due to the temporal constraint and the steep bathtub behavior. 
 %
 Existing preemption models are not applicable, and we present our new model next. 
 
@@ -232,7 +237,7 @@ and is fitted to the data in Figure~\ref{fig:gcp1}, and is also unable to provid
 %We also analyze other distributions used for modeling bathtub failures from reliability and actuarial theory in Figure \textbf{XXX}.
 
 
-The non-trivial bathtub-shaped failure rate of Google preemptible VMs (Figure~\ref{fig:gcp1}) requires models that capture the sudden onset of the rise in preemptions near the deadline, which is challenging for the existing failure distributions because of the sharp inflection point. 
+The non-trivial bathtub-shaped failure rate (Figure~\ref{fig:gcp1}) requires models that capture the sudden onset of the rise in preemptions near the deadline, which is challenging for the existing failure distributions because of the sharp inflection point. 
 From an application and transiency policy perspective, the preemption model must provide insights about the phase transitions, so that the application can adapt to the sharp differences in preemption rates.
 %
 For example, the preemption model should be able to warn applications about impending deadline, which existing failure distributions cannot account for. 
