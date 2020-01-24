@@ -143,14 +143,14 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 
 A common technique for reducing the total expected running time of jobs on transient servers is to use fault-tolerance techniques such as periodic checkpointing \cite{flint}.
 %
-However, the bathtub nature of constrained preemptions requires new checkpointing policies that are not rooted in the memoryless assumption, which we develop in this subsection.  
+However, the bathtub nature of constrained preemptions requires new checkpointing policies that do not assume memoryless preemptions. 
 
 
 Checkpointing application state to stable storage (such as network file systems or centralized cloud storage) reduces the amount of \emph{wasted work} due to preemptions.
 However, each checkpoint entails capturing, serializing, and writing application state to a disk, and increases the total running time of the application.
 Thus, the frequency of checkpointing can have a significant effect on the total expected running time.
 
-Existing checkpointing systems for handling hardware failures in high performance computing, and for cloud transient servers such as EC2 spot instances, incorporate the classic Young-Daly~\cite{dongarra_fault_nodate, daly2006higher, flint, marathe2014exploiting} periodic checkpointing interval that assumes that failures are exponentially distributed. 
+Existing checkpointing systems for handling hardware failures in high performance computing, and for cloud transient servers such as EC2 spot instances, incorporate the classic Young-Daly~\cite{dongarra_fault_nodate, daly2006higher, flint, marathe2014exploiting} periodic checkpointing interval that assumes that failures are exponentially distributed and memoryless.  
 That is, the application is checkpointed every $\tau = \sqrt{2 \cdot \delta \cdot \text{MTTF}}$ time units, where $\delta$ is the time overhead of writing a single checkpoint to disk. 
 
 
@@ -159,7 +159,7 @@ A sub-optimal checkpointing rate can lead to increased recomputation and wasted 
 Intuitively, the checkpointing rate should depend on the failure rate, and our analytical preemption model can be used for designing an optimized checkpointing schedule.
 
 We now present our checkpointing policy that uses the preemption model and provides non-uniform, failure-rate dependent checkpointing.
-In a nutshell, our policy allows us to compute the optimal checkpointing schedule for jobs of different lengths and different starting times, employing a new dynamic programming approach that minimizes the total expected makespan. 
+In a nutshell, our policy allows us to compute the optimal checkpointing schedule for jobs of different lengths and different starting times, employing a dynamic programming approach that minimizes the total expected makespan. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -177,7 +177,7 @@ We now need to determine when to take the \emph{next} checkpoint, which we take 
   \label{eq:m0}
   E[M^*(J, t)] = \min_{0<i\leq J}{E[M(J, t, i)]}.
 \end{equation}
-The makespan is affected by whether or not there is a failure \emph{before} we take the checkpoint: 
+The makespan is affected by whether or not there is a preemption \emph{before} we take the checkpoint: 
 \begin{equation}
   \label{eq:m1}
 E[M(J, t, i)] = P_{\text{succ}}(t, i+\delta) \cdot E[M_{\text{succ}}] + P_{\text{fail}}(t, i+\delta) \cdot E[M_{\text{fail}}].
@@ -192,8 +192,8 @@ $E[M_{\text{succ}}]$ is the expected makespan if there are no job failures when 
 E[M_{\text{succ}}(J, t, i)] = t+i+\delta + E[M^*(J-i, t+i+\delta)].  
 \end{equation}
 \noindent Note that the makespan includes the amount of work already done ($t+i$), the checkpointing overhead ($\delta$), and the expected minimum makespan of the rest of the job. 
-Similarly, when the job fails before step $i$, then that portion is ``lost work'', and can be denoted by $E[L(t, i+\delta)]$ which is the expected lost work when there is a failure during the time interval $t$ to $t+i+\delta$.
-A failure before the checkpoint results in no progress, and $J$ steps of the job still remain.
+Similarly, when the job fails before step $i$, then that portion is ``lost work'', and can be denoted by $E[L(t, i+\delta)]$ which is the expected lost work when there is a preemption during the time interval $t$ to $t+i+\delta$.
+A preemption before the checkpoint results in no progress, and $J$ steps of the job still remain. 
 The expected makespan in the failure case is then given by:
 \begin{equation}
   \label{eq:mfail}
@@ -202,8 +202,8 @@ The expected makespan in the failure case is then given by:
 
 
 
-In the case of memoryless failures, $E[L(t, i+\delta)]$ is approximated as $\frac{i+\delta}{2}$.
-In our case, the lost work is the wasted work that we defined earlier in Equation~\ref{eq:wasted}, but we need to consider the different start and end times, and we get:
+In the case of memoryless preemptions, $E[L(t, i+\delta)]$ is approximated as $\frac{i+\delta}{2}$.
+For bathtub preemptions, the lost work is the wasted work that we defined earlier in Equation~\ref{eq:wasted}, but we need to consider the different start and end times, and we get:
 \begin{equation}
   \label{eq:exploss}
 E[L(t, i+\delta)] = \int_{t}^{t+i+\delta}{x~f(x)~dx}   , 
@@ -222,7 +222,7 @@ If a job encounters a failure, it is resumed from the most recent checkpoint, on
 After every such resume-event, we compute the optimal checkpointing schedule for $E[M^*(J_{\text{Remaining}}, 0)]$, since the job's failure rate is dependent on the VM age when it starts, and the job may be resumed at a later time or on a VM of a different type, etc.
 Our algorithm yields non-uniform intervals proportional to failure rate.
 For a 5 hour job launched on a new VM (time=0), the checkpointing intervals are $(15, 28, 38, 59, 128)$ minutes.
-Further analysis of our algorithm is presented in Section~\ref{subsec:eval-ckpt}. 
+Further analysis of our checkpointing policy is presented in Section~\ref{subsec:eval-ckpt}. 
 
 % Explain how 
 

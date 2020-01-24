@@ -27,7 +27,7 @@ We have already presented the statistical analysis of our model in Section~\ref{
 
 
 \noindent \textbf{Environment and Workloads:}
-All our empirical evaluation is conducted on the Google Public cloud using our batch computing service described in Section~\ref{sec:impl}. 
+All our empirical evaluation is conducted on the Google Cloud Platform using our batch computing service described in Section~\ref{sec:impl}. 
 We use three scientific computing workloads that are representative of typical applications in the broad domains of physics and material sciences:% , and chemical engineering:
 
 % open-source
@@ -198,9 +198,9 @@ This reduction is primarily due to how the two policies perform for jobs launche
 
 
 \noindent \textbf{Sensitivity to model fitting.}
-The effectiveness of our policies depends on the goodness of fit of the preemption model---i.e., how accurately it captures empirical data.
+The effectiveness of any model-based policy depends on the goodness of fit of the preemption model---i.e., how accurately it captures empirical data. 
 %
-We now evaluate the impact on our scheduling policy if incorrect/suboptimal model parameters are chosen that result in high $r^2$ error. 
+We now evaluate the impact on our scheduling policy if incorrect/suboptimal model parameters are with high goodness-of-fit ($r^2$) error are used. 
 %
 That is, we seek to understand how sensitive our policies are when the underlying preemption behavior does not match the model, which can occur due to changes in supply/demand, minor cloud policy changes, etc. 
 %
@@ -210,9 +210,9 @@ Specifically, the suboptimal case models the \texttt{n1-highcpu-16} VMs for \tex
 %
 However even with the suboptimal model, the increase in job failure probability is less than 2\% compared to the best-fit model. 
 %
-This negligible difference is because of the fact that even the suboptimal model captures the bathtub shape, and this is enough for the policy to make the ``right'' scheduling decision. 
+This negligible difference is due to the fact that even a suboptimal model captures the bathtub shape, and this is enough for the policy to make the ``right'' scheduling decision. 
 
-\noindent \textbf{Result:} \emph{Our policies are not particularly sensitive to the exact model parameters. The bathtub distribution is crucial---even the suboptimal bathtub model can reduce failure probability by 15\% compared to the memoryless policy. }
+\noindent \textbf{Result:} \emph{Our policies are not particularly sensitive to the exact model parameters, so long as a bathtub distribution is used. Even a suboptimal bathtub model can reduce failure probability by 15\% compared to the memoryless policy.} 
 %
 %This is desirable in cloud environments where the underlying preemption distribution can change, and thus our empirical model driven approach is a feasible technique for harnessing temporally constrained VMs. 
 
@@ -251,7 +251,7 @@ With our policy, the running times increase by 10\% for short jobs ( $<2$  hours
 In contrast, the Young-Daly policy yields a constant increase in running times of 25\%. 
 Thus, our model-based policy is able to reduce the checkpointing overhead and thus reduce the performance overhead of running on preemptible VMs to below 5\%. 
 
-\noindent \textbf{Result:} \emph{Our checkpointing policy can reduce the performance overhead of preemptions to under 5\%, which is $5\times$ better than conventional periodic checkpointing.}
+\noindent \textbf{Result:} \emph{Our checkpointing policy can keep the performance overhead of preemptions under 5\%, which is $5\times$ better than conventional periodic checkpointing.}
 
 
 \begin{figure}[t]

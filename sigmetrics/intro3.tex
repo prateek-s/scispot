@@ -77,7 +77,7 @@ We capture these characteristics by \emph{developing a new probability model}.
 Our model uses reliability theory principles to capture the 24-hour lifetime of VMs, and generalizes to VMs of different resource capacities, geographical regions, and across different temporal domains.
 %
 %To the best of our knowledge, this is the \emph{first} work on constrained preemption modeling. 
-Using our probability model, we find that bathtub failures can reduce the recomputation overhead of preeemptions by as much as $10\times$ compared to uniform failures---which has important implications for cloud users and providers. 
+Using our probability model, we find that bathtub failures can reduce the recomputation overhead of preeemptions by more than  $10\times$ compared to uniform failures---which has important implications for cloud users and providers. 
 
 
 We show the applicability and effectiveness of our model by developing optimized policies for job scheduling and checkpointing. 
@@ -87,7 +87,7 @@ Our job-scheduling policy uses the bathtub behavior to decide whether to run a n
 %
 The bathtub distribution also requires a new approach to periodic checkpointing---since existing Young-Daly~\cite{daly2006higher} checkpointing is restricted to memoryless preemptions. 
 %
-Our checkpointing policy combines our preemption model and dynamic programming to reduce the checkpointing overhead by more than $10\times$. 
+Our checkpointing policy combines our preemption model and dynamic programming to reduce the checkpointing overhead by more than $5\times$. 
 %
 These optimized policies are a building block for transient computing systems and reducing the performance degradation and costs of preemptible VMs. 
 %and we show that the existing exponential ones are not suitable? 
