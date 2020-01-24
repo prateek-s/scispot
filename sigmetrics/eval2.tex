@@ -111,7 +111,13 @@ For instance, if short jobs are very common, then uniformly distributed preempti
 \label{subsec:eval-policy}
 
 We now evaluate the effectiveness of model-driven policies that we proposed earlier in Section~\ref{sec:policies}.
-Specifically, we seek to compare the effectiveness of our job scheduling and checkpointing policies with existing transient computing approaches.
+%
+Wherever applicable, we compare against policies designed for EC2 spot instances~\cite{harlap2018tributary, spoton} that have memoryless preemptions. 
+%
+However we also note that certain resource management challenges such as the preemption-rate aware job scheduling are \emph{inherent} to constrained preemptions, and no existing equivalent policies can be found for memoryless techniques. 
+
+
+%Specifically, we seek to compare the effectiveness of our job scheduling and checkpointing policies with existing transient computing approaches.
 
 
 \vspace*{\subsecspace}
@@ -223,6 +229,7 @@ We now evaluate our model-based checkpointing policy, that uses a dynamic progra
 With our policy, the checkpointing rate is determined by the VM's current failure rate.
 In contrast, all prior work in transient computing and most prior work in fault-tolerance assumes that failures are exponentially distributed (i.e., memoryless), and use the Young-Daly checkpointing interval.
 In the Young-Daly approach, checkpoints are taken after a constant period given by $\tau \propto \sqrt{MTTF}$.
+%
 However in the case of constrained preemptions with bathtub distributions, the failure rate is time-dependent and not memoryless. 
 
 
@@ -231,14 +238,16 @@ Throughout, we assume that each checkpoint takes 1 minute.
 The increase in running time depends on the failure rate and thus the job's starting time. 
 With our model-based checkpointing policy, the increase in running time is bathtub shaped and is below 5\%, and around 1\% when the job is launched when the VM is between 5 and 15 hours old. 
 
-We also compare with the Young-Daly~\cite{daly2006higher} periodic checkpointing policy, and use the initial failure rate of the VM to determine the MTTF, which corresponds to an MTTF of 1 hour. 
+We also compare with the Young-Daly~\cite{daly2006higher} periodic checkpointing policy, as implemented in~\cite{flint, proteus-eur17, marathe2014exploiting}, and which represents the broad class of fault-tolerance techniques proposed for transient computing.
+%
+For Young-Daly, we use the initial failure rate of the VM to determine the MTTF, which corresponds to an MTTF of 1 hour.
 This results in a high, constant rate of checkpointing, and increases the running time of the job by more than 25\%.
 The increase in running time is primarily due to the overhead of checkpointing. 
 Note that checkpointing with a lower frequency decreases the checkpointing overhead, but increases the recomputation required.
 
 Next, we examine the expected running time of jobs of different length, when all jobs start at time=0, i.e, are launched on a freshly launched VM. 
 Figure~\ref{fig:ckpt-start-0-relative} shows the expected increase in the running time of the jobs with our model-based checkpointing policy and the Young-Daly policy with MTTF=1 hour.
-With our policy, the running times increase by 10\% for short jobs less than 2 hours long, and increase by less than 5\% for longer jobs.
+With our policy, the running times increase by 10\% for short jobs ( $<2$  hours), and increase by less than 5\% for longer jobs.
 In contrast, the Young-Daly policy yields a constant increase in running times of 25\%. 
 Thus, our model-based policy is able to reduce the checkpointing overhead and thus reduce the performance overhead of running on preemptible VMs to below 5\%. 
 
@@ -260,7 +269,7 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 \vspace*{\myfigspace}
   \caption{Checkpointing effectiveness.}
   \label{fig:ckpt-all}
-  \vspace*{\myfigspace}
+  \vspace*{-0.3cm}
 \end{figure}
 
 
