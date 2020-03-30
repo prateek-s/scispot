@@ -1,0 +1,202 @@
+\documentclass{article}
+\usepackage{times}
+\usepackage{color}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.50in}
+\setlength{\oddsidemargin}{-.19in}
+\voffset=-1.0in
+
+
+\newcommand{\resp}[1]{\textbf{Response}: #1}
+\newcommand{\revmade}[1]{\textbf{Revision Made}: #1}
+
+\begin{document}
+
+\begin{center}
+  \large{\textbf {Proposed changes in response to reviewers'
+      comments}}
+
+{\textbf{Paper}:  Modeling The Temporally Constrained Preemptions of Transient Cloud VMs}
+
+{\textbf{Authors}: J.C.S Kadupitiya, Vikram Jadhao, Prateek Sharma}
+\end{center}
+
+\date{April 1 2020}
+
+We thank all the reviewers for their detailed comments and insightful feedback.
+Most of our changes are additions to the paper text that address reviewer comments. 
+We have grouped the comments by reviewer, and have included the summary and location of the proposed changes.
+%for each addressed comment: 
+
+\section{TPC meeting}
+
+\begin{enumerate}
+
+\item \emph{Relevant new EC2 published, in particular the work of Ristov et al., CLOUD'18.}
+
+\resp{We will add and compare with more related work in Section 7. We will emphasize that even newer work on EC2 modeling is focused on spot price modeling which is fundamentally different to our work, and is not applicable in other transient computing environments.}
+
+%\revmade{...}
+
+\item \emph{Re. experiments, both the setup, configuration, and how the results are presented should be clarified. A re-analysis, with various thresholds, seems to be both valuable and covering the "hypothetical heuristics". For example, present the results by dropping jobs that are known to exceed the 24 hour termination restriction (e.g., 6 hr jobs started after 18 hrs), etc.}
+
+\resp{We will fix the various evaluation exposition issues, which we individually address in the rest of this revision plan.}
+
+%\revmade{...}
+
+
+\end{enumerate}
+
+
+\section{5A}
+
+\begin{enumerate}
+
+\item \emph{It should be made clear that with VM-reuse, the performance impact of one preemption is as low as 3\%. Because if a job experiences multiple preemptions, it will have more than 3\%-5\% increase in running time.}
+
+\resp{We will clarify that 3\% is the \emph{expected} increase in running time, which includes the (low) probability of preemption.  }
+
+%\revmade{...}
+
+\end{enumerate}
+
+\section{5B}
+
+\begin{enumerate}
+
+
+\item \emph{3.1 Is the following statement true: “In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that particular type” The authors do not provide a citation for this statement .}
+
+\resp{We will add relevant references for the above claim (ExoSphere and other follow-up work).}
+
+%\revmade{...}
+
+\item \emph{3.1 What timezone is used in observation 5? I assume central to match the region. But this should be clarified.
+The model might be better termed a termination, preemption, or revocation model}
+
+\resp{Timezone local to the region being analyzed. Will clarify in Section 3.}
+
+
+
+%\item \emph{4 The authors state “However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required” Here it would help to define what these challenges are.}
+
+%\resp{...}
+
+\item \emph{4.1 and 4.2 For many applications it is difficult to predict run time (especially on different cloud instances with unknown background load). Even when using the same application, different parameters can significantly change compute time. It's unclear what assumptions are made here that workloads need to be predictable.
+  }
+  \resp{We will clarify this weak assumption in Sections 4.2 and 4.3---none of our policies require accurate job running time estimates. 
+    For the job scheduling policy in Section 4.2, since we only \emph{compare} the benefits of VM reuse, we need only rough estimates of job running times, and exact times are not required. 
+    Similarly, the checkpointing policy is not affected  if the job finishes before the estimated time. If the job takes more time, the checkpointing schedule ``rolls around'' and again provides the same checkpointing overhead.
+  }
+
+
+\item \emph{Comparison against basic heuristics would be interesting and perhaps more comparable than EC2 algorithms.}
+
+\resp{Even basic heuristics would need to be based on sound principled empirical models, which we provide. We will discuss this in Section 8.}
+
+\item \emph{In Fig 7 what is the distribution of job lengths? Is the difference again due to start times at the end of the 24 hour period?}
+
+\resp{We will clarify that figure 7 uses uniformly distributed job lengths.}
+
+
+\item \emph{In Fig 8 the the authors simply picked a job and checkpoint length.}
+
+\resp{We will clarify that Fig 8 evaluates a wide range of job lengths [0--9 hours]}
+
+
+\item \emph{6.3 TFig 9 The authors should describe thee characteristics and it would likely be more interesting to quite different applications.}
+
+\resp{We will add details about the jobs and their running time characteristics.}
+
+
+\end{enumerate}
+
+\section{5C}
+
+\begin{enumerate}
+
+
+\item \emph{Assumptions that require references or reformulation: On page 6, the authors assume that multiple preemptions are not worth modeling. They assume "most transient computing systems seek to avoid repeated preemptions". Is there evidence for this?}
+
+  \resp{Prior work, including this paper, temporarily blacklists VMs with high preemption rates. We will cite the related work. We will emphasize on page 6 that while multiple preemptions are certainly worth modeling, we wanted to provide a model for the common case (one preemption) as part of this initial work on constrained preemption modeling.}
+
+%\revmade{...}
+
+\item \emph{Assumptions that require references or reformulation: On page 8, the authors assume most batch jobs are comprised of tasks with little variability in runtime and execution characteristics. Is there evidence for this?}
+
+\resp{We make this assumption only for ease of evaluation and minimizing stochasticity to allow us to easily compare different system configurations. We will clarify this in the evaluation section.}
+
+%\revmade{...}
+
+\item \emph{Claims that require more careful analysis or reformulation: CRITICAL: The most important issue with this article is the way the results, and especially the experimental results, are presented. The authors claim improvements of "X" or, less frequently, "up to X", but do not position carefully this result with minima or other distributional information. This results in formulation that, while consistent with the results, does not fully characterize the results and is misleading. (This could be fixed with shepherding.)}
+
+\item \emph{Claims that require more careful analysis or reformulation: Related to the point above, but less critical, the authors should try to include specific numbers rather than qualitative elements in their results. For example, in the Result in Section 6.1, the terms "significantly" and "slightly" could be avoided.}
+
+\resp{We will go over all results and present ranges wherever required, and be more precise when summarizing the results, especially when explaining Figure 5, 6. }
+
+
+\item \emph{Experimental setup that requires a better explanation: CRITICAL: The experimental results in Section 6 are based on a setup that does not describe the workload characteristics (but the authors indicate the type of applications), the failure characteristics and way of injecting them in the real-world environment, and the environment characteristics (it is part of the Google Cloud Platform). (This could be fixed with shepherding.)}
+
+\resp{We will include all workload characteristics. }
+
+\item \emph{Experimental setup that requires a better explanation: In Section 6.1, the impact on jobs shorter than 5 hours should be explained more carefully. }
+
+\resp{We will provide more explanation of how jobs shorter than 5 jobs are affected, at the start of Section 6.3.}
+
+\item \emph{Experimental results that could be better explained:  In Section 6.2, the failure probability after 18 hours is now fixed, but it seems that the approach would lead to a failure probability decreasing with time after 18 hours. The authors could comment on this situation and explain the (counter-)intuitive result.}
+
+\resp{In Section 6.2, we will explain how our policy deals with the "edge case" of jobs starting near 24 hours, and how it leads to the counter intuitive result.}
+
+%\revmade{...}
+
+\end{enumerate}
+
+\section{5D}
+
+\begin{enumerate}
+
+\item \emph{The rational of why the failures seem to have the early high failure rate is not clear. I mean, if I have 100 VMs that have been running for 10 hours, and 100 VMs that I just started, does Google really take into account the VM lifetime and prioritize preempting young VMs? This is a very interesting question that you may be able to answer from your data set.}
+
+\resp{We will summarize our observations to this question in Section 3. Briefly, yes, the number of simultaneous VMs launched has an effect on their failure rate.}
+
+
+\item \emph{Please clarify your assumptions for your lifetime and makespan analysis. Most of cloud applications are either web services in which failing only effects the currently running web requests, or are batch processing using Spark (or something like) in which case, the framework is resilient to single node failures (either due to reexecuting the lineage of the task or through repeating the task). For those cloud workloads, failures are not as painful. So your scheduling and checkpointing optimizations are mainly usefull for long running science applications in the cloud. It will be good to clarify this in the paper.}
+
+\resp{We will add this clarification. We note that even Spark jobs are affected by single node preemptions, and will add the relevant references [Flint]}.
+
+%\revmade{...}
+
+\item \emph{Some of the details are missing: When did you lunch the VMs? I mean, did you lunch VMs in batches every hour? Did you test with VMs with different size of memory.}
+
+\resp{We will include some more details about VM launch times. The launch times can be inferred from Figure 2b.}
+
+\item \emph{Some of the details are missing: For the evaluation in section 6. The details of the experiment are missing. When did you run the VMs? How many VMs? In which region? How many preemptions did you face during your experiment?}
+
+\resp{We will add these details in Section 6.}
+
+\end{enumerate}
+
+\section{5E}
+
+\begin{enumerate}
+
+\item \emph{Curious how much could be done with a simpler modelling approach.}
+
+\resp{We discuss this in Section 8. We will expand that and reference Figure 7, which attempts to answer the question.}
+
+\item \emph{24 hour limit is actually a pretty artificial limit imposed by Google. Therefore, its unclear to me how well the approach would continue to hold for a system with higher levels of demand. For instance if the authors approach is successful, then I would expect for Google to change the rules to make it less successful. The question is really how much the approach implemented by Google generalizes to other system environments. The authors don't make that case, and I'm skeptical that it can be made.}
+
+\resp{We will expand our discussion of this in Section 8.}
+
+%\revmade{...}
+
+
+\end{enumerate}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
