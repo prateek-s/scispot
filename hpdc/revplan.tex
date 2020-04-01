@@ -143,11 +143,11 @@ The model might be better termed a termination, preemption, or revocation model}
 
 \item \emph{Experimental setup that requires a better explanation: In Section 6.1, the impact on jobs shorter than 5 hours should be explained more carefully. }
 
-\resp{We will provide more explanation of how jobs shorter than 5 jobs are affected, at the start of Section 6.3. Briefly, it is fundamentally a result of bathtub initial preemption characteristics.} 
+\resp{We will provide more explanation of how jobs shorter than 5 hours are affected, at the start of Section 6.3. Briefly, it is fundamentally a result of bathtub initial high failure rates.} 
 
 \item \emph{Experimental results that could be better explained:  In Section 6.2, the failure probability after 18 hours is now fixed, but it seems that the approach would lead to a failure probability decreasing with time after 18 hours. The authors could comment on this situation and explain the (counter-)intuitive result.}
 
-\resp{In Section 6.2, we will explain how our policy deals with the "edge case" of jobs starting near 24 hours, and how it leads to the counter intuitive result.}
+\resp{In Section 6.2, we will explain how our policy deals with the "edge case" of jobs starting near 24 hours, and how it leads to the counter intuitive result. Briefly, since we always start on a new VM after 18 hours, the job will always start at t=0, and have a failure probability of a new VM, which is constant and is equal to the left side of the curve.}
 
 %\revmade{...}
 
@@ -164,7 +164,7 @@ The model might be better termed a termination, preemption, or revocation model}
 
 \item \emph{Please clarify your assumptions for your lifetime and makespan analysis. Most of cloud applications are either web services in which failing only effects the currently running web requests, or are batch processing using Spark (or something like) in which case, the framework is resilient to single node failures (either due to reexecuting the lineage of the task or through repeating the task). For those cloud workloads, failures are not as painful. So your scheduling and checkpointing optimizations are mainly usefull for long running science applications in the cloud. It will be good to clarify this in the paper.}
 
-\resp{We will add this clarification. We note that even Spark jobs are affected by single node preemptions, and will add the relevant references [Flint]}.
+\resp{We will add this clarification. Yes, our current policies only target long-running jobs that arise in scientific computing, CICD pipelines, and many other areas. Our model allows designing policies for other distributed applications such as Spark. We note that even Spark jobs are affected by single node preemptions, and will add the relevant references [Flint]}.
 
 %\revmade{...}
 
@@ -189,7 +189,7 @@ The model might be better termed a termination, preemption, or revocation model}
 
 \item \emph{24 hour limit is actually a pretty artificial limit imposed by Google. Therefore, its unclear to me how well the approach would continue to hold for a system with higher levels of demand. For instance if the authors approach is successful, then I would expect for Google to change the rules to make it less successful. The question is really how much the approach implemented by Google generalizes to other system environments. The authors don't make that case, and I'm skeptical that it can be made.}
 
-\resp{We will expand our discussion of this in Section 8.}
+\resp{We will expand our discussion of this in Section 8. Briefly, we will emphasize that  beacause bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions. Moreover, our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is already general. }
 
 %\revmade{...}
 
