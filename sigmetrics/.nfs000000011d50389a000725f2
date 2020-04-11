@@ -69,10 +69,7 @@ Based on our observations and insights from the study, we then develop a probabi
 \noindent \textbf{Methodology.} We launched  1,516 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
 VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads.
 % Explain which ones? regions and instance types? 
-\vikram{We analyzed a subset (870) of this data to see how launched VMs are distributed across seven days of the week. We found the following distribution: Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, and Sunday: 54.
-We also analyzed the distribution of this data across 4 hour period in a day: 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, and 20-24: 104.
-We experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, and n1-highcpu-64: 57.6GB.}
-To ensure the generality of our empirical observations, VMs were not launched during well-known peak utilization days (such as Black Friday).
+To ensure the generality of our empirical observations, VMs were not launched during well-known peak utilization days (such as Black Friday). 
 %
 Due to the relatively high preemption rates compared to EC2 spot instances, we were able to collect these 1,500 data points for less than \$5,000. 
 %
@@ -134,7 +131,7 @@ This assumption breaks down when there is a fixed upper bound on the lifetime. %
 \noindent \textbf{Observation 3:} \emph{The three preemption phases and associated bathtub shaped preemption probability are general, universal characteristics of Preemptible VMs.}
 
 In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that \emph{particular} type.
-Thus, our empirical study looked at preemptions of VMs of different sizes \vikram{(Figure~\ref{fig:breakdown-all}a), at different times of the day (Figure~\ref{fig:breakdown-all}b), in different geographical zones (Figure~\ref{fig:breakdown-all}c), and running different workloads}.
+Thus, our empirical study looked at preemptions of VMs of different sizes \vikram{Figure~\ref{fig:breakdown-all}a, at different times of the day (Figure~\ref{fig:breakdown-all}b}), in different geographical zones (Figure~\ref{fig:breakdown-all}c), and running different workloads}.
 In all cases, we find that there are three distinct phases associated with the preemption dynamics giving rise to the bathtub shaped preemption probability.
 
 
