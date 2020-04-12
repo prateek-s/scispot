@@ -29,13 +29,13 @@ We have grouped the comments by reviewer, and have included the summary and loca
 % for each addressed comment:
 
 % For email 
-Summary of changes:
-\begin{itemize}
-\item Add job characteristics and other details in the evaluation section
-\item Make result summaries more precise and explain counter-intuitive results
-\item More comprehensive comparison with related EC2 work 
-\item Make the policy assumptions about job characteristics and running times more explicit 
-\end{itemize}
+% Summary of changes:
+% \begin{itemize}
+% \item Add job characteristics and other details in the evaluation section
+% \item Make result summaries more precise and explain counter-intuitive results
+% \item More comprehensive comparison with related EC2 work 
+% \item Make the policy assumptions about job characteristics and running times more explicit 
+% \end{itemize}
 
 \section{TPC meeting}
 
@@ -83,6 +83,7 @@ Summary of changes:
 \item \emph{3.1 What timezone is used in observation 5? I assume central to match the region. But this should be clarified.
 The model might be better termed a termination, preemption, or revocation model}
 % KXXX 
+
 \resp{Timezone local to the region being analyzed. Will clarify in Section 3.}
 
 
@@ -92,12 +93,11 @@ The model might be better termed a termination, preemption, or revocation model}
 %\resp{...}
 
 % PXXX Will require careful paragraph. 
-\item \emph{4.1 and 4.2 For many applications it is difficult to predict run time (especially on different cloud instances with unknown background load). Even when using the same application, different parameters can significantly change compute time. It's unclear what assumptions are made here that workloads need to be predictable.
-  }
+\item \emph{4.1 and 4.2 For many applications it is difficult to predict run time (especially on different cloud instances with unknown background load). Even when using the same application, different parameters can significantly change compute time. It's unclear what assumptions are made here that workloads need to be predictable.}
+  
   \resp{We will clarify this weak assumption in Sections 4.2 and 4.3---none of our policies require accurate job running time estimates. We will also briefly describe scenarios in which estimates are easy to obtain, such as parameter sweeps in scientific simulations. 
     For the job scheduling policy in Section 4.2, since we only \emph{compare} the benefits of VM reuse, we need only rough estimates of job running times, and exact times are not required. 
-    Similarly, the checkpointing policy is not affected  if the job finishes before the estimated time. If the job takes more time, the checkpointing schedule ``rolls around'' and again provides the same checkpointing overhead.
-  }
+    Similarly, the checkpointing policy is not affected  if the job finishes before the estimated time. If the job takes more time, the checkpointing schedule ``rolls around'' and again provides the same checkpointing overhead.}
 
 
 \item \emph{Comparison against basic heuristics would be interesting and perhaps more comparable than EC2 algorithms.}
@@ -178,7 +178,8 @@ The model might be better termed a termination, preemption, or revocation model}
 %\revmade{...}
 
 \item \emph{Some of the details are missing: When did you lunch the VMs? I mean, did you lunch VMs in batches every hour? Did you test with VMs with different size of memory.}
-% KXXX 
+  % KXXX
+  
 \resp{We will include some more details about VM launch times. The launch times can be inferred from Figure 2b.}
 
 \item \emph{Some of the details are missing: For the evaluation in section 6. The details of the experiment are missing. When did you run the VMs? How many VMs? In which region? How many preemptions did you face during your experiment?}
@@ -194,7 +195,7 @@ The model might be better termed a termination, preemption, or revocation model}
 
 \item \emph{Curious how much could be done with a simpler modelling approach.}
 
-\resp{We discuss this in Section 8. We will expand that and reference Figure 7, which attempts to answer the question.}
+\resp{We discuss this in Sections 3 and 8. Briefly, simpler models would not be able to generalize across VM types, nor be usable for sophisticated policies. Our ``complex'' model allows extensions to policies to be developed in an easier manner.}
 
 \item \emph{24 hour limit is actually a pretty artificial limit imposed by Google. Therefore, its unclear to me how well the approach would continue to hold for a system with higher levels of demand. For instance if the authors approach is successful, then I would expect for Google to change the rules to make it less successful. The question is really how much the approach implemented by Google generalizes to other system environments. The authors don't make that case, and I'm skeptical that it can be made.}
 
