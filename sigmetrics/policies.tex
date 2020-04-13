@@ -118,10 +118,16 @@ To compute the expected running time of a job of length $T$ starting at vm-age $
   \label{eq:tot-run-time-s}
     E[T_s]  = T + \int_{s}^{s+T} t~f(t)~dt
   \end{equation}
-  The alternative is to discard the VM and launch a new VM, in which case the expected running time is $E[T_0]$. Our job-scheduling policy is simple: 
-  When a job of running time $T$ attempts to start on a VM of age $s$, if $E[T_s] \leq E[T_0]$, then we run the job on the existing VM.
-  Otherwise, a new VM is launched. 
+The alternative is to discard the VM and launch a new VM, in which case the expected running time is $E[T_0]$. Our job-scheduling policy is simple: 
+When a job of running time $T$ attempts to start on a VM of age $s$, if $E[T_s] \leq E[T_0]$, then we run the job on the existing VM.
+Otherwise, a new VM is launched.
   
+% hl
+This technique can also be used to find the job length $T^*$, when the transition occurs between re-using and launching a new VM.
+Thus, accurate job lengths are not necessary, and we only need to know whether $T<T^*$, and only a rough estimate of the job lengths is required. 
+We assume that because most scientific computing workloads involve exploration of some parameter space, they often have homogenenous running times. 
+% hl
+
 %Depending on the VM's age $s$ and the job's running time $T$, we can compare Equations~\ref{eq:tot-run-time-2} and ~\ref{eq:tot-run-time-s}, and run the job on whichever case yields the lower expected running time. 
 
 \begin{comment}
