@@ -67,12 +67,9 @@ Based on our observations and insights from the study, we then develop a probabi
 
 
 \noindent \textbf{Methodology.} We launched  1,516 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
-VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads. 
+VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads.
 % Explain which ones? regions and instance types? 
-\vikram{We analyzed a subset (870) of this data to see how launched VMs are distributed across seven days of the week. We found the following distribution: Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, and Sunday: 54.
-We also analyzed the distribution of this data across 4 hour period in a day: 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, and 20-24: 104.
-We experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, and n1-highcpu-64: 57.6GB.}
-To ensure the generality of our empirical observations, VMs were not launched during well-known peak utilization days (such as Black Friday).
+To ensure the generality of our empirical observations, VMs were not launched during well-known peak utilization days (such as Black Friday). 
 %
 Due to the relatively high preemption rates compared to EC2 spot instances, we were able to collect these 1,500 data points for less than \$5,000. 
 %
@@ -80,10 +77,9 @@ The preemption data collection was bootstrapped: a small amount of data points w
 %
 Thus the effective cost overhead of our empirical data collection approach  is small. 
 
-\footnotetext{Preemption rates are also affected by number of VMs launched simultaneously, which we limit to $1--10$.}
 
 %
- %Weaksauce 
+\footnotetext{We will release the complete preemption dataset for further analysis.} %Weaksauce 
 %
 A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution function (CDF) of the VM lifetimes of the \texttt{n1-highcpu-16} VM in the \texttt{us-east1-b} zone. 
 %enter the type of VM for which the data is shown
@@ -134,10 +130,9 @@ This assumption breaks down when there is a fixed upper bound on the lifetime. %
 
 \noindent \textbf{Observation 3:} \emph{The three preemption phases and associated bathtub shaped preemption probability are general, universal characteristics of Preemptible VMs.}
 
-%In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that \emph{particular} type. 
-%Thus, o
-Our empirical study looked at preemptions of VMs of different sizes (Figure~\ref{fig:breakdown-all}a), at different times of the day (Figure~\ref{fig:breakdown-all}b), in different geographical zones (Figure~\ref{fig:breakdown-all}c), and running different workloads. 
-In all cases, we find that there are three distinct phases associated with the preemption dynamics giving rise to the bathtub shaped preemption probability. 
+In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that \emph{particular} type.
+Thus, our empirical study looked at preemptions of VMs of different sizes \vikram{Figure~\ref{fig:breakdown-all}a, at different times of the day (Figure~\ref{fig:breakdown-all}b}), in different geographical zones (Figure~\ref{fig:breakdown-all}c), and running different workloads}.
+In all cases, we find that there are three distinct phases associated with the preemption dynamics giving rise to the bathtub shaped preemption probability.
 
 
 \noindent \textbf{Observation 4:}\emph{ Larger VMs have a higher rate of preemptions.}
@@ -151,14 +146,11 @@ This observed behavior aligns with the guidelines for using preemptible VMs that
 
 \noindent \textbf{Observation 5:} \emph{Preemptions exhibit diurnal variations, and are also affected by the workload inside the VM.}
 
-From Figure~\ref{fig:time-breakdown}, we can see that VMs have a slightly longer lifetime during the night (8 PM to 8 AM) than during the day\footnotemark. 
+From Figure~\ref{fig:time-breakdown}, we can see that VMs have a slightly longer lifetime during the night (8 PM to 8 AM) than during the day.
 This is expected because fundamentally, the preemption rates are higher during periods of higer demand. 
 %
 We also notice that completely idle VMs have longer lifetimes than VMs running some workload.
 Presumably, this could be a result of the lower resource utilization of idle VMs being more amenable to resource overcommitment, and result in lower preemptions. 
-
-
-\footnotetext{Time-zone local to the VM's location.}
 
 % \begin{figure}
 %   \includegraphics[width=0.4\textwidth]{../graphs/QQ.pdf}

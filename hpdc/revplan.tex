@@ -76,15 +76,24 @@ We have grouped the comments by reviewer, and have included the summary and loca
 
 \item \emph{3.1 Is the following statement true: “In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that particular type” The authors do not provide a citation for this statement .}
 
-\resp{We will add relevant references for the above claim (ExoSphere and other follow-up work).}
+  \resp{We will add relevant references for the above claim (ExoSphere and other follow-up work).}
+  
 
-%\revmade{...}
+\revmade{Removed this line since it was not relevant. }
 
 \item \emph{3.1 What timezone is used in observation 5? I assume central to match the region. But this should be clarified.
 The model might be better termed a termination, preemption, or revocation model}
 % KXXX 
 
 \resp{Timezone local to the region being analyzed. Will clarify in Section 3.}
+
+\revmade{Added footnote saying that the time is local to the region.}
+
+
+%\resp{Timezone local to the region being analyzed. Will clarify in Section 3.
+%I was going through the notebooks and it seems figure 2.b is for all region data but each region time zone is local to the region so day and night(8 PM to 8 AM) is correctly classified for each region.
+%}
+
 
 
 
@@ -148,7 +157,11 @@ The model might be better termed a termination, preemption, or revocation model}
 \item \emph{Experimental setup that requires a better explanation: CRITICAL: The experimental results in Section 6 are based on a setup that does not describe the workload characteristics (but the authors indicate the type of applications), the failure characteristics and way of injecting them in the real-world environment, and the environment characteristics (it is part of the Google Cloud Platform). (This could be fixed with shepherding.)}
 
   % KXXX 
-\resp{We will include all workload characteristics (running times and cluster sizes) in Section 6.}
+\resp{We will include all workload characteristics (running times and cluster sizes) in Section 6.
+All of the following scientific simulations ran with its defualt configurations available in the github code and the optimum workload characteristics found in the exploration phase are Nanoconfinement: 4 of n1-highcpu-16, 851.325 seconds,
+Shapes: 4 of n1-highcpu-16, 548.55 seconds,
+LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
+}
 
 \item \emph{Experimental setup that requires a better explanation: In Section 6.1, the impact on jobs shorter than 5 hours should be explained more carefully. }
 
@@ -178,14 +191,30 @@ The model might be better termed a termination, preemption, or revocation model}
 %\revmade{...}
 
 \item \emph{Some of the details are missing: When did you lunch the VMs? I mean, did you lunch VMs in batches every hour? Did you test with VMs with different size of memory.}
+
   % KXXX
   
 \resp{We will include some more details about VM launch times. The launch times can be inferred from Figure 2b.}
 
+% KXXX 
+\resp{We will include some more details about VM launch times. The launch times can be inferred from Figure 2b.
+We launched 1,516 Google Preemptible VMs of different types over a two month period (Feb–April 2019). 
+We analized a subet (870) of this data to see how launched VMs are distributed amoung seven days of the week and those are distributed as Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, Sunday: 54.
+We also analyzed how the this data is distributed amoung each 4 hour in a day and they are distributed as 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, 20-24: 104.
+Yes we experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, n1-highcpu-64: 57.6GB.
+}
+
+\revmade{Distribution of launch times shown in figure b}
+
 \item \emph{Some of the details are missing: For the evaluation in section 6. The details of the experiment are missing. When did you run the VMs? How many VMs? In which region? How many preemptions did you face during your experiment?}
 
   % KXXX 
-\resp{We will add these details in Section 6.}
+\resp{We will add these details in Section 6.
+When did you run the VMs? This is answered above.
+How many VMs? 870 VMs.
+In which region? us-central1-c: 347, us-east1-b: 212, us-west1-a: 311
+How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
+}
 
 \end{enumerate}
 

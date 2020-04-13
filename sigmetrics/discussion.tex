@@ -24,9 +24,12 @@ We have also shown that our policies are not particularly sensitive to the model
 
 \noindent \textbf{\emph{Phase-wise} model.}
 Our statistical analysis indicates that the preemption rates have three distinct phases. 
-Our model is a continuously differentiable and allows capturing the three phases reasonably well. 
+%Our model is a continuously differentiable and allows capturing the three phases reasonably well. 
+\vikram{The analytical model derived in this work is continuously differentiable and allows capturing the three phases reasonably well.}
 It may be possible to use a ``phase-wise'' model such as a piece-wise continuously differentiable model, where the three phases are modeled either as segmented linear regions (found using segmented linear regression), or an initial exponential phase and two linear phases. 
-Such a piece-wise model could capture the phase transitions with even more accuracy. 
+Such a piece-wise model could capture the phase transitions with even more accuracy.
+\vikram{Further, one may consider the use of such models (heurestics) as preferred for their simplicity. However the analytical form for the predictive model enables for a cleaner integration with the resource management service. The analytical form for the preemption distributions as well as the rates can also be used to distill contributions of distinct phases in a more convenient manner. It also provides a measure to distill the contirbutions of the discontinuties present in the real operation (which are coarse-grained over in the continuously differentiable model) in changing the VM expected lifetimes and checkpointing policies. From the other end, there is a prevalent use of analytical models to extract information from preemption data (EC2). Our intent is to provide an analogous minimal model for the Google preemptible instances that can then be used to compare with existing analytical models on the same footing (as opposed to comparing simple heurestics in one with analytical forms in the other). This paper addresses the need for a minimal analytical model to describe non-memoryless preemptions, and we expect this to not inhibit the development of simpler empirical modeling approaches, but guide such model development with a fully-parameterized analytical model based on sound first principles and well-defined assumptions.
+}
 
 \begin{comment}
 \noindent \textbf{Connection to constrained systems and statistical mechanics.} Our proof of Lemma~\ref{lemma:1} used mapping to constrained physical systems and employed the statistical mechanics tools such as partition functions \cite{krauth2006statistical}. 

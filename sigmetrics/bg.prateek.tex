@@ -52,7 +52,7 @@ For example, the preemption rate or MTTF (Mean Time To Failure) of transient ser
 %Launched in 2009, spot instances are the first example of transient cloud servers, and their low price (often 90\% cheaper than equivalent on-demand instances) provided the motivation to develop optimized policies for reducing the impact of preemptions and the overall cost. 
 
 Preemptions of spot market based VMs (such as EC2 spot instances) are based on their \emph{price}, which is dynamically adjusted based on the supply and demand of cloud resources. 
-Spot prices are based on a continuous second-price auction, and if the spot price increases above a pre-specified maximum-price, then the server is preempted~\cite{spot-pricing2}.
+Spot prices are based on a continuous second-price auction, and if the spot price increases above a pre-specified maximum-price, then the server may be preempted~\cite{spot-pricing2}. 
 %
 Thus, the time-series of these spot prices can be used for understanding preemption characteristics such as the frequency of preemptions and the ``Mean Time To Failure'' (MTTF) of the spot instances. 
 Publicly available\footnotemark historical spot prices have been used to characterize and model spot instance preemptions~\cite{spotcheck, bid-cloud, transient-guarantees, wolski2016providing}. %Add lots more here 
