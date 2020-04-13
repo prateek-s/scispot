@@ -47,7 +47,9 @@ The nanoconfinement application launches molecular dynamics (MD) simulations of 
 
 %All applications are run with default parameters unless otherwise stated.
 
-\vikram{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section \ref{sec: empirical}. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we recorded XXX preemptions for our experiment. %How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
+\vikram{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section \ref{sec: empirical}. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we facted XXX preemptions for our experiment.
+%How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
+
 }
 
 

@@ -1,0 +1,117 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{spotcheck,marathe2014exploiting}
+\citation{exosphere,conductor}
+\citation{dubois2016optispot,shastri2017hotspot}
+\citation{spot-pricing2}
+\citation{spotcheck}
+\citation{flint,marathe2014exploiting}
+\citation{exosphere}
+\citation{daly2006higher}
+\@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\newlabel{sec:intro@cref}{{[section][1][]1}{[1][1][]1}}
+\citation{borg,resource-central-sosp17}
+\citation{ec2-spot}
+\citation{preemptible-documentation}
+\citation{azure-batch}
+\citation{packet-spot}
+\citation{alibaba-spot}
+\citation{transient}
+\citation{flint,marathe2014exploiting,spoton}
+\citation{exosphere}
+\citation{hourglass-eurosys19}
+\citation{exosphere,spoton}
+\citation{flint,marathe2014exploiting,proteus-eur17,ghit-spark-hpdc}
+\citation{spot-pricing2}
+\citation{spotcheck,bid-cloud,transient-guarantees,wolski2016providing}
+\citation{wolski_probabilistic_2017,icdcs-spotlight,wolski2016providing,baughman2018predicting,wolski2017probabilistic}
+\citation{bid-cloud,hotcloud-not-bid,flint,ghit-spark-hpdc,chien-ic2e19}
+\citation{daly2006higher}
+\citation{chien-ic2e19}
+\citation{bidding4}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Transient Cloud Computing}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Modeling Preemptions of Transient VMs}{2}{subsection.2.2}\protected@file@percent }
+\citation{preemptible-documentation}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides a better fit to the empirical data compared to other failure distributions. Inset shows the probability density functions.\relax }}{3}{figure.caption.3}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:gcp1}{{1}{3}{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides a better fit to the empirical data compared to other failure distributions. Inset shows the probability density functions.\relax }{figure.caption.3}{}}
+\newlabel{fig:gcp1@cref}{{[figure][1][]1}{[1][3][]3}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Understanding temporally constrained VM preemptions}{3}{section.3}\protected@file@percent }
+\newlabel{sec:failmodel}{{3}{3}{Understanding temporally constrained VM preemptions}{section.3}{}}
+\newlabel{sec:failmodel@cref}{{[section][3][]3}{[1][2][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Empirical Study Of Preemptions}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:empirical}{{3.1}{3}{Empirical Study Of Preemptions}{subsection.3.1}{}}
+\newlabel{sec:empirical@cref}{{[subsection][1][3]3.1}{[1][3][]3}}
+\citation{bid-cloud,hotcloud-not-bid,flint}
+\citation{missov2013gompertz}
+\newlabel{fig:cdf-comparison}{{2a}{4}{Subfigure 2a}{subfigure.2.1}{}}
+\newlabel{sub@fig:cdf-comparison}{{(a)}{a}{Subfigure 2a\relax }{subfigure.2.1}{}}
+\newlabel{fig:cdf-comparison@cref}{{[subfigure][1][2]2a}{[1][3][]4}}
+\newlabel{fig:time-breakdown}{{2b}{4}{Subfigure 2b}{subfigure.2.2}{}}
+\newlabel{sub@fig:time-breakdown}{{(b)}{b}{Subfigure 2b\relax }{subfigure.2.2}{}}
+\newlabel{fig:time-breakdown@cref}{{[subfigure][2][2]2b}{[1][3][]4}}
+\newlabel{fig:region-breakdown}{{2c}{4}{Subfigure 2c}{subfigure.2.3}{}}
+\newlabel{sub@fig:region-breakdown}{{(c)}{c}{Subfigure 2c\relax }{subfigure.2.3}{}}
+\newlabel{fig:region-breakdown@cref}{{[subfigure][3][2]2c}{[1][3][]4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Analysis of preemption characteristics by VM-type, region, time-of-day, and workload type.\relax }}{4}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:breakdown-all}{{2}{4}{Analysis of preemption characteristics by VM-type, region, time-of-day, and workload type.\relax }{figure.caption.4}{}}
+\newlabel{fig:breakdown-all@cref}{{[figure][2][]2}{[1][3][]4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Preemption characteristics of different VM types. Larger VMs are more likely to be preempted. }}}{4}{subfigure.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Variations due to time of day and workload. }}}{4}{subfigure.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {\textbf {n1-highcpu-16} in different regions. }}}{4}{subfigure.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Failure Probability Model}{4}{subsection.3.2}\protected@file@percent }
+\newlabel{subsec:analytical-model}{{3.2}{4}{Failure Probability Model}{subsection.3.2}{}}
+\newlabel{subsec:analytical-model@cref}{{[subsection][2][3]3.2}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Inadequacy of existing failure distributions}{4}{subsubsection.3.2.1}\protected@file@percent }
+\newlabel{subsec:preemption-model}{{3.2.2}{4}{Our model}{subsubsection.3.2.2}{}}
+\newlabel{subsec:preemption-model@cref}{{[subsubsection][2][3,2]3.2.2}{[1][4][]4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Our model}{4}{subsubsection.3.2.2}\protected@file@percent }
+\citation{scipy-fit}
+\citation{flint}
+\newlabel{eq:blend1}{{1}{5}{Our model}{equation.3.1}{}}
+\newlabel{eq:blend1@cref}{{[equation][1][]1}{[1][5][]5}}
+\newlabel{eq:failrate}{{2}{5}{Our model}{equation.3.2}{}}
+\newlabel{eq:failrate@cref}{{[equation][2][]2}{[1][5][]5}}
+\newlabel{eq:expected-lifetime}{{3}{5}{Our model}{equation.3.3}{}}
+\newlabel{eq:expected-lifetime@cref}{{[equation][3][]3}{[1][5][]5}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Application Policies For Constrained Preemptions}{5}{section.4}\protected@file@percent }
+\newlabel{sec:policies}{{4}{5}{Application Policies For Constrained Preemptions}{section.4}{}}
+\newlabel{sec:policies@cref}{{[section][4][]4}{[1][5][]5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Impact On Running Time}{5}{subsection.4.1}\protected@file@percent }
+\newlabel{eq:wasted}{{5}{5}{Impact On Running Time}{equation.4.5}{}}
+\newlabel{eq:wasted@cref}{{[equation][5][]5}{[1][5][]5}}
+\citation{flint}
+\citation{dongarra_fault_nodate,daly2006higher,flint,marathe2014exploiting}
+\newlabel{eq:tot-run-time}{{6}{6}{Impact On Running Time}{equation.4.6}{}}
+\newlabel{eq:tot-run-time@cref}{{[equation][6][]6}{[1][6][]6}}
+\newlabel{eq:tot-run-time-2}{{7}{6}{Impact On Running Time}{equation.4.7}{}}
+\newlabel{eq:tot-run-time-2@cref}{{[equation][7][]7}{[1][6][]6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Job Scheduling and VM Reuse Policy}{6}{subsection.4.2}\protected@file@percent }
+\newlabel{eq:tot-run-time-s}{{8}{6}{Job Scheduling and VM Reuse Policy}{equation.4.8}{}}
+\newlabel{eq:tot-run-time-s@cref}{{[equation][8][]8}{[1][6][]6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Checkpointing Policy}{6}{subsection.4.3}\protected@file@percent }
+\citation{gcp}
+\citation{gcloud-api}
+\citation{slurm}
+\citation{torque}
+\newlabel{eq:m0}{{9}{7}{Checkpointing Policy}{equation.4.9}{}}
+\newlabel{eq:m0@cref}{{[equation][9][]9}
