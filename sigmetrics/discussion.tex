@@ -21,6 +21,8 @@ Regardless, VMs with constrained preemptions are an interesting \emph{new} type 
 Furthermore, we demonstrate that the multi-phase bathtub failure distribution may be a fundamental characteristic of constrained preemptions that benefit both the cloud platform and applications, and thus models that capture the distinct preemption phases would still be relevant even if the finer-grained preemption characteristics change. % over time. 
 %
 We have also shown that our policies are not particularly sensitive to the model parameters, and even using a ``wrong'' or outdated model can provide significant benefits compared to existing memoryless models. 
+%
+\vikram{Our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is general. Moreover, because bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions making our approach generalizable to other system environments beyond the Google cloud computing systems. Finally, the principle adopted to break down the problem into the superposition of processes characterized by different failure rates can also be considered as a general framework to understand and guide policies for mitigating preemption-induced effects in other cloud environments.}
 
 \noindent \textbf{\emph{Phase-wise} model.}
 Our statistical analysis indicates that the preemption rates have three distinct phases. 
@@ -28,8 +30,9 @@ Our statistical analysis indicates that the preemption rates have three distinct
 \vikram{The analytical model derived in this work is continuously differentiable and allows capturing the three phases reasonably well.}
 It may be possible to use a ``phase-wise'' model such as a piece-wise continuously differentiable model, where the three phases are modeled either as segmented linear regions (found using segmented linear regression), or an initial exponential phase and two linear phases. 
 Such a piece-wise model could capture the phase transitions with even more accuracy.
-\vikram{Further, one may consider the use of such models (heurestics) as preferred for their simplicity. However our analytical predictive model enables for a cleaner integration with the resource management service. The preemption model function also provides a measure to distill the contributions of effects ignored in its derivation (multiple preemptions, non-differentiable features) in changing the VM expected lifetimes and checkpointing policies. On the other hand, our analytical model for the Google preemptible instances derived using a principled approach informed by empirical data and based on well-defined assumptions can guide the development of simpler heuristics and modeling approaches, as well as interpretion of their results.
-}
+\vikram{Our analytical model informed by empirical data and based on well-defined assumptions can guide the development of such simpler heuristics and modeling approaches, as well as interpretation of their results.
+The analytical model also provides a measure to distill the contributions of effects ignored in its derivation (e.g., only 2 failure rates) in changing the VM expected lifetimes and checkpointing policies. At the same time, it also provides a principled approach to extend the model to more complex cases, e.g., systems characterized by processes with more than 2 failure rates.}
+%Furthermore, the analytical predictive model enables for a cleaner integration with the resource management service.
 
 \begin{comment}
 \noindent \textbf{Connection to constrained systems and statistical mechanics.} Our proof of Lemma~\ref{lemma:1} used mapping to constrained physical systems and employed the statistical mechanics tools such as partition functions \cite{krauth2006statistical}. 
