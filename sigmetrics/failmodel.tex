@@ -51,7 +51,7 @@ Based on our observations and insights from the study, we then develop a probabi
 %\subsection{Empirical model of preemptions}
 %\subsection{Empirical preemption behavior}
 \vspace*{\subsecspace}
-\subsection{Empirical Study Of Preemptions}
+\subsection{Empirical Study Of Preemptions}\label{sec:empirical}
 %\subsection{Understanding Empirical Preemption Behavior}
 
 % The preemptions of transient servers need not be related to their price.
@@ -115,6 +115,7 @@ Our empirical approach allows us to make the following  observations.
 
 \noindent In the first (initial) phase, characterized by VM lifetime $t\in [0, 3]$ hours, we observe that many VMs are quickly preempted after they are launched, and thus have a steep rate of failure. The rate of failure (preemption rate) is the derivative of the CDF.
 %; the rate of failure or preemptions can be obtained by taking the derivative of the CDF. 
+\vikram{The early high rate of failure reflects that the cloud service provider takes into account VM liftetime in prioritizing preempting ``younger'' VMs, in other words, the number of simultaneous VMs launched does have an effect on their failure rate.}
 In the second phase, VMs that survive past 3 hours enjoy a relatively low preemption rate over a relatively broad range of lifetime (characterized by the slowly rising CDF in Figure~\ref{fig:gcp1}).
 The third and final phase exhibits a steep increase in the number of preemptions as the preemption deadline of 24 hours approaches.
 The overall rate of preemptions is ``bathtub'' shaped as shown by the solid black line in the inset of Figure~\ref{fig:gcp1} (discussed in detail below).

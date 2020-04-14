@@ -23,7 +23,8 @@ We have already presented the statistical analysis of our model in Section~\ref{
   
 \end{enumerate}
 
-\vikram{While our service is intended for general batch jobs, our current policies only target long-running jobs that arise in many applications such as scientific computing and CICD pipelines. Our model also allows designing policies for other distributed applications such as Spark (even Spark jobs are affected by single node preemptions [Flint].}
+
+
 
 \noindent \textbf{Environment and Workloads:}
 All our empirical evaluation is conducted on the Google Cloud Platform using our batch computing service described in Section~\ref{sec:impl}. 
@@ -46,7 +47,9 @@ The nanoconfinement application launches molecular dynamics (MD) simulations of 
 
 %All applications are run with default parameters unless otherwise stated.
 
-\vikram{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section \ref{sec: empirical}. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we recorded XXX preemptions for our experiment. %How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
+\vikram{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section \ref{sec: empirical}. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we facted XXX preemptions for our experiment.
+%How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
+
 }
 
 
@@ -90,11 +93,9 @@ Once jobs survive the initial high failure rate, the rate of failure is low, and
 
 We now examine the expected increase in running time, that also accounts for the probability of failure, and is given by $P(\text{failure})*E[W_1]$. 
 Figure~\ref{fig:vs-uniform-2} shows this expected increase in running times for jobs of different lengths.
-We see that for uniformly distributed preemptions, the increase in running time is quadratic in the job length (and is given by $J^2/48$). 
-Interestingly, the high rate of early failures for the bathtub distribution results in a slightly worse (i.e., higher) running time for short jobs, because of the high initial rate of bathtub preemptions. 
-%hl
-However for jobs longer than 5 hours, a cross-over point is reached, and the bathtub distribution provides lower overhead of preemptions.
-%hl
+We see that for uniformly distributed preemptions, the increase in running time is quadratic in the job length (and is given by $J^2/48$).
+Interestingly, the high rate of early failures for the bathtub distribution results in a slightly worse (i.e., higher) running time for short jobs.
+However for jobs longer than 5 hours, a cross-over point is reached, and the bathtub distribution provides a significantly lower overhead of preemptions. 
 For instance, for a 10 hour job, the increase in running time is about 30 minutes, or 5\%. 
 In comparison, if failures were uniformly distributed, the increase would be 2 hours. 
 
@@ -103,11 +104,8 @@ Thus, the bathtub preemptions are beneficial for applications and users, as the 
 Since the failure rate distribution is ultimately controlled by the cloud provider, our analysis can be used to determine the appropriate preemption distribution based on the job length distributions.
 For instance, if short jobs are very common, then uniformly distributed preemptions are preferable, otherwise, bathtub distributions can offer significant benefits. 
 
-%\noindent \textbf{Result:} \emph{For constrained preemptions, bathtub distributions reduce the expected increase in running times for medium to long running jobs ($5-15$ hours) by up to $40\times$, but are slightly inferior for short jobs ($<5$ hours).}
-%hl
-\noindent \textbf{Result:} \emph{Bathtub distributions are beneficial for medium and long duration ($5-15$ hours) jobs, and can reduce the expected increase in running time by up to $40\times$.} 
-%hl  
-  
+\noindent \textbf{Result:} \emph{For constrained preemptions, bathtub distributions significantly reduce the expected increase in running times for medium to long running jobs ($5-15$ hours), but are slightly inferior for short jobs ($<5$ hours).}
+
 
 
 
@@ -141,8 +139,8 @@ We compare against a baseline of memoryless job scheduling that is not informed 
 Such memoryless policies are the default in existing transient computing systems such as SpotOn~\cite{spoton}. 
 In the absence of insights about bathtub preemptions, the memoryless policy continues to run jobs on the existing VM. 
 As the figure shows, the empirical job failure probability is bathtub shaped. 
-However since the job is 6 hours long, with the memoryless policy, it will always fail when launched after $24-6=18$ hours. 
-In contrast, our model-based policy determines that after 18 hours, we will be better off running the job on a newer VM, and results in a lower job failure probability (=0.4). 
+However since the job is 6 hours long, with the memoryless policy, it will always fail when launched after $24-6=18$ hours.
+In contrast, our model-based policy determines that after 18 hours, we will be better off running the job on a newer VM, and results in a much lower job failure probability (=0.4).
 Thus, our model-based job scheduling policy can reduce job failure probability by taking into account the time-varying failure rates of VMs, which is not considered by existing systems that use memoryless scheduling policies.
 
 \begin{figure*}
@@ -186,16 +184,14 @@ Thus, our model-based job scheduling policy can reduce job failure probability b
 % \end{figure}
 
 The job failure probability is determined by the job length and the job starting time.
-%hl
-We examine the failure probability for jobs of different lengths (uniformly distributed) in Figure~\ref{fig:sched-all}, in which we average the failure probability across different start times.
-%hl 
+We examine the failure probability for jobs of different lengths in Figure~\ref{fig:sched-all}, in which we average the failure probability across different start times.
 We again see that our policy results in significantly lower failure probability compared to memoryless scheduling.
-For all but the shortest and longest jobs, the failure probability with our policy is \emph{half} of that of existing memoryless policies. 
+For all but the shortest and longest jobs, the failure probability with our policy is \emph{half} of that of existing memoryless policies.
 This reduction is primarily due to how the two policies perform for jobs launched near the end of the VM preemption deadline, which we examined previously in Figure~\ref{fig:sched-bathtub}. 
 
-%hl
-\noindent \textbf{Result:} \emph{Our model-based job scheduling and VM-reuse policy can decrease job failure probability by up to $2\times$ for medium and long jobs.}
-%hl
+
+\noindent \textbf{Result:} \emph{Our model-based job scheduling and VM-reuse policy can decrease job failure probability by $2\times$.}
+
 
 % \begin{figure}
 %   \includegraphics[width=0.3\textwidth]{../graphs/wrong-model.pdf}
@@ -226,7 +222,7 @@ This negligible difference is due to the fact that even a suboptimal model captu
 
 
 
-    
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace*{\subsecspace}
@@ -246,16 +242,16 @@ Throughout, we assume that each checkpoint takes 1 minute.
 The increase in running time depends on the failure rate and thus the job's starting time. 
 With our model-based checkpointing policy, the increase in running time is bathtub shaped and is below 5\%, and around 1\% when the job is launched when the VM is between 5 and 15 hours old. 
 
-We also compare with the Young-Daly~\cite{daly2006higher} periodic checkpointing policy, as implemented in~\cite{flint, proteus-eur17, marathe2014exploiting}, and which represents the broad class of fault-tolerance techniques proposed for transient computing. 
+We also compare with the Young-Daly~\cite{daly2006higher} periodic checkpointing policy, as implemented in~\cite{flint, proteus-eur17, marathe2014exploiting}, and which represents the broad class of fault-tolerance techniques proposed for transient computing.
 %
-For Young-Daly, we use the initial failure rate of the VM to determine the MTTF, which corresponds to an MTTF of 1 hour. 
+For Young-Daly, we use the initial failure rate of the VM to determine the MTTF, which corresponds to an MTTF of 1 hour.
 This results in a high, constant rate of checkpointing, and increases the running time of the job by more than 25\%.
 The increase in running time is primarily due to the overhead of checkpointing. 
 Note that checkpointing with a lower frequency decreases the checkpointing overhead, but increases the recomputation required.
 
 Next, we examine the expected running time of jobs of different length, when all jobs start at time=0, i.e, are launched on a freshly launched VM. 
 Figure~\ref{fig:ckpt-start-0-relative} shows the expected increase in the running time of the jobs with our model-based checkpointing policy and the Young-Daly policy with MTTF=1 hour.
-With our policy, the running times increase by 10\% for short jobs ($<2$  hours), and increase by less than 5\% for longer jobs.
+With our policy, the running times increase by 10\% for short jobs ( $<2$  hours), and increase by less than 5\% for longer jobs.
 In contrast, the Young-Daly policy yields a constant increase in running times of 25\%. 
 Thus, our model-based policy is able to reduce the checkpointing overhead and thus reduce the performance overhead of running on preemptible VMs to below 5\%. 
 

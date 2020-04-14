@@ -113,6 +113,8 @@ The model might be better termed a termination, preemption, or revocation model}
 
 \resp{Even basic heuristics would need to be based on sound principled empirical models, which we provide. We will discuss this in Section 8.}
 
+\revmade{Further, one may consider the use of such models (heurestics) as preferred for their simplicity. However our analytical predictive model enables for a cleaner integration with the resource management service. The preemption model function also provides a measure to distill the contributions of effects ignored in its derivation (multiple preemptions, non-differentiable features) in changing the VM expected lifetimes and checkpointing policies. On the other hand, our analytical model for the Google preemptible instances derived using a principled approach informed by empirical data and based on well-defined assumptions can guide the development of simpler heuristics and modeling approaches, as well as interpretion of their results.}
+
 \item \emph{In Fig 7 what is the distribution of job lengths? Is the difference again due to start times at the end of the 24 hour period?}
 
 \resp{We will clarify that figure 7 uses uniformly distributed job lengths.}
@@ -183,12 +185,14 @@ LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
 
 \resp{We will summarize our observations to this question in Section 3. Briefly, yes, the number of simultaneous VMs launched has an effect on their failure rate.}
 
+\revmade{The early high rate of failure reflects that the cloud service provider takes into account VM liftetime in prioritizing preempting ``younger'' VMs, in other words, the number of simultaneous VMs launched does have an effect on their failure rate.}
+
 
 \item \emph{Please clarify your assumptions for your lifetime and makespan analysis. Most of cloud applications are either web services in which failing only effects the currently running web requests, or are batch processing using Spark (or something like) in which case, the framework is resilient to single node failures (either due to reexecuting the lineage of the task or through repeating the task). For those cloud workloads, failures are not as painful. So your scheduling and checkpointing optimizations are mainly usefull for long running science applications in the cloud. It will be good to clarify this in the paper.}
 
 \resp{We will add this clarification. Yes, our current policies only target long-running jobs that arise in scientific computing, CICD pipelines, and many other areas. Our model allows designing policies for other distributed applications such as Spark. We note that even Spark jobs are affected by single node preemptions, and will add the relevant references [Flint]}.
 
-%\revmade{...}
+\revmade{While our service is intended for general batch jobs, our current policies only target long-running jobs that arise in many applications such as scientific computing and CICD pipelines. Our model also allows designing policies for other distributed applications such as Spark (even Spark jobs are affected by single node preemptions [Flint]}
 
 \item \emph{Some of the details are missing: When did you lunch the VMs? I mean, did you lunch VMs in batches every hour? Did you test with VMs with different size of memory.}
 
@@ -197,6 +201,7 @@ LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
 \resp{We will include some more details about VM launch times. The launch times can be inferred from Figure 2b.}
 
 % KXXX 
+
 \resp{We will include some more details about VM launch times. The launch times can be inferred from Figure 2b.
 We launched 1,516 Google Preemptible VMs of different types over a two month period (Feb–April 2019). 
 We analized a subet (870) of this data to see how launched VMs are distributed amoung seven days of the week and those are distributed as Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, Sunday: 54.
@@ -204,7 +209,10 @@ We also analyzed how the this data is distributed amoung each 4 hour in a day an
 Yes we experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, n1-highcpu-64: 57.6GB.
 }
 
-\revmade{Distribution of launch times shown in figure b}
+\revmade{We analyzed a subset (870) of this data to see how launched VMs are distributed across seven days of the week. We found the following distribution: Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, and Sunday: 54.
+We also analyzed the distribution of this data across 4 hour period in a day: 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, and 20-24: 104.
+We experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, and n1-highcpu-64: 57.6GB.}
+
 
 \item \emph{Some of the details are missing: For the evaluation in section 6. The details of the experiment are missing. When did you run the VMs? How many VMs? In which region? How many preemptions did you face during your experiment?}
 
@@ -216,6 +224,8 @@ In which region? us-central1-c: 347, us-east1-b: 212, us-west1-a: 311
 How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
 }
 
+\revmade{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section 3.1. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we recorded XXX preemptions for our experiment.}
+
 \end{enumerate}
 
 \section{5E}
@@ -226,12 +236,15 @@ How many preemptions did you face during your experiment? Total VM count passed 
 
 \resp{We discuss this in Sections 3 and 8. Briefly, simpler models would not be able to generalize across VM types, nor be usable for sophisticated policies. Our ``complex'' model allows extensions to policies to be developed in an easier manner.}
 
+\revmade{Our analytical model informed by empirical data and based on well-defined assumptions can guide the development of such simpler heuristics and modeling approaches, as well as interpretation of their results.
+The analytical model also provides a measure to distill the contributions of effects ignored in its derivation (e.g., only 2 failure rates) in changing the VM expected lifetimes and checkpointing policies. At the same time, it also provides a principled approach to extend the model to more complex cases, e.g., systems characterized by processes with more than 2 failure rates.
+}
+
 \item \emph{24 hour limit is actually a pretty artificial limit imposed by Google. Therefore, its unclear to me how well the approach would continue to hold for a system with higher levels of demand. For instance if the authors approach is successful, then I would expect for Google to change the rules to make it less successful. The question is really how much the approach implemented by Google generalizes to other system environments. The authors don't make that case, and I'm skeptical that it can be made.}
 
 \resp{We will expand our discussion of this in Section 8. Briefly, we will emphasize that  beacause bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions. Moreover, our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is already general. }
 
-%\revmade{...}
-
+\revmade{Our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is general. Moreover, because bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions making our approach generalizable to other system environments beyond the Google cloud computing systems. Finally, the principle adopted to break down the problem into the superposition of processes characterized by different failure rates can also be considered as a general framework to understand and guide policies for mitigating preemption-induced effects in other cloud environments.}
 
 \end{enumerate}
 
