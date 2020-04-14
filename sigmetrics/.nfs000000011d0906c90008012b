@@ -52,7 +52,7 @@ The nanoconfinement application launches molecular dynamics (MD) simulations of 
 For our empirical evaluation, we launched Google Preemptible VMs according to the methodology described earlier in~\ref{sec:empirical}. 
 
 %\vikram{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section \ref{sec: empirical}. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we recorded XXX preemptions for our experiment. %How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
-
+}
 
 
 \vspace*{\subsecspace}
@@ -61,11 +61,11 @@ For our empirical evaluation, we launched Google Preemptible VMs according to th
 \begin{figure}[t]
   \vspace*{\myfigspace}    
   \subfloat[Computation wasted due to one preemption. \label{fig:vs-uniform}]
-  {  \includegraphics[width=0.23\textwidth]{../graphs/uniform-v-bathtub.pdf} }
- % \\
- % \vspace*{-0.4cm}
+  {  \includegraphics[width=0.3\textwidth]{../graphs/uniform-v-bathtub.pdf} }
+  \\
+  \vspace*{-0.4cm}
     \subfloat[Expected increase in running time. \label{fig:vs-uniform-2}]
-    {  \includegraphics[width=0.23\textwidth]{../graphs/uniform-v-bathtub-2.pdf} }
+    {  \includegraphics[width=0.3\textwidth]{../graphs/uniform-v-bathtub-2.pdf} }
     \vspace*{-0.4cm}
     \caption{Wasted computation and expected increase in running time for uniform vs. baththub failures. For jobs $>5$ hours, bathtub distribution results in significantly lower wasted computation.}
 \vspace*{\myfigspace}    
@@ -276,15 +276,15 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 \begin{figure}[t]
   \vspace*{\myfigspace}
   \subfloat[Checkpointing overhead for different job starting times. \label{fig:ckpt-4}]
-{  \includegraphics[width=0.23\textwidth]{../graphs/ckpt-4-trim.pdf} }
+{  \includegraphics[width=0.35\textwidth]{../graphs/ckpt-4.pdf} }
 %\hfill
 % \subfloat[Running time with checkpointing when jobs start at time=0. \label{fig:ckpt-start-0}]
 % {  \includegraphics[width=0.3\textwidth]{../graphs/ckpt-start-0.pdf}}
 % \hfill
-%\\
-%\vspace*{-8pt}
+\\
+\vspace*{-8pt}
 \subfloat[Increase in running time with checkpointing when jobs start at time=0. \label{fig:ckpt-start-0-relative}]
-{\includegraphics[width=0.23\textwidth]{../graphs/ckpt-start-relative-trim.pdf}}
+{\includegraphics[width=0.35\textwidth]{../graphs/ckpt-start-relative.pdf}}
 \vspace*{\myfigspace}
   \caption{Checkpointing effectiveness.}
   \label{fig:ckpt-all}

@@ -47,13 +47,17 @@ E[W_1(T)] = \int_0^{T} t~P(t | t \leq T)~dt ,
 where $P(t|t\leq T) = P(t) / P(t \leq T)$. Here, $P(t\leq T)$ is the probability that there is a preemption within time $T$ and is given by $P(t \leq T) = F(T)$ where $F(T)$ is the CDF. 
 $P(t)$ is the probability of a preemption at time $t$, and is given by $P(t) = f(t)$ , where $f(t)$ is the probability distribution function given by Equation~\ref{eq:failrate}.
 We can therefore write the above equation as:
-\begin{align}
-  E[W_1(T)] &= \int_0^{T} t~P(t | t \leq T)~dt \nonumber 
-  = \int_0^{T} t~\frac{f(t)}{P(t \leq T)}~dt \\ 
-  &= \int_0^{T} t~\frac{f(t)}{F(T)}~dt 
-    = \frac{1}{F(T)}  \int_0^{T} t~f(t)~dt
+% \begin{align}
+%   E[W_1(T)] &= \int_0^{T} t~P(t | t \leq T)~dt \nonumber 
+%   = \int_0^{T} t~\frac{f(t)}{P(t \leq T)}~dt \\ 
+%   &= \int_0^{T} t~\frac{f(t)}{F(T)}~dt 
+%     = \frac{1}{F(T)}  \int_0^{T} t~f(t)~dt
+%     \label{eq:wasted}
+% \end{align}
+\begin{equation}
+  E[W_1(T)] = \int_0^{T} t~P(t | t \leq T)~dt = \frac{1}{F(T)}  \int_0^{T} t~f(t)~dt.
     \label{eq:wasted}
-\end{align}
+\end{equation}
 
 We note that the integral is the same as the ``expected lifetime'', given by Equation~\ref{eq:expected-lifetime}.
 %
@@ -61,17 +65,22 @@ The above expression for the expected waste given a single preemption can be use
 The total running time (also known as makespan) of a job \emph{with} preemptions is given by:
 \begin{equation}
   \label{eq:tot-run-time}
-  E[T] = P(\text{no failure})~T + P(\text{1 failure})~(T + E[W_1(T)])
+  E[T] = P(\text{no failure})~T + P(\text{1 failure})~\left(T + E[W_1(T)]\right),
 \end{equation}
-Where $P(\text{no failure}) = P(t > T) =  1- F(T)$ and $P(\text{1 failure}) = P(t \leq T) = F(T)$.
-The above equation for $E[T]$ thus becomes: 
+where $P(\text{no failure}) = P(t > T) =  1- F(T)$ and $P(\text{1 failure}) = P(t \leq T) = F(T)$.
+%The above equation for $E[T]$ thus becomes: 
+Expanding out these terms and using Equation \ref{eq:wasted}, we get
 %
-\begin{align}
+% \begin{align}
+%   \label{eq:tot-run-time-2}
+%   E[T] &= (1-F(T))~T + F(T)~(T + E[W_1(T)]) \\ \nonumber
+%   &= (1-F(T))~T + F(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
+%        &= T + \int_0^{T} t~f(t)~dt         
+% \end{align}
+\begin{equation}
   \label{eq:tot-run-time-2}
-  E[T] &= (1-F(T))~T + F(T)~(T + E[W_1(T)]) \\ \nonumber
-  &= (1-F(T))~T + F(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
-       &= T + \int_0^{T} t~f(t)~dt         
-\end{align}
+  E[T] = \left(1-F\left(T\right)\right)T + F(T)\left(T + E[W_1(T)]\right) = T + \int_0^{T} t~f(t)~dt.         
+\end{equation}
 %hl
 This expression for the expected running time assumes that the job will be preempted at most once.
 An expression which considers the higher order terms and multiple job failures easily follows from the base case, but presents relatively low practical value.
