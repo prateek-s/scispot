@@ -61,11 +61,11 @@ For our empirical evaluation, we launched Google Preemptible VMs according to th
 \begin{figure}[t]
   \vspace*{\myfigspace}    
   \subfloat[Computation wasted due to one preemption. \label{fig:vs-uniform}]
-  {  \includegraphics[width=0.3\textwidth]{../graphs/uniform-v-bathtub.pdf} }
-  \\
-  \vspace*{-0.4cm}
+  {  \includegraphics[width=0.23\textwidth]{../graphs/uniform-v-bathtub.pdf} }
+ % \\
+ % \vspace*{-0.4cm}
     \subfloat[Expected increase in running time. \label{fig:vs-uniform-2}]
-    {  \includegraphics[width=0.3\textwidth]{../graphs/uniform-v-bathtub-2.pdf} }
+    {  \includegraphics[width=0.23\textwidth]{../graphs/uniform-v-bathtub-2.pdf} }
     \vspace*{-0.4cm}
     \caption{Wasted computation and expected increase in running time for uniform vs. baththub failures. For jobs $>5$ hours, bathtub distribution results in significantly lower wasted computation.}
 \vspace*{\myfigspace}    
@@ -276,15 +276,15 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 \begin{figure}[t]
   \vspace*{\myfigspace}
   \subfloat[Checkpointing overhead for different job starting times. \label{fig:ckpt-4}]
-{  \includegraphics[width=0.35\textwidth]{../graphs/ckpt-4.pdf} }
+{  \includegraphics[width=0.23\textwidth]{../graphs/ckpt-4-trim.pdf} }
 %\hfill
 % \subfloat[Running time with checkpointing when jobs start at time=0. \label{fig:ckpt-start-0}]
 % {  \includegraphics[width=0.3\textwidth]{../graphs/ckpt-start-0.pdf}}
 % \hfill
-\\
-\vspace*{-8pt}
+%\\
+%\vspace*{-8pt}
 \subfloat[Increase in running time with checkpointing when jobs start at time=0. \label{fig:ckpt-start-0-relative}]
-{\includegraphics[width=0.35\textwidth]{../graphs/ckpt-start-relative.pdf}}
+{\includegraphics[width=0.23\textwidth]{../graphs/ckpt-start-relative-trim.pdf}}
 \vspace*{\myfigspace}
   \caption{Checkpointing effectiveness.}
   \label{fig:ckpt-all}
