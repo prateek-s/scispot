@@ -23,6 +23,7 @@ We have already presented the statistical analysis of our model in Section~\ref{
   
 \end{enumerate}
 
+% Move in the policies section. 
 \vikram{While our service is intended for general batch jobs, our current policies only target long-running jobs that arise in many applications such as scientific computing and CICD pipelines. Our model also allows designing policies for other distributed applications such as Spark (even Spark jobs are affected by single node preemptions [Flint].}
 
 \noindent \textbf{Environment and Workloads:}
@@ -47,8 +48,10 @@ The nanoconfinement application launches molecular dynamics (MD) simulations of 
 
 %All applications are run with default parameters unless otherwise stated.
 
-% Prateek: No need to repeat this? 
-\vikram{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section \ref{sec: empirical}. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we recorded XXX preemptions for our experiment. %How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
+% Prateek: No need to repeat this?
+For our empirical evaluation, we launched Google Preemptible VMs according to the methodology described earlier in~\ref{sec:empirical}. 
+
+%\vikram{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section \ref{sec: empirical}. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we recorded XXX preemptions for our experiment. %How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
 }
 
 
@@ -259,8 +262,10 @@ This results in a high, constant rate of checkpointing, and increases the runnin
 The increase in running time is primarily due to the overhead of checkpointing. 
 Note that checkpointing with a lower frequency decreases the checkpointing overhead, but increases the recomputation required.
 
-Next, we examine the expected running time of jobs of different length, when all jobs start at time=0, i.e, are launched on a freshly launched VM. 
-Figure~\ref{fig:ckpt-start-0-relative} shows the expected increase in the running time of the jobs with our model-based checkpointing policy and the Young-Daly policy with MTTF=1 hour.
+Next, we examine the expected running time of jobs of different length, when all jobs start at time=0, i.e, are launched on a freshly launched VM.
+%hl
+Figure~\ref{fig:ckpt-start-0-relative} shows the expected increase in the running time of the jobs of length $(0--9] $ hours, with our model-based checkpointing policy and the Young-Daly policy with MTTF=1 hour.
+%hl 
 With our policy, the running times increase by 10\% for short jobs ($<2$  hours), and increase by less than 5\% for longer jobs.
 In contrast, the Young-Daly policy yields a constant increase in running times of 25\%. 
 Thus, our model-based policy is able to reduce the checkpointing overhead and thus reduce the performance overhead of running on preemptible VMs to below 5\%. 

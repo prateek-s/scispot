@@ -37,6 +37,8 @@ We have grouped the comments by reviewer, and have included the summary and loca
 % \item Make the policy assumptions about job characteristics and running times more explicit 
 % \end{itemize}
 
+% TODO: References, multiple preemptions 
+
 \section{TPC meeting}
 
 \begin{enumerate}
@@ -51,7 +53,7 @@ We have grouped the comments by reviewer, and have included the summary and loca
 
 \resp{We will fix the various evaluation exposition issues, which we individually address in the rest of this revision plan.}
 
-%\revmade{...}
+\revmade{We have made the evaluation exposition more precise in many places. We have also removed a few result summaries, since we found it difficult to make the summaries both complete and succinct.} 
 
 
 \end{enumerate}
@@ -65,7 +67,7 @@ We have grouped the comments by reviewer, and have included the summary and loca
 
 \resp{We will clarify that 3\% is the \emph{expected} increase in running time, which includes the (low) probability of preemption.  }
 
-%\revmade{...}
+\revmade{We have clarified that 3\% is the \emph{expected} increase in running time, which includes the (low) probability of preemption, in Section 6.3. }
 
 \end{enumerate}
 
@@ -79,7 +81,7 @@ We have grouped the comments by reviewer, and have included the summary and loca
   \resp{We will add relevant references for the above claim (ExoSphere and other follow-up work).}
   
 
-\revmade{Removed this line since it was not relevant. }
+\revmade{We have removed this line since it was not relevant to our paper. }
 
 \item \emph{3.1 What timezone is used in observation 5? I assume central to match the region. But this should be clarified.
 The model might be better termed a termination, preemption, or revocation model}
@@ -108,6 +110,7 @@ The model might be better termed a termination, preemption, or revocation model}
     For the job scheduling policy in Section 4.2, since we only \emph{compare} the benefits of VM reuse, we need only rough estimates of job running times, and exact times are not required. 
     Similarly, the checkpointing policy is not affected  if the job finishes before the estimated time. If the job takes more time, the checkpointing schedule ``rolls around'' and again provides the same checkpointing overhead.}
 
+  \revmade{We have added text in Section 4.1 about the need for only rough estimates of job running time for the scheduling policy.}
 
 \item \emph{Comparison against basic heuristics would be interesting and perhaps more comparable than EC2 algorithms.}
 
@@ -119,16 +122,18 @@ The model might be better termed a termination, preemption, or revocation model}
 
 \resp{We will clarify that figure 7 uses uniformly distributed job lengths.}
 
+\revmade{We have clarified that figure 7 uses uniformly distributed job lengths, in Section 6.1.}
 
 \item \emph{In Fig 8 the the authors simply picked a job and checkpoint length.}
 
-\resp{We will clarify that Fig 8 evaluates a wide range of job lengths [0--9 hours]}
+\revmade{We will clarify that Fig 8 evaluates a wide range of job lengths [0--9 hours], in Section 6.2.2.}
 
 
 \item \emph{6.3 TFig 9 The authors should describe thee characteristics and it would likely be more interesting to quite different applications.}
 
 \resp{We will add details about the jobs and their running time characteristics.}
 
+\revmade{We have added details about the jobs and their running time characteristics at the start of the eval section.}
 
 \end{enumerate}
 
@@ -141,13 +146,13 @@ The model might be better termed a termination, preemption, or revocation model}
 
   \resp{Prior work, including this paper, temporarily blacklists VMs with high preemption rates. We will cite the related work. We will emphasize on page 6 that while multiple preemptions are certainly worth modeling, we wanted to provide a model for the common case (one preemption) as part of this initial work on constrained preemption modeling.}
 
-%\revmade{...}
+\revmade{We have clarified in Section 4.1 that multiple preemptions have a low probability, which is why our initial model does not try to estimate it.}
 
 \item \emph{Assumptions that require references or reformulation: On page 8, the authors assume most batch jobs are comprised of tasks with little variability in runtime and execution characteristics. Is there evidence for this?}
 
 \resp{We make this assumption only for ease of evaluation and minimizing stochasticity to allow us to easily compare different system configurations. We will clarify this in the evaluation section.}
 
-%\revmade{...}
+\revmade{We have clarified this in Section 4.2.}
 
 \item \emph{Claims that require more careful analysis or reformulation: CRITICAL: The most important issue with this article is the way the results, and especially the experimental results, are presented. The authors claim improvements of "X" or, less frequently, "up to X", but do not position carefully this result with minima or other distributional information. This results in formulation that, while consistent with the results, does not fully characterize the results and is misleading. (This could be fixed with shepherding.)}
 
@@ -155,6 +160,7 @@ The model might be better termed a termination, preemption, or revocation model}
 
 \resp{We will go over all results and present ranges wherever required, and be more precise when summarizing the results, especially when explaining Figure 5, 6. }
 
+\revmade{Made clarification changes in the entire eval section when explaining results.}
 
 \item \emph{Experimental setup that requires a better explanation: CRITICAL: The experimental results in Section 6 are based on a setup that does not describe the workload characteristics (but the authors indicate the type of applications), the failure characteristics and way of injecting them in the real-world environment, and the environment characteristics (it is part of the Google Cloud Platform). (This could be fixed with shepherding.)}
 
@@ -164,6 +170,7 @@ All of the following scientific simulations ran with its defualt configurations 
 Shapes: 4 of n1-highcpu-16, 548.55 seconds,
 LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
 }
+\revmade{Added the workload characteristics. TOFIX: fail characteristics and env characteristics.}
 
 \item \emph{Experimental setup that requires a better explanation: In Section 6.1, the impact on jobs shorter than 5 hours should be explained more carefully. }
 
@@ -173,7 +180,7 @@ LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
 
 \resp{In Section 6.2, we will explain how our policy deals with the "edge case" of jobs starting near 24 hours, and how it leads to the counter intuitive result. Briefly, since we always start on a new VM after 18 hours, the job will always start at t=0, and have a failure probability of a new VM, which is constant and is equal to the left side of the curve.}
 
-\revmade{Added a sentence to this effect in in job scheduling subsubsection.}
+\revmade{Added a sentence to this effect in in Section 6.2.1.}
 
 \end{enumerate}
 
@@ -187,12 +194,17 @@ LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
 
 \revmade{The early high rate of failure reflects that the cloud service provider takes into account VM liftetime in prioritizing preempting ``younger'' VMs, in other words, the number of simultaneous VMs launched does have an effect on their failure rate.}
 
+\revmade{Added the clarification in Section 3 about how simultaneous launches affect preemptions and how we account for that.}
+
 
 \item \emph{Please clarify your assumptions for your lifetime and makespan analysis. Most of cloud applications are either web services in which failing only effects the currently running web requests, or are batch processing using Spark (or something like) in which case, the framework is resilient to single node failures (either due to reexecuting the lineage of the task or through repeating the task). For those cloud workloads, failures are not as painful. So your scheduling and checkpointing optimizations are mainly usefull for long running science applications in the cloud. It will be good to clarify this in the paper.}
 
 \resp{We will add this clarification. Yes, our current policies only target long-running jobs that arise in scientific computing, CICD pipelines, and many other areas. Our model allows designing policies for other distributed applications such as Spark. We note that even Spark jobs are affected by single node preemptions, and will add the relevant references [Flint]}.
 
-\revmade{While our service is intended for general batch jobs, our current policies only target long-running jobs that arise in many applications such as scientific computing and CICD pipelines. Our model also allows designing policies for other distributed applications such as Spark (even Spark jobs are affected by single node preemptions [Flint]}
+
+\revmade{Added text at start of Section 4 clarifying that we assume simple batch jobs, and more complex failure models are part of our future work.}
+
+%\revmade{While our service is intended for general batch jobs, our current policies only target long-running jobs that arise in many applications such as scientific computing and CICD pipelines. Our model also allows designing policies for other distributed applications such as Spark (even Spark jobs are affected by single node preemptions [Flint]}
 
 \item \emph{Some of the details are missing: When did you lunch the VMs? I mean, did you lunch VMs in batches every hour? Did you test with VMs with different size of memory.}
 
@@ -208,6 +220,8 @@ We analized a subet (870) of this data to see how launched VMs are distributed a
 We also analyzed how the this data is distributed amoung each 4 hour in a day and they are distributed as 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, 20-24: 104.
 Yes we experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, n1-highcpu-64: 57.6GB.
 }
+
+\revmade{Added details in the methodology paragraph in Section 3.}
 
 \revmade{We analyzed a subset (870) of this data to see how launched VMs are distributed across seven days of the week. We found the following distribution: Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, and Sunday: 54.
 We also analyzed the distribution of this data across 4 hour period in a day: 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, and 20-24: 104.
@@ -226,6 +240,8 @@ How many preemptions did you face during your experiment? Total VM count passed 
 
 \revmade{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section 3.1. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we recorded XXX preemptions for our experiment.}
 
+\revmade{Added clarification at start of Section 6 that the details are provided in Section 3.}
+
 \end{enumerate}
 
 \section{5E}
@@ -240,11 +256,15 @@ How many preemptions did you face during your experiment? Total VM count passed 
 The analytical model also provides a measure to distill the contributions of effects ignored in its derivation (e.g., only 2 failure rates) in changing the VM expected lifetimes and checkpointing policies. At the same time, it also provides a principled approach to extend the model to more complex cases, e.g., systems characterized by processes with more than 2 failure rates.
 }
 
+\revmade{Added text in discussion section.}
+
 \item \emph{24 hour limit is actually a pretty artificial limit imposed by Google. Therefore, its unclear to me how well the approach would continue to hold for a system with higher levels of demand. For instance if the authors approach is successful, then I would expect for Google to change the rules to make it less successful. The question is really how much the approach implemented by Google generalizes to other system environments. The authors don't make that case, and I'm skeptical that it can be made.}
 
 \resp{We will expand our discussion of this in Section 8. Briefly, we will emphasize that  beacause bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions. Moreover, our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is already general. }
 
 \revmade{Our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is general. Moreover, because bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions making our approach generalizable to other system environments beyond the Google cloud computing systems. Finally, the principle adopted to break down the problem into the superposition of processes characterized by different failure rates can also be considered as a general framework to understand and guide policies for mitigating preemption-induced effects in other cloud environments.}
+
+\revmade{Added text in discussion section.}
 
 \end{enumerate}
 

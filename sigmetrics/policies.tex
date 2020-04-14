@@ -6,6 +6,10 @@ Based on insights drawn from our statistical analysis and the model, we develop 
 Prior work in transient computing has established the benefits of such policies for a broad range of applications. 
 However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required. 
 In this section, we first analyze the impact of constrained preemptions on job running time, and then develop new constrained-preemption aware policies for job scheduling and checkpointing. 
+% hl
+We will focus on long-running batch jobs that arise in many applications such as scientific computing. Extensions of our models and policies to distributed applications with different failure semantics is part of our future work.
+% hl 
+
 
 %, which we present below. 
 
@@ -68,9 +72,13 @@ The above equation for $E[T]$ thus becomes:
   &= (1-F(T))~T + F(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
        &= T + \int_0^{T} t~f(t)~dt         
 \end{align}
+%hl
 This expression for the expected running time assumes that the job will be preempted at most once.
-An expression which considers the higher order terms and multiple job failures easily follows from the base case, but presents relatively low practical value. 
-The probability of multiple preemptions is low, and most transient computing systems seek to avoid repeated preemptions, and discard the job if multiple preemptions occur or move them to on-demand VMs. 
+An expression which considers the higher order terms and multiple job failures easily follows from the base case, but presents relatively low practical value.
+% hl
+
+%and most transient computing systems seek to avoid repeated preemptions, and discard the job if multiple preemptions occur or move them to on-demand VMs. 
+%hl 
 
 % since they want to avoid pathological behavior of preemptions. 
 % This assump, which is a used by transient computing systems to minimize the effect of repeated preemptions. 

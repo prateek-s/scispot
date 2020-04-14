@@ -67,7 +67,10 @@ Based on our observations and insights from the study, we then develop a probabi
 
 
 \noindent \textbf{Methodology.} We launched  1,516 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
-VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads. 
+VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads.
+%hl
+We launched VMs in their default resource configurations (CPU and memory), and do not use custom VM sizes.
+% hl
 % Explain which ones? regions and instance types? 
 \vikram{We analyzed a subset (870) of this data to see how launched VMs are distributed across seven days of the week. We found the following distribution: Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, and Sunday: 54.
 We also analyzed the distribution of this data across 4 hour period in a day: 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, and 20-24: 104.

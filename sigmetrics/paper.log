@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.27)  13 APR 2020 23:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.27)  13 APR 2020 23:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1406,12 +1406,12 @@ time.pdf  used on input line 60.
 
 Class acmart Warning: A possible image without description on input line 63.
 
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 88.
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 91.
 (/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 88.
+(Font)              scaled to size 9.0pt on input line 91.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1425,11 +1425,11 @@ Package microtype Info: Character `textemdash ' is missing
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 99.
+surrounding objects on input line 102.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 99.
+surrounding objects on input line 102.
 
 
 
@@ -1442,12 +1442,12 @@ File: ../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf Graphic file (type pd
 f)
 <use ../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf>
 Package pdftex.def Info: ../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf  u
-sed on input line 101.
+sed on input line 104.
 (pdftex.def)             Requested size: 151.89003pt x 106.32108pt.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 7.0pt on input line 101.
+(Font)              scaled to size 7.0pt on input line 104.
 
-Underfull \hbox (badness 1603) in paragraph at lines 101--101
+Underfull \hbox (badness 1603) in paragraph at lines 104--104
 []\T1/LinuxLibertineT-TLF/b/n/7 (a) |Pre-emp-tion char-ac-ter-is-tics of dif-fe
 r-ent VM
  []
@@ -1463,7 +1463,7 @@ File: ../data/gnuplot-figures/sigmetrics-time-breakdown.pdf Graphic file (type
 pdf)
 <use ../data/gnuplot-figures/sigmetrics-time-breakdown.pdf>
 Package pdftex.def Info: ../data/gnuplot-figures/sigmetrics-time-breakdown.pdf 
- used on input line 104.
+ used on input line 107.
 (pdftex.def)             Requested size: 151.89003pt x 106.32108pt.
 
 
@@ -1476,44 +1476,44 @@ File: ../data/gnuplot-figures/sigmetrics-region-breakdown.pdf Graphic file (typ
 e pdf)
 <use ../data/gnuplot-figures/sigmetrics-region-breakdown.pdf>
 Package pdftex.def Info: ../data/gnuplot-figures/sigmetrics-region-breakdown.pd
-f  used on input line 107.
+f  used on input line 110.
 (pdftex.def)             Requested size: 151.89003pt x 106.32108pt.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 108.
-
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 111.
 
 
-Class acmart Warning: A possible image without description on input line 112.
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 114.
+
+
+Class acmart Warning: A possible image without description on input line 115.
 
 [3.3 <../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf>]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 211.
+surrounding objects on input line 214.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 227.
+surrounding objects on input line 230.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 230.
+(Font)              scaled to size 9.0pt on input line 233.
 [4.4 <../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf> <../data/gnuplot-fig
 ures/sigmetrics-time-breakdown.pdf> <../data/gnuplot-figures/sigmetrics-region-
 breakdown.pdf>]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 260.
+surrounding objects on input line 263.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 288.
+surrounding objects on input line 291.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 319.
+surrounding objects on input line 322.
 
 Excluding 'comment' comment.) (./policies.tex
 
@@ -1522,17 +1522,17 @@ surrounding objects on input line 1.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 24.
+surrounding objects on input line 28.
 
 [5.5]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 90.
+surrounding objects on input line 99.
 
 Excluding 'comment' comment.
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 146.
+surrounding objects on input line 155.
 
 [6.6] Excluding 'comment' comment.) (./impl.tex [7.7]
 
@@ -1569,104 +1569,106 @@ Class acmart Warning: A possible image without description on input line 45.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 1.
 
-
-LaTeX Warning: Reference `sec: empirical' on page 8 undefined on input line 51.
-
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 54.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 57.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 57.
+./eval2.tex:55: Too many }'s.
+l.55 }
+      
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 58.
 
-<../graphs/uniform-v-bathtub.pdf, id=347, 400.70755pt x 288.65277pt>
-File: ../graphs/uniform-v-bathtub.pdf Graphic file (type pdf)
-<use ../graphs/uniform-v-bathtub.pdf>
-Package pdftex.def Info: ../graphs/uniform-v-bathtub.pdf  used on input line 60
-.
-(pdftex.def)             Requested size: 151.89003pt x 109.41171pt.
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 61.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 61.
+
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 62.
 
-<../graphs/uniform-v-bathtub-2.pdf, id=348, 416.44131pt x 289.71016pt>
+<../graphs/uniform-v-bathtub.pdf, id=348, 400.70755pt x 288.65277pt>
+File: ../graphs/uniform-v-bathtub.pdf Graphic file (type pdf)
+<use ../graphs/uniform-v-bathtub.pdf>
+Package pdftex.def Info: ../graphs/uniform-v-bathtub.pdf  used on input line 64
+.
+(pdftex.def)             Requested size: 151.89003pt x 109.41171pt.
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 66.
+
+<../graphs/uniform-v-bathtub-2.pdf, id=349, 416.44131pt x 289.71016pt>
 File: ../graphs/uniform-v-bathtub-2.pdf Graphic file (type pdf)
 <use ../graphs/uniform-v-bathtub-2.pdf>
 Package pdftex.def Info: ../graphs/uniform-v-bathtub-2.pdf  used on input line 
-64.
+68.
 (pdftex.def)             Requested size: 151.89003pt x 105.66595pt.
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 65.
+surrounding objects on input line 69.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 67.
+surrounding objects on input line 71.
 
 
-Class acmart Warning: A possible image without description on input line 70.
+Class acmart Warning: A possible image without description on input line 74.
 
 [8.8 <../figures/ArchitectureRevisedV2.pdf>]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 116.
+surrounding objects on input line 122.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 130.
+surrounding objects on input line 136.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 150.
+surrounding objects on input line 158.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 150.
+surrounding objects on input line 158.
 
-<../graphs/Sched-bathtub.pdf, id=376, 359.17513pt x 234.08893pt>
+<../graphs/Sched-bathtub.pdf, id=377, 359.17513pt x 234.08893pt>
 File: ../graphs/Sched-bathtub.pdf Graphic file (type pdf)
 <use ../graphs/Sched-bathtub.pdf>
-Package pdftex.def Info: ../graphs/Sched-bathtub.pdf  used on input line 152.
+Package pdftex.def Info: ../graphs/Sched-bathtub.pdf  used on input line 160.
 (pdftex.def)             Requested size: 151.89003pt x 98.99176pt.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 153.
-
-<../graphs/Sched-fail-prob.pdf, id=377, 359.17513pt x 220.89902pt>
-File: ../graphs/Sched-fail-prob.pdf Graphic file (type pdf)
-<use ../graphs/Sched-fail-prob.pdf>
-Package pdftex.def Info: ../graphs/Sched-fail-prob.pdf  used on input line 160.
-
-(pdftex.def)             Requested size: 151.89003pt x 93.414pt.
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 161.
 
-<../graphs/wrong-model.pdf, id=378, 394.60933pt x 299.84436pt>
+<../graphs/Sched-fail-prob.pdf, id=378, 359.17513pt x 220.89902pt>
+File: ../graphs/Sched-fail-prob.pdf Graphic file (type pdf)
+<use ../graphs/Sched-fail-prob.pdf>
+Package pdftex.def Info: ../graphs/Sched-fail-prob.pdf  used on input line 168.
+
+(pdftex.def)             Requested size: 151.89003pt x 93.414pt.
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 169.
+
+<../graphs/wrong-model.pdf, id=379, 394.60933pt x 299.84436pt>
 File: ../graphs/wrong-model.pdf Graphic file (type pdf)
 <use ../graphs/wrong-model.pdf>
-Package pdftex.def Info: ../graphs/wrong-model.pdf  used on input line 166.
+Package pdftex.def Info: ../graphs/wrong-model.pdf  used on input line 174.
 (pdftex.def)             Requested size: 151.89003pt x 115.41527pt.
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 167.
+surrounding objects on input line 175.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 171.
+surrounding objects on input line 179.
 
 
-Class acmart Warning: A possible image without description on input line 172.
+Class acmart Warning: A possible image without description on input line 180.
 
 [9.9 <../graphs/uniform-v-bathtub.pdf> <../graphs/uniform-v-bathtub-2.pdf
 
@@ -1675,90 +1677,55 @@ n: multiple pdfs with page group included in a single page
 >]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 233.
+surrounding objects on input line 241.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 266.
+surrounding objects on input line 276.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 266.
+surrounding objects on input line 276.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 267.
+surrounding objects on input line 277.
 
-<../graphs/ckpt-4.pdf, id=420, 397.73282pt x 296.2659pt>
+<../graphs/ckpt-4.pdf, id=421, 397.73282pt x 296.2659pt>
 File: ../graphs/ckpt-4.pdf Graphic file (type pdf)
 <use ../graphs/ckpt-4.pdf>
-Package pdftex.def Info: ../graphs/ckpt-4.pdf  used on input line 269.
+Package pdftex.def Info: ../graphs/ckpt-4.pdf  used on input line 279.
 (pdftex.def)             Requested size: 177.20633pt x 132.0029pt.
 
-Underfull \hbox (badness 2326) in paragraph at lines 269--269
+Underfull \hbox (badness 2326) in paragraph at lines 279--279
 []\T1/LinuxLibertineT-TLF/b/n/7 (a) |Check-point-ing over-head for dif-fer-ent 
 job start-ing
  []
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 275.
+surrounding objects on input line 285.
 
-<../graphs/ckpt-start-relative.pdf, id=421, 397.73192pt x 301.8738pt>
+<../graphs/ckpt-start-relative.pdf, id=422, 397.73192pt x 301.8738pt>
 File: ../graphs/ckpt-start-relative.pdf Graphic file (type pdf)
 <use ../graphs/ckpt-start-relative.pdf>
 Package pdftex.def Info: ../graphs/ckpt-start-relative.pdf  used on input line 
-277.
+287.
 (pdftex.def)             Requested size: 177.20633pt x 134.50153pt.
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 278.
+surrounding objects on input line 288.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 281.
+surrounding objects on input line 291.
 
 
-Class acmart Warning: A possible image without description on input line 282.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 290.
+Class acmart Warning: A possible image without description on input line 292.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 307.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 307.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 308.
-
-<../graphs/cost-vs-ondem.pdf, id=422, 342.22542pt x 281.51895pt>
-File: ../graphs/cost-vs-ondem.pdf Graphic file (type pdf)
-<use ../graphs/cost-vs-ondem.pdf>
-Package pdftex.def Info: ../graphs/cost-vs-ondem.pdf  used on input line 311.
-(pdftex.def)             Requested size: 126.57375pt x 104.1217pt.
-<../graphs/confin-fails-vs-time-relative.pdf, id=423, 294.68532pt x 286.38086pt
->
-File: ../graphs/confin-fails-vs-time-relative.pdf Graphic file (type pdf)
-<use ../graphs/confin-fails-vs-time-relative.pdf>
-Package pdftex.def Info: ../graphs/confin-fails-vs-time-relative.pdf  used on i
-nput line 314.
-(pdftex.def)             Requested size: 101.25745pt x 98.40384pt.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 316.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 318.
-
-
-Class acmart Warning: A possible image without description on input line 319.
+surrounding objects on input line 300.
 
 [10.10 <../graphs/Sched-bathtub.pdf> <../graphs/Sched-fail-prob.pdf
 
@@ -1768,9 +1735,52 @@ ultiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ../graphs/wrong-model.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
+> <../graphs/ckpt-4.pdf
+
+pdfTeX warning: pdflatex (file ../graphs/ckpt-4.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+> <../graphs/ckpt-start-relative.pdf
+
+pdfTeX warning: pdflatex (file ../graphs/ckpt-start-relative.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
 >]
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 317.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 317.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 318.
+
+<../graphs/cost-vs-ondem.pdf, id=600, 342.22542pt x 281.51895pt>
+File: ../graphs/cost-vs-ondem.pdf Graphic file (type pdf)
+<use ../graphs/cost-vs-ondem.pdf>
+Package pdftex.def Info: ../graphs/cost-vs-ondem.pdf  used on input line 321.
+(pdftex.def)             Requested size: 126.57375pt x 104.1217pt.
+<../graphs/confin-fails-vs-time-relative.pdf, id=601, 294.68532pt x 286.38086pt
+>
+File: ../graphs/confin-fails-vs-time-relative.pdf Graphic file (type pdf)
+<use ../graphs/confin-fails-vs-time-relative.pdf>
+Package pdftex.def Info: ../graphs/confin-fails-vs-time-relative.pdf  used on i
+nput line 324.
+(pdftex.def)             Requested size: 101.25745pt x 98.40384pt.
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 326.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 328.
+
+
+Class acmart Warning: A possible image without description on input line 329.
+
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 9.0pt on input line 356.
+(Font)              scaled to size 9.0pt on input line 369.
 ) (./related.tex
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
@@ -1797,15 +1807,8 @@ Overfull \hbox (4.4666pt too wide) in paragraph at lines 13--26
 oints, and a long-running
  []
 
-[11.11 <../graphs/ckpt-4.pdf> <../graphs/ckpt-start-relative.pdf
-
-pdfTeX warning: pdflatex (file ../graphs/ckpt-start-relative.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
-> <../graphs/cost-vs-ondem.pdf
-
-pdfTeX warning: pdflatex (file ../graphs/cost-vs-ondem.pdf): PDF inclusion: mul
-tiple pdfs with page group included in a single page
-> <../graphs/confin-fails-vs-time-relative.pdf
+[11.11 <../graphs/cost-vs-ondem.pdf> <../graphs/confin-fails-vs-time-relative.p
+df
 
 pdfTeX warning: pdflatex (file ../graphs/confin-fails-vs-time-relative.pdf): PD
 F inclusion: multiple pdfs with page group included in a single page
@@ -1827,10 +1830,14 @@ ource code on GitHub at
 
 Class acmart Warning: Some images may lack descriptions.
 
-[13.13]
+
+Overfull \vbox (1.138pt too high) has occurred while \output is active []
+
+ [13.13]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 94.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 94.
- (./paper.aux)
+
+(./paper.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 94.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 94.
 Package rerunfilecheck Info: File `paper.out' has not changed.
@@ -1840,21 +1847,15 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 22266 strings out of 494847
- 353938 string characters out of 6179080
- 486353 words of memory out of 5000000
- 24339 multiletter control sequences out of 15000+600000
- 173477 words of font info for 428 fonts, out of 8000000 for 9000
+ 22268 strings out of 494847
+ 354003 string characters out of 6179080
+ 484353 words of memory out of 5000000
+ 24338 multiletter control sequences out of 15000+600000
+ 173750 words of font info for 430 fonts, out of 8000000 for 9000
  220 hyphenation exceptions out of 8191
- 60i,12n,94p,1339b,715s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,94p,1339b,723s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
 r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{/usr/shar
 e/texlive/texmf-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive
@@ -1880,10 +1881,10 @@ share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texlive
 /public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newt
 x/txexs.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on paper.pdf (13 pages, 4178883 bytes).
+Output written on paper.pdf (13 pages, 4178817 bytes).
 PDF statistics:
- 841 PDF objects out of 1000 (max. 8388607)
- 687 compressed objects within 7 object streams
+ 842 PDF objects out of 1000 (max. 8388607)
+ 688 compressed objects within 7 object streams
  148 named destinations out of 1000 (max. 500000)
  41723 words of extra memory for PDF output out of 42996 (max. 10000000)
 
