@@ -66,24 +66,26 @@ Based on our observations and insights from the study, we then develop a probabi
 %Our empirical approach is necessary since the cloud operator (Google) does not disclose any other information about the preemption rates, and thus relatively little is known about the preemptions of these VMs. 
 
 
-\noindent \textbf{Methodology.} We launched  1,516 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
-VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads.
+\noindent \textbf{Methodology.}
+We launched  870 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
+%
+VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads. 
 %hl
 We launched VMs in their default resource configurations (CPU and memory), and do not use custom VM sizes.
 % hl
 % Explain which ones? regions and instance types? 
-\vikram{We analyzed a subset (870) of this data to see how launched VMs are distributed across seven days of the week. We found the following distribution: Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, and Sunday: 54.
-We also analyzed the distribution of this data across 4 hour period in a day: 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, and 20-24: 104.
-We experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, and n1-highcpu-64: 57.6GB.}
+%\vikram{We analyzed a subset (870) of this data to see how launched VMs are distributed across seven days of the week. We found the following distribution: Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, and Sunday: 54.
+%We also analyzed the distribution of this data across 4 hour period in a day: 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, and 20-24: 104.
+%We experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, and n1-highcpu-64: 57.6GB.}
 To ensure the generality of our empirical observations, VMs were not launched during well-known peak utilization days (such as Black Friday).
-%
-Due to the relatively high preemption rates compared to EC2 spot instances, we were able to collect these 1,500 data points for less than \$5,000. 
 %
 The preemption data collection was bootstrapped: a small amount of data points were used to estimate and model the preemption CDF, which we then used to run our batch computing service (described and evaluated in Sections~\ref{sec:impl} and \ref{sec:eval}), which generated the rest of the preemption data.  
 %
 Thus the effective cost overhead of our empirical data collection approach  is small. 
+Due to the relatively high preemption rates compared to EC2 spot instances, we were able to collect these data points for less than \$5,000. 
+%
 
-\footnotetext{Preemption rates are also affected by number of VMs launched simultaneously, which we limit to $1--10$.}
+\footnotetext{Preemption rates can also be affected by number of VMs launched simultaneously, which we limited to between $1$ and $10$.}
 
 %
  %Weaksauce 
@@ -118,7 +120,8 @@ Our empirical approach allows us to make the following  observations.
 
 \noindent In the first (initial) phase, characterized by VM lifetime $t\in [0, 3]$ hours, we observe that many VMs are quickly preempted after they are launched, and thus have a steep rate of failure. The rate of failure (preemption rate) is the derivative of the CDF.
 %; the rate of failure or preemptions can be obtained by taking the derivative of the CDF. 
-\vikram{The early high rate of failure reflects that the cloud service provider takes into account VM liftetime in prioritizing preempting ``younger'' VMs, in other words, the number of simultaneous VMs launched does have an effect on their failure rate.}
+The early high rate of failure reflects that the cloud service provider takes into account VM liftetime in prioritizing preempting ``younger'' VMs, in other words, the number of simultaneous VMs launched does have an effect on their failure rate. 
+%
 In the second phase, VMs that survive past 3 hours enjoy a relatively low preemption rate over a relatively broad range of lifetime (characterized by the slowly rising CDF in Figure~\ref{fig:gcp1}).
 The third and final phase exhibits a steep increase in the number of preemptions as the preemption deadline of 24 hours approaches.
 The overall rate of preemptions is ``bathtub'' shaped as shown by the solid black line in the inset of Figure~\ref{fig:gcp1} (discussed in detail below).

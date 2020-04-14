@@ -21,7 +21,7 @@
 {\textbf{Authors}: J.C.S Kadupitiya, Vikram Jadhao, Prateek Sharma}
 \end{center}
 
-\date{April 1 2020}
+\date{April 15 2020}
 
 We thank all the reviewers for their detailed comments and insightful feedback.
 Most of our changes are additions to the paper text that address reviewer comments. 
@@ -47,7 +47,7 @@ We have grouped the comments by reviewer, and have included the summary and loca
 
 \resp{We will add and compare with more related work in Section 7. We will emphasize that even newer work on EC2 modeling is focused on spot price modeling which is fundamentally different to our work, and is not applicable in other transient computing environments.}
 
-%\revmade{...}
+\revmade{Added 3 new references and discuss the EC2 spot pricing change in related work section.}
 
 \item \emph{Re. experiments, both the setup, configuration, and how the results are presented should be clarified. A re-analysis, with various thresholds, seems to be both valuable and covering the "hypothetical heuristics". For example, present the results by dropping jobs that are known to exceed the 24 hour termination restriction (e.g., 6 hr jobs started after 18 hrs), etc.}
 
@@ -81,7 +81,7 @@ We have grouped the comments by reviewer, and have included the summary and loca
   \resp{We will add relevant references for the above claim (ExoSphere and other follow-up work).}
   
 
-\revmade{We have removed this line since it was not relevant to our paper. }
+\revmade{We have removed this line since it was not relevant to constrained preemptions studied  in this  paper. }
 
 \item \emph{3.1 What timezone is used in observation 5? I assume central to match the region. But this should be clarified.
 The model might be better termed a termination, preemption, or revocation model}
@@ -170,17 +170,20 @@ All of the following scientific simulations ran with its defualt configurations 
 Shapes: 4 of n1-highcpu-16, 548.55 seconds,
 LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
 }
+
 \revmade{Added the workload characteristics. TOFIX: fail characteristics and env characteristics.}
 
 \item \emph{Experimental setup that requires a better explanation: In Section 6.1, the impact on jobs shorter than 5 hours should be explained more carefully. }
 
 \resp{We will provide more explanation of how jobs shorter than 5 hours are affected, at the start of Section 6.3. Briefly, it is fundamentally a result of bathtub initial high failure rates.} 
 
+\revmade{We have added clarification for how short jobs are affected by the high initial rates of failures in Section XXX.}
+
 \item \emph{Experimental results that could be better explained:  In Section 6.2, the failure probability after 18 hours is now fixed, but it seems that the approach would lead to a failure probability decreasing with time after 18 hours. The authors could comment on this situation and explain the (counter-)intuitive result.}
 
 \resp{In Section 6.2, we will explain how our policy deals with the "edge case" of jobs starting near 24 hours, and how it leads to the counter intuitive result. Briefly, since we always start on a new VM after 18 hours, the job will always start at t=0, and have a failure probability of a new VM, which is constant and is equal to the left side of the curve.}
 
-\revmade{Added a sentence to this effect in in Section 6.2.1.}
+\revmade{Added text describing the job failure probability near the 24 hour mark in Section 6.2.1.}
 
 \end{enumerate}
 
@@ -202,7 +205,7 @@ LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
 \resp{We will add this clarification. Yes, our current policies only target long-running jobs that arise in scientific computing, CICD pipelines, and many other areas. Our model allows designing policies for other distributed applications such as Spark. We note that even Spark jobs are affected by single node preemptions, and will add the relevant references [Flint]}.
 
 
-\revmade{Added text at start of Section 4 clarifying that we assume simple batch jobs, and more complex failure models are part of our future work.}
+\revmade{Added text at start of Section 4 clarifying that we assume simple batch jobs, and more complex failure models are part of our future work.} 
 
 %\revmade{While our service is intended for general batch jobs, our current policies only target long-running jobs that arise in many applications such as scientific computing and CICD pipelines. Our model also allows designing policies for other distributed applications such as Spark (even Spark jobs are affected by single node preemptions [Flint]}
 

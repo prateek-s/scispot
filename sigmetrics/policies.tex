@@ -7,7 +7,7 @@ Prior work in transient computing has established the benefits of such policies 
 However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required. 
 In this section, we first analyze the impact of constrained preemptions on job running time, and then develop new constrained-preemption aware policies for job scheduling and checkpointing. 
 % hl
-We will focus on long-running batch jobs that arise in many applications such as scientific computing. Extensions of our models and policies to distributed applications with different failure semantics is part of our future work.
+We will focus on long-running batch jobs that arise in many applications such as scientific computing. Extensions of our models and policies to distributed applications with different failure semantics is part of our future work. 
 % hl 
 
 
@@ -214,7 +214,7 @@ $E[M_{\text{succ}}]$ is the expected makespan if there are no job failures when 
   \label{eq:msuc}
 E[M_{\text{succ}}(J, t, i)] = t+i+\delta + E[M^*(J-i, t+i+\delta)].  
 \end{equation}
-\noindent Note that the makespan includes the amount of work already done ($t+i$), the checkpointing overhead ($\delta$), and the expected minimum makespan of the rest of the job. 
+\noindent The makespan includes the amount of work already done ($t+i$), the checkpointing overhead ($\delta$), and the expected minimum makespan of the rest of the job. 
 Similarly, when the job fails before step $i$, then that portion is ``lost work'', and can be denoted by $E[L(t, i+\delta)]$ which is the expected lost work when there is a preemption during the time interval $t$ to $t+i+\delta$.
 A preemption before the checkpoint results in no progress, and $J$ steps of the job still remain. 
 The expected makespan in the failure case is then given by:

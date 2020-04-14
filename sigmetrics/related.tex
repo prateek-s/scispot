@@ -28,8 +28,8 @@ For EC2 spot instances, AutoBoT~\cite{varshney_autobot_2019} develops price-base
 The significantly lower cost of spot instances makes them attractive for running preemption and delay tolerant batch jobs~\cite{spoton, jain14demand, yi2010reducing, conductor, liu-spot, spot-run, dubois2016optispot, varshney_autobot_2019, harlap2018tributary}. 
 The challenges posed by Amazon EC2 spot instances, the first transient cloud servers, have received significant attention from both academia  and industry~\cite{spotinst}. 
 The distinguishing characteristic of EC2 spot instances is their dynamic auction-based pricing, and choosing the ``right'' bid price to minimize cost and performance degradation is the focus of much of the past work on transient computing~\cite{bidding4,mihailescu2012impact,bidding7,bidding1,bidding8,bidding3,bidding6,bid-cloud,bidding5,wolski_probabilistic_2017, guo_bidding_2015}.
-% However, it remains to be seen how Amazon's recent change~\cite{bid-change, irwin-icccn19, baughman2019deconstructing} in the preemption model of spot instances affects prior work.
-In contrast, non-price based transient availability models, such as temporally constrained preemptions, have received scant attention because of the difficulty in obtaining empirical preemption data---which we hope our dataset remedies. 
+However, it remains to be seen how Amazon's recent change~\cite{bid-change, irwin-icccn19, baughman2019deconstructing, pham2018performance} in the preemption model of spot instances affects prior work. 
+Non-price based transient availability models, such as temporally constrained preemptions, have received scant attention due to the difficulty in obtaining empirical preemption data---which we hope our dataset remedies. 
 
 %principled and optimized use of transient resources provided by other cloud providers such as Google, Microsoft, Packet, and Alibaba is still nascent, and ours represents an initial step. 
 %
@@ -71,7 +71,7 @@ Our preemption model provides a novel characterization of bathtub shaped failure
 
 
 
-\vspace*{\subsecspace}
+
 %Parameter sweep aka bags of jobs ~\cite{casanova_heuristics_2000}
 
 %But nothing for bags of jobs themselves.. 

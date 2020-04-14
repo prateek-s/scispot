@@ -1,38 +1,31 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.27)  14 APR 2020 16:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.27)  14 APR 2020 18:39
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**paper.tex
-(./paper.tex
-LaTeX2e <2018-12-01>
-(./acmart.cls
+**\input paper.tex
+(./paper.tex (./acmart.cls
 Document Class: acmart 2018/12/16 v1.57 Typesetting articles for the Associatio
 n for Computing Machinery
-
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/xkeyval/xkeyval.tex
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/xkeyval/xkvutils.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks14
 \XKV@tempa@toks=\toks15
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/xkeyval/keyval.tex))
-\XKV@depth=\count80
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count79
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/xstring/xstring.sty
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/xstring/xstring.tex
-\integerpart=\count81
-\decimalpart=\count82
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write3
+\integerpart=\count80
+\decimalpart=\count81
 )
-Package: xstring 2019/02/06 v1.83 String manipulations (CT)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 )
 Package acmart Info: Not using screen mode on input line 73.
 Package acmart Info: Requiring acmthm on input line 81.
@@ -46,63 +39,55 @@ Package acmart Info: Not using authordraft mode on input line 148.
 Class acmart Info: Using format sigconf, number 4 on input line 157.
 Class acmart Info: Using fontsize 9pt on input line 215.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amscls/amsart.cls
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsart.cls
 Document Class: amsart 2017/10/31 v2.20.4
 \linespacing=\dimen102
 \normalparindent=\dimen103
 \normaltopskip=\skip41
-
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2018/12/01 v2.17b AMS math features
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip42
 
 For additional information on amsmath, use the `?' option.
-
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amsmath/amsgen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen104
 ))
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amsmath/amsbsy.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen105
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amsmath/amsopn.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count83
-LaTeX Info: Redefining \frac on input line 223.
-\uproot@=\count84
-\leftroot@=\count85
-LaTeX Info: Redefining \overline on input line 385.
-\classnum@=\count86
-\DOTSCASE@=\count87
-LaTeX Info: Redefining \ldots on input line 482.
-LaTeX Info: Redefining \dots on input line 485.
-LaTeX Info: Redefining \cdots on input line 606.
-\Mathstrutbox@=\box27
-\strutbox@=\box28
+\inf@bad=\count82
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count83
+\leftroot@=\count84
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count85
+\DOTSCASE@=\count86
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
 \big@size=\dimen106
-LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
-\macc@depth=\count88
-\c@MaxMatrixCols=\count89
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count87
+\c@MaxMatrixCols=\count88
 \dotsspace@=\muskip10
-\c@parentequation=\count90
-\dspbrk@lvl=\count91
+\c@parentequation=\count89
+\dspbrk@lvl=\count90
 \tag@help=\toks17
-\row@=\count92
-\column@=\count93
-\maxfields@=\count94
+\row@=\count91
+\column@=\count92
+\maxfields@=\count93
 \andhelp@=\toks18
 \eqnshift@=\dimen107
 \alignsep@=\dimen108
@@ -114,17 +99,15 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 \multlinegap=\skip43
 \multlinetaggap=\skip44
 \mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2844.
-LaTeX Info: Redefining \] on input line 2845.
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 398.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amsfonts/umsa.fd
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amsfonts/amsfonts.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
@@ -132,16 +115,16 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
 \copyins=\insert199
-\abstractbox=\box29
+\abstractbox=\box28
 \listisep=\skip45
-\c@part=\count95
-\c@section=\count96
-\c@subsection=\count97
-\c@subsubsection=\count98
-\c@paragraph=\count99
-\c@subparagraph=\count100
-\c@figure=\count101
-\c@table=\count102
+\c@part=\count94
+\c@section=\count95
+\c@subsection=\count96
+\c@subsubsection=\count97
+\c@paragraph=\count98
+\c@subparagraph=\count99
+\c@figure=\count100
+\c@table=\count101
 \abovecaptionskip=\skip46
 \belowcaptionskip=\skip47
 \captionindent=\dimen113
@@ -155,18 +138,16 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 \thm@headsep=\skip50
 \dth@everypar=\toks26
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/microtype/microtype.sty
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2018/01/14 v2.7a Micro-typographical refinements (RS)
 \MT@toks=\toks27
-\MT@count=\count103
+\MT@count=\count102
 LaTeX Info: Redefining \textls on input line 793.
 \MT@outer@kern=\dimen114
 LaTeX Info: Redefining \textmicrotypecontext on input line 1339.
-\MT@listname@count=\count104
+\MT@listname@count=\count103
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/microtype/microtype-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2018/01/14 v2.7a Definitions specific to pdftex (RS)
 
 LaTeX Info: Redefining \lsstyle on input line 913.
@@ -175,17 +156,14 @@ LaTeX Info: Redefining \lslig on input line 913.
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/microtype/microtype.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2018/01/14 v2.7a microtype main configuration file (RS)
 ))
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count105
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count104
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/booktabs/booktabs.sty
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \heavyrulewidth=\dimen115
 \lightrulewidth=\dimen116
@@ -197,65 +175,53 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \cmidrulesep=\dimen122
 \cmidrulekern=\dimen123
 \defaultaddspace=\dimen124
-\@cmidla=\count106
-\@cmidlb=\count107
+\@cmidla=\count105
+\@cmidlb=\count106
 \@aboverulesep=\dimen125
 \@belowrulesep=\dimen126
-\@thisruleclass=\count108
-\@lastruleclass=\count109
+\@thisruleclass=\count107
+\@lastruleclass=\count108
 \@thisrulewidth=\dimen127
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/oberdiek/refcount.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/refcount.sty
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/oberdiek/ltxcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/oberdiek/infwarerr.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 ))
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/totpages/totpages.sty
+(/usr/share/texlive/texmf-dist/tex/latex/totpages/totpages.sty
 Package: totpages 2005/09/19 v2.00 Totpages Package (muewi)
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/ms/everyshi.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/environ/environ.sty
+(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/trimspaces/trimspaces.sty
+(/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/textcase/textcase.sty
+(/usr/share/texlive/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/natbib/natbib.sty
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip52
 \bibsep=\skip53
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count110
+\c@NAT@ctr=\count109
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/oberdiek/hobsub-generic.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -265,7 +231,7 @@ Package ifluatex Info: LuaTeX not detected.
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
@@ -273,7 +239,7 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -294,123 +260,103 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package hobsub Info: Skipping package `refcount' (already loaded).
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/ifxetex/ifxetex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/oberdiek/auxhook.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen128
-\Hy@linkcounter=\count111
-\Hy@pagecounter=\count112
+\Hy@linkcounter=\count110
+\Hy@pagecounter=\count111
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
-Now handling font encoding PD1 ...
-... no UTF-8 mapping file for font encoding PD1
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count113
+\Hy@SavedSpaceFactor=\count112
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/latexconfig/hyperref.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4393
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4383
 .
-Package hyperref Info: Option `unicode' set `true' on input line 4393.
+Package hyperref Info: Option `unicode' set `true' on input line 4383.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/hyperref/puenc.def
-File: puenc.def 2018/11/30 v6.88e Hyperref: PDF Unicode definition (HO)
-Now handling font encoding PU ...
-... no UTF-8 mapping file for font encoding PU
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2018/02/06 v6.86b Hyperref: PDF Unicode definition (HO)
 )
-Package hyperref Info: Hyper figures OFF on input line 4519.
-Package hyperref Info: Link nesting OFF on input line 4524.
-Package hyperref Info: Hyper index ON on input line 4527.
-Package hyperref Info: Plain pages OFF on input line 4534.
-Package hyperref Info: Backreferencing OFF on input line 4539.
+Package hyperref Info: Hyper figures OFF on input line 4509.
+Package hyperref Info: Link nesting OFF on input line 4514.
+Package hyperref Info: Hyper index ON on input line 4517.
+Package hyperref Info: Plain pages OFF on input line 4524.
+Package hyperref Info: Backreferencing OFF on input line 4529.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4772.
-\c@Hy@tempcnt=\count114
+Package hyperref Info: Bookmarks ON on input line 4762.
+\c@Hy@tempcnt=\count113
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/url/url.sty
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5125.
+LaTeX Info: Redefining \url on input line 5115.
 \XeTeXLinkMargin=\dimen129
-\Fld@menulength=\count115
+\Fld@menulength=\count114
 \Field@Width=\dimen130
 \Fld@charsize=\dimen131
-Package hyperref Info: Hyper figures OFF on input line 6380.
-Package hyperref Info: Link nesting OFF on input line 6385.
-Package hyperref Info: Hyper index ON on input line 6388.
-Package hyperref Info: backreferencing OFF on input line 6395.
-Package hyperref Info: Link coloring OFF on input line 6400.
-Package hyperref Info: Link coloring with OCG OFF on input line 6405.
-Package hyperref Info: PDF/A mode OFF on input line 6410.
-LaTeX Info: Redefining \ref on input line 6450.
-LaTeX Info: Redefining \pageref on input line 6454.
-\Hy@abspage=\count116
-\c@Item=\count117
-\c@Hfootnote=\count118
+Package hyperref Info: Hyper figures OFF on input line 6369.
+Package hyperref Info: Link nesting OFF on input line 6374.
+Package hyperref Info: Hyper index ON on input line 6377.
+Package hyperref Info: backreferencing OFF on input line 6384.
+Package hyperref Info: Link coloring OFF on input line 6389.
+Package hyperref Info: Link coloring with OCG OFF on input line 6394.
+Package hyperref Info: PDF/A mode OFF on input line 6399.
+LaTeX Info: Redefining \ref on input line 6439.
+LaTeX Info: Redefining \pageref on input line 6443.
+\Hy@abspage=\count115
+\c@Item=\count116
+\c@Hfootnote=\count117
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
-\Fld@listcount=\count119
-\c@bookmark@seq@number=\count120
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
+\Fld@listcount=\count118
+\c@bookmark@seq@number=\count119
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/oberdiek/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip54
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/graphics/trig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/graphics-cfg/graphics.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/graphics-def/pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen132
 \Gin@req@width=\dimen133
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/graphics-cfg/color.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -424,12 +370,11 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/geometry/geometry.sty
-Package: geometry 2018/04/16 v5.8 Page Geometry
-\Gm@cnth=\count121
-\Gm@cntv=\count122
-\c@Gm@tempcnt=\count123
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+\Gm@cnth=\count120
+\Gm@cntv=\count121
+\c@Gm@tempcnt=\count122
 \Gm@bindingoffset=\dimen134
 \Gm@wd@mp=\dimen135
 \Gm@odd@mp=\dimen136
@@ -440,49 +385,40 @@ Package: geometry 2018/04/16 v5.8 Page Geometry
 \Gm@layoutvoffset=\dimen141
 \Gm@dimlist=\toks28
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/ncctools/manyfoot.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ncctools/manyfoot.sty
 Package: manyfoot 2005/09/11 v1.10 Many Footnote Levels Package (NCC)
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/ncctools/nccfoots.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ncctools/nccfoots.sty
 Package: nccfoots 2005/02/03 v1.2 NCC Footnotes Package (NCC)
 )
 \MFL@columnwidth=\dimen142
 )
 \footinsauthorsaddresses=\insert198
-\c@footnoteauthorsaddresses=\count124
+\c@footnoteauthorsaddresses=\count123
 \footinscopyrightpermission=\insert197
-\c@footnotecopyrightpermission=\count125
+\c@footnotecopyrightpermission=\count124
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/iftex/iftex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX, 
 and LuaTeX
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/pdftex/glyphtounicode.tex)
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/cmap/cmap.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pdftex/glyphtounicode.tex)
+(/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty
 Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/base/fontenc.sty
-Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/base/t1enc.def
-File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 )<<t1.cmap>>)
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/libertine/libertine.sty
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/libertine.sty
 Package: libertine 2018/01/03 (Bob Tennent) Supports Libertine and Biolinum fon
 ts for all LaTeX engines.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/base/textcomp.sty
-Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
 (textcomp)               4 = 5 + \texteuro
@@ -496,86 +432,9 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/base/ts1enc.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-Now handling font encoding TS1 ...
-... processing UTF-8 mapping file for font encoding TS1
-
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/base/ts1enc.dfu
-File: ts1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
-   defining Unicode char U+00A2 (decimal 162)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00A4 (decimal 164)
-   defining Unicode char U+00A5 (decimal 165)
-   defining Unicode char U+00A6 (decimal 166)
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00A8 (decimal 168)
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AC (decimal 172)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00AF (decimal 175)
-   defining Unicode char U+00B0 (decimal 176)
-   defining Unicode char U+00B1 (decimal 177)
-   defining Unicode char U+00B2 (decimal 178)
-   defining Unicode char U+00B3 (decimal 179)
-   defining Unicode char U+00B4 (decimal 180)
-   defining Unicode char U+00B5 (decimal 181)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+00B9 (decimal 185)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+00BC (decimal 188)
-   defining Unicode char U+00BD (decimal 189)
-   defining Unicode char U+00BE (decimal 190)
-   defining Unicode char U+00D7 (decimal 215)
-   defining Unicode char U+00F7 (decimal 247)
-   defining Unicode char U+0192 (decimal 402)
-   defining Unicode char U+02C7 (decimal 711)
-   defining Unicode char U+02D8 (decimal 728)
-   defining Unicode char U+02DD (decimal 733)
-   defining Unicode char U+0E3F (decimal 3647)
-   defining Unicode char U+2016 (decimal 8214)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+203B (decimal 8251)
-   defining Unicode char U+203D (decimal 8253)
-   defining Unicode char U+2044 (decimal 8260)
-   defining Unicode char U+204E (decimal 8270)
-   defining Unicode char U+2052 (decimal 8274)
-   defining Unicode char U+20A1 (decimal 8353)
-   defining Unicode char U+20A4 (decimal 8356)
-   defining Unicode char U+20A6 (decimal 8358)
-   defining Unicode char U+20A9 (decimal 8361)
-   defining Unicode char U+20AB (decimal 8363)
-   defining Unicode char U+20AC (decimal 8364)
-   defining Unicode char U+20B1 (decimal 8369)
-   defining Unicode char U+2103 (decimal 8451)
-   defining Unicode char U+2116 (decimal 8470)
-   defining Unicode char U+2117 (decimal 8471)
-   defining Unicode char U+211E (decimal 8478)
-   defining Unicode char U+2120 (decimal 8480)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2126 (decimal 8486)
-   defining Unicode char U+2127 (decimal 8487)
-   defining Unicode char U+212E (decimal 8494)
-   defining Unicode char U+2190 (decimal 8592)
-   defining Unicode char U+2191 (decimal 8593)
-   defining Unicode char U+2192 (decimal 8594)
-   defining Unicode char U+2193 (decimal 8595)
-   defining Unicode char U+2329 (decimal 9001)
-   defining Unicode char U+232A (decimal 9002)
-   defining Unicode char U+2422 (decimal 9250)
-   defining Unicode char U+25E6 (decimal 9702)
-   defining Unicode char U+25EF (decimal 9711)
-   defining Unicode char U+266A (decimal 9834)
-   defining Unicode char U+FEFF (decimal 65279)
-))
+)
 LaTeX Info: Redefining \oldstylenums on input line 334.
 Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
 Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
@@ -640,8 +499,7 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/mweights/mweights.sty
+(/usr/share/texlive/texmf-dist/tex/latex/mweights/mweights.sty
 Package: mweights 2017/03/30 (Bob Tennent) Support package for multiple-weight 
 font packages. 
 LaTeX Info: Redefining \bfseries on input line 22.
@@ -650,12 +508,10 @@ LaTeX Info: Redefining \rmfamily on input line 38.
 LaTeX Info: Redefining \sffamily on input line 66.
 LaTeX Info: Redefining \ttfamily on input line 94.
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/base/fontenc.sty
-Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/fontaxes/fontaxes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fontaxes/fontaxes.sty
 Package: fontaxes 2014/03/23 v1.0d Font selection axes
 LaTeX Info: Redefining \upshape on input line 29.
 LaTeX Info: Redefining \itshape on input line 31.
@@ -664,167 +520,145 @@ LaTeX Info: Redefining \scshape on input line 37.
 )
 LaTeX Info: Redefining \oldstylenums on input line 490.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/libertine/LinLibertine_I.tex))
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/inconsolata/zi4.sty
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/LinLibertine_I.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/zi4.sty
 Package: zi4 2017/01/04 v1.112
 
 `inconsolata-zi4' v1.112, 2017/01/04 Text macros for Inconsolata (msharpe)
-\zifour@ocount=\count126
+\zifour@ocount=\count125
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/newtx/newtxmath.sty
-Package: newtxmath 2018/05/15 v1.553
+(/usr/share/texlive/texmf-dist/tex/latex/newtx/newtxmath.sty
+Package: newtxmath 2017/12/14 v1.53
 
-`newtxmath' v1.553, 2018/05/15 Math macros based originally on txfonts (msharpe
-)
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/oberdiek/centernot.sty
+`newtxmath' v1.53, 2017/12/14 Math macros based on txfonts (msharpe)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/centernot.sty
 Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
 )
-\tx@cntz=\count127
-
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/kastrup/binhex.tex)
-\tx@Isdigit=\count128
-\tx@IsAlNum=\count129
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 171.
+(/usr/share/texlive/texmf-dist/tex/generic/kastrup/binhex.tex)
+\tx@Isdigit=\count126
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 156.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/LinuxLibertineT-TLF/m/n on input li
-ne 171.
+ne 156.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> OT1/LinuxLibertineT-TLF/m/n on input l
-ine 171.
+ine 156.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/LinuxLibertineT-TLF/m/n --> OT1/LinuxLibertineT-TLF
-/sb/n on input line 172.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 180.
+/sb/n on input line 157.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/cmss/m/n --> T1/LinuxBiolinumT-TLF/m/n on input lin
-e 180.
+e 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> T1/LinuxBiolinumT-TLF/m/n on input li
-ne 180.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 181.
+ne 163.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 164.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> OT1/LinuxLibertineT-TLF/m/it on input 
-line 181.
+line 164.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/LinuxLibertineT-TLF/m/it on input
- line 181.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 182.
+ line 164.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 165.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/zi4/m/n on input line 182.
+(Font)                  OT1/cmtt/m/n --> T1/zi4/m/n on input line 165.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/zi4/m/n on input line 182.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 184.
+(Font)                  OT1/cmtt/m/n --> T1/zi4/m/n on input line 165.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 167.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> OT1/LinuxLibertineT-TLF/sb/n on input 
-line 184.
+line 167.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
 (Font)                  OT1/cmr/bx/n --> OT1/LinuxLibertineT-TLF/sb/n on input 
-line 184.
+line 167.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/LinuxLibertineT-TLF/m/it --> OT1/LinuxLibertineT-TL
-F/sb/it on input line 185.
+F/sb/it on input line 168.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  T1/LinuxBiolinumT-TLF/m/n --> T1/LinuxBiolinumT-TLF/b/n
- on input line 186.
+ on input line 169.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/zi4/m/n --> T1/zi4/b/n on input line 187.
-LaTeX Font Info:    Redeclaring symbol font `letters' on input line 199.
+(Font)                  T1/zi4/m/n --> T1/zi4/b/n on input line 170.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 182.
 LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
-(Font)                  OML/cmm/m/it --> OML/nxlmi/m/it on input line 199.
+(Font)                  OML/cmm/m/it --> OML/nxlmi/m/it on input line 182.
 LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/cmm/b/it --> OML/nxlmi/m/it on input line 199.
+(Font)                  OML/cmm/b/it --> OML/nxlmi/m/it on input line 182.
 LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/nxlmi/m/it --> OML/nxlmi/b/it on input line 200.
+(Font)                  OML/nxlmi/m/it --> OML/nxlmi/b/it on input line 183.
 \symlettersA=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lettersA' in version `bold'
-(Font)                  U/ntxmia/m/it --> U/ntxmia/b/it on input line 261.
-LaTeX Font Info:    Redeclaring math alphabet \mathfrak on input line 263.
-Now handling font encoding LMS ...
-... no UTF-8 mapping file for font encoding LMS
-LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 282.
+(Font)                  U/ntxmia/m/it --> U/ntxmia/b/it on input line 238.
+LaTeX Font Info:    Redeclaring math alphabet \mathfrak on input line 240.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 259.
 LaTeX Font Info:    Encoding `OMS' has changed to `LMS' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 282.
+(Font)              `symbols' in the math version `normal' on input line 259.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/cmsy/m/n --> LMS/ntxsy/m/n on input line 282.
+(Font)                  OMS/cmsy/m/n --> LMS/ntxsy/m/n on input line 259.
 LaTeX Font Info:    Encoding `OMS' has changed to `LMS' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 282.
+(Font)              `symbols' in the math version `bold' on input line 259.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/cmsy/b/n --> LMS/ntxsy/m/n on input line 282.
+(Font)                  OMS/cmsy/b/n --> LMS/ntxsy/m/n on input line 259.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  LMS/ntxsy/m/n --> LMS/ntxsy/b/n on input line 283.
+(Font)                  LMS/ntxsy/m/n --> LMS/ntxsy/b/n on input line 260.
 \symAMSm=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `AMSm' in version `bold'
-(Font)                  U/ntxsym/m/n --> U/ntxsym/b/n on input line 306.
+(Font)                  U/ntxsym/m/n --> U/ntxsym/b/n on input line 283.
 \symsymbolsC=\mathgroup8
 LaTeX Font Info:    Overwriting symbol font `symbolsC' in version `bold'
-(Font)                  U/ntxsyc/m/n --> U/ntxsyc/b/n on input line 327.
-Now handling font encoding LMX ...
-... no UTF-8 mapping file for font encoding LMX
-LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 340.
+(Font)                  U/ntxsyc/m/n --> U/ntxsyc/b/n on input line 304.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 317.
 LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 3
-40.
+17.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/cmex/m/n --> LMX/ntxexx/m/n on input line 340.
+(Font)                  OMX/cmex/m/n --> LMX/ntxexx/m/n on input line 317.
 LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 340
+(Font)              `largesymbols' in the math version `bold' on input line 317
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/cmex/m/n --> LMX/ntxexx/m/n on input line 340.
+(Font)                  OMX/cmex/m/n --> LMX/ntxexx/m/n on input line 317.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  LMX/ntxexx/m/n --> LMX/ntxexx/b/n on input line 341.
+(Font)                  LMX/ntxexx/m/n --> LMX/ntxexx/b/n on input line 318.
 \symlargesymbolsTXA=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `largesymbolsTXA' in version `bold'
 
-(Font)                  U/ntxexa/m/n --> U/ntxexa/b/n on input line 355.
-LaTeX Font Info:    Redeclaring math delimiter \lgroup on input line 548.
-LaTeX Font Info:    Redeclaring math delimiter \rgroup on input line 549.
-LaTeX Font Info:    Redeclaring math delimiter \lmoustache on input line 550.
-LaTeX Font Info:    Redeclaring math delimiter \rmoustache on input line 551.
-LaTeX Font Info:    Redeclaring math delimiter \lfloor on input line 557.
-LaTeX Font Info:    Redeclaring math delimiter \rfloor on input line 558.
-LaTeX Font Info:    Redeclaring math delimiter \lceil on input line 559.
-LaTeX Font Info:    Redeclaring math delimiter \rceil on input line 560.
-LaTeX Font Info:    Redeclaring math delimiter \lbrace on input line 561.
-LaTeX Font Info:    Redeclaring math delimiter \rbrace on input line 562.
-LaTeX Font Info:    Redeclaring math delimiter \langle on input line 563.
-LaTeX Font Info:    Redeclaring math delimiter \rangle on input line 565.
-LaTeX Font Info:    Redeclaring math symbol \mid on input line 567.
-LaTeX Font Info:    Redeclaring math delimiter \arrowvert on input line 569.
-LaTeX Font Info:    Redeclaring math delimiter \vert on input line 570.
-LaTeX Font Info:    Redeclaring math symbol \parallel on input line 571.
-LaTeX Font Info:    Redeclaring math delimiter \Arrowvert on input line 572.
-LaTeX Font Info:    Redeclaring math delimiter \Vert on input line 573.
-LaTeX Font Info:    Redeclaring math delimiter \updownarrow on input line 575.
-LaTeX Font Info:    Redeclaring math delimiter \Updownarrow on input line 576.
-LaTeX Font Info:    Redeclaring math delimiter \lvert on input line 581.
-LaTeX Font Info:    Redeclaring math delimiter \rvert on input line 582.
-LaTeX Font Info:    Redeclaring math delimiter \lVert on input line 583.
-LaTeX Font Info:    Redeclaring math delimiter \rVert on input line 584.
-LaTeX Font Info:    Redeclaring math symbol \m@thbbch@rA on input line 1929.
-\ntx@numstart=\count130
-\ntx@UCstart=\count131
-\ntx@lcstart=\count132
-\ntx@tmpc=\count133
-\ntx@imath=\count134
-\ntx@jmath=\count135
-LaTeX Info: Redefining \not on input line 2322.
-LaTeX Info: Redefining \textsquare on input line 2352.
-LaTeX Info: Redefining \openbox on input line 2354.
+(Font)                  U/ntxexa/m/n --> U/ntxexa/b/n on input line 332.
+LaTeX Font Info:    Redeclaring math delimiter \lgroup on input line 503.
+LaTeX Font Info:    Redeclaring math delimiter \rgroup on input line 504.
+LaTeX Font Info:    Redeclaring math delimiter \lmoustache on input line 505.
+LaTeX Font Info:    Redeclaring math delimiter \rmoustache on input line 506.
+LaTeX Font Info:    Redeclaring math delimiter \lfloor on input line 512.
+LaTeX Font Info:    Redeclaring math delimiter \rfloor on input line 513.
+LaTeX Font Info:    Redeclaring math delimiter \lceil on input line 514.
+LaTeX Font Info:    Redeclaring math delimiter \rceil on input line 515.
+LaTeX Font Info:    Redeclaring math delimiter \lbrace on input line 516.
+LaTeX Font Info:    Redeclaring math delimiter \rbrace on input line 517.
+LaTeX Font Info:    Redeclaring math delimiter \langle on input line 518.
+LaTeX Font Info:    Redeclaring math delimiter \rangle on input line 520.
+LaTeX Font Info:    Redeclaring math symbol \mid on input line 522.
+LaTeX Font Info:    Redeclaring math delimiter \arrowvert on input line 524.
+LaTeX Font Info:    Redeclaring math delimiter \vert on input line 525.
+LaTeX Font Info:    Redeclaring math symbol \parallel on input line 526.
+LaTeX Font Info:    Redeclaring math delimiter \Arrowvert on input line 527.
+LaTeX Font Info:    Redeclaring math delimiter \Vert on input line 528.
+LaTeX Font Info:    Redeclaring math delimiter \updownarrow on input line 530.
+LaTeX Font Info:    Redeclaring math delimiter \Updownarrow on input line 531.
+LaTeX Font Info:    Redeclaring math delimiter \lvert on input line 536.
+LaTeX Font Info:    Redeclaring math delimiter \rvert on input line 537.
+LaTeX Font Info:    Redeclaring math delimiter \lVert on input line 538.
+LaTeX Font Info:    Redeclaring math delimiter \rVert on input line 539.
+LaTeX Info: Redefining \not on input line 2146.
+LaTeX Info: Redefining \textsquare on input line 2176.
+LaTeX Info: Redefining \openbox on input line 2178.
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/caption/caption.sty
-Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/caption/caption3.sty
-Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen143
 \captionmargin@=\dimen144
 \captionwidth=\dimen145
@@ -834,26 +668,24 @@ Package caption3 Info: TeX engine: e-TeX on input line 64.
 \caption@hangindent=\dimen149
 )
 Package caption Info: AMS or SMF document class.
-\c@caption@flags=\count136
-\c@ContinuedFloat=\count137
+\c@ContinuedFloat=\count127
 Package caption Info: hyperref package is loaded.
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/float/float.sty
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count138
+\c@float@type=\count128
 \float@exts=\toks29
-\float@box=\box30
+\float@box=\box29
 \@float@everytoks=\toks30
-\@floatcapt=\box31
+\@floatcapt=\box30
 )
 \@float@every@sidebar=\toks31
-\c@sidebar=\count139
+\c@sidebar=\count129
 \fulltextwidth=\dimen150
 \@ACM@labelwidth=\dimen151
 \listisep=\skip55
-\num@authorgroups=\count140
-\num@authors=\count141
+\num@authorgroups=\count130
+\num@authors=\count131
 \@ACM@badge@width=\skip56
 \@ACM@title@width=\skip57
 \@ACM@badge@skip=\skip58
@@ -862,21 +694,19 @@ Class acmart Info: Printing bibformat on input line 1348.
 Class acmart Info: Suppressing folios on input line 1355.
 Class acmart Info: Setting authorsperrow to 0 on input line 1358.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/comment/comment.sty
-\CommentStream=\write3
- Excluding comment 'comment')
-Excluding comment 'CCSXML'
-\c@@concepts=\count142
-\mktitle@bx=\box32
-\@ACM@commabox=\box33
-\author@bx=\box34
+(/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write4
+
+Excluding comment 'comment') Excluding comment 'CCSXML'
+\c@@concepts=\count132
+\mktitle@bx=\box31
+\@ACM@commabox=\box32
+\author@bx=\box33
 \author@bx@wd=\dimen152
 \author@bx@sep=\skip59
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip60
 \f@nch@O@elh=\skip61
@@ -891,20 +721,19 @@ s
 \@folio@wd=\dimen153
 \@folio@ht=\dimen154
 \@folio@voffset=\dimen155
- Special comment 'acks'
+
+Special comment 'acks'
 LaTeX Font Info:    Try loading font information for T1+LinuxLibertineT-TLF on 
 input line 2770.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/libertine/T1LinuxLibertineT-TLF.fd
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/T1LinuxLibertineT-TLF.fd
 File: T1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Li
 nuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 2770.
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 LaTeX Font Info:    Redeclaring math symbol \boxdot on input line 44.
 LaTeX Font Info:    Redeclaring math symbol \boxplus on input line 45.
@@ -1120,61 +949,53 @@ LaTeX Font Info:    Redeclaring math symbol \Bbbk on input line 261.
 LaTeX Font Info:    Redeclaring math symbol \hslash on input line 262.
 LaTeX Font Info:    Redeclaring math symbol \backepsilon on input line 265.
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/jknapltx/mathrsfs.sty
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup10
-) (./packages.tex
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/preprint/balance.sty
+) (./packages.tex (/usr/share/texlive/texmf-dist/tex/latex/preprint/balance.sty
 Package: balance 1999/02/23 4.3 (PWD)
 \oldvsize=\dimen156
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/leading/leading.sty
+(/usr/share/texlive/texmf-dist/tex/latex/leading/leading.sty
 Package: leading 2008/12/11 v0.3 Define leading length
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/tools/calc.sty
-Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count143
-\calc@Bcount=\count144
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count133
+\calc@Bcount=\count134
 \calc@Adimen=\dimen157
 \calc@Bdimen=\dimen158
 \calc@Askip=\skip69
 \calc@Bskip=\skip70
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count145
+\calc@Ccount=\count135
 \calc@Cskip=\skip71
 ))
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/subfig/subfig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
-\c@KVtest=\count146
+\c@KVtest=\count136
 \sf@farskip=\skip72
 \sf@captopadj=\dimen159
 \sf@capskip=\skip73
 \sf@nearskip=\skip74
-\c@subfigure=\count147
-\c@subfigure@save=\count148
-\c@lofdepth=\count149
-\c@subtable=\count150
-\c@subtable@save=\count151
-\c@lotdepth=\count152
+\c@subfigure=\count137
+\c@subfigure@save=\count138
+\c@lofdepth=\count139
+\c@subtable=\count140
+\c@subtable@save=\count141
+\c@lotdepth=\count142
 \sf@top=\skip75
 \sf@bottom=\skip76
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/multirow/multirow.sty
-Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@colwidth=\skip77
-\multirow@cntb=\count153
+\multirow@cntb=\count143
 \multirow@dima=\skip78
 \bigstrutjot=\dimen160
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/framed/framed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip79
 \fb@frw=\dimen161
@@ -1182,95 +1003,87 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \FrameRule=\dimen163
 \FrameSep=\dimen164
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/listings/listings.sty
-\lst@mode=\count154
-\lst@gtempboxa=\box35
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count144
+\lst@gtempboxa=\box34
 \lst@token=\toks32
-\lst@length=\count155
+\lst@length=\count145
 \lst@currlwidth=\dimen165
-\lst@column=\count156
-\lst@pos=\count157
+\lst@column=\count146
+\lst@pos=\count147
 \lst@lostspace=\dimen166
 \lst@width=\dimen167
-\lst@newlines=\count158
-\lst@lineno=\count159
+\lst@newlines=\count148
+\lst@lineno=\count149
 \lst@maxwidth=\dimen168
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
-\c@lstnumber=\count160
-\lst@skipnumbers=\count161
-\lst@framebox=\box36
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count150
+\lst@skipnumbers=\count151
+\lst@framebox=\box35
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/listings/listings.cfg
-File: listings.cfg 2018/09/02 1.7 listings configuration
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
-Package: listings 2018/09/02 1.7 (Carsten Heinz)
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/tools/xspace.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/02/04 v3.8 Customized lists
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enitkv@toks@=\toks33
 \labelindent=\skip80
 \enit@outerparindent=\dimen169
 \enit@toks=\toks34
-\enit@inbox=\box37
-\enit@count@id=\count162
-\enitdp@description=\count163
+\enit@inbox=\box36
+\enitdp@description=\count152
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/cleveref/cleveref.sty
-Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
-Package cleveref Info: `hyperref' support loaded on input line 2370.
-LaTeX Info: Redefining \cref on input line 2370.
-LaTeX Info: Redefining \Cref on input line 2370.
-LaTeX Info: Redefining \crefrange on input line 2370.
-LaTeX Info: Redefining \Crefrange on input line 2370.
-LaTeX Info: Redefining \cpageref on input line 2370.
-LaTeX Info: Redefining \Cpageref on input line 2370.
-LaTeX Info: Redefining \cpagerefrange on input line 2370.
-LaTeX Info: Redefining \Cpagerefrange on input line 2370.
-LaTeX Info: Redefining \labelcref on input line 2370.
-LaTeX Info: Redefining \labelcpageref on input line 2370.
-Package cleveref Info: `amsthm' support loaded on input line 3026.
-Package cleveref Info: `listings' support loaded on input line 3131.
-Package cleveref Info: `subfig' support loaded on input line 3164.
+(/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2018/02/08 v0.21.1 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2301.
+LaTeX Info: Redefining \cref on input line 2301.
+LaTeX Info: Redefining \Cref on input line 2301.
+LaTeX Info: Redefining \crefrange on input line 2301.
+LaTeX Info: Redefining \Crefrange on input line 2301.
+LaTeX Info: Redefining \cpageref on input line 2301.
+LaTeX Info: Redefining \Cpageref on input line 2301.
+LaTeX Info: Redefining \cpagerefrange on input line 2301.
+LaTeX Info: Redefining \Cpagerefrange on input line 2301.
+LaTeX Info: Redefining \labelcref on input line 2301.
+LaTeX Info: Redefining \labelcpageref on input line 2301.
+Package cleveref Info: `amsthm' support loaded on input line 2957.
+Package cleveref Info: `listings' support loaded on input line 3062.
+Package cleveref Info: `subfig' support loaded on input line 3095.
 )) (./macros.tex
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/ulem/ulem.sty
-\UL@box=\box38
-\UL@hyphenbox=\box39
+(/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box37
+\UL@hyphenbox=\box38
 \UL@skip=\skip81
 \UL@hook=\toks35
 \UL@height=\dimen170
-\UL@pe=\count164
+\UL@pe=\count153
 \UL@pixel=\dimen171
-\ULC@box=\box40
+\ULC@box=\box39
 Package: ulem 2012/05/18
 \ULdepth=\dimen172
 ))
-Class acmart Info: Suppressing bibformat on input line 27.
+Class acmart Info: Printing bibformat on input line 27.
 Class acmart Info: Printing folios on input line 34.
 Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 39.
 
-\c@theorem=\count165
- Excluding comment 'screenonly'
-Include comment 'printonly' Include comment 'anonsuppress' (./paper.aux)
+\c@theorem=\count154
+
+Excluding comment 'screenonly' Include comment 'printonly'
+Include comment 'anonsuppress' (./paper.aux)
 \openout1 = `paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 39.
 LaTeX Font Info:    Try loading font information for OML+nxlmi on input line 39
 .
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/newtx/omlnxlmi.fd
+(/usr/share/texlive/texmf-dist/tex/latex/newtx/omlnxlmi.fd
 File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
 )
 LaTeX Font Info:    ... okay on input line 39.
@@ -1286,8 +1099,7 @@ LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 39.
 LaTeX Font Info:    Try loading font information for U+ntxexa on input line 39.
 
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/newtx/untxexa.fd
+(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
 LaTeX Font Info:    ... okay on input line 39.
@@ -1298,8 +1110,7 @@ LaTeX Font Info:    ... okay on input line 39.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 39.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/base/ts1cmr.fd
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 39.
@@ -1307,8 +1118,7 @@ LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 39.
 LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 39
 .
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/newtx/lmsntxsy.fd
+(/usr/share/texlive/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
 LaTeX Font Info:    ... okay on input line 39.
@@ -1316,8 +1126,7 @@ LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 39.
 LaTeX Font Info:    Try loading font information for LMX+ntxexx on input line 3
 9.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/newtx/lmxntxexx.fd
+(/usr/share/texlive/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
 LaTeX Font Info:    ... okay on input line 39.
@@ -1326,8 +1135,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineT-TLF on
  input line 39.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/libertine/OT1LinuxLibertineT-TLF.fd
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/OT1LinuxLibertineT-TLF.fd
 File: OT1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/
 LinuxLibertineT-TLF.
 )
@@ -1339,41 +1147,35 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 <<oml.cmap>>
 LaTeX Font Info:    Try loading font information for U+msa on input line 39.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amsfonts/umsa.fd
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 39.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/amsfonts/umsb.fd
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for U+ntxmia on input line 39.
 
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/newtx/untxmia.fd
-File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
+(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd
+File: untxmia.fd 2016/01/31 Fontinst v1.933 font definitions for U/ntxmia.
 )
 LaTeX Font Info:    Try loading font information for U+ntxsym on input line 39.
 
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/newtx/untxsym.fd
+(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 39.
 
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/newtx/untxsyc.fd
+(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Try loading font information for U+rsfs on input line 39.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/jknapltx/ursfs.fd
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 
@@ -1395,48 +1197,43 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box41
+\AtBeginShipoutBox=\box40
 Package hyperref Info: Link coloring OFF on input line 39.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/generic/oberdiek/gettitlestring.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count166
+\c@section@level=\count155
 )
 LaTeX Info: Redefining \ref on input line 39.
 LaTeX Info: Redefining \pageref on input line 39.
 LaTeX Info: Redefining \nameref on input line 39.
- (./paper.out) (./paper.out)
-\@outlinefile=\write4
-\openout4 = `paper.out'.
+
+(./paper.out) (./paper.out)
+\@outlinefile=\write5
+\openout5 = `paper.out'.
 
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count167
+\scratchcounter=\count156
 \scratchdimen=\dimen173
-\scratchbox=\box42
-\nofMPsegments=\count168
-\nofMParguments=\count169
+\scratchbox=\box41
+\nofMPsegments=\count157
+\nofMParguments=\count158
 \everyMPshowfont=\toks36
-\MPscratchCnt=\count170
+\MPscratchCnt=\count159
 \MPscratchDim=\dimen174
-\MPnumerator=\count171
-\makeMPintoPDFobject=\count172
+\MPnumerator=\count160
+\makeMPintoPDFobject=\count161
 \everyMPtoPDFconversion=\toks37
-)
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/oberdiek/epstopdf-base.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/oberdiek/grfext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1446,8 +1243,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
@@ -1485,11 +1281,9 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@mv@tabular=\count173
-\c@mv@boldtabular=\count174
-
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/upquote/upquote.sty
+\c@mv@tabular=\count162
+\c@mv@boldtabular=\count163
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 )
@@ -1498,128 +1292,101 @@ Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count175
+\c@lstlisting=\count164
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 56.
+(Font)              scaled to size 17.28pt on input line 62.
 LaTeX Font Info:    Try loading font information for T1+LinuxBiolinumT-TLF on i
-nput line 56.
+nput line 62.
 
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/libertine/T1LinuxBiolinumT-TLF.fd
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/T1LinuxBiolinumT-TLF.fd
 File: T1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Lin
 uxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 56.
+(Font)              scaled to size 17.28pt on input line 62.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxBiolinumT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 17.28pt on input line 56.
+(Font)              scaled to size 17.28pt on input line 62.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 56.
+surrounding objects on input line 62.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 56.
+surrounding objects on input line 62.
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 56.
+(Font)              scaled to size 12.0pt on input line 62.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 56.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 56.
-
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 7.0pt on input line 56.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 56.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 56.
-(./abstract.prateek.tex
+(Font)              scaled to size 10.0pt on input line 62.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 3.
+(Font)              scaled to size 10.0pt on input line 62.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/microtype/mt-msa.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/microtype/mt-msb.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 62.
+
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 7.0pt on input line 62.
+LaTeX Font Info:    Try loading font information for TS1+LinuxLibertineT-TLF on
+ input line 62.
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd
+File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/
+LinuxLibertineT-TLF.
+)
+LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 62.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `LinuxLibertineT-TLF' (encoding: TS1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 9.0pt on input line 62.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 10.95pt on input line 62.
+
+(./abstract.prateek.tex
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 3.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 9.0pt on input line 8.
 )
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 56.
+surrounding objects on input line 62.
 
-(./intro3.tex
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 62.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 8.0pt on input line 62.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 8.0pt on input line 62.
 
-Package natbib Warning: Citation `spotcheck' on page 1 undefined on input line 
-31.
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 62.
 
-
-Package natbib Warning: Citation `marathe2014exploiting' on page 1 undefined on
- input line 31.
-
-
-Package natbib Warning: Citation `exosphere' on page 1 undefined on input line 
-31.
-
-
-Package natbib Warning: Citation `conductor' on page 1 undefined on input line 
-31.
-
-
-Package natbib Warning: Citation `dubois2016optispot' on page 1 undefined on in
-put line 31.
-
-
-Package natbib Warning: Citation `shastri2017hotspot' on page 1 undefined on in
-put line 31.
-
-
-Package natbib Warning: Citation `spot-pricing2' on page 1 undefined on input l
-ine 46.
-
-
-Package natbib Warning: Citation `spotcheck' on page 1 undefined on input line 
-59.
-
-
-Package natbib Warning: Citation `flint' on page 1 undefined on input line 59.
-
-
-Package natbib Warning: Citation `marathe2014exploiting' on page 1 undefined on
- input line 59.
-
-
-Package natbib Warning: Citation `exosphere' on page 1 undefined on input line 
-59.
-
-
-Package natbib Warning: Citation `daly2006higher' on page 1 undefined on input 
-line 88.
-
-[1.1{/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/tex
-mf-var/fonts/map/pdftex/updmap/pdftex.map}
+(./intro3.tex [1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 7.3pt on input line 109.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 5.5pt on input line 129.
-) (./bg.prateek.tex
+)
+(./bg.prateek.tex
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 1.
@@ -1629,160 +1396,12 @@ Class acmart Warning: \vspace should only be used to provide space above/below
 surrounding objects on input line 10.
 
 
-Package natbib Warning: Citation `borg' on page 2 undefined on input line 19.
-
-
-Package natbib Warning: Citation `resource-central-sosp17' on page 2 undefined 
-on input line 19.
-
-
-Package natbib Warning: Citation `ec2-spot' on page 2 undefined on input line 2
-3.
-
-
-Package natbib Warning: Citation `preemptible-documentation' on page 2 undefine
-d on input line 23.
-
-
-Package natbib Warning: Citation `azure-batch' on page 2 undefined on input lin
-e 23.
-
-
-Package natbib Warning: Citation `packet-spot' on page 2 undefined on input lin
-e 25.
-
-
-Package natbib Warning: Citation `alibaba-spot' on page 2 undefined on input li
-ne 25.
-
-
-Package natbib Warning: Citation `transient' on page 2 undefined on input line 
-29.
-
-
-Package natbib Warning: Citation `flint' on page 2 undefined on input line 31.
-
-
-Package natbib Warning: Citation `marathe2014exploiting' on page 2 undefined on
- input line 31.
-
-
-Package natbib Warning: Citation `spoton' on page 2 undefined on input line 31.
-
-
-
-Package natbib Warning: Citation `exosphere' on page 2 undefined on input line 
-31.
-
-
-Package natbib Warning: Citation `hourglass-eurosys19' on page 2 undefined on i
-nput line 32.
-
-
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 40.
 
-
-Package natbib Warning: Citation `exosphere' on page 2 undefined on input line 
-49.
-
-
-Package natbib Warning: Citation `spoton' on page 2 undefined on input line 49.
-
-
-
-Package natbib Warning: Citation `flint' on page 2 undefined on input line 49.
-
-
-Package natbib Warning: Citation `marathe2014exploiting' on page 2 undefined on
- input line 49.
-
-
-Package natbib Warning: Citation `proteus-eur17' on page 2 undefined on input l
-ine 49.
-
-
-Package natbib Warning: Citation `ghit-spark-hpdc' on page 2 undefined on input
- line 49.
-
-
-Package natbib Warning: Citation `spot-pricing2' on page 2 undefined on input l
-ine 55.
-
-
-Package natbib Warning: Citation `spotcheck' on page 2 undefined on input line 
-58.
-
-
-Package natbib Warning: Citation `bid-cloud' on page 2 undefined on input line 
-58.
-
-
-Package natbib Warning: Citation `transient-guarantees' on page 2 undefined on 
-input line 58.
-
-
-Package natbib Warning: Citation `wolski2016providing' on page 2 undefined on i
-nput line 58.
-
-
-Package natbib Warning: Citation `wolski_probabilistic_2017' on page 2 undefine
-d on input line 59.
-
-
-Package natbib Warning: Citation `icdcs-spotlight' on page 2 undefined on input
- line 59.
-
-
-Package natbib Warning: Citation `wolski2016providing' on page 2 undefined on i
-nput line 59.
-
-
-Package natbib Warning: Citation `baughman2018predicting' on page 2 undefined o
-n input line 59.
-
-
-Package natbib Warning: Citation `wolski2017probabilistic' on page 2 undefined 
-on input line 59.
-
-
-Package natbib Warning: Citation `bid-cloud' on page 2 undefined on input line 
-61.
-
-
-Package natbib Warning: Citation `hotcloud-not-bid' on page 2 undefined on inpu
-t line 61.
-
-
-Package natbib Warning: Citation `flint' on page 2 undefined on input line 61.
-
-
-Package natbib Warning: Citation `ghit-spark-hpdc' on page 2 undefined on input
- line 61.
-
-
-Package natbib Warning: Citation `chien-ic2e19' on page 2 undefined on input li
-ne 61.
-
-
-Package natbib Warning: Citation `daly2006higher' on page 2 undefined on input 
-line 61.
-
-
-Package natbib Warning: Citation `chien-ic2e19' on page 2 undefined on input li
-ne 70.
-
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 80.
-[2.2]
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 7.0pt on input line 88.
-
-
-Package natbib Warning: Citation `bidding4' on page 3 undefined on input line 8
-8.
-
-) (./failmodel.tex
+[2.2]) (./failmodel.tex
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 53.
@@ -1800,7 +1419,7 @@ surrounding objects on input line 60.
 pdfTeX warning: pdflatex (file ../data/gnuplot-figures/sigmetrics-fig-cdf-prob-
 inset-time.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1
 .5> allowed
-<../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf, id=115, 361.35
+<../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf, id=196, 361.35
 pt x 252.945pt>
 File: ../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf Graphic fi
 le (type pdf)
@@ -1811,14 +1430,12 @@ time.pdf  used on input line 60.
 
 Class acmart Warning: A possible image without description on input line 63.
 
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 91.
-
-(/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/tex/latex/inconsolata/t1zi4.fd
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 93.
+(/usr/share/texlive/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 91.
+(Font)              scaled to size 9.0pt on input line 93.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1832,27 +1449,29 @@ Package microtype Info: Character `textemdash ' is missing
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 102.
+surrounding objects on input line 104.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 102.
+surrounding objects on input line 104.
 
 
 
 pdfTeX warning: pdflatex (file ../data/gnuplot-figures/sigmetrics-fig-vm-types.
 pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf, id=120, 361.35pt x 252.94
+<../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf, id=201, 361.35pt x 252.94
 5pt>
 File: ../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf Graphic file (type pd
 f)
 <use ../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf>
 Package pdftex.def Info: ../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf  u
-sed on input line 104.
+sed on input line 106.
 (pdftex.def)             Requested size: 151.89003pt x 106.32108pt.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 7.0pt on input line 106.
 
-Underfull \hbox (badness 1603) in paragraph at lines 104--104
+Underfull \hbox (badness 1603) in paragraph at lines 106--106
 []\T1/LinuxLibertineT-TLF/b/n/7 (a) |Pre-emp-tion char-ac-ter-is-tics of dif-fe
 r-ent VM
  []
@@ -1862,91 +1481,63 @@ r-ent VM
 pdfTeX warning: pdflatex (file ../data/gnuplot-figures/sigmetrics-time-breakdow
 n.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allow
 ed
-<../data/gnuplot-figures/sigmetrics-time-breakdown.pdf, id=121, 361.35pt x 252.
+<../data/gnuplot-figures/sigmetrics-time-breakdown.pdf, id=202, 361.35pt x 252.
 945pt>
 File: ../data/gnuplot-figures/sigmetrics-time-breakdown.pdf Graphic file (type 
 pdf)
 <use ../data/gnuplot-figures/sigmetrics-time-breakdown.pdf>
 Package pdftex.def Info: ../data/gnuplot-figures/sigmetrics-time-breakdown.pdf 
- used on input line 107.
+ used on input line 109.
 (pdftex.def)             Requested size: 151.89003pt x 106.32108pt.
 
 
 pdfTeX warning: pdflatex (file ../data/gnuplot-figures/sigmetrics-region-breakd
 own.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> all
 owed
-<../data/gnuplot-figures/sigmetrics-region-breakdown.pdf, id=122, 361.35pt x 25
+<../data/gnuplot-figures/sigmetrics-region-breakdown.pdf, id=203, 361.35pt x 25
 2.945pt>
 File: ../data/gnuplot-figures/sigmetrics-region-breakdown.pdf Graphic file (typ
 e pdf)
 <use ../data/gnuplot-figures/sigmetrics-region-breakdown.pdf>
 Package pdftex.def Info: ../data/gnuplot-figures/sigmetrics-region-breakdown.pd
-f  used on input line 110.
+f  used on input line 112.
 (pdftex.def)             Requested size: 151.89003pt x 106.32108pt.
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 111.
+surrounding objects on input line 113.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 114.
+surrounding objects on input line 116.
 
 
-Class acmart Warning: A possible image without description on input line 115.
+Class acmart Warning: A possible image without description on input line 117.
 
 [3.3 <../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf>]
 
-Package natbib Warning: Citation `preemptible-documentation' on page 4 undefine
-d on input line 154.
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 217.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 214.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 230.
+surrounding objects on input line 233.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 233.
-
-Package natbib Warning: Citation `bid-cloud' on page 4 undefined on input line 
-233.
-
-
-Package natbib Warning: Citation `hotcloud-not-bid' on page 4 undefined on inpu
-t line 233.
-
-
-Package natbib Warning: Citation `flint' on page 4 undefined on input line 233.
-
-
-
-Package natbib Warning: Citation `missov2013gompertz' on page 4 undefined on in
-put line 239.
-
+(Font)              scaled to size 9.0pt on input line 236.
 [4.4 <../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf> <../data/gnuplot-fig
 ures/sigmetrics-time-breakdown.pdf> <../data/gnuplot-figures/sigmetrics-region-
 breakdown.pdf>]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 263.
+surrounding objects on input line 266.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 291.
-
-
-Package natbib Warning: Citation `scipy-fit' on page 5 undefined on input line 
-319.
+surrounding objects on input line 294.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 322.
-
-
-Package natbib Warning: Citation `flint' on page 5 undefined on input line 346.
-
+surrounding objects on input line 325.
 
 Excluding 'comment' comment.) (./policies.tex
 
@@ -1967,42 +1558,7 @@ Excluding 'comment' comment.
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 163.
 
-
-Package natbib Warning: Citation `flint' on page 6 undefined on input line 167.
-
-
-
-Package natbib Warning: Citation `dongarra_fault_nodate' on page 6 undefined on
- input line 176.
-
-
-Package natbib Warning: Citation `daly2006higher' on page 6 undefined on input 
-line 176.
-
-
-Package natbib Warning: Citation `flint' on page 6 undefined on input line 176.
-
-
-
-Package natbib Warning: Citation `marathe2014exploiting' on page 6 undefined on
- input line 176.
-
-[6.6] Excluding 'comment' comment.) (./impl.tex
-
-Package natbib Warning: Citation `gcp' on page 7 undefined on input line 11.
-
-
-Package natbib Warning: Citation `gcloud-api' on page 7 undefined on input line
- 22.
-
-
-Package natbib Warning: Citation `slurm' on page 7 undefined on input line 23.
-
-
-Package natbib Warning: Citation `torque' on page 7 undefined on input line 23.
-
-
-[7.7]
+[6.6] Excluding 'comment' comment.) (./impl.tex [7.7]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 39.
@@ -2015,7 +1571,7 @@ surrounding objects on input line 39.
 
 pdfTeX warning: pdflatex (file ../figures/ArchitectureRevisedV2.pdf): PDF inclu
 sion: found PDF version <1.6>, but at most version <1.5> allowed
-<../figures/ArchitectureRevisedV2.pdf, id=233, 318.4698pt x 249.5724pt>
+<../figures/ArchitectureRevisedV2.pdf, id=338, 318.4698pt x 249.5724pt>
 File: ../figures/ArchitectureRevisedV2.pdf Graphic file (type pdf)
 <use ../figures/ArchitectureRevisedV2.pdf>
 Package pdftex.def Info: ../figures/ArchitectureRevisedV2.pdf  used on input li
@@ -2038,242 +1594,188 @@ Class acmart Warning: \vspace should only be used to provide space above/below
 surrounding objects on input line 1.
 
 
-Package natbib Warning: Citation `jing2015ionic' on page 8 undefined on input l
-ine 39.
-
-
-Package natbib Warning: Citation `kadupitiya2017' on page 8 undefined on input 
-line 39.
-
-
-Package natbib Warning: Citation `jto1' on page 8 undefined on input line 41.
-
-
-Package natbib Warning: Citation `brunk2019computational' on page 8 undefined o
-n input line 41.
-
-
-Package natbib Warning: Citation `IPDPS13:LULESH' on page 8 undefined on input 
-line 43.
-
-
-Package natbib Warning: Citation `LULESH2:changes' on page 8 undefined on input
- line 43.
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 60.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 58.
+surrounding objects on input line 63.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 61.
+surrounding objects on input line 63.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 61.
+surrounding objects on input line 64.
 
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 62.
-
-<../graphs/uniform-v-bathtub.pdf, id=237, 400.70755pt x 288.65277pt>
+<../graphs/uniform-v-bathtub.pdf, id=348, 400.70755pt x 288.65277pt>
 File: ../graphs/uniform-v-bathtub.pdf Graphic file (type pdf)
 <use ../graphs/uniform-v-bathtub.pdf>
-Package pdftex.def Info: ../graphs/uniform-v-bathtub.pdf  used on input line 64
+Package pdftex.def Info: ../graphs/uniform-v-bathtub.pdf  used on input line 66
 .
-(pdftex.def)             Requested size: 151.89003pt x 109.41171pt.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 66.
-
-<../graphs/uniform-v-bathtub-2.pdf, id=238, 416.44131pt x 289.71016pt>
+(pdftex.def)             Requested size: 116.44568pt x 83.87894pt.
+<../graphs/uniform-v-bathtub-2.pdf, id=349, 416.44131pt x 289.71016pt>
 File: ../graphs/uniform-v-bathtub-2.pdf Graphic file (type pdf)
 <use ../graphs/uniform-v-bathtub-2.pdf>
 Package pdftex.def Info: ../graphs/uniform-v-bathtub-2.pdf  used on input line 
-68.
-(pdftex.def)             Requested size: 151.89003pt x 105.66595pt.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 69.
-
+70.
+(pdftex.def)             Requested size: 116.44568pt x 81.00777pt.
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 71.
 
 
-Class acmart Warning: A possible image without description on input line 74.
-
-[8.8 <../figures/ArchitectureRevisedV2.pdf>]
-
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 122.
+surrounding objects on input line 73.
 
 
-Package natbib Warning: Citation `harlap2018tributary' on page 9 undefined on i
-nput line 128.
+Class acmart Warning: A possible image without description on input line 76.
 
-
-Package natbib Warning: Citation `spoton' on page 9 undefined on input line 128
-.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 136.
-
-
-Package natbib Warning: Citation `spoton' on page 9 undefined on input line 148
-.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 158.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 158.
-
-<../graphs/Sched-bathtub.pdf, id=257, 359.17513pt x 234.08893pt>
-File: ../graphs/Sched-bathtub.pdf Graphic file (type pdf)
-<use ../graphs/Sched-bathtub.pdf>
-Package pdftex.def Info: ../graphs/Sched-bathtub.pdf  used on input line 160.
-(pdftex.def)             Requested size: 151.89003pt x 98.99176pt.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 161.
-
-<../graphs/Sched-fail-prob.pdf, id=258, 359.17513pt x 220.89902pt>
-File: ../graphs/Sched-fail-prob.pdf Graphic file (type pdf)
-<use ../graphs/Sched-fail-prob.pdf>
-Package pdftex.def Info: ../graphs/Sched-fail-prob.pdf  used on input line 168.
-
-(pdftex.def)             Requested size: 151.89003pt x 93.414pt.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 169.
-
-<../graphs/wrong-model.pdf, id=259, 394.60933pt x 299.84436pt>
-File: ../graphs/wrong-model.pdf Graphic file (type pdf)
-<use ../graphs/wrong-model.pdf>
-Package pdftex.def Info: ../graphs/wrong-model.pdf  used on input line 174.
-(pdftex.def)             Requested size: 151.89003pt x 115.41527pt.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 175.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 179.
-
-
-Class acmart Warning: A possible image without description on input line 180.
-
-[9.9 <../graphs/uniform-v-bathtub.pdf> <../graphs/uniform-v-bathtub-2.pdf
+[8.8 <../figures/ArchitectureRevisedV2.pdf> <../graphs/uniform-v-bathtub.pdf> <
+../graphs/uniform-v-bathtub-2.pdf
 
 pdfTeX warning: pdflatex (file ../graphs/uniform-v-bathtub-2.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
 >]
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 241.
-
-
-Package natbib Warning: Citation `daly2006higher' on page 10 undefined on input
- line 258.
-
-
-Package natbib Warning: Citation `flint' on page 10 undefined on input line 258
-.
-
-
-Package natbib Warning: Citation `proteus-eur17' on page 10 undefined on input 
-line 258.
-
-
-Package natbib Warning: Citation `marathe2014exploiting' on page 10 undefined o
-n input line 258.
+surrounding objects on input line 124.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 276.
+surrounding objects on input line 138.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 276.
+surrounding objects on input line 160.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 277.
+surrounding objects on input line 160.
 
-<../graphs/ckpt-4.pdf, id=297, 397.73282pt x 296.2659pt>
-File: ../graphs/ckpt-4.pdf Graphic file (type pdf)
-<use ../graphs/ckpt-4.pdf>
-Package pdftex.def Info: ../graphs/ckpt-4.pdf  used on input line 279.
-(pdftex.def)             Requested size: 177.20633pt x 132.0029pt.
+<../graphs/Sched-bathtub.pdf, id=401, 359.17513pt x 234.08893pt>
+File: ../graphs/Sched-bathtub.pdf Graphic file (type pdf)
+<use ../graphs/Sched-bathtub.pdf>
+Package pdftex.def Info: ../graphs/Sched-bathtub.pdf  used on input line 162.
+(pdftex.def)             Requested size: 151.89003pt x 98.99176pt.
 
-Underfull \hbox (badness 2326) in paragraph at lines 279--279
-[]\T1/LinuxLibertineT-TLF/b/n/7 (a) |Check-point-ing over-head for dif-fer-ent 
-job start-ing
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 163.
+
+<../graphs/Sched-fail-prob.pdf, id=402, 359.17513pt x 220.89902pt>
+File: ../graphs/Sched-fail-prob.pdf Graphic file (type pdf)
+<use ../graphs/Sched-fail-prob.pdf>
+Package pdftex.def Info: ../graphs/Sched-fail-prob.pdf  used on input line 170.
+
+(pdftex.def)             Requested size: 151.89003pt x 93.414pt.
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 171.
+
+<../graphs/wrong-model.pdf, id=403, 394.60933pt x 299.84436pt>
+File: ../graphs/wrong-model.pdf Graphic file (type pdf)
+<use ../graphs/wrong-model.pdf>
+Package pdftex.def Info: ../graphs/wrong-model.pdf  used on input line 176.
+(pdftex.def)             Requested size: 151.89003pt x 115.41527pt.
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 177.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 181.
+
+
+Class acmart Warning: A possible image without description on input line 182.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 243.
+
+[9.9]
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 278.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 278.
+
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 279.
+
+<../graphs/ckpt-4-trim.pdf, id=422, 362.5826pt x 296.89359pt>
+File: ../graphs/ckpt-4-trim.pdf Graphic file (type pdf)
+<use ../graphs/ckpt-4-trim.pdf>
+Package pdftex.def Info: ../graphs/ckpt-4-trim.pdf  used on input line 281.
+(pdftex.def)             Requested size: 116.44568pt x 95.34764pt.
+<../graphs/ckpt-start-relative-trim.pdf, id=423, 347.846pt x 301.23424pt>
+File: ../graphs/ckpt-start-relative-trim.pdf Graphic file (type pdf)
+<use ../graphs/ckpt-start-relative-trim.pdf>
+Package pdftex.def Info: ../graphs/ckpt-start-relative-trim.pdf  used on input 
+line 289.
+(pdftex.def)             Requested size: 116.44568pt x 100.84169pt.
+
+Underfull \hbox (badness 1859) in paragraph at lines 289--289
+[]\T1/LinuxLibertineT-TLF/b/n/7 (b) |In-crease in run-ning time with
+ []
+
+
+Underfull \hbox (badness 4872) in paragraph at lines 289--289
+\T1/LinuxLibertineT-TLF/b/n/7 check-point-ing when jobs start at
  []
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 285.
-
-<../graphs/ckpt-start-relative.pdf, id=298, 397.73192pt x 301.8738pt>
-File: ../graphs/ckpt-start-relative.pdf Graphic file (type pdf)
-<use ../graphs/ckpt-start-relative.pdf>
-Package pdftex.def Info: ../graphs/ckpt-start-relative.pdf  used on input line 
-287.
-(pdftex.def)             Requested size: 177.20633pt x 134.50153pt.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 288.
+surrounding objects on input line 290.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 291.
+surrounding objects on input line 293.
 
 
-Class acmart Warning: A possible image without description on input line 292.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 300.
+Class acmart Warning: A possible image without description on input line 294.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 317.
+surrounding objects on input line 302.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 317.
+surrounding objects on input line 319.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 318.
+surrounding objects on input line 319.
 
-<../graphs/cost-vs-ondem.pdf, id=299, 342.22542pt x 281.51895pt>
+
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 320.
+
+<../graphs/cost-vs-ondem.pdf, id=424, 342.22542pt x 281.51895pt>
 File: ../graphs/cost-vs-ondem.pdf Graphic file (type pdf)
 <use ../graphs/cost-vs-ondem.pdf>
-Package pdftex.def Info: ../graphs/cost-vs-ondem.pdf  used on input line 321.
+Package pdftex.def Info: ../graphs/cost-vs-ondem.pdf  used on input line 323.
 (pdftex.def)             Requested size: 126.57375pt x 104.1217pt.
-<../graphs/confin-fails-vs-time-relative.pdf, id=300, 294.68532pt x 286.38086pt
+<../graphs/confin-fails-vs-time-relative.pdf, id=425, 294.68532pt x 286.38086pt
 >
 File: ../graphs/confin-fails-vs-time-relative.pdf Graphic file (type pdf)
 <use ../graphs/confin-fails-vs-time-relative.pdf>
 Package pdftex.def Info: ../graphs/confin-fails-vs-time-relative.pdf  used on i
-nput line 324.
+nput line 326.
 (pdftex.def)             Requested size: 101.25745pt x 98.40384pt.
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 326.
-
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 328.
 
 
-Class acmart Warning: A possible image without description on input line 329.
+Class acmart Warning: \vspace should only be used to provide space above/below 
+surrounding objects on input line 330.
+
+
+Class acmart Warning: A possible image without description on input line 331.
 
 [10.10 <../graphs/Sched-bathtub.pdf> <../graphs/Sched-fail-prob.pdf
 
@@ -2283,162 +1785,35 @@ ultiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ../graphs/wrong-model.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
-> <../graphs/ckpt-4.pdf
+> <../graphs/ckpt-4-trim.pdf
 
-pdfTeX warning: pdflatex (file ../graphs/ckpt-4.pdf): PDF inclusion: multiple p
-dfs with page group included in a single page
-> <../graphs/ckpt-start-relative.pdf
+pdfTeX warning: pdflatex (file ../graphs/ckpt-4-trim.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+> <../graphs/ckpt-start-relative-trim.pdf
 
-pdfTeX warning: pdflatex (file ../graphs/ckpt-start-relative.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ../graphs/ckpt-start-relative-trim.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+> <../graphs/cost-vs-ondem.pdf
+
+pdfTeX warning: pdflatex (file ../graphs/cost-vs-ondem.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+> <../graphs/confin-fails-vs-time-relative.pdf
+
+pdfTeX warning: pdflatex (file ../graphs/confin-fails-vs-time-relative.pdf): PD
+F inclusion: multiple pdfs with page group included in a single page
 >]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 9.0pt on input line 369.
+(Font)              scaled to size 9.0pt on input line 371.
 ) (./related.tex
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
 surrounding objects on input line 1.
 
 Excluding 'comment' comment.
-
-Package natbib Warning: Citation `spoton' on page 11 undefined on input line 28
-.
-
-
-Package natbib Warning: Citation `jain14demand' on page 11 undefined on input l
-ine 28.
-
-
-Package natbib Warning: Citation `yi2010reducing' on page 11 undefined on input
- line 28.
-
-
-Package natbib Warning: Citation `conductor' on page 11 undefined on input line
- 28.
-
-
-Package natbib Warning: Citation `liu-spot' on page 11 undefined on input line 
-28.
-
-
-Package natbib Warning: Citation `spot-run' on page 11 undefined on input line 
-28.
-
-
-Package natbib Warning: Citation `dubois2016optispot' on page 11 undefined on i
-nput line 28.
-
-
-Package natbib Warning: Citation `varshney_autobot_2019' on page 11 undefined o
-n input line 28.
-
-
-Package natbib Warning: Citation `harlap2018tributary' on page 11 undefined on 
-input line 28.
-
-
-Package natbib Warning: Citation `spotinst' on page 11 undefined on input line 
-29.
-
-
-Package natbib Warning: Citation `bidding4' on page 11 undefined on input line 
-30.
-
-
-Package natbib Warning: Citation `mihailescu2012impact' on page 11 undefined on
- input line 30.
-
-
-Package natbib Warning: Citation `bidding7' on page 11 undefined on input line 
-30.
-
-
-Package natbib Warning: Citation `bidding1' on page 11 undefined on input line 
-30.
-
-
-Package natbib Warning: Citation `bidding8' on page 11 undefined on input line 
-30.
-
-
-Package natbib Warning: Citation `bidding3' on page 11 undefined on input line 
-30.
-
-
-Package natbib Warning: Citation `bidding6' on page 11 undefined on input line 
-30.
-
-
-Package natbib Warning: Citation `bid-cloud' on page 11 undefined on input line
- 30.
-
-
-Package natbib Warning: Citation `bidding5' on page 11 undefined on input line 
-30.
-
-
-Package natbib Warning: Citation `wolski_probabilistic_2017' on page 11 undefin
-ed on input line 30.
-
-
-Package natbib Warning: Citation `guo_bidding_2015' on page 11 undefined on inp
-ut line 30.
-
-
-Package natbib Warning: Citation `flint' on page 11 undefined on input line 41.
-
-
-
-Package natbib Warning: Citation `spotcheck' on page 11 undefined on input line
- 41.
-
-
-Package natbib Warning: Citation `spoton' on page 11 undefined on input line 41
-.
-
-
-Package natbib Warning: Citation `marathe2014exploiting' on page 11 undefined o
-n input line 42.
-
-
-Package natbib Warning: Citation `gong_monetary_2015' on page 11 undefined on i
-nput line 42.
-
-
-Package natbib Warning: Citation `xiang_spotmpi:_2011' on page 11 undefined on 
-input line 42.
-
-
-Package natbib Warning: Citation `dongarra_fault_nodate' on page 11 undefined o
-n input line 44.
-
-
-Package natbib Warning: Citation `bougeret_checkpointing_2011' on page 11 undef
-ined on input line 44.
-
-
-Package natbib Warning: Citation `bid-cloud' on page 11 undefined on input line
- 56.
-
-
-Package natbib Warning: Citation `flint' on page 11 undefined on input line 56.
-
-
-
-Package natbib Warning: Citation `hotcloud-not-bid' on page 11 undefined on inp
-ut line 56.
-
-
-Package natbib Warning: Citation `mudholkar1993exponentiated' on page 11 undefi
-ned on input line 57.
-
-
-Package natbib Warning: Citation `crevecoeur1993model' on page 11 undefined on 
-input line 57.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 74.
+Overfull \hbox (5.87584pt too wide) in paragraph at lines 55--58
+\T1/LinuxLibertineT-TLF/m/n/9 (-20) have been used to model pre-emp-tions, even
+ for EC2 spot in-stances [[],
+ []
 
 ) (./discussion.tex
 
@@ -2446,41 +1821,36 @@ Class acmart Warning: \vspace should only be used to provide space above/below
 surrounding objects on input line 1.
 
 
-Overfull \hbox (4.4666pt too wide) in paragraph at lines 13--26
+Overfull \hbox (4.4666pt too wide) in paragraph at lines 13--27
 \T1/LinuxLibertineT-TLF/m/n/9 (-20) with model-predictions and de-tect change-p
 oints, and a long-running
  []
 
-[11.11 <../graphs/cost-vs-ondem.pdf> <../graphs/confin-fails-vs-time-relative.p
-df
-
-pdfTeX warning: pdflatex (file ../graphs/confin-fails-vs-time-relative.pdf): PD
-F inclusion: multiple pdfs with page group included in a single page
->] Excluding 'comment' comment.) (./conclusion.tex
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 2.
+Excluding 'comment' comment.) (./conclusion.tex) (./paper.bbl
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
+(Font)              scaled to size 7.0pt on input line 56.
+ [11.11]
+Underfull \hbox (badness 1742) in paragraph at lines 200--204
+\T1/LinuxLibertineT-TLF/m/n/7 (+20) fine-ment, Dec 2017.  On-line on nanoHUB; s
+ource code on GitHub at
+ []
 
 )
-No file paper.bbl.
-
-Package natbib Warning: There were undefined citations.
-
 
 Class acmart Warning: Some images may lack descriptions.
 
 
-Overfull \vbox (1.96922pt too high) has occurred while \output is active []
-
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
 [12.12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 94.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 94.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
  (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 94.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 94.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 100.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: E33A1E3627C94A017E66AF5162BA1680;4431.
+(rerunfilecheck)             Checksum: 05FCA814CE8359066FDA6DF31CD826CA;4420.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2488,59 +1858,43 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 22084 strings out of 492616
- 360240 string characters out of 6106610
- 489546 words of memory out of 5000000
- 24973 multiletter control sequences out of 15000+600000
- 153448 words of font info for 318 fonts, out of 8000000 for 9000
- 1302 hyphenation exceptions out of 8191
- 60i,12n,94p,1332b,589s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf
--dist/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{/nfs/nfs5-insecure/home/insecu
-re-ro/software/rhel7_x86_64/texlive-2018/texmf-dist/fonts/enc/dvips/newtx/liber
-tinealt.enc}{/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-
-2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/nfs/nfs5-insecure/h
-ome/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-dist/fonts/enc/dvips/b
-ase/8r.enc}{/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2
-018/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-4.enc}{/nfs/nfs5-insecure/home
-/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-dist/fonts/enc/dvips/libe
-rtine/lbtn_7grukw.enc}{/nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_6
-4/texlive-2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/nfs/nfs5-
-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-dist/fonts/e
-nc/dvips/libertine/lbtn_nh77jq.enc}{/nfs/nfs5-insecure/home/insecure-ro/softwar
-e/rhel7_x86_64/texlive-2018/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.en
-c}</nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf
--dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></nfs/nfs5-insecure/h
-ome/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-dist/fonts/type1/publi
-c/libertine/LinBiolinumT.pfb></nfs/nfs5-insecure/home/insecure-ro/software/rhel
-7_x86_64/texlive-2018/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb
-></nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-
-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></nfs/nfs5-insecure/home/in
-secure-ro/software/rhel7_x86_64/texlive-2018/texmf-dist/fonts/type1/public/libe
-rtine/LinLibertineT.pfb></nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86
-_64/texlive-2018/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></n
-fs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-dist
-/fonts/type1/public/libertine/LinLibertineTBI.pfb></nfs/nfs5-insecure/home/inse
-cure-ro/software/rhel7_x86_64/texlive-2018/texmf-dist/fonts/type1/public/libert
-ine/LinLibertineTI.pfb></nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_
-64/texlive-2018/texmf-dist/fonts/type1/public/newtx/fxlri-5letters.pfb></nfs/nf
-s5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-dist/font
-s/type1/public/newtx/fxlri-7letters.pfb></nfs/nfs5-insecure/home/insecure-ro/so
-ftware/rhel7_x86_64/texlive-2018/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-</nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf-d
-ist/fonts/type1/public/txfonts/rtxmi.pfb></nfs/nfs5-insecure/home/insecure-ro/s
-oftware/rhel7_x86_64/texlive-2018/texmf-dist/fonts/type1/public/newtx/rtxmi7.pf
-b></nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf
--dist/fonts/type1/public/txfonts/rtxr.pfb></nfs/nfs5-insecure/home/insecure-ro/
-software/rhel7_x86_64/texlive-2018/texmf-dist/fonts/type1/public/newtx/txexs.pf
-b></nfs/nfs5-insecure/home/insecure-ro/software/rhel7_x86_64/texlive-2018/texmf
--dist/fonts/type1/public/newtx/txsys.pfb></nfs/nfs5-insecure/home/insecure-ro/s
-oftware/rhel7_x86_64/texlive-2018/texmf-dist/fonts/type1/public/newtx/zxlri.pfb
->
-Output written on paper.pdf (12 pages, 4133396 bytes).
+ 22391 strings out of 494847
+ 357268 string characters out of 6179080
+ 484353 words of memory out of 5000000
+ 24401 multiletter control sequences out of 15000+600000
+ 199131 words of font info for 474 fonts, out of 8000000 for 9000
+ 220 hyphenation exceptions out of 8191
+ 60i,12n,94p,1339b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
+r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{/usr/shar
+e/texlive/texmf-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive
+/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf
+-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvip
+s/inconsolata/i4-t1-4.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libert
+ine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lb
+tn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_oex
+x6f.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.en
+c}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</us
+r/share/texlive/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/newtx/fxlri-5letters.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/newtx/fxlri-7letters.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/newtx/rtxmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txex
+s.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pfb>
+Output written on paper.pdf (12 pages, 3812829 bytes).
 PDF statistics:
- 623 PDF objects out of 1000 (max. 8388607)
- 473 compressed objects within 5 object streams
- 81 named destinations out of 1000 (max. 500000)
- 37619 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 909 PDF objects out of 1000 (max. 8388607)
+ 734 compressed objects within 8 object streams
+ 150 named destinations out of 1000 (max. 500000)
+ 55027 words of extra memory for PDF output out of 61914 (max. 10000000)
 
