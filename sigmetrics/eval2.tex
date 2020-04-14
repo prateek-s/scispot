@@ -35,17 +35,19 @@ We use three scientific computing workloads that are representative of typical a
   %TODO: Need MAX two sentence descriptions
 
 \noindent \textbf{Nanoconfinement.}
-The nanoconfinement application launches molecular dynamics (MD) simulations of ions in nanoscale confinement created by material surfaces \cite{jing2015ionic,kadupitiya2017}.
+The nanoconfinement application launches molecular dynamics (MD) simulations of ions in nanoscale confinement created by material surfaces \cite{jing2015ionic,kadupitiya2017}. The running time is 14 minutes on a 64 CPU core cluster (4 n1-highcpu-16 VMs). 
 
-\noindent \textbf{Shapes.} The Shapes application runs an MD-based optimization dynamics to predict the optimal shape of deformable, charged nanoparticles \cite{jto1,brunk2019computational}. 
+\noindent \textbf{Shapes.} The Shapes application runs an MD-based optimization dynamics to predict the optimal shape of deformable, charged nanoparticles \cite{jto1,brunk2019computational}. The running time is 9 minutes on a 64 CPU core cluster (4 n1-highcpu-16 VMs). 
 
-\noindent \textbf{LULESH.} Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH)  is a popular benchmark for hydrodynamics simulations of continuum material models \cite{IPDPS13:LULESH,LULESH2:changes}. 
+\noindent \textbf{LULESH.} Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH)  is a popular benchmark for hydrodynamics simulations of continuum material models \cite{IPDPS13:LULESH,LULESH2:changes}. The running time is 12.5 minutes on an 8 n1-highcpu-8 VMs.
+
 % \end{description}
 
 % These examples are representative of typical scientific computing applications in the broad domain of physics, materials science, and chemical engineering. These three examples are implemented as parallel programs that use OpenMP and MPI parallel computing techniques. The first two are used in nanoscale materials research \cite{jso1,jso2,solis2013generating,jjzo1,jto1,jyto} and LULESH is a widely used benchmark \cite{IPDPS13:LULESH,LULESH2:changes}.
 
 %All applications are run with default parameters unless otherwise stated.
 
+% Prateek: No need to repeat this? 
 \vikram{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section \ref{sec: empirical}. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we recorded XXX preemptions for our experiment. %How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
 }
 
@@ -99,13 +101,15 @@ For instance, for a 10 hour job, the increase in running time is about 30 minute
 In comparison, if failures were uniformly distributed, the increase would be 2 hours. 
 
 
-Thus, the bathtub preemptions are beneficial for applications and users, as the low failure rate during the middle periods results in significantly lower wasted work, compared to the uniformly distributed failures.
+%hl
+Thus, the bathtub preemptions are beneficial for applications and users, as the low failure rate during the middle periods results in significantly lower wasted work (between $1\times--40\times$), compared to the uniformly distributed failures.
+%hl 
 Since the failure rate distribution is ultimately controlled by the cloud provider, our analysis can be used to determine the appropriate preemption distribution based on the job length distributions.
 For instance, if short jobs are very common, then uniformly distributed preemptions are preferable, otherwise, bathtub distributions can offer significant benefits. 
 
 %\noindent \textbf{Result:} \emph{For constrained preemptions, bathtub distributions reduce the expected increase in running times for medium to long running jobs ($5-15$ hours) by up to $40\times$, but are slightly inferior for short jobs ($<5$ hours).}
 %hl
-\noindent \textbf{Result:} \emph{Bathtub distributions are beneficial for medium and long duration ($5-15$ hours) jobs, and can reduce the expected increase in running time by up to $40\times$.} 
+%\noindent \textbf{Result:} \emph{Bathtub distributions are beneficial for medium and long duration ($5-15$ hours) jobs, and can reduce the expected increase in running time by up to $40\times$.} 
 %hl  
   
 
@@ -141,9 +145,11 @@ We compare against a baseline of memoryless job scheduling that is not informed 
 Such memoryless policies are the default in existing transient computing systems such as SpotOn~\cite{spoton}. 
 In the absence of insights about bathtub preemptions, the memoryless policy continues to run jobs on the existing VM. 
 As the figure shows, the empirical job failure probability is bathtub shaped. 
-However since the job is 6 hours long, with the memoryless policy, it will always fail when launched after $24-6=18$ hours. 
-In contrast, our model-based policy determines that after 18 hours, we will be better off running the job on a newer VM, and results in a lower job failure probability (=0.4). 
-Thus, our model-based job scheduling policy can reduce job failure probability by taking into account the time-varying failure rates of VMs, which is not considered by existing systems that use memoryless scheduling policies.
+However since the job is 6 hours long, with the memoryless policy, it will always fail when launched after $24-6=18$ hours.
+%hl 
+In contrast, our model-based policy determines that after 18 hours, we will be better off running the job on a newer VM, and results in a constant lower job failure probability (=0.4). The failure probability is constant because the jobs will always be launched on a new VM after 18 hours, resulting in a failure probability at time=0. 
+%hl
+Thus, our model-based job scheduling policy can reduce job failure probability by taking into account the time-varying failure rates of VMs, which is not considered by existing systems that use memoryless scheduling policies. 
 
 \begin{figure*}
   \centering
@@ -193,8 +199,8 @@ We again see that our policy results in significantly lower failure probability 
 For all but the shortest and longest jobs, the failure probability with our policy is \emph{half} of that of existing memoryless policies. 
 This reduction is primarily due to how the two policies perform for jobs launched near the end of the VM preemption deadline, which we examined previously in Figure~\ref{fig:sched-bathtub}. 
 
-%hl
-\noindent \textbf{Result:} \emph{Our model-based job scheduling and VM-reuse policy can decrease job failure probability by up to $2\times$ for medium and long jobs.}
+%hl repeats previous sentence anyway. 
+%\noindent \textbf{Result:} \emph{Our model-based job scheduling and VM-reuse policy can decrease job failure probability by up to $2\times$ for medium and long jobs.}
 %hl
 
 % \begin{figure}
@@ -339,6 +345,9 @@ We ran a cluster of 32 \texttt{n1-highcpu-32} VMs running the Nanoconfinement ap
 Figure~\ref{fig:fails-time} shows the increase in running time of the entire bag of jobs, when different number of VM preemptions are observed during the entire course of execution.
 We see that the net impact of preemptions results in a roughly linear increase in running time. 
 Each preemption results in a roughly 3\% increase in running time, which validates our analytical evaluation shown earlier in Figure~\ref{fig:vs-uniform-2}.
+% hl
+The increase in running time is small because we are computing the \emph{expected} increase in running time, which includes the relatively low probability of preemption. 
+%hl 
 The result also highlights the effectiveness of the job scheduling and VM-reuse policy, since most jobs run on the stable VMs, and  those that run on new VMs ``fail fast'' and result in only a small amount of wasted work and increase in running time. 
 
 
