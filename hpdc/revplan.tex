@@ -177,7 +177,7 @@ LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
 
 \resp{We will provide more explanation of how jobs shorter than 5 hours are affected, at the start of Section 6.3. Briefly, it is fundamentally a result of bathtub initial high failure rates.} 
 
-\revmade{We have added clarification for how short jobs are affected by the high initial rates of failures in Section XXX.}
+\revmade{We have added clarification for how short jobs are affected by the high initial rates of failures in Section 6.}
 
 \item \emph{Experimental results that could be better explained:  In Section 6.2, the failure probability after 18 hours is now fixed, but it seems that the approach would lead to a failure probability decreasing with time after 18 hours. The authors could comment on this situation and explain the (counter-)intuitive result.}
 
@@ -195,7 +195,7 @@ LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
 
 \resp{We will summarize our observations to this question in Section 3. Briefly, yes, the number of simultaneous VMs launched has an effect on their failure rate.}
 
-\revmade{The early high rate of failure reflects that the cloud service provider takes into account VM liftetime in prioritizing preempting ``younger'' VMs, in other words, the number of simultaneous VMs launched does have an effect on their failure rate.}
+%\revmade{The early high rate of failure reflects that the cloud service provider takes into account VM liftetime in prioritizing preempting ``younger'' VMs, in other words, the number of simultaneous VMs launched does have an effect on their failure rate.}
 
 \revmade{Added the clarification in Section 3 about how simultaneous launches affect preemptions and how we account for that.}
 
@@ -217,18 +217,18 @@ LULESH*50: 8 of n1-highcpu-8, 762.225 seconds.
 
 % KXXX 
 
-\resp{We will include some more details about VM launch times. The launch times can be inferred from Figure 2b.
-We launched 1,516 Google Preemptible VMs of different types over a two month period (Feb–April 2019). 
-We analized a subet (870) of this data to see how launched VMs are distributed amoung seven days of the week and those are distributed as Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, Sunday: 54.
-We also analyzed how the this data is distributed amoung each 4 hour in a day and they are distributed as 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, 20-24: 104.
-Yes we experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, n1-highcpu-64: 57.6GB.
-}
+%\resp{We will include some more details about VM launch times. The launch times can be inferred from Figure 2b.
+%We launched 1,516 Google Preemptible VMs of different types over a two month period (Feb–April 2019). 
+%We analized a subet (870) of this data to see how launched VMs are distributed amoung seven days of the week and those are distributed as Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, Sunday: 54.
+%We also analyzed how the this data is distributed amoung each 4 hour in a day and they are distributed as 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, 20-24: 104.
+%Yes we experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, n1-highcpu-64: 57.6GB.
+%}
 
 \revmade{Added details in the methodology paragraph in Section 3.}
 
-\revmade{We analyzed a subset (870) of this data to see how launched VMs are distributed across seven days of the week. We found the following distribution: Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, and Sunday: 54.
-We also analyzed the distribution of this data across 4 hour period in a day: 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, and 20-24: 104.
-We experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, and n1-highcpu-64: 57.6GB.}
+%\revmade{We analyzed a subset (870) of this data to see how launched VMs are distributed across seven days of the week. We found the following distribution: Monday: 81, Tuesday: 204, Wednesday: 181, Thursday: 82, Friday: 144, Saturday: 124, and Sunday: 54.
+%We also analyzed the distribution of this data across 4 hour period in a day: 0-4: 20, 4-8: 75, 8-12: 331, 12-16: 223, 16-20: 117, and 20-24: 104.
+%We experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, and n1-highcpu-64: 57.6GB.}
 
 
 \item \emph{Some of the details are missing: For the evaluation in section 6. The details of the experiment are missing. When did you run the VMs? How many VMs? In which region? How many preemptions did you face during your experiment?}
@@ -241,7 +241,7 @@ In which region? us-central1-c: 347, us-east1-b: 212, us-west1-a: 311
 How many preemptions did you face during your experiment? Total VM count passed 24 hrs: 351
 }
 
-\revmade{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section 3.1. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we recorded XXX preemptions for our experiment.}
+%\revmade{To perform the evaluation, 870 VMs launched in the Feb-April 2019 period were used. The VMs were launched every day of the week as discussed in Section 3.1. They were launched in 3 different regions with the distribution: us-central1-c: 347, us-east1-b: 212, us-west1-a: 311. On average we recorded XXX preemptions for our experiment.}
 
 \revmade{Added clarification at start of Section 6 that the details are provided in Section 3.}
 
@@ -255,9 +255,9 @@ How many preemptions did you face during your experiment? Total VM count passed 
 
 \resp{We discuss this in Sections 3 and 8. Briefly, simpler models would not be able to generalize across VM types, nor be usable for sophisticated policies. Our ``complex'' model allows extensions to policies to be developed in an easier manner.}
 
-\revmade{Our analytical model informed by empirical data and based on well-defined assumptions can guide the development of such simpler heuristics and modeling approaches, as well as interpretation of their results.
-The analytical model also provides a measure to distill the contributions of effects ignored in its derivation (e.g., only 2 failure rates) in changing the VM expected lifetimes and checkpointing policies. At the same time, it also provides a principled approach to extend the model to more complex cases, e.g., systems characterized by processes with more than 2 failure rates.
-}
+%\revmade{Our analytical model informed by empirical data and based on well-defined assumptions can guide the development of such simpler heuristics and modeling approaches, as well as interpretation of their results.
+%The analytical model also provides a measure to distill the contributions of effects ignored in its derivation (e.g., only 2 failure rates) in changing the VM expected lifetimes and checkpointing policies. At the same time, it also provides a principled approach to extend the model to more complex cases, e.g., systems characterized by processes with more than 2 failure rates.
+%}
 
 \revmade{Added text in discussion section.}
 
@@ -265,7 +265,7 @@ The analytical model also provides a measure to distill the contributions of eff
 
 \resp{We will expand our discussion of this in Section 8. Briefly, we will emphasize that  beacause bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions. Moreover, our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is already general. }
 
-\revmade{Our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is general. Moreover, because bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions making our approach generalizable to other system environments beyond the Google cloud computing systems. Finally, the principle adopted to break down the problem into the superposition of processes characterized by different failure rates can also be considered as a general framework to understand and guide policies for mitigating preemption-induced effects in other cloud environments.}
+%\revmade{Our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is general. Moreover, because bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions making our approach generalizable to other system environments beyond the Google cloud computing systems. Finally, the principle adopted to break down the problem into the superposition of processes characterized by different failure rates can also be considered as a general framework to understand and guide policies for mitigating preemption-induced effects in other cloud environments.}
 
 \revmade{Added text in discussion section.}
 
