@@ -89,7 +89,7 @@ We analyze two failure probability distributions for constrained preemptions: a 
 
 
 For the uniform distribution, the wasted work is linear in the job length, and is given by $J/2$.
-For the bathtub distribution, the wasted work is given by Equation~\ref{eq:wasted}, and is \emph{significantly} lower, especially for longer jobs (longer than 5 hours). 
+For the bathtub distribution, the wasted work is given by Equation~\ref{eq:wasted}. \vikram{We find that compared to the uniform case, the bathtub distribution yields on average XXX hours smaller waste for jobs longer than 5 hours, a significant reduction in the wasted work.} %\emph{significantly} lower, especially for longer jobs (longer than 5 hours). 
 With the bathtub distribution, jobs see a high rate of failure initially, but that also reduces the wasted work. 
 Once jobs survive the initial high failure rate, the rate of failure is low, and thus the wasted work is more or less constant for all but the shortest and longest jobs. 
 
@@ -268,7 +268,7 @@ Next, we examine the expected running time of jobs of different length, when all
 %hl
 Figure~\ref{fig:ckpt-start-0-relative} shows the expected increase in the running time of the jobs of length $(0--9] $ hours, with our model-based checkpointing policy and the Young-Daly policy with MTTF=1 hour.
 %hl 
-With our policy, the running times increase by 10\% for short jobs ($<2$  hours), and increase by less than 5\% for longer jobs.
+With our policy, the running times increase by 10\% for short jobs ($<2$  hours), and increase by less than 5\% for longer jobs, \vikram{staying at XXX amount on average}.
 In contrast, the Young-Daly policy yields a constant increase in running times of 25\%. 
 Thus, our model-based policy is able to reduce the checkpointing overhead and thus reduce the performance overhead of running on preemptible VMs to below 5\%. 
 
@@ -340,7 +340,7 @@ The primary motivation for using preemptible VMs is their significantly lower co
 To evaluate the cost of using our batch computing service, we run a bag of 100 jobs, all running on a cluster of 32 VMs of type \texttt{n1-highcpu-32}. 
 Within a bag, different jobs are exploring different physical parameters, and job running times show little variance. 
 Figure~\ref{fig:cost-only-bar} shows the cost of using Preemptible VMs compared to conventional on-demand VMs.
-We see that for all the three applications, using our service can reduce costs by $5\times$.
+We see that for all the three applications, using our service can reduce costs by $5\times$ \vikram{you can make this precise by just giving numbers for each application and then saying, on average cost reduction is by 5 times}.
 
 We note that for this experiment, our  service was using model-driven job scheduling, but was not using checkpointing, since the applications lacked checkpointing mechanisms.
 Using checkpointing would reduce the costs even further, since it would reduce the increase in running time (and server costs) due to recomputation.
