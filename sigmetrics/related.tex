@@ -30,6 +30,7 @@ The challenges posed by Amazon EC2 spot instances, the first transient cloud ser
 The distinguishing characteristic of EC2 spot instances is their dynamic auction-based pricing, and choosing the ``right'' bid price to minimize cost and performance degradation is the focus of much of the past work on transient computing~\cite{bidding4,mihailescu2012impact,bidding7,bidding1,bidding8,bidding3,bidding6,bid-cloud,bidding5,wolski_probabilistic_2017, guo_bidding_2015}.
 However, it remains to be seen how Amazon's recent change~\cite{bid-change, irwin-icccn19, baughman2019deconstructing, pham2018performance} in the preemption model of spot instances affects prior work. 
 Non-price based transient availability models, such as temporally constrained preemptions, have received scant attention due to the difficulty in obtaining empirical preemption data---which we hope our dataset remedies. 
+%
 
 %principled and optimized use of transient resources provided by other cloud providers such as Google, Microsoft, Packet, and Alibaba is still nascent, and ours represents an initial step. 
 %
@@ -55,6 +56,8 @@ However, periodic checkpointing~\cite{dongarra_fault_nodate, bougeret_checkpoint
 \noindent \textbf{Preemption Modeling.}
 Conventionally, exponential distribution have been used to model preemptions, even for EC2 spot instances~\cite{bid-cloud, flint, hotcloud-not-bid}. 
 Our preemption model provides a novel characterization of bathtub shaped failure rates not captured even by Weibull distributions, and is distinct from prior efforts~\cite{mudholkar1993exponentiated, crevecoeur1993model}. 
+%
+Recent work~\cite{tian_gpu_icdcs} has also found evidence of the bath-tub failure distribution for Google Preemptible GPU VMs, and confirms our observations. 
 
 %extends the classic Weibull-distribution based bathtub models~\cite{mudholkar1993exponentiated, crevecoeur1993model} by introducing exponential reclamation near the deadline and additional paramters that capture and explain the preemption dynamics. 
 

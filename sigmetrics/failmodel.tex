@@ -67,9 +67,9 @@ Based on our observations and insights from the study, we then develop a probabi
 
 
 \noindent \textbf{Methodology.}
-We launched  870 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).\footnotemark
+We launched  870 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).
 %
-VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads. 
+VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads\footnotemark. 
 %hl
 We launched VMs in their default resource configurations (CPU and memory), and do not use custom VM sizes.
 % hl
@@ -81,7 +81,7 @@ To ensure the generality of our empirical observations, VMs were not launched du
 %
 The preemption data collection was bootstrapped: a small amount of data points were used to estimate and model the preemption CDF, which we then used to run our batch computing service (described and evaluated in Sections~\ref{sec:impl} and \ref{sec:eval}), which generated the rest of the preemption data.  
 %
-Thus the effective cost overhead of our empirical data collection approach  is small. 
+%Thus the effective cost overhead of our empirical data collection approach  is small. 
 Due to the relatively high preemption rates compared to EC2 spot instances, we were able to collect these data points for less than \$5,000. 
 %
 
@@ -90,7 +90,7 @@ Due to the relatively high preemption rates compared to EC2 spot instances, we w
 %
  %Weaksauce 
 %
-A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution function (CDF) of the VM lifetimes of the \texttt{n1-highcpu-16} VM in the \texttt{us-east1-b} zone. 
+A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution function (CDF) of the lifetime of the \texttt{n1-highcpu-16} VM in the \texttt{us-east1-b} zone. 
 %enter the type of VM for which the data is shown
 %
 Our empirical approach allows us to make the following  observations.

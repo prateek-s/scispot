@@ -233,7 +233,8 @@ E[L(t, i+\delta)] = \int_{t}^{t+i+\delta}{x~f(x)~dx}   ,
 \end{equation}
 where $f(x)$ is the probability density function from Equation~\ref{eq:failrate}.
 
-\noindent \textbf{Computing the optimal checkpoint schedule:} We can find the minimum makespan $E[M^*(J, t)]$ by using Equations~\ref{eq:m0}--\ref{eq:exploss}. 
+\noindent \textbf{Computing the optimal checkpoint schedule:}
+We can find the minimum makespan $E[M^*(J, t)]$ by using Equations~\ref{eq:m0}--\ref{eq:exploss}. 
 Given a job of length $J$, minimizing the total expected makespan involves computing $E[M^*(J, s)]$, where $s$ is the current age of the server. 
 Since the makespan is recursively defined, we can do this minimization using dynamic programming, and extract the job-steps at which checkpointing results in a minimum expected makespan. 
 %Once all the values of $E[M(J, t, i)]$ are computed, T
@@ -245,7 +246,7 @@ If a job encounters a failure, it is resumed from the most recent checkpoint, on
 After every such resume-event, we compute the optimal checkpointing schedule for $E[M^*(J_{\text{Remaining}}, 0)]$, since the job's failure rate is dependent on the VM age when it starts, and the job may be resumed at a later time or on a VM of a different type, etc.
 Our algorithm yields non-uniform intervals proportional to failure rate.
 For a 5 hour job launched on a new VM (time=0), the checkpointing intervals are $(15, 28, 38, 59, 128)$ minutes.
-Further analysis of our checkpointing policy is presented in Section~\ref{subsec:eval-ckpt}. 
+More checkpointing analysis is presented in Section~\ref{subsec:eval-ckpt}. 
 
 % Explain how 
 
