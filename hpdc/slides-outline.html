@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-05-17 Sun 11:38 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="prateek s" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org28480bd">1. Title Slide</a></li>
+<li><a href="#org026723b">2. Transient Cloud VMs : Opportunities and Challenges</a>
+<ul>
+<li><a href="#orga845620">2.1. Challenge: How to mitigate preemptions</a></li>
+</ul>
+</li>
+<li><a href="#org1819987">3. Preemption Modeling Thus Far</a></li>
+<li><a href="#orgdf99d90">4. Research Questions</a></li>
+<li><a href="#orge15d2c6">5. Outline</a></li>
+<li><a href="#org9f36d72">6. Empirical analysis of preemptions</a></li>
+<li><a href="#org07c0740">7. Observation 1: Preemptions are Bathtub shaped</a></li>
+<li><a href="#orgf834de1">8. Observation 2: Holds across different types and times</a></li>
+<li><a href="#orgd5a8668">9. Constrained Preemptions are Not Memoryless</a></li>
+<li><a href="#org167cd87">10. Constrained Preemptions are Difficult to model with existing failure distributions</a></li>
+<li><a href="#org29898d2">11. Our Model For Temporally constrained preemptions</a></li>
+<li><a href="#orgd0e1ad1">12. Model Characteristics</a></li>
+<li><a href="#org441fa92">13. Impact on Application Performance</a></li>
+<li><a href="#orgaed696e">14. Job Scheduling and VM Reuse Policy</a></li>
+<li><a href="#orgb75500d">15. Checkpointing Policy</a></li>
+<li><a href="#org18600d4">16. SciSpot</a>
+<ul>
+<li><a href="#org752e179">16.1. Evaluation setup</a></li>
+</ul>
+</li>
+<li><a href="#org1d24b47">17. Job failure reduction</a></li>
+<li><a href="#org1a25a25">18. Checkpointing</a></li>
+<li><a href="#org3e6c76b">19. SciSpot eval?</a></li>
+<li><a href="#orgf43eeef">20. Related Work</a></li>
+<li><a href="#org498c833">21. Future Directions</a></li>
+<li><a href="#orge37f5b4">22. Conclusion</a></li>
+<li><a href="#org360eb32">23. Scratch</a></li>
+<li><a href="#orga7bd013">24. What about other transient servers?</a></li>
+<li><a href="#org45b54b6">25. Why</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org28480bd" class="outline-2">
+<h2 id="org28480bd"><span class="section-number-2">1</span> Title Slide</h2>
+</div>
+
+<div id="outline-container-org026723b" class="outline-2">
+<h2 id="org026723b"><span class="section-number-2">2</span> Transient Cloud VMs : Opportunities and Challenges</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Low-cost VMs that can be preempted unilaterally</li>
+<li>Amazon EC2 spot instances, Google Preemptible VMs, Azure delay sensitive</li>
+</ul>
+</div>
+
+<div id="outline-container-orga845620" class="outline-3">
+<h3 id="orga845620"><span class="section-number-3">2.1</span> Challenge: How to mitigate preemptions</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Two main techniques:
+</p>
+<ol class="org-ol">
+<li>Fault-tolerance (e.g., checkpointing, migration) to</li>
+<li>Careful selection of VM type (size, location, etc.)</li>
+</ol>
+
+<p>
+<b>Require a sound understanding of preemption characteristics</b>
+</p>
+<ul class="org-ul">
+<li>Frequency of preemption -&gt; MTTF -&gt; optimal checkpointing frequency</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1819987" class="outline-2">
+<h2 id="org1819987"><span class="section-number-2">3</span> Preemption Modeling Thus Far</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>EC2 spot instances extensively analyzed</li>
+<li>Historically, price-based preemption allowed easy modeling of preemptions</li>
+</ul>
+
+
+<p>
+<b>What about <i>other</i> types of transient VMs?</b>
+</p>
+<ul class="org-ul">
+<li>This paper: Google Preemptible VMs</li>
+<li>Flat price -&gt; price based approaches not applicable</li>
+<li>Distinguishing feature: Maximum lifetime of 24 hours. <b>Temporally constrained</b></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgdf99d90" class="outline-2">
+<h2 id="orgdf99d90"><span class="section-number-2">4</span> Research Questions</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<b>Do they have different preemption characteristics?</b>
+<b>If so, what is the impact on applications?</b>
+<b>Can we develop a model for temporally constrained preemptions?</b>
+<b>Policies for checkpointing and scheduling based on the model</b> 
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orge15d2c6" class="outline-2">
+<h2 id="orge15d2c6"><span class="section-number-2">5</span> Outline</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Motivation</li>
+<li>Empirical Analysis</li>
+<li>A Reliability Model for Temporal preemptions</li>
+<li>Model based policies</li>
+<li>SciSpot framework</li>
+<li>Experimental Evaluation</li>
+<li>Related Work</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org9f36d72" class="outline-2">
+<h2 id="org9f36d72"><span class="section-number-2">6</span> Empirical analysis of preemptions</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Flat pricing -&gt; Empirical approach required</li>
+<li>Collected 1000 preeemption data</li>
+<li>Regions, types, time of day etc</li>
+<li>Measure time to preemption</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org07c0740" class="outline-2">
+<h2 id="org07c0740"><span class="section-number-2">7</span> Observation 1: Preemptions are Bathtub shaped</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+[Figure 1 with only the Empirical Data]
+</p>
+
+<p>
+Preemption rates are non-uniform and have three distinct phases:
+</p>
+<ol class="org-ol">
+<li>Initially [0-4 hrs]: High rate of preemptions</li>
+<li>Middle period: Low preemption rate</li>
+<li>Near deadline: High rate</li>
+</ol>
+
+<p>
+[Maybe annotate the figure with these regions instead]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf834de1" class="outline-2">
+<h2 id="orgf834de1"><span class="section-number-2">8</span> Observation 2: Holds across different types and times</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+[Figure 2a, 2b] 
+</p>
+
+<ul class="org-ul">
+<li>Preemption characteristics depend on type of VM, time of day, and region</li>
+<li>General bathtub shape with the different failure rates</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgd5a8668" class="outline-2">
+<h2 id="orgd5a8668"><span class="section-number-2">9</span> Constrained Preemptions are Not Memoryless</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Conventional reliability modeling, memoryless exponential failures:
+</p>
+<ul class="org-ul">
+<li>Also used to model EC2 spot preemptions.</li>
+<li>MTTF = 1/Failure-rate</li>
+<li><b>Different preemption phases -&gt; Memoryless models not applicable</b></li>
+</ul>
+
+<p>
+[Figure 1 with Empirical data and classical exponential] 
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org167cd87" class="outline-2">
+<h2 id="org167cd87"><span class="section-number-2">10</span> Constrained Preemptions are Difficult to model with existing failure distributions</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>Can we fit preemptions using other failure distributions?</li>
+<li>Weibuill: Generalized form of exponential used to model bathtub failures</li>
+<li>Gompertz-Makeham: Popular in actuarial science. Captures early deaths and accelerated aging.</li>
+</ul>
+
+<p>
+[Figure 1 from paper]
+</p>
+
+<p>
+<b>Temporal constraint -&gt; challenging to fit an existing failure model</b>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org29898d2" class="outline-2">
+<h2 id="org29898d2"><span class="section-number-2">11</span> Our Model For Temporally constrained preemptions</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>Intuition: 2 failure processes.</li>
+<li>Classical exponential failures during initial and middle parts</li>
+<li>Positive exponential near the deadline</li>
+</ul>
+
+<p>
+[Equation 1]
+</p>
+
+<p>
+Our model uses four parameters:
+</p>
+<ul class="org-ul">
+<li>&tau;<sub>1</sub> : rate of preemptions of initial phase</li>
+<li>&tau;<sub>2</sub>: preemption rate near deadline (final phase)</li>
+<li>b: Activation time of final phase</li>
+<li>A: Scaling constant</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgd0e1ad1" class="outline-2">
+<h2 id="orgd0e1ad1"><span class="section-number-2">12</span> Model Characteristics</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li>Fit using least squares</li>
+<li>Able to capture differences between VMs</li>
+<li>Figure 2 from earlier</li>
+<li>Differentiable everywhere -&gt; preemption density functions is:</li>
+</ul>
+
+<p>
+[Equation 2] 
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org441fa92" class="outline-2">
+<h2 id="org441fa92"><span class="section-number-2">13</span> Impact on Application Performance</h2>
+<div class="outline-text-2" id="text-13">
+<ul class="org-ul">
+<li>Bathtub preemptions significantly different from uniform preemptions</li>
+<li>Preemption probability of a job depends on the age of the VM and the job length</li>
+</ul>
+
+
+<p>
+[Fig  ]
+</p>
+
+<p>
+Takeaway:
+</p>
+<ul class="org-ul">
+<li>Bathtub preemptions beneficial for jobs &gt; 5 hours</li>
+<li>Let VM "mature", then run job</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgaed696e" class="outline-2">
+<h2 id="orgaed696e"><span class="section-number-2">14</span> Job Scheduling and VM Reuse Policy</h2>
+<div class="outline-text-2" id="text-14">
+<ul class="org-ul">
+<li>Tradeoff faced by jobs: either continue running on an "old" VM, or run on a newly launched VM.</li>
+<li>New VMs have high initial preemption rate</li>
+<li>Reusing a VM: preemption probability depends on age of VM and job length</li>
+</ul>
+
+<p>
+[Add equation 8] 
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgb75500d" class="outline-2">
+<h2 id="orgb75500d"><span class="section-number-2">15</span> Checkpointing Policy</h2>
+<div class="outline-text-2" id="text-15">
+<ul class="org-ul">
+<li>Non-uniform preemption rates -&gt; classical Young-Daly approach for exponential failure rates not ideal</li>
+<li>Our approach: Use Dynamic programming to compute the "optimal" checkpointing schedule for a job</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org18600d4" class="outline-2">
+<h2 id="org18600d4"><span class="section-number-2">16</span> SciSpot</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li>System</li>
+<li>Scientific computing</li>
+<li>Figure 3</li>
+</ul>
+</div>
+
+<div id="outline-container-org752e179" class="outline-3">
+<h3 id="org752e179"><span class="section-number-3">16.1</span> Evaluation setup</h3>
+</div>
+</div>
+
+
+<div id="outline-container-org1d24b47" class="outline-2">
+<h2 id="org1d24b47"><span class="section-number-2">17</span> Job failure reduction</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+[Figure 6]
+</p>
+
+<p>
+Job failure probability is reduced because of the VM reuse policy of not launching jobs near the end of the VM's lifetime. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1a25a25" class="outline-2">
+<h2 id="org1a25a25"><span class="section-number-2">18</span> Checkpointing</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+[Figure 8a] 
+</p>
+
+<ul class="org-ul">
+<li>Checkpointing overhead is lower with our policy</li>
+<li>Young-daly with initial high failure rate: high overhead</li>
+</ul>
+
+
+<p>
+Better than YD 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3e6c76b" class="outline-2">
+<h2 id="org3e6c76b"><span class="section-number-2">19</span> SciSpot eval?</h2>
+<div class="outline-text-2" id="text-19">
+<ul class="org-ul">
+<li>Costs are low</li>
+<li>Early preemptions plus low means overhead is low</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf43eeef" class="outline-2">
+<h2 id="orgf43eeef"><span class="section-number-2">20</span> Related Work</h2>
+<div class="outline-text-2" id="text-20">
+<ol class="org-ol">
+<li>Spot stuff lame</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org498c833" class="outline-2">
+<h2 id="org498c833"><span class="section-number-2">21</span> Future Directions</h2>
+<div class="outline-text-2" id="text-21">
+<ul class="org-ul">
+<li>What if things change?</li>
+<li>Phase-wise model</li>
+<li>Bathtub preemption stat mech??</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge37f5b4" class="outline-2">
+<h2 id="orge37f5b4"><span class="section-number-2">22</span> Conclusion</h2>
+</div>
+
+
+
+
+<div id="outline-container-org360eb32" class="outline-2">
+<h2 id="org360eb32"><span class="section-number-2">23</span> Scratch</h2>
+<div class="outline-text-2" id="text-23">
+<ul class="org-ul">
+<li>How frequently preemptions occur?</li>
+<li>Useful for fault-tolerance policies such as periodic checkpointing.</li>
+<li>Huge amount of analysis for EC2</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orga7bd013" class="outline-2">
+<h2 id="orga7bd013"><span class="section-number-2">24</span> What about other transient servers?</h2>
+<div class="outline-text-2" id="text-24">
+<ul class="org-ul">
+<li>Preemption models are different</li>
+<li>This paper: focus on <i>temporally constrained</i> preemptions</li>
+<li>Google preemptible: 24 hour max lifetime</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org45b54b6" class="outline-2">
+<h2 id="org45b54b6"><span class="section-number-2">25</span> Why</h2>
+<div class="outline-text-2" id="text-25">
+<ol class="org-ol">
+<li>Allow principled policies</li>
+<li>New type of preemption model that is not governed by price</li>
+<li>May not be memoryless due to temporal constraint</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: prateek s</p>
+<p class="date">Created: 2020-05-17 Sun 11:38</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

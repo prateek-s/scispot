@@ -1,0 +1,254 @@
+
+# Begin with some opening music and title crawl 
+# Mission badge ala Apollo with SciSpot at top and authors at the bottom 
+
+* Title Slide 
+
+* Transient Cloud VMs : Opportunities and Challenges  
+- Low-cost VMs that can be preempted unilaterally
+- Amazon EC2 spot instances, Google Preemptible VMs, Azure delay sensitive 
+
+** Challenge: How to mitigate preemptions 
+Two main techniques:
+1. Fault-tolerance (e.g., checkpointing, migration) to 
+2. Careful selection of VM type (size, location, etc.) 
+
+*Require a sound understanding of preemption characteristics*
+- Frequency of preemption -> MTTF -> optimal checkpointing frequency 
+
+
+* Preemption Modeling State of the Art 
+- EC2 spot instances extensively analyzed 
+- Historically, price-based preemption allowed easy modeling of preemptions
+
+# Can be split into two slides. Collage of EC2 papers in the first one, constrained preemption animation in the second. 
+# Show images or video clip of searching for spot on google scholar 
+# Animation of temporally constrained preemption. Small dot bouncing between two walls. 
+
+
+*What about /other/ types of transient VMs?*
+- This paper: Google Preemptible VMs 
+- Flat price -> price based approaches not applicable
+- Distinguishing feature: Maximum lifetime of 24 hours. 
+  - *Temporally constrained* 
+
+
+* Research Questions 
+
+*Do GCP VMs have different preemption characteristics?*
+*If so, what is the impact on applications?*
+*Can we develop a model for temporally constrained preemptions?*
+*Policies for checkpointing and scheduling based on the model* 
+
+
+* Outline
+- Motivation 
+- Empirical Analysis
+- A Reliability Model for Temporal preemptions
+- Model based policies
+- SciSpot framework
+- Experimental Evaluation 
+- Related Work 
+
+
+* Empirical analysis of preemptions 
+
+- Flat pricing -> Empirical approach required 
+- Collected 1000 preeemption data 
+- Regions, types, time of day etc 
+- Measure time to preemption 
+
+
+* Observation 1: Preemptions are Bathtub shaped 
+
+[Figure 1 with only the Empirical Data]
+
+Preemption rates are non-uniform and have three distinct phases:
+1. Initially [0-4 hrs]: High rate of preemptions 
+2. Middle period: Low preemption rate
+3. Near deadline: High rate 
+
+[Maybe annotate the figure with these regions instead]
+
+* Observation 2: Holds across different types and times 
+
+[Figure 2a, 2b] 
+
+- Preemption characteristics depend on type of VM, time of day, and region
+- General bathtub shape with the different failure rates 
+
+# 8 
+
+
+* Constrained Preemptions are Not Memoryless
+
+
+Conventional reliability modeling, memoryless exponential failures:
+- Also used to model EC2 spot preemptions. 
+- MTTF = 1/Failure-rate 
+- *Different preemption phases -> Memoryless models not applicable*
+
+[Figure 1 with Empirical data and classical exponential] 
+
+
+* Constrained Preemptions are Difficult to model with existing failure distributions
+
+- Can we fit preemptions using other failure distributions?
+- Weibuill: Generalized form of exponential used to model bathtub failures 
+- Gompertz-Makeham: Popular in actuarial science. Captures early deaths and accelerated aging. 
+
+[Figure 1 from paper]
+
+*Temporal constraint -> challenging to fit an existing failure model*
+
+
+* Our Model For Temporally constrained preemptions 
+
+- Intuition: 2 failure processes. 
+- Classical exponential failures during initial and middle parts
+- Positive exponential near the deadline 
+
+[Equation 1]
+
+Our model uses four parameters:
+- \tau_1 : rate of preemptions of initial phase
+- \tau_2: preemption rate near deadline (final phase)
+- b: Activation time of final phase 
+- A: Scaling constant 
+
+[Animation of the above by adding different parameters would be great ]
+
+
+* Model Characteristics 
+
+- Fit using least squares 
+- Able to capture differences between VMs
+- Figure 2 from earlier 
+- Differentiable everywhere -> preemption density functions is:
+
+[Equation 2] 
+
+
+* Impact on Application Performance 
+
+- Bathtub preemptions significantly different from uniform preemptions
+- Preemption probability of a job depends on the age of the VM and the job length 
+
+
+[Fig 4b ]
+
+Takeaway:
+- Bathtub preemptions beneficial for jobs > 5 hours 
+- Let VM "mature", then run job 
+
+* Job Scheduling and VM Reuse Policy 
+
+# - Recall: Preemption probability of a job depends on the age of the VM and the job length 
+- Tradeoff faced by jobs: either continue running on an "old" VM, or run on a newly launched VM. 
+- New VMs have high initial preemption rate 
+- Reusing a VM: preemption probability depends on age of VM and job length 
+
+[Add equation 8] 
+
+
+
+* Checkpointing Policy
+
+- Classic Young-Daly approach: $\tau = \sqrt{MTTF*\delta}$, where $\delta$ is checkpoint write time 
+- Non-uniform preemption rates ->  rates not ideal 
+- Our approach: Use Dynamic Programming to compute the "optimal" checkpointing schedule for a job 
+
+
+# 12 
+
+* SciSpot: A Batch Computing Service 
+
+- Implemented a system for running scientific computing applications on Preemptible VMs 
+- One more sentence here... 
+
+[Figure 3 ]
+
+** Evaluation setup 
+- Simulation workloads: LULESH, Nanoconfinement, Shapes 
+
+
+* Job failure reduction 
+
+[Figure 6]
+
+- VM reuse policy does not launch jobs near the end of the VM's lifetime. 
+- Job failure probability is reduced by up to 3x 
+
+# 16 
+
+* Checkpointing overhead 
+
+[Figure 8a] 
+
+- Checkpointing overhead is lower with our policy 
+- Young-daly with initial high failure rate: higher frequency and overhead 
+
+
+Better than YD 
+
+* SciSpot eval? 
+
+- Costs are low
+- Early preemptions plus low means overhead is low 
+
+[ Fig 9a]
+
+* Related Work 
+1. Spot price modeling 
+2. Systems using google preemptible VMs 
+3. Failure modeling 
+
+# 20 
+
+* Future Directions 
+1. What if preemption characteristics change? 
+   - This paper studies the fundamental characteristics of temporally constrained preemptions
+   - Current model fairly robust as long as general bathtub shape is maintained 
+   - Model drift can be detected when model specifics change 
+
+2. Simpler models for constrained preemptions 
+   - Phase-wise model: Fit separate models to the 2/3 different segments
+
+# 3. Application support
+#   - 
+
+
+* Conclusion 
+1. Google Preemptible VMs: 24 hour lifetime
+2. Temporally constrained preemptions: new type of transient resource availability 
+3. Empirical study of >1000 preemptions shows bathtub, and not uniform preemptions
+4. We develop a multiple failure rate model
+5. Scheduling and checkpointing policies improve job running times by _X. 
+
+* END
+Thanks 
+
+* Scratch 
+
+
+
+
+- How frequently preemptions occur? 
+- Useful for fault-tolerance policies such as periodic checkpointing. 
+- Huge amount of analysis for EC2 
+
+
+* What about other transient servers? 
+- Preemption models are different
+- This paper: focus on /temporally constrained/ preemptions 
+- Google preemptible: 24 hour max lifetime 
+
+
+
+* Why
+1. Allow principled policies
+2. New type of preemption model that is not governed by price
+3. May not be memoryless due to temporal constraint 
+
+# 4 slides 
+
