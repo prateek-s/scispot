@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-17 Sun 11:38 -->
+<!-- 2020-05-20 Wed 11:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -226,6 +226,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -233,48 +255,49 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org28480bd">1. Title Slide</a></li>
-<li><a href="#org026723b">2. Transient Cloud VMs : Opportunities and Challenges</a>
+<li><a href="#orgfd41f21">1. Title Slide</a></li>
+<li><a href="#org004f70a">2. Transient Cloud VMs : Opportunities and Challenges</a>
 <ul>
-<li><a href="#orga845620">2.1. Challenge: How to mitigate preemptions</a></li>
+<li><a href="#org77355e7">2.1. Challenge: How to mitigate preemptions</a></li>
 </ul>
 </li>
-<li><a href="#org1819987">3. Preemption Modeling Thus Far</a></li>
-<li><a href="#orgdf99d90">4. Research Questions</a></li>
-<li><a href="#orge15d2c6">5. Outline</a></li>
-<li><a href="#org9f36d72">6. Empirical analysis of preemptions</a></li>
-<li><a href="#org07c0740">7. Observation 1: Preemptions are Bathtub shaped</a></li>
-<li><a href="#orgf834de1">8. Observation 2: Holds across different types and times</a></li>
-<li><a href="#orgd5a8668">9. Constrained Preemptions are Not Memoryless</a></li>
-<li><a href="#org167cd87">10. Constrained Preemptions are Difficult to model with existing failure distributions</a></li>
-<li><a href="#org29898d2">11. Our Model For Temporally constrained preemptions</a></li>
-<li><a href="#orgd0e1ad1">12. Model Characteristics</a></li>
-<li><a href="#org441fa92">13. Impact on Application Performance</a></li>
-<li><a href="#orgaed696e">14. Job Scheduling and VM Reuse Policy</a></li>
-<li><a href="#orgb75500d">15. Checkpointing Policy</a></li>
-<li><a href="#org18600d4">16. SciSpot</a>
+<li><a href="#org5503ebc">3. Preemption Modeling State of the Art</a></li>
+<li><a href="#orgd037dd4">4. Research Questions</a></li>
+<li><a href="#orgf0b98bb">5. Outline</a></li>
+<li><a href="#org3488e90">6. Empirical analysis of preemptions</a></li>
+<li><a href="#orgc13bd01">7. Observation 1: Preemptions are Bathtub shaped</a></li>
+<li><a href="#org711d94d">8. Observation 2: Holds across different types and times</a></li>
+<li><a href="#orgf3ecdef">9. Constrained Preemptions are Not Memoryless</a></li>
+<li><a href="#org43cdfa3">10. Constrained Preemptions are Difficult to model with existing failure distributions</a></li>
+<li><a href="#org62fa30f">11. Our Model For Temporally constrained preemptions</a></li>
+<li><a href="#org9b10590">12. Model Characteristics</a></li>
+<li><a href="#org4f3bdde">13. Impact on Application Performance</a></li>
+<li><a href="#orgca78648">14. Job Scheduling and VM Reuse Policy</a></li>
+<li><a href="#org9e564c2">15. Checkpointing Policy</a></li>
+<li><a href="#orgaa0552c">16. SciSpot: A Batch Computing Service</a>
 <ul>
-<li><a href="#org752e179">16.1. Evaluation setup</a></li>
+<li><a href="#org56f467f">16.1. Evaluation setup</a></li>
 </ul>
 </li>
-<li><a href="#org1d24b47">17. Job failure reduction</a></li>
-<li><a href="#org1a25a25">18. Checkpointing</a></li>
-<li><a href="#org3e6c76b">19. SciSpot eval?</a></li>
-<li><a href="#orgf43eeef">20. Related Work</a></li>
-<li><a href="#org498c833">21. Future Directions</a></li>
-<li><a href="#orge37f5b4">22. Conclusion</a></li>
-<li><a href="#org360eb32">23. Scratch</a></li>
-<li><a href="#orga7bd013">24. What about other transient servers?</a></li>
-<li><a href="#org45b54b6">25. Why</a></li>
+<li><a href="#org4f34d16">17. Job failure reduction</a></li>
+<li><a href="#orgc91628f">18. Checkpointing overhead</a></li>
+<li><a href="#org502b1da">19. SciSpot eval?</a></li>
+<li><a href="#org3a6395c">20. Related Work</a></li>
+<li><a href="#org5e8bb6a">21. Future Directions</a></li>
+<li><a href="#orgd594af4">22. Conclusion</a></li>
+<li><a href="#org9f15931">23. END</a></li>
+<li><a href="#orgd0e9d3a">24. Scratch</a></li>
+<li><a href="#orgd2a998b">25. What about other transient servers?</a></li>
+<li><a href="#org23d8655">26. Why</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org28480bd" class="outline-2">
-<h2 id="org28480bd"><span class="section-number-2">1</span> Title Slide</h2>
+<div id="outline-container-orgfd41f21" class="outline-2">
+<h2 id="orgfd41f21"><span class="section-number-2">1</span> Title Slide</h2>
 </div>
 
-<div id="outline-container-org026723b" class="outline-2">
-<h2 id="org026723b"><span class="section-number-2">2</span> Transient Cloud VMs : Opportunities and Challenges</h2>
+<div id="outline-container-org004f70a" class="outline-2">
+<h2 id="org004f70a"><span class="section-number-2">2</span> Transient Cloud VMs : Opportunities and Challenges</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Low-cost VMs that can be preempted unilaterally</li>
@@ -282,8 +305,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 
-<div id="outline-container-orga845620" class="outline-3">
-<h3 id="orga845620"><span class="section-number-3">2.1</span> Challenge: How to mitigate preemptions</h3>
+<div id="outline-container-org77355e7" class="outline-3">
+<h3 id="org77355e7"><span class="section-number-3">2.1</span> Challenge: How to mitigate preemptions</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Two main techniques:
@@ -304,8 +327,8 @@ Two main techniques:
 </div>
 
 
-<div id="outline-container-org1819987" class="outline-2">
-<h2 id="org1819987"><span class="section-number-2">3</span> Preemption Modeling Thus Far</h2>
+<div id="outline-container-org5503ebc" class="outline-2">
+<h2 id="org5503ebc"><span class="section-number-2">3</span> Preemption Modeling State of the Art</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>EC2 spot instances extensively analyzed</li>
@@ -319,17 +342,20 @@ Two main techniques:
 <ul class="org-ul">
 <li>This paper: Google Preemptible VMs</li>
 <li>Flat price -&gt; price based approaches not applicable</li>
-<li>Distinguishing feature: Maximum lifetime of 24 hours. <b>Temporally constrained</b></li>
+<li>Distinguishing feature: Maximum lifetime of 24 hours. 
+<ul class="org-ul">
+<li><b>Temporally constrained</b></li>
+</ul></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgdf99d90" class="outline-2">
-<h2 id="orgdf99d90"><span class="section-number-2">4</span> Research Questions</h2>
+<div id="outline-container-orgd037dd4" class="outline-2">
+<h2 id="orgd037dd4"><span class="section-number-2">4</span> Research Questions</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-<b>Do they have different preemption characteristics?</b>
+<b>Do GCP VMs have different preemption characteristics?</b>
 <b>If so, what is the impact on applications?</b>
 <b>Can we develop a model for temporally constrained preemptions?</b>
 <b>Policies for checkpointing and scheduling based on the model</b> 
@@ -338,8 +364,8 @@ Two main techniques:
 </div>
 
 
-<div id="outline-container-orge15d2c6" class="outline-2">
-<h2 id="orge15d2c6"><span class="section-number-2">5</span> Outline</h2>
+<div id="outline-container-orgf0b98bb" class="outline-2">
+<h2 id="orgf0b98bb"><span class="section-number-2">5</span> Outline</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>Motivation</li>
@@ -354,8 +380,8 @@ Two main techniques:
 </div>
 
 
-<div id="outline-container-org9f36d72" class="outline-2">
-<h2 id="org9f36d72"><span class="section-number-2">6</span> Empirical analysis of preemptions</h2>
+<div id="outline-container-org3488e90" class="outline-2">
+<h2 id="org3488e90"><span class="section-number-2">6</span> Empirical analysis of preemptions</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>Flat pricing -&gt; Empirical approach required</li>
@@ -367,8 +393,8 @@ Two main techniques:
 </div>
 
 
-<div id="outline-container-org07c0740" class="outline-2">
-<h2 id="org07c0740"><span class="section-number-2">7</span> Observation 1: Preemptions are Bathtub shaped</h2>
+<div id="outline-container-orgc13bd01" class="outline-2">
+<h2 id="orgc13bd01"><span class="section-number-2">7</span> Observation 1: Preemptions are Bathtub shaped</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 [Figure 1 with only the Empirical Data]
@@ -389,8 +415,8 @@ Preemption rates are non-uniform and have three distinct phases:
 </div>
 </div>
 
-<div id="outline-container-orgf834de1" class="outline-2">
-<h2 id="orgf834de1"><span class="section-number-2">8</span> Observation 2: Holds across different types and times</h2>
+<div id="outline-container-org711d94d" class="outline-2">
+<h2 id="org711d94d"><span class="section-number-2">8</span> Observation 2: Holds across different types and times</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 [Figure 2a, 2b] 
@@ -404,8 +430,8 @@ Preemption rates are non-uniform and have three distinct phases:
 </div>
 
 
-<div id="outline-container-orgd5a8668" class="outline-2">
-<h2 id="orgd5a8668"><span class="section-number-2">9</span> Constrained Preemptions are Not Memoryless</h2>
+<div id="outline-container-orgf3ecdef" class="outline-2">
+<h2 id="orgf3ecdef"><span class="section-number-2">9</span> Constrained Preemptions are Not Memoryless</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 Conventional reliability modeling, memoryless exponential failures:
@@ -423,8 +449,8 @@ Conventional reliability modeling, memoryless exponential failures:
 </div>
 
 
-<div id="outline-container-org167cd87" class="outline-2">
-<h2 id="org167cd87"><span class="section-number-2">10</span> Constrained Preemptions are Difficult to model with existing failure distributions</h2>
+<div id="outline-container-org43cdfa3" class="outline-2">
+<h2 id="org43cdfa3"><span class="section-number-2">10</span> Constrained Preemptions are Difficult to model with existing failure distributions</h2>
 <div class="outline-text-2" id="text-10">
 <ul class="org-ul">
 <li>Can we fit preemptions using other failure distributions?</li>
@@ -443,8 +469,8 @@ Conventional reliability modeling, memoryless exponential failures:
 </div>
 
 
-<div id="outline-container-org29898d2" class="outline-2">
-<h2 id="org29898d2"><span class="section-number-2">11</span> Our Model For Temporally constrained preemptions</h2>
+<div id="outline-container-org62fa30f" class="outline-2">
+<h2 id="org62fa30f"><span class="section-number-2">11</span> Our Model For Temporally constrained preemptions</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
 <li>Intuition: 2 failure processes.</li>
@@ -465,12 +491,16 @@ Our model uses four parameters:
 <li>b: Activation time of final phase</li>
 <li>A: Scaling constant</li>
 </ul>
+
+<p>
+[Animation of the above by adding different parameters would be great ]
+</p>
 </div>
 </div>
 
 
-<div id="outline-container-orgd0e1ad1" class="outline-2">
-<h2 id="orgd0e1ad1"><span class="section-number-2">12</span> Model Characteristics</h2>
+<div id="outline-container-org9b10590" class="outline-2">
+<h2 id="org9b10590"><span class="section-number-2">12</span> Model Characteristics</h2>
 <div class="outline-text-2" id="text-12">
 <ul class="org-ul">
 <li>Fit using least squares</li>
@@ -486,8 +516,8 @@ Our model uses four parameters:
 </div>
 
 
-<div id="outline-container-org441fa92" class="outline-2">
-<h2 id="org441fa92"><span class="section-number-2">13</span> Impact on Application Performance</h2>
+<div id="outline-container-org4f3bdde" class="outline-2">
+<h2 id="org4f3bdde"><span class="section-number-2">13</span> Impact on Application Performance</h2>
 <div class="outline-text-2" id="text-13">
 <ul class="org-ul">
 <li>Bathtub preemptions significantly different from uniform preemptions</li>
@@ -496,7 +526,7 @@ Our model uses four parameters:
 
 
 <p>
-[Fig  ]
+[Fig 4b ]
 </p>
 
 <p>
@@ -509,8 +539,8 @@ Takeaway:
 </div>
 </div>
 
-<div id="outline-container-orgaed696e" class="outline-2">
-<h2 id="orgaed696e"><span class="section-number-2">14</span> Job Scheduling and VM Reuse Policy</h2>
+<div id="outline-container-orgca78648" class="outline-2">
+<h2 id="orgca78648"><span class="section-number-2">14</span> Job Scheduling and VM Reuse Policy</h2>
 <div class="outline-text-2" id="text-14">
 <ul class="org-ul">
 <li>Tradeoff faced by jobs: either continue running on an "old" VM, or run on a newly launched VM.</li>
@@ -526,47 +556,57 @@ Takeaway:
 
 
 
-<div id="outline-container-orgb75500d" class="outline-2">
-<h2 id="orgb75500d"><span class="section-number-2">15</span> Checkpointing Policy</h2>
+<div id="outline-container-org9e564c2" class="outline-2">
+<h2 id="org9e564c2"><span class="section-number-2">15</span> Checkpointing Policy</h2>
 <div class="outline-text-2" id="text-15">
 <ul class="org-ul">
-<li>Non-uniform preemption rates -&gt; classical Young-Daly approach for exponential failure rates not ideal</li>
-<li>Our approach: Use Dynamic programming to compute the "optimal" checkpointing schedule for a job</li>
+<li>Classic Young-Daly approach: \(\tau = \sqrt{MTTF*\delta}\), where \(\delta\) is checkpoint write time</li>
+<li>Non-uniform preemption rates -&gt;  rates not ideal</li>
+<li>Our approach: Use Dynamic Programming to compute the "optimal" checkpointing schedule for a job</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org18600d4" class="outline-2">
-<h2 id="org18600d4"><span class="section-number-2">16</span> SciSpot</h2>
+<div id="outline-container-orgaa0552c" class="outline-2">
+<h2 id="orgaa0552c"><span class="section-number-2">16</span> SciSpot: A Batch Computing Service</h2>
 <div class="outline-text-2" id="text-16">
 <ul class="org-ul">
-<li>System</li>
-<li>Scientific computing</li>
-<li>Figure 3</li>
+<li>Implemented a system for running scientific computing applications on Preemptible VMs</li>
+<li>One more sentence here&#x2026;</li>
+</ul>
+
+<p>
+[Figure 3 ]
+</p>
+</div>
+
+<div id="outline-container-org56f467f" class="outline-3">
+<h3 id="org56f467f"><span class="section-number-3">16.1</span> Evaluation setup</h3>
+<div class="outline-text-3" id="text-16-1">
+<ul class="org-ul">
+<li>Simulation workloads: LULESH, Nanoconfinement, Shapes</li>
 </ul>
 </div>
-
-<div id="outline-container-org752e179" class="outline-3">
-<h3 id="org752e179"><span class="section-number-3">16.1</span> Evaluation setup</h3>
 </div>
 </div>
 
 
-<div id="outline-container-org1d24b47" class="outline-2">
-<h2 id="org1d24b47"><span class="section-number-2">17</span> Job failure reduction</h2>
+<div id="outline-container-org4f34d16" class="outline-2">
+<h2 id="org4f34d16"><span class="section-number-2">17</span> Job failure reduction</h2>
 <div class="outline-text-2" id="text-17">
 <p>
 [Figure 6]
 </p>
 
-<p>
-Job failure probability is reduced because of the VM reuse policy of not launching jobs near the end of the VM's lifetime. 
-</p>
+<ul class="org-ul">
+<li>VM reuse policy does not launch jobs near the end of the VM's lifetime.</li>
+<li>Job failure probability is reduced by up to 3x</li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-org1a25a25" class="outline-2">
-<h2 id="org1a25a25"><span class="section-number-2">18</span> Checkpointing</h2>
+<div id="outline-container-orgc91628f" class="outline-2">
+<h2 id="orgc91628f"><span class="section-number-2">18</span> Checkpointing overhead</h2>
 <div class="outline-text-2" id="text-18">
 <p>
 [Figure 8a] 
@@ -574,7 +614,7 @@ Job failure probability is reduced because of the VM reuse policy of not launchi
 
 <ul class="org-ul">
 <li>Checkpointing overhead is lower with our policy</li>
-<li>Young-daly with initial high failure rate: high overhead</li>
+<li>Young-daly with initial high failure rate: higher frequency and overhead</li>
 </ul>
 
 
@@ -584,46 +624,76 @@ Better than YD
 </div>
 </div>
 
-<div id="outline-container-org3e6c76b" class="outline-2">
-<h2 id="org3e6c76b"><span class="section-number-2">19</span> SciSpot eval?</h2>
+<div id="outline-container-org502b1da" class="outline-2">
+<h2 id="org502b1da"><span class="section-number-2">19</span> SciSpot eval?</h2>
 <div class="outline-text-2" id="text-19">
 <ul class="org-ul">
 <li>Costs are low</li>
 <li>Early preemptions plus low means overhead is low</li>
 </ul>
+
+<p>
+[ Fig 9a]
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgf43eeef" class="outline-2">
-<h2 id="orgf43eeef"><span class="section-number-2">20</span> Related Work</h2>
+<div id="outline-container-org3a6395c" class="outline-2">
+<h2 id="org3a6395c"><span class="section-number-2">20</span> Related Work</h2>
 <div class="outline-text-2" id="text-20">
 <ol class="org-ol">
-<li>Spot stuff lame</li>
+<li>Spot price modeling</li>
+<li>Systems using google preemptible VMs</li>
+<li>Failure modeling</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-org498c833" class="outline-2">
-<h2 id="org498c833"><span class="section-number-2">21</span> Future Directions</h2>
+<div id="outline-container-org5e8bb6a" class="outline-2">
+<h2 id="org5e8bb6a"><span class="section-number-2">21</span> Future Directions</h2>
 <div class="outline-text-2" id="text-21">
+<ol class="org-ol">
+<li>What if preemption characteristics change? 
 <ul class="org-ul">
-<li>What if things change?</li>
-<li>Phase-wise model</li>
-<li>Bathtub preemption stat mech??</li>
-</ul>
+<li>This paper studies the fundamental characteristics of temporally constrained preemptions</li>
+<li>Current model fairly robust as long as general bathtub shape is maintained</li>
+<li>Model drift can be detected when model specifics change</li>
+</ul></li>
+
+<li>Simpler models for constrained preemptions 
+<ul class="org-ul">
+<li>Phase-wise model: Fit separate models to the 2/3 different segments</li>
+</ul></li>
+</ol>
 </div>
 </div>
 
-<div id="outline-container-orge37f5b4" class="outline-2">
-<h2 id="orge37f5b4"><span class="section-number-2">22</span> Conclusion</h2>
+
+<div id="outline-container-orgd594af4" class="outline-2">
+<h2 id="orgd594af4"><span class="section-number-2">22</span> Conclusion</h2>
+<div class="outline-text-2" id="text-22">
+<ol class="org-ol">
+<li>Google Preemptible VMs: 24 hour lifetime</li>
+<li>Temporally constrained preemptions: new type of transient resource availability</li>
+<li>Empirical study of &gt;1000 preemptions shows bathtub, and not uniform preemptions</li>
+<li>We develop a multiple failure rate model</li>
+<li>Scheduling and checkpointing policies improve job running times by _X.</li>
+</ol>
+</div>
 </div>
 
-
-
-
-<div id="outline-container-org360eb32" class="outline-2">
-<h2 id="org360eb32"><span class="section-number-2">23</span> Scratch</h2>
+<div id="outline-container-org9f15931" class="outline-2">
+<h2 id="org9f15931"><span class="section-number-2">23</span> END</h2>
 <div class="outline-text-2" id="text-23">
+<p>
+Thanks 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd0e9d3a" class="outline-2">
+<h2 id="orgd0e9d3a"><span class="section-number-2">24</span> Scratch</h2>
+<div class="outline-text-2" id="text-24">
 <ul class="org-ul">
 <li>How frequently preemptions occur?</li>
 <li>Useful for fault-tolerance policies such as periodic checkpointing.</li>
@@ -633,9 +703,9 @@ Better than YD
 </div>
 
 
-<div id="outline-container-orga7bd013" class="outline-2">
-<h2 id="orga7bd013"><span class="section-number-2">24</span> What about other transient servers?</h2>
-<div class="outline-text-2" id="text-24">
+<div id="outline-container-orgd2a998b" class="outline-2">
+<h2 id="orgd2a998b"><span class="section-number-2">25</span> What about other transient servers?</h2>
+<div class="outline-text-2" id="text-25">
 <ul class="org-ul">
 <li>Preemption models are different</li>
 <li>This paper: focus on <i>temporally constrained</i> preemptions</li>
@@ -646,9 +716,9 @@ Better than YD
 
 
 
-<div id="outline-container-org45b54b6" class="outline-2">
-<h2 id="org45b54b6"><span class="section-number-2">25</span> Why</h2>
-<div class="outline-text-2" id="text-25">
+<div id="outline-container-org23d8655" class="outline-2">
+<h2 id="org23d8655"><span class="section-number-2">26</span> Why</h2>
+<div class="outline-text-2" id="text-26">
 <ol class="org-ol">
 <li>Allow principled policies</li>
 <li>New type of preemption model that is not governed by price</li>
@@ -659,7 +729,7 @@ Better than YD
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: prateek s</p>
-<p class="date">Created: 2020-05-17 Sun 11:38</p>
+<p class="date">Created: 2020-05-20 Wed 11:31</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
