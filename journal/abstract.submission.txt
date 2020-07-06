@@ -1,0 +1,7 @@
+Although transient servers can be used to lower the costs of running scientific computing applications on the cloud, their frequent preemptions and resource heterogeneity makes their effective and efficient use challenging. 
+In this paper, we develop techniques for modeling and mitigating preemptions of transient cloud servers, and present SciSpot, a software framework for running scientific applications at low cost on the cloud. 
+SciSpot deploys applications on Google Cloud Preemptible VMs, and introduces the first empirical and analytical model for their preemptions. 
+SciSpot introduces and implements model-driven techniques for selecting the optimal transient cloud server by considering their cost, performance, and preemption rates. 
+SciSpot reduces costs by 5x compared to conventional cloud deployments, and makespans by up to $10\times$ compared to conventional HPC clusters.
+
+% In this paper, we develop techniques for mitigating preemptions of Google Preemptible VMs through large-scale empirical evaluation and analytical modeling.

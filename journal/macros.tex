@@ -1,0 +1,82 @@
+\newcommand{\sysname}{Our service\xspace}
+
+%\newcommand{\comment}[1]{{\color{blue}[\textsf{#1}]}}
+
+%\newcommand{\TODO}[1]{\comment{TODO: #1}}
+%\renewcommand{\paragraph}[1]{\textbf{#1}}
+
+
+\RequirePackage[normalem]{ulem}
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1}
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}}
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}
+%DIF SAFE PREAMBLE
+\providecommand{\DIFaddbegin}{}
+\providecommand{\DIFaddend}{}
+\providecommand{\DIFdelbegin}{}
+\providecommand{\DIFdelend}{}
+%DIF FLOATSAFE PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}}
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}}
+\providecommand{\DIFaddbeginFL}{}
+\providecommand{\DIFaddendFL}{}
+\providecommand{\DIFdelbeginFL}{}
+\providecommand{\DIFdelendFL}{}
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\def\Section {\S}
+
+\newcommand{\squishlist}{
+ \begin{list}{$\bullet$}
+  { \setlength{\itemsep}{0pt}
+     \setlength{\parsep}{3pt}
+     \setlength{\topsep}{3pt}
+     \setlength{\partopsep}{0pt}
+     \setlength{\leftmargin}{1.5em}
+     \setlength{\labelwidth}{1em}
+     \setlength{\labelsep}{0.5em} } }
+	
+\newcommand{\squishlisttwo}{
+ \begin{list}{$\bullet$}
+  { \setlength{\itemsep}{0pt}
+     \setlength{\parsep}{0pt}
+    \setlength{\topsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\leftmargin}{2em}
+    \setlength{\labelwidth}{1.5em}
+    \setlength{\labelsep}{0.5em} } }
+
+\newcommand{\squishend}{
+  \end{list}  }
+
+\newcommand{\alert}[1] {\textcolor{red} {\textsc{#1}}}
+
+\newcommand{\myfbox}[1] {\noindent \fbox{\parbox{0.5\textwidth} {#1}}}
+
+\newcommand{\mhead}[1] {\noindent \textbf{#1}}
+
+\newcommand*\mean[1]{\overline{#1}}
+
+\newcommand{\eat}[1]{}
+
+\newcommand{\compresslist}{%
+  \setlength{\itemsep}{1pt}%
+  \setlength{\leftmargin}{1.5em}
+  \setlength{\labelwidth}{1em}
+  \setlength{\parskip}{0pt}%
+  \setlength{\parsep}{0pt}%
+%  \setlength{\itemindent}{-10pt}%
+}
+
+\newcommand{\myfigspace}[0]{-0.45cm}
+\newcommand{\bigfigspace}[0]{-0.9cm}
+\newcommand{\captionspace}[0]{-0.5cm}
+\newcommand{\subsecspace}[0]{-0.20cm}
+\newcommand{\largesubsecspace}[0]{-0.40cm}
+\newcommand{\tightext}[0]{-0.12cm}
+\newcommand{\eqnspace}[0]{-0.1cm}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End:

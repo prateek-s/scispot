@@ -1,0 +1,28 @@
+\section{Checkpointing Policies}
+
+High rate of failure means that especially for long jobs, checkpointing is necessary.
+In this section, we develop checkpointing policies.
+
+At a high level, we only checkpoint long jobs, based on the probability of preemption.
+
+Once checkpointing for a job is enabled, we use proactive periodic checkpointing.
+
+DMTCP is used for checkpointing MPI programs.
+
+Conventionally, periodic checkpointing according to Young-Daly formula: $\tau=\sqrt{2\cdot\delta\cdot\text{MTTF}}$.
+This assumes that failure arrival process is exponentially distributed.
+
+However, this may not always hold true.
+Clearly, from Figure 1, the CDF is not exponential.
+
+Much more strongly ``bath-tub''. Maybe can use exponentiated Weibull to model the failures.
+
+Regardless, because it is not memoryless, the checkpointing interval cannot be uniform. Maybe can use~\cite{bougeret_checkpointing_2011}, which uses dynamic programming and also comes with a simulator of sorts. 
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End:

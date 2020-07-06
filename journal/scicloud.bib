@@ -1,0 +1,434 @@
+
+@inproceedings{marathe2014exploiting,
+  title={Exploiting redundancy for cost-effective, time-constrained execution of HPC applications on amazon EC2},
+  author={Marathe, Aniruddha and Harris, Rachel and Lowenthal, David and De Supinski, Bronis R and Rountree, Barry and Schulz, Martin},
+  booktitle={HPDC},
+  year={2014},
+  organization={ACM}
+}
+
+@inproceedings{spoton,
+  title={Spot{O}n: A {B}atch {C}omputing {S}ervice for the {S}pot {M}arket},
+  author={S. Subramanya and T. Guo and P. Sharma and D. Irwin and P. Shenoy},
+  booktitle={SOCC},
+  year={2015},
+  month = {August}
+}
+
+@inproceedings{exosphere,
+ title={Portfolio-driven Resource Management for Transient Cloud Servers},
+ author={Prateek Sharma and David Irwin and Prashant Shenoy},
+ booktitle={Proceedings of ACM Measurement and  Analysis of Computer Systems},
+ year={2017},
+ volume={1},
+ number={4},
+ pages={23},
+ month={June},
+ }
+
+
+@article{dongarra_fault_nodate,
+	title = {Fault tolerance techniques for high-performance computing},
+	abstract = {This report provides an introduction to resilience methods. The emphasis is on checkpointing, the de-facto standard technique for resilience in High Performance Computing. We present the main two protocols, namely coordinated checkpointing and hierarchical checkpointing. Then we introduce performance models and use them to assess the performance of theses protocols. We cover the Young/Daly formula for the optimal period and much more! Next we explain how the efﬁciency of checkpointing can be improved via fault prediction or replication. Then we move to application-speciﬁc methods, such as ABFT. We conclude the report by discussing techniques to cope with silent errors (or silent data corruption).},
+	language = {en},
+	author = {Dongarra, Jack and Herault, Thomas and Robert, Yves},
+	pages = {66},
+	file = {Dongarra et al. - Fault tolerance techniques for high-performance co.pdf:/home/prateeks/Zotero/storage/Y57QWIYN/Dongarra et al. - Fault tolerance techniques for high-performance co.pdf:application/pdf}
+}
+
+
+
+@inproceedings{gong_monetary_2015,
+	address = {Austin, Texas},
+	title = {Monetary cost optimizations for {MPI}-based {HPC} applications on {Amazon} clouds: checkpoints and replicated execution},
+	isbn = {978-1-4503-3723-6},
+	shorttitle = {Monetary cost optimizations for {MPI}-based {HPC} applications on {Amazon} clouds},
+	url = {http://dl.acm.org/citation.cfm?doid=2807591.2807612},
+	doi = {10.1145/2807591.2807612},
+	abstract = {In this paper, we propose monetary cost optimizations for MPIbased applications with deadline constraints on Amazon EC2. Particularly, we consider to utilize two kinds of Amazon EC2 instances (on-demand and spot instances). As a spot instance can fail at any time due to out-of-bid events, fault tolerant executions are necessary. Through detailed studies, we have found that two common fault tolerant mechanisms, i.e., checkpoints and replicated executions, are complementary for cost-effective MPI executions on spot instances. We formulate the optimization problem and propose a novel cost model to minimize the expected monetary cost. The experimental results with NPB benchmarks on Amazon EC2 demonstrate that 1) it is feasible to run MPI applications with performance constraints on spot instances, 2) our proposal achieves signiﬁcant monetary cost reduction compared to the state-of-theart algorithm and 3) it is necessary to adaptively choose checkpoint and replication techniques for cost-effective and reliable MPI executions on Amazon EC2.},
+	language = {en},
+	urldate = {2019-02-20},
+	booktitle = {Proceedings of the {International} {Conference} for {High} {Performance} {Computing}, {Networking}, {Storage} and {Analysis} on - {SC} '15},
+	publisher = {ACM Press},
+	author = {Gong, Yifan and He, Bingsheng and Zhou, Amelie Chi},
+	year = {2015},
+	pages = {1--12},
+	file = {Gong et al. - 2015 - Monetary cost optimizations for MPI-based HPC appl.pdf:/home/prateeks/Zotero/storage/9QRIVZZH/Gong et al. - 2015 - Monetary cost optimizations for MPI-based HPC appl.pdf:application/pdf}
+}
+
+
+
+@article{iosup_performance_2011,
+	title = {Performance {Analysis} of {Cloud} {Computing} {Services} for {Many}-{Tasks} {Scientific} {Computing}},
+	volume = {22},
+	issn = {1045-9219},
+	url = {http://ieeexplore.ieee.org/document/5719609/},
+	doi = {10.1109/TPDS.2011.66},
+	abstract = {Cloud computing is an emerging commercial infrastructure paradigm that promises to eliminate the need for maintaining expensive computing facilities by companies and institutes alike. Through the use of virtualization and resource time-sharing, clouds serve with a single set of physical resources a large user base with different needs. Thus, clouds have the potential to provide to their owners the beneﬁts of an economy of scale and, at the same time, become an alternative for scientists to clusters, grids, and parallel production environments. However, the current commercial clouds have been built to support web and small database workloads, which are very different from typical scientiﬁc computing workloads. Moreover, the use of virtualization and resource time-sharing may introduce signiﬁcant performance penalties for the demanding scientiﬁc computing workloads. In this work we analyze the performance of cloud computing services for scientiﬁc computing workloads. We quantify the presence in real scientiﬁc computing workloads of Many-Task Computing (MTC) users, that is, of users who employ loosely coupled applications comprising many tasks to achieve their scientiﬁc goals. Then, we perform an empirical evaluation of the performance of four commercial cloud computing services including Amazon EC2, which is currently the largest commercial cloud. Last, we compare through trace-based simulation the performance characteristics and cost models of clouds and other scientiﬁc computing platforms, for general and MTC-based scientiﬁc computing workloads. Our results indicate that the current clouds need an order of magnitude in performance improvement to be useful to the scientiﬁc community, and show which improvements should be considered ﬁrst to address this discrepancy between offer and demand.},
+	language = {en},
+	number = {6},
+	urldate = {2019-02-04},
+	journal = {IEEE Transactions on Parallel and Distributed Systems},
+	author = {Iosup, A and Ostermann, S and Yigitbasi, M N and Prodan, R and Fahringer, T and Epema, D H J},
+	month = jun,
+	year = {2011},
+	pages = {931--945},
+	file = {Iosup et al. - 2011 - Performance Analysis of Cloud Computing Services f.pdf:/home/prateeks/Zotero/storage/PGAKG4XG/Iosup et al. - 2011 - Performance Analysis of Cloud Computing Services f.pdf:application/pdf}
+}
+
+
+@incollection{xiang_spotmpi:_2011,
+	address = {Berlin, Heidelberg},
+	title = {{SpotMPI}: {A} {Framework} for {Auction}-{Based} {HPC} {Computing} {Using} {Amazon} {Spot} {Instances}},
+	volume = {7017},
+	isbn = {978-3-642-24668-5 978-3-642-24669-2},
+	shorttitle = {{SpotMPI}},
+	url = {http://link.springer.com/10.1007/978-3-642-24669-2_11},
+	abstract = {The economy of scale offers cloud computing unlimited cost effective processing potentials. Theoretically, prices under fair market conditions should reﬂect the most reasonable costs of computations. The fairness is ensured by the mutual agreements between the sellers and the buyers. Resource use efﬁciency is automatically optimized in the process. While there is no lack of incentives for the cloud provider to offer auction-based computing platform, using these volatile platform for practical computing is a challenge. This paper reports a methodology and a toolkit designed to tame the challenges for MPI applications.},
+	language = {en},
+	urldate = {2019-02-04},
+	booktitle = {Algorithms and {Architectures} for {Parallel} {Processing}},
+	publisher = {Springer Berlin Heidelberg},
+	author = {Taifi, Moussa and Shi, Justin Y. and Khreishah, Abdallah},
+	editor = {Xiang, Yang and Cuzzocrea, Alfredo and Hobbs, Michael and Zhou, Wanlei},
+	year = {2011},
+	doi = {10.1007/978-3-642-24669-2_11},
+	pages = {109--120},
+	file = {Taifi et al. - 2011 - SpotMPI A Framework for Auction-Based HPC Computi.pdf:/home/prateeks/Zotero/storage/IH9FVWDC/Taifi et al. - 2011 - SpotMPI A Framework for Auction-Based HPC Computi.pdf:application/pdf}
+}
+
+
+@inproceedings{casanova_heuristics_2000,
+	title = {Heuristics for scheduling parameter sweep applications in grid environments},
+	doi = {10.1109/HCW.2000.843757},
+	abstract = {The computational grid provides a promising platform for the efficient execution of parameter sweep applications over very large parameter spaces. Scheduling such applications is challenging because target resources are heterogeneous, because their load and availability varies dynamically, and because independent tasks may share common data files. We propose an adaptive scheduling algorithm for parameter sweep applications on the grid. We modify standard heuristics for task/host assignment in perfectly predictable environments (max-min, min-min, Sufferage), and we propose an extension of Sufferage called XSufferage. Using simulation, we demonstrate that XSufferage can take advantage of file sharing to achieve better performance than the other heuristics. We also study the impact of inaccurate performance prediction on scheduling. Our study shows that: different heuristics behave differently when predictions are inaccurate; and an increased adaptivity leads to better performance.},
+	booktitle = {Proceedings 9th {Heterogeneous} {Computing} {Workshop} ({HCW} 2000) ({Cat}. {No}.{PR}00556)},
+	author = {Casanova, H. and Legrand, A. and Zagorodnov, D. and Berman, F.},
+	month = may,
+	year = {2000},
+	keywords = {Chromium, common data files, computational grid, distributed processing, heterogeneous resources, heuristics, host assignment, parameter sweep applications, performance evaluation, performance prediction, resource allocation, scheduling, simulation, Sufferage, task assignment, XSufferage},
+	pages = {349--363},
+	file = {IEEE Xplore Abstract Record:/home/prateeks/Zotero/storage/Z9P85R3L/843757.html:text/html;IEEE Xplore Full Text PDF:/home/prateeks/Zotero/storage/R2CVHACG/Casanova et al. - 2000 - Heuristics for scheduling parameter sweep applicat.pdf:application/pdf}
+}
+
+
+@article{alipourfard_cherrypick,
+	title = {{CherryPick}: {Adaptively} {Unearthing} the {Best} {Cloud} {Configurations} for {Big} {Data} {Analytics}},
+	abstract = {Picking the right cloud conﬁguration for recurring big data analytics jobs running in clouds is hard, because there can be tens of possible VM instance types and even more cluster sizes to pick from. Choosing poorly can signiﬁcantly degrade performance and increase the cost to run a job by 2-3x on average, and as much as 12x in the worst-case. However, it is challenging to automatically identify the best conﬁguration for a broad spectrum of applications and cloud conﬁgurations with low search cost. CherryPick is a system that leverages Bayesian Optimization to build performance models for various applications, and the models are just accurate enough to distinguish the best or close-to-the-best conﬁguration from the rest with only a few test runs. Our experiments on ﬁve analytic applications in AWS EC2 show that CherryPick has a 45-90\% chance to ﬁnd optimal conﬁgurations, otherwise near-optimal, saving up to 75\% search cost compared to existing solutions.},
+	language = {en},
+	author = {Alipourfard, Omid and Yu, Minlan},
+	pages = {15},
+	file = {Alipourfard and Yu - CherryPick Adaptively Unearthing the Best Cloud C.pdf:/home/prateeks/Zotero/storage/EGT49TVN/Alipourfard and Yu - CherryPick Adaptively Unearthing the Best Cloud C.pdf:application/pdf}
+}
+
+
+
+@inproceedings{yadwadkar_selecting_2017,
+	address = {Santa Clara, California},
+	title = {Selecting the \textit{best} {VM} across multiple public clouds: a data-driven performance modeling approach},
+	isbn = {978-1-4503-5028-0},
+	shorttitle = {Selecting the \textit{best} {VM} across multiple public clouds},
+	url = {http://dl.acm.org/citation.cfm?doid=3127479.3131614},
+	doi = {10.1145/3127479.3131614},
+	abstract = {Users of cloud services are presented with a bewildering choice of VM types and the choice of VM can have significant implications on performance and cost. In this paper we address the fundamental problem of accurately and economically choosing the best VM for a given workload and user goals. To address the problem of optimal VM selection, we present PARIS, a data-driven system that uses a novel hybrid offline and online data collection and modeling framework to provide accurate performance estimates with minimal data collection. PARIS is able to predict workload performance for different user-specified metrics, and resulting costs for a wide range of VM types and workloads across multiple cloud providers. When compared to sophisticated baselines, including collaborative filtering and a linear interpolation model using measured workload performance on two VM types, PARIS produces significantly better estimates of performance. For instance, it reduces runtime prediction error by a factor of 4 for some workloads on both AWS and Azure. The increased accuracy translates into a 45\% reduction in user cost while maintaining performance.},
+	language = {en},
+	urldate = {2019-02-15},
+	booktitle = {Proceedings of the 2017 {Symposium} on {Cloud} {Computing}  - {SoCC} '17},
+	publisher = {ACM Press},
+	author = {Yadwadkar, Neeraja J. and Hariharan, Bharath and Gonzalez, Joseph E. and Smith, Burton and Katz, Randy H.},
+	year = {2017},
+	pages = {452--465},
+	file = {Yadwadkar et al. - 2017 - Selecting the ibesti VM across multiple publi.pdf:/home/prateeks/Zotero/storage/CFNJTZTA/Yadwadkar et al. - 2017 - Selecting the ibesti VM across multiple publi.pdf:application/pdf}
+}
+
+
+
+@article{gari_learning_2019,
+	title = {Learning budget assignment policies for autoscaling scientific workflows in the cloud},
+	issn = {1386-7857, 1573-7543},
+	url = {http://link.springer.com/10.1007/s10586-018-02902-0},
+	doi = {10.1007/s10586-018-02902-0},
+	abstract = {Autoscalers exploit cloud-computing elasticity to cope with the dynamic computational demands of scientiﬁc workﬂows. Autoscalers constantly acquire or terminate virtual machines (VMs) on-the-ﬂy to execute workﬂows minimizing makespan and economic cost. One key problem of workﬂow autoscaling under budget constraints (i.e. with a maximum limit in cost) is determining the right proportion between: (a) expensive but reliable VMs called on-demand instances, and (b) cheaper but subject-to-failure VMs called spot instances. Spot instances can potentially provide huge parallelism possibilities at low costs but they must be used wisely as they can fail unexpectedly hindering makespan. Given the unpredictability of failures and the inherent performance variability of clouds, designing a policy for assigning the budget for each kind of instance is not a trivial task. For such reason we formalize the described problem as a Markov decision process that allows us learning near-optimal policies from the experience of other baseline policies. Experiments over four well-known scientiﬁc workﬂows, demonstrate that learned policies outperform the baseline policies considering the aggregated relative percentage difference of makespan and execution cost. These promising results encourage the future study of new strategies aiming to ﬁnd optimal budget policies applied to the execution of workﬂows in the cloud.},
+	language = {en},
+	urldate = {2019-02-18},
+	journal = {Cluster Computing},
+	author = {Garí, Yisel and Monge, David A. and Mateos, Cristian and García Garino, Carlos},
+	month = feb,
+	year = {2019},
+	file = {Garí et al. - 2019 - Learning budget assignment policies for autoscalin.pdf:/home/prateeks/Zotero/storage/WWRW9NT5/Garí et al. - 2019 - Learning budget assignment policies for autoscalin.pdf:application/pdf}
+}
+
+
+
+@inproceedings{zhai_cloud_2011,
+	address = {Seattle, Washington},
+	title = {Cloud versus in-house cluster: evaluating {Amazon} cluster compute instances for running {MPI} applications},
+	isbn = {978-1-4503-1139-7},
+	shorttitle = {Cloud versus in-house cluster},
+	url = {http://dl.acm.org/citation.cfm?doid=2063348.2063363},
+	doi = {10.1145/2063348.2063363},
+	abstract = {The emergence of cloud services brings new possibilities for constructing and using HPC platforms. However, while cloud services provide the ﬂexibility and convenience of customized, pay-as-you-go parallel computing, multiple previous studies in the past three years have indicated that cloudbased clusters need a signiﬁcant performance boost to become a competitive choice, especially for tightly coupled parallel applications.},
+	language = {en},
+	urldate = {2019-02-04},
+	booktitle = {State of the {Practice} {Reports} on - {SC} '11},
+	publisher = {ACM Press},
+	author = {Zhai, Yan and Liu, Mingliang and Zhai, Jidong and Ma, Xiaosong and Chen, Wenguang},
+	year = {2011},
+	pages = {1},
+	file = {Zhai et al. - 2011 - Cloud versus in-house cluster evaluating Amazon c.pdf:/home/prateeks/Zotero/storage/AAC4YC7Z/Zhai et al. - 2011 - Cloud versus in-house cluster evaluating Amazon c.pdf:application/pdf}
+}
+
+
+@article{walters_replication-based_2009,
+	title = {Replication-{Based} {Fault} {Tolerance} for {MPI} {Applications}},
+	volume = {20},
+	issn = {1045-9219},
+	doi = {10.1109/TPDS.2008.172},
+	abstract = {As computational clusters increase in size, their mean time to failure reduces drastically. Typically, checkpointing is used to minimize the loss of computation. Most checkpointing techniques, however, require central storage for storing checkpoints. This results in a bottleneck and severely limits the scalability of checkpointing, while also proving to be too expensive for dedicated checkpointing networks and storage systems. We propose a scalable replication-based MPI checkpointing facility. Our reference implementation is based on LAM/MPI; however, it is directly applicable to any MPI implementation. We extend the existing state of fault-tolerant MPI with asynchronous replication, eliminating the need for central or network storage. We evaluate centralized storage, a Sun-X4500-based solution, an EMC storage area network (SAN), and the Ibrix commercial parallel file system and show that they are not scalable, particularly after 64 CPUs. We demonstrate the low overhead of our checkpointing and replication scheme with the NAS Parallel Benchmarks and the High-Performance LINPACK benchmark with tests up to 256 nodes while demonstrating that checkpointing and replication can be achieved with a much lower overhead than that provided by current techniques. Finally, we show that the monetary cost of our solution is as low as 25 percent of that of a typical SAN/parallel-file-system-equipped storage system.},
+	number = {7},
+	journal = {IEEE Transactions on Parallel and Distributed Systems},
+	author = {Walters, J. P. and Chaudhary, V.},
+	month = jul,
+	year = {2009},
+	keywords = {application program interfaces, Benchmark testing, checkpointing, Checkpointing, checkpointing technique, computation loss minimisation, computational cluster, Computer networks, Concurrent computing, fault tolerance, Fault tolerance, fault-tolerance, File servers, file systems, File systems, file systems., message passing, MPI, MPI application, Network servers, replication-based fault tolerance, Scalability, Storage area networks, storage management, storage system, workstation clusters},
+	pages = {997--1010},
+	file = {IEEE Xplore Abstract Record:/home/prateeks/Zotero/storage/CMS7RPQZ/4633353.html:text/html;IEEE Xplore Full Text PDF:/home/prateeks/Zotero/storage/K3B49NRZ/Walters and Chaudhary - 2009 - Replication-Based Fault Tolerance for MPI Applicat.pdf:application/pdf}
+}
+
+
+
+@inproceedings{wolski_probabilistic_2017,
+	address = {Denver, Colorado},
+	title = {Probabilistic guarantees of execution duration for {Amazon} spot instances},
+	isbn = {978-1-4503-5114-0},
+	url = {http://dl.acm.org/citation.cfm?doid=3126908.3126953},
+	doi = {10.1145/3126908.3126953},
+	abstract = {In this paper we propose D AFTS – a methodology for implementing probabilistic guarantees of instance reliability in the Amazon Spot tier. Amazon o ers “unreliable” virtual machine instances (ones that may be terminated at any time) at a potentially large discount relative to “reliable” On-demand and Reserved instances. Our method predicts the “bid values” that users can specify to provision Spot instances which ensure at least a xed duration of execution with a given probability. We illustrate the method and test its validity using Spot pricing data post facto, both randomly and using real-world workload traces. We also test the e cacy of the method experimentally by using it to launch Spot instances and then observing the instance termination rate. Our results indicate that it is possible to obtain the same level of reliability from unreliable instances that the Amazon service level agreement guarantees for reliable instances with a greatly reduced cost.},
+	language = {en},
+	urldate = {2019-02-20},
+	booktitle = {Proceedings of the {International} {Conference} for {High} {Performance} {Computing}, {Networking}, {Storage} and {Analysis} on   - {SC} '17},
+	publisher = {ACM Press},
+	author = {Wolski, Rich and Brevik, John and Chard, Ryan and Chard, Kyle},
+	year = {2017},
+	pages = {1--11},
+	file = {Wolski et al. - 2017 - Probabilistic guarantees of execution duration for.pdf:/home/prateeks/Zotero/storage/EZKQL3FM/Wolski et al. - 2017 - Probabilistic guarantees of execution duration for.pdf:application/pdf}
+}
+
+
+@inproceedings{guo_bidding_2015,
+	address = {Portland, Oregon, USA},
+	title = {Bidding for {Highly} {Available} {Services} with {Low} {Price} in {Spot} {Instance} {Market}},
+	isbn = {978-1-4503-3550-8},
+	url = {http://dl.acm.org/citation.cfm?doid=2749246.2749259},
+	doi = {10.1145/2749246.2749259},
+	abstract = {Amazon EC2 has built the Spot Instance Marketplace and oﬀers a new type of virtual machine instances called as spot instances. These instances are less expensive but considered failure-prone. Despite the underlying hardware status, if the bidding price is lower than the market price, such an instance will be terminated.},
+	language = {en},
+	urldate = {2019-02-20},
+	booktitle = {Proceedings of the 24th {International} {Symposium} on {High}-{Performance} {Parallel} and {Distributed} {Computing} - {HPDC} '15},
+	publisher = {ACM Press},
+	author = {Guo, Weichao and Chen, Kang and Wu, Yongwei and Zheng, Weimin},
+	year = {2015},
+	pages = {191--202},
+	file = {Guo et al. - 2015 - Bidding for Highly Available Services with Low Pri.pdf:/home/prateeks/Zotero/storage/M64MDMCS/Guo et al. - 2015 - Bidding for Highly Available Services with Low Pri.pdf:application/pdf}
+}
+
+
+@inproceedings{bougeret_checkpointing_2011,
+	address = {Seattle, Washington},
+	title = {Checkpointing strategies for parallel jobs},
+	isbn = {978-1-4503-0771-0},
+	url = {http://dl.acm.org/citation.cfm?doid=2063384.2063428},
+	doi = {10.1145/2063384.2063428},
+	abstract = {This work provides an analysis of checkpointing strategies for minimizing expected job execution times in an environment that is subject to processor failures. In the case of both sequential and parallel jobs, we give the optimal solution for exponentially distributed failure inter-arrival times, which, to the best of our knowledge, is the ﬁrst rigorous proof that periodic checkpointing is optimal. For non-exponentially distributed failures, we develop a dynamic programming algorithm to maximize the amount of work completed before the next failure, which provides a good heuristic for minimizing the expected execution time. Our work considers various models of job parallelism and of parallel checkpointing overhead. We ﬁrst perform extensive simulation experiments assuming that failures follow Exponential or Weibull distributions, the latter being more representative of real-world systems. The obtained results not only corroborate our theoretical ﬁndings, but also show that our dynamic programming algorithm signiﬁcantly outperforms previously proposed solutions in the case of Weibull failures. We then discuss results from simulation experiments that use failure logs from production clusters. These results conﬁrm that our dynamic programming algorithm signiﬁcantly outperforms existing solutions for real-world clusters.},
+	language = {en},
+	urldate = {2019-02-22},
+	booktitle = {Proceedings of 2011 {International} {Conference} for {High} {Performance} {Computing}, {Networking}, {Storage} and {Analysis} on - {SC} '11},
+	publisher = {ACM Press},
+	author = {Bougeret, Marin and Casanova, Henri and Rabie, Mikael and Robert, Yves and Vivien, Frédéric},
+	year = {2011},
+	pages = {1},
+	file = {Bougeret et al. - 2011 - Checkpointing strategies for parallel jobs.pdf:/home/prateeks/Zotero/storage/M7YP7U2M/Bougeret et al. - 2011 - Checkpointing strategies for parallel jobs.pdf:application/pdf}
+}
+
+
+@article{dubey-jhpc-13,
+author = {Anshu Dubey and Alan C. Calder and Christopher Daley and Robert T. Fisher and C. Graziani and George C. Jordan and Donald Q. Lamb and Lynn B. Reid and Dean M. Townsley and Klaus Weide},
+title ={Pragmatic optimizations for better scientific utilization of large supercomputers},
+journal = {The International Journal of High Performance Computing Applications},
+volume = {27},
+number = {3},
+pages = {360-373},
+year = {2013},
+doi = {10.1177/1094342012464404},
+
+URL = { 
+        https://doi.org/10.1177/1094342012464404
+    
+},
+eprint = { 
+        https://doi.org/10.1177/1094342012464404
+    
+}
+,
+    abstract = { Advances in modeling and algorithms, combined with growth in computing resources, have enabled simulations of multiphysics–multiscale phenomena that can greatly enhance our scientific understanding. However, on currently available high-performance computing (HPC) resources, maximizing the scientific outcome of simulations requires many trade-offs. In this paper we describe our experiences in running simulations of the explosion phase of Type Ia supernovae on the largest available platforms. The simulations use FLASH, a modular, adaptive mesh, parallel simulation code with a wide user base. The simulations use multiple physics components: hydrodynamics, gravity, a sub-grid flame model, a three-stage burning model, and a degenerate equation of state. They also use Lagrangian tracer particles, which are then post-processed to determine the nucleosynthetic yields. We describe the simulation planning process, and the algorithmic optimizations and trade-offs that were found to be necessary. Several of the optimizations and trade-offs were made during the course of the simulations as our understanding of the challenges evolved, or when simulations went into previously unexplored physical regimes. We also briefly outline the anticipated challenges of, and our preparations for, the next-generation computing platforms. }
+}
+
+
+@inproceedings{hourglass-eurosys19,
+ author = {Joaquim, Pedro and Bravo, Manuel and Rodrigues, Lu\'{\i}s and Matos, Miguel},
+ title = {Hourglass: Leveraging Transient Resources for Time-Constrained Graph Processing in the Cloud},
+ booktitle = {Proceedings of the Fourteenth EuroSys Conference 2019},
+ series = {EuroSys '19},
+ year = {2019},
+ isbn = {978-1-4503-6281-8},
+ location = {Dresden, Germany},
+ pages = {35:1--35:16},
+ articleno = {35},
+ numpages = {16},
+ url = {http://doi.acm.org/10.1145/3302424.3303964},
+ doi = {10.1145/3302424.3303964},
+ acmid = {3303964},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {cloud computing, graph processing, time-constrained, transient resources},
+} 
+
+@inproceedings{cmu-atlas,
+  title={On the diversity of cluster workloads and its impact on research results},
+  author={Amvrosiadis, George and Park, Jun Woo and Ganger, Gregory R and Gibson, Garth A and Baseman, Elisabeth and DeBardeleben, Nathan},
+  booktitle={2018 $\{$USENIX$\}$ Annual Technical Conference ($\{$USENIX$\}$$\{$ATC$\}$ 18)},
+  pages={533--546},
+  year={2018}
+}
+
+
+@inproceedings{li2018metis,
+  title={Metis: Robustly Tuning Tail Latencies of Cloud Systems},
+  author={Li, Zhao Lucis and Liang, Chieh-Jan Mike and He, Wenjia and Zhu, Lianjie and Dai, Wenjun and Jiang, Jin and Sun, Guangzhong},
+  booktitle={2018 $\{$USENIX$\}$ Annual Technical Conference ($\{$USENIX$\}$$\{$ATC$\}$ 18)},
+  pages={981--992},
+  year={2018}
+}
+
+
+@inproceedings{marathe2013comparative,
+  title={A comparative study of high-performance computing on the cloud},
+  author={Marathe, Aniruddha and Harris, Rachel and Lowenthal, David K and De Supinski, Bronis R and Rountree, Barry and Schulz, Martin and Yuan, Xin},
+  booktitle={Proceedings of the 22nd international symposium on High-performance parallel and distributed computing},
+  pages={239--250},
+  year={2013},
+  organization={ACM}
+}
+
+
+
+@article{galante_analysis_2016,
+	title = {An {Analysis} of {Public} {Clouds} {Elasticity} in the {Execution} of {Scientific} {Applications}: a {Survey}},
+	volume = {14},
+	issn = {1570-7873, 1572-9184},
+	shorttitle = {An {Analysis} of {Public} {Clouds} {Elasticity} in the {Execution} of {Scientific} {Applications}},
+	url = {http://link.springer.com/10.1007/s10723-016-9361-3},
+	doi = {10.1007/s10723-016-9361-3},
+	language = {en},
+	number = {2},
+	urldate = {2019-02-04},
+	journal = {Journal of Grid Computing},
+	author = {Galante, Guilherme and Erpen De Bona, Luis Carlos and Mury, Antonio Roberto and Schulze, Bruno and da Rosa Righi, Rodrigo},
+	month = jun,
+	year = {2016},
+	pages = {193--216},
+	file = {Galante et al. - 2016 - An Analysis of Public Clouds Elasticity in the Exe.pdf:/home/prateeks/Zotero/storage/7NYYSE43/Galante et al. - 2016 - An Analysis of Public Clouds Elasticity in the Exe.pdf:application/pdf}
+}
+
+
+@article{varshney_autobot_2019,
+	title = {{AutoBoT} : {Resilient} and {Cost}-effective {Scheduling} of a {Bag} of {Tasks} on {Spot} {VMs}},
+	issn = {1045-9219},
+	shorttitle = {{AutoBoT}},
+	doi = {10.1109/TPDS.2018.2889851},
+	abstract = {Many data and task parallel applications can be modeled as a Bag of Tasks (BoT), and scheduled on distributed systems such as Grids, Clusters, and Clouds. We propose AutoBoT, a collection of scheduling strategies for BoTs with hard deadlines on Cloud Virtual Machines (VMs), to lower the overall monetary cost — a distinctive factor for Clouds. Besides reliable fixed-price VMs, AutoBoT uniquely reduces costs by including preemptible spot-priced VMs that are much cheaper, but are unreliable and have time-variant pricing. It guarantees timely completion by making active runtime decisions on pricing, number of VMs to acquire/release, and on task placement, checkpointing and migration. Our rigorous simulations of 7 Million BoT runs sampled from the Google cluster workload uses a realistic Cloud model and 6 months of Amazon EC2 pricing data to compare AutoBoT against two baseline algorithms. We analyze the impact of BoT size, data centers, time periods, deadline duration, loss budget and checkpointing strategies. AutoBoT often gives ≍ 80\% profit and rare but bounded losses, compared to using only fixed-price VMs. Further, its 100\% completion guarantee is 23 - 42\% better than using only spot-priced VMs which offer a similar profit.},
+	journal = {IEEE Transactions on Parallel and Distributed Systems},
+	author = {Varshney, P. and Simmhan, Y.},
+	year = {2019},
+	keywords = {Cloud computing, Google, Checkpointing, Reliability, Bag of tasks, Bot (Internet), Heuristics, Pricing, Scheduling, Spot pricing, Task analysis},
+	pages = {1--1},
+	file = {IEEE Xplore Abstract Record:/home/prateeks/Zotero/storage/I7Y4XDA9/8590769.html:text/html;IEEE Xplore Full Text PDF:/home/prateeks/Zotero/storage/4U9KGTQU/Varshney and Simmhan - 2019 - AutoBoT  Resilient and Cost-effective Scheduling .pdf:application/pdf}
+}
+
+
+
+@inproceedings{benedictis_cloud-aware_2014,
+	address = {Parma, Italy},
+	title = {Cloud-{Aware} {Development} of {Scientific} {Applications}},
+	isbn = {978-1-4799-4249-7},
+	url = {http://ieeexplore.ieee.org/document/6927041/},
+	doi = {10.1109/WETICE.2014.16},
+	abstract = {The potential of cloud computing is still underutilized in the scientiﬁc computing ﬁeld. Even if clouds probably are not ﬁt for high-end HPC applications, they could be profitably used to bring the power of economic and scalable parallel computing to the masses. But this requires simple and friendly development environments, able to exploit cloud scalability and to provide fault tolerance. This paper presents a framework built on the top of a cloud-aware platform (mOSAIC) for the development of bag-of-tasks scientiﬁc applications.},
+	language = {en},
+	urldate = {2019-02-04},
+	booktitle = {2014 {IEEE} 23rd {International} {WETICE} {Conference}},
+	publisher = {IEEE},
+	author = {Benedictis, Alessandra De and Rak, Massimiliano and Turtur, Mauro and Villano, Umberto},
+	month = jun,
+	year = {2014},
+	pages = {149--154},
+	file = {Benedictis et al. - 2014 - Cloud-Aware Development of Scientific Applications.pdf:/home/prateeks/Zotero/storage/6D4LB5V6/Benedictis et al. - 2014 - Cloud-Aware Development of Scientific Applications.pdf:application/pdf}
+}
+
+@article{buyya-hpc-survey,
+ author = {Netto, Marco A. S. and Calheiros, Rodrigo N. and Rodrigues, Eduardo R. and Cunha, Renato L. F. and Buyya, Rajkumar},
+ title = {HPC Cloud for Scientific and Business Applications: Taxonomy, Vision, and Research Challenges},
+ journal = {ACM Comput. Surv.},
+ issue_date = {April 2018},
+ volume = {51},
+ number = {1},
+ month = jan,
+ year = {2018},
+ issn = {0360-0300},
+ pages = {8:1--8:29},
+ articleno = {8},
+ numpages = {29},
+ url = {http://doi.acm.org/10.1145/3150224},
+ doi = {10.1145/3150224},
+ acmid = {3150224},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {HPC cloud, advisory systems, big data, charging models, high performance computing, parallel applications, resource allocation},
+
+} 
+
+
+@inproceedings{bot-2003,
+  title={Grid computing for bag of tasks applications},
+  author={Cirne, Walfredo and Brasileiro, Francisco and Sauve, Jacques and Andrade, Nazareno and Paranhos, Daniel and Santos-neto, Elizeu and Medeiros, Raissa},
+  booktitle={In Proc. of the 3rd IFIP Conference on E-Commerce, E-Business and EGovernment},
+  year={2003},
+  organization={IFIP},
+}
+
+@INPROCEEDINGS{gridbot,
+author={M. {Silberstein} and A. {Sharov} and D. {Geiger} and A. {Schuster}},
+booktitle={Proceedings of the Conference on High Performance Computing Networking, Storage and Analysis},
+title={GridBot: execution of bags of tasks in multiple grids},
+year={2009},
+volume={},
+number={},
+pages={1-12},
+keywords={grid computing;replication policy;dynamic arbitrary scheduling;UW Madison pool;EGEE;Open Science Grid;local cluster;Technion campus grid;BOT priority;BOT execution state;performance-oriented BOT;throughput-oriented BOT;volunteer computing grid;multiple grids;bags-of-tasks;GridBot},
+doi={10.1145/1654059.1654071},
+ISSN={2167-4329},
+month={Nov},}
+
+
+@INPROCEEDINGS{bats,
+author={A. {Oprescu} and T. {Kielmann}},
+booktitle={2010 IEEE Second International Conference on Cloud Computing Technology and Science},
+title={Bag-of-Tasks Scheduling under Budget Constraints},
+year={2010},
+volume={},
+number={},
+pages={351-359},
+keywords={cloud computing;constraint handling;electronic commerce;pattern clustering;scheduling;Bag-of-Tasks scheduling;reserved time interval;BaTS;budget constrained scheduler;multiple clouds;completion time minimization;DAS-3 multicluster system;cost oblivious round robin scheduler;Monitoring;Runtime;Schedules;Central Processing Unit;Scheduling algorithm;Resource management;Computational modeling;IaaS;runtime estimation;cost awareness},
+doi={10.1109/CloudCom.2010.32},
+ISSN={},
+month={Nov},}

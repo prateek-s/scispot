@@ -1,0 +1,117 @@
+\documentclass[sigconf]{acmart} %timestamp 
+% \documentclass[sigconf, review]{acmart} %timestamp 
+%, timestamp
+%\usepackage{usenix}
+%end of changed lines
+%\usepackage{times}
+%\usepackage{microtype}
+%\usepackage[hyphens]{url} %Option clash
+\usepackage{amsmath, amssymb, amsfonts, mathrsfs}
+\input{packages}
+
+\crefformat{section}{\S#2#1#3} % see manual of cleveref, section 8.2.1
+
+\input{macros}
+
+\newcommand{\sign}[1]{\operatorname{sign}\left({#1}\right)}
+
+
+\newcommand\prat[1]{\noindent \textcolor{red}{(Prateek: #1)}}
+%\newcommand\vikram[1]{\textcolor{blue}{(Vikram: #1)}}
+\newcommand\vikram[1]{\textcolor{blue}{(#1)}}
+%\newcommand\vj[1]{\textcolor{blue}{#1}} %for inline smaller changes
+
+%%%%%%%% For submission only
+
+% \setcopyright{acmcopyright}
+% \settopmatter{printacmref=true}
+% %\acmConference{ACM HPDC}{}{}
+% \acmPrice{}
+% \acmISBN{}
+% \acmDOI{}
+% \acmYear{2020}
+% \acmMonth{June}
+
+\settopmatter{printfolios=true}
+
+\copyrightyear{2020}
+\acmYear{2020}
+\setcopyright{acmcopyright}
+\acmConference[HPDC '20]{Proceedings of the 29th International Symposium on High-Performance Parallel and Distributed Computing}{June 23--26, 2020}{Stockholm, Sweden}
+\acmBooktitle{Proceedings of the 29th International Symposium on High-Performance Parallel and Distributed Computing (HPDC '20), June 23--26, 2020, Stockholm, Sweden}
+\acmPrice{15.00}
+\acmDOI{10.1145/3369583.3392671}
+\acmISBN{978-1-4503-7052-3/20/06}  
+
+%%%%%%%%%%%%%%%%%%%
+
+\raggedbottom
+
+\begin{document}
+% \title{SciSpot: A Framework for Low-cost Scientific Computing On Transient Cloud Servers}
+% \title{SciSpot: Scientific Computing On Transient Cloud Servers}
+%\title{Modeling Constrained Preemption Dynamics Of Transient Cloud Servers}
+%\title{Modeling The Constrained Preemptions Of Google Preemptible VMs}
+\title{Modeling The Temporally Constrained Preemptions of Transient Cloud VMs}
+
+%On? With? 
+\author{JCS Kadupitiya}
+\affiliation{Indiana University}
+\email{kadu@iu.edu}
+\author{Vikram Jadhao}
+\affiliation{Indiana University}
+\email{vjadhao@iu.edu}
+\author{Prateek Sharma}
+\affiliation{Indiana University}
+\email{prateeks@iu.edu}
+
+\begin{abstract}
+  %\input{abstract}
+  \input{abstract.prateek}
+\end{abstract}
+
+\maketitle
+
+% Procrastination has a good return on investment. You invest nothing and you get nothing. Unlike every other investment where you give up your time, your health, your optimism and you get nothing. 
+
+\input{intro3}
+
+\input{bg.prateek}
+%\input{background}
+
+\input{failmodel}
+
+\input{policies}
+
+%\input{design.prateek}
+
+%\input{ckpting}
+
+\input{impl}
+
+\input{eval2}
+
+\input{related}
+
+\input{discussion}
+
+\input{conclusion}
+
+%% 10 pages plus references 
+%\clearpage 
+
+{
+\bibliographystyle{acm}
+\interlinepenalty=10000 %%%%For fixing url-related errors only 
+\bibliography{scicloud,bagsjobs,spot-bid}
+%\bibliography{bagsjobs}
+}
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
