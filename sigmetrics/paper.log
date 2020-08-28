@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.27)  12 JUN 2020 20:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  28 AUG 2020 09:54
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
 **paper
 (./paper.tex
 LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 7 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 9 language(s) loaded.
 (./acmart.cls
 Document Class: acmart 2018/12/16 v1.57 Typesetting articles for the Associatio
 n for Computing Machinery
@@ -1862,12 +1862,12 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 22453 strings out of 494847
- 358582 string characters out of 6179080
- 483353 words of memory out of 5000000
- 24450 multiletter control sequences out of 15000+600000
+ 22453 strings out of 494805
+ 358582 string characters out of 6178000
+ 483503 words of memory out of 5000000
+ 24457 multiletter control sequences out of 15000+600000
  209388 words of font info for 502 fonts, out of 8000000 for 9000
- 220 hyphenation exceptions out of 8191
+ 242 hyphenation exceptions out of 8191
  60i,12n,94p,1328b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/us
 r/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{/usr/shar
