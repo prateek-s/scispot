@@ -325,6 +325,7 @@ As VMs get closer to their maximum lifetime imposed by the cloud operator, they 
 Shifting the argument ($t$) of this term by $b$ ensures that the exponential reclamation is only applicable near the end of the VM's maximum lifetime and does not dominate over the entire temporal range. 
 %As noted before, $1/\tau_2$ is the rate of this reclamation. 
 
+
 The analytical model and the associated  distribution function $\mathscr{F}$ introduced above provides a much better fit to the empirical data (Figure~\ref{fig:gcp1}) and captures the different phases of the preemption dynamics through parameters $\tau_1, \tau_2, b$, and $A$. These parameters can be obtained for a given empirical CDF using least squares function fitting methods (we use scipy's \texttt{optimize.curve\_fit} with the dogbox technique~\cite{scipy-fit}). The failure or preemption rate can be derived from this CDF as:
 \begin{equation}
   \label{eq:failrate}
@@ -340,7 +341,7 @@ In the absence of any prior work on constrained preemption dynamics, our aim is 
 Further generalization of this model to include more failure processes would introduce more parameters and reduce the generalization power. 
 %Exploring other approaches of modeling bathtub-type failure rates (e.g., exponential Weibull distributions) \cite{mudholkar1993exponentiated,crevecoeur1993model} is part of our future work. 
 
-
+\begin{comment}
 \noindent \textbf{Expected Lifetime:} Our analytical model also helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
 More formally, we define the expected lifetime of a VM ($\mathscr{L}$) as: 
 \begin{equation}
@@ -353,7 +354,7 @@ where $f(t)$ is the rate of preemptions of the VM (Equation~\ref{eq:failrate}).
 %Since preemptions require restarting a job and increase the job completion time, it may be more prudent to select transient VMs with higher expected lifetimes.
 
 This expected lifetime can be used in lieu of MTTF, for policies and applications that require a ``coarse-grained'' comparison of the preemption rates of servers of different types, which has been used for cost-minimizing server selection~\cite{flint}. 
-
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{statmech}

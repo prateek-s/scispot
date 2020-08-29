@@ -25,6 +25,8 @@ We will focus on long-running batch jobs that arise in many applications such as
 
 %\noindent \textbf{High-level System Architecture:} 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \vspace*{\subsecspace}
 \subsection{Impact On Running Time}
 
@@ -138,10 +140,13 @@ To compute the expected running time of a job of length $T$ starting at vm-age $
 The alternative is to discard the VM and launch a new VM, in which case the expected running time is $E[T_0]$. Our job-scheduling policy is simple: 
 When a job of running time $T$ attempts to start on a VM of age $s$, if $E[T_s] \leq E[T_0]$, then we run the job on the existing VM.
 Otherwise, a new VM is launched.
-  
+
+
+
 % hl
-This technique can also be used to find the job length $T^*$, when the transition occurs between re-using and launching a new VM.
-Thus, accurate job lengths are not necessary, and we only need to know whether $T<T^*$, and only a rough estimate of the job lengths is required. 
+This technique can also be used to find the job length $T^*$, when the transition occurs between re-using and launching a new VM. 
+%
+Accurate job lengths are not necessary, and we only need to know whether $T<T^*$, and only a rough estimate of the job lengths is required.
 We assume that because most scientific computing workloads involve exploration of some parameter space, they often have homogenenous running times. 
 % hl
 
@@ -161,6 +166,7 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 %Minimizing work wasted due to preemptions is a prerequisite to minimizing cost, and 
 
 \textbf{Simple Job Scheduling Policy.}
+The model can also be used for 
 
 \begin{comment}
 \vspace*{\subsecspace}
@@ -254,28 +260,28 @@ More checkpointing analysis is presented in Section~\ref{subsec:eval-ckpt}.
 % Explain how 
 \end{comment}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cost-aware VM Selection}
+\label{subsec:vm-selection}
 
-\subsection{VM Selection}
-
-\noindent \textbf{VM-selection} is an important optimization in cloud environments, because VMs have different tradeoffs of cost, performance, and preemption characteristics.
+VM-selection is an important optimization in cloud environments, because VMs have different tradeoffs of cost, performance, and preemption characteristics. 
 Application performance is affected by the size of the VM (due to network communication and parallel scaling overheads), and the preemption rates. 
 We propose to develop cost models for selecting the ``right'' type of  VMs that minimizes the expected job failure probability and cost by using the analytical preemption models. 
 %using our model to \emph{compute the expected average lifetime of a VM} enabling us to minimize the impact of preemptions on performance and overall cost.
-Initial analysis indicates that careful VM selection can reduce costs by  up to 30\%.  
+Our evaluation indicates that careful VM selection can reduce costs by  up to 30\%. 
 
 
-%\begin{comment}
-We note that this search is different from conventional speedup plots in which the objective is to determine how well an application scales with increasing amount of resources and parallelism. 
-In contrast, we \emph{fix} the total amount of resources allocated to the application's job ($=\mathcal{R}$), and only vary \emph{how} these resources are distributed, which affects communication overhead and hence the performance.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\begin{comment} % This is more from the parallelism angle.. 
+%We note that this search is different from conventional speedup plots in which the objective is to determine how well an application scales with increasing amount of resources and parallelism. 
+%In contrast, we \emph{fix} the total amount of resources allocated to the application's job ($=\mathcal{R}$), and only vary \emph{how} these resources are distributed, which affects communication overhead and hence the performance.
 %Weak
-We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.  
-%\end{comment}
-
-
+We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.
+%
 Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM type that minimizes the expected cost of running an application on \sysname. 
-
-\prat{Highlight tradeoffs here. Larger servers better but more preemption.}
-
 
 %Let $\mathcal{R}$ denote the total amount of computing resources requested for the job. For ease of exposition, let us assume that $\mathcal{R}$ is the total number of CPU cores.
 %Furthermore, let $r_i$ denote the ``size'' of the server of type $i$.
@@ -293,45 +299,13 @@ The overall expected cost of running a job can then be expressed as follows:
 \end{equation}
 Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected turnaround time of the job (accounting for preemptions) on $n_i$ servers of type $i$.
 %
-This turnaround time depends on whether the job needs to be recomputed because of preemptions, and is expressed as:
-\begin{align}
-  \label{eq:turnaround}
-  \vspace*{\eqnspace}
-  E[\mathcal{T}_{( i,n_i )}] &= T_{( i,n_i )} + E[\text{Recomputation Time}].
-\end{align}
-Here, $T_{( i,n_i )}$ is the base running time of a job without preemptions, which we obtain empirically as explained in the previous subsection.
-Since jobs have to be rerun when they fail due to preemptions, the recomputation time is:
-\begin{equation}
-  \label{eq:recomput}
-   E[\text{Recomputation Time}] = \frac{T_{( i,n_i )}}{2} \times P(\text{at least one preemption})
- \end{equation}
- Our expression of the recomputation time is based on the common assumption that jobs will fail at the half-way mark on average~\cite{daly2006higher, bougeret_checkpointing_2011}. 
-%
- The probability that at least one VM out of $n_i$ will be preempted during the job execution is:
-\begin{align}
-  \label{eq:pfail1}
-  P(\text{at least one preemption}) &= 1-P(\text{no preemptions}) \\
-                                 &= 1-\left(1-P\left(i,T_{(i, n_i)}\right)\right)^{n_i}.
-\end{align}
+This turnaround time depends on whether the job needs to be recomputed because of preemptions, and is given by Equation~\ref{eqn:10}.
 
-Here, $P(i, T_{(i, n_i)})$ denotes the probability of a preemption of a VM of type $i$ when a job of duration $T_{(i, n_i)}$ runs on it. 
-%
-It depends on the type of server, and its associated expected lifetime, and is defined as:
-\begin{equation}
-  \label{eq:pi}
-  P\left(i, T_{\left(i, n_i \right)}\right) = \text{min}\left(\dfrac{T_{(i, n_i)}}{E[L_i]}, 1\right),
-\end{equation}
+\prat{Highlight tradeoffs here. Larger servers better but more preemption.}
 
-\prat{All this is just E[T] eqn 10. }
 
-where $E[L_i]$ is the expected lifetime of the VM of type $i$ extracted using the preemption model (Equation~\ref{eq:expected-lifetime}).
-%As a first order approximation, the running time $t$ of the job can be chosen as $t=T_{( i,n_i )}$, where the latter is empirically obtained for a given application.
-We also assume that the running time of \emph{individual} jobs in a bag ($T$), will be smaller than the expected lifetime of the VMs, otherwise we will see no forward progress since the jobs will always be preempted before completion.
-This is a safe assumption, since more than 90\% HPC jobs are less than 2 hours long (Figure~\ref{fig:hpc-vs-scispot} inset), and the expected lifetime of transient VMs is more than 10 hours.
-This restriction only applies to individual jobs---\sysname can run large bags of jobs even if their total running time exceeds the VM lifetime by replenishing preempted VMs.
-%We again emphasize that $T$ is the running time of an \emph{individual} job, and that \sysname is designed for running large bags of small jobs, and that most HPC jobs are much smaller than the expected lifetimes, as we show in Section~\ref{sec:eval}. 
 
-\prat{Policy is to use older more stable VMs where possible}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Using Equations~\ref{eq:turnaround},\ref{eq:recomput}, and \ref{eq:pfail1}, the overall expected cost of running a job on transient cloud servers is obtained as:
 % \begin{equation}

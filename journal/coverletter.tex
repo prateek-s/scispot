@@ -1,40 +1,38 @@
+\documentclass{article}
 
-This is an extended version of our conference paper ``Modelling'' that appeared at ACM HPDC 2020.
+\begin{document}
+This is an extended version of our conference paper ``Modeling The Temporally Constrained Preemptions of Transient Cloud VMs'' that appeared at ACM HPDC 2020. 
 
-Significant changes in the paper:
+Compared to the preliminiary conference version, we have made significant new contributions to algorithms, system design and implementation, and experimental evaluation. 
 
-The \textbf{new technical contributions are:}
+\paragraph{New Technical Contributions:}
 
 \begin{enumerate}
 \item A new phenomological interpretation of the temporally constrained model using statistical mechanics. This gives insights about why the preemption rate is bathtub shaped.
 
-\item   Reliability modeling of the Hazard function, which enables ...
+\item Additional reliability modeling, including the hazard function of our model. 
 
-\item Minimizing the cost
+\item Cost-minimization techniques 
 
-\item A new VM scheduling policy using tipping points
+\item A new VM selection and reuse policy 
+
+\item The use of a new \emph{bag of jobs} abstraction for scientific computing applications. We show how this abstraction can be used for system design and implementation.
 
 \end{enumerate}
 
+\paragraph{New Empirical Evaluation.}
 This paper also adds empirical evaluation of the new techniques as well as extended evaluation of the entire system. In particular:
 
 \begin{enumerate}
-\item Comparison with HPC (Figure )
-\item Comparison with state of the art in transient server selection (ExoSphere), in Figure
-\item 
+\item Impact of VM selection, and analysis of running times of different Scientific computing applications. 
+\item Comparison with HPC waiting times (Figure ). 
+\item Comparison of SciSpot cost with the state of the art in transient server selection (ExoSphere), in Figure 
 \end{enumerate}
 
-1. Hazard Function
 
-2. Stat Mech + graph
-
-3. Cost minimization + 2 graphs
-
-4. Simple Tipping points policy  + graph
-
-5. Comparison with HPC waiting times graph
+\end{document}
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "paper"
+%%% TeX-master: "coverletter"
 %%% End:

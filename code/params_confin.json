@@ -1,0 +1,8 @@
+{ 
+    'Z' : {'type':'range', 'values':[3.0, 4.0]},
+    'p' : {'type':'set', 'values': [1, 2, 3]},
+    'n' : {'type':'set', 'values':[-1]},
+    'd' : {'type':'set', 'values': [0.714]},
+    'c' : {'type':'range', 'values':[0.3, 0.9]},
+}
+
