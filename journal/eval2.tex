@@ -158,32 +158,32 @@ Thus, our model-based job scheduling policy can reduce job failure probability b
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Tipping points:}
+%\textbf{Tipping points:}
 
 
 
-\begin{figure*}
-  \centering
-  \begin{minipage}[c]{0.3\linewidth}
-    \includegraphics[width=\linewidth]{../graphs/Sched-bathtub.pdf}
-    \vspace*{-0.6cm}
-    \caption{Effect of job start time on the failure probability.} \label{fig:sched-bathtub}
-  \end{minipage}
-%  \caption{Our model-driven job-scheduling policy reduces job-failures.}
-%  \label{fig:sched-top}
-  \hfill 
-  \begin{minipage}[c]{0.3\linewidth}
-    \includegraphics[width=\textwidth]{../graphs/Sched-fail-prob.pdf}
-    \vspace*{-0.6cm}
-    \caption{Job failure probability for jobs of different lengths.} \label{fig:sched-all}
-  \end{minipage}
-  \hfill
-\begin{minipage}[c]{0.3\textwidth}
-  \centering
-  \includegraphics[width=0.7\textwidth]{../graphs/tipping-black-reuseVM.pdf}
-  \caption{Job lengths and starting points where VM should be reused (black), and a new VM should be launched (white)}
-  \label{fig:tipping-points}
-\end{minipage}
+% \begin{figure*}
+%   \centering
+%   \begin{minipage}[c]{0.3\linewidth}
+%     \includegraphics[width=\linewidth]{../graphs/Sched-bathtub.pdf}
+%     \vspace*{-0.6cm}
+%     \caption{Effect of job start time on the failure probability.} \label{fig:sched-bathtub}
+%   \end{minipage}
+% %  \caption{Our model-driven job-scheduling policy reduces job-failures.}
+% %  \label{fig:sched-top}
+%   \hfill 
+%   \begin{minipage}[c]{0.3\linewidth}
+%     \includegraphics[width=\textwidth]{../graphs/Sched-fail-prob.pdf}
+%     \vspace*{-0.6cm}
+%     \caption{Job failure probability for jobs of different lengths.} \label{fig:sched-all}
+%   \end{minipage}
+%   \hfill
+% \begin{minipage}[c]{0.3\textwidth}
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{../graphs/tipping-black-reuseVM.pdf}
+%   \caption{Job lengths and starting points where VM should be reused (black), and a new VM should be launched (white)}
+%   \label{fig:tipping-points}
+% \end{minipage}
 
   
 %   \begin{minipage}[c]{0.3\linewidth}
@@ -196,19 +196,20 @@ Thus, our model-based job scheduling policy can reduce job failure probability b
 \end{figure*}
 
 
-% \begin{figure}[t]
-%   \vspace*{\myfigspace}
-%   \subfloat[Effect of job start time on the failure probability. \label{fig:sched-bathtub}]
-%   {  \includegraphics[width=0.33\textwidth]{../graphs/Sched-bathtub.pdf}}
-%   \\
-%   \vspace*{-0.4cm}
-%   \subfloat[Job failure probability for jobs of different lengths. \label{fig:sched-all}]
-%   {  \includegraphics[width=0.33\textwidth]{../graphs/Sched-fail-prob.pdf}}
-%   %  \vspace*{\myfigspace}
-%   \caption{Job failure probability is lower with our deadline aware policy across all job sizes.}
-%   \vspace*{\myfigspace}
-%   \label{fig:sched-both}
-% \end{figure}
+\begin{figure}[t]
+  \vspace*{\myfigspace}
+  \subfloat[Effect of job start time on the failure probability. \label{fig:sched-bathtub}]
+  {  \includegraphics[width=0.23\textwidth]{../graphs/Sched-bathtub.pdf}}
+  \hfill
+  \vspace*{-0.4cm}
+  \subfloat[Job failure probability for jobs of different lengths. \label{fig:sched-all}]
+  {  \includegraphics[width=0.23\textwidth]{../graphs/Sched-fail-prob.pdf}}
+  %  \vspace*{\myfigspace}
+  \caption{Job failure probability is lower with our deadline aware policy across all job sizes.}
+  \vspace*{\myfigspace}
+  \label{fig:sched-both}
+\end{figure}
+
 
 The job failure probability is determined by the job length and the job starting time.
 %hl
