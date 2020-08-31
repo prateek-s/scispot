@@ -144,11 +144,6 @@ Otherwise, a new VM is launched.
 
 
 % hl
-This technique can also be used to find the job length $T^*$, when the transition occurs between re-using and launching a new VM. 
-%
-Accurate job lengths are not necessary, and we only need to know whether $T<T^*$, and only a rough estimate of the job lengths is required.
-We assume that because most scientific computing workloads involve exploration of some parameter space, they often have homogenenous running times. 
-% hl
 
 %Depending on the VM's age $s$ and the job's running time $T$, we can compare Equations~\ref{eq:tot-run-time-2} and ~\ref{eq:tot-run-time-s}, and run the job on whichever case yields the lower expected running time. 
 
@@ -165,8 +160,56 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 %Server preemptions lead to \emph{wasted work}, since the progress made by the job is lost (in the absence of any fault-tolerance).
 %Minimizing work wasted due to preemptions is a prerequisite to minimizing cost, and 
 
-\textbf{Simple Job Scheduling Policy.}
+\noindent \textbf{Transition Points Analysis.}
+Our model can also be used to find the transition boundary in the job scheduling policy. 
+The decision to reuse or launch a new VM depends
+For a given job running time (T), and the VM age (s), we can compute  $\delta(s,T) = E[T_s] - E[T]$.
+For a given VM type, we precompute this function for different $s,T$ values, and find the job length trasition points where launching a new VM is suitable.
+
+\begin{figure}[t]
+  \subfloat[Difference in expected running times. \label{fig:transition-all}]
+  {\includegraphics[width=0.3\textwidth]{../graphs/transition-all.pdf}}
+  \hfill
+  \subfloat[Transition boundary. \label{fig:transition-boundary}]
+  {\includegraphics[width=0.18\textwidth]{../graphs/tipping.pdf}}
+  \label{fig:transition-all}
+  \caption{Reusing vs. running on a new VM.}
+\end{figure}
+
+%
+\begin{comment}
+$d \geq 0 $ implies reusing the VM will yield longer expected time, and thus launching a new VM is preferable.
+
+We can simplify $\delta(s,T) = \int_{s}^{s+T} t~f(t)~dt - \int_{0}^{T} t~f(t)~dt$.
+
+  
+  We note that integration by parts yields:
+$\int_{0}^{T} t~f(t)~dt = TF(T) - \int_0^T F(t)~dt $.
+
+$\int_{s}^{s+T} t~f(t)~dt = (s+T)F(s+T) - sF(s) - \int_s^{s+T} F(t)~dt $.
+
+%
+We can thus obtain:
+
+
+$\frac{d \delta}{dt} = -1$
+
+$\delta = \int_0^sF(t)~dt - T $
+
+$\frac{d \delta}{d S} = F(s) $
+
+Rate of change of the transition points with respect to start time. 
+
+
 The model can also be used for 
+
+This technique can also be used to find the job length $T^*$, when the transition occurs between re-using and launching a new VM. 
+%
+Accurate job lengths are not necessary, and we only need to know whether $T<T^*$, and only a rough estimate of the job lengths is required.
+We assume that because most scientific computing workloads involve exploration of some parameter space, they often have homogenenous running times. 
+% hl
+\end{comment}
+
 
 \begin{comment}
 \vspace*{\subsecspace}
