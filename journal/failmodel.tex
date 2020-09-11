@@ -69,7 +69,7 @@ Based on our observations and insights from the study, we then develop a probabi
 \noindent \textbf{Methodology.}
 We launched  870 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).
 %
-VMs of different resource capacities were launched in a four geographical regions; during days and nights and all days of the week; and running different workloads\footnotemark. 
+VMs of different resource capacities were launched in four geographical regions; during days and nights and all days of the week; and running different workloads\footnotemark. 
 %hl
 We launched VMs in their default resource configurations (CPU and memory), and do not use custom VM sizes.
 % hl
@@ -90,7 +90,7 @@ Due to the relatively high preemption rates compared to EC2 spot instances, we w
 %
  %Weaksauce 
 %
-A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution function (CDF) of the lifetime of the \texttt{n1-highcpu-16} VM in the \texttt{us-east1-b} zone. 
+A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution function (CDF) of the lifetime of the \texttt{n1-highcpu-16} VMs in the \texttt{us-east1-b} zone. 
 %enter the type of VM for which the data is shown
 %
 Our empirical approach allows us to make the following  observations.
@@ -197,9 +197,9 @@ For applications that do not incorporate explicit fault-tolerance (such as check
 %
 Furthermore, the low rate of preemptions in the middle periods allows jobs that are smaller than 24 hours to finish execution with only a low probability of failure, once they survive the initial preemption phase. 
 %
-We compare application performance with bathtub preemptions and uniformly distributed preemptions later in Section~\ref{sec:eval}, and find that bathtub preemptions can reduce the performance overheads of preemptions by up $10\times$.
+We compare application performance with bathtub preemptions and uniformly distributed preemptions later in Section~\ref{sec:eval}, and find that bathtub preemptions can reduce the performance overheads of preemptions by up to $10\times$.
 %
-However, effective policies for constrained preemptions  requires a probability model of preemptions, which is challenging due to the temporal constraint and the steep bathtub behavior. 
+However, effective policies for constrained preemptions  requires a probability model of preemptions, which must incorporate the temporal constraint and the steep bathtub behavior. 
 %
 Existing preemption models are not applicable, and we present our new model next. 
 
@@ -221,13 +221,13 @@ Existing preemption models are not applicable, and we present our new model next
 \label{subsec:analytical-model}
 
 %Based on our empirical analysis of preemptions,  
-We now develop an analytical probability model for finding a preemption at time $t$ (preemption dynamics) that is faithful to the empirically observed data and provides a basis for developing running-time and cost-minimizing optimizations. %
+We now develop an analytical probability model for finding a preemption at a given time that is faithful to the empirically observed data and provides a basis for developing running-time and cost-minimizing optimizations. %
 %
 % Something about generalizability etc.
 % 
-Modeling preemptions constrained by a finite deadline raises many challenges for existing preemption models that have been used for other transient servers such as EC2 spot instances.
+Modeling the dynamics of preemptions constrained by a finite deadline raises many challenges for existing preemption models that have been used for other transient servers such as EC2 spot instances.
 %
-We first discuss why existing approaches to preemption modeling are not adequate, and then present our closed-form probability model and associated reliability theory connections. 
+We first discuss why existing approaches to preemption modeling are not adequate, and then present our probability model and associated reliability theory connections. 
 
 %How to avoid sounding like the background section?
 
@@ -326,7 +326,7 @@ Shifting the argument ($t$) of this term by $b$ ensures that the exponential rec
 %As noted before, $1/\tau_2$ is the rate of this reclamation. 
 
 
-The analytical model and the associated  distribution function $\mathscr{F}$ introduced above provides a much better fit to the empirical data (Figure~\ref{fig:gcp1}) and captures the different phases of the preemption dynamics through parameters $\tau_1, \tau_2, b$, and $A$. These parameters can be obtained for a given empirical CDF using least squares function fitting methods (we use scipy's \texttt{optimize.curve\_fit} with the dogbox technique~\cite{scipy-fit}). The failure or preemption rate can be derived from this CDF as:
+The analytical model and the associated  distribution function $\mathscr{F}$ introduced above provides a much better fit to the empirical data (Figure~\ref{fig:gcp1}) compared to other models, and captures the different phases of the preemption dynamics through parameters $\tau_1, \tau_2, b$, and $A$. These parameters can be obtained for a given empirical CDF using least squares function fitting methods (we use scipy's \texttt{optimize.curve\_fit} with the dogbox technique~\cite{scipy-fit}). The failure or preemption rate can be derived from the CDF in Equation \ref{eq:blend1} as:
 \begin{equation}
   \label{eq:failrate}
     \vspace*{\eqnspace}
@@ -336,9 +336,9 @@ $f(t)$ vs. $t$ yields a bathtub type failure rate function for the associated fi
 %In the next section, we use this analytical model for optimizing cloud resource selection to run scientific computing applications at low cost and shorter running (turnaround) times.
 
 
-In the absence of any prior work on constrained preemption dynamics, our aim is to provide an interpretable model with a minimal number of parameters, that provides a sufficiently accurate characterization of observed preemptions data. 
+In the absence of any prior work on constrained preemption dynamics, our aim is to provide an interpretable model with a minimal number of parameters, that provides a sufficiently accurate characterization of features present in the preemption data. 
 %As is evident from Figure~\ref{fig:gcp1}, our model shows deviations from the data near the halfway point within the 24 hour lifetime. 
-Further generalization of this model to include more failure processes would introduce more parameters and reduce the generalization power. 
+Extension of this model to include more failure processes would introduce more parameters and reduce the generalization power. Further, this model as well as the optimization policies derived from it offer pathways to quantify additional effects arising due to the inclusion of more failure processes.  
 %Exploring other approaches of modeling bathtub-type failure rates (e.g., exponential Weibull distributions) \cite{mudholkar1993exponentiated,crevecoeur1993model} is part of our future work. 
 
 \begin{comment}

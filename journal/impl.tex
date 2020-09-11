@@ -54,10 +54,10 @@ A bag of jobs is characterized by the job and all the different parameters with 
 Within a bag, jobs show little variation in their running time and execution characteristics.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% from SC
-The bag of jobs execution model is pervasive in scientific computing and applicable in many contexts.
+The bag of jobs execution model is pervasive in scientific computing and applicable in many contexts \cite{klotsa2018intermediate,brunk2019computational,jadhao2019rheological}.
 In addition to exploratory parameter sweeps, bags of jobs also result from running the application a large number of times to account for the model or computational stochasticity, and can be used to obtain tighter confidence intervals. 
-Increasingly, bags of jobs also arise in the emerging research that combines statistical machine learning (ML) techniques and scientific simulations~\cite{ml.atomic2017,melko2017,sam2017}. %,fu2017,long2015machine, ferguson2017machine,ward2018matminer,jcs2,fox2019learning}.
-For instance, large bags of jobs are run to provide the necessary training and testing data for learning statistical models (such as neural networks) that are then used to improve the efficacy of the simulations~\cite{jcs2}.
+Increasingly, bags of jobs also arise in the emerging research that combines statistical machine learning (ML) techniques and scientific simulations~\cite{ferguson2017machine,fox2019learning,sun2019deep,wang2019machine}. %,fu2017,long2015machine, ferguson2017machine,ward2018matminer,jcs2,fox2019learning}.
+For instance, large bags of jobs are run to provide the necessary training and testing data for designing ML-based surrogate models (such as neural networks) for simulations~\cite{kadupitiya2019machine,kadupitiya2020machine}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We allow users to submit entire bags of jobs, which permits us to determine the running time of jobs based on previous jobs in the bag.

@@ -60,7 +60,7 @@ Transiency-mitigation techniques such as VM migration~\cite{spotcheck}, checkpoi
 %
 With flat pricing, these approaches are not applicable. 
 %
-Furthermore, no other information about preemption characteristics is publicly available, not even coarse-grained metrics such as MTTFs. 
+Furthermore, no other information about preemption characteristics is publicly available, not even coarse-grained \vikram{is the use of the word CG ok for this community? could say steady-state metrics or statistical averages such as MTTFs} metrics such as MTTFs. 
 %
 To address this, we develop an \emph{empirical} approach for understanding and modeling preemptions. 
 %
@@ -89,9 +89,9 @@ The bathtub distribution also requires a new approach to periodic checkpointing-
 %
 Our checkpointing policy combines our preemption model and dynamic programming to reduce the checkpointing overhead by more than $5\times$. 
 %
-These optimized policies are a building block for transient computing systems and reducing the performance degradation and costs of preemptible VMs. 
+These optimized policies act as building blocks for transient computing systems and for reducing the performance degradation and costs of preemptible VMs. 
 %and we show that the existing exponential ones are not suitable? 
-We implement and evaluate these policies as part of a batch computing service, which we also use for empirically evaluating the effectiveness of our model and policies under real-world conditions. 
+We implement and evaluate these policies as part of a batch computing service, SciSpot, which we also use for empirically evaluating the effectiveness of our model and policies under real-world conditions. 
 
 
 % \sysname abstracts typical scientific computing workloads and workflows into a new unit of execution, which we call as a ``bag of jobs''. 

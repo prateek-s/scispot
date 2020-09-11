@@ -41,13 +41,13 @@ The expected wasted work depends on two factors:
 \item \emph{When} the preemption occurs during the execution. 
 \end{enumerate}
 
-We can analyze the wasted work due a preemption using the failure probability model.
-We first compute the expected amount of wasted work \emph{assuming} the job faces a single preemption, which we denote by $E[W_1(T)]$, where $T$ is the original job running time (without preemptions).
+We can analyze the wasted work due to a preemption using the failure probability model.
+We first compute the expected amount of wasted work \emph{assuming} the job faces a single preemption, which we denote by $E[W_1(T)]$, where $T$ is the original job running time (without preemptions):
 \begin{equation}
-E[W_1(T)] = \int_0^{T} t~P(t | t \leq T)~dt , 
+E[W_1(T)] = \int_0^{T} t~P(t | t \leq T)~dt.
 \end{equation}
-where $P(t|t\leq T) = P(t) / P(t \leq T)$. Here, $P(t\leq T)$ is the probability that there is a preemption within time $T$ and is given by $P(t \leq T) = F(T)$ where $F(T)$ is the CDF. 
-$P(t)$ is the probability of a preemption at time $t$, and is given by $P(t) = f(t)$ , where $f(t)$ is the probability distribution function given by Equation~\ref{eq:failrate}.
+Here, $P(t|t\leq T) = P(t) / P(t \leq T)$. $P(t\leq T)$ is the probability that there is a preemption within time $T$ and is given by $P(t \leq T) = F(T)$, where $F(T)$ is the CDF (Equation \ref{eq:blend1}). 
+$P(t)$ is the probability of a preemption at time $t$, and is given by $P(t) = f(t)$, where $f(t)$ is the preemption rate (Equation~\ref{eq:failrate}).
 We can therefore write the above equation as:
 % \begin{align}
 %   E[W_1(T)] &= \int_0^{T} t~P(t | t \leq T)~dt \nonumber 
@@ -79,13 +79,14 @@ Expanding out these terms and using Equation \ref{eq:wasted}, we get
 %   &= (1-F(T))~T + F(T)~T + \int_0^{T} t~f(t)~dt \\ \nonumber
 %        &= T + \int_0^{T} t~f(t)~dt         
 % \end{align}
-\begin{equation}
+\begin{align}
   \label{eq:tot-run-time-2}
-  E[T] = \left(1-F\left(T\right)\right)T + F(T)\left(T + E[W_1(T)]\right) = T + \int_0^{T} t~f(t)~dt.         
-\end{equation}
+  E[T] &= \left(1-F\left(T\right)\right)T + F(T)\left(T + E[W_1(T)]\right) \notag \\
+  &= T + \int_0^{T} t~f(t)~dt.         
+\end{align}
 %hl
 This expression for the expected running time assumes that the job will be preempted at most once.
-An expression which considers the higher order terms and multiple job failures easily follows from the base case, but presents relatively low practical value.
+An expression which considers multiple ($>1$) job failures easily follows from this base case, but presents relatively low practical value.
 % hl
 
 %and most transient computing systems seek to avoid repeated preemptions, and discard the job if multiple preemptions occur or move them to on-demand VMs. 
@@ -160,6 +161,7 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 %Server preemptions lead to \emph{wasted work}, since the progress made by the job is lost (in the absence of any fault-tolerance).
 %Minimizing work wasted due to preemptions is a prerequisite to minimizing cost, and 
 
+\vikram{the following para probably is still in the works?}
 \noindent \textbf{Transition Points Analysis.}
 Our model can also be used to find the transition boundary in the job scheduling policy. 
 The decision to reuse or launch a new VM depends
@@ -324,7 +326,7 @@ Our evaluation indicates that careful VM selection can reduce costs by  up to 30
 %Weak
 We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.
 %
-Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM type that minimizes the expected cost of running an application on \sysname. 
+Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM type that minimizes the expected cost of running an application on \sysname. \vikram{check} 
 
 %Let $\mathcal{R}$ denote the total amount of computing resources requested for the job. For ease of exposition, let us assume that $\mathcal{R}$ is the total number of CPU cores.
 %Furthermore, let $r_i$ denote the ``size'' of the server of type $i$.
