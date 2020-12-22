@@ -1,4 +1,4 @@
-%\section{Understanding and Modeling Transient Server Preemptions}
+\section{Understanding and Modeling Transient Server Preemptions}
 %\section{Modeling the Dynamics of Transient Server Preemptions}
 %\section{Preemption Dynamics of Transient Cloud Servers}
 %\vspace*{\subsecspace}
@@ -18,7 +18,9 @@ Therefore, in this section, we present empirical and analytical models to help u
 %
 
 In our quest to understand temporally constrained preemptions, we  conduct an empirical study of preemptions of Google Preemptible VMs.
-Based on our observations and insights from the study, we then develop a probability model for temporally constrained preemptions, which we later use to develop preemption-mitigating resource management application policies. 
+Based on our observations and insights from the study, we then develop a probability model for temporally constrained preemptions, which we then provide a statistical mechanics interpretation for. 
+
+%which we later use to develop preemption-mitigating resource management application policies. 
 
 
 
@@ -93,7 +95,19 @@ Due to the relatively high preemption rates compared to EC2 spot instances, we w
 A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution function (CDF) of the lifetime of the \texttt{n1-highcpu-16} VMs in the \texttt{us-east1-b} zone. 
 %enter the type of VM for which the data is shown
 %
-Our empirical approach allows us to make the following  observations.
+Empirically, our main observation is: \emph{The lifetimes of VMs are not uniformly distributed, but have three distinct phases.}
+\noindent In the first (initial) phase, characterized by VM lifetime $t\in [0, 3]$ hours, we observe that many VMs are quickly preempted after they are launched, and thus have a steep rate of failure. The rate of failure (preemption rate) is the derivative of the CDF.
+%; the rate of failure or preemptions can be obtained by taking the derivative of the CDF. 
+The early high rate of failure reflects that the cloud service provider takes into account VM liftetime in prioritizing preempting ``younger'' VMs, in other words, the number of simultaneous VMs launched does have an effect on their failure rate. 
+%
+In the second phase, VMs that survive past 3 hours enjoy a relatively low preemption rate over a relatively broad range of lifetime (characterized by the slowly rising CDF in Figure~\ref{fig:gcp1}).
+The third and final phase exhibits a steep increase in the number of preemptions as the preemption deadline of 24 hours approaches.
+The overall rate of preemptions is ``bathtub'' shaped as shown by the solid black line in the inset of Figure~\ref{fig:gcp1}.
+%\it I think we should show the probability plot to exhibit the bath tub shape
+
+
+
+
 
 %Based on the observ
 %
@@ -107,7 +121,7 @@ Our empirical approach allows us to make the following  observations.
   \hfill
 \subfloat[Variations due to time of day and workload. \label{fig:time-breakdown}]
 {  \includegraphics[width=0.3\textwidth]{../data/gnuplot-figures/sigmetrics-time-breakdown.pdf} }
-\hfill
+ill
 \subfloat[\textbf{n1-highcpu-16} in different regions. \label{fig:region-breakdown}]
 {  \includegraphics[width=0.3\textwidth]{../data/gnuplot-figures/sigmetrics-region-breakdown.pdf} }
 \vspace*{-0.6cm}
@@ -185,14 +199,14 @@ Presumably, this could be a result of the lower resource utilization of idle VMs
 \end{comment}
 
 \noindent \textbf{Significance of bathtub preemptions.} 
-The above empirical observations indicate that temporally constrained preemptions are \emph{not} uniformly distributed. 
+%The above empirical observations indicate that temporally constrained preemptions are \emph{not} uniformly distributed. 
 %
-The bathtub shaped preemption distribution is not a coincidence.
-It is a result of fundamental characteristics of constrained preemptions that benefit applications. 
 %We argue that this is not a coincidence, but may be a result of practical and fundamental outcomes of cluster management policies. 
 %
 %While the actual specific preemption policy is up to the cloud operator, we will show that the bathtub behavior has benefits for applications. 
-%The bathtub behavior results in a high rate of failure initially. 
+%The bathtub behavior results in a high rate of failure initially.
+The bathtub shaped preemption distribution is not a coincidence.
+It is a result of fundamental characteristics of constrained preemptions that benefit applications. 
 For applications that do not incorporate explicit fault-tolerance (such as checkpointing), early preemptions result in less wasted work than if the preemptions were uniformly distributed over the 24 hour interval.
 %
 Furthermore, the low rate of preemptions in the middle periods allows jobs that are smaller than 24 hours to finish execution with only a low probability of failure, once they survive the initial preemption phase. 
@@ -202,7 +216,7 @@ We compare application performance with bathtub preemptions and uniformly distri
 However, effective policies for constrained preemptions  requires a probability model of preemptions, which must incorporate the temporal constraint and the steep bathtub behavior. 
 %
 Existing preemption models are not applicable, and we present our new model next. 
-
+%
 
 %But can improve runtime by as much as 4x compared to uniform preemption rates. 
 %
