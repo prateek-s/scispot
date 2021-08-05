@@ -111,17 +111,18 @@ Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{const
 
 \vspace*{\subsecspace}
 \subsection{Scientific Simulation Workloads}
-\prat{Not sure. Probably something on scientific workloads though?}
 
-% \begin{figure}[t]
-%   \includegraphics[width=0.3\textwidth]{../graphs/hmap.png}
-%     \vspace*{\myfigspace}
-%   \caption{Running times of the Nanoconfinement application with different sets of parameters have low variation.}
-%   \label{fig:heatmap}
-%   \vspace*{\myfigspace}
-% \end{figure}
 
-Large computational requirements of scientific simulations make them ideal for low-cost transient servers. 
+\begin{figure}[t]
+  \centering 
+  \includegraphics[width=0.3\textwidth]{../graphs/hmap.png}
+    \vspace*{\myfigspace}
+  \caption{Running times of the Nanoconfinement application with different sets of parameters have low variation.}
+  \label{fig:heatmap}
+  \vspace*{\myfigspace}
+\end{figure}
+
+%Large computational requirements of scientific simulations make them ideal for low-cost transient servers. 
 
 The typical workflow associated with most scientific computing applications, often involves evaluating a computational model across a wide range of physical and computational parameters. 
 For instance, constructing and calibrating a molecular dynamics application (such as Nanoconfinement~\cite{jcs2}), usually involves running a simulation with different physical parameters such as characteristic sizes and interaction potentials, as well as computational parameters such as simulation timesteps. 
