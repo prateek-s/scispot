@@ -109,45 +109,45 @@ Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{const
 
 
 
-% \vspace*{\subsecspace}
-% \subsection{Scientific Simulation Workloads}
-% \prat{Not sure. Probably something on scientific workloads though?}
+\vspace*{\subsecspace}
+\subsection{Scientific Simulation Workloads}
+\prat{Not sure. Probably something on scientific workloads though?}
 
-% % \begin{figure}[t]
-% %   \includegraphics[width=0.3\textwidth]{../graphs/hmap.png}
-% %     \vspace*{\myfigspace}
-% %   \caption{Running times of the Nanoconfinement application with different sets of parameters have low variation.}
-% %   \label{fig:heatmap}
-% %   \vspace*{\myfigspace}
-% % \end{figure}
+% \begin{figure}[t]
+%   \includegraphics[width=0.3\textwidth]{../graphs/hmap.png}
+%     \vspace*{\myfigspace}
+%   \caption{Running times of the Nanoconfinement application with different sets of parameters have low variation.}
+%   \label{fig:heatmap}
+%   \vspace*{\myfigspace}
+% \end{figure}
 
-% Large computational requirements of scientific simulations make them ideal for low-cost transient servers. 
+Large computational requirements of scientific simulations make them ideal for low-cost transient servers. 
 
-% The typical workflow associated with most scientific computing applications, often involves evaluating a computational model across a wide range of physical and computational parameters. 
-% For instance, constructing and calibrating a molecular dynamics application (such as Nanoconfinement~\cite{jcs2}), usually involves running a simulation with different physical parameters such as characteristic sizes and interaction potentials, as well as computational parameters such as simulation timesteps. 
-% Each of these parameters can take a wide range of values, resulting in a large number of combinations which must be evaluated by invoking the application multiple times (also known as a parameter sweep). 
-% Since each computational job explores a single combination of parameters, this results in executing a ``bag of jobs'', with each job in the bag running the same application, but with possibly different parameters.
-
-
-% The bag of jobs execution model is pervasive in scientific computing and applicable in many contexts.
-% In addition to exploratory parameter sweeps, bags of jobs also result from running the application a large number of times to account for the model or computational stochasticity, and can be used to obtain tighter confidence intervals. 
-% Increasingly, bags of jobs also arise in the emerging research that combines statistical machine learning (ML) techniques and scientific simulations~\cite{ml.atomic2017,melko2017,sam2017}. %,fu2017,long2015machine, ferguson2017machine,ward2018matminer,jcs2,fox2019learning}.
-% For instance, large bags of jobs are run to provide the necessary training and testing data for learning statistical models (such as neural networks) that are then used to improve the efficacy of the simulations~\cite{jcs2}.
+The typical workflow associated with most scientific computing applications, often involves evaluating a computational model across a wide range of physical and computational parameters. 
+For instance, constructing and calibrating a molecular dynamics application (such as Nanoconfinement~\cite{jcs2}), usually involves running a simulation with different physical parameters such as characteristic sizes and interaction potentials, as well as computational parameters such as simulation timesteps. 
+Each of these parameters can take a wide range of values, resulting in a large number of combinations which must be evaluated by invoking the application multiple times (also known as a parameter sweep). 
+Since each computational job explores a single combination of parameters, this results in executing a ``bag of jobs'', with each job in the bag running the same application, but with possibly different parameters.
 
 
-% Bags of jobs are analogous to, but distinct from the bag of \emph{tasks} design~\cite{bot-2003}, where applications are decomposed into independent processes to enable flexible task scheduling. 
-% In contrast, the bags of jobs abstraction is independent of the application design---a bag of jobs may consist of a synchronous MPI program that is not amenable to flexible scheduling. 
+The bag of jobs execution model is pervasive in scientific computing and applicable in many contexts.
+In addition to exploratory parameter sweeps, bags of jobs also result from running the application a large number of times to account for the model or computational stochasticity, and can be used to obtain tighter confidence intervals. 
+Increasingly, bags of jobs also arise in the emerging research that combines statistical machine learning (ML) techniques and scientific simulations~\cite{ml.atomic2017,melko2017,sam2017}. %,fu2017,long2015machine, ferguson2017machine,ward2018matminer,jcs2,fox2019learning}.
+For instance, large bags of jobs are run to provide the necessary training and testing data for learning statistical models (such as neural networks) that are then used to improve the efficacy of the simulations~\cite{jcs2}.
 
 
-% %The bag of jobs resulting from exploratory parameter sweeps are an integral component in the model discovery and validation process, and ar
+Bags of jobs are analogous to, but distinct from the bag of \emph{tasks} design~\cite{bot-2003}, where applications are decomposed into independent processes to enable flexible task scheduling. 
+In contrast, the bags of jobs abstraction is independent of the application design---a bag of jobs may consist of a synchronous MPI program that is not amenable to flexible scheduling. 
 
-% %More formally, a bag of jobs is defined as a collection of : \{Application, $N$: Number of jobs, $m$: Minimum number of jobs to finish, $\pi$: Generator function for job parameters, $\mathcal{R}$: Computing resources per job\}
 
-% The bag of jobs execution model has multiple characteristics, that give rise to unique challenges and opportunities when deploying them on transient cloud servers. 
-% Since bags of jobs require a large amount of computing resources, deploying them on the cloud can result in high overall costs, thus requiring policies for minimizing the cost and overall running time. 
-% The similarity in execution characteristics of jobs (such as their running times and parallel speedup) allows for bag-wide optimizations (Figure~\ref{fig:heatmap}). 
-% %Second, there is no dependency between individual jobs in a bag, thus allowing increased flexibility in job scheduling.
-% And last, treating entire bags of jobs as an execution unit, instead of individual jobs, can allow us to use partial redundancy between jobs and reduce the fault-tolerance overhead to mitigate transient server preemptions. 
+%The bag of jobs resulting from exploratory parameter sweeps are an integral component in the model discovery and validation process, and ar
+
+%More formally, a bag of jobs is defined as a collection of : \{Application, $N$: Number of jobs, $m$: Minimum number of jobs to finish, $\pi$: Generator function for job parameters, $\mathcal{R}$: Computing resources per job\}
+
+The bag of jobs execution model has multiple characteristics, that give rise to unique challenges and opportunities when deploying them on transient cloud servers. 
+Since bags of jobs require a large amount of computing resources, deploying them on the cloud can result in high overall costs, thus requiring policies for minimizing the cost and overall running time. 
+The similarity in execution characteristics of jobs (such as their running times and parallel speedup) allows for bag-wide optimizations (Figure~\ref{fig:heatmap}). 
+%Second, there is no dependency between individual jobs in a bag, thus allowing increased flexibility in job scheduling.
+And last, treating entire bags of jobs as an execution unit, instead of individual jobs, can allow us to use partial redundancy between jobs and reduce the fault-tolerance overhead to mitigate transient server preemptions. 
 
 
 

@@ -1,14 +1,15 @@
 Scientific computing applications are being increasingly deployed on cloud computing platforms.
-Transient servers can be used to lower the costs of running applications on the cloud.
+Transient servers such as EC2 spot instances and Google Preemptible VMs, can be used to lower the costs of running applications on the cloud by up to $10\times$. 
 However, the frequent preemptions and resource heterogeneity of these transient servers introduces many challenges in their effective and efficient use. 
 In this paper, we develop techniques for modeling and mitigating preemptions of transient servers, and present SciSpot, a software framework that enables low-cost scientific computing on the cloud. 
 SciSpot deploys applications on Google Cloud Preemptible Virtual Machines that exhibit temporally constrained preemptions: VMs are always preempted in a 24 hour interval. 
-Empirical analysis shows that the preemption rate is bath-tub shaped, which raises multiple challenges in modeling and policy design. 
+Our empirical analysis shows that the preemption rate is bath-tub shaped, which raises multiple fundamental challenges in performance modeling and policy design. 
 We develop a new reliability model for temporally constrained preemptions, and use statistical mechanics to show why the bath-tub shape is a fundamental characteristic. 
 
 %, and introduces the first empirical and analytical model for their preemptions. 
 
-\noindent SciSpot's design is guided by our observation that many scientific computing applications (such as simulations) are deployed as ``bag'' of jobs, which represent multiple instantiations of the same computation with different physical and computational parameters. 
+%\noindent
+SciSpot's design is guided by our observation that many scientific computing applications (such as simulations) are deployed as ``bag'' of jobs, which represent multiple instantiations of the same computation with different physical and computational parameters. 
 For a bag of jobs, SciSpot finds the optimal transient server on-the-fly, by taking into account the price, performance, and preemption rates of different servers. 
 SciSpot reduces costs by $5\times$ compared to conventional cloud deployments, and reduces  makespans by up to $10\times$ compared to conventional high performance computing clusters.
 
