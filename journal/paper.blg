@@ -4,7 +4,7 @@ The top-level auxiliary file: paper.aux
 The style file: acm.bst
 Database file #1: scicloud.bib
 Database file #2: bagsjobs.bib
-Repeated entry---line 87 of file bagsjobs.bib
+Repeated entry---line 72 of file bagsjobs.bib
  : @misc{kadupitiya2017
  :                     ,
 I'm skipping whatever remains of this entry
@@ -23,15 +23,16 @@ I was expecting a `,' or a `}'---line 1171 of file spot-bid.bib
  : @misc{docker,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 1488 of file spot-bid.bib
+Repeated entry---line 1500 of file spot-bid.bib
  : @inproceedings{baughman2019deconstructing
  :                                          ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1500 of file spot-bid.bib
+I was expecting a `,' or a `}'---line 1512 of file spot-bid.bib
  : 
  : year={2020},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "jcs2"
 Warning--to sort, need author or key in ec2-spot
 Warning--to sort, need author or key in preemptible-documentation
 Warning--to sort, need author or key in packet-spot
@@ -48,45 +49,45 @@ Warning--empty year in jain14demand
 Warning--empty institution in LULESH2:changes
 Warning--can't use both volume and number fields in exosphere
 Warning--empty year in tian_gpu_icdcs
-You've used 71 entries,
+You've used 85 entries,
             2253 wiz_defined-function locations,
-            879 strings with 16908 characters,
-and the built_in function-call counts, 23964 in all, are:
-= -- 2159
-> -- 1214
+            965 strings with 19825 characters,
+and the built_in function-call counts, 29164 in all, are:
+= -- 2627
+> -- 1547
 < -- 1
-+ -- 509
-- -- 432
-* -- 1784
-:= -- 3694
-add.period$ -- 200
-call.type$ -- 71
-change.case$ -- 427
++ -- 645
+- -- 554
+* -- 2249
+:= -- 4571
+add.period$ -- 242
+call.type$ -- 85
+change.case$ -- 529
 chr.to.int$ -- 0
-cite$ -- 87
-duplicate$ -- 1032
-empty$ -- 2068
-format.name$ -- 432
-if$ -- 5115
+cite$ -- 101
+duplicate$ -- 1179
+empty$ -- 2434
+format.name$ -- 554
+if$ -- 6151
 int.to.chr$ -- 0
-int.to.str$ -- 71
-missing$ -- 58
-newline$ -- 344
-num.names$ -- 120
-pop$ -- 628
+int.to.str$ -- 85
+missing$ -- 71
+newline$ -- 414
+num.names$ -- 148
+pop$ -- 723
 preamble$ -- 1
-purify$ -- 357
+purify$ -- 445
 quote$ -- 0
-skip$ -- 647
+skip$ -- 737
 stack$ -- 0
-substring$ -- 1018
-swap$ -- 260
+substring$ -- 1290
+swap$ -- 296
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 282
+type$ -- 338
 warning$ -- 16
-while$ -- 186
-width$ -- 73
-write$ -- 677
+while$ -- 228
+width$ -- 87
+write$ -- 815
 (There were 6 error messages)
