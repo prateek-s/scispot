@@ -108,7 +108,7 @@ For instance, VMs having a higher initial rate of preemptions are particularly d
 We evaluate the expected wasted time and running time for Google Preemptible VMs later in Section~\ref{sec:eval}. 
 
 \vspace*{\subsecspace}
-\subsection{Job Scheduling and VM Reuse Policy}
+\subsection{Transition-Points based Job Scheduling and VM Reuse Policy}
 
 %The time-dependent bathtub preemption rates provide new challenges and opportunities in preemption-mitigation, that do not arise under memoryless preemptions. 
 %
@@ -161,12 +161,13 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 %Server preemptions lead to \emph{wasted work}, since the progress made by the job is lost (in the absence of any fault-tolerance).
 %Minimizing work wasted due to preemptions is a prerequisite to minimizing cost, and 
 
-\vikram{the following para probably is still in the works?}
+
 \noindent \textbf{Transition Points Analysis.}
 Our model can also be used to find the transition boundary in the job scheduling policy. 
 The decision to reuse or launch a new VM depends
 For a given job running time (T), and the VM age (s), we can compute  $\delta(s,T) = E[T_s] - E[T]$.
-For a given VM type, we precompute this function for different $s,T$ values, and find the job length trasition points where launching a new VM is suitable.
+For a given VM type, we precompute this function for different $s,T$ values, and find the job length transition points where launching a new VM is suitable.
+
 
 \begin{figure}[t]
   \subfloat[Difference in expected running times. \label{fig:transition-all}]
