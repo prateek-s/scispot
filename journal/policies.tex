@@ -5,7 +5,7 @@ Having analyzed the statistical behavior of constrained preemptions and presente
 Based on insights drawn from our statistical analysis and the model, we develop various policies for ameliorating the effects of preemptions. 
 Prior work in transient computing has established the benefits of such policies for a broad range of applications. 
 However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required. 
-In this section, we first analyze the impact of constrained preemptions on job running time, and then develop new constrained-preemption aware policies for job scheduling and checkpointing. 
+In this section, we first analyze the impact of constrained preemptions on job running time, and then develop new constrained-preemption aware policies for job scheduling and cost optimization. 
 % hl
 We will focus on long-running batch jobs that arise in many applications such as scientific computing. Extensions of our models and policies to distributed applications with different failure semantics is part of our future work. 
 % hl 
@@ -169,8 +169,8 @@ SciSpot develops on the above insight and determines the job-scheduling and VM-r
 Based on different job lengths within a bag of jobs and the age of the VM, we minimize the total expected running time of a job.
 For a given job running time (T), and the VM age (s), we can compute  $\delta(s,T) = E[T_s] - E[T]$.
 If $\delta(s,T) \geq 0$, then a new VM is used, as illustrated in Figure~\ref{fig:transition-example}.
-The Figure shows that the reusing VMs is preferred for shorter job lengths, and the range of jobs for which for which reusing is good depends on the current age of the VM: younger VMs (s=1) can be used for longer VMs compared to older VMs. 
-For a given VM type, we precompute this function for different $s,T$ values, and find the job length transition points where launching a new VM is suitable. 
+The figure shows that reusing VMs is preferred for shorter job lengths, and the range of jobs for which for which reusing is good depends on the current age of the VM: younger VMs (s=1) can be used for longer VMs compared to older VMs. 
+For a given VM type, we precompute this function for different $(s, T)$ values, and find the job length transition points where launching a new VM is suitable. 
 The precomputed $\delta(s,T)$ can be seen in Figure~\ref{fig:transition-boundary}.
 Using this figure, SciSpot, and users in general, can simply lookup the job and VM attributes, and determine the optimal decision. 
 
@@ -181,10 +181,10 @@ Using this figure, SciSpot, and users in general, can simply lookup the job and 
 
 \begin{figure}[t]
   \subfloat[Difference in expected running times. \label{fig:transition-example}]
-  {\includegraphics[width=0.3\textwidth]{../graphs/transition-all.pdf}}
+  {\includegraphics[width=0.26\textwidth]{../graphs/transition-all.pdf}}
   \hfill
-  \subfloat[Transition boundary. \label{fig:transition-boundary}]
-  {\includegraphics[width=0.18\textwidth]{../graphs/tipping.pdf}}
+  \subfloat[Transition boundary depends on job length and when the job starts on the VM. \label{fig:transition-boundary}]
+  {\includegraphics[width=0.2\textwidth]{../graphs/tipping.pdf}}
   \label{fig:transition-all}
   \caption{Reusing vs. running on a new VM.}
 \end{figure}
@@ -322,9 +322,9 @@ More checkpointing analysis is presented in Section~\ref{subsec:eval-ckpt}.
 
 VM-selection is an important optimization in cloud environments, because VMs have different tradeoffs of cost, performance, and preemption characteristics. 
 Application performance is affected by the size of the VM (due to network communication and parallel scaling overheads), and the preemption rates. 
-We propose to develop cost models for selecting the ``right'' type of  VMs that minimizes the expected job failure probability and cost by using the analytical preemption models. 
+Our policy selects the ``right'' type of  VMs that minimizes the expected job failure probability and cost by using the analytical preemption models. 
 %using our model to \emph{compute the expected average lifetime of a VM} enabling us to minimize the impact of preemptions on performance and overall cost.
-Our evaluation indicates that careful VM selection can reduce costs by  up to 30\%. 
+%Our evaluation indicates that careful VM selection can reduce costs by  up to 30\% compared to 
 
 
 
@@ -335,19 +335,17 @@ Our evaluation indicates that careful VM selection can reduce costs by  up to 30
 %We note that this search is different from conventional speedup plots in which the objective is to determine how well an application scales with increasing amount of resources and parallelism. 
 %In contrast, we \emph{fix} the total amount of resources allocated to the application's job ($=\mathcal{R}$), and only vary \emph{how} these resources are distributed, which affects communication overhead and hence the performance.
 %Weak
-We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.
 %
-Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM type that minimizes the expected cost of running an application on \sysname. 
-
+%Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM type that minimizes the expected cost of running an application on \sysname. 
 %Let $\mathcal{R}$ denote the total amount of computing resources requested for the job. For ease of exposition, let us assume that $\mathcal{R}$ is the total number of CPU cores.
 %Furthermore, let $r_i$ denote the ``size'' of the server of type $i$.
 %Then, the number of servers of type $i$ required, $n_i = \mathcal{R}/r_i$.
 %In what follows, we denote the expectation value of a quantity as $E[\ldots]$.
 
 %\vj{there is some repitition in defining the symbols here which are used before in selection policy; may be this can be moved above. was wondering if we loose clarity by using $T_k$ to denote the running time on configuration $k$ that encodes the pair defined by the combination of server type $i$ - number of servers of type $i$ -- $(i,n_i)$; that is, $k\equiv (i,n_i)$, used as a superindex?}
-
+We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.
 Let us assume that the cloud provider offers $N$ server types, with the price (per unit time) of a server type equal to $c_i$. 
-The overall expected cost of running a job can then be expressed as follows:
+The overall expected cost of running a job is: 
 \begin{equation}
   \label{eq:e-cost}
 \vspace*{\eqnspace}
@@ -357,7 +355,8 @@ Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected makespan of the job (acc
 %
 This turnaround time depends on whether the job needs to be recomputed because of preemptions, and is given by Equation~\ref{eq:tot-run-time-2}. 
 %
-\sysname therefore searches over all available and acceptable VM types (modulo any resource constraints on minimum memory/CPUs/GPUs), and picks the VM type which yields the lowest expected cost. 
+\sysname therefore searches over all available and acceptable VM types (modulo any resource constraints on minimum memory/CPUs/GPUs), and picks the VM type which yields the lowest expected cost.
+The search process is aided by the bag of jobs abstraction: initial jobs are used for determining the lowest-cost VM, on which the remaining jobs are run. 
 
 %\prat{Highlight tradeoffs here. Larger servers better but more preemption.}
 

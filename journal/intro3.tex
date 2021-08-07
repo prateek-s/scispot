@@ -2,7 +2,7 @@
 \section{Introduction}
 \label{sec:intro}
 
-\noindent \textbf{Scientific Computing On Transient VMs.}
+%\noindent \textbf{Scientific Computing On Transient VMs.}
 Increasingly, cloud computing platforms have begun to supplement and complement conventional HPC infrastructure to meet the large computing and storage requirements of scientific applications. Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling. 
 However, the flexibility offered by cloud platforms comes at a literal cost: the price of deploying scientific computing applications can be significant, and continues to be a major hurdle towards adoption. 
 
@@ -17,9 +17,9 @@ Crucially, optimizing for \emph{cost} in addition to makespan,  becomes an impor
 Furthermore, although using transient resources can drastically reduce computing costs, their preemptible nature results in frequent job failures. 
 Preemptions can be mitigated with additional fault-tolerance mechanisms and policies~\cite{flint, marathe2014exploiting}, although they impose additional performance and deployment overheads. 
 
-\noindent \textbf{Transient Computing Challenges.}
+%\noindent \textbf{Transient Computing Challenges.}
 To expand the usability and appeal of transient VMs, many systems and techniques have been proposed that seek to ameliorate the effects of preemptions and reduce the computing costs of applications. 
-Fault-tolerance mechanisms~\cite{spotcheck, marathe2014exploiting}, resource management policies~\cite{exosphere, conductor}, and cost optimization techniques~\cite{dubois2016optispot, shastri2017hotspot} have been proposed for a wide range of applications---ranging from interactive web services, distributed data processing, parallel computing, etc.
+Fault-tolerance mechanisms~\cite{spotcheck, marathe2014exploiting}; resource management policies~\cite{exosphere, conductor}; and cost optimization techniques~\cite{dubois2016optispot, shastri2017hotspot} have been proposed for a wide range of applications---ranging from interactive web services, distributed data processing, parallel computing, etc.
 These techniques have been shown to minimize the performance-degradation and downtimes due to preemptions, and reduce computing costs by up to 90\%. 
 However, the success of these techniques depends on probabilistic estimates of when and how frequently preemptions occur. 
 For instance, many fault-tolerance and resource optimization policies are parametrized by the mean time to failure (MTTF) of the transient VMs.
@@ -56,14 +56,14 @@ Specifically, we show that the bathtub failures of constrained preemptions can b
 % Using our probability model, we find that bathtub failures can reduce the recomputation overhead of preeemptions by more than  $10\times$ compared to uniform failures---which has important implications for cloud users and providers. 
 
 
-We show the applicability and effectiveness of our model by developing \textbf{optimized policies for job scheduling and checkpointing.} 
+We show the applicability and effectiveness of our model by developing \textbf{optimized policies} for job scheduling and cost optimization. 
 These policies are fundamentally dependent on empirical and analytical insights from our model. % such as different time-dependent failure rates of different types of VMs.
 %
 Our job-scheduling policy uses the bathtub behavior to decide whether to run a new job on a running VM or to request a new VM, and reduces job-failure probability by $2\times$ compared to  conventional memoryless policies. 
 %
-The bathtub distribution also requires a new approach to periodic checkpointing---since existing Young-Daly~\cite{daly2006higher} checkpointing is restricted to memoryless preemptions. 
+%The bathtub distribution also requires a new approach to periodic checkpointing---since existing Young-Daly~\cite{daly2006higher} checkpointing is restricted to memoryless preemptions. 
 %
-Our checkpointing policy combines our preemption model and dynamic programming to reduce the checkpointing overhead by more than $5\times$. 
+%Our checkpointing policy combines our preemption model and dynamic programming to reduce the checkpointing overhead by more than $5\times$. 
 %
 These optimized policies act as building blocks for transient computing systems and for reducing the performance degradation and costs of preemptible VMs. 
 %and we show that the existing exponential ones are not suitable? 
