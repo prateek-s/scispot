@@ -9,8 +9,8 @@ We now analyze and place our model in a reliability theory framework.
 More formally, we define the expected lifetime of a VM ($\mathscr{L}$) as: 
 \begin{equation}
   \label{eq:expected-lifetime}
-%E[\mathscr{L}] =  \int_{0}^{L} t {f}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{L}
-E[\mathscr{L}] =  \int_{0}^{L} t {f}(t)~dt 
+E[\mathscr{L}] =  \int_{0}^{L} t {f}(t)~dt =  -A(t+\tau_1)e^{-t/\tau_1} + A(t-\tau_2) e^{\frac{t-b}{\tau_2}} \biggr\rvert_{0}^{L}
+%E[\mathscr{L}] =  \int_{0}^{L} t {f}(t)~dt 
 \end{equation}
 where $f(t)$ is the rate of preemptions of the VM (Equation~\ref{eq:failrate}).
 %= \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{t-b}{\tau_2}e^{\frac{t-b}{\tau_2}}\right) $ 

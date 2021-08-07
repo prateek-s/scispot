@@ -28,9 +28,10 @@ We will focus on long-running batch jobs that arise in many applications such as
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \vspace*{\subsecspace}
-\subsection{Impact On Running Time}
+\subsection{Job Running Time Modeling}
 
-We now look at how temporally constrained preemptions impact the total expected running time of applications by using our failure probability model. 
+SciSpot uses our bathtub probability model to predict the total running time (i.e., the makespan) of the job. 
+% We now look at how temporally constrained preemptions impact the total expected running time of applications by using our failure probability model. 
 %
 When a preemption occurs during the job's execution, it results in wasted work, assuming there is no checkpointing. 
 This increases the job's total expected running time, since it must restart after a preemption.
@@ -112,11 +113,12 @@ We evaluate the expected wasted time and running time for Google Preemptible VMs
 
 %The time-dependent bathtub preemption rates provide new challenges and opportunities in preemption-mitigation, that do not arise under memoryless preemptions. 
 %
-Our bathtub probability model also allows us to develop optimized job-scheduling policies for reducing  job-failures.
+Our bathtub probability model also allows us to develop optimized job-scheduling policies for \emph{reducing} job-failures in the bag of jobs execution model. 
 %, which we develop in this subsection. 
 %
-Many cloud-based applications and services are \emph{long-running}, and typically run a continuous sequence of tasks and jobs on cloud VMs. 
-In the case of deadline-constrained bathtub preemptions, applications face a choice: they can either run a new task on an already running VM, or relinquish the VM and run the task on a \emph{new} VM. 
+%Many cloud-based applications and services are \emph{long-running}, and typically run a continuous sequence of tasks and jobs on cloud VMs.
+%
+In the case of deadline-constrained bathtub preemptions, we face a choice: we can either run a new job on an already running VM, or relinquish the VM and run the job on a \emph{new} VM. 
 This choice is important in the case of non-uniform failure rates, since the job's failure probability depends on the ``age'' of the VM. 
 Because of the bathtub failure distribution, VMs enjoy a long period of low failure rates during the middle of their total lifespan.
 Thus, it is beneficial to \emph{reuse} VMs for multiple jobs, and relinquishing VMs after every job completion may not be an optimal choice. 
@@ -163,14 +165,22 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 
 
 \noindent \textbf{Transition Points Analysis.}
-Our model can also be used to find the transition boundary in the job scheduling policy. 
-The decision to reuse or launch a new VM depends
+SciSpot develops on the above insight and determines the job-scheduling and VM-reuse decision.
+Based on different job lengths within a bag of jobs and the age of the VM, we minimize the total expected running time of a job.
 For a given job running time (T), and the VM age (s), we can compute  $\delta(s,T) = E[T_s] - E[T]$.
-For a given VM type, we precompute this function for different $s,T$ values, and find the job length transition points where launching a new VM is suitable.
+If $\delta(s,T) \geq 0$, then a new VM is used, as illustrated in Figure~\ref{fig:transition-example}.
+The Figure shows that the reusing VMs is preferred for shorter job lengths, and the range of jobs for which for which reusing is good depends on the current age of the VM: younger VMs (s=1) can be used for longer VMs compared to older VMs. 
+For a given VM type, we precompute this function for different $s,T$ values, and find the job length transition points where launching a new VM is suitable. 
+The precomputed $\delta(s,T)$ can be seen in Figure~\ref{fig:transition-boundary}.
+Using this figure, SciSpot, and users in general, can simply lookup the job and VM attributes, and determine the optimal decision. 
+
+
+%Because the expected job running times are monotonic in $T$, there is a \emph{transition point}
+%Our model can also be used to find the transition boundary in the job scheduling policy. The decision to reuse or launch a new VM depends
 
 
 \begin{figure}[t]
-  \subfloat[Difference in expected running times. \label{fig:transition-all}]
+  \subfloat[Difference in expected running times. \label{fig:transition-example}]
   {\includegraphics[width=0.3\textwidth]{../graphs/transition-all.pdf}}
   \hfill
   \subfloat[Transition boundary. \label{fig:transition-boundary}]
@@ -327,7 +337,7 @@ Our evaluation indicates that careful VM selection can reduce costs by  up to 30
 %Weak
 We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.
 %
-Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM type that minimizes the expected cost of running an application on \sysname. \vikram{check} 
+Since server selection involves a tradeoff between cost, performance, and preemptions, we develop a model that allows us to optimize the resource allocation and pick the best VM type that minimizes the expected cost of running an application on \sysname. 
 
 %Let $\mathcal{R}$ denote the total amount of computing resources requested for the job. For ease of exposition, let us assume that $\mathcal{R}$ is the total number of CPU cores.
 %Furthermore, let $r_i$ denote the ``size'' of the server of type $i$.
@@ -343,11 +353,13 @@ The overall expected cost of running a job can then be expressed as follows:
 \vspace*{\eqnspace}
   E[C_{( i,n_i )}] = n_i\times c_i \times E[\mathcal{T}_{( i,n_i )}].
 \end{equation}
-Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected turnaround time of the job (accounting for preemptions) on $n_i$ servers of type $i$.
+Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected makespan of the job (accounting for preemptions) on $n_i$ servers of type $i$. 
 %
-This turnaround time depends on whether the job needs to be recomputed because of preemptions, and is given by Equation~\ref{eqn:10}.
+This turnaround time depends on whether the job needs to be recomputed because of preemptions, and is given by Equation~\ref{eq:tot-run-time-2}. 
+%
+\sysname therefore searches over all available and acceptable VM types (modulo any resource constraints on minimum memory/CPUs/GPUs), and picks the VM type which yields the lowest expected cost. 
 
-\prat{Highlight tradeoffs here. Larger servers better but more preemption.}
+%\prat{Highlight tradeoffs here. Larger servers better but more preemption.}
 
 
 
