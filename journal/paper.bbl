@@ -146,18 +146,6 @@ Scipy curve fit documentation.
   resources.
 \newblock {\em Cluster Computing\/} (2016), 1--17.
 
-\bibitem{ferguson2017machine}
-{\sc Ferguson, A.~L.}
-\newblock Machine learning and data science in soft materials engineering.
-\newblock {\em Journal of Physics: Condensed Matter 30}, 4 (2017), 043002.
-
-\bibitem{fox2019learning}
-{\sc Fox, G., Glazier, J.~A., Kadupitiya, J., Jadhao, V., Kim, M., Qiu, J.,
-  Sluka, J.~P., Somogyi, E., Marathe, M., Adiga, A., et~al.}
-\newblock {Learning Everywhere: Pervasive machine learning for effective
-  High-Performance computation}.
-\newblock {\em arXiv preprint arXiv:1902.10810\/} (2019).
-
 \bibitem{ghit-spark-hpdc}
 {\sc Ghit, B., and Epema, D.}
 \newblock Better safe than sorry: Grappling with failures of in-memory data
@@ -203,12 +191,6 @@ Scipy curve fit documentation.
 \newblock {\em 2019 28th International Conference on Computer Communication and
   Networks (ICCCN)\/} (2019), 1--9.
 
-\bibitem{jadhao2019rheological}
-{\sc Jadhao, V., and Robbins, M.~O.}
-\newblock Rheological properties of liquids under conditions of
-  elastohydrodynamic lubrication.
-\newblock {\em Tribology Letters 67}, 3 (2019), 66.
-
 \bibitem{jto1}
 {\sc Jadhao, V., Thomas, C.~K., and Olvera de~la Cruz, M.}
 \newblock Electrostatics-driven shape transitions in soft shells.
@@ -245,24 +227,18 @@ Scipy curve fit documentation.
 \newblock Nanoparticle shape lab, January 2020.
 \newblock nanoHUB.
 
-\bibitem{kadupitiya2019machine}
+\bibitem{kadupitiya2020machine2}
 {\sc Kadupitiya, J., Fox, G.~C., and Jadhao, V.}
-\newblock Machine learning for performance enhancement of molecular dynamics
-  simulations.
-\newblock In {\em International Conference on Computational Science\/} (2019),
-  pp.~116--130.
+\newblock Machine learning for parameter auto-tuning in molecular dynamics
+  simulations: Efficient dynamics of ions near polarizable nanoparticles.
+\newblock {\em The International Journal of High Performance Computing
+  Applications 34}, 3 (2020), 357--374.
 
 \bibitem{kadupitiya2017}
 {\sc Kadupitiya, J., Marru, S., Fox, G.~C., and Jadhao, V.}
 \newblock Ions in nanoconfinement, Dec 2017.
 \newblock Online on nanoHUB; source code on GitHub at
   github.com/softmaterialslab/nanoconfinement-md.
-
-\bibitem{kadupitiya2020machine}
-{\sc Kadupitiya, J., Sun, F., Fox, G., and Jadhao, V.}
-\newblock Machine learning surrogates for molecular dynamics simulations of
-  soft materials.
-\newblock {\em Journal of Computational Science\/} (2020), 101107.
 
 \bibitem{IPDPS13:LULESH}
 {\sc Karlin, I., Bhatele, A., Keasler, J., Chamberlain, B.~L., Cohen, J.,
@@ -277,11 +253,6 @@ Scipy curve fit documentation.
 {\sc Karlin, I., Keasler, J., and Neely, R.}
 \newblock Lulesh 2.0 updates and changes.
 \newblock Tech. Rep. LLNL-TR-641973, August 2013.
-
-\bibitem{klotsa2018intermediate}
-{\sc Klotsa, D., Chen, E.~R., Engel, M., and Glotzer, S.~C.}
-\newblock Intermediate crystalline structures of colloids in shape space.
-\newblock {\em Soft Matter 14}, 43 (2018), 8692--8697.
 
 \bibitem{krauth2006statistical}
 {\sc Krauth, W.}
@@ -394,12 +365,6 @@ Scipy curve fit documentation.
 \newblock Spot{O}n: A {B}atch {C}omputing {S}ervice for the {S}pot {M}arket.
 \newblock In {\em SOCC\/} (August 2015).
 
-\bibitem{sun2019deep}
-{\sc Sun, Y., DeJaco, R.~F., and Siepmann, J.~I.}
-\newblock Deep neural network learning of complex binary sorption equilibria
-  from molecular simulation data.
-\newblock {\em Chemical science 10}, 16 (2019), 4377--4388.
-
 \bibitem{xiang_spotmpi:_2011}
 {\sc Taifi, M., Shi, J.~Y., and Khreishah, A.}
 \newblock {SpotMPI}: {A} {Framework} for {Auction}-{Based} {HPC} {Computing}
@@ -432,12 +397,6 @@ Scipy curve fit documentation.
   Wilkes, J.}
 \newblock Large-scale cluster management at google with borg.
 \newblock In {\em EuroSys\/} (2015), ACM.
-
-\bibitem{wang2019machine}
-{\sc Wang, J., Olsson, S., Wehmeyer, C., Perez, A., Charron, N.~E.,
-  De~Fabritiis, G., Noe, F., and Clementi, C.}
-\newblock Machine learning of coarse-grained molecular dynamics force fields.
-\newblock {\em ACS central science\/} (2019).
 
 \bibitem{bidding1}
 {\sc Wee, S.}

@@ -124,7 +124,8 @@ Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{const
 
 %Large computational requirements of scientific simulations make them ideal for low-cost transient servers. 
 
-The typical workflow associated with most scientific computing applications, often involves evaluating a computational model across a wide range of physical and computational parameters. 
+The typical workflow associated with most scientific computing applications, often involves evaluating a computational model across a wide range of physical and computational parameters.
+This is increasingly prevalent in applications that combine simulations and machine learning, such as the use of ``ML surrogtes'' that require physical systems to be simulated with a large number of different parameters to generate the required training data for neural network models to be able to predict the output parameters with high accuracy~\cite{kadupitiya2020machine2}. 
 For instance, constructing and calibrating a molecular dynamics application (such as Nanoconfinement~\cite{jcs2}), usually involves running a simulation with different physical parameters such as characteristic sizes and interaction potentials, as well as computational parameters such as simulation timesteps. 
 Each of these parameters can take a wide range of values, resulting in a large number of combinations which must be evaluated by invoking the application multiple times (also known as a parameter sweep). 
 Since each computational job explores a single combination of parameters, this results in executing a ``bag of jobs'', with each job in the bag running the same application, but with possibly different parameters.

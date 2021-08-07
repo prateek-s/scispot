@@ -1,118 +1,59 @@
 %\vspace*{\largesubsecspace}
 \section{Introduction}
 \label{sec:intro}
-% Look, scientific applications are important, OK? And HPC. 
-
-%Scientific computing applications play a critical role in understanding natural and synthetic phenomena associated with a wide range of material, biological, and engineering systems. 
-%The computational models and simulations for analyzing these systems can consume a large amount of computing resources, and require access to large dedicated high performance computing (HPC) infrastructure. 
-
-
-
-%such as supercomputers~\cite{bigred2}.
-
-
-% VJ: perhaps it could be useful to point out that the cloud approach will not require any further code changes like one encounters in moving from sequential to MPI appraoch; but it would need a framework innovation
-
-% But now we have the cloud!!1 %Is this too long? 
 
 \noindent \textbf{Scientific Computing On Transient VMs.}
 Increasingly, cloud computing platforms have begun to supplement and complement conventional HPC infrastructure to meet the large computing and storage requirements of scientific applications. Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling. 
 However, the flexibility offered by cloud platforms comes at a literal cost: the price of deploying scientific computing applications can be significant, and continues to be a major hurdle towards adoption. 
-
 
 Conventionally, cloud VMs have been offered with ``on-demand'' availability, such that the lifetime of the VM is solely determined by the owner of the VM (i.e., the cloud customer). 
 Increasingly however, cloud providers have begun offering low-cost VMs with \emph{transient}, rather than continuous on-demand availability. 
 Transient VMs can be unilaterally revoked and preempted by the cloud provider, and applications running inside them face fail-stop failures. 
 Due to their volatile nature, transient VMs are offered at steeply discounted rates. Amazon EC2 spot instances, Google Cloud Preemptible VMs, and Azure Batch VMs, are all examples of transient VMs, and are offered at discounts ranging from 50 to 90\%.  
 
-
 However, deploying applications on cloud platforms presents multiple challenges due to the  \emph{fundamental} differences with conventional HPC clusters---which most applications still assume as their default execution environment.
-%
 While the on-demand resource provisioning and pay-as-you-go pricing makes it easy to spin-up computing clusters in the cloud, the deployment of applications must be cognizant of the heterogeneity in VM sizes, pricing, and VM availability. 
-%
 Crucially, optimizing for \emph{cost} in addition to makespan,  becomes an important objective in cloud deployments. 
-% 
 Furthermore, although using transient resources can drastically reduce computing costs, their preemptible nature results in frequent job failures. 
-%
 Preemptions can be mitigated with additional fault-tolerance mechanisms and policies~\cite{flint, marathe2014exploiting}, although they impose additional performance and deployment overheads. 
 
 \noindent \textbf{Transient Computing Challenges.}
 To expand the usability and appeal of transient VMs, many systems and techniques have been proposed that seek to ameliorate the effects of preemptions and reduce the computing costs of applications. 
-%
 Fault-tolerance mechanisms~\cite{spotcheck, marathe2014exploiting}, resource management policies~\cite{exosphere, conductor}, and cost optimization techniques~\cite{dubois2016optispot, shastri2017hotspot} have been proposed for a wide range of applications---ranging from interactive web services, distributed data processing, parallel computing, etc.
-%
 These techniques have been shown to minimize the performance-degradation and downtimes due to preemptions, and reduce computing costs by up to 90\%. 
-
-
 However, the success of these techniques depends on probabilistic estimates of when and how frequently preemptions occur. 
-%the characteristics of the preemption rates. 
-For instance, many fault-tolerance and resource optimization policies are parametrized by the mean time to failure (MTTF) of the transient VMs. 
-A commonly used technique in transient computing is 
-to periodically checkpoint application state, and the ``optimal'' checkpointing frequency that minimizes the total expected running time of a job depends on the MTTF of the VMs~\cite{daly2006higher}. 
+For instance, many fault-tolerance and resource optimization policies are parametrized by the mean time to failure (MTTF) of the transient VMs.
+
+%A commonly used technique in transient computing is to periodically checkpoint application state, and the ``optimal'' checkpointing frequency that minimizes the total expected running time of a job depends on the MTTF of the VMs~\cite{daly2006higher}. 
 
 
-\noindent \textbf{Challenges with Google Preemptible VMs.}
-\emph{Spot} markets (used by Amazon EC2's spot instances and others) are a popular model, where preemptions are governed by dynamic prices (which are in turn set using a continuous second-price auction~\cite{spot-pricing2}). 
-%
+%\noindent \textbf{Challenges with Google Preemptible VMs.}
+\emph{Spot markets} (used by Amazon EC2's spot instances and others) are a popular model, where preemptions are governed by dynamic prices (which are in turn set using a continuous second-price auction~\cite{spot-pricing2}). 
 In this paper, we focus on a different transient availability model---temporally constrained preemptions, which are found in Google Preemptible VMs. 
-%
 In this model, transient VMs have a fixed maximum lifetime, that acts as a temporal constraint on the preemption events. 
-%
 Google's Preemptible VMs are temporally constrained---they have a maximum lifetime of 24 hours, and are always preempted within the $[0,24]$ hour interval.
-
-
-
-\begin{comment}
-Transiency-mitigation techniques such as VM migration~\cite{spotcheck}, checkpointing~\cite{flint, marathe2014exploiting}, diversification~\cite{exosphere}, \emph{all} use price-signals to model the availability and preemption rates of spot instances. 
-However, these pricing-based models are not generalizable to other transient VMs having a flat price (such as Google's or Azure's offerings).
 %
-% Replace by other forms of transient availability such as temporally constrained preemptions where VMs have a maximum lifetime and can be preempted within the interval, such as Google preemptible VMs.
-% Is a fundamental departure from price based techniques.
-%
-Moreover, no information about preemption characteristics is publicly available, not even coarse-grained metrics such as MTTFs. 
-%
-This lack of information and understanding about preemption behavior precludes most failure modeling and transient computing optimizations. 
-%
-
-
-% Focus on temporal constraints here. Other transient availability models not based on spot markets such as temporally constrained preemptions. 
-
-To address this gap, we seek to understand the preemption characteristics of Google's Preemptible VMs, whose distinguishing characteristic is that they have a \emph{maximum lifetime of 24 hours}.
-%
-This temporal constraint results in new preemption phenomena and impacts application performance and cost in new and interesting ways that have not received attention.
-%
-We conduct a large empirical study of over 1,500 preemptions of Google Preemptible VMs, and develop an analytical probability model for temporally constrained preemptions.
-%
-We find that the temporal constraint is a radical departure from pricing-based preemptions, and presents fundamental challenges in preemption modeling and their effective use. % of Preemptible VMs.
-\end{comment}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 The \textbf{temporally constrained preemption} model is distinct from spot markets, and presents fundamental challenges in preemption modeling and effective use of transient VMs. 
-%
 Transiency-mitigation techniques such as VM migration~\cite{spotcheck}, checkpointing~\cite{flint, marathe2014exploiting}, diversification~\cite{exosphere}, \emph{all} use price-signals to model the availability and preemption rates of spot instances. 
-%
 With flat pricing, these approaches are not applicable. 
-%
 Furthermore, no other information about preemption characteristics is publicly available, not even coarse-grained metrics. 
-%
 To address this, we develop an \emph{empirical} approach for understanding and modeling preemptions. 
-%
 We conduct a large empirical study of over 800 preemptions of Google Preemptible VMs, and develop an analytical probability model for temporally constrained preemptions. 
 
 
-
-%
 Due to the temporal constraint on preemptions, classical models that form the basis of preemption modeling and policies, such as memoryless exponential failure rates, are not applicable. 
 %
 We find that preemption rates are \emph{not} uniform, but bathtub shaped with multiple distinct temporal phases, and are incapable of being modeled by existing bathtub distributions such as Weibull.
 %
 We capture these characteristics by \textbf{developing a new probability model}. 
 Our model uses reliability theory principles to capture the 24-hour lifetime of VMs, and generalizes to VMs of different resource capacities, geographical regions, and across different temporal domains.
-%
-%To the best of our knowledge, this is the \emph{first} work on constrained preemption modeling. 
-Using our probability model, we find that bathtub failures can reduce the recomputation overhead of preeemptions by more than  $10\times$ compared to uniform failures---which has important implications for cloud users and providers. 
+
+
+In addition to empirical modeling, we also develop a new theoretical framework for understanding temporally constrained preemptions, by using principles and results from the field of \textbf{statistical mechanics.} 
+Specifically, we show that the bathtub failures of constrained preemptions can be explained using the physics of the Tonks gas model~\cite{tonks, krauth2006statistical}. 
+
+
+% Using our probability model, we find that bathtub failures can reduce the recomputation overhead of preeemptions by more than  $10\times$ compared to uniform failures---which has important implications for cloud users and providers. 
 
 
 We show the applicability and effectiveness of our model by developing \textbf{optimized policies for job scheduling and checkpointing.} 
@@ -132,7 +73,8 @@ We implement and evaluate these policies as part of a batch computing service, \
 %
 \sysname abstracts typical scientific computing workloads and workflows into a new unit of execution, which we call as a ``bag of jobs''. 
 These bags of jobs, ubiquitous in scientific computing, represent multiple instantiations of the same application launched with possibly different physical and computational parameters.
-The bag of jobs is especially useful for machine-learning integrated scientific computing applications, in which the same application is run with different parameters to curate ``training data sets'' for surrogates~\cite{} of physical systems. 
+The bag of jobs is especially useful for machine-learning integrated scientific computing applications, in which the same application is run with different parameters to curate ``training data sets'' for surrogates~\cite{kadupitiya2020machine2} of physical systems.
+%
 The bag of jobs abstraction permits efficient implementation of our optimized policies, and allows \sysname to lower the costs and barriers of transient VMs for scientific computing applications.
 
 
@@ -141,13 +83,13 @@ Towards our goal of harnessing temporally constrained transient VMs for modern s
 we make the following contributions:
 %\vspace*{\largesubsecspace}
 \begin{enumerate} [leftmargin=12pt]
-% Yeah the "not spot" point below may need clarification before contribs
-%\item Since transient server preemptions can disrupt the execution of jobs, we present the \emph{first} empirical model and analysis of transient server availability that is \emph{not} rooted in classical bidding models for EC2 spot instances that have been proposed thus far. Our empirical model allows us to predict expected running times and costs of different scientific computing applications.
+\item Using a large-scale empirical study of Google's Preemptible VMs \footnotemark, we show a statistical analysis of preemptions based on the VM type, temporal effects, geographical regions, etc. Our analysis indicates that the 24-hour constraint is a defining characteristic, and that the preemption rates are \emph{not} uniform, but have distinct phases. 
 
-\item We conduct a large-scale, first of its kind empirical study of preemptions of Google's Preemptible VMs \footnotemark. We then show a statistical analysis of preemptions based on the VM type, temporal effects, geographical regions, etc. Our analysis 
-  indicates that the 24-hour constraint is a defining characteristic, and that the preemption rates are \emph{not} uniform, but have distinct phases. 
+\item We develop a probability model of constrained preemptions based on empirical and statistical insights that point to distinct failure processes underpinning the preemption rates. Our model captures the key effects resulting from the 24 hour lifetime constraint associated with these VMs.
 
-\item We develop a probability model of constrained preemptions based on empirical and statistical insights that point to distinct failure processes underpinning the preemption rates. Our model captures the key effects resulting from the 24 hour lifetime constraint associated with these VMs, and we analyze it through the lens of reliability theory.
+\item We analyze our probability model through the lens of reliability theory, and develop a theory of contrained preemptions using the principles of statistical mechanics. 
+
+  
   %and statistical mechanics. 
 
 %  and enables accurate prediction of expected running times and costs of different scientific computing applications.
@@ -165,57 +107,6 @@ we make the following contributions:
 \end{enumerate}
 
 \footnotetext{Preemption dataset available at https://github.com/kadupitiya/goog-preemption-data/}
-
-
-\begin{comment}
-
-%Most cloud platforms offer \emph{Infrastructure as a Service}, and provide computing resources in the form of \emph{Virtual Machines (VMs)}, on which a wide range of  applications such as web-services, distributed data processing, distributed machine learning, etc., are deployed. 
-
-
-Transient cloud computing is an emerging and popular resource allocation model used by all major cloud providers, and allows unused capacity to be offered at low costs as preemptible virtual machines.
-%
-Transient VMs can be unilaterally revoked and preempted by the cloud provider, and applications running inside them face fail-stop failures.
-%
-%Due to their volatile nature, transient VMs are offered at steeply discounted rates.
-%Amazon EC2 spot instances~\cite{spot-documentation}, Google Cloud Preemptible VMs~\cite{preemptible-documentation}, and Azure Low-priority Batch VMs~\cite{azure-batch}, are all examples of transient VMs, and are offered at discounts ranging from 50 to 90\% compared to conventional, non-preemptible ``on-demand'' VMs.
-%
-% Transient VMs are essentially surplus low-priority resources, and the frequency of preemptions is influenced by the availability of surplus resources and cloud operator's resource reclamation policies.
-% Thus, preemptions are \emph{not} due to conventional hardware failures, and occur at higher rates. 
-% From an application perspective however, preemptions are still akin to fail-stop failures, and cause application execution to be disrupted, leading to downtimes and performance degradation.
-%
-To expand the usability and appeal of transient VMs, many systems and techniques have been proposed that  ameliorate the effects of preemptions and reduce the computing costs of applications. 
-%
-Fault-tolerance mechanisms~\cite{spotcheck, marathe2014exploiting}, resource management policies~\cite{exosphere, conductor}, and cost optimization techniques~\cite{dubois2016optispot, shastri2017hotspot} have been developed for a wide range of applications---such as interactive web services, distributed data processing, parallel computing, etc.
-%
-%These techniques have been shown to minimize the performance-degradation and downtimes due to preemptions, and reduce computing costs by up to 90\%. 
-
-
-
-Transiency mitigation techniques all depend on probabilistic estimates of when and how frequently preemptions occur.
-%
-For instance, many fault-tolerance and resource optimization policies are parametrized by the mean time to failure (MTTF) of the transient VMs. 
-%
-The preemption characteristics are governed by the transient availability model chosen by the cloud provider.
-
-
-%
-%Past work on transient computing has focused on
-\emph{Spot} markets (used by Amazon EC2's spot instances and others) are a popular model, where preemptions are governed by dynamic prices (which are in turn set using a continuous second-price auction~\cite{spot-pricing2}). 
-%
-In this paper, we focus on a different transient availability model---temporally constrained preemptions.
-%
-In this model, transient VMs have a fixed maximum lifetime, that acts as a temporal constraint on the preemption events. 
-%
-Google's Preemptible VMs are temporally constrained---they have a maximum lifetime of 24 hours, and are always preempted within the $[0,24]$ hour interval.
-%
-%Preemption behavior in temporally constrained systems is \emph{not} determined by dynamic pricing, and prior pricing based approaches developed for spot markets are not applicable. 
-
-
-
-% Collectively, a bag of jobs can be used to ``sweep'' or search across a multi-dimensional parameter space to isolate the set of desired parameters associated with the scientific computation model. 
-% Bags of jobs also help in the use of machine learning (ML) to enhance scientific computational methods ~\cite{ml.atomic2017,melko2017,sam2017,fu2017,long2015machine, ferguson2017machine,ward2018matminer}, when a collection of jobs with different  parameters  are launched to train and test ML models.
-
-\end{comment}
 
 %%% Local Variables:
 %%% mode: latex

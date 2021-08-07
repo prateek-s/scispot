@@ -8,6 +8,10 @@ Repeated entry---line 72 of file bagsjobs.bib
  : @misc{kadupitiya2017
  :                     ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 316 of file bagsjobs.bib
+ : @article{kadupitiya2020machine2
+ :                                ,
+I'm skipping whatever remains of this entry
 Database file #3: spot-bid.bib
 Repeated entry---line 969 of file spot-bid.bib
  : @inproceedings{spoton
@@ -49,45 +53,45 @@ Warning--empty year in jain14demand
 Warning--empty institution in LULESH2:changes
 Warning--can't use both volume and number fields in exosphere
 Warning--empty year in tian_gpu_icdcs
-You've used 85 entries,
+You've used 78 entries,
             2253 wiz_defined-function locations,
-            965 strings with 19825 characters,
-and the built_in function-call counts, 29164 in all, are:
-= -- 2627
-> -- 1547
+            927 strings with 18442 characters,
+and the built_in function-call counts, 26434 in all, are:
+= -- 2379
+> -- 1368
 < -- 1
-+ -- 645
-- -- 554
-* -- 2249
-:= -- 4571
-add.period$ -- 242
-call.type$ -- 85
-change.case$ -- 529
++ -- 572
+- -- 488
+* -- 2009
+:= -- 4112
+add.period$ -- 221
+call.type$ -- 78
+change.case$ -- 476
 chr.to.int$ -- 0
-cite$ -- 101
-duplicate$ -- 1179
-empty$ -- 2434
-format.name$ -- 554
-if$ -- 6151
+cite$ -- 94
+duplicate$ -- 1101
+empty$ -- 2249
+format.name$ -- 488
+if$ -- 5605
 int.to.chr$ -- 0
-int.to.str$ -- 85
-missing$ -- 71
-newline$ -- 414
-num.names$ -- 148
-pop$ -- 723
+int.to.str$ -- 78
+missing$ -- 64
+newline$ -- 379
+num.names$ -- 134
+pop$ -- 676
 preamble$ -- 1
-purify$ -- 445
+purify$ -- 399
 quote$ -- 0
-skip$ -- 737
+skip$ -- 684
 stack$ -- 0
-substring$ -- 1290
-swap$ -- 296
+substring$ -- 1144
+swap$ -- 274
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 338
+type$ -- 310
 warning$ -- 16
-while$ -- 228
-width$ -- 87
-write$ -- 815
-(There were 6 error messages)
+while$ -- 206
+width$ -- 80
+write$ -- 747
+(There were 7 error messages)
