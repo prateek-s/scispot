@@ -138,6 +138,34 @@ However we also note that certain resource management challenges such as the pre
 \vspace*{\subsecspace}
 \subsubsection{Job Scheduling}
 
+
+
+\begin{figure*}
+  \centering
+  \begin{minipage}[c]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{../graphs/Sched-bathtub.pdf}
+    \vspace*{-0.6cm}
+    \caption{Effect of job start time on the failure probability.} \label{fig:sched-bathtub}
+  \end{minipage}
+%  \caption{Our model-driven job-scheduling policy reduces job-failures.}
+%  \label{fig:sched-top}
+  \hfill 
+  \begin{minipage}[c]{0.3\linewidth}
+    \includegraphics[width=\textwidth]{../graphs/Sched-fail-prob.pdf}
+    \vspace*{-0.6cm}
+    \caption{Job failure probability for jobs of different lengths.} \label{fig:sched-all}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{../graphs/wrong-model.pdf}
+    \vspace*{-0.8cm}
+  \caption{Impact of suboptimal bathtub model parameters on the scheduling policy is negligible.}
+  \label{fig:wrong-model}
+\end{minipage}
+\vspace*{-0.4cm}
+\end{figure*}
+
+
 Previously, we have quantified the increase in running time due to preemptions, but we had assumed that jobs start on a newly launched server.
 In many scenarios however, a server may be used for running a long-running sequence of jobs, such as in a batch-computing service. 
 %
@@ -162,53 +190,19 @@ Thus, our model-based job scheduling policy can reduce job failure probability b
 
 
 
-% \begin{figure*}
-%   \centering
-%   \begin{minipage}[c]{0.3\linewidth}
-%     \includegraphics[width=\linewidth]{../graphs/Sched-bathtub.pdf}
-%     \vspace*{-0.6cm}
-%     \caption{Effect of job start time on the failure probability.} \label{fig:sched-bathtub}
-%   \end{minipage}
-% %  \caption{Our model-driven job-scheduling policy reduces job-failures.}
-% %  \label{fig:sched-top}
-%   \hfill 
-%   \begin{minipage}[c]{0.3\linewidth}
-%     \includegraphics[width=\textwidth]{../graphs/Sched-fail-prob.pdf}
-%     \vspace*{-0.6cm}
-%     \caption{Job failure probability for jobs of different lengths.} \label{fig:sched-all}
-%   \end{minipage}
+% \begin{figure}[t]
+%   \vspace*{\myfigspace}
+%   \subfloat[Effect of job start time on the failure probability. \label{fig:sched-bathtub}]
+%   {  \includegraphics[width=0.23\textwidth]{../graphs/Sched-bathtub.pdf}}
 %   \hfill
-% \begin{minipage}[c]{0.3\textwidth}
-%   \centering
-%   \includegraphics[width=0.7\textwidth]{../graphs/tipping-black-reuseVM.pdf}
-%   \caption{Job lengths and starting points where VM should be reused (black), and a new VM should be launched (white)}
-%   \label{fig:tipping-points}
-% \end{minipage}
-
-  
-%   \begin{minipage}[c]{0.3\linewidth}
-%     \includegraphics[width=\linewidth]{../graphs/wrong-model.pdf}
-%     \vspace*{-0.8cm}
-%   \caption{Impact of suboptimal bathtub model parameters on the scheduling policy is negligible.}
-%   \label{fig:wrong-model}
-% \end{minipage}
-%\vspace*{-0.4cm}
-%\end{figure*}
-
-
-\begin{figure}[t]
-  \vspace*{\myfigspace}
-  \subfloat[Effect of job start time on the failure probability. \label{fig:sched-bathtub}]
-  {  \includegraphics[width=0.23\textwidth]{../graphs/Sched-bathtub.pdf}}
-  \hfill
-  \vspace*{-0.4cm}
-  \subfloat[Job failure probability for jobs of different lengths. \label{fig:sched-all}]
-  {  \includegraphics[width=0.23\textwidth]{../graphs/Sched-fail-prob.pdf}}
-  %  \vspace*{\myfigspace}
-  \caption{Job failure probability is lower with our deadline aware policy across all job sizes.}
-  \vspace*{\myfigspace}
-  \label{fig:sched-both}
-\end{figure}
+%   \vspace*{-0.4cm}
+%   \subfloat[Job failure probability for jobs of different lengths. \label{fig:sched-all}]
+%   {  \includegraphics[width=0.23\textwidth]{../graphs/Sched-fail-prob.pdf}}
+%   %  \vspace*{\myfigspace}
+%   \caption{Job failure probability is lower with our deadline aware policy across all job sizes.}
+%   \vspace*{\myfigspace}
+%   \label{fig:sched-both}
+% \end{figure}
 
 
 The job failure probability is determined by the job length and the job starting time.
@@ -229,7 +223,7 @@ This reduction is primarily due to how the two policies perform for jobs launche
 %   \label{fig:wrong-model}
 % \end{figure}
 
-\begin{comment}
+%\begin{comment}
 
 \noindent \textbf{Sensitivity to model fitting.}
 The effectiveness of any model-based policy depends on the goodness of fit of the preemption model---i.e., how accurately it captures empirical data. 
@@ -250,7 +244,7 @@ This negligible difference is due to the fact that even a suboptimal model captu
 %
 %This is desirable in cloud environments where the underlying preemption distribution can change, and thus our empirical model driven approach is a feasible technique for harnessing temporally constrained VMs. 
 
-\end{comment}
+%\end{comment}
 
     
 \begin{comment}
@@ -312,16 +306,16 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Impact of server exploration}
+\subsubsection{Impact of VM Selection}
 
 %As described in Section~\ref{sec:design}, applications can be deployed on multiple types of VMs in the cloud, with each VM type having a different ``size''.
 %In our evaluation of parallel scientific computing applications that are CPU intensive, we are primarily interested in the number of CPUs in a VM.
 
 When an application (i.e., bag of jobs) requests a total number of CPUs to run each of its jobs, \sysname first runs its exploration phase to find the ``right'' VM for the application.
 \sysname searches for the VM that minimizes the total expected cost $E[C_{(i,n_i)}]$ of running the application. %and this depends on several factors such as the parallel structure of the application, the preemption probability and the associated job recomputation time, and the price of the VM.
-Thus, even if the \emph{total} amount of resources (i.e., number of CPUs) per job is held constant, the total running time (i.e., turnaround time) of an application depends on the choice of the VM type ($i$), and the associated number of VMs ($n_i$) required to meet the allocation constraint (Section~\ref{subsec:cost-model}).
+Thus, even if the \emph{total} amount of resources (i.e., number of CPUs) per job is held constant, the total running time (i.e., turnaround time) of an application depends on the choice of the VM type ($i$), and the associated number of VMs ($n_i$) required to meet the allocation constraint. % (Section~\ref{subsec:cost-model}).
 %
-With preemptible instances, the total running time of a job is composed of two factors: the ``base'' running time of the job without any preemptions ($T_{(i,n_i)}$), and the expected recomputation time which depends on the probability of job failure (Equation~\ref{eq:recomput}). 
+%With preemptible instances, the total running time of a job is composed of two factors: the ``base'' running time of the job without any preemptions ($T_{(i,n_i)}$), and the expected recomputation time which depends on the probability of job failure (Equation~\ref{eq:recomput}). 
 
 \begin{figure}
   \centering
@@ -341,18 +335,17 @@ For Nanoconfinement and LULESH, we observe that the base running times (without 
 For Nanoconfinement, the running time on the ``best'' VM (i.e., with 32 CPUs) is nearly 40\% lower as compared to the worst case. 
 On the other hand, the Shapes application can scale to a larger number of VMs without any significant communication overheads, and does not see any significant change in its running time. 
 
-Figure~\ref{fig:runtimes-bar} also shows the expected turnaround time $E[\mathcal{T}_{(i,n_i)}]$, that is obtained by adding the the expected recomputation time, which depends on the expected lifetimes of the VM and the number of VMs, and is computed using the cost model introduced in Section~\ref{subsec:cost-model}. 
+Figure~\ref{fig:runtimes-bar} also shows the expected recomputation time which depends on the expected lifetimes of the VM and the number of VMs. %, and is computed using the cost model introduced in Section~\ref{subsec:cost-model}. 
 While selecting larger VMs may reduce communication overheads and thus improve performance, it is not an adequate policy in the case of preemptible VMs, since the preemptions can significantly increase the turnaround time.
 Therefore, even though the base running time of Nanoconfinement is lower on a 64 CPU VM, the recomputation time on the 64 CPU VM is almost $4\times$ higher compared to a 2x32-CPU cluster,  due to the much lower expected lifetime of the larger VMs. 
 Thus, on preemptible servers, there is a tradeoff between the base running time which only considers parallelization overheads, and the recomputation time.
 By considering \emph{both} these factors, \sysname's server selection policy can select the best VM for an application. 
 
 
-\noindent \emph{\textbf{Result:} SciSpot's server selection, by considering both the base running time and recomputation time, can improve performance by up to 40\% , and can keep the increase in running time due to recomputation to less than 5\%.}
+\noindent \emph{\textbf{Result:} SciSpot's server selection, by considering both the base running time and recomputation time, can improve performance by up to 40\% , and can keep the increase in running time due to preemptions to less than 5\%.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Cost}
-
 
 \begin{figure}
   \centering
