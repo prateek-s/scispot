@@ -370,25 +370,6 @@ This results in 20\% cost increase over \sysname.
 \noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
 
 
-\eat{
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\textwidth]{../graphs/cost-only-bar.pdf}
-  \vspace*{\myfigspace}
-  \caption{SciSpot's use of preemptible VMs can reduce costs by up to $5\times$ compared to conventional cloud deployments.}
-  \label{fig:cost-only-bar}
-    \vspace*{\myfigspace}
-\end{figure}
-
-The primary motivation for using preemptible VMs is their significantly lower cost compared to conventional ``on-demand'' cloud VMs that are non-preemptible. 
-Figure~\ref{fig:cost-only-bar} compares the cost of running different applications with different cloud VM deployments.
-\sysname, which uses both cost-minimizing server selection, and preemptible VMs, results in significantly lower costs across the board, even when accounting for preemptions and recomputations. 
-Even with \sysname's server selection, using on-demand VMs result in a $5\times$ cost increase compared to \sysname.
-In the absence of server selection, we assume that the user will pick a ``median'' VM in terms of number of CPUs (in this case, 8 CPU VMs), which we also show in Figure~\ref{fig:cost-only-bar}.
-Note that since \sysname's server selection considers the turnaround time (which includes recomputation time), it may not always pick the optimal on-demand server. 
-
-\noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
-}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Comparison with HPC Overhead}
 
@@ -428,11 +409,6 @@ We note that these large single jobs are rare, accounting for less than 5\% of a
 For smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller. 
 
 \noindent \emph{\textbf{Result:} \sysname's overhead of recomputation due to preemptions is small, and is up to $10\times$ lower compared to the overhead of waiting in conventional HPC clusters. }
-
-
-
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

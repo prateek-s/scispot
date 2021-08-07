@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.27)  7 AUG 2021 08:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.27)  7 AUG 2021 08:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -868,7 +868,7 @@ und PDF version <1.6>, but at most version <1.5> allowed
 <../graphs/hpc-vs-scispot.pdf, id=219, 518.22043pt x 286.38086pt>
 File: ../graphs/hpc-vs-scispot.pdf Graphic file (type pdf)
 <use ../graphs/hpc-vs-scispot.pdf>
-Package pdftex.def Info: ../graphs/hpc-vs-scispot.pdf  used on input line 411.
+Package pdftex.def Info: ../graphs/hpc-vs-scispot.pdf  used on input line 393.
 (pdftex.def)             Requested size: 207.17084pt x 114.48476pt.
 Excluding 'comment' comment.) (./related.tex Excluding 'comment' comment.)
 (./conclusion.tex Excluding 'comment' comment.) (./paper.bbl
