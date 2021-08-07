@@ -121,9 +121,9 @@ For instance, if short jobs are very common, then uniformly distributed preempti
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace*{\subsecspace}
-\subsection{Model-based Policies}
-\label{subsec:eval-policy}
+%\vspace*{\subsecspace}
+%\subsection{Model-based Policies}
+%\label{subsec:eval-policy}
 
 We now evaluate the effectiveness of model-driven policies that we proposed earlier in Section~\ref{sec:policies}.
 %
@@ -136,7 +136,7 @@ However we also note that certain resource management challenges such as the pre
 
 
 \vspace*{\subsecspace}
-\subsubsection{Job Scheduling}
+\subsection{Job Scheduling}
 
 
 
@@ -306,7 +306,7 @@ Thus, our model-based policy is able to reduce the checkpointing overhead and th
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Impact of VM Selection}
+\subsection{Impact of VM Selection}
 
 %As described in Section~\ref{sec:design}, applications can be deployed on multiple types of VMs in the cloud, with each VM type having a different ``size''.
 %In our evaluation of parallel scientific computing applications that are CPU intensive, we are primarily interested in the number of CPUs in a VM.
@@ -345,7 +345,7 @@ By considering \emph{both} these factors, \sysname's server selection policy can
 \noindent \emph{\textbf{Result:} SciSpot's server selection, by considering both the base running time and recomputation time, can improve performance by up to 40\% , and can keep the increase in running time due to preemptions to less than 5\%.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Cost}
+\subsection{Cost}
 
 \begin{figure}
   \centering
@@ -371,7 +371,7 @@ This results in 20\% cost increase over \sysname.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Comparison with HPC Overhead}
+\subsection{Comparison with HPC Overhead}
 
 Scientific computing applications are typically run on large-scale HPC clusters, where different performance and cost dynamics apply.
 While there are hardware differences between cloud VMs and HPC clusters that can contribute to performance differences, we are interested in the performance ``overheads''.

@@ -1,60 +1,56 @@
 \documentclass{article}
 
-
+\title{Cover Letter}
+\date{}
 
 \begin{document}
+\maketitle
+
 This is an extended version of our conference paper ``Modeling The Temporally Constrained Preemptions of Transient Cloud VMs'' that appeared at ACM HPDC 2020. 
 
-Compared to the preliminiary conference version, we have made significant new contributions to algorithms, system design and implementation, and experimental evaluation. 
+Compared to the preliminiary conference version, we have made significant new contributions to algorithms, system design and implementation, and experimental evaluation. A detailed list of major contributions and experimental results is presented below. 
 
 
 %    New conceptual extensions
 %    Experiments that provide new insights
 %    New theoretical analysis and/or proofs supporting empirical results
 
+\section{New Technical Contributions}
 
-\paragraph{New Technical Contributions:}
+The preliminary conference version introduced the notion of temporally constrained preemptions and a bathtub failure model.
+In this paper, we extend the model and its uses in significant ways, and address the implementation challenges by designing and implementing a new system, \textbf{SciSpot}. 
+Our contributions are centered around a deeper theaoretical analysis of our model, and the design and implementation of a system for running scientific computing applications on low-cost preemptible VMs. 
+%using statistical mechanics, principled reliability modeling of our preemption model, and 
+Specifically, we make the following \emph{new} technical contributions (listed in the order of appearance in the paper): 
 
 \begin{enumerate}
 
+\item A new ``bag of jobs'' abstraction for modern scientific computing workloads is introduced, which provides a new workflow model \emph{and} opportunities for cost and performance optimization policies. We provide motivation and examples in Section 2.3; and show how these can be used for implementing policies at the end of Section 5. 
   
-\item A new phenomological interpretation of the temporally constrained model using statistical mechanics (Tonks Gas Model). This gives insights about why the preemption rate is bathtub shaped. 
+\item We analyze our preemption model using reliability theory principles in Section 3.2.2. Specifically, we provide a formulation of the expected lifetime and harzard rate for our temporally constrained preemption model.
 
-\item Additional reliability modeling, including the hazard function of our model. 
+  
+\item \textbf{A significant new theoretical contribution is our analysis of constrained preemptions using statistical mechanics principles.} In Section 3.3, we state and prove an important lemma which provides theoretical underpinnings of the bathtub shape of temporally constrained preemptions. Our phenomological model connects statistical mechanics and transient computing in a new way, and provides the foundation for a deeper understanding of cloud resource management policies. 
 
-\item Cost-minimization techniques 
+\item We present a new Transition-Points based job-scheduling and VM-reuse policy in Section 4.2. 
 
-\item A new VM selection and reuse policy 
+\item We develop cost-minimization techniques using our preemption model in Section 4.3, which considers both the job resource requirements, and the cost and failure rates of different preemptible VMs in the cloud. 
 
-\item The use of a new \emph{bag of jobs} abstraction for scientific computing applications. We show how this abstraction can be used for system design and implementation.
-
-\item Implementation and integration into a new system for scientific computing called SciSpot. 
+\item Implementation and integration of all policies into a new system for scientific computing called SciSpot, described in Section 5. 
 
 \end{enumerate}
 
-\paragraph{New Empirical Evaluation.}
+\section{New Empirical Evaluation}
+
 This paper also adds empirical evaluation of the new techniques as well as extended evaluation of the entire system. In particular:
 
 \begin{enumerate}
-\item Impact of VM selection, and analysis of running times of different Scientific computing applications. 
-\item Comparison with HPC waiting times (Figure ). 
-\item Comparison of SciSpot cost with the state of the art in transient server selection (ExoSphere), in Figure 
+\item We analyze the job-scheduling policies in Figure 5. 
+\item Impact of VM selection, and analysis of running times of different Scientific computing applications, in Section 6.2 and Figure 10.
+\item Cost analysis and evaluation in Section 6.3. 
+\item Comparison with HPC waiting times in Section 6.4. 
+\item Comparison of SciSpot cost with the state of the art in transient server selection (ExoSphere), in Section 6.3. 
 \end{enumerate}
-
-
-\paragraph{Detailed Changes.}
-(Break this by section?)
-\begin{enumerate}
-\item Background and data analysis for bags of jobs in Section 2 
-\item New subsection on reliability analysis of model (3.2.2)
-\item Statistical mechanics lemma and analysis in Section 3.3
-\item Application policies: Section 4.2 A new job scheduling and VM reuse policy is added, called ``Transition points''. Two new experimental results/graphs (Figure 5a and 5b). 
-\item Cost-aware VM selection policy is added in 4.3. Expand. 
-\item Checkpointing? Lets remove it
-\item Implementation details added
-\item 
-\end{enumerate}
-
 
 
 \end{document}
