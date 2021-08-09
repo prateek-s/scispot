@@ -3,7 +3,7 @@
 \label{sec:intro}
 
 %\noindent \textbf{Scientific Computing On Transient VMs.}
-Increasingly, cloud computing platforms have begun to supplement and complement conventional HPC infrastructure to meet the large computing and storage requirements of scientific applications. Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling. 
+Increasingly, cloud computing platforms have begun to supplement and complement conventional high performance computing (HPC) infrastructure to meet the large computing and storage requirements of scientific computing applications. Public cloud platforms such as Amazon's EC2, Google Cloud Platform, and Microsoft Azure, offer multiple benefits such as \emph{on-demand} resource allocation, convenient pay-as-you-go pricing models, ease of provisioning and deployment, and near-instantaneous elastic scaling. 
 However, the flexibility offered by cloud platforms comes at a literal cost: the price of deploying scientific computing applications can be significant, and continues to be a major hurdle towards adoption. 
 
 Conventionally, cloud VMs have been offered with ``on-demand'' availability, such that the lifetime of the VM is solely determined by the owner of the VM (i.e., the cloud customer). 
@@ -73,7 +73,7 @@ We implement and evaluate these policies as part of a batch computing service, \
 %
 \sysname abstracts typical scientific computing workloads and workflows into a new unit of execution, which we call as a ``bag of jobs''. 
 These bags of jobs, ubiquitous in scientific computing, represent multiple instantiations of the same application launched with possibly different physical and computational parameters.
-The bag of jobs is especially useful for machine-learning integrated scientific computing applications, in which the same application is run with different parameters to curate ``training data sets'' for surrogates~\cite{kadupitiya2020machine2} of physical systems.
+The bag of jobs is especially useful for scientific computing applications enhanced by machine learning (ML), in which the same application is run with different parameters to curate ``training data sets'' for designing ML-based surrogates and force fields for simulations ~\cite{kadupitiya2019machine,kadupitiya2020machine2,moradzadeh2019molecular,fox2019learning,wang2019machine}.
 %
 The bag of jobs abstraction permits efficient implementation of our optimized policies, and allows \sysname to lower the costs and barriers of transient VMs for scientific computing applications.
 
