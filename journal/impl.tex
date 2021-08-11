@@ -3,8 +3,8 @@
 %\section{Details of the Experimental Framework used for Evaluation}
 \label{sec:impl}
 
-We have implemented \sysname as a prototype batch computing service that implements various policies for constrained preemptions. 
-We use it to examine the effectiveness and practicality of our model and policies in real-world settings. 
+We have developed \sysname as a prototype batch computing service that implements various policies for constrained preemptions. 
+We use it to examine the effectiveness and practical utility of our model and policies in real-world settings. 
 %
 \sysname is implemented as a light-weight, extensible framework that makes it convenient and cheap to run batch jobs in the cloud. 
 We have implemented our prototype in Python in about 2,000 lines of code, and currently support running VMs on the Google Cloud Platform~\cite{gcp}. 
@@ -24,10 +24,10 @@ Once a cluster is launched, it then configures a cluster manager such as Slurm~\
 The Slurm master node runs on a small, 2 CPU non-preemptible VM, which is shared by all applications and users. 
 We monitor job completions and failures (due to VM preemptions) through the use of Slurm call-backs, which issue HTTP requests back to the central service controller. 
 
-\noindent \textbf{Policy Implementation:}
+\noindent \textbf{Policy Implementation.}
 \sysname creates and manages clusters of transient cloud servers, manages all aspects of the VM lifecycle and costs, and implements the model-based policies.
-It manages a cluster of VMs, and parametrizes the bathtub model based on the VM type, region,  time-of-day, and day-of-week.
-When a new batch job is to be launched, we find a ``free'' VM in the cluster that is idle, and uses the job scheduling policy to determine if the VM is suitable or a new VM must be launched. 
+It manages a cluster of VMs, and parameterizes the bathtub model based on the VM type, region,  time-of-day, and day-of-week.
+When a new batch job is to be launched, \sysname finds a ``free'' VM in the cluster that is idle, and uses the job scheduling policy to determine if the VM is suitable or a new VM must be launched. 
 Due to the bathtub nature of the failure rate, VMs that have survived the initial failures are ``stable'' and have a very low rate of failure, and thus are ``valuable''.
 We keep these stable VMs as ``hot spares'' instead of terminating them, for a period of one hour. 
 %For the checkpointing policy, our dynamic programming algorithm has a time complexity of $O(T^3)$, for a job of length $T$.
@@ -45,11 +45,11 @@ We keep these stable VMs as ``hot spares'' instead of terminating them, for a pe
 \end{figure}
 
 
-\noindent \textbf{Bag of Jobs Abstraction For Scientific Simulations:}
+\noindent \textbf{Bag of Jobs Abstraction For Scientific Simulations.}
 While \sysname is intended for general batch jobs, we incorporate a special optimization for scientific simulation workloads that improves the ease-of-use of our service, and also helps in our policy implementation.
 We allow users to submit entire bags of jobs, which permits us to determine the running time of jobs based on previous jobs in the bag. 
 For constrained preemptions, the running time is determined by job lengths, and the job run time estimates are extremely useful. 
-Having a large sequence of jobs is also particularly useful with bathtub preemptions, since we can re-use ``stable'' VMs with low preemption probability for running new jobs from a bag.
+Having a large sequence of jobs is also particularly useful with bathtub-shaped preemption rates, because we can re-use ``stable'' VMs with low preemption probability for running new jobs from a bag.
 If jobs were submitted one at a time, a batch computing service may have to terminate the VM after job completion, which would increase the job failure probability resulting from running on new VMs that have a high initial failure rate. 
 
 

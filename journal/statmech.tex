@@ -5,7 +5,7 @@
 We now analyze and place our model in a reliability theory framework. 
 %
 
-\noindent \textbf{Expected Lifetime:} Our analytical model helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
+\noindent \textbf{Expected Lifetime.} Our analytical model helps crystallize the differences in VM preemption dynamics, by allowing us to easily calculate their expected lifetime. 
 More formally, we define the expected lifetime of a VM ($\mathscr{L}$) as: 
 \begin{equation}
   \label{eq:expected-lifetime}
@@ -21,7 +21,7 @@ This expected lifetime can be used in lieu of MTTF, for policies and application
 
 %We use the analytically derived expected lifetimes of VMs of different types in \sysname when selecting the ``best'' VM type for a given bag of jobs. This server selection is a key part of \sysname design. 
 
-\noindent \textbf{Hazard Rate:}
+\noindent \textbf{Hazard Rate.}
 The hazard rate $\lambda(t)$ governs the dynamics of the failure (or survival) processes. It is generally defined as $\lambda(t) = \frac{f(t)}{S(t)}$ and often expressed via the following differential equation (rate law):
 \begin{equation}\label{eq:hazard}
 \frac{dS(t)}{dt} = -\lambda(t) S(t),

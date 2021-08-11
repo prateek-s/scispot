@@ -7,7 +7,7 @@ Prior work in transient computing has established the benefits of such policies 
 However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required. 
 In this section, we first analyze the impact of constrained preemptions on job running time, and then develop new constrained-preemption aware policies for job scheduling and cost optimization. 
 % hl
-We will focus on long-running batch jobs that arise in many applications such as scientific computing. Extensions of our models and policies to distributed applications with different failure semantics is part of our future work. 
+We will focus on long-running batch jobs that arise in many scientific computing applications. Extensions of our models and policies to distributed applications with different failure semantics is part of our future work. 
 % hl 
 
 
@@ -64,7 +64,7 @@ We can therefore write the above equation as:
 
 We note that the integral is the same as the ``expected lifetime'', given by Equation~\ref{eq:expected-lifetime}.
 %
-The above expression for the expected waste given a single preemption can be used by users and application frameworks to estimate the increase in running time due to preemptions. %and other scenarios.
+The above expression for the expected waste due to a single preemption can be used by users and application frameworks to estimate the increase in running time due to preemptions. %and other scenarios.
 The total running time (also known as makespan) of a job \emph{with} preemptions is given by:
 \begin{equation}
   \label{eq:tot-run-time}
@@ -97,7 +97,7 @@ An expression which considers multiple ($>1$) job failures easily follows from t
 % This assump, which is a used by transient computing systems to minimize the effect of repeated preemptions. 
 % This can be due to multiple reasons: if a job is preempted twice, it may be prudent to move it to an non-preemptible on-demand VM, or delay its execution to a later time when the preemption rate decreases.
 
-\noindent \textbf{Consequences for applications:}
+\noindent \textbf{Consequences for applications.}
 Based on our analysis, both the increase in wasted time ($E[W_1(T)]/T$) and expected running time $(E[T]/T)$ depend on the length of the job for non-memoryless constrained preemptions. 
 For memoryless exponential distributions, the expected waste is simply $T/2$, but this assumption is not valid for constrained preemptions, and thus job lengths must be considered when evaluating the suitability of Preemptible VMs. 
 
@@ -165,11 +165,11 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 
 
 \noindent \textbf{Transition Points Analysis.}
-SciSpot develops on the above insight and determines the job-scheduling and VM-reuse decision.
+SciSpot builds on the above insight and determines the job-scheduling and VM-reuse decision.
 Based on different job lengths within a bag of jobs and the age of the VM, we minimize the total expected running time of a job.
 For a given job running time (T), and the VM age (s), we can compute  $\delta(s,T) = E[T_s] - E[T]$.
 If $\delta(s,T) \geq 0$, then a new VM is used, as illustrated in Figure~\ref{fig:transition-example}.
-The figure shows that reusing VMs is preferred for shorter job lengths, and the range of jobs for which for which reusing is good depends on the current age of the VM: younger VMs (s=1) can be used for longer VMs compared to older VMs. 
+The figure shows that reusing VMs is preferred for shorter job lengths, and the range of jobs for which reusing is good depends on the current age of the VM: younger VMs ($s=1$ hour) can be used for longer job lengths compared to older VMs. 
 For a given VM type, we precompute this function for different $(s, T)$ values, and find the job length transition points where launching a new VM is suitable. 
 The precomputed $\delta(s,T)$ can be seen in Figure~\ref{fig:transition-boundary}.
 Using this figure, SciSpot, and users in general, can simply lookup the job and VM attributes, and determine the optimal decision. 
@@ -180,7 +180,7 @@ Using this figure, SciSpot, and users in general, can simply lookup the job and 
 
 
 \begin{figure}[t]
-  \subfloat[Difference in expected running times. \label{fig:transition-example}]
+  \subfloat[Difference in expected running times vs. job length $T$ for different VM age $s$. All times are in hours. \label{fig:transition-example}]
   {\includegraphics[width=0.26\textwidth]{../graphs/transition-all.pdf}}
   \hfill
   \subfloat[Transition boundary depends on job length and when the job starts on the VM. \label{fig:transition-boundary}]
@@ -344,7 +344,7 @@ Our policy selects the ``right'' type of  VMs that minimizes the expected job fa
 
 %\vj{there is some repitition in defining the symbols here which are used before in selection policy; may be this can be moved above. was wondering if we loose clarity by using $T_k$ to denote the running time on configuration $k$ that encodes the pair defined by the combination of server type $i$ - number of servers of type $i$ -- $(i,n_i)$; that is, $k\equiv (i,n_i)$, used as a superindex?}
 We assume that the total resource requirement for a job, $\mathcal{R}$, is provided by the user based on prior speedup data, the user's cloud budget, and the deadline for job completion.
-Let us assume that the cloud provider offers $N$ server types, with the price (per unit time) of a server type equal to $c_i$. 
+Assume that the cloud provider offers $N$ server types, with the price (per unit time) of a server type equal to $c_i$. 
 The overall expected cost of running a job is: 
 \begin{equation}
   \label{eq:e-cost}
@@ -355,7 +355,7 @@ Here, $E[\mathcal{T}_{( i,n_i )}]$ denotes the expected makespan of the job (acc
 %
 This turnaround time depends on whether the job needs to be recomputed because of preemptions, and is given by Equation~\ref{eq:tot-run-time-2}. 
 %
-\sysname therefore searches over all available and acceptable VM types (modulo any resource constraints on minimum memory/CPUs/GPUs), and picks the VM type which yields the lowest expected cost.
+\sysname searches over all available and acceptable VM types (modulo any resource constraints on minimum memory/CPUs/GPUs), and picks the VM type which yields the lowest expected cost.
 The search process is aided by the bag of jobs abstraction: initial jobs are used for determining the lowest-cost VM, on which the remaining jobs are run. 
 
 %\prat{Highlight tradeoffs here. Larger servers better but more preemption.}
