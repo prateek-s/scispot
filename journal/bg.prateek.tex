@@ -2,7 +2,7 @@
 %\vspace*{-0.2cm}
 \section{Background}
 
-We now give an overview of transient cloud computing; the use of preemption models in transient computing systems; and motivate the bags of jobs abstraction in scientific computing workloads. 
+We now give an overview of transient cloud computing, the use of preemption models in transient computing systems, and the bags of jobs abstraction in scientific computing workloads. 
 
 
 %; and give an overview of our \sysname system. 
@@ -19,8 +19,8 @@ Cloud workloads, and hence the utilization of cloud platforms, shows large tempo
 To satisfy user demand, cloud capacity is typically provisioned for the \emph{peak} load, and thus the average utilization tends to be low, of the order of 25\%~\cite{borg,resource-central-sosp17}. 
 
 
-To increase their overall utilization, large cloud operators have begun to offer their surplus resources as low-cost servers \footnotemark with \emph{transient} availability, which can be preempted by the cloud operator at any time (after a small advance warning). 
-These preemptible servers, such as Amazon Spot instances~\cite{ec2-spot}, Google Preemptible VMs~\cite{preemptible-documentation}, and Azure batch VMs~\cite{azure-batch}, have become popular in recent years due to their discounted prices, which can be 7-10$\times$ lower than conventional non-preemptible servers.
+To increase their overall utilization, large cloud operators have begun to offer their surplus resources as low-cost servers\footnotemark \ with \emph{transient} availability. These servers can be preempted by the cloud operator at any time (after a small advance warning). 
+These preemptible servers, such as Amazon Spot instances~\cite{ec2-spot}, Google Preemptible VMs~\cite{preemptible-documentation}, and Azure batch VMs~\cite{azure-batch}, have become popular in recent years due to their discounted prices, which can be 7-10$\times$ lower than the conventional non-preemptible servers.
 %
 Due to their popularity among users, smaller cloud providers such as Packet~\cite{packet-spot} and Alibaba~\cite{alibaba-spot} have also started offering transient cloud servers. 
 
@@ -42,7 +42,8 @@ The effect of preemptions depends on the application's delay insensitivity and f
 
 % Mainly about spot instances?
 
-Underlying \emph{all} techniques and systems in transient computing is the notion of using some probabilistic or even a deterministic model of  preemptions. 
+%Underlying \emph{all} techniques and systems in transient computing is the notion of using some probabilistic or even a deterministic model of  preemptions. 
+The notion of using a probabilistic or even a deterministic model of preemptions underlies \emph{all} techniques and systems in transient computing. 
 %
 Such a preemption model is then used to quantify and analyze the impact of preemptions on application performance and availability; and to design model-informed policies to minimize the effect of preemptions. 
 %
@@ -76,7 +77,7 @@ In this paper, we propose an empirical approach for modeling preemptions of temp
 %
 Our empirical data and the resulting preemption model allows the development of preemption mitigation policies. 
 %
-Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{constrained} preemption is not memoryless, and requires new fundamental modeling approaches. 
+Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{constrained} preemption is not memoryless, and requires new modeling approaches. 
 
 
 
@@ -110,7 +111,8 @@ Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{const
 
 
 \vspace*{\subsecspace}
-\subsection{Scientific Simulation Workloads}
+%\subsection{Scientific Simulation Workloads}
+\subsection{Scientific Computing Workloads}
 
 
 \begin{figure}[t]
@@ -124,17 +126,21 @@ Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{const
 
 %Large computational requirements of scientific simulations make them ideal for low-cost transient servers. 
 
-The typical workflow associated with most scientific computing applications, often involves evaluating a computational model across a wide range of physical and computational parameters.
-For instance, constructing and calibrating a molecular dynamics application (such as Nanoconfinement~\cite{kadupitiya2017}), usually involves running a simulation with different physical parameters such as characteristic sizes and interaction potentials, as well as computational parameters such as simulation timesteps. 
+The typical workflow associated with most scientific computing applications often involves evaluating a computational model across a wide range of physical and computational parameters.
+For instance, constructing and calibrating a molecular dynamics simulation application (such as Nanoconfinement~\cite{jing2015ionic,kadupitiya2017,anousheh2020ionic}) usually involves running simulations with different physical parameters such as particle concentrations, interaction potentials, and thermodynamic conditions. 
 Each of these parameters can take a wide range of values, resulting in a large number of combinations which must be evaluated by invoking the application multiple times (also known as a parameter sweep). 
-Since each computational job explores a single combination of parameters, this results in executing a ``bag of jobs'', with each job in the bag running the same application, but with possibly different parameters.
+Since each computational job explores a single combination of parameters, the multidimensional parameter sweep results in executing a ``bag of jobs'', with each job in the bag running the same application, but with possibly different parameters.
 
 
-The bag of jobs execution model is pervasive in scientific computing and applicable in many contexts.
-In addition to exploratory parameter sweeps, bags of jobs also result from running the application a large number of times to account for the model or computational stochasticity, and can be used to obtain tighter confidence intervals. 
-Increasingly, bags of jobs also arise in the emerging research that combines statistical machine learning (ML) techniques and scientific simulations~\cite{ml.atomic2017,melko2017,sam2017}. %,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs2,fox2019learning}.
+The bag of jobs execution model is pervasive in scientific computing and applicable in many contexts. For example, in the field of soft matter, molecular dynamics simulations are routinely deployed as a bag of jobs to explore the material design space spanned by the parameters characterizing the material attributes and the solution conditions, with the goal of furnishing the links between the design parameters and the material response.
+In addition to the exploratory parameter sweeps as part of the computational campaigns to explore the model design space, bags of jobs also result from running the application a large number of times to account for the model stochasticity, and can be used to %obtain tighter confidence intervals. 
+perform uncertainty quantification.
+
+Increasingly, bags of jobs also arise in the emerging research area that combines statistical machine learning (ML) techniques and simulations to enhance the predictive power or reduce the
+computational costs of simulations~\cite{ferguson2017machine,wang2019machine,casalino2021ai,moradzadeh2019molecular,kadupitiya2020machine,kadupitiya2020machine2}. %,fu2017,long2015machine,ferguson2017machine,ward2018matminer,jcs2,fox2019learning}.
 %For instance, large bags of jobs are run to provide the necessary training and testing data for learning statistical models (such as neural networks) that are then used to improve the efficacy of the simulations~\cite{jcs2}.
-This is increasingly prevalent in applications that combine simulations and \textbf{machine learning}, such as the use of ``ML surrogates'' that require physical systems to be simulated with a large number of different parameters to generate the required training data for neural network models to be able to predict the output parameters with high accuracy~\cite{kadupitiya2020machine2}. 
+%This is increasingly prevalent in applications that combine simulations and \textbf{machine learning}, such as the use of ``ML surrogates'' that require physical systems to be simulated with a large number of different parameters to generate the required training data for neural network models to be able to predict the output parameters with high accuracy~\cite{kadupitiya2020machine2}. 
+For example, developing ``ML surrogates'' for molecular dynamics simulations requires computational models of physical systems to be simulated with a large number of different input parameters in order to generate the data for training the neural network models to produce simulation output quantities with high accuracy~\cite{kadupitiya2020machine2}. 
 
 
 

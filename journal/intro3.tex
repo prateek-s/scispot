@@ -73,7 +73,7 @@ We implement and evaluate these policies as part of a batch computing service, \
 %
 \sysname abstracts typical scientific computing workloads and workflows into a new unit of execution, which we call as a ``bag of jobs''. 
 These bags of jobs, ubiquitous in scientific computing, represent multiple instantiations of the same application launched with possibly different physical and computational parameters.
-The bag of jobs is especially useful for scientific computing applications enhanced by machine learning (ML), in which the same application is run with different parameters to curate ``training data sets'' for designing ML-based surrogates and force fields for simulations ~\cite{kadupitiya2019machine,kadupitiya2020machine2,moradzadeh2019molecular,fox2019learning,wang2019machine}.
+The bag of jobs approach is also central to the rapidly developing area of using machine learning (ML) to enhance scientific computing applications, in which the same application is run with different parameters to curate ``training data sets'' for designing the ML-based enhancements (e.g., surrogates, force fields) ~\cite{kadupitiya2019machine,kadupitiya2020machine2,moradzadeh2019molecular,fox2019learning,wang2019machine,casalino2021ai,kadupitiya2020machine}.
 %
 The bag of jobs abstraction permits efficient implementation of our optimized policies, and allows \sysname to lower the costs and barriers of transient VMs for scientific computing applications.
 
@@ -87,7 +87,7 @@ we make the following contributions:
 
 \item We develop a probability model of constrained preemptions based on empirical and statistical insights that point to distinct failure processes underpinning the preemption rates. Our model captures the key effects resulting from the 24 hour lifetime constraint associated with these VMs.
 
-\item We analyze our probability model through the lens of reliability theory, and develop a theory of contrained preemptions using the principles of statistical mechanics. 
+\item We analyze our probability model through the lens of reliability theory, and demonstrate the use of the principles of statistical mechanics to examine the fundamental behavior of constrained preemptions. 
 
   
   %and statistical mechanics. 
