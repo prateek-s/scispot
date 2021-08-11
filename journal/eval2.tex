@@ -9,7 +9,7 @@
 
 %Opening is deliberately short because we gonna be running out of space
 
-In this section, we present analytical and empirical evaluation of constrained preemptions.
+In this section, we present analytical and empirical evaluation of \sysname.
 We have already presented the statistical analysis of our model in Section~\ref{sec:failmodel}, and we now focus on answering the following questions: 
 
 \begin{enumerate}
@@ -30,7 +30,7 @@ We have already presented the statistical analysis of our model in Section~\ref{
 All our empirical evaluation is conducted on the Google Cloud Platform using our batch computing service described in Section~\ref{sec:impl}. 
 All the experiments are conducted in the same time period, and have the same preemption characteristics, as described in our data collection methodology in  Section~\ref{sec:failmodel}. 
 %
-We use three scientific computing workloads that are representative of  applications in the broad domains of physics and material sciences:% , and chemical engineering:
+We use three scientific computing workloads that are representative of  applications in the broad domains of physics and materials science:% , and chemical engineering:
 
 % open-source
 %\vspace*{\tightext}
@@ -38,12 +38,12 @@ We use three scientific computing workloads that are representative of  applicat
   %TODO: Need MAX two sentence descriptions
 
 \noindent \textbf{Nanoconfinement.}
-The nanoconfinement application launches molecular dynamics (MD) simulations of ions in nanoscale confinement created by material surfaces \cite{jing2015ionic,kadupitiya2017}. The running time is 14 minutes on a 64 CPU core cluster (4 n1-highcpu-16 VMs). 
+The nanoconfinement application launches molecular dynamics (MD) simulations of ions in nanoscale confinement created by material surfaces \cite{jing2015ionic,kadupitiya2017,anousheh2020ionic}. The running time is 14 minutes on a 64 CPU core cluster (4 n1-highcpu-16 VMs). 
 
-\noindent \textbf{Shapes.} The Shapes application runs an MD-based optimization dynamics to predict the optimal shape of deformable, charged nanoparticles \cite{jto1,brunk2019computational,brunk2020}. The running time is 9 minutes on a 64 CPU core cluster (4 n1-highcpu-16 VMs). 
+\noindent \textbf{Shapes.} The Shapes application runs an MD-based simulated annealing procedure to predict the optimal shape of deformable nanoparticles \cite{jto1,brunk2019computational,brunk2020}. The running time is 9 minutes on a 64 CPU core cluster (4 n1-highcpu-16 VMs). 
 
-\noindent \textbf{LULESH.} Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics is a popular benchmark 
-for hydrodynamics simulations of continuum material models~\cite{IPDPS13:LULESH,LULESH2:changes}. The running time is 12.5 minutes on 8 n1-highcpu-8 VMs.
+\noindent \textbf{LULESH.} Livermore Unstructured Lagrangian Explicit Shock Hydrodynamics (LULESH) is a popular benchmark 
+for hydrodynamics simulations of continuum models of materials~\cite{IPDPS13:LULESH,LULESH2:changes}. The running time is 12.5 minutes on 8 n1-highcpu-8 VMs.
 
 % \end{description}
 
@@ -125,11 +125,11 @@ For instance, if short jobs are very common, then uniformly distributed preempti
 %\subsection{Model-based Policies}
 %\label{subsec:eval-policy}
 
-We now evaluate the effectiveness of model-driven policies that we proposed earlier in Section~\ref{sec:policies}.
+We now evaluate the effectiveness of model-driven policies proposed in Section~\ref{sec:policies}.
 %
 Wherever applicable, we compare against policies designed for EC2 spot instances~\cite{harlap2018tributary, spoton} that have memoryless preemptions. 
 %
-However we also note that certain resource management challenges such as the preemption-rate aware job scheduling are \emph{inherent} to constrained preemptions, and no existing equivalent policies can be found for memoryless techniques. 
+However, we also note that certain resource management challenges such as the preemption-rate aware job scheduling are \emph{inherent} to constrained preemptions, and no existing equivalent policies can be found for memoryless techniques. 
 
 
 %Specifically, we seek to compare the effectiveness of our job scheduling and checkpointing policies with existing transient computing approaches.
@@ -169,20 +169,20 @@ However we also note that certain resource management challenges such as the pre
 %Previously, we have quantified the increase in running time due to preemptions, but we had assumed that jobs start on a newly launched server.
 In many scenarios, a server may be used for running a long-running sequence of jobs, such as in a batch-computing service. 
 %
-Our job scheduling policy is model-driven and decides whether to request a new VM for a job or run it on an existing VM.
+\sysname's job scheduling policy is model-driven and decides whether to request a new VM for a job or run it on an existing VM.
 A new VM may be preferable if the job starts running near the VM's 24 hour preemption deadline.
 %However, since new VMs have a high initial rate of failure, we must be judicious 
 
-Figure~\ref{fig:sched-bathtub} shows the effect of our job scheduling policy for a six hour job, for different job starting times (relative to the VM's starting time). 
+Figure~\ref{fig:sched-bathtub} shows the effect of \scispot's job scheduling policy for a six hour job, for different job starting times (relative to the VM's starting time). 
 We compare against a baseline of memoryless job scheduling that is not informed by constrained preemption dynamics.
 Such memoryless policies are the default in existing transient computing systems such as SpotOn~\cite{spoton}. 
-In the absence of insights about bathtub preemptions, the memoryless policy continues to run jobs on the existing VM. 
+In the absence of insights about bathtub-shaped preemption probability, the memoryless policy continues to run jobs on the existing VM. 
 As the figure shows, the empirical job failure probability is bathtub shaped. 
-However since the job is 6 hours long, with the memoryless policy, it will always fail when launched after $24-6=18$ hours.
+However, because the job is 6 hours long, it will always fail with the memoryless policy when launched after $24-6=18$ hours.
 %hl 
-In contrast, our model-based policy determines that after 18 hours, we will be better off running the job on a newer VM, and results in a constant lower job failure probability (=0.4). The failure probability is constant because the jobs will always be launched on a new VM after 18 hours, resulting in a failure probability at time=0. 
+In contrast, \sysname's model-based policy determines that after 18 hours, we will be better off running the job on a newer VM, and results in a constant lower job failure probability ($=0.4$). The failure probability is constant because the jobs will always be launched on a new VM after 18 hours, resulting in a failure probability at time $=0$. 
 %hl
-Thus, our model-based job scheduling policy can reduce job failure probability by taking into account the time-varying failure rates of VMs, which is not considered by existing systems that use memoryless scheduling policies. 
+Thus, \sysname can reduce job failure probability by taking into account the time-varying failure rates of VMs, which is not considered by existing systems that use memoryless scheduling policies. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -228,7 +228,7 @@ This reduction is primarily due to how the two policies perform for jobs launche
 \noindent \textbf{Sensitivity to model fitting.}
 The effectiveness of any model-based policy depends on the goodness of fit of the preemption model---i.e., how accurately it captures empirical data. 
 %
-We now evaluate the impact on our scheduling policy if incorrect/suboptimal model parameters are with high goodness-of-fit ($r^2$) error are used. 
+We now evaluate the impact on our scheduling policy if incorrect/suboptimal model parameters with high goodness-of-fit ($r^2$) error are used. 
 %
 That is, we seek to understand how sensitive our policies are when the underlying preemption behavior does not match the model, which can occur due to changes in supply/demand, minor cloud policy changes, etc. 
 %
@@ -236,11 +236,11 @@ Figure~\ref{fig:wrong-model} compares the job failure probability with the optim
 %
 Specifically, the suboptimal case models the \texttt{n1-highcpu-16} VMs for \texttt{n1-highcpu-32} VMs, which from Figure~\ref{fig:cdf-comparison} we can see are significantly different.
 %
-However even with the suboptimal model, the increase in job failure probability is less than 2\% compared to the best-fit model. 
+However, even with the suboptimal model, the increase in job failure probability is less than 2\% compared to the best-fit model. 
 %
 This negligible difference is due to the fact that even a suboptimal model captures the bathtub shape, and this is enough for the policy to make the ``right'' scheduling decision. 
 
-\noindent \textbf{Result:} \emph{Our policies are not particularly sensitive to the exact model parameters, so long as a bathtub distribution is used. Even a suboptimal bathtub model can reduce failure probability by 15\% compared to the memoryless policy.} 
+\noindent \textbf{Result:} \emph{\sysname's policies are not particularly sensitive to the exact model parameters, so long as a bathtub distribution is used. Even a suboptimal bathtub model can reduce failure probability by 15\% compared to the memoryless policy.} 
 %
 %This is desirable in cloud environments where the underlying preemption distribution can change, and thus our empirical model driven approach is a feasible technique for harnessing temporally constrained VMs. 
 
@@ -342,7 +342,7 @@ Thus, on preemptible servers, there is a tradeoff between the base running time 
 By considering \emph{both} these factors, \sysname's server selection policy can select the best VM for an application. 
 
 
-\noindent \emph{\textbf{Result:} SciSpot's server selection, by considering both the base running time and recomputation time, can improve performance by up to 40\% , and can keep the increase in running time due to preemptions to less than 5\%.}
+\noindent \textbf{Result:} \emph{SciSpot's server selection, by considering both the base running time and recomputation time, can improve performance by up to 40\%, and can keep the increase in running time due to preemptions to less than 5\%.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Cost}
@@ -367,7 +367,7 @@ Unlike \sysname, ExoSphere does \emph{not} consider application performance when
 Since the Google \texttt{highcpu} VMs have the same price per CPU, ExoSphere picks an arbitrary ``median'' VM to break ties, which may not necessarily yield the lowest running times.
 This results in 20\% cost increase over \sysname. 
 
-\noindent \emph{\textbf{Result:} SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
+\noindent \textbf{Result:} \emph{SciSpot reduces computing costs by up to 5$\times$ compared to conventional on-demand cloud deployments.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -399,7 +399,7 @@ We analyze the waiting time of over two million jobs submitted over a 5 year per
 
 %We define the overhead as the increase in running time which is equal to the turnaround time (i.e., the time between the job submission and successful completion) divided by the base job running time (with no waiting or premptions). 
 %In HPC clusters, the overhead is the waiting time for resources, and in \sysname the overhead is the recomputation time due to preemptions.
-Figure~\ref{fig:hpc-vs-scispot} compares the overhead (as percentage increase in running time) of \sysname and HPC clusters  for jobs of different lengths. We see that the average performance overhead due to waiting can be significant in the case of HPC clusters, and the job submission latency and queuing time dominate for smaller jobs, increasing their total turnaround time by more $2.5\times$.
+Figure~\ref{fig:hpc-vs-scispot} compares the overhead (as percentage increase in running time) of \sysname and HPC clusters  for jobs of different lengths. We see that the average performance overhead due to waiting can be significant in the case of HPC clusters, and the job submission latency and queuing time dominate for smaller jobs, increasing their total turnaround time by more than $2.5\times$.
 This waiting is amortized in the case of longer running jobs, and the overhead for longer jobs is around 30\%.
 
 On the other hand, \sysname's performance overhead is significantly smaller for jobs of up to 8 hours in length.
@@ -408,7 +408,7 @@ We emphasize that these are \emph{individual} job lengths, and not the running t
 We note that these large single jobs are rare, accounting for less than 5\% of all HPC jobs (see inset in Figure~\ref{fig:hpc-vs-scispot}).
 For smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller. 
 
-\noindent \emph{\textbf{Result:} \sysname's overhead of recomputation due to preemptions is small, and is up to $10\times$ lower compared to the overhead of waiting in conventional HPC clusters. }
+\noindent \textbf{Result:} \emph{\sysname's overhead of recomputation due to preemptions is small, and is up to $10\times$ lower compared to the overhead of waiting in conventional HPC clusters. }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
