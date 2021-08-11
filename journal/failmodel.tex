@@ -13,7 +13,9 @@ Therefore, in this section, we present empirical and analytical models to help u
 %
 
 In our quest to understand temporally constrained preemptions, we  conduct an empirical study of preemptions of Google Preemptible VMs.
-Based on our observations and insights from the study, we then develop a probability model for temporally constrained preemptions, which we then provide a statistical mechanics interpretation for. 
+Based on our observations and insights from the study, we develop a probability model for temporally constrained preemptions, 
+%which we then provide a statistical mechanics interpretation for. 
+which we then interpret using the framework of statistical mechanics. 
 
 %which we later use to develop preemption-mitigating resource management application policies. 
 
@@ -90,15 +92,16 @@ Due to the relatively high preemption rates compared to EC2 spot instances, we w
 A sample of over 100 such preemption events are shown in Figure~\ref{fig:gcp1}, which shows cumulative distribution function (CDF) of the lifetime of the \texttt{n1-highcpu-16} VMs in the \texttt{us-east1-b} zone. 
 %enter the type of VM for which the data is shown
 %
-Empirically, our main observation is: \emph{The lifetimes of VMs are not uniformly distributed, but have three distinct phases.}
-\noindent In the first (initial) phase, characterized by VM lifetime $t\in [0, 3]$ hours, we observe that many VMs are quickly preempted after they are launched, and thus have a steep rate of failure. The rate of failure (preemption rate) is the derivative of the CDF.
-%; the rate of failure or preemptions can be obtained by taking the derivative of the CDF. 
-The early high rate of failure reflects that the cloud service provider takes into account VM liftetime in prioritizing preempting ``younger'' VMs, in other words, the number of simultaneous VMs launched does have an effect on their failure rate. 
+%Empirically, our main observation is: \emph{The lifetimes of VMs are not uniformly distributed, but have three distinct phases.}
+%\noindent In the first (initial) phase, characterized by VM lifetime $t\in [0, 3]$ hours, we observe that many VMs are quickly preempted after they are launched, and thus have a steep rate of failure. The rate of failure (preemption rate) is the derivative of the CDF.
+%%; the rate of failure or preemptions can be obtained by taking the derivative of the CDF. 
+%The early high rate of failure reflects that the cloud service provider takes into account VM liftetime in prioritizing preempting ``younger'' VMs, in other words, the number of simultaneous VMs launched does have an effect on their failure rate. 
 %
-In the second phase, VMs that survive past 3 hours enjoy a relatively low preemption rate over a relatively broad range of lifetime (characterized by the slowly rising CDF in Figure~\ref{fig:gcp1}).
-The third and final phase exhibits a steep increase in the number of preemptions as the preemption deadline of 24 hours approaches.
+%In the second phase, VMs that survive past 3 hours enjoy a relatively low preemption rate over a relatively broad range of lifetime (characterized by the slowly rising CDF in Figure~\ref{fig:gcp1}).
+%The third and final phase exhibits a steep increase in the number of preemptions as the preemption deadline of 24 hours approaches.
 The overall rate of preemptions is ``bathtub'' shaped as shown by the solid black line in the inset of Figure~\ref{fig:gcp1}.
-%\it I think we should show the probability plot to exhibit the bath tub shape
+%%\it I think we should show the probability plot to exhibit the bath tub shape
+Empirically, our main observations are:
 
 
 
@@ -153,7 +156,7 @@ This assumption breaks down when there is a fixed upper bound on the lifetime. %
 %In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that \emph{particular} type. 
 %Thus, o
 Our empirical study looked at preemptions of VMs of different sizes (Figure~\ref{fig:breakdown-all}a), at different times of the day (Figure~\ref{fig:breakdown-all}b), in different geographical zones (Figure~\ref{fig:breakdown-all}c), and running different workloads. 
-In all cases, we find that there are three distinct phases associated with the preemption dynamics giving rise to the bathtub shaped preemption probability. 
+In all cases, we find that there are three distinct phases associated with the preemption dynamics giving rise to the bathtub-shaped preemption probability. 
 
 
 \noindent \textbf{Observation 4:}\emph{ Larger VMs have a higher rate of preemptions.}
@@ -168,10 +171,10 @@ This observed behavior aligns with the guidelines for using preemptible VMs that
 \noindent \textbf{Observation 5:} \emph{Preemptions exhibit diurnal variations, and are also affected by the workload inside the VM.}
 
 From Figure~\ref{fig:time-breakdown}, we can see that VMs have a slightly longer lifetime during the night (8 PM to 8 AM) than during the day\footnotemark. 
-This is expected because fundamentally, the preemption rates are higher during periods of higer demand. 
+This is expected because fundamentally, the preemption rates are higher during periods of higher demand. 
 %
 We also notice that completely idle VMs have longer lifetimes than VMs running some workload.
-Presumably, this could be a result of the lower resource utilization of idle VMs being more amenable to resource overcommitment, and result in lower preemptions. 
+\vikram{This sentence needs to be re-worded:: Presumably, this could be a result of the lower resource utilization of idle VMs being more amenable to resource overcommitment, and result in lower preemptions.} 
 
 
 \footnotetext{Time-zone local to the VM's location.}
@@ -208,7 +211,7 @@ Furthermore, the low rate of preemptions in the middle periods allows jobs that 
 %
 We compare application performance with bathtub preemptions and uniformly distributed preemptions later in Section~\ref{sec:eval}, and find that bathtub preemptions can reduce the performance overheads of preemptions by up to $10\times$.
 %
-However, effective policies for constrained preemptions  requires a probability model of preemptions, which must incorporate the temporal constraint and the steep bathtub behavior. 
+However, effective policies for constrained preemptions  require a probability model of preemptions, which must incorporate the temporal constraint and the steep bathtub behavior. 
 %
 Existing preemption models are not applicable, and we present our new model next. 
 %

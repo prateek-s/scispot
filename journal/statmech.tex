@@ -95,14 +95,13 @@ Firstly, mutual exclusion of preemptions implies that there is a finite non-zero
 For $N$ preemptions to occur within $L$ interval, evidently, we must have $N w < L$. Also, while $w >0$, the time to perform the preemption is generally expected to be much smaller than the total time interval $L$ (i.e., $w \ll L$).
 $N$ preemptions occupy a ``temporal volume'' of $Nw$ (volume here represents the one-dimensional volume). We assume that while a preemption may start at $t=0$, the last preemption must finish by $t = L$. Thus, the amount of free or excluded ``temporal volume'' available within the constrained system is $L_e = L - w - (N-1)w = L - Nw$.
 %The concept of excluded volume arising due to the finite-size of the particles is central to understand the physics of material systems in confined environments and is explain the origin of steric forces and correlations \cite{krauth2006statistical,jing2015ionic,solis2013generating}. 
-In condensed matter systems such as liquids and polymers, the excluded volume of particles 
-is a key factor that gives rise to steric forces which alter the structural properties of the materials \cite{krauth2006statistical,jing2015ionic,solis2013generating}. 
+We note that the concept of excluded volume is routinely employed in the analysis of physical systems such as liquids and polymers, where the excluded volume of particles is a key factor that gives rise to steric forces and structural changes in material behavior \cite{krauth2006statistical,jing2015ionic,anousheh2020ionic}. 
 
-Secondly, we note that the system of $N$ preemptions within a constrained deadline of interval $L$ maps \emph{exactly} to a well known and analytically solvable system in classical statistical mechanics, the one-dimensional Tonks gas model \cite{tonks}. The Tonks gas model describes a system of $N$ non-overlapping particles of finite size $w$ that are constrained to move within a line segment of length $L$. The structural quantities associated with this system, including the probability of finding a particle at position $x$ within the spatial confinement of length $L$, are computed by evaluating the partition function of the system, which essentially measures the number of valid system configurations \cite{krauth2006statistical}. 
+Secondly, we observe that the system of $N$ preemptions within a constrained deadline of interval $L$ maps \emph{exactly} to a well known and analytically solvable system in classical statistical mechanics, the one-dimensional Tonks gas model \cite{tonks}. The Tonks gas model describes a system of $N$ non-overlapping particles of finite size $w$ that are constrained to move within a line segment of length $L$. The structural quantities associated with this system, including the probability of finding a particle at position $x$ within the spatial confinement of length $L$, are computed by evaluating the partition function of the system, which essentially measures the number of valid system configurations \cite{krauth2006statistical}. 
 %below para is not clear to me; i add my suggestion below it
 %Employing this mapping and the associated statistical mechanics tools, the original model of non-overlapping (interacting) preemptions can be mapped to a system of $N$ overlapping (non-interacting) preemptions, each allowed to access an excluded volume of $L_e$, and the number of valid configurations is given by the partition function $Z_N = L_e^N$. For the case of $N$ preemptions, we have $Z_N = (L- Nw)^N$.
 Employing this mapping, we consider a system of $N$ non-overlapping preemptions constrained within a ``time confinement'' of size $L$. Each preemption has access to an excluded volume of $L_e$ within this constrained system. 
-The number of ways in which $N$ preemptions can occur within the interval $L$ is equivalent to the number of valid configurations for this system which is given by its partition function: $Z_N = L_e^N = (L- Nw)^N$.
+The number of ways $N$ preemptions can occur within the interval $L$ is equivalent to the number of valid configurations for this system, which is given by its partition function: $Z_N = L_e^N = (L- Nw)^N$.
 
 We are interested in calculating the probability that a preemption starts at time $t=L-w$, i.e., $P(L-w)$. Given $w \ll L$, $P(L-w)$ is the probability of finding a preemption near the deadline. The assumption of mutually exclusive preemptions implies that no other preemption can be found for $t > L - w$, that is, $P(t> L-w) = 0$. Hence, the remaining $N-1$ preemptions must occur such that the last of those finish by $t=L-w$. In other words, the preemption at time $L-w$ essentially sets an effective deadline for the other $N-1$ preemptions. The number of ways those $N-1$ preemptions can happen within the time interval of $L-w$ is given by the partition function $Z_{N-1} = L_e^{N-1}= (L-2w - (N-2)w)^{N-1} = (L - Nw)^{N-1}$, where $L_e = L - Nw$ is the corresponding excluded temporal volume available to each of the $N-1$ preemptions.
 It is interesting to note that this excluded volume
@@ -110,8 +109,8 @@ It is interesting to note that this excluded volume
 is the same as that of the original $N$ preemption system: this fortuitous result arises because the decrease in the available volume (``time confinement'') to place the preemptions is commensurate with the need to place fewer ($N-1$) preemptions.
 
 The probability $P(L-w)$ is obtained as the ratio of the valid configurations given by the two partition functions computed above.
-That is, 
-$P(L-w) = Z_{N-1}/ {Z_N} = \frac{1}{L - Nw} > \frac{1}{L}$ , since $N \geq 1$ and $w>0$. Choosing $\epsilon = w > 0$ completes the proof.
+%That is, $P(L-w) = Z_{N-1}/ {Z_N} = \frac{1}{L - Nw} > \frac{1}{L}$ , since $N \geq 1$ and $w>0$. Choosing $\epsilon = w > 0$ completes the proof.
+That is, $P(L-w) = Z_{N-1}/ {Z_N} = \frac{1}{L - Nw}$. Because $N \geq 1$ and $w>0$, we find $P(L-w) > \frac{1}{L}$. Choosing $\epsilon = w$ completes the proof.
 \end{proof}
 
 By symmetry arguments, the above lemma is in fact valid for both the end points of the interval, i.e., $P(\epsilon) > \frac{1}{L}$.
@@ -124,8 +123,8 @@ From an application standpoint, non-overlapping preemptions are also beneficial,
 
 Thus, statistical mechanics indicates that the bathtub distribution follows from the constrained and non-overlapping nature of preemptions, if we assume no other external factors or cloud policies influencing the preemptions. 
 %To validate this, we conduct a monte carlo simulation of temporally constrained and non-overlapping preemptions. 
-Figure~\ref{fig:partfun} shows that the preemption probability, computed using the first-principles partition function.
-We see that \emph{also} follows the bathtub shape that is found in the empirical data. 
+Figure~\ref{fig:partfun} shows the preemption probability computed using the partition function.
+We find that this probability \emph{also} follows the bathtub shape that is found in the empirical data. 
 
 
 %Of course, the empirical preemption distribution is determined by the cloud platform's policies and supply and demand.
