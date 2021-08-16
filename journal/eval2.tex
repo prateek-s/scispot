@@ -169,11 +169,11 @@ However, we also note that certain resource management challenges such as the pr
 %Previously, we have quantified the increase in running time due to preemptions, but we had assumed that jobs start on a newly launched server.
 In many scenarios, a server may be used for running a long-running sequence of jobs, such as in a batch-computing service. 
 %
-\sysname's job scheduling policy is model-driven and decides whether to request a new VM for a job or run it on an existing VM.
+SciSpot's job scheduling policy is model-driven and decides whether to request a new VM for a job or run it on an existing VM.
 A new VM may be preferable if the job starts running near the VM's 24 hour preemption deadline.
 %However, since new VMs have a high initial rate of failure, we must be judicious 
 
-Figure~\ref{fig:sched-bathtub} shows the effect of \scispot's job scheduling policy for a six hour job, for different job starting times (relative to the VM's starting time). 
+Figure~\ref{fig:sched-bathtub} shows the effect our job scheduling policy for a six hour job, for different job starting times (relative to the VM's starting time). 
 We compare against a baseline of memoryless job scheduling that is not informed by constrained preemption dynamics.
 Such memoryless policies are the default in existing transient computing systems such as SpotOn~\cite{spoton}. 
 In the absence of insights about bathtub-shaped preemption probability, the memoryless policy continues to run jobs on the existing VM. 

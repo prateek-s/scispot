@@ -1,9 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  7 AUG 2021 15:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  16 AUG 2021 15:28
 entering extended mode
- restricted \write18 enabled.
- file:line:error style messages enabled.
+ \write18 enabled.
  %&-line parsing enabled.
-**paper.tex
+**paper
 (./paper.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 9 language(s) loaded.
@@ -591,7 +590,7 @@ Package microtype Info: No adjustment of character kerning.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ppl.cfg
 File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 )
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 46.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
@@ -600,14 +599,14 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 46
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 47
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 46.
+LaTeX Font Info:    Try loading font information for U+msa on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -615,7 +614,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 46.
+LaTeX Font Info:    Try loading font information for U+msb on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -623,18 +622,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 46.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+pzd on input line 46.
+LaTeX Font Info:    Try loading font information for U+pzd on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/upzd.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8.03> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 54.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 55.
 
 (./abstract.prateek.tex
 LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 2.
@@ -661,7 +660,7 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9.53561> not available
 <../graphs/hmap.png, id=20, 601.24625pt x 455.7025pt>
 File: ../graphs/hmap.png Graphic file (type png)
 <use ../graphs/hmap.png>
-Package pdftex.def Info: ../graphs/hmap.png  used on input line 118.
+Package pdftex.def Info: ../graphs/hmap.png  used on input line 120.
 (pdftex.def)             Requested size: 155.38206pt x 117.7706pt.
  [3 <../graphs/hmap.png>]) (./failmodel.tex
 Underfull \hbox (badness 2150) in paragraph at lines 1--1
@@ -679,13 +678,13 @@ File: ../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf Graphic fi
 le (type pdf)
 <use ../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf>
 Package pdftex.def Info: ../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-
-time.pdf  used on input line 57.
+time.pdf  used on input line 59.
 (pdftex.def)             Requested size: 243.43007pt x 170.40244pt.
-LaTeX Font Info:    Try loading font information for TS1+ppl on input line 82.
+LaTeX Font Info:    Try loading font information for TS1+ppl on input line 84.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 90.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 92.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -705,7 +704,7 @@ File: ../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf Graphic file (type pd
 f)
 <use ../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf>
 Package pdftex.def Info: ../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf  u
-sed on input line 115.
+sed on input line 118.
 (pdftex.def)             Requested size: 155.38206pt x 108.76808pt.
 
 
@@ -718,7 +717,7 @@ File: ../data/gnuplot-figures/sigmetrics-time-breakdown.pdf Graphic file (type
 pdf)
 <use ../data/gnuplot-figures/sigmetrics-time-breakdown.pdf>
 Package pdftex.def Info: ../data/gnuplot-figures/sigmetrics-time-breakdown.pdf 
- used on input line 118.
+ used on input line 121.
 (pdftex.def)             Requested size: 155.38206pt x 108.76808pt.
 
 
@@ -731,51 +730,48 @@ File: ../data/gnuplot-figures/sigmetrics-region-breakdown.pdf Graphic file (typ
 e pdf)
 <use ../data/gnuplot-figures/sigmetrics-region-breakdown.pdf>
 Package pdftex.def Info: ../data/gnuplot-figures/sigmetrics-region-breakdown.pd
-f  used on input line 121.
+f  used on input line 124.
 (pdftex.def)             Requested size: 155.38206pt x 108.76808pt.
 [4 <../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 161.
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 164.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <9.53561> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 161.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 164.
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--167
+Underfull \hbox (badness 10000) in paragraph at lines 164--170
 []\OT1/ppl/m/n/9.53561 (+20) Figure 3a[] shows the pre-emp-tion data from
  []
 
 
-Underfull \hbox (badness 3354) in paragraph at lines 161--167
+Underfull \hbox (badness 3354) in paragraph at lines 164--170
 \OT1/ppl/m/n/9.53561 (+20) five dif-fer-ent types of VMs in the Google Cloud
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--167
+Underfull \hbox (badness 10000) in paragraph at lines 164--170
 \OT1/pcr/m/n/9.53561 n1-highcpu-\OMS/cmsy/m/n/10 f\OT1/pcr/m/n/9.53561 2,4,8,16
 ,32\OMS/cmsy/m/n/10 g\OT1/ppl/m/n/9.53561 (+20) , where the num-ber
  []
 
 Excluding 'comment' comment.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9.53561> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 282.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 286.
  [5 <../data/gnuplot-figures/sigmetrics-fig-vm-types.pdf> <../data/gnuplot-figu
 res/sigmetrics-time-breakdown.pdf> <../data/gnuplot-figures/sigmetrics-region-b
 reakdown.pdf>] Excluding 'comment' comment.
 (./statmech.tex [6]
-Underfull \vbox (badness 5878) has occurred while \output is active []
-
 <../graphs/analytical_prob.pdf, id=70, 403.89131pt x 275.32353pt>
 File: ../graphs/analytical_prob.pdf Graphic file (type pdf)
 <use ../graphs/analytical_prob.pdf>
-Package pdftex.def Info: ../graphs/analytical_prob.pdf  used on input line 137.
+Package pdftex.def Info: ../graphs/analytical_prob.pdf  used on input line 138.
 
 (pdftex.def)             Requested size: 155.38206pt x 105.92215pt.
-)
-Excluding 'comment' comment.) (./policies.tex [7 <../graphs/analytical_prob.pdf
->] Excluding 'comment' comment. [8]
+) Excluding 'comment' comment.) (./policies.tex [7 <../graphs/analytical_prob.p
+df>] Excluding 'comment' comment. [8]
 <../graphs/transition-all.pdf, id=111, 414.24763pt x 277.29001pt>
 File: ../graphs/transition-all.pdf Graphic file (type pdf)
 <use ../graphs/transition-all.pdf>
@@ -813,29 +809,29 @@ ne-ment ap-pli-ca-tion
  []
 
 Excluding 'comment' comment.
-<../graphs/Sched-bathtub.pdf, id=152, 359.17513pt x 234.08893pt>
+<../graphs/Sched-bathtub.pdf, id=153, 359.17513pt x 234.08893pt>
 File: ../graphs/Sched-bathtub.pdf Graphic file (type pdf)
 <use ../graphs/Sched-bathtub.pdf>
 Package pdftex.def Info: ../graphs/Sched-bathtub.pdf  used on input line 146.
 (pdftex.def)             Requested size: 155.38206pt x 101.26706pt.
-<../graphs/Sched-fail-prob.pdf, id=153, 359.17513pt x 220.89902pt>
+<../graphs/Sched-fail-prob.pdf, id=154, 359.17513pt x 220.89902pt>
 File: ../graphs/Sched-fail-prob.pdf Graphic file (type pdf)
 <use ../graphs/Sched-fail-prob.pdf>
 Package pdftex.def Info: ../graphs/Sched-fail-prob.pdf  used on input line 154.
 
 (pdftex.def)             Requested size: 155.38206pt x 95.5611pt.
-<../graphs/wrong-model.pdf, id=154, 394.60933pt x 299.84436pt>
+<../graphs/wrong-model.pdf, id=155, 394.60933pt x 299.84436pt>
 File: ../graphs/wrong-model.pdf Graphic file (type pdf)
 <use ../graphs/wrong-model.pdf>
 Package pdftex.def Info: ../graphs/wrong-model.pdf  used on input line 160.
 (pdftex.def)             Requested size: 155.38206pt x 118.06891pt.
  Excluding 'comment' comment. [10]
-<../graphs/runtime-bars.pdf, id=158, 516.21294pt x 342.39009pt>
+<../graphs/runtime-bars.pdf, id=159, 516.21294pt x 342.39009pt>
 File: ../graphs/runtime-bars.pdf Graphic file (type pdf)
 <use ../graphs/runtime-bars.pdf>
 Package pdftex.def Info: ../graphs/runtime-bars.pdf  used on input line 322.
 (pdftex.def)             Requested size: 207.17084pt x 137.40813pt.
-<../graphs/cost-vs-exosphere.pdf, id=159, 516.21294pt x 286.38086pt>
+<../graphs/cost-vs-exosphere.pdf, id=160, 516.21294pt x 286.38086pt>
 File: ../graphs/cost-vs-exosphere.pdf Graphic file (type pdf)
 <use ../graphs/cost-vs-exosphere.pdf>
 Package pdftex.def Info: ../graphs/cost-vs-exosphere.pdf  used on input line 35
@@ -868,7 +864,7 @@ Package pdftex.def Info: ../graphs/hpc-vs-scispot.pdf  used on input line 392.
 (pdftex.def)             Requested size: 207.17084pt x 114.48476pt.
 Excluding 'comment' comment.) (./related.tex Excluding 'comment' comment.)
 (./conclusion.tex Excluding 'comment' comment.) (./paper.bbl
-./paper.bbl:5: Undefined control sequence.
+! Undefined control sequence.
 l.5 \newblock \url
                   {https://www.alibabacloud.com/help/doc-detail/52088.htm }.
 The control sequence at the end of the top line
@@ -887,7 +883,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--6
 \OT1/ppl/m/n/8.03 (+20) https://www.alibabacloud.com/help/doc-detail/52088.htm
  []
 
-./paper.bbl:9: Undefined control sequence.
+! Undefined control sequence.
 l.9   howpublished={\url
                         {https://aws.amazon.com/ec2/spot/ }},.
 The control sequence at the end of the top line
@@ -901,7 +897,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--10
 []\OT1/ppl/m/n/8.03 (+20) Amazon EC2 Spot In-stances, how-pub-
  []
 
-./paper.bbl:13: Undefined control sequence.
+! Undefined control sequence.
 l.13 \newblock \url
                    {https://cloud.google.com/apis/docs/overview }.
 The control sequence at the end of the top line
@@ -915,7 +911,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--14
 []\OT1/ppl/m/n/8.03 (+20) Google Cloud API Doc-u-men-ta-tion.
  []
 
-./paper.bbl:17: Undefined control sequence.
+! Undefined control sequence.
 l.17 \newblock \url
                    {https://cloud.google.com/ }.
 The control sequence at the end of the top line
@@ -924,7 +920,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./paper.bbl:21: Undefined control sequence.
+! Undefined control sequence.
 l.21   howpublished={\url
                          {https://cloud.google.com/compute/docs/instances/pr...
 The control sequence at the end of the top line
@@ -939,7 +935,7 @@ Overfull \hbox (24.18736pt too wide) in paragraph at lines 20--22
 preemptible,. 
  []
 
-./paper.bbl:25: Undefined control sequence.
+! Undefined control sequence.
 l.25 \newblock \url
                    {https://support.packet.com/kb/articles/spot-market }.
 The control sequence at the end of the top line
@@ -948,7 +944,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./paper.bbl:30: Undefined control sequence.
+! Undefined control sequence.
 l.30   \url
            {https://docs.scipy.org/doc/scipy/reference/generated/scipy.optim...
 The control sequence at the end of the top line
@@ -957,7 +953,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./paper.bbl:30: Missing $ inserted.
+! Missing $ inserted.
 <inserted text> 
                 $
 l.30 .../reference/generated/scipy.optimize.curve_
@@ -965,7 +961,7 @@ l.30 .../reference/generated/scipy.optimize.curve_
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./paper.bbl:30: Extra }, or forgotten $.
+! Extra }, or forgotten $.
 l.30 ...e/generated/scipy.optimize.curve_fit.html}
                                                   .
 I've deleted a group-closing symbol because it seems to be
@@ -974,7 +970,7 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-./paper.bbl:31: Missing $ inserted.
+! Missing $ inserted.
 <inserted text> 
                 $
 l.31 
@@ -982,7 +978,7 @@ l.31
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./paper.bbl:31: Missing } inserted.
+! Missing } inserted.
 <inserted text> 
                 }
 l.31 
@@ -1004,7 +1000,7 @@ Overfull \hbox (69.62102pt too wide) in paragraph at lines 28--31
 ipy.optimize.curve$[]\OML/cmm/m/it/8 it:html:[]$ 
  []
 
-./paper.bbl:34: Undefined control sequence.
+! Undefined control sequence.
 l.34 \newblock \url
                    {https://slurm.schedmd.com/documentation.html }.
 The control sequence at the end of the top line
@@ -1019,7 +1015,7 @@ Overfull \hbox (34.68753pt too wide) in paragraph at lines 33--35
 documentation.html
  []
 
-./paper.bbl:38: Undefined control sequence.
+! Undefined control sequence.
 l.38 \newblock \url
                    {https://spotinst.com/}.
 The control sequence at the end of the top line
@@ -1028,7 +1024,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./paper.bbl:42: Undefined control sequence.
+! Undefined control sequence.
 l.42 \newblock \url
                    {http://www.adaptivecomputing.com/products/torque/}.
 The control sequence at the end of the top line
@@ -1043,7 +1039,7 @@ Overfull \hbox (59.6259pt too wide) in paragraph at lines 41--43
 ing.com/products/torque/. 
  []
 
-./paper.bbl:47: Undefined control sequence.
+! Undefined control sequence.
 l.47   \url
            {https://aws.amazon.com/blogs/compute/new-amazon-ec2-spot-pricing...
 The control sequence at the end of the top line
@@ -1063,8 +1059,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--49
  []
 
 [12 <../graphs/hpc-vs-scispot.pdf>]
-./paper.bbl:60: Undefined control sequence.
-l.60 \newblock \url
+! Undefined control sequence.
+l.66 \newblock \url
                    {https://docs.microsoft.com/en-us/azure/batch/batch-low-p...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1072,54 +1068,79 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+Missing character: There is no â in font pplr7t!
+Missing character: There is no € in font pplr7t!
+Missing character: There is no “ in font pplr7t!
+[13]) (./authorbios.tex
+<bios/Kadupitiya_JCS.jpg, id=243, 192.72pt x 192.72pt>
+File: bios/Kadupitiya_JCS.jpg Graphic file (type jpg)
+<use bios/Kadupitiya_JCS.jpg>
+Package pdftex.def Info: bios/Kadupitiya_JCS.jpg  used on input line 5.
+(pdftex.def)             Requested size: 72.2698pt x 72.2698pt.
+File: bios/Kadupitiya_JCS.jpg Graphic file (type jpg)
+<use bios/Kadupitiya_JCS.jpg>
+Package pdftex.def Info: bios/Kadupitiya_JCS.jpg  used on input line 5.
+(pdftex.def)             Requested size: 72.2698pt x 72.2698pt.
+Missing character: There is no â in font phvr7t!
+Missing character: There is no € in font phvr7t!
+Missing character: There is no ™ in font phvr7t!
+<bios/jadhao-vikram-2016-08.jpg, id=246, 231.86626pt x 231.86626pt>
+File: bios/jadhao-vikram-2016-08.jpg Graphic file (type jpg)
+<use bios/jadhao-vikram-2016-08.jpg>
+Package pdftex.def Info: bios/jadhao-vikram-2016-08.jpg  used on input line 10.
 
-Underfull \hbox (badness 2302) in paragraph at lines 83--86
-[]\OT1/ppl/m/sc/8.03 (+20) Ben-Yehuda, O., Ben-Yehuda, M., Schus-ter, A., and
- []
+(pdftex.def)             Requested size: 72.27051pt x 72.27051pt.
+File: bios/jadhao-vikram-2016-08.jpg Graphic file (type jpg)
+<use bios/jadhao-vikram-2016-08.jpg>
+Package pdftex.def Info: bios/jadhao-vikram-2016-08.jpg  used on input line 10.
 
-
-Underfull \vbox (badness 1394) has occurred while \output is active []
-
- [13])
-[14
-
-] (./paper.aux) ) 
+(pdftex.def)             Requested size: 72.27051pt x 72.27051pt.
+<bios/prateeks.jpg, id=249, 309.155pt x 309.155pt>
+File: bios/prateeks.jpg Graphic file (type jpg)
+<use bios/prateeks.jpg>
+Package pdftex.def Info: bios/prateeks.jpg  used on input line 16.
+(pdftex.def)             Requested size: 72.26932pt x 72.26932pt.
+File: bios/prateeks.jpg Graphic file (type jpg)
+<use bios/prateeks.jpg>
+Package pdftex.def Info: bios/prateeks.jpg  used on input line 16.
+(pdftex.def)             Requested size: 72.26932pt x 72.26932pt.
+) [14 <./bios/Kadupitiya_JCS.jpg> <./bios/jadhao-vikram-2016-08.jpg> <./bios/pr
+ateeks.jpg>] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 11117 strings out of 494805
- 188633 string characters out of 6178000
+ 11072 strings out of 494805
+ 188562 string characters out of 6178000
  278578 words of memory out of 5000000
- 13717 multiletter control sequences out of 15000+600000
- 79307 words of font info for 461 fonts, out of 8000000 for 9000
+ 13734 multiletter control sequences out of 15000+600000
+ 73036 words of font info for 407 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
- 46i,10n,49p,1332b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
-lvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8
-a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/palatino/uplri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapf
-ding/uzdr.pfb>
-Output written on paper.pdf (14 pages, 4232918 bytes).
+ 46i,10n,50p,1328b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base
+/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
+vetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8
+a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on paper.pdf (14 pages, 4720809 bytes).
 PDF statistics:
- 327 PDF objects out of 1000 (max. 8388607)
+ 335 PDF objects out of 1000 (max. 8388607)
  201 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 42060 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 37503 words of extra memory for PDF output out of 42996 (max. 10000000)
 

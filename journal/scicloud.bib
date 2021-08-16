@@ -1,3 +1,54 @@
+@inproceedings{scispot-hpdc20,
+author = {Kadupitige, JCS and Jadhao, Vikram and Sharma, Prateek},
+title = {Modeling The Temporally Constrained Preemptions of Transient Cloud VMs},
+year = {2020},
+isbn = {9781450370523},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3369583.3392671},
+doi = {10.1145/3369583.3392671},
+abstract = {Transient cloud servers such as Amazon Spot instances, Google Preemptible VMs, and
+Azure Low-priority batch VMs, can reduce cloud computing costs by as much as 10x,
+but can be unilaterally preempted by the cloud provider. Understanding preemption
+characteristics (such as frequency) is a key first step in minimizing the effect of
+preemptions on application performance, availability, and cost. However, little is
+understood about temporally constrained preemptions---wherein preemptions must occur
+in a given time window. We study temporally constrained preemptions by conducting
+a large scale empirical study of Google's Preemptible VMs (that have a maximum lifetime
+of 24 hours), develop a new preemption probability model, new model-driven resource
+management policies, and implement them in a batch computing service for scientific
+computing workloads. Our statistical and experimental analysis indicates that temporally
+constrained preemptions are not uniformly distributed but are time-dependent and have
+a bathtub shape. We find that existing memoryless models and policies are not suitable
+for temporally constrained preemptions. We develop a new probability model for bathtub
+preemptions and analyze it through the lens of reliability theory. To highlight the
+effectiveness of our model, we develop optimized policies for job scheduling and checkpointing.
+Compared to existing techniques, our model-based policies can reduce the probability
+of job failure by more than 2x. We also implement our policies as part of a batch
+computing service for scientific computing applications, which reduces cost by 5x
+compared to conventional cloud deployments and keeps performance overheads under 3%.},
+booktitle = {Proceedings of the 29th International Symposium on High-Performance Parallel and Distributed Computing},
+pages = {41–52},
+numpages = {12},
+keywords = {cloud computing, Google preemptible VMs, cloud VMs, preemption dynamics},
+location = {Stockholm, Sweden},
+series = {HPDC '20}
+}
+
+@inproceedings{sharma19eurosys,
+  title="{Resource Deflation: A New Approach For Transient Resource Reclamation}",
+  author={Prateek Sharma and Ahmed Ali-Edlin and Prashant Shenoy},
+  booktitle={EuroSys},
+  year={2019}
+}
+
+@inproceedings{fuerst2020cloud,
+  title="{Cloud-scale VM-deflation for Running Interactive Applications On Transient Servers}",
+  author={Fuerst, Alexander and Ali-Eldin, Ahmed and Shenoy, Prashant and Sharma, Prateek},
+  booktitle={HPDC},
+  year={2020}
+}
+
 
 @inproceedings{marathe2014exploiting,
   title={Exploiting redundancy for cost-effective, time-constrained execution of HPC applications on amazon EC2},
@@ -432,3 +483,4 @@ keywords={cloud computing;constraint handling;electronic commerce;pattern cluste
 doi={10.1109/CloudCom.2010.32},
 ISSN={},
 month={Nov},}
+

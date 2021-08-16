@@ -129,7 +129,7 @@ Google Preemptible VMs have a maximum lifetime of 24 hours, and this \emph{const
 The typical workflow associated with most scientific computing applications often involves evaluating a computational model across a wide range of physical and computational parameters.
 For instance, constructing and calibrating a molecular dynamics simulation application (such as Nanoconfinement~\cite{jing2015ionic,kadupitiya2017,anousheh2020ionic}) usually involves running simulations with different physical parameters such as particle concentrations, interaction potentials, and thermodynamic conditions. 
 Each of these parameters can take a wide range of values, resulting in a large number of combinations which must be evaluated by invoking the application multiple times (also known as a parameter sweep). 
-Since each computational job explores a single combination of parameters, the multidimensional parameter sweep results in executing a ``bag of jobs'', with each job in the bag running the same application, but with possibly different parameters.
+Since each computational job explores a single combination of parameters, the multidimensional parameter sweep results in executing a ``bag of jobs'', with each job in the bag running the same application, but with possibly different parameters. 
 
 
 The bag of jobs execution model is pervasive in scientific computing and applicable in many contexts. For example, in the field of soft matter, molecular dynamics simulations are routinely deployed as a bag of jobs to explore the material design space spanned by the parameters characterizing the material attributes and the solution conditions, with the goal of furnishing the links between the design parameters and the material response.
@@ -154,7 +154,7 @@ In contrast, the bags of jobs abstraction is independent of the application desi
 
 The bag of jobs execution model has multiple characteristics, that give rise to unique challenges and opportunities when deploying them on transient cloud servers. 
 Since bags of jobs require a large amount of computing resources, deploying them on the cloud can result in high overall costs, thus requiring policies for minimizing the cost and overall running time. 
-The similarity in execution characteristics of jobs (such as their running times and parallel speedup) allows for bag-wide optimizations (Figure~\ref{fig:heatmap}). 
+The similarity in execution characteristics of jobs (such as their running times and parallel speedup, see Figure~\ref{fig:heatmap}) allows for bag-wide optimizations which SciSpot exploits. 
 %Second, there is no dependency between individual jobs in a bag, thus allowing increased flexibility in job scheduling.
 And last, treating entire bags of jobs as an execution unit, instead of individual jobs, can allow us to use partial redundancy between jobs and reduce the fault-tolerance overhead to mitigate transient server preemptions. 
 

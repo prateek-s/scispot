@@ -173,8 +173,9 @@ This observed behavior aligns with the guidelines for using preemptible VMs that
 From Figure~\ref{fig:time-breakdown}, we can see that VMs have a slightly longer lifetime during the night (8 PM to 8 AM) than during the day\footnotemark. 
 This is expected because fundamentally, the preemption rates are higher during periods of higher demand. 
 %
-We also notice that completely idle VMs have longer lifetimes than VMs running some workload.
-\vikram{This sentence needs to be re-worded:: Presumably, this could be a result of the lower resource utilization of idle VMs being more amenable to resource overcommitment, and result in lower preemptions.} 
+We also notice that completely idle VMs have longer lifetimes than VMs running some workload, presumably because idle VMs are easier for resource overcommittment~\cite{sharma19eurosys, fuerst2020cloud}, and thus have a lower preemption probability. 
+% \vikram{This sentence needs to be re-worded:: Presumably, this could be a result of the lower resource utilization of idle VMs being more amenable to resource overcommitment, and result in lower preemptions.}
+% Great point, but too deep :) 
 
 
 \footnotetext{Time-zone local to the VM's location.}
