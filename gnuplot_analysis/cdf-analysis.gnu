@@ -187,7 +187,7 @@ set yrange [0:1.1]
 plot  set8f(x) with l ls 15 title 'Idle',\
 set16f(x) with l ls 15 dashtype 3 title 'Non-idle', \
 set2f(x) with l ls 19 dashtype 3 title 'Night', \
-set4f(x) with l ls 19 title  'Day', \
+set4f(x) with l ls 19 title  'Day'
  
 exit
 
