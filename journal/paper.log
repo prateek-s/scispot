@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  11 JAN 2022 18:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.6)  11 JAN 2022 18:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -656,7 +656,7 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9.53561> not available
 LaTeX Warning: Citation `hpdc20' on page 2 undefined on input line 63.
 
 Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 172--172
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
 [][][]\OT1/ppl/m/n/8.03 (+20) Preemption dataset avail-able at
  []
 
@@ -775,7 +775,7 @@ Package pdftex.def Info: ../graphs/analytical_prob.pdf  used on input line 138.
 
 (pdftex.def)             Requested size: 155.38206pt x 105.92215pt.
 ) Excluding 'comment' comment.) (./policies.tex [7 <../graphs/analytical_prob.p
-df>] Excluding 'comment' comment. [8]
+df>] [8] Excluding 'comment' comment.
 <../graphs/transition-all.pdf, id=111, 414.24763pt x 277.29001pt>
 File: ../graphs/transition-all.pdf Graphic file (type pdf)
 <use ../graphs/transition-all.pdf>
@@ -805,34 +805,31 @@ ne 40.
 
 pdfTeX warning: pdflatex (file ../graphs/tipping.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
-> <../figures/ArchitectureRevisedV2.pdf>] Excluding 'comment' comment.)
-(./eval2.tex
+>] Excluding 'comment' comment.) (./eval2.tex
 Underfull \hbox (badness 10000) in paragraph at lines 40--42
 \OT1/ppl/b/n/9.53561 Nanoconfinement. \OT1/ppl/m/n/9.53561 (+20) The nanocon-fi
 ne-ment ap-pli-ca-tion
  []
 
 Excluding 'comment' comment.
-<../graphs/Sched-bathtub.pdf, id=153, 359.17513pt x 234.08893pt>
+<../graphs/Sched-bathtub.pdf, id=150, 359.17513pt x 234.08893pt>
 File: ../graphs/Sched-bathtub.pdf Graphic file (type pdf)
 <use ../graphs/Sched-bathtub.pdf>
 Package pdftex.def Info: ../graphs/Sched-bathtub.pdf  used on input line 146.
 (pdftex.def)             Requested size: 155.38206pt x 101.26706pt.
-<../graphs/Sched-fail-prob.pdf, id=154, 359.17513pt x 220.89902pt>
+<../graphs/Sched-fail-prob.pdf, id=151, 359.17513pt x 220.89902pt>
 File: ../graphs/Sched-fail-prob.pdf Graphic file (type pdf)
 <use ../graphs/Sched-fail-prob.pdf>
 Package pdftex.def Info: ../graphs/Sched-fail-prob.pdf  used on input line 154.
 
 (pdftex.def)             Requested size: 155.38206pt x 95.5611pt.
-<../graphs/wrong-model.pdf, id=155, 394.60933pt x 299.84436pt>
+<../graphs/wrong-model.pdf, id=152, 394.60933pt x 299.84436pt>
 File: ../graphs/wrong-model.pdf Graphic file (type pdf)
 <use ../graphs/wrong-model.pdf>
 Package pdftex.def Info: ../graphs/wrong-model.pdf  used on input line 160.
 (pdftex.def)             Requested size: 155.38206pt x 118.06891pt.
- Excluding 'comment' comment.
-Underfull \vbox (badness 3386) has occurred while \output is active []
-
- [10]
+ [10 <../figures/ArchitectureRevisedV2.pdf>]
+Excluding 'comment' comment.
 <../graphs/runtime-bars.pdf, id=159, 516.21294pt x 342.39009pt>
 File: ../graphs/runtime-bars.pdf Graphic file (type pdf)
 <use ../graphs/runtime-bars.pdf>
@@ -844,8 +841,7 @@ File: ../graphs/cost-vs-exosphere.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../graphs/cost-vs-exosphere.pdf  used on input line 35
 2.
 (pdftex.def)             Requested size: 207.17084pt x 114.93048pt.
-
-[11 <../graphs/Sched-bathtub.pdf> <../graphs/Sched-fail-prob.pdf
+ [11 <../graphs/Sched-bathtub.pdf> <../graphs/Sched-fail-prob.pdf
 
 pdfTeX warning: pdflatex (file ../graphs/Sched-fail-prob.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
@@ -857,21 +853,22 @@ ple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ../graphs/runtime-bars.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
-> <../graphs/cost-vs-exosphere.pdf
-
-pdfTeX warning: pdflatex (file ../graphs/cost-vs-exosphere.pdf): PDF inclusion:
- multiple pdfs with page group included in a single page
 >]
 
 pdfTeX warning: pdflatex (file ../graphs/hpc-vs-scispot.pdf): PDF inclusion: fo
 und PDF version <1.6>, but at most version <1.5> allowed
-<../graphs/hpc-vs-scispot.pdf, id=219, 518.22043pt x 286.38086pt>
+<../graphs/hpc-vs-scispot.pdf, id=208, 518.22043pt x 286.38086pt>
 File: ../graphs/hpc-vs-scispot.pdf Graphic file (type pdf)
 <use ../graphs/hpc-vs-scispot.pdf>
 Package pdftex.def Info: ../graphs/hpc-vs-scispot.pdf  used on input line 392.
 (pdftex.def)             Requested size: 207.17084pt x 114.48476pt.
 Excluding 'comment' comment.) (./related.tex Excluding 'comment' comment.)
-(./conclusion.tex Excluding 'comment' comment.) (./paper.bbl
+(./conclusion.tex Excluding 'comment' comment.) (./paper.bbl [12 <../graphs/cos
+t-vs-exosphere.pdf> <../graphs/hpc-vs-scispot.pdf
+
+pdfTeX warning: pdflatex (file ../graphs/hpc-vs-scispot.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>]
 ./paper.bbl:5: Undefined control sequence.
 l.5 \newblock \url
                   {https://www.alibabacloud.com/help/doc-detail/52088.htm }.
@@ -1008,7 +1005,6 @@ Overfull \hbox (69.62102pt too wide) in paragraph at lines 28--31
 ipy.optimize.curve$[]\OML/cmm/m/it/8 it:html:[]$ 
  []
 
-[12 <../graphs/hpc-vs-scispot.pdf>]
 ./paper.bbl:34: Undefined control sequence.
 l.34 \newblock \url
                    {https://slurm.schedmd.com/documentation.html }.
@@ -1092,7 +1088,8 @@ Package pdftex.def Info: bios/Kadupitiya_JCS.jpg  used on input line 5.
 Missing character: There is no â in font phvr7t!
 Missing character: There is no € in font phvr7t!
 Missing character: There is no ™ in font phvr7t!
-<bios/jadhao-vikram-2016-08.jpg, id=246, 231.86626pt x 231.86626pt>
+ [14 <./bios/Kadupitiya_JCS.jpg>]
+<bios/jadhao-vikram-2016-08.jpg, id=250, 231.86626pt x 231.86626pt>
 File: bios/jadhao-vikram-2016-08.jpg Graphic file (type jpg)
 <use bios/jadhao-vikram-2016-08.jpg>
 Package pdftex.def Info: bios/jadhao-vikram-2016-08.jpg  used on input line 10.
@@ -1103,8 +1100,7 @@ File: bios/jadhao-vikram-2016-08.jpg Graphic file (type jpg)
 Package pdftex.def Info: bios/jadhao-vikram-2016-08.jpg  used on input line 10.
 
 (pdftex.def)             Requested size: 72.27051pt x 72.27051pt.
- [14 <./bios/Kadupitiya_JCS.jpg> <./bios/jadhao-vikram-2016-08.jpg>]
-<bios/prateeks.jpg, id=254, 309.155pt x 309.155pt>
+<bios/prateeks.jpg, id=253, 309.155pt x 309.155pt>
 File: bios/prateeks.jpg Graphic file (type jpg)
 <use bios/prateeks.jpg>
 Package pdftex.def Info: bios/prateeks.jpg  used on input line 16.
@@ -1115,7 +1111,7 @@ Package pdftex.def Info: bios/prateeks.jpg  used on input line 16.
 (pdftex.def)             Requested size: 72.26932pt x 72.26932pt.
 ) [15
 
- <./bios/prateeks.jpg>] (./paper.aux)
+ <./bios/jadhao-vikram-2016-08.jpg> <./bios/prateeks.jpg>] (./paper.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1154,7 +1150,7 @@ texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
 rw/palatino/uplri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfding
 /uzdr.pfb>
-Output written on paper.pdf (15 pages, 4721504 bytes).
+Output written on paper.pdf (15 pages, 4722194 bytes).
 PDF statistics:
  338 PDF objects out of 1000 (max. 8388607)
  203 compressed objects within 3 object streams
