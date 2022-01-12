@@ -140,7 +140,23 @@ We find that this probability \emph{also} follows the bathtub shape that is foun
   \label{fig:partfun}
 \end{figure}
 
- 
+
+
+\subsection{Model Validity and Generalizability}
+
+In the absence of any prior work on constrained preemption dynamics, our aim is to provide an interpretable model with a minimal number of parameters, that provides a sufficiently accurate characterization of features present in the preemption data. 
+%As is evident from Figure~\ref{fig:gcp1}, our model shows deviations from the data near the halfway point within the 24 hour lifetime. 
+Extension of this model to include more failure processes would introduce more parameters and reduce the generalization power. Further, this model as well as the optimization policies derived from it offer pathways to quantify additional effects arising due to the inclusion of more failure processes.  
+%Exploring other approaches of modeling bathtub-type failure rates (e.g., exponential Weibull distributions) \cite{mudholkar1993exponentiated,crevecoeur1993model} is part of our future work. 
+
+In evaluation, we will show that constant failure rate assumptions can be severely detrimental to the application failures and performance.
+We show that assuming the bathtub model, \emph{even with poorly fitted parameters}, can show significant improvements vs. existing exponential models.
+
+Furthrer improvements to the model are possible with additional data.
+We hope that the use of SciSpot will provide a community-based approach to gathering preemption data and updating the models.
+
+
+
 
 
 %%% Local Variables:
