@@ -17,7 +17,8 @@ a long-running cloud service can continuously update the model based on recent p
 However, changes are rare: Google's preemption policy has not changed since its inception in 2015. 
 %EC2 pricing and preemptions were relatively stable~\cite{hotcloud-not-bid} until 2017~\cite{irwin-icccn19, baughman2019deconstructing, spotweb}.
 %
-Regardless, VMs with constrained preemptions are an interesting \emph{new} type of transient resource, and our analysis, observations, and policies should continue to be relevant. 
+%Regardless, VMs with constrained preemptions are an interesting \emph{new} type of transient resource, and our analysis, observations, and policies should continue to be relevant.
+%
 %Furthermore, we demonstrate that the multi-phase bathtub failure distribution %may be a fundamental characteristic of constrained preemptions that
 %benefits both the cloud platform and applications, and thus models that capture the distinct preemption phases would still be relevant even if the finer-grained preemption characteristics change. % over time. 
 %
@@ -25,6 +26,16 @@ We have also shown that our policies are not particularly sensitive to the model
 % vikram 
 Our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is general. Moreover, because bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions making our approach generalizable to other system environments beyond the Google cloud computing systems. Finally, the principle adopted to break down the problem into the superposition of processes characterized by different failure rates can also be considered as a general framework to understand and guide policies for mitigating preemption-induced effects in other cloud environments.
 
+For robust long-term relevance of the preemption model, we envision a community-driven approach.
+An increase in SciSpot use by the research community will provide more preemption data, which can then be used to constantly refine the model when preemption characteristics change due to cloud policies or supply/demand fluctuations. 
+
+\noindent \textbf{Generalizability to other Transient VMs.}
+In this paper, we focus on constrained preemptions.
+Other cloud transient VMs such as spot instances do not have the temporal constraint, and their preemption modeling can be performed with classical distributions (such as exponential distribution for modeling EC2 spot instance preemptions ~\cite{bid-cloud, flint, hotcloud-not-bid}). 
+However, we have shown that an empirical approach of collecting actual preemption data is feasible and effective, and a principled approach can be used even without spot-market price signals. 
+
+
+\begin{comment}
 \noindent \textbf{\emph{Phase-wise} model.}
 Our statistical analysis indicates that the preemption rates have three distinct phases. 
 %Our model is a continuously differentiable and allows capturing the three phases reasonably well. 
@@ -36,6 +47,7 @@ Such a piece-wise model could capture the phase transitions with even more accur
 Our analytical model informed by empirical data and based on well-defined assumptions can guide the development of such simpler heuristics and modeling approaches, as well as the interpretation of their results.
 The analytical model also provides a measure to distill the contributions of effects ignored in its derivation (e.g., only 2 failure rates) in changing the VM expected lifetimes and checkpointing policies. At the same time, it also provides a principled approach to extend the model to more complex cases, e.g., systems characterized by processes with more than 2 failure rates. %}
 %Furthermore, the analytical predictive model enables for a cleaner integration with the resource management service.
+\end{comment}
 
 \begin{comment}
 \noindent \textbf{Connection to constrained systems and statistical mechanics.} Our proof of Lemma~\ref{lemma:1} used mapping to constrained physical systems and employed the statistical mechanics tools such as partition functions \cite{krauth2006statistical}. 

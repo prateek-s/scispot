@@ -8,18 +8,6 @@ Repeated entry---line 72 of file bagsjobs.bib
  : @misc{kadupitiya2017
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 373 of file bagsjobs.bib
- : @article{ferguson2017machine
- :                             ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 412 of file bagsjobs.bib
- : @article{wang2019machine
- :                         ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 521 of file bagsjobs.bib
- : @article{kadupitiya2020machine2
- :                                ,
-I'm skipping whatever remains of this entry
 Database file #3: spot-bid.bib
 Repeated entry---line 969 of file spot-bid.bib
  : @inproceedings{spoton
@@ -35,15 +23,12 @@ I was expecting a `,' or a `}'---line 1171 of file spot-bid.bib
  : @misc{docker,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 1455 of file spot-bid.bib
- : @inproceedings{baughman2019deconstructing
- :                                          ,
-I'm skipping whatever remains of this entry
 I was expecting a `,' or a `}'---line 1467 of file spot-bid.bib
  : 
  : year={2020},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in scispot-dataset
 Warning--to sort, need author or key in ec2-spot
 Warning--to sort, need author or key in preemptible-documentation
 Warning--to sort, need author or key in packet-spot
@@ -53,53 +38,50 @@ Warning--to sort, need author or key in gcp
 Warning--to sort, need author or key in gcloud-api
 Warning--to sort, need author or key in slurm
 Warning--to sort, need author or key in torque
-Warning--to sort, need author or key in spotinst
-Warning--to sort, need author or key in bid-change
 Warning--empty journal in dongarra_fault_nodate
 Warning--empty year in dongarra_fault_nodate
-Warning--empty year in jain14demand
 Warning--empty institution in LULESH2:changes
 Warning--can't use both volume and number fields in exosphere
 Warning--empty year in tian_gpu_icdcs
-You've used 86 entries,
+You've used 60 entries,
             2118 wiz_defined-function locations,
-            935 strings with 20155 characters,
-and the built_in function-call counts, 30916 in all, are:
-= -- 2931
-> -- 1656
-< -- 33
-+ -- 662
-- -- 570
-* -- 2087
-:= -- 4903
-add.period$ -- 267
-call.type$ -- 86
-change.case$ -- 539
+            801 strings with 14643 characters,
+and the built_in function-call counts, 20589 in all, are:
+= -- 1931
+> -- 1084
+< -- 22
++ -- 435
+- -- 372
+* -- 1379
+:= -- 3252
+add.period$ -- 181
+call.type$ -- 60
+change.case$ -- 365
 chr.to.int$ -- 0
-cite$ -- 103
-duplicate$ -- 1264
-empty$ -- 2432
-format.name$ -- 570
-if$ -- 6674
+cite$ -- 75
+duplicate$ -- 840
+empty$ -- 1674
+format.name$ -- 372
+if$ -- 4456
 int.to.chr$ -- 0
-int.to.str$ -- 86
-missing$ -- 72
-newline$ -- 419
-num.names$ -- 150
-pop$ -- 732
+int.to.str$ -- 60
+missing$ -- 47
+newline$ -- 289
+num.names$ -- 98
+pop$ -- 517
 preamble$ -- 1
-purify$ -- 454
+purify$ -- 307
 quote$ -- 0
-skip$ -- 925
+skip$ -- 610
 stack$ -- 0
-substring$ -- 1314
-swap$ -- 366
-text.length$ -- 33
+substring$ -- 830
+swap$ -- 226
+text.length$ -- 22
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 342
-warning$ -- 17
-while$ -- 233
-width$ -- 88
-write$ -- 907
-(There were 9 error messages)
+type$ -- 238
+warning$ -- 15
+while$ -- 149
+width$ -- 62
+write$ -- 620
+(There were 5 error messages)

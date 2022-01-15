@@ -17,38 +17,6 @@ Based on our observations and insights from the study, we develop a probability 
 %which we then provide a statistical mechanics interpretation for. 
 which we then interpret using the framework of statistical mechanics. 
 
-%which we later use to develop preemption-mitigating resource management application policies. 
-
-
-
-
-%In this section, we first present an empirical analysis of preemptions of Google Preemptible VMs, and then develop a new  probability model based on our observations. 
-%Finally, we discuss the unique aspects and general characteristics of constrained preemptions using reliability theory. % and statistical mechanics.
-
-
-%and present  general observations about constrained preemptions using statistical mechanics. 
-
-%The preemption characteristics are governed by the supply of surplus resources, the demand from applications, and resource allocation policies of the cloud operator.
-
-
-%that describe these characteristics and enable an intuitive understanding of the nature of preemptions. 
-
-
-% Transient cloud servers, by their very nature have limited availability and are frequently preempted.
-% These preemptions are akin to fail-stop failures, and are often preceeded by a small advance warning (few seconds) to allow for graceful shutdowns.
-
-% Since preemptions can impact the availability, performance, and cost of running applications, in this section, we examine their preemption characteristics.
-% This modeling is important, because having a model of the availability can be useful in the context of predicting the running times of applications.
-% Cloud providers offer a large number of servers of different configurations and types.
-% Since transient server availability is fundamentally tied to supply and demand, the availability of servers of different types can be significantly different. 
-% Thus, selecting the ``right'' server type is crucial for minimizing the overall costs. 
-
-
-
-%\cite{alicloud-spot, packet-spot}
-
-%\subsection{Empirical model of preemptions}
-%\subsection{Empirical preemption behavior}
 \vspace*{\subsecspace}
 \subsection{Empirical Study Of Preemptions}\label{sec:empirical}
 %\subsection{Understanding Empirical Preemption Behavior}
@@ -56,7 +24,7 @@ which we then interpret using the framework of statistical mechanics.
 % The preemptions of transient servers need not be related to their price.
 
 \begin{figure}
-  \includegraphics[width=0.47\textwidth]{../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf} 
+ \centering  \includegraphics[width=0.44\textwidth]{../data/gnuplot-figures/sigmetrics-fig-cdf-prob-inset-time.pdf} 
   \caption{CDF of lifetimes of Google Preemptible VMs. Our proposed distribution for modeling the constrained preemption dynamics provides a better fit to the empirical data compared to other failure distributions. Inset shows the probability density functions.}
   \label{fig:gcp1}
 \end{figure}
@@ -68,7 +36,7 @@ which we then interpret using the framework of statistical mechanics.
 \noindent \textbf{Methodology.}
 We launched  870 Google Preemptible VMs of different types over a two month period (Feb--April 2019), and measured their time to preemption (i.e., their useful lifetime).
 %
-VMs of different resource capacities were launched in four geographical regions; during days and nights and all days of the week; and running different workloads\footnotemark. 
+VMs of different resource capacities were launched in four geographical regions; during days and nights and all days of the week; and running different workloads. 
 %hl
 We launched VMs in their default resource configurations (CPU and memory), and do not use custom VM sizes.
 % hl
@@ -78,13 +46,13 @@ We launched VMs in their default resource configurations (CPU and memory), and d
 %We experimented with different CPU types with differnt size of memory such as n1-highcpu-2: 1.80GB, n1-highcpu-4: 3.60GB, n1-highcpu-8: 7.20GB, n1-highcpu-16: 14.4GB, n1-highcpu-32: 28.8GB, and n1-highcpu-64: 57.6GB.}
 To ensure the generality of our empirical observations, VMs were not launched during well-known peak utilization days (such as Black Friday).
 %
-The preemption data collection was bootstrapped: a small amount of data points were used to estimate and model the preemption CDF, which we then used to run our batch computing service (described and evaluated in Sections~\ref{sec:impl} and \ref{sec:eval}), which generated the rest of the preemption data.  
+The preemption data collection was bootstrapped: a small amount of data points were used to estimate and model the preemption CDF, which we then used to run SciSpot (described and evaluated in Sections~\ref{sec:impl} and \ref{sec:eval}), which generated the rest of the preemption data.  
 %
 %Thus the effective cost overhead of our empirical data collection approach  is small. 
 Due to the relatively high preemption rates compared to EC2 spot instances, we were able to collect these data points for less than \$5,000. 
-%
+% Above is too meta and useful only to prateek 
 
-\footnotetext{Preemption rates can also be affected by number of VMs launched simultaneously, which we limited to between $1$ and $10$.}
+%\footnotetext{Preemption rates can also be affected by number of VMs launched simultaneously, which we limited to between $1$ and $10$.}
 
 %
  %Weaksauce 
@@ -104,9 +72,6 @@ The overall rate of preemptions is ``bathtub'' shaped as shown by the solid blac
 Empirically, our main observations are:
 
 
-
-
-
 %Based on the observ
 %
 %Note that the cloud operator (Google) caps the \emph{maximum} lifetime of the VM to 24 hours, and all the VMs are preempted before that limit. 
@@ -122,11 +87,24 @@ Empirically, our main observations are:
 ill
 \subfloat[\texttt{n1-highcpu-16} in different regions. \label{fig:region-breakdown}]
 {  \includegraphics[width=0.3\textwidth]{../data/gnuplot-figures/sigmetrics-region-breakdown.pdf} }
-\vspace*{-0.6cm}
+\vspace*{-0.3cm}
 \caption{Analysis of preemption characteristics by VM-type, region, time-of-day, and workload type.}
 \label{fig:breakdown-all}
     \vspace*{\myfigspace}
 \end{figure*}
+
+\begin{figure}
+  \centering 
+  \subfloat[By day of week. \label{fig:cdf-time}]
+  {\includegraphics[width=0.34\textwidth]{../data/TPDS_Figures/weekdays-vs-weekends.pdf}}
+  \\
+  \vspace*{-10pt}
+\subfloat[Parallel VM launches. \label{fig:cdf-concurr}]
+{\includegraphics[width=0.34\textwidth]{../data/TPDS_Figures/different-numbers-of-parallel-VM-launches.pdf}}
+\label{fig:breakdown-more}
+\caption{Preemption CDF analysis.}
+\vspace*{-0.3cm}
+\end{figure}
 
 \noindent \textbf{Observation 1:} \emph{The lifetimes of VMs are not uniformly distributed, but have three distinct phases.}
 
@@ -151,11 +129,13 @@ The classic exponential distribution is unable to model the observed preemption 
 %We attribute this deficiency to the central assumption made in the underlying reliability theory principles that leads to the classical exponential distribution: the rate of preemptions is independent of the lifetime of the VMs, in other words, the preemptions are \emph{memoryless}.
 This assumption breaks down when there is a fixed upper bound on the lifetime. %, as is the case for Google Preemptible VMs.%, and the conventional approach becomes insufficient to model this constrained preemption dynamics. 
 
-\noindent \textbf{Observation 3:} \emph{The three preemption phases and associated bathtub shaped preemption probability are general, universal characteristics of Preemptible VMs.}
+\noindent \textbf{Observation 3:} \emph{The three preemption phases and associated bathtub shaped preemption probability, can be seen as general characteristics of Preemptible VMs.}
 
 %In general, the preemption dynamics of a VM are determined by the supply and demand of VMs of that \emph{particular} type. 
 %Thus, o
-Our empirical study looked at preemptions of VMs of different sizes (Figure~\ref{fig:breakdown-all}a), at different times of the day (Figure~\ref{fig:breakdown-all}b), in different geographical zones (Figure~\ref{fig:breakdown-all}c), and running different workloads. 
+Our empirical study looked at preemptions of VMs of different sizes (Figure~\ref{fig:breakdown-all}a), at different times of the day (Figure~\ref{fig:breakdown-all}b), in different geographical zones (Figure~\ref{fig:breakdown-all}c), and running different workloads.
+We also analyzed VMs launched at different days (Figure~\ref{fig:cdf-time}) and also analyzed the effect of concurrent VM launches (Figure~\ref{fig:cdf-concurr}).
+%
 In all cases, we find that there are three distinct phases associated with the preemption dynamics giving rise to the bathtub-shaped preemption probability. 
 
 

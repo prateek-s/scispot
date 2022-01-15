@@ -1,5 +1,8 @@
 \begin{thebibliography}{10}
 
+\bibitem{scispot-dataset}
+\url{https://github.com/kadupitiya/goog-preemption-data/}.
+
 \bibitem{alibaba-spot}
 {Alibaba Cloud Preemptible Instances}.
 \newblock \url{https://www.alibabacloud.com/help/doc-detail/52088.htm }.
@@ -33,19 +36,9 @@ Scipy curve fit documentation.
 {Slurm Workload Manager}.
 \newblock \url{https://slurm.schedmd.com/documentation.html }.
 
-\bibitem{spotinst}
-{Spotinst}.
-\newblock \url{https://spotinst.com/}.
-
 \bibitem{torque}
 {Torque Resource Manager}.
 \newblock \url{http://www.adaptivecomputing.com/products/torque/}.
-
-\bibitem{bid-change}
-{New Amazon EC2 Spot pricing model}.
-\newblock
-  \url{https://aws.amazon.com/blogs/compute/new-amazon-ec2-spot-pricing/ },
-  March 2018.
 
 \bibitem{cmu-atlas}
 G.~Amvrosiadis, J.~W. Park, G.~R. Ganger, G.~A. Gibson, E.~Baseman, and
@@ -66,12 +59,6 @@ N.~Anousheh, F.~J. Solis, and V.~Jadhao.
 \newblock \url{https://docs.microsoft.com/en-us/azure/batch/batch-low-pri-vms
   }.
 
-\bibitem{baughman2019deconstructing}
-M.~Baughman, S.~Caton, C.~Haas, R.~Chard, R.~Wolski, I.~Foster, and K.~Chard.
-\newblock Deconstructing the 2017 changes to aws spot market pricing.
-\newblock In {\em Proceedings of the 10th Workshop on Scientific Cloud
-  Computing}, pages 19--26. ACM, 2019.
-
 \bibitem{baughman2018predicting}
 M.~Baughman, C.~Haas, R.~Wolski, I.~Foster, and K.~Chard.
 \newblock Predicting amazon spot prices with lstm networks.
@@ -83,26 +70,11 @@ O.~Ben-Yehuda, M.~Ben-Yehuda, A.~Schuster, and D.~Tsafrir.
 \newblock Deconstructing {A}mazon {E}{C}2 {S}pot {I}nstance {P}ricing.
 \newblock {\em ACM TEC}, 1(3), September 2013.
 
-\bibitem{bougeret_checkpointing_2011}
-M.~Bougeret, H.~Casanova, M.~Rabie, Y.~Robert, and F.~Vivien.
-\newblock Checkpointing strategies for parallel jobs.
-\newblock In {\em Proceedings of 2011 {International} {Conference} for {High}
-  {Performance} {Computing}, {Networking}, {Storage} and {Analysis} on - {SC}
-  '11}, page~1, Seattle, Washington, 2011. ACM Press.
-
 \bibitem{brunk2019computational}
 N.~E. Brunk and V.~Jadhao.
 \newblock Computational studies of shape control of charged deformable
   nanocontainers.
 \newblock {\em Journal of Materials Chemistry B}, 7:6370, 2019.
-
-\bibitem{casalino2021ai}
-L.~Casalino, A.~C. Dommer, Z.~Gaieb, E.~P. Barros, T.~Sztain, S.-H. Ahn,
-  A.~Trifan, A.~Brace, A.~T. Bogetti, A.~Clyde, et~al.
-\newblock Ai-driven multiscale simulations illuminate mechanisms of sars-cov-2
-  spike dynamics.
-\newblock {\em The International Journal of High Performance Computing
-  Applications}, page 10943420211006452, 2021.
 
 \bibitem{spot-run}
 N.~Chohan, C.~Castillo, M.~Spreitzer, M.~Steinder, A.~Tantawi, and C.~Krintz.
@@ -110,24 +82,12 @@ N.~Chohan, C.~Castillo, M.~Spreitzer, M.~Steinder, A.~Tantawi, and C.~Krintz.
   {W}orkflows.
 \newblock In {\em HotCloud}, June 2010.
 
-\bibitem{bot-2003}
-W.~Cirne, F.~Brasileiro, J.~Sauve, N.~Andrade, D.~Paranhos, E.~Santos-neto, and
-  R.~Medeiros.
-\newblock Grid computing for bag of tasks applications.
-\newblock In {\em In Proc. of the 3rd IFIP Conference on E-Commerce, E-Business
-  and EGovernment}. IFIP, 2003.
-
 \bibitem{resource-central-sosp17}
 E.~Cortez, A.~Bonde, A.~Muzio, M.~Russinovich, M.~Fontoura, and R.~Bianchini.
 \newblock Resource central: Understanding and predicting workloads for improved
   resource management in large cloud platforms.
 \newblock In {\em Proceedings of the 26th Symposium on Operating Systems
   Principles}, SOSP '17, pages 153--167, New York, NY, USA, 2017. ACM.
-
-\bibitem{crevecoeur1993model}
-G.~Crevecoeur.
-\newblock A model for the integrity assessment of ageing repairable systems.
-\newblock {\em IEEE Transactions on reliability}, 42(1):148--155, 1993.
 
 \bibitem{daly2006higher}
 J.~T. Daly.
@@ -146,18 +106,6 @@ D.~J. Dubois and G.~Casale.
   resources.
 \newblock {\em Cluster Computing}, pages 1--17, 2016.
 
-\bibitem{ferguson2017machine}
-A.~L. Ferguson.
-\newblock Machine learning and data science in soft materials engineering.
-\newblock {\em Journal of Physics: Condensed Matter}, 30(4):043002, 2017.
-
-\bibitem{fox2019learning}
-G.~Fox, J.~A. Glazier, J.~Kadupitiya, V.~Jadhao, M.~Kim, J.~Qiu, J.~P. Sluka,
-  E.~Somogyi, M.~Marathe, A.~Adiga, et~al.
-\newblock {Learning Everywhere: Pervasive machine learning for effective
-  High-Performance computation}.
-\newblock {\em arXiv preprint arXiv:1902.10810}, 2019.
-
 \bibitem{fuerst2020cloud}
 A.~Fuerst, A.~Ali-Eldin, P.~Shenoy, and P.~Sharma.
 \newblock {Cloud-scale VM-deflation for Running Interactive Applications On
@@ -171,14 +119,6 @@ B.~Ghit and D.~Epema.
 \newblock In {\em Proceedings of the 26th International Symposium on
   High-Performance Parallel and Distributed Computing}, HPDC '17, pages
   105--116, New York, NY, USA, 2017. ACM.
-
-\bibitem{gong_monetary_2015}
-Y.~Gong, B.~He, and A.~C. Zhou.
-\newblock Monetary cost optimizations for {MPI}-based {HPC} applications on
-  {Amazon} clouds: checkpoints and replicated execution.
-\newblock In {\em Proceedings of the {International} {Conference} for {High}
-  {Performance} {Computing}, {Networking}, {Storage} and {Analysis} on - {SC}
-  '15}, pages 1--12, Austin, Texas, 2015. ACM Press.
 
 \bibitem{guo_bidding_2015}
 W.~Guo, K.~Chen, Y.~Wu, and W.~Zheng.
@@ -214,13 +154,6 @@ V.~Jadhao, C.~K. Thomas, and M.~Olvera de~la Cruz.
 \newblock {\em Proceedings of the National Academy of Sciences},
   111(35):12673--12678, 2014.
 
-\bibitem{jain14demand}
-N.~Jain, I.~Menache, and O.~Shamir.
-\newblock On-demand, spot, or both: Dynamic resource allocation for executing
-  batch jobs in the cloud.
-\newblock In {\em 11th International Conference on Autonomic Computing (ICAC
-  14)}. USENIX Association.
-
 \bibitem{bidding4}
 B.~Javadi, R.~Thulasiram, and R.~Buyya.
 \newblock Statistical {M}odeling of {S}pot {I}nstance {P}rices in {P}ublic
@@ -252,31 +185,11 @@ J.~Kadupitiya, N.~Brunk, and V.~Jadhao.
 \newblock Nanoparticle shape lab, January 2020.
 \newblock nanoHUB.
 
-\bibitem{kadupitiya2019machine}
-J.~Kadupitiya, G.~C. Fox, and V.~Jadhao.
-\newblock Machine learning for performance enhancement of molecular dynamics
-  simulations.
-\newblock In {\em International Conference on Computational Science}, pages
-  116--130, 2019.
-
-\bibitem{kadupitiya2020machine}
-J.~Kadupitiya, G.~C. Fox, and V.~Jadhao.
-\newblock Machine learning for parameter auto-tuning in molecular dynamics
-  simulations: Efficient dynamics of ions near polarizable nanoparticles.
-\newblock {\em The International Journal of High Performance Computing
-  Applications}, 34(3):357--374, 2020.
-
 \bibitem{kadupitiya2017}
 J.~Kadupitiya, S.~Marru, G.~C. Fox, and V.~Jadhao.
 \newblock Ions in nanoconfinement, Dec 2017.
 \newblock Online on nanoHUB; source code on GitHub at
   github.com/softmaterialslab/nanoconfinement-md.
-
-\bibitem{kadupitiya2020machine2}
-J.~Kadupitiya, F.~Sun, G.~Fox, and V.~Jadhao.
-\newblock Machine learning surrogates for molecular dynamics simulations of
-  soft materials.
-\newblock {\em Journal of Computational Science}, page 101107, 2020.
 
 \bibitem{IPDPS13:LULESH}
 I.~Karlin, A.~Bhatele, J.~Keasler, B.~L. Chamberlain, J.~Cohen, Z.~DeVito,
@@ -296,11 +209,6 @@ W.~Krauth.
 \newblock {\em Statistical mechanics: algorithms and computations}, volume~13.
 \newblock OUP Oxford, 2006.
 
-\bibitem{liu-spot}
-H.~Liu.
-\newblock Cutting {M}ap{R}educe {C}ost with {S}pot {M}arket.
-\newblock In {\em HotCloud}, June 2011.
-
 \bibitem{marathe2014exploiting}
 A.~Marathe, R.~Harris, D.~Lowenthal, B.~R. De~Supinski, B.~Rountree, and
   M.~Schulz.
@@ -308,35 +216,11 @@ A.~Marathe, R.~Harris, D.~Lowenthal, B.~R. De~Supinski, B.~Rountree, and
   of hpc applications on amazon ec2.
 \newblock In {\em HPDC}. ACM, 2014.
 
-\bibitem{mihailescu2012impact}
-M.~Mihailescu and Y.~M. Teo.
-\newblock The {I}mpact of {U}ser {R}ationality in {F}ederated {C}louds.
-\newblock In {\em CCGrid}, 2012.
-
-\bibitem{moradzadeh2019molecular}
-A.~Moradzadeh and N.~R. Aluru.
-\newblock Molecular dynamics properties without the full trajectory: A
-  denoising autoencoder network for properties of simple liquids.
-\newblock {\em The journal of physical chemistry letters}, 10(24):7568--7576,
-  2019.
-
-\bibitem{mudholkar1993exponentiated}
-G.~S. Mudholkar and D.~K. Srivastava.
-\newblock Exponentiated weibull family for analyzing bathtub failure-rate data.
-\newblock {\em IEEE transactions on reliability}, 42(2):299--302, 1993.
-
 \bibitem{icdcs-spotlight}
 X.~Ouyang, D.~Irwin, and P.~Shenoy.
 \newblock Spotlight: An information service for the cloud.
 \newblock In {\em IEEE International Conference on Distributed Computing
   Systems (ICDCS)}, 2016.
-
-\bibitem{pham2018performance}
-T.-P. Pham, S.~Ristov, and T.~Fahringer.
-\newblock Performance and behavior characterization of amazon ec2 spot
-  instances.
-\newblock In {\em 2018 IEEE 11th International Conference on Cloud Computing
-  (CLOUD)}, pages 73--81. IEEE, 2018.
 
 \bibitem{sharma19eurosys}
 P.~Sharma, A.~Ali-Edlin, and P.~Shenoy.
@@ -400,23 +284,10 @@ F.~J. Solis, V.~Jadhao, and M.~O. De~La~Cruz.
   modified lagrange multipliers.
 \newblock {\em Physical Review E}, 88(5):053306, 2013.
 
-\bibitem{bidding5}
-Y.~Song, M.~Zafer, and K.~Lee.
-\newblock Optimal {B}idding in {S}pot {I}nstance {M}arket.
-\newblock In {\em Infocom}, March 2012.
-
 \bibitem{spoton}
 S.~Subramanya, T.~Guo, P.~Sharma, D.~Irwin, and P.~Shenoy.
 \newblock Spot{O}n: A {B}atch {C}omputing {S}ervice for the {S}pot {M}arket.
 \newblock In {\em SOCC}, August 2015.
-
-\bibitem{xiang_spotmpi:_2011}
-M.~Taifi, J.~Y. Shi, and A.~Khreishah.
-\newblock {SpotMPI}: {A} {Framework} for {Auction}-{Based} {HPC} {Computing}
-  {Using} {Amazon} {Spot} {Instances}.
-\newblock In Y.~Xiang, A.~Cuzzocrea, M.~Hobbs, and W.~Zhou, editors, {\em
-  Algorithms and {Architectures} for {Parallel} {Processing}}, volume 7017,
-  pages 109--120. Springer Berlin Heidelberg, Berlin, Heidelberg, 2011.
 
 \bibitem{bidding7}
 S.~Tang, J.~Yuan, and X.~Li.
@@ -430,23 +301,10 @@ L.~Tonks.
   gases of hard elastic spheres.
 \newblock {\em Phys. Rev.}, 50:955--963, Nov 1936.
 
-\bibitem{varshney_autobot_2019}
-P.~Varshney and Y.~Simmhan.
-\newblock {AutoBoT} : {Resilient} and {Cost}-effective {Scheduling} of a {Bag}
-  of {Tasks} on {Spot} {VMs}.
-\newblock {\em IEEE Transactions on Parallel and Distributed Systems}, pages
-  1--1, 2019.
-
 \bibitem{borg}
 A.~Verma, L.~Pedrosa, M.~Korupolu, D.~Oppenheimer, E.~Tune, and J.~Wilkes.
 \newblock Large-scale cluster management at google with borg.
 \newblock In {\em EuroSys}. ACM, 2015.
-
-\bibitem{wang2019machine}
-J.~Wang, S.~Olsson, C.~Wehmeyer, A.~Perez, N.~E. Charron, G.~De~Fabritiis,
-  F.~Noe, and C.~Clementi.
-\newblock Machine learning of coarse-grained molecular dynamics force fields.
-\newblock {\em ACS central science}, 2019.
 
 \bibitem{bidding1}
 S.~Wee.
@@ -465,6 +323,13 @@ R.~Wolski and J.~Brevik.
 \newblock In {\em Proceedings of the 24th High Performance Computing
   Symposium}, page~13. Society for Computer Simulation International, 2016.
 
+\bibitem{wolski2017probabilistic}
+R.~Wolski, J.~Brevik, R.~Chard, and K.~Chard.
+\newblock Probabilistic guarantees of execution duration for amazon spot
+  instances.
+\newblock In {\em Proceedings of the International Conference for High
+  Performance Computing, Networking, Storage and Analysis}, page~18. ACM, 2017.
+
 \bibitem{wolski_probabilistic_2017}
 R.~Wolski, J.~Brevik, R.~Chard, and K.~Chard.
 \newblock Probabilistic guarantees of execution duration for {Amazon} spot
@@ -473,42 +338,12 @@ R.~Wolski, J.~Brevik, R.~Chard, and K.~Chard.
   {Performance} {Computing}, {Networking}, {Storage} and {Analysis} on - {SC}
   '17}, pages 1--11, Denver, Colorado, 2017. ACM Press.
 
-\bibitem{wolski2017probabilistic}
-R.~Wolski, J.~Brevik, R.~Chard, and K.~Chard.
-\newblock Probabilistic guarantees of execution duration for amazon spot
-  instances.
-\newblock In {\em Proceedings of the International Conference for High
-  Performance Computing, Networking, Storage and Analysis}, page~18. ACM, 2017.
-
-\bibitem{bidding8}
-H.~Xu and B.~Li.
-\newblock A {S}tudy of {P}ricing for {C}loud {R}esources.
-\newblock {\em Performance Evaluation Review}, 40(4), March 2013.
-
-\bibitem{yi2010reducing}
-S.~Yi, D.~Kondo, and A.~Andrzejak.
-\newblock Reducing costs of spot instances via checkpointing in the amazon
-  elastic compute cloud.
-\newblock In {\em Cloud Computing (CLOUD), 2010 IEEE 3rd International
-  Conference on}, pages 236--243. IEEE, 2010.
-
-\bibitem{bidding6}
-M.~Zafer, Y.~Song, and K.~Lee.
-\newblock Optimal {B}ids for {S}pot {V}{M}s in a {C}loud for {D}eadline
-  {C}onstrained {J}obs.
-\newblock In {\em CLOUD}, 2012.
-
 \bibitem{chien-ic2e19}
 C.~{Zhang}, V.~{Gupta}, and A.~A. {Chien}.
 \newblock Information models: Creating and preserving value in volatile cloud
   resources.
 \newblock In {\em 2019 IEEE International Conference on Cloud Engineering
   (IC2E)}, pages 45--55, June 2019.
-
-\bibitem{bidding3}
-Q.~Zhang, E.~G\"{u}rses, R.~Boutaba, and J.~Xiao.
-\newblock Dynamic {R}esource {A}llocation for {S}pot {M}arkets in {C}louds.
-\newblock In {\em Hot-ICE}, March 2011.
 
 \bibitem{bid-cloud}
 L.~Zheng, C.~Joe-Wong, C.~W. Tan, M.~Chiang, and X.~Wang.
