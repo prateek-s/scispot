@@ -76,6 +76,14 @@ N.~E. Brunk and V.~Jadhao.
   nanocontainers.
 \newblock {\em Journal of Materials Chemistry B}, 7:6370, 2019.
 
+\bibitem{casalino2021ai}
+L.~Casalino, A.~C. Dommer, Z.~Gaieb, E.~P. Barros, T.~Sztain, S.-H. Ahn,
+  A.~Trifan, A.~Brace, A.~T. Bogetti, A.~Clyde, et~al.
+\newblock Ai-driven multiscale simulations illuminate mechanisms of sars-cov-2
+  spike dynamics.
+\newblock {\em The International Journal of High Performance Computing
+  Applications}, page 10943420211006452, 2021.
+
 \bibitem{spot-run}
 N.~Chohan, C.~Castillo, M.~Spreitzer, M.~Steinder, A.~Tantawi, and C.~Krintz.
 \newblock See {S}pot {R}un: {U}sing {S}pot {I}nstances for {M}ap{R}educe
@@ -105,6 +113,11 @@ D.~J. Dubois and G.~Casale.
 \newblock Optispot: minimizing application deployment cost using spot cloud
   resources.
 \newblock {\em Cluster Computing}, pages 1--17, 2016.
+
+\bibitem{ferguson2017machine}
+A.~L. Ferguson.
+\newblock Machine learning and data science in soft materials engineering.
+\newblock {\em Journal of Physics: Condensed Matter}, 30(4):043002, 2017.
 
 \bibitem{fuerst2020cloud}
 A.~Fuerst, A.~Ali-Eldin, P.~Shenoy, and P.~Sharma.
@@ -185,11 +198,24 @@ J.~Kadupitiya, N.~Brunk, and V.~Jadhao.
 \newblock Nanoparticle shape lab, January 2020.
 \newblock nanoHUB.
 
+\bibitem{kadupitiya2020machine}
+J.~Kadupitiya, G.~C. Fox, and V.~Jadhao.
+\newblock Machine learning for parameter auto-tuning in molecular dynamics
+  simulations: Efficient dynamics of ions near polarizable nanoparticles.
+\newblock {\em The International Journal of High Performance Computing
+  Applications}, 34(3):357--374, 2020.
+
 \bibitem{kadupitiya2017}
 J.~Kadupitiya, S.~Marru, G.~C. Fox, and V.~Jadhao.
 \newblock Ions in nanoconfinement, Dec 2017.
 \newblock Online on nanoHUB; source code on GitHub at
   github.com/softmaterialslab/nanoconfinement-md.
+
+\bibitem{kadupitiya2020machine2}
+J.~Kadupitiya, F.~Sun, G.~Fox, and V.~Jadhao.
+\newblock Machine learning surrogates for molecular dynamics simulations of
+  soft materials.
+\newblock {\em Journal of Computational Science}, page 101107, 2020.
 
 \bibitem{IPDPS13:LULESH}
 I.~Karlin, A.~Bhatele, J.~Keasler, B.~L. Chamberlain, J.~Cohen, Z.~DeVito,
@@ -305,6 +331,12 @@ L.~Tonks.
 A.~Verma, L.~Pedrosa, M.~Korupolu, D.~Oppenheimer, E.~Tune, and J.~Wilkes.
 \newblock Large-scale cluster management at google with borg.
 \newblock In {\em EuroSys}. ACM, 2015.
+
+\bibitem{wang2019machine}
+J.~Wang, S.~Olsson, C.~Wehmeyer, A.~Perez, N.~E. Charron, G.~De~Fabritiis,
+  F.~Noe, and C.~Clementi.
+\newblock Machine learning of coarse-grained molecular dynamics force fields.
+\newblock {\em ACS central science}, 2019.
 
 \bibitem{bidding1}
 S.~Wee.

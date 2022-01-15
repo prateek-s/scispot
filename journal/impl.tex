@@ -46,11 +46,20 @@ We keep these stable VMs as ``hot spares'' instead of terminating them, for a pe
 
 
 \noindent \textbf{Bag of Jobs Abstraction For Scientific Simulations.}
-While \sysname is intended for general batch jobs, we incorporate a special optimization for scientific simulation workloads that improves the ease-of-use of our service, and also helps in our policy implementation.
-We allow users to submit entire bags of jobs, which permits us to determine the running time of jobs based on previous jobs in the bag. 
-For constrained preemptions, the running time is determined by job lengths, and the job run time estimates are extremely useful. 
+While \sysname is intended for general batch jobs, we incorporate a special optimization for scientific simulation workloads that improves ease-of-use, and also helps in our policy implementation. 
+Our insight is that many scientific simulations involve launching a series of jobs that explore a large parameter space that results from different combinations of physical and computational parameters.
+These workloads can be abstracted as a ``bag of jobs'', with each job running the same application with  different parameters.
+Bags of jobs are increasingly common in emerging applications that combine Machine Learning (ML) techniques with scientific simulations to enhance the predictive power or reduce the
+computational costs of  simulations~\cite{ferguson2017machine,wang2019machine,casalino2021ai,kadupitiya2020machine,kadupitiya2020machine2}. 
+
+We allow users to submit entire bags of jobs, which permits us to estimate the running time of jobs based on previous jobs in the bag.
+These running time estimates can then be used for the transition-points based policy described in Section~\ref{subsec:sched-policy}. 
+
 Having a large sequence of jobs is also particularly useful with bathtub-shaped preemption rates, because we can re-use ``stable'' VMs with low preemption probability for running new jobs from a bag.
-If jobs were submitted one at a time, a batch computing service may have to terminate the VM after job completion, which would increase the job failure probability resulting from running on new VMs that have a high initial failure rate. 
+Thus, SciSpot maintains a pool of these idle VMs as hot-spares. 
+Idle VMs are retained for one hour. 
+
+%If jobs are submitted one at a time, we may have to terminate the VM after job completion, which would increase the job failure probability resulting from running on new VMs that have a high initial failure rate. 
 
 
 \begin{comment}

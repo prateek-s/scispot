@@ -8,6 +8,18 @@ Repeated entry---line 72 of file bagsjobs.bib
  : @misc{kadupitiya2017
  :                     ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 373 of file bagsjobs.bib
+ : @article{ferguson2017machine
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 412 of file bagsjobs.bib
+ : @article{wang2019machine
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 521 of file bagsjobs.bib
+ : @article{kadupitiya2020machine2
+ :                                ,
+I'm skipping whatever remains of this entry
 Database file #3: spot-bid.bib
 Repeated entry---line 969 of file spot-bid.bib
  : @inproceedings{spoton
@@ -43,45 +55,45 @@ Warning--empty year in dongarra_fault_nodate
 Warning--empty institution in LULESH2:changes
 Warning--can't use both volume and number fields in exosphere
 Warning--empty year in tian_gpu_icdcs
-You've used 60 entries,
+You've used 65 entries,
             2118 wiz_defined-function locations,
-            801 strings with 14643 characters,
-and the built_in function-call counts, 20589 in all, are:
-= -- 1931
-> -- 1084
-< -- 22
-+ -- 435
-- -- 372
-* -- 1379
-:= -- 3252
-add.period$ -- 181
-call.type$ -- 60
-change.case$ -- 365
+            830 strings with 15930 characters,
+and the built_in function-call counts, 22982 in all, are:
+= -- 2169
+> -- 1233
+< -- 24
++ -- 494
+- -- 426
+* -- 1542
+:= -- 3626
+add.period$ -- 196
+call.type$ -- 65
+change.case$ -- 406
 chr.to.int$ -- 0
-cite$ -- 75
-duplicate$ -- 840
-empty$ -- 1674
-format.name$ -- 372
-if$ -- 4456
+cite$ -- 80
+duplicate$ -- 942
+empty$ -- 1807
+format.name$ -- 426
+if$ -- 4969
 int.to.chr$ -- 0
-int.to.str$ -- 60
-missing$ -- 47
-newline$ -- 289
-num.names$ -- 98
-pop$ -- 517
+int.to.str$ -- 65
+missing$ -- 52
+newline$ -- 314
+num.names$ -- 108
+pop$ -- 556
 preamble$ -- 1
-purify$ -- 307
+purify$ -- 343
 quote$ -- 0
-skip$ -- 610
+skip$ -- 713
 stack$ -- 0
-substring$ -- 830
-swap$ -- 226
-text.length$ -- 22
+substring$ -- 944
+swap$ -- 279
+text.length$ -- 24
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 238
+type$ -- 258
 warning$ -- 15
-while$ -- 149
-width$ -- 62
-write$ -- 620
-(There were 5 error messages)
+while$ -- 164
+width$ -- 67
+write$ -- 674
+(There were 8 error messages)

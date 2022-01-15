@@ -6,9 +6,16 @@ Based on insights drawn from our statistical analysis and the model, we develop 
 Prior work in transient computing has established the benefits of such policies for a broad range of applications. 
 However, the constrained nature of preemptions introduces new challenges that do not arise in other transient computing environments such as Amazon EC2 spot instances, and thus new approaches are required. 
 In this section, we first analyze the impact of constrained preemptions on job running time, and then develop new constrained-preemption aware policies for job scheduling and cost optimization. 
+
 % hl
-We will focus on long-running batch jobs that arise in many scientific computing applications. Extensions of our models and policies to distributed applications with different failure semantics is part of our future work. 
 % hl 
+
+\noindent \textbf{Workload Assumptions.}
+Our primary focus is on long-running batch jobs that arise in many scientific computing applications. 
+Our scheduling policy assumes that \emph{approximate} job running times are known: which is often the case with ``bags of jobs'', as described in the next section. 
+Specifically, we only require knowledge of whether the job running time is above or below a threshold.
+% Parallel jobs? Fault model? 0
+%Extensions of our models and policies to distributed applications with different failure semantics is part of our future work. 
 
 
 %, which we present below. 
@@ -110,6 +117,7 @@ We evaluate the expected wasted time and running time for Google Preemptible VMs
 
 \vspace*{\subsecspace}
 \subsection{Transition-Points based Job Scheduling and VM Reuse Policy}
+\label{subsec:sched-policy}
 
 %The time-dependent bathtub preemption rates provide new challenges and opportunities in preemption-mitigation, that do not arise under memoryless preemptions. 
 %
@@ -144,7 +152,7 @@ The alternative is to discard the VM and launch a new VM, in which case the expe
 When a job of running time $T$ attempts to start on a VM of age $s$, if $E[T_s] \leq E[T_0]$, then we run the job on the existing VM.
 Otherwise, a new VM is launched.
 
-\textbf{Practical Relevance:} This policy does not require job running times, only a relative measure if job length is greater or smaller than some threshold or not. 
+%\textbf{Practical Relevance:} This policy does not require job running times, only a relative measure if job length is greater or smaller than $E[
 
 % hl
 
@@ -164,14 +172,21 @@ Depending on the VM's age $s$ and the job's running time $T$, we can compare $P_
 %Minimizing work wasted due to preemptions is a prerequisite to minimizing cost, and 
 
 
-\noindent \textbf{Transition Points Analysis.}
-SciSpot builds on the above insight and determines the job-scheduling and VM-reuse decision.
+\noindent \textbf{Transition Points Policy.}
+SciSpot builds on the above insight and determines the job-scheduling and VM-reuse decision. 
 Based on different job lengths within a bag of jobs and the age of the VM, we minimize the total expected running time of a job.
-For a given job running time (T), and the VM age (s), we can compute  $\delta(s,T) = E[T_s] - E[T]$.
+For any job running time (T), and VM age (s), we compute  $\delta(s,T) = E[T_s] - E[T]$.
 If $\delta(s,T) \geq 0$, then a new VM is used, as illustrated in Figure~\ref{fig:transition-example}.
-The figure shows that reusing VMs is preferred for shorter job lengths, and the range of jobs for which reusing is good depends on the current age of the VM: younger VMs ($s=1$ hour) can be used for longer job lengths compared to older VMs. 
-For a given VM type, we precompute this function for different $(s, T)$ values, and find the job length transition points where launching a new VM is suitable. 
+% hl 
+%for the VM age $s$, we locate transition point $t*$
+
+
+Figure~\ref{fig:transition-example} shows that reusing VMs is preferred for shorter job lengths, and the range of jobs for which reusing is good depends on the current age of the VM: younger VMs ($s=1$ hour) can be used for longer job lengths compared to older VMs. 
+For a given VM type, we precompute this function for different $(s, T)$ values, and find the transition points where launching a new VM is suitable. 
 The precomputed $\delta(s,T)$ can be seen in Figure~\ref{fig:transition-boundary}.
+We \emph{analytically} compute the transition point ``frontier'' which is deliniates the re-use vs. new VM portion of the figure. 
+Given the VM age $s$, we only need to determine whether the job length is greater or smaller than the transition point. 
+This policy has the practical advantage that accurate job running times are not needed---we only require running times relative to the transition point. 
 Using this figure, SciSpot, and users in general, can simply lookup the job and VM attributes, and determine the optimal decision. 
 
 
