@@ -32,7 +32,7 @@ The hazard rate can also be directly expressed in terms of the CDF as follows: $
 The exponential distribution has a constant hazard rate $\lambda$.
 The Gompertz-Makeham distribution has an increasing failure rate to account for the increase in mortality, and its hazard rate is accordingly time-dependent and given by $\lambda(t) = \lambda + \alpha e^{\beta t}$.
 
-Since we model multiple failure rates and deadline-induced preemptions, our hazard rate is expected to increase with time. Defining the survival function for our model: $S = 1 - \mathscr{F}$, and using Eq.~\ref{eq:hazard} yields the hazard rate associated with our model: 
+Since we model multiple failure rates and deadline-induced preemptions, our hazard rate is expected to increase with time. Defining the survival function for our model: $S = 1 - F$, and using Eq.~\ref{eq:hazard} yields the hazard rate associated with our model: 
 %$\lambda(t) = \dfrac{- r_1 e^{- r_1 t} - r_2 e^{r_2 (t - b)}}{e^{- r_1 t} - e^{r_2 (t - b)}}$. 
 % missing minus sign in the above equation
 \noindent 
@@ -154,8 +154,6 @@ We show that our bathtub model, \emph{even with poorly fitted parameters}, can p
 %
 %Furthrer improvements to the model are possible with additional data.
 %We hope that the use of SciSpot will provide a community-based approach to gathering preemption data and updating the models.
-
-
 
 
 

@@ -28,7 +28,12 @@ We have already presented the statistical analysis of our model in Section~\ref{
 
 \noindent \textbf{Environment and Workloads:}
 All our empirical evaluation is conducted on the Google Cloud Platform using our batch computing service described in Section~\ref{sec:impl}. 
-All the experiments are conducted in the same time period, and have the same preemption characteristics, as described in our data collection methodology in  Section~\ref{sec:failmodel}. 
+All the experiments are conducted in the same time period, and have the same preemption characteristics, as described in our data collection methodology in  Section~\ref{sec:failmodel}.
+We ran more than 800 VMs running different bags of jobs in a ``closed-loop'' manner, such that SciSpot always launched a replacement VM to replenish preempted VMs.
+Since most bags of jobs take several hours to run, this gave us good temporal coverage of VM launches.
+All VMs of a bag of jobs were either run in the \texttt{us-east1-b} or the  \texttt{us-central1-c} region. 
+
+We run each workload atleast five times and report the average running times and costs. 
 %
 We use three scientific computing workloads that are representative of  applications in the broad domains of physics and materials science:% , and chemical engineering:
 
@@ -125,15 +130,16 @@ For instance, if short jobs are very common, then uniformly distributed preempti
 %\subsection{Model-based Policies}
 %\label{subsec:eval-policy}
 
-We now evaluate the effectiveness of model-driven policies proposed in Section~\ref{sec:policies}.
+%We now evaluate the effectiveness of model-driven policies proposed in Section~\ref{sec:policies}.
 %
-Wherever applicable, we compare against policies designed for EC2 spot instances~\cite{harlap2018tributary, spoton} that have memoryless preemptions. 
+Wherever applicable, we compare against policies designed for EC2 spot instances~\cite{harlap2018tributary, spoton} that have memoryless preemptions.
+Specifically, we compare against the policies of ExoSphere~\cite{exosphere}, which is a state of the art system for EC2 spot instances, and uses portfolio-theory to minimize application revocations and cost.
+We ported its policies to use SciSpot's preemption model---specifically, ExoSphere requires the MTTFs of all VM types. 
 %
 However, we also note that certain resource management challenges such as the preemption-rate aware job scheduling are \emph{inherent} to constrained preemptions, and no existing equivalent policies can be found for memoryless techniques. 
 
 
 %Specifically, we seek to compare the effectiveness of our job scheduling and checkpointing policies with existing transient computing approaches.
-
 
 \vspace*{\subsecspace}
 \subsection{Job Scheduling}
@@ -329,13 +335,16 @@ Thus, even if the \emph{total} amount of resources (i.e., number of CPUs) per jo
 
 Figure~\ref{fig:runtimes-bar} shows the running times of the Nanoconfinement, Shapes, and LULESH applications, when they are deployed on different VM sizes. 
 In all cases, the total number of CPUs per job is set to 64, and thus the different VM sizes yield different cluster sizes (e.g., 16 VMs with 4 CPUs or 32 VMs with 2 CPUs).
-LULESH requires CPUs to be cube of an integer, which limits the valid cluster configurations. 
+This experiment does not measure scaling behavior, but instead highlights the differences between choices of VMs. 
+LULESH requires CPUs to be cube of an integer, which limits the valid cluster configurations.
+
 
 For Nanoconfinement and LULESH, we observe that the base running times (without preemptions) reduce when moving to larger VMs, because this entails lower communication costs.
 For Nanoconfinement, the running time on the ``best'' VM (i.e., with 32 CPUs) is nearly 40\% lower as compared to the worst case. 
-On the other hand, the Shapes application can scale to a larger number of VMs without any significant communication overheads, and does not see any significant change in its running time. 
+On the other hand, the Shapes application can scale to a larger number of VMs, because the application  does not have any significant communication overheads, and thus does not see any significant change in its running time when deployed on different kind of VMs. 
 
-Figure~\ref{fig:runtimes-bar} also shows the expected recomputation time which depends on the expected lifetimes of the VM and the number of VMs. %, and is computed using the cost model introduced in Section~\ref{subsec:cost-model}. 
+Figure~\ref{fig:runtimes-bar} also shows the expected recomputation time which depends on the expected lifetimes of the VM and the number of VMs. %, and is computed using the cost model introduced in Section~\ref{subsec:cost-model}.
+This recomputation time is roughly proportional to the original running time, in accordance with Equation~\ref{eq:wasted}. 
 While selecting larger VMs may reduce communication overheads and thus improve performance, it is not an adequate policy in the case of preemptible VMs, since the preemptions can significantly increase the turnaround time.
 Therefore, even though the base running time of Nanoconfinement is lower on a 64 CPU VM, the recomputation time on the 64 CPU VM is almost $4\times$ higher compared to a 2x32-CPU cluster,  due to the much lower expected lifetime of the larger VMs. 
 Thus, on preemptible servers, there is a tradeoff between the base running time which only considers parallelization overheads, and the recomputation time.
@@ -373,9 +382,9 @@ This results in 20\% cost increase over \sysname.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Comparison with HPC Overhead}
 
-Scientific computing applications are typically run on large-scale HPC clusters, where different performance and cost dynamics apply.
+Scientific computing applications are typically run on large-scale HPC clusters, where different performance and cost dynamics apply. 
 While there are hardware differences between cloud VMs and HPC clusters that can contribute to performance differences, we are interested in the performance ``overheads''.
-In the case of \sysname, the job failures and recomputations increase the job turnaround time, and are thus the main source of overhead.
+In the case of \sysname, the job failures and recomputations increase the job turnaround time, and are thus the main source of overhead. 
 
 On HPC clusters, jobs enjoy significantly lower recomputation probability, since the hardware on these clusters has MTTFs in the range of years to centuries~\cite{dongarra_fault_nodate}.
 However, we emphasize that there exist \emph{other} sources of performance overheads in HPC clusters.
@@ -384,7 +393,7 @@ On the other hand, cloud resource utilization is low~\cite{borg} and there is us
 
 
 Thus, we compare the performance overhead due to preemptions for \sysname, and job waiting times in conventional HPC deployments.
-To obtain the job waiting times in HPC clusters, we use the LANL Mustang traces published as part of the Atlas trace repository~\cite{cmu-atlas}.
+To obtain the job waiting times in HPC clusters, we use the LANL Mustang traces published as part of the Atlas trace repository~\cite{cmu-atlas}. 
 We analyze the waiting time of over two million jobs submitted over a 5 year period, and compute the increase in running time of the job due to the job waiting or queuing time. 
 
 \begin{figure}[t]
@@ -406,9 +415,12 @@ On the other hand, \sysname's performance overhead is significantly smaller for 
 For longer jobs, the limited lifetime of Google Preemptible VMs (24 hours) begins to significantly increase the preemption probability and expected recomputation time.
 We emphasize that these are \emph{individual} job lengths, and not the running time of entire bag of jobs.
 We note that these large single jobs are rare, accounting for less than 5\% of all HPC jobs (see inset in Figure~\ref{fig:hpc-vs-scispot}).
-For smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller. 
+For smaller jobs (within a much larger bag), both the preemption probability and recomputation overhead is much smaller.
 
 \noindent \textbf{Result:} \emph{\sysname's overhead of recomputation due to preemptions is small, and is up to $10\times$ lower compared to the overhead of waiting in conventional HPC clusters. }
+
+We emphasize that our goal is to compare the expected waiting time in HPC clusters vs. SciSpot's preemption overheads.
+The exact waiting time and performance is dependent on the specific HPC scheduler and hardware: we merely want to highlight that the performance overhead of preemptible VMs is reasonable if users do not wish to wait for HPC resources. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

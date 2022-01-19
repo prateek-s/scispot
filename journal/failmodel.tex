@@ -294,12 +294,12 @@ Based on these observations, we propose the following general form for the CDF:
 \begin{equation}
   \label{eq:blend1}
   \boxed{
-  \mathscr{F}\left(t\right) = A\left(1-e^{-\frac{t}{\tau_1}} + e^{\frac{t-b}{\tau_2}}\right)}
+  F\left(t\right) = A\left(1-e^{-\frac{t}{\tau_1}} + e^{\frac{t-b}{\tau_2}}\right)}
   \end{equation}
 \noindent where $t$ is the time to preemption, $1/\tau_1$ is the rate of preemptions in the initial phase, $1/\tau_2$ is the rate of preemptions in the final phase, $b$ denotes the time that characterizes ``activation'' of the final phase where preemptions occur at a very high rate, and $A$ is a scaling constant. 
 %
 The model is fit to data for $0 < t < L$, where $L \approx 24$ hours represents the temporal interval (deadline).
-Combination of the 4 fit parameters ($\tau_1, \tau_2, b$, and $A$) are chosen to ensure that boundary condition $\mathscr{F}(0) \approx 0$ is satisfied.
+Combination of the 4 fit parameters ($\tau_1, \tau_2, b$, and $A$) are chosen to ensure that boundary condition $F(0) \approx 0$ is satisfied.
 %and $\mathscr{F}(L) \approx 1$. 
 %%When not used as a fit parameter, $A$ is chosen as $A = 1/(1-e^{-\frac{L}{\tau_1}} + e^{\frac{L-b}{\tau_2}})$ to ensure $F(L) = 1$, yielding results similar to the 4 parameter fit. 
 In practice, typical fit values yield $b \approx 24$ hours, $\tau_1 \in [0.5, 1,5] $, $\tau_2 \approx 0.8$, and $A \in [0.4, 0.5]$.
@@ -323,7 +323,7 @@ The analytical model and the associated  distribution function $\mathscr{F}$ int
 \begin{equation}
   \label{eq:failrate}
     \vspace*{\eqnspace}
-f(t) = \dfrac{d \mathscr{F}(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{1}{\tau_2}e^{\frac{t-b}{\tau_2}}\right).
+f(t) = \dfrac{d F(t)} {dt} = A \left(\dfrac{1}{\tau_1}e^{-t/\tau_1} + \dfrac{1}{\tau_2}e^{\frac{t-b}{\tau_2}}\right).
 \end{equation}
 $f(t)$ vs. $t$ yields a bathtub type failure rate function for the associated fit parameters (inset of Figure~\ref{fig:gcp1}).
 %In the next section, we use this analytical model for optimizing cloud resource selection to run scientific computing applications at low cost and shorter running (turnaround) times.
