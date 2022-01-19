@@ -1,5 +1,5 @@
 \vspace*{\subsecspace}
-\section{Discussion and Future Directions}
+\section{Discussion}
 \label{sec:discussion}
 
 % We have made an initial exploration into constrained preemptions, and many questions remain to be answered.
@@ -22,7 +22,7 @@ However, changes are rare: Google's preemption policy has not changed since its 
 %Furthermore, we demonstrate that the multi-phase bathtub failure distribution %may be a fundamental characteristic of constrained preemptions that
 %benefits both the cloud platform and applications, and thus models that capture the distinct preemption phases would still be relevant even if the finer-grained preemption characteristics change. % over time. 
 %
-We have also shown that our policies are not particularly sensitive to the model parameters, and even using a ``wrong'' or outdated model can provide significant benefits compared to existing memoryless models. 
+We have also shown that our policies are not particularly sensitive to the model parameters, and even using a poorly-fitted or outdated model can provide significant benefits compared to existing memoryless models. 
 % vikram 
 Our modeling approach works across a wide range of instance types and is able to model CDFs of instances with both very high and very low failure rates, and thus is general. Moreover, because bathtub preemptions are good for the applications, they will continue to remain a good choice for constrained preemptions making our approach generalizable to other system environments beyond the Google cloud computing systems. Finally, the principle adopted to break down the problem into the superposition of processes characterized by different failure rates can also be considered as a general framework to understand and guide policies for mitigating preemption-induced effects in other cloud environments.
 
