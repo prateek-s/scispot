@@ -17,31 +17,31 @@ Deploying applications on such transient VMs requires new mechanisms and policie
 In this paper, we consider a \emph{new} kind of transient availability, which we call \emph{temporally constrained preemptions}.
 In this availability model, a transient VM has a \emph{fixed} upper bound on its lifetime.
 Google's Preemptible VMs obey such a model: they have a maximum lifetime of 24 hours, and can be preempted at any point within the $[0, 24]$ hour interval.
-While these Preemptible VMs are 80\% cheaper than their regular non-preemptible counterparts, their effective use requires overcoming several theoretical and practical hurdles, which we seek to achieve.
+While these Preemptible VMs are 80\% cheaper than their regular non-preemptible counterparts, their effective use requires overcoming several hurdles, which we seek to achieve.
 
 \noindent \textbf{Temporally Constrained Preemption Challenges.}
 The \emph{first} major challenge lies in understanding and developing a preemption model: when and how frequently do preemptions occur, and what does their distribution look like?
-Developing such a model is a vital precursor to time and cost minmizing policies, which have been developed for other preemption models (such as for Amazon EC2 spot instances). 
-To this end, we conduct a first-of-its kind empirical study of observing actual VM preemptions, and analyze the resulting data from more than 850 preemption events.
-Our data-set is open-source and available at ~\cite{scispot-dataset}. 
+Developing such a model is a vital precursor to time and cost minimizing policies, which have been developed for other preemption models (such as for Amazon EC2 spot instances). 
+To this end, we conduct a first-of-its-kind empirical study of observing actual VM preemptions, and analyze the resulting data from more than 850 preemption events.
+Our dataset is open-source and available at ~\cite{scispot-dataset}. 
 Our findings indicate that due to the temporal constraint, the distribution of preemptions is unlike any other classical failure distribution (such as exponential or Weibull).
 Instead, the failure distribution is ``bathtub'' shaped, and has multiple distinct phases: preemptions are more likely to occur at the start and end of the 24 hour interval. 
 This has serious implications for prior transient-computing software, since they all assume exponentially distributed failures, and are unable to efficiently deal with the time-varying failure rates.
 
 The \emph{second} major challenge is developing an analytical model for temporally constrained preemptions.
 Such a model is essential for characterizing failures and obtaining key reliability metrics such as Mean-Time-To-Failure (MTTF), hazard and survival rate, etc.
-We therefore develop a simple, generalizable, differentiable analytical model for constrained preemptions, which provides new insights into preemption/failure dynamics.
+We therefore develop a simple, generalizable, and differentiable analytical model for constrained preemptions, which provides new insights into preemption/failure dynamics.
 
-Given the prevalence of bathtub-shaped preemptions, the \emph{third} major challenge is to try to understand \emph{why} they occur, and what the fundamental causes could be. 
+Given the prevalence of bathtub-shaped preemptions, the \emph{third} major challenge is to understand \emph{why} they occur, and what the fundamental causes could be. 
 For this, we find a surprising connection with \emph{Statistical Mechanics}!
-We show that preemptions can be ``mapped'' to the Tonks Gas Model~\cite{tonks, krauth2006statistical}, and the bathtub shape arises naturally if we assume the constraint of non-overlapping preemptions. 
+We show that constrained preemptions can be ``mapped'' to the Tonks gas model~\cite{tonks, krauth2006statistical}, which describes a system of non-overlapping particles constrained to move within a line segment. The bathtub shape arises naturally if we assume non-overlapping preemptions. 
 
 The \emph{fourth} challenge is reducing the cost and running time of applications deployed on Preemptible VMs.
-We leverage our analytical preemption model and our analysis, and develop new optimized policies for scheduling and cost-optimization, that mitigate preemptions using insights gleaned from our models.
+We leverage our analytical preemption model and develop new optimized policies for scheduling and cost-optimization, that mitigate preemptions using insights gleaned from our models.
 
 
-\emph{Finally}, we address the practical challenges of deploying scientific batch applications on Preemptible VMs. 
-We identify a new simple abstraction, which we call ``Bags of jobs'', which is common in many scientific simulation workloads. 
+\emph{Finally}, we address the practical challenges of deploying scientific computing batch applications on Preemptible VMs. 
+We identify a new simple abstraction, which we call ``bags of jobs'', which is common in many scientific simulation workloads. 
 This abstraction, combined with our optimized policies, allows us to significantly reduce the cost of cloud computing resources, by up to $5\times$.
 Our resultant system, SciSpot, implements all our policies and abstractions, and provides the first seamless and frictionless service for using Preemptible VMs. 
 
@@ -56,13 +56,14 @@ Furthermore, no other information about preemption characteristics is made publi
 
 
 To expand the usability and appeal of transient VMs, many systems and techniques have been proposed that seek to ameliorate the effects of preemptions and reduce the computing costs of applications. 
-Fault-tolerance mechanisms~\cite{spotcheck, marathe2014exploiting}; resource management policies~\cite{exosphere, conductor}; and cost optimization techniques~\cite{dubois2016optispot, shastri2017hotspot} have been proposed for a wide range of applications---ranging from interactive web services, distributed data processing, parallel computing, etc.
+Fault-tolerance mechanisms~\cite{spotcheck, marathe2014exploiting}, resource management policies~\cite{exosphere, conductor}, and cost optimization techniques~\cite{dubois2016optispot, shastri2017hotspot} have been proposed for a wide range of applications---ranging from interactive web services, distributed data processing, parallel computing, etc.
 However, these prior works all assume classical exponential failures, which we show to not be ideal for bathtub preemptions. 
 
 
 We make significant analytical, theoretical, and practical enhancements to our preliminary work on understanding constrained preemptions~\cite{scispot-hpdc20}. 
 We provide new empirical insights about preemption dynamics by analyzing the data along a larger number of dimensions.
 We enhance our analytical model to compute closed-form expressions for MTTF and hazard rate, which are the key reliability metrics used in our policies. 
+We introduce the use of statistical mechanics principles to elucidate the fundamental origins of the bathtub shape of temporally constrained preemptions.
 We introduce a new ``tipping points'' based VM scheduling policy which has a key practical benefit of not requiring exact job running times. 
 Finally, we conduct extensive empirical evaluation and show SciSpot's performance and cost, and compare it to the state of the art transient-computing systems. 
 
@@ -160,7 +161,7 @@ we make the following contributions:
   
 %\item In order to select the optimal VM for an application, from the plethora of choices offered by cloud providers, we develop a transient VM selection policy that minimizes the cost of running applications. Our search based policy selects a transient VM based on it's cost, performance, and preemption rate. 
 
-\item We implement and evaluate our policies as part of a batch computing service for Google Preemptible VMs. SciSpot introduces the bag of jobs abstraction for scientific simulation applications, and can reduce computing costs by $5\times$ compared to conventional cloud deployments, and reduce the performance overhead of preemptible VMs to less than $3\%$. 
+\item We implement and evaluate our policies as part of a batch computing service for Google Preemptible VMs. SciSpot introduces the bags of jobs abstraction for scientific simulation applications, and can reduce computing costs by $5\times$ compared to conventional cloud deployments, and lower the performance overhead of preemptible VMs to less than $3\%$. 
 %  and reduce job failure probability by up to  $2\times$. 
 
  
