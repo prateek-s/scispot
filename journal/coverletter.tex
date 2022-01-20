@@ -6,9 +6,29 @@
 \begin{document}
 \maketitle
 
-This is an extended version of our conference paper ``Modeling The Temporally Constrained Preemptions of Transient Cloud VMs'' that appeared at ACM HPDC 2020. 
+This is a major revision of the extended version of our conference paper ``Modeling The Temporally Constrained Preemptions of Transient Cloud VMs'' that appeared at ACM HPDC 2020. 
 
-Compared to the preliminary conference version, we have made significant new contributions to algorithms, system design and implementation, and experimental evaluation. A detailed list of major contributions and experimental results is presented below. 
+Compared to the preliminary conference version, we had made significant new contributions to algorithms, system design and implementation, and experimental evaluation.
+We first present a summary of the changes that we have made in response to the very helpful reviewer comments. We then describe the changes with respect to the conference version 
+
+%A detailed list of major contributions and experimental results is presented below. 
+
+\section{Summary of changes in response to reviewer comments}
+Our sincere thanks to all reviewers for their careful, insightful, and very helpful feedback and comments. Below, we summarize the major changes. In the attached response, we describe how we have addressed every comment (in bold), along with locations of the relevant changes in the paper text.
+
+
+Summary of changes by section:
+\begin{enumerate}
+\item New introduction to highlight the contributions 
+\item Merged background and related work 
+\item New data analysis (2 graphs) added, subsection on model generalization,
+\item Made workload and bags of jobs assumption clear. We do not need exact  job running times for our policies. 
+\item Implementation role of bags of jobs, and hot-spares clarification.  
+\item Added details of experimental conditions, exosphere, and HPC waiting times.  
+\item Added discussion section
+\item Added conclusion
+\end{enumerate}
+
 
 
 %    New conceptual extensions

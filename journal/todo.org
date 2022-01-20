@@ -1,0 +1,11 @@
+
+Journal Todos 
+
+1. Model: Hazard, statmech!
+2. Policy: Simple selection, *cost*. Exploration phase explanation? 
+3. Emphasize bags of jobs more?
+4. Evaluation. New graphs. Explain old cost/runtime/scaling graphs.
+5. Intro3: differ from hpdc
+6. Background: keep same
+7. Misc cleanup
+8. Cover letter: expand list etc 
