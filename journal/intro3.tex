@@ -103,7 +103,8 @@ We conduct a large empirical study of over 800 preemptions of Google Preemptible
 
 Due to the temporal constraint on preemptions, classical models that form the basis of preemption modeling and policies, such as memoryless exponential failure rates, are not applicable. 
 %
-We find that preemption rates are \emph{not} uniform, but bathtub shaped with multiple distinct temporal phases, and are incapable of being modeled by existing bathtub distributions such as Weibull.
+We find that preemption rates are \emph{not} uniform, but in most cases are bathtub shaped with multiple distinct temporal phases.
+Even existing bathtub distributions such as Weibull are unable to accurately model the empirically observed failure distributions. 
 %
 We capture these characteristics by \textbf{developing a new probability model}. 
 Our model uses reliability theory principles to capture the 24-hour lifetime of VMs, and generalizes to VMs of different resource capacities, geographical regions, and across different temporal domains.
