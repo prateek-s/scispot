@@ -1,0 +1,99 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: paper-single.aux
+The style file: abbrv.bst
+Database file #1: scicloud.bib
+Database file #2: bagsjobs.bib
+Repeated entry---line 72 of file bagsjobs.bib
+ : @misc{kadupitiya2017
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 373 of file bagsjobs.bib
+ : @article{ferguson2017machine
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 412 of file bagsjobs.bib
+ : @article{wang2019machine
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 521 of file bagsjobs.bib
+ : @article{kadupitiya2020machine2
+ :                                ,
+I'm skipping whatever remains of this entry
+Database file #3: spot-bid.bib
+Repeated entry---line 969 of file spot-bid.bib
+ : @inproceedings{spoton
+ :                      ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1121 of file spot-bid.bib
+ : 
+ : @misc{azure-batch,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1171 of file spot-bid.bib
+ : 
+ : @misc{docker,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1467 of file spot-bid.bib
+ : 
+ : year={2020},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in scispot-dataset
+Warning--to sort, need author or key in ec2-spot
+Warning--to sort, need author or key in preemptible-documentation
+Warning--to sort, need author or key in packet-spot
+Warning--to sort, need author or key in alibaba-spot
+Warning--to sort, need author or key in scipy-fit
+Warning--to sort, need author or key in gcp
+Warning--to sort, need author or key in gcloud-api
+Warning--to sort, need author or key in slurm
+Warning--to sort, need author or key in torque
+Warning--empty journal in dongarra_fault_nodate
+Warning--empty year in dongarra_fault_nodate
+Warning--empty institution in LULESH2:changes
+Warning--can't use both volume and number fields in exosphere
+Warning--empty year in tian_gpu_icdcs
+You've used 65 entries,
+            2118 wiz_defined-function locations,
+            830 strings with 15944 characters,
+and the built_in function-call counts, 22982 in all, are:
+= -- 2169
+> -- 1233
+< -- 24
++ -- 494
+- -- 426
+* -- 1542
+:= -- 3626
+add.period$ -- 196
+call.type$ -- 65
+change.case$ -- 406
+chr.to.int$ -- 0
+cite$ -- 80
+duplicate$ -- 942
+empty$ -- 1807
+format.name$ -- 426
+if$ -- 4969
+int.to.chr$ -- 0
+int.to.str$ -- 65
+missing$ -- 52
+newline$ -- 314
+num.names$ -- 108
+pop$ -- 556
+preamble$ -- 1
+purify$ -- 343
+quote$ -- 0
+skip$ -- 713
+stack$ -- 0
+substring$ -- 944
+swap$ -- 279
+text.length$ -- 24
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 258
+warning$ -- 15
+while$ -- 164
+width$ -- 67
+write$ -- 674
+(There were 8 error messages)

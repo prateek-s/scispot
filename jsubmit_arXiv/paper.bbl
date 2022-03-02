@@ -1,0 +1,385 @@
+\begin{thebibliography}{10}
+
+\bibitem{scispot-dataset}
+\url{https://github.com/kadupitiya/goog-preemption-data/}.
+
+\bibitem{alibaba-spot}
+{Alibaba Cloud Preemptible Instances}.
+\newblock \url{https://www.alibabacloud.com/help/doc-detail/52088.htm }.
+
+\bibitem{ec2-spot}
+{Amazon EC2 Spot Instances},
+  howpublished={\url{https://aws.amazon.com/ec2/spot/ }},.
+
+\bibitem{gcloud-api}
+{Google Cloud API Documentation}.
+\newblock \url{https://cloud.google.com/apis/docs/overview }.
+
+\bibitem{gcp}
+{Google Cloud Platform}.
+\newblock \url{https://cloud.google.com/ }.
+
+\bibitem{preemptible-documentation}
+{Google Cloud Preemptible VM Instances Documentation},
+  howpublished={\url{https://cloud.google.com/compute/docs/instances/preemptible}},.
+
+\bibitem{packet-spot}
+{Packet Spot Market}.
+\newblock \url{https://support.packet.com/kb/articles/spot-market }.
+
+\bibitem{scipy-fit}
+Scipy curve fit documentation.
+\newblock
+  \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html}.
+
+\bibitem{slurm}
+{Slurm Workload Manager}.
+\newblock \url{https://slurm.schedmd.com/documentation.html }.
+
+\bibitem{torque}
+{Torque Resource Manager}.
+\newblock \url{http://www.adaptivecomputing.com/products/torque/}.
+
+\bibitem{cmu-atlas}
+G.~Amvrosiadis, J.~W. Park, G.~R. Ganger, G.~A. Gibson, E.~Baseman, and
+  N.~DeBardeleben.
+\newblock On the diversity of cluster workloads and its impact on research
+  results.
+\newblock In {\em 2018 $\{$USENIX$\}$ Annual Technical Conference
+  ($\{$USENIX$\}$$\{$ATC$\}$ 18)}, pages 533--546, 2018.
+
+\bibitem{anousheh2020ionic}
+N.~Anousheh, F.~J. Solis, and V.~Jadhao.
+\newblock Ionic structure and decay length in highly concentrated confined
+  electrolytes.
+\newblock {\em AIP Advances}, 10(12):125312, 2020.
+
+\bibitem{azure-batch}
+{Azure Low-priority Batch VMs}.
+\newblock \url{https://docs.microsoft.com/en-us/azure/batch/batch-low-pri-vms
+  }.
+
+\bibitem{baughman2018predicting}
+M.~Baughman, C.~Haas, R.~Wolski, I.~Foster, and K.~Chard.
+\newblock Predicting amazon spot prices with lstm networks.
+\newblock In {\em Proceedings of the 9th Workshop on Scientific Cloud
+  Computing}, page~1. ACM, 2018.
+
+\bibitem{spot-pricing2}
+O.~Ben-Yehuda, M.~Ben-Yehuda, A.~Schuster, and D.~Tsafrir.
+\newblock Deconstructing {A}mazon {E}{C}2 {S}pot {I}nstance {P}ricing.
+\newblock {\em ACM TEC}, 1(3), September 2013.
+
+\bibitem{brunk2019computational}
+N.~E. Brunk and V.~Jadhao.
+\newblock Computational studies of shape control of charged deformable
+  nanocontainers.
+\newblock {\em Journal of Materials Chemistry B}, 7:6370, 2019.
+
+\bibitem{casalino2021ai}
+L.~Casalino, A.~C. Dommer, Z.~Gaieb, E.~P. Barros, T.~Sztain, S.-H. Ahn,
+  A.~Trifan, A.~Brace, A.~T. Bogetti, A.~Clyde, et~al.
+\newblock Ai-driven multiscale simulations illuminate mechanisms of sars-cov-2
+  spike dynamics.
+\newblock {\em The International Journal of High Performance Computing
+  Applications}, page 10943420211006452, 2021.
+
+\bibitem{spot-run}
+N.~Chohan, C.~Castillo, M.~Spreitzer, M.~Steinder, A.~Tantawi, and C.~Krintz.
+\newblock See {S}pot {R}un: {U}sing {S}pot {I}nstances for {M}ap{R}educe
+  {W}orkflows.
+\newblock In {\em HotCloud}, June 2010.
+
+\bibitem{resource-central-sosp17}
+E.~Cortez, A.~Bonde, A.~Muzio, M.~Russinovich, M.~Fontoura, and R.~Bianchini.
+\newblock Resource central: Understanding and predicting workloads for improved
+  resource management in large cloud platforms.
+\newblock In {\em Proceedings of the 26th Symposium on Operating Systems
+  Principles}, SOSP '17, pages 153--167, New York, NY, USA, 2017. ACM.
+
+\bibitem{daly2006higher}
+J.~T. Daly.
+\newblock A {H}igher {O}rder {E}stimate of the {O}ptimum {C}heckpoint
+  {I}nterval for {R}estart {D}umps.
+\newblock {\em Future Generation Computer Systems}, 22(3), 2006.
+
+\bibitem{dongarra_fault_nodate}
+J.~Dongarra, T.~Herault, and Y.~Robert.
+\newblock Fault tolerance techniques for high-performance computing.
+\newblock page~66.
+
+\bibitem{dubois2016optispot}
+D.~J. Dubois and G.~Casale.
+\newblock Optispot: minimizing application deployment cost using spot cloud
+  resources.
+\newblock {\em Cluster Computing}, pages 1--17, 2016.
+
+\bibitem{ferguson2017machine}
+A.~L. Ferguson.
+\newblock Machine learning and data science in soft materials engineering.
+\newblock {\em Journal of Physics: Condensed Matter}, 30(4):043002, 2017.
+
+\bibitem{fuerst2020cloud}
+A.~Fuerst, A.~Ali-Eldin, P.~Shenoy, and P.~Sharma.
+\newblock {Cloud-scale VM-deflation for Running Interactive Applications On
+  Transient Servers}.
+\newblock In {\em HPDC}, 2020.
+
+\bibitem{ghit-spark-hpdc}
+B.~Ghit and D.~Epema.
+\newblock Better safe than sorry: Grappling with failures of in-memory data
+  analytics frameworks.
+\newblock In {\em Proceedings of the 26th International Symposium on
+  High-Performance Parallel and Distributed Computing}, HPDC '17, pages
+  105--116, New York, NY, USA, 2017. ACM.
+
+\bibitem{guo_bidding_2015}
+W.~Guo, K.~Chen, Y.~Wu, and W.~Zheng.
+\newblock Bidding for {Highly} {Available} {Services} with {Low} {Price} in
+  {Spot} {Instance} {Market}.
+\newblock In {\em Proceedings of the 24th {International} {Symposium} on
+  {High}-{Performance} {Parallel} and {Distributed} {Computing} - {HPDC} '15},
+  pages 191--202, Portland, Oregon, USA, 2015. ACM Press.
+
+\bibitem{harlap2018tributary}
+A.~Harlap, A.~Chung, A.~Tumanov, G.~R. Ganger, and P.~B. Gibbons.
+\newblock Tributary: spot-dancing for elastic services with latency slos.
+\newblock In {\em 2018 $\{$USENIX$\}$ Annual Technical Conference
+  ($\{$USENIX$\}$$\{$ATC$\}$ 18)}, pages 1--14, 2018.
+
+\bibitem{proteus-eur17}
+A.~Harlap, A.~Tumanov, A.~Chung, G.~R. Ganger, and P.~B. Gibbons.
+\newblock Proteus: Agile ml elasticity through tiered reliability in dynamic
+  resource markets.
+\newblock In {\em Proceedings of the Twelfth European Conference on Computer
+  Systems}, EuroSys '17, pages 589--604, New York, NY, USA, 2017. ACM.
+
+\bibitem{irwin-icccn19}
+D.~Irwin, P.~Shenoy, P.~Ambati, P.~Sharma, S.~Shastri, and A.~Ali-Eldin.
+\newblock The price is (not) right: Reflections on pricing for transient cloud
+  servers.
+\newblock {\em 2019 28th International Conference on Computer Communication and
+  Networks (ICCCN)}, pages 1--9, 2019.
+
+\bibitem{jto1}
+V.~Jadhao, C.~K. Thomas, and M.~Olvera de~la Cruz.
+\newblock Electrostatics-driven shape transitions in soft shells.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  111(35):12673--12678, 2014.
+
+\bibitem{bidding4}
+B.~Javadi, R.~Thulasiram, and R.~Buyya.
+\newblock Statistical {M}odeling of {S}pot {I}nstance {P}rices in {P}ublic
+  {C}loud {E}nvironments.
+\newblock In {\em UCC}, December 2011.
+
+\bibitem{jing2015ionic}
+Y.~Jing, V.~Jadhao, J.~W. Zwanikken, and M.~Olvera de~la Cruz.
+\newblock Ionic structure in liquids confined by dielectric interfaces.
+\newblock {\em The Journal of chemical physics}, 143(19):194508, 2015.
+
+\bibitem{hourglass-eurosys19}
+P.~Joaquim, M.~Bravo, L.~Rodrigues, and M.~Matos.
+\newblock Hourglass: Leveraging transient resources for time-constrained graph
+  processing in the cloud.
+\newblock In {\em Proceedings of the Fourteenth EuroSys Conference 2019},
+  EuroSys '19, pages 35:1--35:16, New York, NY, USA, 2019. ACM.
+
+\bibitem{scispot-hpdc20}
+J.~Kadupitige, V.~Jadhao, and P.~Sharma.
+\newblock Modeling the temporally constrained preemptions of transient cloud
+  vms.
+\newblock In {\em Proceedings of the 29th International Symposium on
+  High-Performance Parallel and Distributed Computing}, HPDC '20, page 41–52,
+  New York, NY, USA, 2020. Association for Computing Machinery.
+
+\bibitem{brunk2020}
+J.~Kadupitiya, N.~Brunk, and V.~Jadhao.
+\newblock Nanoparticle shape lab, January 2020.
+\newblock nanoHUB.
+
+\bibitem{kadupitiya2020machine}
+J.~Kadupitiya, G.~C. Fox, and V.~Jadhao.
+\newblock Machine learning for parameter auto-tuning in molecular dynamics
+  simulations: Efficient dynamics of ions near polarizable nanoparticles.
+\newblock {\em The International Journal of High Performance Computing
+  Applications}, 34(3):357--374, 2020.
+
+\bibitem{kadupitiya2017}
+J.~Kadupitiya, S.~Marru, G.~C. Fox, and V.~Jadhao.
+\newblock Ions in nanoconfinement, Dec 2017.
+\newblock Online on nanoHUB; source code on GitHub at
+  github.com/softmaterialslab/nanoconfinement-md.
+
+\bibitem{kadupitiya2020machine2}
+J.~Kadupitiya, F.~Sun, G.~Fox, and V.~Jadhao.
+\newblock Machine learning surrogates for molecular dynamics simulations of
+  soft materials.
+\newblock {\em Journal of Computational Science}, page 101107, 2020.
+
+\bibitem{IPDPS13:LULESH}
+I.~Karlin, A.~Bhatele, J.~Keasler, B.~L. Chamberlain, J.~Cohen, Z.~DeVito,
+  R.~Haque, D.~Laney, E.~Luke, F.~Wang, D.~Richards, M.~Schulz, and C.~Still.
+\newblock Exploring traditional and emerging parallel programming models using
+  a proxy application.
+\newblock In {\em 27th IEEE International Parallel \& Distributed Processing
+  Symposium (IEEE IPDPS 2013)}, Boston, USA, May 2013.
+
+\bibitem{LULESH2:changes}
+I.~Karlin, J.~Keasler, and R.~Neely.
+\newblock Lulesh 2.0 updates and changes.
+\newblock Technical Report LLNL-TR-641973, August 2013.
+
+\bibitem{krauth2006statistical}
+W.~Krauth.
+\newblock {\em Statistical mechanics: algorithms and computations}, volume~13.
+\newblock OUP Oxford, 2006.
+
+\bibitem{marathe2014exploiting}
+A.~Marathe, R.~Harris, D.~Lowenthal, B.~R. De~Supinski, B.~Rountree, and
+  M.~Schulz.
+\newblock Exploiting redundancy for cost-effective, time-constrained execution
+  of hpc applications on amazon ec2.
+\newblock In {\em HPDC}. ACM, 2014.
+
+\bibitem{icdcs-spotlight}
+X.~Ouyang, D.~Irwin, and P.~Shenoy.
+\newblock Spotlight: An information service for the cloud.
+\newblock In {\em IEEE International Conference on Distributed Computing
+  Systems (ICDCS)}, 2016.
+
+\bibitem{sharma19eurosys}
+P.~Sharma, A.~Ali-Edlin, and P.~Shenoy.
+\newblock {Resource Deflation: A New Approach For Transient Resource
+  Reclamation}.
+\newblock In {\em EuroSys}, 2019.
+
+\bibitem{flint}
+P.~Sharma, T.~Guo, X.~He, D.~Irwin, and P.~Shenoy.
+\newblock {F}lint: {B}atch-{I}nteractive {D}ata-{I}ntensive {P}rocessing on
+  {T}ransient {S}ervers.
+\newblock In {\em EuroSys}, April 2016.
+
+\bibitem{hotcloud-not-bid}
+P.~Sharma, D.~Irwin, and P.~Shenoy.
+\newblock How {N}ot to {B}id the {C}loud.
+\newblock In {\em Proceedings of the 8th USENIX Workshop on Hot Topics in Cloud
+  Computing (HotCloud)}. USENIX, June 2016.
+
+\bibitem{exosphere}
+P.~Sharma, D.~Irwin, and P.~Shenoy.
+\newblock Portfolio-driven resource management for transient cloud servers.
+\newblock In {\em Proceedings of ACM Measurement and Analysis of Computer
+  Systems}, volume~1, page~23, June 2017.
+
+\bibitem{spotcheck}
+P.~Sharma, S.~Lee, T.~Guo, D.~Irwin, and P.~Shenoy.
+\newblock Spot{C}heck: Designing a {D}erivative {I}aa{S} {C}loud on the {S}pot
+  {M}arket.
+\newblock In {\em EuroSys}, April 2015.
+
+\bibitem{shastri2017hotspot}
+S.~Shastri and D.~Irwin.
+\newblock Hotspot: automated server hopping in cloud spot markets.
+\newblock In {\em Proceedings of the 2017 Symposium on Cloud Computing}, pages
+  493--505. ACM, 2017.
+
+\bibitem{transient-guarantees}
+S.~Shastri, A.~Rizk, and D.~Irwin.
+\newblock Transient guarantees: Maximizing the value of idle cloud capacity.
+\newblock In {\em Proceedings of the International Conference for High
+  Performance Computing, Networking, Storage and Analysis}, SC '16, pages
+  85:1--85:11, Piscataway, NJ, USA, 2016. IEEE Press.
+
+\bibitem{tian_gpu_icdcs}
+R.~W. Shijian~Li and T.~Guo.
+\newblock Characterizing and modeling distributed training with transient cloud
+  gpu servers.
+\newblock {\em 40th IEEE International Conference on Distributed Computing
+  Systems (ICDCS'20)}.
+
+\bibitem{transient}
+R.~Singh, P.~Sharma, D.~Irwin, P.~Shenoy, and K.~Ramakrishnan.
+\newblock Here {T}oday, {G}one {T}omorrow: Exploiting {T}ransient {S}ervers in
+  {D}ata {C}enters.
+\newblock {\em IEEE Internet Computing}, 18(4), July/August 2014.
+
+\bibitem{solis2013generating}
+F.~J. Solis, V.~Jadhao, and M.~O. De~La~Cruz.
+\newblock Generating true minima in constrained variational formulations via
+  modified lagrange multipliers.
+\newblock {\em Physical Review E}, 88(5):053306, 2013.
+
+\bibitem{spoton}
+S.~Subramanya, T.~Guo, P.~Sharma, D.~Irwin, and P.~Shenoy.
+\newblock Spot{O}n: A {B}atch {C}omputing {S}ervice for the {S}pot {M}arket.
+\newblock In {\em SOCC}, August 2015.
+
+\bibitem{bidding7}
+S.~Tang, J.~Yuan, and X.~Li.
+\newblock Towards {O}ptimal {B}idding {S}trategy for {A}mazon {E}{C}2 {C}loud
+  {S}pot {I}nstance.
+\newblock In {\em CLOUD}, June 2012.
+
+\bibitem{tonks}
+L.~Tonks.
+\newblock The complete equation of state of one, two and three-dimensional
+  gases of hard elastic spheres.
+\newblock {\em Phys. Rev.}, 50:955--963, Nov 1936.
+
+\bibitem{borg}
+A.~Verma, L.~Pedrosa, M.~Korupolu, D.~Oppenheimer, E.~Tune, and J.~Wilkes.
+\newblock Large-scale cluster management at google with borg.
+\newblock In {\em EuroSys}. ACM, 2015.
+
+\bibitem{wang2019machine}
+J.~Wang, S.~Olsson, C.~Wehmeyer, A.~Perez, N.~E. Charron, G.~De~Fabritiis,
+  F.~Noe, and C.~Clementi.
+\newblock Machine learning of coarse-grained molecular dynamics force fields.
+\newblock {\em ACS central science}, 2019.
+
+\bibitem{bidding1}
+S.~Wee.
+\newblock Debunking {R}eal-{T}ime {P}ricing in {C}loud {C}omputing.
+\newblock In {\em CCGrid}, May 2011.
+
+\bibitem{conductor}
+A.~Wieder, P.~Bhatotia, A.~Post, and R.~Rodrigues.
+\newblock Orchestrating the deployment of computations in the cloud with
+  conductor.
+\newblock In {\em NSDI 12}, 2012.
+
+\bibitem{wolski2016providing}
+R.~Wolski and J.~Brevik.
+\newblock Providing statistical reliability guarantees in the aws spot tier.
+\newblock In {\em Proceedings of the 24th High Performance Computing
+  Symposium}, page~13. Society for Computer Simulation International, 2016.
+
+\bibitem{wolski2017probabilistic}
+R.~Wolski, J.~Brevik, R.~Chard, and K.~Chard.
+\newblock Probabilistic guarantees of execution duration for amazon spot
+  instances.
+\newblock In {\em Proceedings of the International Conference for High
+  Performance Computing, Networking, Storage and Analysis}, page~18. ACM, 2017.
+
+\bibitem{wolski_probabilistic_2017}
+R.~Wolski, J.~Brevik, R.~Chard, and K.~Chard.
+\newblock Probabilistic guarantees of execution duration for {Amazon} spot
+  instances.
+\newblock In {\em Proceedings of the {International} {Conference} for {High}
+  {Performance} {Computing}, {Networking}, {Storage} and {Analysis} on - {SC}
+  '17}, pages 1--11, Denver, Colorado, 2017. ACM Press.
+
+\bibitem{chien-ic2e19}
+C.~{Zhang}, V.~{Gupta}, and A.~A. {Chien}.
+\newblock Information models: Creating and preserving value in volatile cloud
+  resources.
+\newblock In {\em 2019 IEEE International Conference on Cloud Engineering
+  (IC2E)}, pages 45--55, June 2019.
+
+\bibitem{bid-cloud}
+L.~Zheng, C.~Joe-Wong, C.~W. Tan, M.~Chiang, and X.~Wang.
+\newblock How to {B}id the {C}loud.
+\newblock In {\em SIGCOMM}, August 2015.
+
+\end{thebibliography}
