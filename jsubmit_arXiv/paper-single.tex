@@ -129,7 +129,7 @@ However, the frequent preemptions and resource heterogeneity of these transient 
 In this paper, we develop techniques for modeling and mitigating preemptions of transient servers, and present SciSpot, a software framework that enables low-cost scientific computing on the cloud. 
 SciSpot deploys applications on Google Cloud Preemptible Virtual Machines that exhibit temporally constrained preemptions: VMs are always preempted in a 24 hour interval. 
 Our empirical analysis shows that the preemption rate is generally  bathtub shaped, which raises multiple fundamental challenges in performance modeling and policy design. 
-We develop a new reliability model for temporally constrained preemptions, and use statistical mechanics to show why the bathtub shape is a fundamental characteristic. 
+We develop a new reliability model for temporally constrained preemptions, and use statistical mechanics to show why the bathtub shape is generally exhibited. 
 
 
 SciSpot's design is guided by our observation that many emerging scientific computing applications that integrate machine learning with simulations, can be deployed as ``bags'' of jobs, which represent multiple instantiations of the same computation with different physical model parameters. 
@@ -1206,12 +1206,9 @@ Our large-scale empirical study shows that the constraint imposes a bathtub fail
 Our insights and model-based policies can reduce the preemption overheads by more than $5\times$ compared to existing preemption models, and our batch computing service can reduce computing costs by over $5\times$. 
 
 
-
-
-
-
- 
-
+\noindent \textbf{Acknowledgments.}
+This research was supported by Google cloud credits for research. 
+J.K. and V.J. were partially supported by Department of Energy through Award DE-SC0021418. P.S. was partially supported by NSF OAC-2112606. 
 
 
 {
